@@ -70,15 +70,10 @@ const styles = StyleSheet.create({
 
 export default class Login extends Component {
 
-  constructor() {
-    super();
-    this.onLogin = this.onLogin.bind(this);
+  navigateTo = key => () => {
+    const { navigate } = this.props;
+    navigate(key);
   }
-
-  onLogin() {
-    console.log('login!');
-  }
-
 
   render() {
     return (
@@ -87,7 +82,7 @@ export default class Login extends Component {
         resizeMode="cover"
         source={background}
       >
-        <View style={styles.container}></View>
+        <View style={styles.container} />
         <View style={styles.wrapper}>
           <View style={styles.inputWrap}>
             <View style={styles.iconWrap}>
@@ -96,44 +91,45 @@ export default class Login extends Component {
                 style={styles.icon}
                 resizeMode="contain"
               />
-              </View>
-              <TextInput
-                placeholder="Username"
-                style={styles.input}
-                underlineColorAndroid="transparent"
+            </View>
+            <TextInput
+              placeholder="Username"
+              style={styles.input}
+              underlineColorAndroid="transparent"
+            />
+          </View>
+          <View style={styles.inputWrap}>
+            <View style={styles.iconWrap}>
+              <Image
+                source={password}
+                style={styles.icon}
+                resizeMode="contain"
               />
             </View>
-            <View style={styles.inputWrap}>
-                <View style={styles.iconWrap}>
-                    <Image
-                        source={password}
-                        style={styles.icon}
-                        resizeMode="contain"
-                    />
-                </View>
-                <TextInput
-                    placeholder="Password"
-                    secureTextEntry
-                    style={styles.input}
-                />
+            <TextInput
+              placeholder="Password"
+              secureTextEntry
+              style={styles.input}
+            />
+          </View>
+          <TouchableOpacity
+            activeOpacity={0.7}
+            onPress={this.navigateTo('home')}
+          >
+            <View style={styles.button}>
+              <Text style={styles.buttonText}>Sign In</Text>
             </View>
-            <TouchableOpacity
-              activeOpacity={.7}
-              onPress={this.onLogin}
-            >
-              <View style={styles.button}>
-                <Text style={styles.buttonText}>Sign In</Text>
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity
-              activeOpacity={.5}
-            >
-              <View>
-                <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
-              </View>
-            </TouchableOpacity>
+          </TouchableOpacity>
+          <TouchableOpacity
+            activeOpacity={0.5}
+            onPress={this.navigateTo('lostPassword')}
+          >
+            <View>
+              <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
+            </View>
+          </TouchableOpacity>
         </View>
-        <View style={styles.container}></View>
+        <View style={styles.container} />
       </Image>
     );
   }

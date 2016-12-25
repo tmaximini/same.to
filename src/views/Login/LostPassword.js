@@ -25,24 +25,24 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class Home extends Component {
+export default class LostPassword extends Component {
   static propTypes = {
     navigate: PropTypes.func.isRequired
   };
 
-  toLogin = () => {
+  resetPassword = () => {
     const { navigate } = this.props;
-    navigate('login');
+    navigate('home');
   }
 
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Welcome to Same.to!
+          Please enter your credentials and we send you a reset link!
         </Text>
-        <TouchableOpacity onPress={this.toLogin}>
-          <Text style={styles.instructions}>Navigate to Login</Text>
+        <TouchableOpacity onPress={this.resetPassword}>
+          <Text style={styles.instructions}>Reset my Password</Text>
         </TouchableOpacity>
       </View>
     );

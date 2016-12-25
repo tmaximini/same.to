@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import Home from './views/Home';
 import Login from './views/Login';
+import LostPassword from './views/Login/LostPassword';
 
 const { CardStack } = NavigationExperimental;
 
@@ -17,16 +18,25 @@ export default class Router extends Component {
     dispatch: PropTypes.func.isRequired
   }
 
-  handleNavigation = action => {
-    this.props.dispatch(action);
+  handleNavigation = key => {
+    this.props.dispatch({
+      key,
+      type: 'navigate'
+    });
   }
 
   renderScene = props => {
-    switch (props.scene.key) {
-      case 'scene_home':
+    // because we can not push the same key twice on the card stack,
+    // we added the index to the key and extract the relevant part here again
+    // TODO: probably bad idea to have the same view multiple times on the stack
+    const key = props.scene.key.split('_')[1];
+    switch (key) {
+      case 'home':
         return <Home navigate={this.handleNavigation} />;
-      case 'scene_login':
+      case 'login':
         return <Login navigate={this.handleNavigation} />;
+      case 'lostPassword':
+        return <LostPassword navigate={this.handleNavigation} />;
       default:
         return null;
     }
