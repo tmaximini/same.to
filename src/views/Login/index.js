@@ -2,15 +2,19 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import {
   StyleSheet,
   Text,
-  TextInput,
   View,
   Image,
   TouchableOpacity
 } from 'react-native';
+
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import Input from '../../components/Input';
+import { actions as authActions } from '../../redux/modules/auth';
 
 
 const background = require('../../assets/sunflowers.jpg');
@@ -67,15 +71,33 @@ const styles = StyleSheet.create({
   }
 });
 
-
+@connect(
+  state => ({
+    auth: state.auth
+  }),
+  dispatch => bindActionCreators(authActions, dispatch)
+)
 export default class Login extends Component {
 
-  navigateTo = key => () => {
-    const { navigate } = this.props;
-    navigate(key);
+  static propTypes = {
+    navigateTo: PropTypes.func.isRequired,
+    update: PropTypes.func.isRequired,
+    auth: PropTypes.shape({
+      password: PropTypes.string,
+      username: PropTypes.string
+    })
+  };
+
+  handleNavigation = key => () => {
+    const { navigateTo } = this.props;
+    navigateTo(key);
   }
 
   render() {
+    const {
+      update,
+      auth
+    } = this.props;
     return (
       <Image
         style={[styles.container, styles.background]}
@@ -84,37 +106,22 @@ export default class Login extends Component {
       >
         <View style={styles.container} />
         <View style={styles.wrapper}>
-          <View style={styles.inputWrap}>
-            <View style={styles.iconWrap}>
-              <Image
-                source={login}
-                style={styles.icon}
-                resizeMode="contain"
-              />
-            </View>
-            <TextInput
-              placeholder="Username"
-              style={styles.input}
-              underlineColorAndroid="transparent"
-            />
-          </View>
-          <View style={styles.inputWrap}>
-            <View style={styles.iconWrap}>
-              <Image
-                source={password}
-                style={styles.icon}
-                resizeMode="contain"
-              />
-            </View>
-            <TextInput
-              placeholder="Password"
-              secureTextEntry
-              style={styles.input}
-            />
-          </View>
+          <Input
+            placeholder="Username"
+            icon={login}
+            value={auth.username}
+            onChangeText={(text) => update('username', text)}
+          />
+          <Input
+            placeholder="Password"
+            icon={password}
+            value={auth.password}
+            onChangeText={(text) => update('password', text)}
+            secureTextEntry
+          />
           <TouchableOpacity
             activeOpacity={0.7}
-            onPress={this.navigateTo('home')}
+            onPress={this.handleNavigation('home')}
           >
             <View style={styles.button}>
               <Text style={styles.buttonText}>Sign In</Text>
@@ -122,7 +129,7 @@ export default class Login extends Component {
           </TouchableOpacity>
           <TouchableOpacity
             activeOpacity={0.5}
-            onPress={this.navigateTo('lostPassword')}
+            onPress={this.handleNavigation('lostPassword')}
           >
             <View>
               <Text style={styles.forgotPasswordText}>Forgot Password?</Text>

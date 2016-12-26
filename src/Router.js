@@ -32,11 +32,11 @@ export default class Router extends Component {
     const key = props.scene.key.split('_')[1];
     switch (key) {
       case 'home':
-        return <Home navigate={this.handleNavigation} />;
+        return <Home navigateTo={this.handleNavigation} />;
       case 'login':
-        return <Login navigate={this.handleNavigation} />;
+        return <Login navigateTo={this.handleNavigation} />;
       case 'lostPassword':
-        return <LostPassword navigate={this.handleNavigation} />;
+        return <LostPassword navigateTo={this.handleNavigation} />;
       default:
         return null;
     }

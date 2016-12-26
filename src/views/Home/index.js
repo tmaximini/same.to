@@ -27,12 +27,12 @@ const styles = StyleSheet.create({
 
 export default class Home extends Component {
   static propTypes = {
-    navigate: PropTypes.func.isRequired
+    navigateTo: PropTypes.func.isRequired
   };
 
   toLogin = () => {
-    const { navigate } = this.props;
-    navigate('login');
+    const { navigateTo } = this.props;
+    navigateTo('login');
   }
 
   render() {

@@ -1,14 +1,18 @@
 // Initial State
 const initialState = {
-  loggedIn: false
+  loggedIn: false,
+  username: null,
+  password: null,
+  isLoading: false
 };
 
 
 // Constants
-export const LOGIN_START = 'LOGIN_START';
-export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
-export const LOGIN_ERROR = 'LOGIN_ERROR';
-export const LOGOUT = 'LOGOUT';
+export const LOGIN_START = 'auth/LOGIN_START';
+export const LOGIN_SUCCESS = 'auth/LOGIN_SUCCESS';
+export const LOGIN_ERROR = 'auth/LOGIN_ERROR';
+export const LOGOUT = 'auth/LOGOUT';
+export const UPDATE = 'auth/UPDATE';
 
 
 // Action Creators
@@ -16,6 +20,21 @@ export const login = (...data) => ({
   type: LOGIN_START,
   payload: data
 });
+
+export const update = (key, value) => ({
+  type: UPDATE,
+  payload: {
+    key,
+    value
+  }
+});
+
+
+// export all actions
+export const actions = {
+  login,
+  update
+};
 
 
 // Action Handlers
@@ -26,6 +45,7 @@ const actionsMap = {
     message: 'Login Failed',
   }),
   [LOGOUT]: (state) => Object.assign(state, { loggedIn: false }),
+  [UPDATE]: (state, action) => Object.assign(state, { [action.payload.key]: action.payload.value }),
 };
 
 // Reducer
