@@ -11,13 +11,15 @@ import {
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import NavigationBar from 'react-native-navbar';
 import Input from '../../components/Input';
 import { actions as authActions } from '../../redux/modules/auth';
 
+import { VerticalCentered, WithPadding } from '../../components/Layout';
 import Button from '../../components/Button';
 import styles from './styles';
 
-const background = require('../../assets/sunflowers.jpg');
+// const background = require('../../assets/sunflowers.jpg');
 const login = require('../../assets/login.png');
 const password = require('../../assets/password.png');
 
@@ -36,7 +38,8 @@ export default class Login extends Component {
     auth: PropTypes.shape({
       password: PropTypes.string,
       username: PropTypes.string
-    })
+    }),
+    title: PropTypes.string
   };
 
   handleNavigation = key => () => {
@@ -49,14 +52,22 @@ export default class Login extends Component {
       update,
       auth
     } = this.props;
+
+    const titleConfig = {
+      title: this.props.title || 'Login'
+    };
+
     return (
       <Image
         style={[styles.container, styles.background]}
         resizeMode="cover"
         source={null}
       >
+        <NavigationBar
+          title={titleConfig}
+        />
         <View style={styles.container} />
-        <View style={styles.wrapper}>
+        <WithPadding>
           <Input
             placeholder="Username"
             icon={login}
@@ -82,7 +93,7 @@ export default class Login extends Component {
             noBorder
             onPress={this.handleNavigation('lostPassword')}
           />
-        </View>
+        </WithPadding>
         <View style={styles.container} />
       </Image>
     );

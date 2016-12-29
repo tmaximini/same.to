@@ -4,13 +4,17 @@ import {
   View,
 } from 'react-native';
 
+import NavigationBar from 'react-native-navbar';
+import { VerticalCentered } from '../../components/Layout';
 import Button from '../../components/Button';
 import styles from './styles';
 
 
 export default class Home extends Component {
+
   static propTypes = {
-    navigateTo: PropTypes.func.isRequired
+    navigateTo: PropTypes.func.isRequired,
+    title: PropTypes.string,
   };
 
   toLogin = () => {
@@ -19,15 +23,24 @@ export default class Home extends Component {
   }
 
   render() {
+    const titleConfig = {
+      title: this.props.title || 'Home'
+    };
+
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to Same.to!
-        </Text>
-        <Button
-          onPress={this.toLogin}
-          text="Navigate to Login"
+        <NavigationBar
+          title={titleConfig}
         />
+        <VerticalCentered>
+          <Text style={styles.welcome}>
+            Welcome to Same.to!
+          </Text>
+          <Button
+            onPress={this.toLogin}
+            text="Navigate to Login"
+          />
+        </VerticalCentered>
       </View>
     );
   }
