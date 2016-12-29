@@ -13,6 +13,14 @@ export default StyleSheet.create({
   buttonText: {
     color: '#fff',
     fontSize: 18
+  },
+  or: {
+    textAlign: 'center',
+    color: '#fff'
+  },
+  buttonWrapper: {
+    flexDirection: 'row',
+    justifyContent: 'space-around'
   }
 });
 

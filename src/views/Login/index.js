@@ -13,10 +13,7 @@ import { actions as authActions } from '../../redux/modules/auth';
 import { VerticalCentered, WithPadding } from '../../components/Layout';
 import Button from '../../components/Button';
 import styles from './styles';
-
-// const background = require('../../assets/sunflowers.jpg');
-const login = require('../../assets/login.png');
-const password = require('../../assets/password.png');
+// import { border } from '../../utils';
 
 
 @connect(
@@ -59,15 +56,20 @@ export default class Login extends Component {
         />
         <VerticalCentered>
           <WithPadding>
+            <Button
+              style={{ backgroundColor: '#d73352' }}
+              onPress={() => console.log('facebook')}
+            >
+              <Text style={styles.buttonText}>Login with Facebook</Text>
+            </Button>
+            <Text style={styles.or}>Or</Text>
             <Input
               placeholder="Username"
-              icon={login}
               value={auth.username}
               onChangeText={(text) => update('username', text)}
             />
             <Input
               placeholder="Password"
-              icon={password}
               value={auth.password}
               onChangeText={(text) => update('password', text)}
               secureTextEntry
@@ -78,12 +80,20 @@ export default class Login extends Component {
             >
               <Text style={styles.buttonText}>Sign In</Text>
             </Button>
-            <Button
-              text="Forgot Password?"
-              textColor="#fff"
-              noBorder
-              onPress={this.handleNavigation('lostPassword')}
-            />
+            <View style={styles.buttonWrapper}>
+              <Button
+                text="Register"
+                textColor="#fff"
+                noBorder
+                onPress={this.handleNavigation('lostPassword')}
+              />
+              <Button
+                text="Forgot Password?"
+                textColor="#fff"
+                noBorder
+                onPress={this.handleNavigation('lostPassword')}
+              />
+            </View>
           </WithPadding>
         </VerticalCentered>
       </View>
