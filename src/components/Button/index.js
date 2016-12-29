@@ -1,0 +1,75 @@
+import React, { Component, PropTypes } from 'react';
+import {
+  Text,
+  TouchableHighlight,
+} from 'react-native';
+
+import styles from './styles';
+
+
+export default class Button extends Component {
+  static propTypes = {
+    disabled: PropTypes.bool,
+    text: PropTypes.string,
+    children: PropTypes.element,
+    onPress: PropTypes.func.isRequired,
+    activeOpacity: PropTypes.number,
+    noBorder: PropTypes.bool,
+    textColor: PropTypes.string,
+  }
+
+  constructor() {
+    super();
+    this.onHighlight = this.onHighlight.bind(this);
+    this.onUnhighlight = this.onUnhighlight.bind(this);
+    this.onPress = this.onPress.bind(this);
+  }
+
+  state = {
+    active: false,
+  };
+
+  onHighlight() {
+    this.setState({ active: true });
+  }
+
+  onUnhighlight() {
+    this.setState({ active: false });
+  }
+
+  onPress() {
+    if (!this.props.disabled) {
+      this.props.onPress();
+    }
+  }
+
+  render() {
+    const colorStyle = {
+      color: this.props.textColor || (this.props.disabled ? '#ccc' : '#000')
+    };
+    const buttonStyle = {
+      borderWidth: this.props.noBorder ? 0 : 1
+    };
+    const underlayColor = this.props.disabled ? '#E0F4FF' : '#B8CCD8';
+    return (
+      <TouchableHighlight
+        onHideUnderlay={this.onUnhighlight}
+        onPress={this.onPress}
+        onShowUnderlay={this.onHighlight}
+        style={[styles.button, buttonStyle, this.props.style]}
+        underlayColor={underlayColor}
+        activeOpacity={this.props.activeOpacity}
+      >
+        {this.props.text
+          ? <Text style={[styles.buttonText, colorStyle]}>{this.props.text}</Text>
+          : this.props.children
+        }
+      </TouchableHighlight>
+    );
+  }
+}
+
+Button.defaultProps = {
+  activeOpacity: 0.5,
+  disabled: false
+};

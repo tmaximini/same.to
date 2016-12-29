@@ -1,29 +1,29 @@
 import React, { Component, PropTypes } from 'react';
 import { NavigationExperimental } from 'react-native';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
+// Views
 import Home from './views/Home';
 import Login from './views/Login';
-import LostPassword from './views/Login/LostPassword';
+import LostPassword from './views/LostPassword';
+import EditProfile from './views/EditProfile';
 
-const { CardStack } = NavigationExperimental;
+// redux actions
+import { actions as routeActions } from './redux/modules/routes';
+
 
 @connect(
   state => state,
-  dispatch => ({ dispatch })
+  dispatch => bindActionCreators(routeActions, dispatch)
 )
 export default class Router extends Component {
   static propTypes = {
     routes: PropTypes.object.isRequired,
-    dispatch: PropTypes.func.isRequired
+    navigate: PropTypes.func.isRequired
   }
 
-  handleNavigation = key => {
-    this.props.dispatch({
-      key,
-      type: 'navigate'
-    });
-  }
+  handleNavigation = key => this.props.navigate(key);
 
   renderScene = props => {
     // because we can not push the same key twice on the card stack,
@@ -37,12 +37,16 @@ export default class Router extends Component {
         return <Login navigateTo={this.handleNavigation} />;
       case 'lostPassword':
         return <LostPassword navigateTo={this.handleNavigation} />;
+      case 'editProfile':
+        return <EditProfile navigateTo={this.handleNavigation} />;
       default:
         return null;
     }
   }
 
   render() {
+    const { CardStack } = NavigationExperimental;
+
     return (
       <CardStack
         direction="horizontal"

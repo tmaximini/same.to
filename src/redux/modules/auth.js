@@ -48,6 +48,7 @@ const actionsMap = {
   [UPDATE]: (state, action) => Object.assign(state, { [action.payload.key]: action.payload.value }),
 };
 
+
 // Reducer
 export default (state = initialState, action) => {
   const reduceFn = actionsMap[action.type];
