@@ -3,7 +3,7 @@ const initialState = {
   loggedIn: false,
   username: null,
   password: null,
-  isLoading: false
+  isLoading: false,
 };
 
 
@@ -25,7 +25,7 @@ export const update = (key, value) => ({
   type: UPDATE,
   payload: {
     key,
-    value
+    value,
   }
 });
 
@@ -33,7 +33,7 @@ export const update = (key, value) => ({
 // export all actions
 export const actions = {
   login,
-  update
+  update,
 };
 
 

@@ -7,7 +7,7 @@ const initialState = {
   gender: null,
   employer: null,
   job: null,
-  interests: []
+  interests: [],
 };
 
 
@@ -20,14 +20,14 @@ export const update = (key, value) => ({
   type: UPDATE,
   payload: {
     key,
-    value
+    value,
   }
 });
 
 
 // export all actions
 export const actions = {
-  update
+  update,
 };
 
 

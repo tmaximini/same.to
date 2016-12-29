@@ -24,7 +24,7 @@ export default class Home extends Component {
 
   render() {
     const titleConfig = {
-      title: this.props.title || 'Home'
+      title: this.props.title || 'Home',
     };
 
     return (

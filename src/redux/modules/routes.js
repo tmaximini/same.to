@@ -6,7 +6,7 @@ const { StateUtils } = NavigationExperimental;
 // initial state
 const initialState = {
   index: 0,
-  routes: [{ key: 'home' }],
+  routes: [{ key: 'login' }],
 };
 
 
@@ -20,19 +20,19 @@ export const navigate = (key, ...rest) => ({
   type: NAVIGATE,
   payload: {
     key,
-    ...rest
+    ...rest,
   }
 });
 
 export const goBack = () => ({
-  type: GO_BACK
+  type: GO_BACK,
 });
 
 
 // all actions
 export const actions = {
   navigate,
-  goBack
+  goBack,
 };
 
 

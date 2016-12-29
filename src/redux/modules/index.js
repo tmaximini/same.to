@@ -6,5 +6,5 @@ import profile from './profile';
 export default combineReducers({
   auth,
   routes,
-  profile
+  profile,
 });

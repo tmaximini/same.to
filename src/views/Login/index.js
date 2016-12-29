@@ -1,12 +1,7 @@
-/**
- * @flow
- */
-
 import React, { Component, PropTypes } from 'react';
 import {
   Text,
   View,
-  Image,
 } from 'react-native';
 
 import { connect } from 'react-redux';
@@ -50,7 +45,7 @@ export default class Login extends Component {
   render() {
     const {
       update,
-      auth
+      auth,
     } = this.props;
 
     const titleConfig = {
@@ -58,44 +53,40 @@ export default class Login extends Component {
     };
 
     return (
-      <Image
-        style={[styles.container, styles.background]}
-        resizeMode="cover"
-        source={null}
-      >
+      <View style={styles.container}>
         <NavigationBar
           title={titleConfig}
         />
-        <View style={styles.container} />
-        <WithPadding>
-          <Input
-            placeholder="Username"
-            icon={login}
-            value={auth.username}
-            onChangeText={(text) => update('username', text)}
-          />
-          <Input
-            placeholder="Password"
-            icon={password}
-            value={auth.password}
-            onChangeText={(text) => update('password', text)}
-            secureTextEntry
-          />
-          <Button
-            style={{ backgroundColor: '#d73352' }}
-            onPress={this.handleNavigation('editProfile')}
-          >
-            <Text style={styles.buttonText}>Sign In</Text>
-          </Button>
-          <Button
-            text="Forgot Password?"
-            textColor="#fff"
-            noBorder
-            onPress={this.handleNavigation('lostPassword')}
-          />
-        </WithPadding>
-        <View style={styles.container} />
-      </Image>
+        <VerticalCentered>
+          <WithPadding>
+            <Input
+              placeholder="Username"
+              icon={login}
+              value={auth.username}
+              onChangeText={(text) => update('username', text)}
+            />
+            <Input
+              placeholder="Password"
+              icon={password}
+              value={auth.password}
+              onChangeText={(text) => update('password', text)}
+              secureTextEntry
+            />
+            <Button
+              style={{ backgroundColor: '#d73352' }}
+              onPress={this.handleNavigation('editProfile')}
+            >
+              <Text style={styles.buttonText}>Sign In</Text>
+            </Button>
+            <Button
+              text="Forgot Password?"
+              textColor="#fff"
+              noBorder
+              onPress={this.handleNavigation('lostPassword')}
+            />
+          </WithPadding>
+        </VerticalCentered>
+      </View>
     );
   }
 }

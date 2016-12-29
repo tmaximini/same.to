@@ -7,6 +7,6 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   withPadding: {
-    paddingHorizontal: 15
+    padding: 20
   },
 });

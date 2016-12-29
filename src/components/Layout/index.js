@@ -13,10 +13,10 @@ export const VerticalCentered = ({ children = undefined }) => {
 };
 
 VerticalCentered.propTypes = {
-  children: PropTypes.oneOf(
+  children: PropTypes.oneOfType([
     PropTypes.element,
     PropTypes.array
-  )
+  ])
 };
 
 export const WithPadding = ({ children = undefined }) => {
@@ -26,8 +26,8 @@ export const WithPadding = ({ children = undefined }) => {
 };
 
 WithPadding.propTypes = {
-  children: PropTypes.oneOf(
+  children: PropTypes.oneOfType([
     PropTypes.element,
     PropTypes.array
-  )
+  ])
 };
