@@ -1,11 +1,12 @@
-import { login as handleLogin } from '../../services/auth';
-
 // Initial State
 const initialState = {
   loggedIn: false,
-  username: null,
+  email: 'peter.limbach@example.org',
   password: null,
   isLoading: false,
+  token: null,
+  userId: null,
+  error: null
 };
 
 
@@ -18,28 +19,25 @@ export const UPDATE = 'auth/UPDATE';
 
 
 // Action Creators
-export function login(email, password) {
-  return (dispatch) => {
-    dispatch(LOGIN_START);
-    handleLogin(email, password)
-      .then(data => {
-        console.info(data);
-        dispatch(LOGIN_SUCCESS, data);
-      })
-      .catch(e => {
-        console.error(e);
-        dispatch(LOGIN_ERROR);
-      });
-  };
-}
-
-export const update = (key, value) => ({
-  type: UPDATE,
+export const login = ({ email, password }) => ({
+  type: LOGIN_START,
   payload: {
-    key,
-    value,
+    email,
+    password,
   }
 });
+
+
+
+export const update = (key, value) => {
+  return {
+    type: UPDATE,
+    payload: {
+      key,
+      value,
+    }
+  };
+};
 
 
 // export all actions
@@ -51,13 +49,17 @@ export const actions = {
 
 // Action Handlers
 const actionsMap = {
-  [LOGIN_SUCCESS]: (state) => Object.assign(state, { loggedIn: true }),
+  [LOGIN_SUCCESS]: (state, action) => {
+    const { userId, id } = action.payload;
+
+    return Object.assign(state, { loggedIn: true, userId, token: id });
+  },
   [LOGIN_ERROR]: (state) => Object.assign(state, {
     loggedIn: false,
     message: 'Login Failed',
   }),
   [LOGOUT]: (state) => Object.assign(state, { loggedIn: false }),
-  [UPDATE]: (state, action) => Object.assign(state, { [action.payload.key]: action.payload.value }),
+  [UPDATE]: (state, action) => Object.assign(state, { [action.payload.key]: action.payload.value })
 };
 
 

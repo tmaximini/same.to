@@ -37,6 +37,7 @@ export default class EditProfile extends Component {
       update,
       profile
     } = this.props;
+
     return (
       <View>
         <View style={styles.container} />
