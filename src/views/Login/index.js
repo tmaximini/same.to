@@ -20,7 +20,7 @@ import styles from './styles';
   state => ({
     auth: state.auth
   }),
-  dispatch => bindActionCreators(authActions, dispatch)
+  authActions,
 )
 export default class Login extends Component {
 
@@ -29,7 +29,7 @@ export default class Login extends Component {
     update: PropTypes.func.isRequired,
     login: PropTypes.func.isRequired,
     auth: PropTypes.shape({
-      password: PropTypes.string,
+      email: PropTypes.string,
       username: PropTypes.string
     }),
     title: PropTypes.string,
@@ -42,7 +42,8 @@ export default class Login extends Component {
 
   handleLogin = () => {
     const { login, auth } = this.props;
-    login({ email: auth.email, password: auth.password });
+    const { email, password } = auth;
+    login({ email, password });
   }
 
   render() {
@@ -50,6 +51,8 @@ export default class Login extends Component {
       update,
       auth,
     } = this.props;
+
+    console.log({ authActions });
 
     const titleConfig = {
       title: this.props.title || 'Login'
@@ -70,9 +73,9 @@ export default class Login extends Component {
             </Button>
             <Text style={styles.or}>Or</Text>
             <Input
-              placeholder="Username"
-              value={auth.username}
-              onChangeText={(text) => update('username', text)}
+              placeholder="E-Mail"
+              value={auth.email}
+              onChangeText={(text) => update('email', text)}
             />
             <Input
               placeholder="Password"

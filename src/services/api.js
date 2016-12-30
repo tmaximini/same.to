@@ -1,5 +1,5 @@
 
-export const API_BASE = 'http://same.wearekiai.de/api/';
+export const API_BASE = 'https://same.wearekiai.de/api/';
 
 const getQueryString = (params) => {
   const esc = encodeURIComponent;
@@ -16,10 +16,10 @@ export const get = (url, params = {}) => {
   }
 
   return fetch(`${API_BASE}${newUrl}`)
-  .then(response => response.json())
-  .catch((error) => {
-    console.error(error);
-  });
+    .then(response => response.json())
+    .catch((error) => {
+      console.error(error);
+    });
 };
 
 export const post = (url, params = {}) => fetch(`${API_BASE}${url}`, {

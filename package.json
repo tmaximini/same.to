@@ -1,52 +1,53 @@
 {
-		"name": "sameto",
-		"version": "0.0.1",
-		"private": true,
-		"scripts": {
-				"start": "node node_modules/react-native/local-cli/cli.js start",
-				"test": "jest",
-				"ios-open": "open ios/*.xcodeproj",
-				"ios": "node node_modules/react-native/local-cli/cli.js run-ios",
-				"android": "node node_modules/react-native/local-cli/cli.js run-android",
-				"link": "node node_modules/react-native/local-cli/cli.js link",
-				"remotedev": "remotedev-debugger --injectserver",
-				"postinstall": "npm run link && npm run remotedev && rndebugger-open"
-		},
-		"remotedev": {
-				"hostname": "localhost",
-				"port": 5678
-		},
-		"dependencies": {
-				"lodash": "^4.17.3",
-				"react": "15.4.1",
-				"react-native": "0.39.2",
-				"react-native-navbar": "^1.6.0",
-				"react-redux": "5.0.1",
-				"redux": "3.6.0",
-				"redux-thunk": "2.1.0"
-		},
-		"devDependencies": {
-				"babel-cli": "6.5.1",
-				"babel-core": "6.5.2",
-				"babel-eslint": "6.0.0",
-				"babel-jest": "18.0.0",
-				"babel-plugin-transform-decorators-legacy": "1.3.4",
-				"babel-preset-react-native": "1.9.1",
-				"enzyme": "2.0.0",
-				"eslint": "3.3.0",
-				"eslint-config-airbnb": "10.0.1",
-				"eslint-plugin-import": "1.12.0",
-				"eslint-plugin-jsx-a11y": "2.1.0",
-				"eslint-plugin-react": "6.0.0",
-				"jest": "18.0.0",
-				"opn": "^4.0.2",
-				"react-native-debugger-open": "0.3.0",
-				"react-native-mock": "0.2.3",
-				"react-test-renderer": "15.4.1",
-				"remote-redux-devtools": "0.5.4",
-				"remote-redux-devtools-on-debugger": "0.7.0"
-		},
-		"jest": {
-				"preset": "react-native"
-		}
+  "name": "sameto",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest",
+    "ios-open": "open ios/*.xcodeproj",
+    "ios": "node node_modules/react-native/local-cli/cli.js run-ios",
+    "android": "node node_modules/react-native/local-cli/cli.js run-android",
+    "link": "node node_modules/react-native/local-cli/cli.js link",
+    "remotedev": "remotedev-debugger --injectserver",
+    "postinstall": "npm run link && npm run remotedev && rndebugger-open"
+  },
+  "remotedev": {
+    "hostname": "localhost",
+    "port": 5678
+  },
+  "dependencies": {
+    "lodash": "^4.17.3",
+    "react": "15.4.1",
+    "react-native": "0.39.2",
+    "react-native-navbar": "^1.6.0",
+    "react-redux": "5.0.1",
+    "redux": "3.6.0",
+    "redux-logger": "^2.7.4",
+    "redux-saga": "^0.14.0"
+  },
+  "devDependencies": {
+    "babel-cli": "6.5.1",
+    "babel-core": "6.5.2",
+    "babel-eslint": "6.0.0",
+    "babel-jest": "18.0.0",
+    "babel-plugin-transform-decorators-legacy": "1.3.4",
+    "babel-preset-react-native": "1.9.1",
+    "enzyme": "2.0.0",
+    "eslint": "3.3.0",
+    "eslint-config-airbnb": "10.0.1",
+    "eslint-plugin-import": "1.12.0",
+    "eslint-plugin-jsx-a11y": "2.1.0",
+    "eslint-plugin-react": "6.0.0",
+    "jest": "18.0.0",
+    "opn": "^4.0.2",
+    "react-native-debugger-open": "0.3.0",
+    "react-native-mock": "0.2.3",
+    "react-test-renderer": "15.4.1",
+    "remote-redux-devtools": "0.5.4",
+    "remote-redux-devtools-on-debugger": "0.7.0"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
 }
