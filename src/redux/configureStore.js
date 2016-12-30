@@ -4,7 +4,6 @@ import { Platform } from 'react-native';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import reducer from './modules';
-// import * as actionCreators from './actions/counter';
 
 let composeEnhancers = compose;
 if (__DEV__) {
@@ -16,7 +15,6 @@ if (__DEV__) {
   )({
     name: Platform.OS,
     ...require('../../package.json').remotedev,
-    // actionCreators,
   });
   /* eslint-enable no-underscore-dangle */
 }

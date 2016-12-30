@@ -1,3 +1,5 @@
+import { login as handleLogin } from '../../services/auth';
+
 // Initial State
 const initialState = {
   loggedIn: false,
@@ -16,10 +18,20 @@ export const UPDATE = 'auth/UPDATE';
 
 
 // Action Creators
-export const login = (...data) => ({
-  type: LOGIN_START,
-  payload: data
-});
+export function login(email, password) {
+  return (dispatch) => {
+    dispatch(LOGIN_START);
+    handleLogin(email, password)
+      .then(data => {
+        console.info(data);
+        dispatch(LOGIN_SUCCESS, data);
+      })
+      .catch(e => {
+        console.error(e);
+        dispatch(LOGIN_ERROR);
+      });
+  };
+}
 
 export const update = (key, value) => ({
   type: UPDATE,

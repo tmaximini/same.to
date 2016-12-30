@@ -27,16 +27,22 @@ export default class Login extends Component {
   static propTypes = {
     navigateTo: PropTypes.func.isRequired,
     update: PropTypes.func.isRequired,
+    login: PropTypes.func.isRequired,
     auth: PropTypes.shape({
       password: PropTypes.string,
       username: PropTypes.string
     }),
-    title: PropTypes.string
+    title: PropTypes.string,
   };
 
   handleNavigation = key => () => {
     const { navigateTo } = this.props;
     navigateTo(key);
+  }
+
+  handleLogin = () => {
+    const { login, auth } = this.props;
+    login({ email: auth.email, password: auth.password });
   }
 
   render() {
@@ -76,7 +82,7 @@ export default class Login extends Component {
             />
             <Button
               style={{ backgroundColor: '#d73352' }}
-              onPress={this.handleNavigation('editProfile')}
+              onPress={this.handleLogin}
             >
               <Text style={styles.buttonText}>Sign In</Text>
             </Button>
