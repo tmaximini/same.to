@@ -1,0 +1,36 @@
+import { takeLatest, call, put } from 'redux-saga/effects';
+import {
+  FETCH_EVENTS_START,
+  FETCH_EVENTS_SUCCESS,
+  FETCH_EVENTS_ERROR,
+} from '../modules/events';
+import { fetchEvents } from '../../services/events';
+// import { multiSet } from '../../services/storage';
+
+
+/**
+ * takes care of logging in a user
+ */
+export function* fetchEventsAsync(action) {
+  const { payload } = action;
+  try {
+    const response = yield call(fetchEvents, { ...payload });
+    yield put({
+      type: FETCH_EVENTS_SUCCESS,
+      payload: {
+        events: response
+      }
+    });
+  } catch (error) {
+    console.error({ error });
+    yield put({
+      type: FETCH_EVENTS_ERROR,
+      error
+    });
+  }
+}
+
+export function* watchFetchEvents() {
+  // spawn new task on each action, cancel the one before if not yet finished
+  yield takeLatest(FETCH_EVENTS_START, fetchEventsAsync);
+}
