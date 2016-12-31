@@ -1,3 +1,9 @@
+import {
+  multiSet,
+  getItem,
+  removeItem
+} from '../../services/storage';
+
 // Initial State
 const initialState = {
   loggedIn: false,
@@ -10,12 +16,15 @@ const initialState = {
 };
 
 
-// Constants
+// Constants (Actions)
 export const LOGIN_START = 'auth/LOGIN_START';
 export const LOGIN_SUCCESS = 'auth/LOGIN_SUCCESS';
 export const LOGIN_ERROR = 'auth/LOGIN_ERROR';
 export const LOGOUT = 'auth/LOGOUT';
 export const UPDATE = 'auth/UPDATE';
+// storage keys
+export const TOKEN = '@@SAME/TOKEN';
+export const USERID = '@@SAME/USERID';
 
 
 // Action Creators
@@ -28,16 +37,14 @@ export const login = ({ email, password }) => ({
 });
 
 
-
-export const update = (key, value) => {
-  return {
-    type: UPDATE,
-    payload: {
-      key,
-      value,
-    }
-  };
-};
+// updates any key/value pair in the state
+export const update = (key, value) => ({
+  type: UPDATE,
+  payload: {
+    key,
+    value,
+  }
+});
 
 
 // export all actions
@@ -52,12 +59,16 @@ const actionsMap = {
   [LOGIN_SUCCESS]: (state, action) => {
     const { userId, id } = action.payload;
 
-    return Object.assign(state, { loggedIn: true, userId, token: id });
+    return Object.assign(state, {
+      loggedIn: true, userId, token: id
+    });
   },
-  [LOGIN_ERROR]: (state) => Object.assign(state, {
-    loggedIn: false,
-    message: 'Login Failed',
-  }),
+  [LOGIN_ERROR]: (state, action) => {
+    Object.assign(state, {
+      loggedIn: false,
+      message: 'Login Failed',
+    });
+  },
   [LOGOUT]: (state) => Object.assign(state, { loggedIn: false }),
   [UPDATE]: (state, action) => Object.assign(state, { [action.payload.key]: action.payload.value })
 };
