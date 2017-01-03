@@ -25,13 +25,8 @@ export default class Home extends Component {
     events: PropTypes.arrayOf(PropTypes.object)
   };
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchEvents();
-  }
-
-  toLogin = () => {
-    const { navigateTo } = this.props;
-    navigateTo('login');
   }
 
   render() {
@@ -39,13 +34,17 @@ export default class Home extends Component {
       title: this.props.title || 'Home / Feed',
     };
 
+    const { events } = this.props;
+
+    console.log({ events });
+
     return (
       <View style={styles.container}>
         <NavigationBar
           title={titleConfig}
         />
         <EventList
-          events={this.props.events}
+          events={events}
         />
       </View>
     );

@@ -1,9 +1,3 @@
-import {
-  multiSet,
-  getItem,
-  removeItem
-} from '../../services/storage';
-
 // Initial State
 const initialState = {
   loggedIn: false,
@@ -22,6 +16,8 @@ export const LOGIN_SUCCESS = 'auth/LOGIN_SUCCESS';
 export const LOGIN_ERROR = 'auth/LOGIN_ERROR';
 export const LOGOUT = 'auth/LOGOUT';
 export const UPDATE = 'auth/UPDATE';
+export const MULTI_UPDATE = 'auth/MULTI_UPDATE';
+export const CHECK_AUTH_STORAGE = 'auth/CHECK_AUTH_STORAGE';
 // storage keys
 export const TOKEN = '@@SAME/TOKEN';
 export const USERID = '@@SAME/USERID';
@@ -34,6 +30,10 @@ export const login = ({ email, password }) => ({
     email,
     password,
   }
+});
+
+export const checkStorage = () => ({
+  type: CHECK_AUTH_STORAGE,
 });
 
 
@@ -51,6 +51,7 @@ export const update = (key, value) => ({
 export const actions = {
   login,
   update,
+  checkStorage,
 };
 
 
@@ -70,7 +71,8 @@ const actionsMap = {
     });
   },
   [LOGOUT]: (state) => Object.assign(state, { loggedIn: false }),
-  [UPDATE]: (state, action) => Object.assign(state, { [action.payload.key]: action.payload.value })
+  [UPDATE]: (state, action) => Object.assign(state, { [action.payload.key]: action.payload.value }),
+  [MULTI_UPDATE]: (state, action) => Object.assign(state, { ...action.payload })
 };
 
 

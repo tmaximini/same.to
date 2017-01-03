@@ -5,7 +5,6 @@ import {
 } from 'react-native';
 
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import NavigationBar from 'react-native-navbar';
 import Input from '../../components/Input';
 import { actions as authActions } from '../../redux/modules/auth';
@@ -28,12 +27,17 @@ export default class Login extends Component {
     navigateTo: PropTypes.func.isRequired,
     update: PropTypes.func.isRequired,
     login: PropTypes.func.isRequired,
+    checkStorage: PropTypes.func.isRequired,
     auth: PropTypes.shape({
       email: PropTypes.string,
       username: PropTypes.string
     }),
     title: PropTypes.string,
   };
+
+  componentWillMount() {
+    this.props.checkStorage();
+  }
 
   handleNavigation = key => () => {
     const { navigateTo } = this.props;
