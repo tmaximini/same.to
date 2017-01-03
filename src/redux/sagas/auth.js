@@ -1,4 +1,5 @@
 import { takeLatest, call, put } from 'redux-saga/effects';
+import { Actions } from 'react-native-router-flux';
 import {
   LOGIN_START,
   LOGIN_SUCCESS,
@@ -8,7 +9,6 @@ import {
   TOKEN,
   USERID
 } from '../modules/auth';
-import { NAVIGATE } from '../modules/routes';
 import { login as handleLogin } from '../../services/auth';
 import { updateAuthHeader } from '../../services/api';
 import { multiSet, multiGet } from '../../services/storage';
@@ -30,12 +30,7 @@ export function* handleLoginAsync(action) {
       type: LOGIN_SUCCESS,
       payload: response,
     });
-    yield put({
-      type: NAVIGATE,
-      payload: {
-        key: 'home',
-      }
-    });
+    yield call(Actions.home);
   } catch (error) {
     console.error({ error });
     yield put({
@@ -60,12 +55,7 @@ export function* updateFromStorageAsync() {
         type: MULTI_UPDATE,
         payload: authState,
       });
-      yield put({
-        type: NAVIGATE,
-        payload: {
-          key: 'home'
-        }
-      });
+      yield call(Actions.home);
     }
   } catch (err) {
     // todo

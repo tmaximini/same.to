@@ -46,19 +46,18 @@ const actionsMap = {
 
     console.log({ events });
 
-    return Object.assign(state, {
+    return {
+      ...state,
       events,
       isFetching: false,
-    });
+    };
   },
   [FETCH_EVENTS_ERROR]: (state, action) => {
-    Object.assign(state, {
-      isFetching: false,
-    });
+    return { ...state, isFetching: false };
   },
-  [FETCH_EVENTS_START]: (state) => Object.assign(state, { isFetching: true }),
+  [FETCH_EVENTS_START]: (state) => ({ ...state, isFetching: true }),
   // TODO
-  [UPDATE_EVENT]: (state, action) => Object.assign(state, { })
+  [UPDATE_EVENT]: (state) => ({ ...state })
 };
 
 

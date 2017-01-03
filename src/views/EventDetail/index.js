@@ -8,13 +8,14 @@ const styles = StyleSheet.create({
   },
 });
 
-class Event extends Component {
+export default class Event extends Component {
 
   render() {
     return (
-
+      <View>
+        <Text>EVENT!!!</Text>
+      </View>
     );
   }
 }
 
-export default Event;
