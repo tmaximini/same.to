@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import {
-  Text,
   View,
 } from 'react-native';
 
@@ -19,7 +18,6 @@ import styles from './styles';
 export default class Home extends Component {
 
   static propTypes = {
-    navigateTo: PropTypes.func.isRequired,
     fetchEvents: PropTypes.func.isRequired,
     title: PropTypes.string,
     events: PropTypes.arrayOf(PropTypes.object)

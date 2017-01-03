@@ -26,6 +26,9 @@ export default StyleSheet.create({
     borderColor: '#000',
     borderWidth: 1,
   },
+  hilite: {
+    flex: 1,
+  },
   title: {
     fontSize: 20,
     textAlign: 'left',

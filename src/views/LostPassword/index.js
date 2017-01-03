@@ -10,14 +10,11 @@ import styles from './styles';
 
 export default class LostPassword extends Component {
 
-  static propTypes = {
-    navigateTo: PropTypes.func.isRequired
-  };
+  // static propTypes = {
+  //   navigateTo: PropTypes.func.isRequired
+  // };
 
-  resetPassword = () => {
-    const { navigateTo } = this.props;
-    navigateTo('home');
-  }
+  resetPassword = () => {}
 
   render() {
     return (

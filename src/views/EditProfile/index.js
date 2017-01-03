@@ -19,18 +19,12 @@ import styles from './styles';
 export default class EditProfile extends Component {
 
   static propTypes = {
-    navigateTo: PropTypes.func.isRequired,
     update: PropTypes.func.isRequired,
     profile: PropTypes.shape({
       firstName: PropTypes.string,
       lastName: PropTypes.string
     })
   };
-
-  handleNavigation = key => () => {
-    const { navigateTo } = this.props;
-    navigateTo(key);
-  }
 
   render() {
     const {

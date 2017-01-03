@@ -6,6 +6,7 @@ import {
 
 import { connect } from 'react-redux';
 import NavigationBar from 'react-native-navbar';
+import { Actions } from 'react-native-router-flux';
 import Input from '../../components/Input';
 import { actions as authActions } from '../../redux/modules/auth';
 
@@ -24,7 +25,6 @@ import styles from './styles';
 export default class Login extends Component {
 
   static propTypes = {
-    navigateTo: PropTypes.func.isRequired,
     update: PropTypes.func.isRequired,
     login: PropTypes.func.isRequired,
     checkStorage: PropTypes.func.isRequired,
@@ -37,11 +37,6 @@ export default class Login extends Component {
 
   componentWillMount() {
     this.props.checkStorage();
-  }
-
-  handleNavigation = key => () => {
-    const { navigateTo } = this.props;
-    navigateTo(key);
   }
 
   handleLogin = () => {
@@ -98,13 +93,13 @@ export default class Login extends Component {
                 text="Register"
                 textColor="#fff"
                 noBorder
-                onPress={this.handleNavigation('lostPassword')}
+                onPress={Actions.lostPassword}
               />
               <Button
                 text="Forgot Password?"
                 textColor="#fff"
                 noBorder
-                onPress={this.handleNavigation('lostPassword')}
+                onPress={Actions.lostPassword}
               />
             </View>
           </WithPadding>
