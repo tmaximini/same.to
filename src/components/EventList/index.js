@@ -1,14 +1,9 @@
 import React, { Component, PropTypes } from 'react';
-import { View, ListView, StyleSheet, Text } from 'react-native';
+import { ListView } from 'react-native';
 
 import EventListItem from './EventListItem';
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: 20,
-  },
-});
+import styles from './styles';
+import { border } from '../../utils';
 
 class EventList extends Component {
 
@@ -29,6 +24,7 @@ class EventList extends Component {
   render() {
     return (
       <ListView
+        contentContainerStyle={styles.contentContainer}
         style={styles.container}
         dataSource={this.state.dataSource}
         renderRow={(event) => <EventListItem {...event} />}
