@@ -1,9 +1,10 @@
 /* eslint global-require: 0 */
 
-import { Platform } from 'react-native';
+import { Platform, AsyncStorage } from 'react-native';
 import { createStore, applyMiddleware, compose } from 'redux';
 // import logger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
+import { persistStore, autoRehydrate } from 'redux-persist';
 import reducer from './modules';
 
 import rootSaga from './sagas';
@@ -29,6 +30,7 @@ const middlewares = [
 ];
 const enhancer = composeEnhancers(
   applyMiddleware(...middlewares),
+  autoRehydrate()
 );
 
 
@@ -47,6 +49,7 @@ export default function configureStore(initialState) {
 
   // run all sagas
   sagaMiddleware.run(rootSaga);
+  persistStore(store, { storage: AsyncStorage });
 
   return store;
 }

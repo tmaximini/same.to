@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { ListView } from 'react-native';
+import { ListView, RefreshControl } from 'react-native';
 
 import EventListItem from './EventListItem';
 import styles from './styles';
@@ -8,7 +8,8 @@ import styles from './styles';
 class EventList extends Component {
 
   static propTypes = {
-    events: PropTypes.arrayOf(PropTypes.object)
+    events: PropTypes.arrayOf(PropTypes.object),
+    refresh: PropTypes.func.isRequired,
   }
 
   constructor(props) {
@@ -18,6 +19,7 @@ class EventList extends Component {
     const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
     this.state = {
       dataSource: ds.cloneWithRows(events),
+      isRefreshing: false,
     };
   }
 
@@ -37,7 +39,18 @@ class EventList extends Component {
         enableEmptySections
         style={styles.container}
         dataSource={this.state.dataSource}
-        renderRow={(event) => <EventListItem event={event} />}
+        renderRow={event => <EventListItem event={event} />}
+        refreshControl={
+          <RefreshControl
+            refreshing={this.state.isRefreshing}
+            onRefresh={this._onRefresh}
+            tintColor="#ff0000"
+            title="Loading..."
+            titleColor="#00ff00"
+            colors={['#ff0000', '#00ff00', '#0000ff']}
+            progressBackgroundColor="#ffff00"
+          />
+        }
       />
     );
   }

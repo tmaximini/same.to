@@ -11,7 +11,11 @@ import { actions as eventActions } from '../../redux/modules/events';
 import styles from './styles';
 
 @connect(
-  state => state.events,
+  state => ({
+    events: state.events.events,
+    isRefreshing: state.events.isFetching,
+    loggedIn: state.auth.loggedIn,
+  }),
   eventActions,
 )
 export default class Home extends Component {
@@ -19,23 +23,25 @@ export default class Home extends Component {
   static propTypes = {
     fetchEvents: PropTypes.func.isRequired,
     title: PropTypes.string,
+    loggedIn: PropTypes.bool.isRequired,
+    isRefreshing: PropTypes.bool.isRequired,
     events: PropTypes.arrayOf(PropTypes.object)
   };
 
-  componentDidMount() {
-    this.props.fetchEvents();
-  }
-
   render() {
-    const { events } = this.props;
-
-    console.log({ events });
+    const {
+      events,
+      fetchEvents,
+      isRefreshing,
+    } = this.props;
 
     return (
       <View style={styles.container}>
 
         <EventList
           events={events}
+          refresh={fetchEvents}
+          isRefreshing={isRefreshing}
         />
       </View>
     );
