@@ -5,7 +5,6 @@ import {
 
 import { connect } from 'react-redux';
 
-import NavigationBar from 'react-native-navbar';
 import EventList from '../../components/EventList';
 
 import { actions as eventActions } from '../../redux/modules/events';
@@ -28,19 +27,13 @@ export default class Home extends Component {
   }
 
   render() {
-    const titleConfig = {
-      title: this.props.title || 'Home / Feed',
-    };
-
     const { events } = this.props;
 
     console.log({ events });
 
     return (
       <View style={styles.container}>
-        <NavigationBar
-          title={titleConfig}
-        />
+
         <EventList
           events={events}
         />

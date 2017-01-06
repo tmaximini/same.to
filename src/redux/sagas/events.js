@@ -1,9 +1,11 @@
 import { takeLatest, call, put } from 'redux-saga/effects';
+import { Actions } from 'react-native-router-flux';
 import {
   FETCH_EVENTS_START,
   FETCH_EVENTS_SUCCESS,
   FETCH_EVENTS_ERROR,
 } from '../modules/events';
+import { updateAuthHeader } from '../../services/api';
 import { fetchEvents } from '../../services/events';
 // import { multiSet } from '../../services/storage';
 
@@ -15,12 +17,29 @@ export function* fetchEventsAsync(action) {
   const { payload } = action;
   try {
     const response = yield call(fetchEvents, { ...payload });
-    yield put({
-      type: FETCH_EVENTS_SUCCESS,
-      payload: {
-        events: response
+
+    if (response.error) {
+      // in case of error
+      yield put({
+        type: FETCH_EVENTS_ERROR,
+        payload: {
+          events: [],
+          error: response.error
+        }
+      });
+      if (response.error.statusCode === 401) {
+        updateAuthHeader(null);
+        Actions.login();
       }
-    });
+    } else {
+      // success
+      yield put({
+        type: FETCH_EVENTS_SUCCESS,
+        payload: {
+          events: response
+        }
+      });
+    }
   } catch (error) {
     console.error({ error });
     yield put({

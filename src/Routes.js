@@ -1,11 +1,13 @@
 import React from 'react';
-import { Scene, Router } from 'react-native-router-flux';
+import { Navigator } from 'react-native';
+import { Scene, Router, TabBar, Modal } from 'react-native-router-flux';
 import Drawer from 'react-native-drawer';
 import Home from './views/Home';
 import Login from './views/Login';
 import LostPassword from './views/LostPassword';
 import EditProfile from './views/EditProfile';
 import EventDetail from './views/EventDetail';
+import Splash from './views/Splash';
 import Menu from './components/Menu';
 
 
@@ -16,19 +18,21 @@ const Routes = () => (
     openDrawerOffset={100}
     tweenHandler={Drawer.tweenPresets.parallax}
     tapToClose
-    ref={ref => this.drawer = ref}
+    ref={ref => this.drawer = ref} // eslint-disable-line
   >
-    <Router name="root">
+    <Router
+      sceneStyle={{ paddingTop: Navigator.NavigationBar.Styles.General.TotalNavHeight }}
+    >
       <Scene
         key="home"
         component={Home}
         title="Home / Feed"
+        initial
       />
       <Scene
         key="login"
         component={Login}
         title="Login"
-        initial
       />
       <Scene
         key="lostPassword"

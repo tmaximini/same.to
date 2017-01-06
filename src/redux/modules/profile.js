@@ -33,7 +33,7 @@ export const actions = {
 
 // Action Handlers
 const actionsMap = {
-  [UPDATE]: (state, action) => Object.assign(state, { [action.payload.key]: action.payload.value }),
+  [UPDATE]: (state, action) => ({ ...state, [action.payload.key]: action.payload.value }),
 };
 
 

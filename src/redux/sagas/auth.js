@@ -23,20 +23,25 @@ export function* handleLoginAsync(action) {
   const { payload } = action;
   try {
     const response = yield call(handleLogin, { ...payload });
-    const { id, userId } = response;
-    updateAuthHeader(id);
-    yield call(multiSet, [[TOKEN, id], [USERID, userId]]);
-    yield put({
-      type: LOGIN_SUCCESS,
-      payload: response,
-    });
-    yield call(Actions.home);
+    const { id, userId, error } = response;
+    if (error) {
+      throw error;
+    } else {
+      updateAuthHeader(id);
+      yield call(multiSet, [[TOKEN, id], [USERID, userId]]);
+      yield put({
+        type: LOGIN_SUCCESS,
+        payload: response,
+      });
+      yield call(Actions.home);
+    }
   } catch (error) {
-    console.error({ error });
+    console.info({ error });
     yield put({
       type: LOGIN_ERROR,
       error
     });
+    yield call(Actions.login);
   }
 }
 

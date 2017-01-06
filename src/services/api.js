@@ -32,10 +32,7 @@ export const get = (url, params = {}) => {
     method: 'GET',
     headers: getHeaders(),
   })
-    .then(response => response.json())
-    .catch(error => {
-      console.error(error);
-    });
+    .then(response => response.json());
 };
 
 export const post = (url, params = {}) => fetch(`${API_BASE}${url}`,
@@ -47,6 +44,10 @@ export const post = (url, params = {}) => fetch(`${API_BASE}${url}`,
     })
   })
   .then(response => response.json())
-  .catch((error) => {
-    console.error(error);
+  .catch(error => {
+    console.info({ error });
+    // remove auth header on 401
+    if (error.statusCode === 401) {
+      updateAuthHeader(null);
+    }
   });
