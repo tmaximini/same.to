@@ -19,6 +19,10 @@ export default StyleSheet.create({
     textAlign: 'center',
     color: '#fff'
   },
+  error: {
+    textAlign: 'center',
+    color: 'red'
+  },
   buttonWrapper: {
     flexDirection: 'row',
     justifyContent: 'space-around'

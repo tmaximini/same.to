@@ -60,19 +60,22 @@ const actionsMap = {
   [LOGIN_SUCCESS]: (state, action) => {
     const { userId, id } = action.payload;
 
-    return Object.assign(state, {
-      loggedIn: true, userId, token: id
-    });
+    return {
+      ...state,
+      loggedIn: true,
+      userId,
+      token: id,
+      error: null
+    };
   },
-  [LOGIN_ERROR]: (state, action) => {
-    Object.assign(state, {
-      loggedIn: false,
-      message: 'Login Failed',
-    });
-  },
-  [LOGOUT]: (state) => Object.assign(state, { loggedIn: false }),
-  [UPDATE]: (state, action) => Object.assign(state, { [action.payload.key]: action.payload.value }),
-  [MULTI_UPDATE]: (state, action) => Object.assign(state, { ...action.payload })
+  [LOGIN_ERROR]: (state, action) => ({
+    ...state,
+    loggedIn: false,
+    error: 'Login Failed',
+  }),
+  [LOGOUT]: state => ({ ...state, loggedIn: false }),
+  [UPDATE]: (state, action) => ({ ...state, [action.payload.key]: action.payload.value }),
+  [MULTI_UPDATE]: (state, action) => ({ ...state, ...action.payload })
 };
 
 

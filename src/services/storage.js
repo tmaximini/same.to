@@ -24,7 +24,6 @@ export const multiGet = (keys = []) => new Promise((resolve, reject) => {
 });
 
 
-
 export const multiSet = (keyValPairs = []) => new Promise((resolve, reject) => {
   AsyncStorage.multiSet(keyValPairs, (err) => {
     if (err) {

@@ -14,7 +14,7 @@ const getHeaders = () => ({
   Authorization: AUTH_HEADER
 });
 
-const getQueryString = (params) => {
+const getQueryString = params => {
   const esc = encodeURIComponent;
   return Object.keys(params)
     .map(k => `${esc(k)}=${esc(params[k])}`)
@@ -33,7 +33,7 @@ export const get = (url, params = {}) => {
     headers: getHeaders(),
   })
     .then(response => response.json())
-    .catch((error) => {
+    .catch(error => {
       console.error(error);
     });
 };

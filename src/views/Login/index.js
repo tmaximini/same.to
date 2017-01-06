@@ -40,9 +40,13 @@ export default class Login extends Component {
   }
 
   handleLogin = () => {
-    const { login, auth } = this.props;
+    const { login, auth, update } = this.props;
     const { email, password } = auth;
-    login({ email, password });
+    if (email && password) {
+      login({ email, password });
+    } else {
+      update('error', 'E-Mail and Password required');
+    }
   }
 
   render() {
@@ -51,7 +55,7 @@ export default class Login extends Component {
       auth,
     } = this.props;
 
-    console.log({ authActions });
+    const { email, password, error } = auth;
 
     const titleConfig = {
       title: this.props.title || 'Login'
@@ -71,14 +75,15 @@ export default class Login extends Component {
               <Text style={styles.buttonText}>Login with Facebook</Text>
             </Button>
             <Text style={styles.or}>Or</Text>
+            {error && <Text style={styles.error}>{error}</Text>}
             <Input
               placeholder="E-Mail"
-              value={auth.email}
+              value={email}
               onChangeText={(text) => update('email', text)}
             />
             <Input
               placeholder="Password"
-              value={auth.password}
+              value={password}
               onChangeText={(text) => update('password', text)}
               secureTextEntry
             />

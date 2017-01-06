@@ -37,7 +37,7 @@ class EventList extends Component {
         enableEmptySections
         style={styles.container}
         dataSource={this.state.dataSource}
-        renderRow={(event) => <EventListItem {...event} />}
+        renderRow={(event) => <EventListItem event={event} />}
       />
     );
   }

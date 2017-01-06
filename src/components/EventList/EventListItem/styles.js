@@ -14,9 +14,19 @@ export default StyleSheet.create({
   main: {
     flex: 1,
     alignSelf: 'stretch',
-    alignItems: 'center',
+  },
+  headline: {
+    flex: 1,
+    alignSelf: 'stretch',
+    alignItems: 'flex-end',
     justifyContent: 'center',
     flexDirection: 'row',
+  },
+  extraInfo: {
+    flex: 1,
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+    paddingLeft: 10
   },
   bottom: {
     flex: 1,
