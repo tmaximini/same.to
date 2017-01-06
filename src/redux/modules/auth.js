@@ -1,3 +1,7 @@
+import { REHYDRATE } from 'redux-persist/constants';
+import { updateAuthHeader } from '../../services/api';
+
+
 // Initial State
 const initialState = {
   loggedIn: false,
@@ -16,8 +20,6 @@ export const LOGIN_SUCCESS = 'auth/LOGIN_SUCCESS';
 export const LOGIN_ERROR = 'auth/LOGIN_ERROR';
 export const LOGOUT = 'auth/LOGOUT';
 export const UPDATE = 'auth/UPDATE';
-export const MULTI_UPDATE = 'auth/MULTI_UPDATE';
-export const CHECK_AUTH_STORAGE = 'auth/CHECK_AUTH_STORAGE';
 // storage keys
 export const TOKEN = '@@SAME/TOKEN';
 export const USERID = '@@SAME/USERID';
@@ -31,11 +33,6 @@ export const login = ({ email, password }) => ({
     password,
   }
 });
-
-export const checkStorage = () => ({
-  type: CHECK_AUTH_STORAGE,
-});
-
 
 // updates any key/value pair in the state
 export const update = (key, value) => ({
@@ -51,12 +48,17 @@ export const update = (key, value) => ({
 export const actions = {
   login,
   update,
-  checkStorage,
 };
 
 
 // Action Handlers
 const actionsMap = {
+  [REHYDRATE]: (state, action) => {
+    console.info('REHYDRATE!!');
+    const { token } = action.payload.auth;
+    updateAuthHeader(token);
+    return state;
+  },
   [LOGIN_SUCCESS]: (state, action) => {
     const { userId, id } = action.payload;
 
@@ -75,7 +77,6 @@ const actionsMap = {
   }),
   [LOGOUT]: state => ({ ...state, loggedIn: false }),
   [UPDATE]: (state, action) => ({ ...state, [action.payload.key]: action.payload.value }),
-  [MULTI_UPDATE]: (state, action) => ({ ...state, ...action.payload })
 };
 
 

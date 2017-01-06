@@ -27,17 +27,12 @@ export default class Login extends Component {
   static propTypes = {
     update: PropTypes.func.isRequired,
     login: PropTypes.func.isRequired,
-    checkStorage: PropTypes.func.isRequired,
     auth: PropTypes.shape({
       email: PropTypes.string,
       username: PropTypes.string
     }),
     title: PropTypes.string,
   };
-
-  componentWillMount() {
-    this.props.checkStorage();
-  }
 
   handleLogin = () => {
     const { login, auth, update } = this.props;
