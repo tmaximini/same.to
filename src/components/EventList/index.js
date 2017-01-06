@@ -35,7 +35,6 @@ class EventList extends Component {
     return (
       <ListView
         enableEmptySections
-        contentContainerStyle={styles.contentContainer}
         style={styles.container}
         dataSource={this.state.dataSource}
         renderRow={(event) => <EventListItem {...event} />}

@@ -8,6 +8,7 @@ const EventListItem = (props) => (
   <View style={[styles.container, border('#000', 1)]}>
     <View style={styles.wrapper}>
       <TouchableHighlight
+        style={styles.hilite}
         onPress={() => Actions.event(...props)}
       >
         <View

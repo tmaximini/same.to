@@ -4,6 +4,7 @@ export default StyleSheet.create({
   container: {
     height: 150,
     alignItems: 'center',
+    paddingBottom: 5,
   },
   wrapper: {
     flex: 1,
@@ -11,10 +12,11 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   main: {
-    flex: 4,
-    flexDirection: 'row',
+    flex: 1,
+    alignSelf: 'stretch',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
+    flexDirection: 'row',
   },
   bottom: {
     flex: 1,
@@ -27,12 +29,16 @@ export default StyleSheet.create({
     borderWidth: 1,
   },
   hilite: {
-    flex: 1,
+    flex: 4,
+    backgroundColor: 'green',
+    alignSelf: 'stretch',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   title: {
     fontSize: 20,
     textAlign: 'left',
-    flex: 23,
+    flex: 24,
     paddingLeft: 10
   },
   button: {

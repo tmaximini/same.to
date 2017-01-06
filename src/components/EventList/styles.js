@@ -5,6 +5,5 @@ export default StyleSheet.create({
     flex: 1,
   },
   contentContainer: {
-    flex: 1
   },
 });
