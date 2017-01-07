@@ -26,12 +26,30 @@ export default class DatePicker extends Component {
         date={date}
         mode="date"
         placeholder={placeholder || 'select date'}
-        format="DD.MM.YYYY"
+        format="YYYY-MM-DD"
         minDate={minDate}
         maxDate={maxDate}
         confirmBtnText="Confirm"
         cancelBtnText="Cancel"
         onDateChange={(nextDate) => onChange(nextDate)}
+        customStyles={{
+          dateIcon: {
+            position: 'absolute',
+            right: 0,
+            top: 4,
+            marginLeft: 0
+          },
+          dateInput: {
+            marginLeft: 36,
+            borderWidth: 0,
+            alignSelf: 'stretch',
+            alignItems: 'center',
+          },
+          dateTouchBody: {
+            alignItems: 'flex-end',
+            justifyContent: 'flex-end',
+          }
+        }}
       />
     );
   }

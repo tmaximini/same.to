@@ -1,5 +1,5 @@
-import { get } from './api';
+import { get, post } from './api';
 
 export const fetchEvents = () => get('events');
 
-export const login = (credentials) => post('members/login', { ...credentials });
+export const createEvent = data => post('events', { ...data });

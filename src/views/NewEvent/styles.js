@@ -1,5 +1,6 @@
 import {
-  StyleSheet
+  StyleSheet,
+  PixelRatio,
 } from 'react-native';
 
 export default StyleSheet.create({
@@ -7,5 +8,10 @@ export default StyleSheet.create({
     flex: 1,
     backgroundColor: '#333',
   },
+  inputRow: {
+    borderBottomColor: '#47315a',
+    borderBottomWidth: 1 / PixelRatio.get(),
+    flex: 1,
+  }
 });
 

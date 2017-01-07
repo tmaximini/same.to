@@ -9,7 +9,7 @@ import {
   CREATE_EVENT_ERROR
 } from '../modules/events';
 import { updateAuthHeader } from '../../services/api';
-import { fetchEvents } from '../../services/events';
+import { fetchEvents, createEvent } from '../../services/events';
 // import { multiSet } from '../../services/storage';
 
 
@@ -44,7 +44,7 @@ export function* fetchEventsAsync(action) {
       });
     }
   } catch (error) {
-    console.error({ error });
+    console.log({ error });
     yield put({
       type: FETCH_EVENTS_ERROR,
       error
@@ -56,14 +56,13 @@ export function* fetchEventsAsync(action) {
 export function* createEventAsync(action) {
   const { payload } = action;
   try {
-    const response = yield call(fetchEvents, { ...payload });
+    const response = yield call(createEvent, { ...payload });
 
     if (response.error) {
       // in case of error
       yield put({
         type: CREATE_EVENT_ERROR,
         payload: {
-          events: [],
           error: response.error
         }
       });
@@ -73,15 +72,16 @@ export function* createEventAsync(action) {
       }
     } else {
       // success
+      console.info('event created!', response);
       yield put({
         type: CREATE_EVENT_SUCCESS,
         payload: {
-          events: response
+          event: response
         }
       });
     }
   } catch (error) {
-    console.error({ error });
+    console.log({ error });
     yield put({
       type: CREATE_EVENT_ERROR,
       error

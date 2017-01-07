@@ -5,7 +5,9 @@ import { getDateFromString } from '../../utils';
 const initialState = {
   isFetching: false,
   events: [],
-  newEvent: {}
+  newEvent: {},
+  // TODO: fetch from server
+  types: ['event', 'party', 'gaming', 'shopping', 'concert', 'cinema', 'dinner', 'sport', 'gameing']
 };
 
 
@@ -24,6 +26,11 @@ export const UPDATE_NEW_EVENT = 'events/UPDATE_NEW_EVENT';
 // Action Creators
 export const fetchEvents = () => ({
   type: FETCH_EVENTS_START
+});
+
+export const createEvent = newEventData => ({
+  type: CREATE_EVENT_START,
+  payload: newEventData
 });
 
 // updates any key/value pair in the state
@@ -45,17 +52,18 @@ export const updateNewEvent = (key, value) => ({
 // export all actions
 export const actions = {
   fetchEvents,
+  createEvent,
   update,
   updateNewEvent,
 };
 
 
-
+// make sure endDate is not before startDate
 const ensureDatesAreValid = event => {
   const newEvent = { ...event };
-  const { startsAt, endsAt } = event;
-  if (isBefore(getDateFromString(endsAt), getDateFromString(startsAt))) {
-    newEvent.endsAt = newEvent.startsAt;
+  const { startAt, endAt } = event;
+  if (isBefore(getDateFromString(endAt), getDateFromString(startAt))) {
+    newEvent.endAt = newEvent.startAt;
   }
 
   return newEvent;
@@ -73,17 +81,17 @@ const actionsMap = {
       isFetching: false,
     };
   },
-  [FETCH_EVENTS_ERROR]: (state) => ({ ...state, isFetching: false }),
-  [FETCH_EVENTS_START]: (state) => ({ ...state, isFetching: true }),
+  [FETCH_EVENTS_ERROR]: state => ({ ...state, isFetching: false }),
+  [FETCH_EVENTS_START]: state => ({ ...state, isFetching: true }),
   // TODO
-  [UPDATE_EVENT]: (state) => ({ ...state }),
+  [UPDATE_EVENT]: state => ({ ...state }),
   [UPDATE_NEW_EVENT]: (state, action) => {
     const { key, value } = action.payload;
     let newEvent = {
       ...state.newEvent,
       [key]: value
     };
-    if (key === 'startsAt' || key === 'endsAt') {
+    if (key === 'startAt' || key === 'endAt') {
       newEvent = ensureDatesAreValid(newEvent);
     }
 
