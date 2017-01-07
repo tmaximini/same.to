@@ -7,6 +7,7 @@ import Login from './views/Login';
 import LostPassword from './views/LostPassword';
 import EditProfile from './views/EditProfile';
 import EventDetail from './views/EventDetail';
+import NewEvent from './views/NewEvent';
 import Splash from './views/Splash';
 import Menu from './components/Menu';
 
@@ -48,6 +49,11 @@ const Routes = () => (
         key="event"
         component={EventDetail}
         title="Event"
+      />
+      <Scene
+        key="newEvent"
+        component={NewEvent}
+        title="New Event"
       />
     </Router>
   </Drawer>

@@ -12,15 +12,31 @@ export default StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  buttons: {
+    flex: 1,
+    position: 'absolute',
+    justifyContent: 'center',
+    alignSelf: 'stretch',
+    bottom: 30,
+    left: 0,
+    right: 0,
+    alignItems: 'center',
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  newButton: {
+    backgroundColor: 'black',
+    width: 100,
+    height: 100,
+    borderRadius: 50,
   },
+  plus: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  plusText: {
+    fontSize: 50,
+    fontWeight: 'bold',
+    color: 'white'
+  }
 });
 
