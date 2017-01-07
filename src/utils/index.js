@@ -11,3 +11,9 @@ export const borderRadius = (size) => ({
 });
 
 export const formatDate = (dateString) => format(parse(dateString), 'DD.MM.YYYY');
+
+export const getDateFromString = (string, delimiter = '.') => {
+  const splitted = string.split(delimiter);
+
+  return new Date(splitted[2], splitted[1], splitted[0]);
+};
