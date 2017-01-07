@@ -1,13 +1,21 @@
 import { isBefore } from 'date-fns';
-import { getDateFromString } from '../../utils';
+import { formatDate, getDateFromString } from '../../utils';
+
+
+const makeDefaultEvent = () => ({
+  type: 'event',
+  startAt: formatDate(new Date()),
+  endAt: formatDate(new Date()),
+});
 
 // Initial State
 const initialState = {
   isFetching: false,
   events: [],
-  newEvent: {},
+  newEvent: makeDefaultEvent(),
   // TODO: fetch from server
-  types: ['event', 'party', 'gaming', 'shopping', 'concert', 'cinema', 'dinner', 'sport', 'gameing']
+  types: ['event', 'party', 'gaming', 'shopping', 'concert', 'cinema', 'dinner', 'sport', 'gameing'],
+  error: null,
 };
 
 
@@ -62,6 +70,7 @@ export const actions = {
 const ensureDatesAreValid = event => {
   const newEvent = { ...event };
   const { startAt, endAt } = event;
+  console.info(startAt, endAt, getDateFromString(endAt), getDateFromString(startAt));
   if (isBefore(getDateFromString(endAt), getDateFromString(startAt))) {
     newEvent.endAt = newEvent.startAt;
   }
@@ -72,6 +81,7 @@ const ensureDatesAreValid = event => {
 
 // Action Handlers
 const actionsMap = {
+  [FETCH_EVENTS_START]: state => ({ ...state, isFetching: true }),
   [FETCH_EVENTS_SUCCESS]: (state, action) => {
     const { events } = action.payload;
 
@@ -82,7 +92,16 @@ const actionsMap = {
     };
   },
   [FETCH_EVENTS_ERROR]: state => ({ ...state, isFetching: false }),
-  [FETCH_EVENTS_START]: state => ({ ...state, isFetching: true }),
+  [CREATE_EVENT_SUCCESS]: (state, action) => {
+    const { event } = action.payload;
+
+    // add new event to list, reset newEvent object
+    return {
+      ...state,
+      events: [event, ...state.events],
+      newEvent: makeDefaultEvent()
+    };
+  },
   // TODO
   [UPDATE_EVENT]: state => ({ ...state }),
   [UPDATE_NEW_EVENT]: (state, action) => {

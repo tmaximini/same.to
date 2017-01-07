@@ -79,6 +79,7 @@ export function* createEventAsync(action) {
           event: response
         }
       });
+      Actions.home();
     }
   } catch (error) {
     console.log({ error });

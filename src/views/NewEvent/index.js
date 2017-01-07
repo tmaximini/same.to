@@ -53,6 +53,7 @@ export default class NewEvent extends Component {
       startAt,
       endAt,
       type,
+      description,
     } = newEvent;
 
     const today = formatDate(new Date());
@@ -80,6 +81,17 @@ export default class NewEvent extends Component {
                   placeholder="Where?"
                   value={location}
                   onChangeText={(text) => updateNewEvent('location', text)}
+                />
+              </InputGroup>
+            </ListItem>
+            <ListItem>
+              <InputGroup>
+                <Input
+                  inlineLabel
+                  label="Description"
+                  placeholder="some info"
+                  value={description}
+                  onChangeText={(text) => updateNewEvent('description', text)}
                 />
               </InputGroup>
             </ListItem>
