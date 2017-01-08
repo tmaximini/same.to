@@ -25,6 +25,7 @@
     "react-native-datepicker": "^1.4.3",
     "react-native-drawer": "^2.3.0",
     "react-native-geocoder": "^0.4.5",
+    "react-native-google-places-autocomplete": "^1.2.6",
     "react-native-navbar": "^1.6.0",
     "react-native-router-flux": "^3.37.0",
     "react-native-vector-icons": "^4.0.0",

@@ -1,7 +1,7 @@
 let AUTH_HEADER = '';
 
 export const API_BASE = 'https://same.wearekiai.de/api/';
-export const GOOGLE_MAPS_API_KEY = 'AIzaSyAM93ELRZPJKidnLtt-CIO1TPQT_HF5gqY';
+
 
 // setter
 export const updateAuthHeader = token => {

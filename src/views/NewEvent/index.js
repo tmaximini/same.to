@@ -14,6 +14,7 @@ import {
 } from 'native-base';
 // import Input from '../../components/Input';
 // import Button from '../../components/Button';
+import GeoInput from '../../components/GeoInput';
 import Datepicker from '../../components/Datepicker';
 
 import { actions as newEventActions } from '../../redux/modules/newEvent';
@@ -59,8 +60,6 @@ export default class NewEvent extends Component {
 
     const today = formatDate(new Date());
 
-    console.info({ geocodeLocation });
-
     return (
       <Container>
         <Content>
@@ -77,20 +76,13 @@ export default class NewEvent extends Component {
               </InputGroup>
             </ListItem>
             <ListItem>
-              <InputGroup>
-                <Input
-                  inlineLabel
-                  label="Location"
-                  placeholder="Where?"
-                  value={locationString}
-                  onChangeText={(text) => updateNewEvent('locationString', text)}
-                  onBlur={() => {
-                    if (locationString) {
-                      geocodeLocation(locationString);
-                     }
-                  }}
-                />
-              </InputGroup>
+              <GeoInput
+                placeholder="Where?"
+                enablePoweredByContainer={false}
+                value={locationString}
+                onChangeText={(text) => updateNewEvent('locationString', text)}
+                onAdressSelect={geocodeLocation}
+              />
             </ListItem>
             <ListItem>
               <InputGroup>
@@ -98,7 +90,7 @@ export default class NewEvent extends Component {
                   inlineLabel
                   label="Description"
                   multiline
-                  numberOfLines={4}
+                  // numberOfLines={4}
                   placeholder="some info"
                   value={description}
                   onChangeText={(text) => updateNewEvent('description', text)}
