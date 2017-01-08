@@ -49,7 +49,12 @@ export default function configureStore(initialState) {
 
   // run all sagas
   sagaMiddleware.run(rootSaga);
-  persistStore(store, { storage: AsyncStorage });
+  const persistor = persistStore(store, {
+    storage: AsyncStorage,
+    blacklist: ['newEvent']
+  });
+  // remember persistor
+  store.persistor = persistor;
 
   return store;
 }

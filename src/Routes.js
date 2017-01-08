@@ -58,7 +58,7 @@ const Routes = () => (
           />
         </Scene>
         <Scene key="tab2" title="Tab #2" icon={TabIcon}>
-          <Scene key="tab2_1" component={TabView} title="Tab #2_1" onLeft={() => alert("Left button!")} leftTitle="Left" />
+          <Scene key="tab2_1" component={TabView} title="Tab #2_1" />
           <Scene key="tab2_2" component={TabView} title="Tab #2_2" />
         </Scene>
         <Scene key="tab3" component={TabView} title="Tab #3" icon={TabIcon} />
@@ -70,6 +70,7 @@ const Routes = () => (
         key="login"
         component={Login}
         title="Login"
+        hideNavBar
       />
       <Scene
         key="lostPassword"

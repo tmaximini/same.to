@@ -1,4 +1,5 @@
 import { REHYDRATE } from 'redux-persist/constants';
+import { Actions } from 'react-native-router-flux';
 import { updateAuthHeader } from '../../services/api';
 
 
@@ -55,8 +56,16 @@ export const actions = {
 const actionsMap = {
   [REHYDRATE]: (state, action) => {
     console.info('REHYDRATE!!');
-    const { token } = action.payload.auth;
-    updateAuthHeader(token);
+    try {
+      const { token, loggedIn } = action.payload.auth;
+      if (loggedIn && token) {
+        updateAuthHeader(token);
+      } else {
+        Actions.login();
+      }
+    } catch (e) {
+      Actions.login();
+    }
     return state;
   },
   [LOGIN_SUCCESS]: (state, action) => {
