@@ -10,6 +10,7 @@ class EventList extends Component {
   static propTypes = {
     events: PropTypes.arrayOf(PropTypes.object),
     refresh: PropTypes.func.isRequired,
+    isRefreshing: PropTypes.bool.isRequired,
   }
 
   constructor(props) {
@@ -17,9 +18,9 @@ class EventList extends Component {
     const { events } = props;
     console.info('EVENTS', events);
     const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
+    this.onRefresh = this.onRefresh.bind(this);
     this.state = {
       dataSource: ds.cloneWithRows(events),
-      isRefreshing: false,
     };
   }
 
@@ -33,6 +34,11 @@ class EventList extends Component {
     }
   }
 
+  onRefresh() {
+    console.info('on refresh called!');
+    this.props.refresh();
+  }
+
   render() {
     return (
       <ListView
@@ -42,8 +48,8 @@ class EventList extends Component {
         renderRow={event => <EventListItem event={event} />}
         refreshControl={
           <RefreshControl
-            refreshing={this.state.isRefreshing}
-            onRefresh={this._onRefresh}
+            refreshing={this.props.isRefreshing}
+            onRefresh={this.onRefresh}
             tintColor="#ff0000"
             title="Loading..."
             titleColor="#00ff00"

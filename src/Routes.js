@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navigator } from 'react-native';
+import { Navigator, Text } from 'react-native';
 import { Scene, Router, TabBar, Modal } from 'react-native-router-flux';
 import Drawer from 'react-native-drawer';
 import Home from './views/Home';
@@ -11,6 +11,21 @@ import NewEvent from './views/NewEvent';
 import Splash from './views/Splash';
 import Menu from './components/Menu';
 
+const navBarPadding = {
+  paddingTop: Navigator.NavigationBar.Styles.General.TotalNavHeight
+};
+
+const TabIcon = ({ selected, title }) => (
+  <Text style={{ color: selected ? 'red' : 'black' }}>
+    {title}
+  </Text>
+);
+
+const TabView = () => (
+  <Text>
+    TAB VIEW
+  </Text>
+);
 
 const Routes = () => (
   <Drawer
@@ -21,15 +36,36 @@ const Routes = () => (
     tapToClose
     ref={ref => this.drawer = ref} // eslint-disable-line
   >
-    <Router
-      sceneStyle={{ paddingTop: Navigator.NavigationBar.Styles.General.TotalNavHeight }}
-    >
+    <Router>
       <Scene
-        key="home"
-        component={Home}
-        title="Home / Feed"
-        initial
-      />
+        key="tabbar"
+        tabs
+        tabBarStyle={{ backgroundColor: 'white' }}
+      >
+        <Scene
+          key="tab1"
+          title="Tab #1"
+          icon={TabIcon}
+          navigationBarStyle={{ backgroundColor: 'red' }}
+          titleStyle={{ color: 'white' }}
+        >
+          <Scene
+            key="home"
+            component={Home}
+            title="Home / Feed"
+            sceneStyle={navBarPadding}
+            initial
+          />
+        </Scene>
+        <Scene key="tab2" title="Tab #2" icon={TabIcon}>
+          <Scene key="tab2_1" component={TabView} title="Tab #2_1" onLeft={() => alert("Left button!")} leftTitle="Left" />
+          <Scene key="tab2_2" component={TabView} title="Tab #2_2" />
+        </Scene>
+        <Scene key="tab3" component={TabView} title="Tab #3" icon={TabIcon} />
+        <Scene key="tab4" component={TabView} title="Tab #4" icon={TabIcon} />
+        <Scene key="tab5" component={TabView} title="Tab #5" icon={TabIcon} />
+      </Scene>
+
       <Scene
         key="login"
         component={Login}
@@ -49,11 +85,13 @@ const Routes = () => (
         key="event"
         component={EventDetail}
         title="Event"
+        sceneStyle={navBarPadding}
       />
       <Scene
         key="newEvent"
         component={NewEvent}
         title="New Event"
+        sceneStyle={navBarPadding}
       />
     </Router>
   </Drawer>
