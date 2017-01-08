@@ -4206,6 +4206,10 @@ qs@6.2.0:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.2.0.tgz#3b7848c03c2dece69a9522b0fae8c4126d745f3b"
 
+qs@^5.2.0:
+  version "5.2.1"
+  resolved "https://registry.yarnpkg.com/qs/-/qs-5.2.1.tgz#801fee030e0b9450d6385adc48a4cc55b44aedfc"
+
 qs@~6.3.0:
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.3.0.tgz#f403b264f23bc01228c74131b407f18d5ea5d442"
@@ -4336,6 +4340,12 @@ react-native-experimental-navigation@0.26.x:
 react-native-geocoder@^0.4.5:
   version "0.4.5"
   resolved "https://registry.yarnpkg.com/react-native-geocoder/-/react-native-geocoder-0.4.5.tgz#bf2e11f6a68b1a1ff229206dd18429d86eeedaa2"
+
+react-native-google-places-autocomplete@^1.2.6:
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/react-native-google-places-autocomplete/-/react-native-google-places-autocomplete-1.2.6.tgz#beec0ec527b26bceb611f2675e757f7b0d3c4b0f"
+  dependencies:
+    qs "^5.2.0"
 
 react-native-keyboard-aware-scroll-view@0.2.0:
   version "0.2.0"
