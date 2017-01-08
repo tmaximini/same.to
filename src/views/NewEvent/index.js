@@ -8,7 +8,6 @@ import {
   ListItem,
   InputGroup,
   Input,
-  Icon,
   Text,
   Picker,
   Button
@@ -17,7 +16,7 @@ import {
 // import Button from '../../components/Button';
 import Datepicker from '../../components/Datepicker';
 
-import { actions as eventActions } from '../../redux/modules/events';
+import { actions as newEventActions } from '../../redux/modules/newEvent';
 import { formatDate } from '../../utils';
 import styles from './styles';
 
@@ -25,10 +24,10 @@ const Item = Picker.Item;
 
 @connect(
   state => ({
-    newEvent: state.events.newEvent,
+    newEvent: state.newEvent,
     eventTypes: state.events.types,
   }),
-  eventActions,
+  newEventActions,
 )
 export default class NewEvent extends Component {
 
@@ -37,6 +36,7 @@ export default class NewEvent extends Component {
     eventTypes: PropTypes.arrayOf(PropTypes.string),
     updateNewEvent: PropTypes.func.isRequired,
     createEvent: PropTypes.func.isRequired,
+    geocodeLocation: PropTypes.func.isRequired,
   }
 
   render() {
@@ -45,11 +45,12 @@ export default class NewEvent extends Component {
       newEvent,
       createEvent,
       eventTypes,
+      geocodeLocation,
     } = this.props;
 
     const {
       name,
-      location,
+      locationString,
       startAt,
       endAt,
       type,
@@ -57,6 +58,8 @@ export default class NewEvent extends Component {
     } = newEvent;
 
     const today = formatDate(new Date());
+
+    console.info({ geocodeLocation });
 
     return (
       <Container>
@@ -79,8 +82,13 @@ export default class NewEvent extends Component {
                   inlineLabel
                   label="Location"
                   placeholder="Where?"
-                  value={location}
-                  onChangeText={(text) => updateNewEvent('location', text)}
+                  value={locationString}
+                  onChangeText={(text) => updateNewEvent('locationString', text)}
+                  onBlur={() => {
+                    if (locationString) {
+                      geocodeLocation(locationString);
+                     }
+                  }}
                 />
               </InputGroup>
             </ListItem>
@@ -89,6 +97,8 @@ export default class NewEvent extends Component {
                 <Input
                   inlineLabel
                   label="Description"
+                  multiline
+                  numberOfLines={4}
                   placeholder="some info"
                   value={description}
                   onChangeText={(text) => updateNewEvent('description', text)}

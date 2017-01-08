@@ -1,7 +1,8 @@
 // import { fork } from 'redux-saga/effects';
 
 import { watchLogin } from './auth';
-import { watchFetchEvents, watchCreateEvent } from './events';
+import { watchFetchEvents } from './events';
+import { watchCreateEvent, watchGeocodeEvent } from './newEvent';
 
 // SAGAs
 // 1. define worker sagas
@@ -17,5 +18,6 @@ export default function* root() {
     watchLogin(),
     watchFetchEvents(),
     watchCreateEvent(),
+    watchGeocodeEvent(),
   ];
 }
