@@ -1,3 +1,4 @@
+import { delay } from 'redux-saga';
 import { takeLatest, call, put } from 'redux-saga/effects';
 import { Actions } from 'react-native-router-flux';
 import {
@@ -25,8 +26,8 @@ export function* handleLoginAsync(action) {
         type: LOGIN_SUCCESS,
         payload: response,
       });
-      Actions.home();
-      console.log('login successfull!', Actions);
+      yield call(delay, 100);
+      yield call(Actions.home);
     }
   } catch (error) {
     console.info({ error });

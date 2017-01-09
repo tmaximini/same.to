@@ -128,14 +128,18 @@ const actionsMap = {
       location: action.payload,
     },
   }),
-  [GEOCODE_NEW_EVENT_ERROR]: (state, action) => ({
-    ...state,
-    newEvent: {
-      ...state.newEvent,
-      location: null,
-      error: action.payload.error
-    },
-  }),
+  [GEOCODE_NEW_EVENT_ERROR]: (state, action) => {
+    const { locationString, error } = action.payload;
+
+    return {
+      ...state,
+      newEvent: {
+        ...state.newEvent,
+        location: locationString,
+        error,
+      },
+    };
+  },
   [UPDATE_EVENT_SUCCESS]: (state) => ({
     ...state,
     event: {},
@@ -166,8 +170,8 @@ const actionsMap = {
     ...state,
     event: {
       ...state.event,
-      location: null,
-      error: action.payload.error,
+      location: state.event.locationString,
+      error: action.payload,
     },
   }),
 };

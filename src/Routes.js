@@ -48,15 +48,7 @@ const Routes = () => (
           icon={TabIcon}
           navigationBarStyle={{ backgroundColor: 'red' }}
           titleStyle={{ color: 'white' }}
-        >
-          <Scene
-            key="home"
-            component={Home}
-            title="Home / Feed"
-            sceneStyle={navBarPadding}
-            initial
-          />
-        </Scene>
+        />
         <Scene key="tab2" title="Tab #2" icon={TabIcon}>
           <Scene key="tab2_1" component={TabView} title="Tab #2_1" />
           <Scene key="tab2_2" component={TabView} title="Tab #2_2" />
@@ -65,6 +57,14 @@ const Routes = () => (
         <Scene key="tab4" component={TabView} title="Tab #4" icon={TabIcon} />
         <Scene key="tab5" component={TabView} title="Tab #5" icon={TabIcon} />
       </Scene>
+
+      <Scene
+        key="home"
+        component={Home}
+        title="Home / Feed"
+        sceneStyle={navBarPadding}
+        initial
+      />
 
       <Scene
         key="login"

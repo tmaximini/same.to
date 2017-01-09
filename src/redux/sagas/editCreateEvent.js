@@ -1,3 +1,4 @@
+import { delay } from 'redux-saga';
 import { takeLatest, call, put } from 'redux-saga/effects';
 import { Actions } from 'react-native-router-flux';
 import Geocoder from 'react-native-geocoder';
@@ -39,7 +40,8 @@ export function* createEventAsync(action) {
           event: response
         }
       });
-      Actions.home();
+      yield call(delay, 100);
+      yield call(Actions.home);
     }
   } catch (error) {
     console.log({ error });
@@ -52,15 +54,16 @@ export function* createEventAsync(action) {
 
 
 export function* geocodeEventAsync(action) {
+  const locationString = action.payload;
   try {
-    const response = yield call(Geocoder.geocodeAddress, action.payload);
-
+    const response = yield call(Geocoder.geocodeAddress, locationString);
     if (response.error) {
       // in case of error
       yield put({
         type: GEOCODE_NEW_EVENT_ERROR,
         payload: {
-          error: response.error
+          error: response.error ? response.error : response,
+          locationString
         }
       });
       if (response.error.statusCode === 401) {
@@ -74,13 +77,15 @@ export function* geocodeEventAsync(action) {
         type: GEOCODE_NEW_EVENT_SUCCESS,
         payload: response[0] // response is an array
       });
-      Actions.home();
     }
   } catch (error) {
     console.log({ error });
     yield put({
       type: GEOCODE_NEW_EVENT_ERROR,
-      error
+      payload: {
+        error: error.code || error.message,
+        locationString
+      }
     });
   }
 }

@@ -22,8 +22,8 @@ export const LOGIN_ERROR = 'auth/LOGIN_ERROR';
 export const LOGOUT = 'auth/LOGOUT';
 export const UPDATE = 'auth/UPDATE';
 // storage keys
-export const TOKEN = '@@SAME/TOKEN';
-export const USERID = '@@SAME/USERID';
+// export const TOKEN = '@@SAME/TOKEN';
+// export const USERID = '@@SAME/USERID';
 
 
 // Action Creators
@@ -70,7 +70,7 @@ const actionsMap = {
   },
   [LOGIN_SUCCESS]: (state, action) => {
     const { userId, id } = action.payload;
-    setImmediate(Actions.home); // ?
+
     return {
       ...state,
       loggedIn: true,
