@@ -8,7 +8,7 @@ import {
   GEOCODE_NEW_EVENT_START,
   GEOCODE_NEW_EVENT_SUCCESS,
   GEOCODE_NEW_EVENT_ERROR
-} from '../modules/newEvent';
+} from '../modules/editCreateEvent';
 import { updateAuthHeader } from '../../services/api';
 import { createEvent } from '../../services/events';
 

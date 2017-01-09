@@ -51,10 +51,11 @@ export default function configureStore(initialState) {
   sagaMiddleware.run(rootSaga);
   const persistor = persistStore(store, {
     storage: AsyncStorage,
-    blacklist: ['newEvent']
+    blacklist: ['editCreateEvent']
   });
   // remember persistor
   store.persistor = persistor;
+  // persistor.purge(); // uncomment to drop offline data
 
   return store;
 }

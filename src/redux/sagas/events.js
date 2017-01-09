@@ -29,7 +29,7 @@ export function* fetchEventsAsync(action) {
       });
       if (response.error.statusCode === 401) {
         updateAuthHeader(null);
-        Actions.login();
+        yield call(Actions.login);
       }
     } else {
       // success

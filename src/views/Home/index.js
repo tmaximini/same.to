@@ -44,7 +44,10 @@ export default class Home extends Component {
           refresh={fetchEvents}
           isRefreshing={isRefreshing}
         />
-        <View style={styles.buttons}>
+        <View
+          style={styles.buttons}
+          pointerEvents="box-none"
+        >
           <TouchableHighlight
             style={styles.newButton}
             onPress={Actions.newEvent}

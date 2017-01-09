@@ -1,9 +1,9 @@
+import { CREATE_EVENT_SUCCESS } from './editCreateEvent';
+
 // Initial State
 const initialState = {
   isFetching: false,
   events: [],
-  // TODO: fetch from server
-  types: ['event', 'party', 'gaming', 'shopping', 'concert', 'cinema', 'dinner', 'sport', 'gameing'],
   error: null,
 };
 
@@ -53,6 +53,15 @@ const actionsMap = {
   [FETCH_EVENTS_ERROR]: state => ({ ...state, isFetching: false }),
   // TODO
   [UPDATE_EVENT]: state => ({ ...state }),
+  [CREATE_EVENT_SUCCESS]: (state, action) => {
+    const { event } = action.payload;
+
+    // add new event to list
+    return {
+      ...state,
+      events: [event, ...state.events],
+    };
+  },
 };
 
 

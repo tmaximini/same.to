@@ -17,7 +17,7 @@ import {
 import GeoInput from '../../components/GeoInput';
 import Datepicker from '../../components/Datepicker';
 
-import { actions as newEventActions } from '../../redux/modules/newEvent';
+import { actions as editCreateEventActions } from '../../redux/modules/editCreateEvent';
 import { formatDate } from '../../utils';
 import styles from './styles';
 
@@ -25,10 +25,10 @@ const Item = Picker.Item;
 
 @connect(
   state => ({
-    newEvent: state.newEvent,
-    eventTypes: state.events.types,
+    newEvent: state.editCreateEvent.newEvent,
+    eventTypes: state.editCreateEvent.types,
   }),
-  newEventActions,
+  editCreateEventActions,
 )
 export default class NewEvent extends Component {
 
@@ -46,7 +46,7 @@ export default class NewEvent extends Component {
       newEvent,
       createEvent,
       eventTypes,
-      geocodeLocation,
+      geocodeNewLocation,
     } = this.props;
 
     const {
@@ -81,7 +81,7 @@ export default class NewEvent extends Component {
                 enablePoweredByContainer={false}
                 value={locationString}
                 onChangeText={(text) => updateNewEvent('locationString', text)}
-                onAdressSelect={geocodeLocation}
+                onAdressSelect={geocodeNewLocation}
               />
             </ListItem>
             <ListItem>

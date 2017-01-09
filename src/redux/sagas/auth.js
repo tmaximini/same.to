@@ -26,6 +26,7 @@ export function* handleLoginAsync(action) {
         payload: response,
       });
       Actions.home();
+      console.log('login successfull!', Actions);
     }
   } catch (error) {
     console.info({ error });

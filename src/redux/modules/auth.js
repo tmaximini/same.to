@@ -70,13 +70,14 @@ const actionsMap = {
   },
   [LOGIN_SUCCESS]: (state, action) => {
     const { userId, id } = action.payload;
-
+    setImmediate(Actions.home); // ?
     return {
       ...state,
       loggedIn: true,
       userId,
       token: id,
-      error: null
+      error: null,
+      password: null,
     };
   },
   [LOGIN_ERROR]: (state, action) => ({

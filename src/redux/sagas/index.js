@@ -2,7 +2,7 @@
 
 import { watchLogin } from './auth';
 import { watchFetchEvents } from './events';
-import { watchCreateEvent, watchGeocodeEvent } from './newEvent';
+import { watchCreateEvent, watchGeocodeEvent } from './editCreateEvent';
 
 // SAGAs
 // 1. define worker sagas
