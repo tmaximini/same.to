@@ -75,15 +75,15 @@ export default class NewEvent extends Component {
                 />
               </InputGroup>
             </ListItem>
-            <ListItem>
-              <GeoInput
-                placeholder="Where?"
-                enablePoweredByContainer={false}
-                value={locationString}
-                onChangeText={(text) => updateNewEvent('locationString', text)}
-                onAdressSelect={geocodeNewLocation}
-              />
-            </ListItem>
+          </List>
+          <GeoInput
+            placeholder="Where?"
+            enablePoweredByContainer={false}
+            value={locationString}
+            onChangeText={(text) => updateNewEvent('locationString', text)}
+            onAdressSelect={geocodeNewLocation}
+          />
+          <List>
             <ListItem>
               <InputGroup>
                 <Input

@@ -15,6 +15,7 @@ const initialState = {
   editEvent: {},
     // TODO: fetch from server
   types: ['event', 'party', 'gaming', 'shopping', 'concert', 'cinema', 'dinner', 'sport', 'gameing'],
+  errors: {},
 };
 
 
@@ -91,7 +92,6 @@ export const actions = {
 const ensureDatesAreValid = event => {
   const newEvent = { ...event };
   const { startAt, endAt } = event;
-  console.info(startAt, endAt, getDateFromString(endAt), getDateFromString(startAt));
   if (isBefore(getDateFromString(endAt), getDateFromString(startAt))) {
     newEvent.endAt = newEvent.startAt;
   }
@@ -136,8 +136,11 @@ const actionsMap = {
       newEvent: {
         ...state.newEvent,
         location: locationString,
-        error,
       },
+      errors: {
+        ...state.errors,
+        newEvent: error,
+      }
     };
   },
   [UPDATE_EVENT_SUCCESS]: (state) => ({
@@ -166,14 +169,21 @@ const actionsMap = {
       location: action.payload,
     },
   }),
-  [GEOCODE_EVENT_ERROR]: (state, action) => ({
-    ...state,
-    event: {
-      ...state.event,
-      location: state.event.locationString,
-      error: action.payload,
-    },
-  }),
+  [GEOCODE_EVENT_ERROR]: (state, action) => {
+    const { locationString, error } = action.payload;
+
+    return {
+      ...state,
+      event: {
+        ...state.event,
+        location: locationString,
+      },
+      errors: {
+        ...state.errors,
+        event: error,
+      }
+    };
+  },
 };
 
 
