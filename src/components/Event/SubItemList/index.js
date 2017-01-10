@@ -1,27 +1,22 @@
-import React, { Component, PropTypes } from 'react';
-import { View, ListView, Text } from 'react-native';
+import React, { PropTypes } from 'react';
+import { View, ScrollView } from 'react-native';
+import Accommodation from '../Accommodation';
+import Trip from '../Trip';
 import styles from './styles';
 
 
-export default class SubItemList extends Component {
+const SubItemList = ({ accommodations, trips }) => (
+  <View style={styles.container}>
+    <ScrollView>
+      {accommodations.map(ac => <Accommodation key={ac.id} {...ac} />)}
+      {trips.map(trip => <Trip key={trip.id} {...trip} />)}
+    </ScrollView>
+  </View>
+);
 
-  static propTypes = {
-    trips: PropTypes.array.isRequired,
-    accommodations: PropTypes.array.isRequired,
-  }
+SubItemList.propTypes = {
+  trips: PropTypes.array.isRequired,
+  accommodations: PropTypes.array.isRequired,
+};
 
-  render() {
-    const {
-      accommodations,
-      trips,
-    } = this.props;
-
-    return (
-      <View style={styles.container}>
-        {accommodations.map(ac => <Text key={ac.id}>{ac.name}</Text>)}
-        {trips.map(trip => <Text key={trip.id}>{trip.locality}</Text>)}
-      </View>
-    );
-  }
-}
-
+export default SubItemList;

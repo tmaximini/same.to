@@ -43,7 +43,7 @@ export default class Event extends Component {
           <View style={styles.details}>
             <View style={styles.buttons}>
               <View style={styles.box}>
-                <Text>{startAt}</Text>
+                <Text>{formatDate(startAt)}</Text>
               </View>
               <View style={styles.box}>
                 <Text>{type}</Text>
