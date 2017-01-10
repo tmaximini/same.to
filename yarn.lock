@@ -4300,6 +4300,10 @@ react-native-checkbox@~1.0.8:
   version "1.0.17"
   resolved "https://registry.yarnpkg.com/react-native-checkbox/-/react-native-checkbox-1.0.17.tgz#94c61f190ef728c38763f48cd7ab91a6ad9fd4e2"
 
+react-native-circular-action-menu@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/react-native-circular-action-menu/-/react-native-circular-action-menu-0.4.0.tgz#ae182b31323ea3e943037fda30831ee56cfa30da"
+
 react-native-datepicker@^1.4.3:
   version "1.4.3"
   resolved "https://registry.yarnpkg.com/react-native-datepicker/-/react-native-datepicker-1.4.3.tgz#05d66f1b545fe5e797639b5581a10581ee807d5f"

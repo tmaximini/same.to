@@ -8,6 +8,7 @@ import {
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import EventList from '../../components/EventList';
+import PlusButton from '../../components/PlusButton';
 
 import { actions as eventActions } from '../../redux/modules/events';
 import styles from './styles';
@@ -48,14 +49,12 @@ export default class Home extends Component {
           style={styles.buttons}
           pointerEvents="box-none"
         >
-          <TouchableHighlight
-            style={styles.newButton}
-            onPress={Actions.newEvent}
-          >
-            <View style={styles.plus}>
-              <Text style={styles.plusText}>+</Text>
-            </View>
-          </TouchableHighlight>
+          <PlusButton
+            items={[
+              { title: 'event', action: Actions.newEvent, icon: 'ios-cafe-outline' },
+              { title: 'activity', action: Actions.newEvent, icon: 'ios-bulb-outline' }
+            ]}
+          />
         </View>
       </View>
     );
