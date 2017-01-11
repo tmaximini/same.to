@@ -5,7 +5,7 @@ import Drawer from 'react-native-drawer';
 import Home from './views/Home';
 import Login from './views/Login';
 import LostPassword from './views/LostPassword';
-import EditProfile from './views/EditProfile';
+import EditProfile from './views/EditCreateProfile';
 import EventDetail from './views/EventDetail';
 import NewEvent from './views/NewEvent';
 import Splash from './views/Splash';

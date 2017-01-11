@@ -28,15 +28,5 @@ export default StyleSheet.create({
     height: 100,
     borderRadius: 50,
   },
-  plus: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  plusText: {
-    fontSize: 50,
-    fontWeight: 'bold',
-    color: 'white'
-  }
 });
 

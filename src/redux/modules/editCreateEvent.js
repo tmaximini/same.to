@@ -135,7 +135,9 @@ const actionsMap = {
       ...state,
       newEvent: {
         ...state.newEvent,
-        location: locationString,
+        location: {
+          formattedAddress: locationString,
+        },
       },
       errors: {
         ...state.errors,
@@ -176,7 +178,9 @@ const actionsMap = {
       ...state,
       event: {
         ...state.event,
-        location: locationString,
+        location: {
+          formattedAddress: locationString,
+        },
       },
       errors: {
         ...state.errors,

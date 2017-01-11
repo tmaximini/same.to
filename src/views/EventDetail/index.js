@@ -1,7 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { View, ListView, Text } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import { formatDate } from '../../utils';
 import SubItemList from '../../components/Event/SubItemList';
+import PlusButton from '../../components/PlusButton';
 import styles from './styles';
 
 
@@ -64,6 +66,20 @@ export default class Event extends Component {
           ) : (
             <Text>has no items</Text>
           )}
+          <View
+            style={styles.buttons}
+            pointerEvents="box-none"
+          >
+            <PlusButton
+              itemSize={45}
+              radius={80}
+              items={[
+                { title: 'trip', action: this.newTrip, icon: 'ios-cafe-outline' },
+                { title: 'accomodation', action: this.newAccommodation, icon: 'ios-bulb-outline' },
+                { title: 'activity', action: this.newActivity, icon: 'ios-bulb-outline' }
+              ]}
+            />
+          </View>
         </View>
       </View>
     );

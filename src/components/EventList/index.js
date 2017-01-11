@@ -3,6 +3,7 @@ import { ListView, RefreshControl } from 'react-native';
 
 import EventListItem from './EventListItem';
 import styles from './styles';
+import { COLORS } from '../../constants';
 // import { border } from '../../utils';
 
 class EventList extends Component {
@@ -50,11 +51,10 @@ class EventList extends Component {
           <RefreshControl
             refreshing={this.props.isRefreshing}
             onRefresh={this.onRefresh}
-            tintColor="#ff0000"
-            title="Loading..."
-            titleColor="#00ff00"
-            colors={['#ff0000', '#00ff00', '#0000ff']}
-            progressBackgroundColor="#ffff00"
+            tintColor={COLORS.CYAN}
+            title="Refreshing..."
+            titleColor={COLORS.WHITE}
+            progressBackgroundColor={COLORS.CYAN}
           />
         }
       />
