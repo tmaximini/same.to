@@ -5,8 +5,11 @@ import styles from './styles';
 
 const { Item } = ActionButton;
 
-const PlusButton = ({ items }) => (
-  <ActionButton buttonColor="rgba(231,76,60,1)">
+const PlusButton = ({ items, ...rest }) => (
+  <ActionButton
+    buttonColor="rgba(231,76,60,1)"
+    {...rest}
+  >
     {items.map((item, index) => {
       return (
         <Item

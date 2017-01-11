@@ -21,8 +21,6 @@ export default class Accommodation extends Component {
       startDate,
     } = this.props;
 
-    console.log(startDate, formatDate(startDate));
-
     return (
       <View style={styles.container}>
         <View style={styles.top}>

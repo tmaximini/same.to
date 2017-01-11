@@ -12,7 +12,7 @@ export default StyleSheet.create({
   bottom: {
     flex: 5,
     backgroundColor: 'green',
-    padding: 20,
+    padding: 10,
   },
   header: {
     flex: 2,
