@@ -66,20 +66,16 @@ export default class Event extends Component {
           ) : (
             <Text>has no items</Text>
           )}
-          <View
-            style={styles.buttons}
-            pointerEvents="box-none"
-          >
-            <PlusButton
-              itemSize={45}
-              radius={80}
-              items={[
-                { title: 'trip', action: this.newTrip, icon: 'ios-cafe-outline' },
-                { title: 'accomodation', action: this.newAccommodation, icon: 'ios-bulb-outline' },
-                { title: 'activity', action: this.newActivity, icon: 'ios-bulb-outline' }
-              ]}
-            />
-          </View>
+
+          <PlusButton
+            itemSize={45}
+            radius={80}
+            items={[
+              { title: 'trip', action: this.newTrip, icon: 'ios-cafe-outline' },
+              { title: 'accomodation', action: this.newAccommodation, icon: 'ios-bulb-outline' },
+              { title: 'activity', action: this.newActivity, icon: 'ios-bulb-outline' }
+            ]}
+          />
         </View>
       </View>
     );

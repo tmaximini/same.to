@@ -20,7 +20,6 @@ export default StyleSheet.create({
   },
   wrapper: {
     flex: 1,
-    flexDirection: 'column',
     alignItems: 'center',
     backgroundColor: COLORS.GREY_OPAQ,
   },
@@ -42,13 +41,8 @@ export default StyleSheet.create({
   bottom: {
     flex: 2,
     alignSelf: 'flex-start',
+    flexDirection: 'column',
     paddingTop: 10,
-  },
-  action: {
-    flex: 1,
-    alignItems: 'center',
-    borderColor: '#fff',
-    borderWidth: 1,
   },
   middle: {
     flex: 1,
@@ -64,21 +58,38 @@ export default StyleSheet.create({
     color: COLORS.WHITE,
   },
   button: {
-    fontSize: 25,
+    fontSize: 32,
     flex: 2,
+    fontWeight: 'bold',
     textAlign: 'left',
     color: COLORS.CYAN,
   },
   text: {
-    marginLeft: 12,
+    marginLeft: 3,
     fontSize: 12,
     color: COLORS.WHITE,
   },
   location: {
     flex: 1,
+    paddingLeft: 12,
+    width: 200,
+    flexDirection: 'row',
   },
   date: {
     flex: 1,
+    paddingLeft: 12,
+    flexDirection: 'row',
   },
+  icon: {
+    color: COLORS.WHITE,
+    flex: 1,
+    fontSize: 16,
+  },
+  dateText: {
+    flex: 9,
+  },
+  locationText: {
+    flex: 9,
+  }
 
 });

@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Image, View, Text, TouchableHighlight } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 import { Actions } from 'react-native-router-flux';
 import { formatDate } from '../../../utils';
 import styles from './styles';
@@ -51,10 +52,17 @@ export default class EventListItem extends Component {
             </TouchableHighlight>
             <View style={styles.bottom}>
               <View style={styles.date}>
-                <Text style={styles.text}>{formatDate(startAt)}</Text>
+                <Icon name="ios-calendar-outline" style={styles.icon} />
+                <View style={styles.dateText}>
+                  <Text style={styles.text}>{formatDate(startAt)}</Text>
+                </View>
+
               </View>
               <View style={styles.location}>
-                <Text style={styles.text}>{locality || formattedAddress}</Text>
+                <Icon name="ios-navigate-outline" style={styles.icon} />
+                <View style={styles.locationText}>
+                  <Text style={styles.text}>{locality || formattedAddress}</Text>
+                </View>
               </View>
             </View>
           </View>

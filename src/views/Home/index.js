@@ -43,21 +43,16 @@ export default class Home extends Component {
           refresh={fetchEvents}
           isRefreshing={isRefreshing}
         />
-        <View
-          style={styles.buttons}
-          pointerEvents="box-none"
-        >
-          <PlusButton
-            itemSize={45}
-            radius={80}
-            startDegree={225}
-            endDegree={315}
-            items={[
-              { title: 'event', action: Actions.newEvent, icon: 'ios-cafe-outline', angle: 80 },
-              { title: 'activity', action: Actions.newEvent, icon: 'ios-bulb-outline' }
-            ]}
-          />
-        </View>
+        <PlusButton
+          itemSize={45}
+          radius={80}
+          startDegree={225}
+          endDegree={315}
+          items={[
+            { title: 'event', action: Actions.newEvent, icon: 'ios-cafe-outline', angle: 80 },
+            { title: 'activity', action: Actions.newEvent, icon: 'ios-bulb-outline' }
+          ]}
+        />
       </View>
     );
   }
