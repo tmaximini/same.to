@@ -15,7 +15,7 @@ export default StyleSheet.create({
     padding: 10,
   },
   header: {
-    flex: 2,
+    flex: 4,
     backgroundColor: 'red',
     alignItems: 'center',
     justifyContent: 'center',

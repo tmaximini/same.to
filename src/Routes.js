@@ -1,15 +1,18 @@
 import React from 'react';
-import { Navigator, Text } from 'react-native';
+import { Navigator, Text, StyleSheet } from 'react-native';
 import { Scene, Router, TabBar, Modal } from 'react-native-router-flux';
 import Drawer from 'react-native-drawer';
 import Home from './views/Home';
 import Login from './views/Login';
 import LostPassword from './views/LostPassword';
-import EditProfile from './views/EditCreateProfile';
+import EditCreateProfile from './views/EditCreateProfile';
+import EditCreateTrip from './views/EditCreateTrip';
+import EditCreateAccommodation from './views/EditCreateAccommodation';
 import EventDetail from './views/EventDetail';
 import NewEvent from './views/NewEvent';
-import Splash from './views/Splash';
+// import Splash from './views/Splash';
 import Menu from './components/Menu';
+import { COLORS } from './constants';
 
 const navBarPadding = {
   paddingTop: Navigator.NavigationBar.Styles.General.TotalNavHeight
@@ -27,6 +30,21 @@ const TabView = () => (
   </Text>
 );
 
+const styles = StyleSheet.create({
+  navBar: {
+    backgroundColor: COLORS.DARK_GREY,
+  },
+  navBarTitle: {
+    color: COLORS.WHITE
+  },
+  barButtonTextStyle: {
+    color: COLORS.CYAN
+  },
+  barButtonIconStyle: {
+    tintColor: COLORS.CYAN
+  },
+});
+
 const Routes = () => (
   <Drawer
     type="static"
@@ -36,11 +54,16 @@ const Routes = () => (
     tapToClose
     ref={ref => this.drawer = ref} // eslint-disable-line
   >
-    <Router>
+    <Router
+      navigationBarStyle={styles.navBar}
+      titleStyle={styles.navBarTitle}
+      barButtonTextStyle={styles.barButtonTextStyle}
+      barButtonIconStyle={styles.barButtonIconStyle}
+    >
       <Scene
         key="tabbar"
         tabs
-        tabBarStyle={{ backgroundColor: 'white' }}
+        tabBarStyle={{ backgroundColor: COLORS.DARK_GREY }}
       >
         <Scene
           key="tab1"
@@ -79,8 +102,18 @@ const Routes = () => (
       />
       <Scene
         key="editProfile"
-        component={EditProfile}
+        component={EditCreateProfile}
         title="Edit Profile"
+      />
+      <Scene
+        key="editAccommodation"
+        component={EditCreateAccommodation}
+        title="Edit Accommodation"
+      />
+      <Scene
+        key="editTrip"
+        component={EditCreateTrip}
+        title="Edit Trip"
       />
       <Scene
         key="event"

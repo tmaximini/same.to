@@ -20,6 +20,22 @@ export default class Event extends Component {
     }).isRequired,
   }
 
+  constructor(props) {
+    super(props);
+    this.editAccommodation = this.editAccommodation.bind(this);
+    this.editTrip = this.editTrip.bind(this);
+  }
+
+  editAccommodation() {
+    console.log('editAccommodation');
+    Actions.editAccommodation({ event: this.props.event });
+  }
+
+  editTrip() {
+    console.log('editTrip');
+    Actions.editTrip({ event: this.props.event });
+  }
+
   render() {
     const {
       name,
@@ -45,13 +61,8 @@ export default class Event extends Component {
           <View style={styles.details}>
             <View style={styles.buttons}>
               <View style={styles.box}>
-                <Text>{formatDate(startAt)}</Text>
-              </View>
-              <View style={styles.box}>
                 <Text>{type}</Text>
               </View>
-            </View>
-            <View style={styles.buttons}>
               <View style={styles.box}><Text>Invites</Text></View>
               <View style={styles.box}><Text>Members</Text></View>
             </View>
@@ -71,9 +82,9 @@ export default class Event extends Component {
             itemSize={45}
             radius={80}
             items={[
-              { title: 'trip', action: this.newTrip, icon: 'ios-cafe-outline' },
-              { title: 'accomodation', action: this.newAccommodation, icon: 'ios-bulb-outline' },
-              { title: 'activity', action: this.newActivity, icon: 'ios-bulb-outline' }
+              { title: 'trip', action: this.editTrip, icon: 'ios-cafe-outline' },
+              { title: 'accomodation', action: this.editAccommodation, icon: 'ios-bulb-outline' },
+              { title: 'activity', action: this.editTrip, icon: 'ios-bulb-outline' }
             ]}
           />
         </View>
