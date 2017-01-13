@@ -1,6 +1,6 @@
 
 export const COLORS = {
-  BG_GREY: '#262930',
+  BG_GREY: '#272C34',
   DARK_GREY: '#232529',
   CYAN: 'rgba(68,203,198,1)',
   WHITE: '#FFFFFF',

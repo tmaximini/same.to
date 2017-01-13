@@ -7,9 +7,10 @@ export default StyleSheet.create({
     flex: 1,
     height: 150,
     alignItems: 'center',
-    paddingBottom: 10,
+    marginBottom: 10,
     backgroundColor: COLORS.BG_GREY,
     overflow: 'hidden',
+    borderRadius: 5,
   },
   bgImage: {
     flex: 1,

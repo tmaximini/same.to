@@ -5,18 +5,11 @@ import {
 } from 'react-native';
 
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import Input from '../../components/Input';
 import { actions as profileActions } from '../../redux/modules/profile';
 
 import styles from './styles';
 
-@connect(
-  state => ({
-    profile: state.profile
-  }),
-  dispatch => bindActionCreators(profileActions, dispatch)
-)
+
 export default class EditCreateTrip extends Component {
 
   render() {

@@ -1,14 +1,32 @@
 import React, { Component, PropTypes } from 'react';
-import { View, ListView, Text } from 'react-native';
+import { View, Image, Text, TouchableHighlight } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import { formatDate } from '../../utils';
+// import { formatDate } from '../../utils';
 import SubItemList from '../../components/Event/SubItemList';
 import PlusButton from '../../components/PlusButton';
 import styles from './styles';
 
+const background = require('../../assets/gamescom.jpg');
+
+const buttonItems = [
+  {
+    title: 'trip',
+    action: Actions.editCreateTrip,
+    icon: 'ios-cafe-outline'
+  },
+  {
+    title: 'accomodation',
+    action: Actions.editCreateAccommodation,
+    icon: 'ios-bulb-outline'
+  },
+  {
+    title: 'activity',
+    action: Actions.editCreateAccommodation,
+    icon: 'ios-bulb-outline'
+  }
+];
 
 export default class Event extends Component {
-
   static propTypes = {
     event: PropTypes.shape({
       members: PropTypes.array.isRequired,
@@ -53,18 +71,30 @@ export default class Event extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.top}>
-          <View style={styles.header}>
-            <Text style={styles.title}>
-              {name}
-            </Text>
-          </View>
+          <Image
+            style={styles.bgImage}
+            source={background}
+
+          >
+            <View style={styles.header}>
+              <Text style={styles.title}>
+                {name}
+              </Text>
+            </View>
+          </Image>
           <View style={styles.details}>
             <View style={styles.buttons}>
               <View style={styles.box}>
-                <Text>{type}</Text>
+                <TouchableHighlight>
+                  <Text style={styles.boxText}>Share</Text>
+                </TouchableHighlight>
               </View>
-              <View style={styles.box}><Text>Invites</Text></View>
-              <View style={styles.box}><Text>Members</Text></View>
+              <View style={styles.box}>
+                <Text style={styles.boxText}>Invites</Text>
+              </View>
+              <View style={styles.box}>
+                <Text style={styles.boxText}>Members</Text>
+              </View>
             </View>
           </View>
         </View>
@@ -81,11 +111,7 @@ export default class Event extends Component {
           <PlusButton
             itemSize={45}
             radius={80}
-            items={[
-              { title: 'trip', action: this.editTrip, icon: 'ios-cafe-outline' },
-              { title: 'accomodation', action: this.editAccommodation, icon: 'ios-bulb-outline' },
-              { title: 'activity', action: this.editTrip, icon: 'ios-bulb-outline' }
-            ]}
+            items={buttonItems}
           />
         </View>
       </View>
