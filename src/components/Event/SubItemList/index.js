@@ -1,15 +1,16 @@
 import React, { PropTypes } from 'react';
 import { View, ScrollView } from 'react-native';
-import Accommodation from '../Accommodation';
-import Trip from '../Trip';
+// import Accommodation from '../Accommodation';
+// import Trip from '../Trip';
+import SubItem from '../SubItem';
 import styles from './styles';
 
 
 const SubItemList = ({ accommodations, trips }) => (
   <View style={styles.container}>
     <ScrollView>
-      {accommodations.map(ac => <Accommodation key={ac.id} {...ac} />)}
-      {trips.map(trip => <Trip key={trip.id} {...trip} />)}
+      {accommodations.map(ac => <SubItem itemType={'accommodation'} key={ac.id} item={ac} />)}
+      {trips.map(trip => <SubItem itemType={'trip'} key={trip.id} item={trip} />)}
     </ScrollView>
   </View>
 );

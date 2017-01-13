@@ -1,8 +1,11 @@
 import { StyleSheet } from 'react-native';
+import { COLORS } from '../../constants';
 
 export default StyleSheet.create({
   container: {
     flex: 1,
+    padding: 10,
+    backgroundColor: COLORS.BG_GREY,
   },
   contentContainer: {
   },

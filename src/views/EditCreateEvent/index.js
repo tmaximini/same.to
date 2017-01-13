@@ -30,7 +30,7 @@ const Item = Picker.Item;
   }),
   editCreateEventActions,
 )
-export default class NewEvent extends Component {
+export default class EditCreatevent extends Component {
 
   static propTypes = {
     newEvent: PropTypes.object,

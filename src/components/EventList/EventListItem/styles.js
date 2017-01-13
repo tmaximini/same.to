@@ -1,15 +1,28 @@
 import { StyleSheet } from 'react-native';
 
+import { COLORS } from '../../../constants';
+
 export default StyleSheet.create({
   container: {
+    flex: 1,
     height: 150,
     alignItems: 'center',
-    paddingBottom: 5,
+    marginBottom: 10,
+    backgroundColor: COLORS.BG_GREY,
+    overflow: 'hidden',
+    borderRadius: 5,
+  },
+  bgImage: {
+    flex: 1,
+    width: null,
+    height: null,
+    alignSelf: 'stretch',
+    overflow: 'hidden',
   },
   wrapper: {
     flex: 1,
-    flexDirection: 'column',
     alignItems: 'center',
+    backgroundColor: COLORS.GREY_OPAQ,
   },
   main: {
     flex: 1,
@@ -22,25 +35,18 @@ export default StyleSheet.create({
     justifyContent: 'center',
     flexDirection: 'row',
   },
-  extraInfo: {
-    flex: 1,
-    alignItems: 'flex-start',
-    justifyContent: 'center',
-    paddingLeft: 10
-  },
-  bottom: {
-    flex: 1,
+  top: {
+    flex: 2,
     flexDirection: 'row',
   },
-  action: {
-    flex: 1,
-    alignItems: 'center',
-    borderColor: '#000',
-    borderWidth: 1,
+  bottom: {
+    flex: 2,
+    alignSelf: 'flex-start',
+    flexDirection: 'column',
+    paddingTop: 10,
   },
-  hilite: {
-    flex: 4,
-    backgroundColor: 'green',
+  middle: {
+    flex: 1,
     alignSelf: 'stretch',
     alignItems: 'center',
     justifyContent: 'center',
@@ -49,16 +55,42 @@ export default StyleSheet.create({
     fontSize: 20,
     textAlign: 'left',
     flex: 24,
-    paddingLeft: 10
+    paddingLeft: 10,
+    color: COLORS.WHITE,
   },
   button: {
-    fontSize: 25,
+    fontSize: 32,
     flex: 2,
+    fontWeight: 'bold',
     textAlign: 'left',
+    color: COLORS.CYAN,
   },
   text: {
-    marginLeft: 12,
+    marginLeft: 3,
+    fontSize: 12,
+    color: COLORS.WHITE,
+  },
+  location: {
+    flex: 1,
+    paddingLeft: 12,
+    width: 200,
+    flexDirection: 'row',
+  },
+  date: {
+    flex: 1,
+    paddingLeft: 12,
+    flexDirection: 'row',
+  },
+  icon: {
+    color: COLORS.WHITE,
+    flex: 1,
     fontSize: 16,
   },
+  dateText: {
+    flex: 9,
+  },
+  locationText: {
+    flex: 9,
+  }
 
 });

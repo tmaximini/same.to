@@ -2,12 +2,13 @@ import React, { PropTypes } from 'react';
 import ActionButton from 'react-native-circular-action-menu';
 import Icon from 'react-native-vector-icons/Ionicons';
 import styles from './styles';
+import { COLORS } from '../../constants';
 
 const { Item } = ActionButton;
 
 const PlusButton = ({ items, ...rest }) => (
   <ActionButton
-    buttonColor="rgba(231,76,60,1)"
+    buttonColor={COLORS.CYAN}
     {...rest}
   >
     {items.map((item, index) => {
