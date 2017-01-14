@@ -21,7 +21,7 @@ const GeoInput = ({ placeholder, onAdressSelect, ...rest }) => (
     // available options: https://developers.google.com/places/web-service/autocomplete
     query={{
       key: GOOGLE_MAPS_API_KEY,
-      // language: 'en', // language of the results
+      language: 'de', // language of the results
       // types: '(cities)', // default: 'geocode'
     }}
     styles={{

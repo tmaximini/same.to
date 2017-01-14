@@ -7,6 +7,7 @@ import {
 import { connect } from 'react-redux';
 import { formatDate } from '../../utils';
 import Input from '../../components/Input';
+import Button from '../../components/Button';
 import GeoInput from '../../components/GeoInput';
 import Datepicker from '../../components/Datepicker';
 import CheckboxList from '../../components/CheckboxList';
@@ -31,6 +32,7 @@ export default class EditCreateTrip extends Component {
     tripTypes: PropTypes.array,
     pickupString: PropTypes.string,
     destinationString: PropTypes.string,
+    trip: PropTypes.object,
   }
 
   constructor(props) {
@@ -66,7 +68,7 @@ export default class EditCreateTrip extends Component {
       geocodeDestination,
       pickupString,
       destinationString,
-      startAt,
+      trip,
     } = this.props;
 
     const today = formatDate(new Date());
@@ -87,7 +89,7 @@ export default class EditCreateTrip extends Component {
             <Datepicker
               placeholder="Start Date"
               minDate={today}
-              date={startAt || today}
+              date={trip.startAt || today}
               onChange={date => updateTrip('startAt', date)}
             />
             <GeoInput
@@ -103,6 +105,12 @@ export default class EditCreateTrip extends Component {
               value={destinationString}
               onChangeText={text => updateTrip('destinationString', text)}
               onAdressSelect={geocodeDestination}
+            />
+          </View>
+          <View styles={styles.button}>
+            <Button
+              text={this.isNew ? 'Save' : 'Update'}
+              onPress={() => this.saveItem(trip)}
             />
           </View>
         </View>

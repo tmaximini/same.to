@@ -109,10 +109,18 @@ const actionsMap = {
     ...state,
     trip: {},
   }),
-  [SET_TRIP]: (state, action) => ({
-    ...state,
-    trip: action.payload.model,
-  }),
+  [SET_TRIP]: (state, action) => {
+    const { model } = action.payload;
+
+    console.log('model', model);
+
+    return {
+      ...state,
+      trip: model,
+      pickupString: model.pickupLocation ? model.pickupLocation.formattedAddress : '',
+      destinationString: model.destinationLocation ? model.destinationLocation.formattedAddress : '',
+    };
+  },
   [UPDATE_TRIP]: (state, action) => {
     const { key, value } = action.payload;
     const trip = {

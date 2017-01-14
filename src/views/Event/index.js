@@ -111,6 +111,8 @@ export default class Event extends Component {
           <PlusButton
             itemSize={45}
             radius={80}
+            startDegree={225}
+            endDegree={315}
             items={buttonItems}
           />
         </View>
