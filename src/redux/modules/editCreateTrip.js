@@ -1,5 +1,4 @@
-import { isBefore } from 'date-fns';
-import { formatDate, getDateFromString } from '../../utils';
+import { formatDate } from '../../utils';
 
 
 const makeDefaultTrip = () => ({
@@ -13,6 +12,8 @@ const initialState = {
   trip: {},
   errors: {},
   tripTypes: ['car', 'airplane', 'train', 'bus', 'taxi', 'driver'],
+  pickupString: null,
+  destnationString: null,
 };
 
 
@@ -22,11 +23,14 @@ const initialState = {
 export const UPDATE_TRIP_START = 'editTrip/UPDATE_TRIP_START';
 export const UPDATE_TRIP_SUCCESS = 'editTrip/UPDATE_TRIP_SUCCESS';
 export const UPDATE_TRIP_ERROR = 'editTrip/CREATE_TRIP_ERROR';
-export const UPDATE_TRIP = 'editTrip/UPDATE_NEW_TRIP';
+export const UPDATE_TRIP = 'editTrip/UPDATE_TRIP';
 export const SET_TRIP = 'editTrip/SET_NEW_TRIP';
 export const GEOCODE_TRIP_START = 'editTrip/GEOCODE_TRIP_START';
 export const GEOCODE_TRIP_SUCCESS = 'editTrip/GEOCODE_TRIP_SUCCESS';
 export const GEOCODE_TRIP_ERROR = 'editTrip/GEOCODE_TRIP_ERROR';
+export const GEOCODE_TRIP_DESTINATION_START = 'editTrip/GEOCODE_TRIP_DESTINATION_START';
+export const GEOCODE_TRIP_DESTINATION_SUCCESS = 'editTrip/GEOCODE_TRIP_DESTINATION_SUCCESS';
+export const GEOCODE_TRIP_DESTINATION_ERROR = 'editTrip/GEOCODE_TRIP_DESTINATION_ERROR';
 
 // create
 export const CREATE_TRIP_START = 'createTrip/CREATE_TRIP_START';
@@ -66,7 +70,20 @@ export const createTrip = newTripData => ({
 
 export const geocodeLocation = location => ({
   type: GEOCODE_TRIP_START,
-  payload: location
+  payload: {
+    location,
+    successAction: GEOCODE_TRIP_SUCCESS,
+    errorAction: GEOCODE_TRIP_ERROR,
+  }
+});
+
+export const geocodeDestination = location => ({
+  type: GEOCODE_TRIP_DESTINATION_START,
+  payload: {
+    location,
+    successAction: GEOCODE_TRIP_DESTINATION_SUCCESS,
+    errorAction: GEOCODE_TRIP_DESTINATION_ERROR,
+  }
 });
 
 
@@ -78,6 +95,7 @@ export const actions = {
   setTrip,
   updateTrip,
   geocodeLocation,
+  geocodeDestination
 };
 
 
@@ -107,6 +125,13 @@ const actionsMap = {
       trip,
     };
   },
+  [GEOCODE_TRIP_SUCCESS]: (state, action) => ({
+    ...state,
+    trip: {
+      ...state.trip,
+      pickupLocation: action.payload,
+    },
+  }),
   [GEOCODE_TRIP_ERROR]: (state, action) => {
     const { locationString, error } = action.payload;
 
@@ -114,7 +139,31 @@ const actionsMap = {
       ...state,
       trip: {
         ...state.trip,
-        location: {
+        pickupLocation: {
+          formattedAddress: locationString,
+        },
+      },
+      errors: {
+        ...state.errors,
+        trip: error,
+      }
+    };
+  },
+  [GEOCODE_TRIP_DESTINATION_SUCCESS]: (state, action) => ({
+    ...state,
+    trip: {
+      ...state.trip,
+      destinationLocation: action.payload,
+    },
+  }),
+  [GEOCODE_TRIP_DESTINATION_ERROR]: (state, action) => {
+    const { locationString, error } = action.payload;
+
+    return {
+      ...state,
+      trip: {
+        ...state.trip,
+        destinationLocation: {
           formattedAddress: locationString,
         },
       },

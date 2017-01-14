@@ -9,7 +9,7 @@ const GeoInput = ({ placeholder, onAdressSelect, ...rest }) => (
     placeholder={placeholder || 'Search'}
     minLength={2} // minimum length of text to search
     autoFocus={false}
-    listViewDisplayed="auto" // true/false/undefined
+    listViewDisplayed="false" // true/false/undefined
     // fetchDetails
     // renderDescription={(row) => row.terms[0].value} // display street only
     onPress={(data, details = null) => { // 'details' is provided when fetchDetails = true
@@ -26,16 +26,16 @@ const GeoInput = ({ placeholder, onAdressSelect, ...rest }) => (
     }}
     styles={{
       description: {
-        fontWeight: 'bold',
+        color: '#fff',
       },
       predefinedPlacesDescription: {
-        color: '#1faadb',
+        color: '#fff',
       },
     }}
 
     // Will add a 'Current location' button at the top of the predefined places list
-    currentLocation
-    currentLocationLabel="Current location"
+    // currentLocation
+    // currentLocationLabel="Current location"
     // Which API to use: GoogleReverseGeocoding or GooglePlacesSearch
     nearbyPlacesAPI="GooglePlacesSearch"
     // GoogleReverseGeocodingQuery={{

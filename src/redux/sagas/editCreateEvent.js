@@ -1,14 +1,12 @@
 import { delay } from 'redux-saga';
 import { takeLatest, call, put } from 'redux-saga/effects';
 import { Actions } from 'react-native-router-flux';
-import Geocoder from 'react-native-geocoder';
+import geocodeAsync from './geocode';
 import {
   CREATE_EVENT_START,
   CREATE_EVENT_SUCCESS,
   CREATE_EVENT_ERROR,
   GEOCODE_NEW_EVENT_START,
-  GEOCODE_NEW_EVENT_SUCCESS,
-  GEOCODE_NEW_EVENT_ERROR
 } from '../modules/editCreateEvent';
 import { updateAuthHeader } from '../../services/api';
 import { createEvent } from '../../services/events';
@@ -53,42 +51,6 @@ export function* createEventAsync(action) {
 }
 
 
-export function* geocodeEventAsync(action) {
-  const locationString = action.payload;
-  try {
-    const response = yield call(Geocoder.geocodeAddress, locationString);
-    if (response.error) {
-      // in case of error
-      yield put({
-        type: GEOCODE_NEW_EVENT_ERROR,
-        payload: {
-          error: response.error ? response.error : response,
-          locationString
-        }
-      });
-      if (response.error.statusCode === 401) {
-        updateAuthHeader(null);
-        Actions.login();
-      }
-    } else {
-      // success
-      console.info('geocode success!', response);
-      yield put({
-        type: GEOCODE_NEW_EVENT_SUCCESS,
-        payload: response[0] // response is an array
-      });
-    }
-  } catch (error) {
-    console.log({ error });
-    yield put({
-      type: GEOCODE_NEW_EVENT_ERROR,
-      payload: {
-        error: error.code || error.message,
-        locationString
-      }
-    });
-  }
-}
 
 
 
@@ -99,5 +61,5 @@ export function* watchCreateEvent() {
 }
 
 export function* watchGeocodeEvent() {
-  yield takeLatest(GEOCODE_NEW_EVENT_START, geocodeEventAsync);
+  yield takeLatest(GEOCODE_NEW_EVENT_START, geocodeAsync);
 }

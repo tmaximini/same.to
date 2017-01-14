@@ -71,12 +71,20 @@ export const updateNewEvent = (key, value) => ({
 
 export const geocodeLocation = location => ({
   type: GEOCODE_EVENT_START,
-  payload: location
+  payload: {
+    location,
+    successAction: GEOCODE_EVENT_SUCCESS,
+    errorAction: GEOCODE_EVENT_ERROR,
+  }
 });
 
 export const geocodeNewLocation = location => ({
   type: GEOCODE_NEW_EVENT_START,
-  payload: location
+  payload: {
+    location,
+    successAction: GEOCODE_NEW_EVENT_SUCCESS,
+    errorAction: GEOCODE_NEW_EVENT_ERROR,
+  }
 });
 
 // export all actions

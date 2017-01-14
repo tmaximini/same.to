@@ -5,7 +5,10 @@ import {
 } from 'react-native';
 
 import { connect } from 'react-redux';
+import { formatDate } from '../../utils';
 import Input from '../../components/Input';
+import GeoInput from '../../components/GeoInput';
+import Datepicker from '../../components/Datepicker';
 import CheckboxList from '../../components/CheckboxList';
 import { actions as tripActions } from '../../redux/modules/editCreateTrip';
 
@@ -23,8 +26,11 @@ export default class EditCreateTrip extends Component {
     updateRemoteTrip: PropTypes.func.isRequired,
     createTrip: PropTypes.func.isRequired,
     geocodeLocation: PropTypes.func.isRequired,
+    geocodeDestination: PropTypes.func.isRequired,
     model: PropTypes.object,
     tripTypes: PropTypes.array,
+    pickupString: PropTypes.string,
+    destinationString: PropTypes.string,
   }
 
   constructor(props) {
@@ -53,7 +59,17 @@ export default class EditCreateTrip extends Component {
 
 
   render() {
-    const { tripTypes, updateTrip } = this.props;
+    const {
+      tripTypes,
+      updateTrip,
+      geocodeLocation,
+      geocodeDestination,
+      pickupString,
+      destinationString,
+      startAt,
+    } = this.props;
+
+    const today = formatDate(new Date());
 
     return (
       <View style={styles.container}>
@@ -68,7 +84,26 @@ export default class EditCreateTrip extends Component {
             />
           </View>
           <View style={styles.inputWrapper}>
-            <Text>test</Text>
+            <Datepicker
+              placeholder="Start Date"
+              minDate={today}
+              date={startAt || today}
+              onChange={date => updateTrip('startAt', date)}
+            />
+            <GeoInput
+              placeholder="Start"
+              enablePoweredByContainer={false}
+              value={pickupString}
+              onChangeText={text => updateTrip('pickupString', text)}
+              onAdressSelect={geocodeLocation}
+            />
+            <GeoInput
+              placeholder="Destination"
+              enablePoweredByContainer={false}
+              value={destinationString}
+              onChangeText={text => updateTrip('destinationString', text)}
+              onAdressSelect={geocodeDestination}
+            />
           </View>
         </View>
       </View>

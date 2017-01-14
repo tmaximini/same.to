@@ -3,6 +3,12 @@
 import { watchLogin } from './auth';
 import { watchFetchEvents } from './events';
 import { watchCreateEvent, watchGeocodeEvent } from './editCreateEvent';
+import {
+  watchCreateTrip,
+  watchUpdateTrip,
+  watchGeocodeTrip,
+  watchGeocodeTripDestination,
+} from './editCreateTrip';
 
 // SAGAs
 // 1. define worker sagas
@@ -19,5 +25,9 @@ export default function* root() {
     watchFetchEvents(),
     watchCreateEvent(),
     watchGeocodeEvent(),
+    watchCreateTrip(),
+    watchUpdateTrip(),
+    watchGeocodeTrip(),
+    watchGeocodeTripDestination(),
   ];
 }

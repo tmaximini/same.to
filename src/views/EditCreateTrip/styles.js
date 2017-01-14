@@ -23,6 +23,7 @@ export default StyleSheet.create({
   inputWrapper: {
     flex: 7,
     padding: 10,
+    justifyContent: 'flex-start',
   }
 });
 
