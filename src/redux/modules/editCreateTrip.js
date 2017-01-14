@@ -10,9 +10,9 @@ const makeDefaultTrip = () => ({
 
 // Initial State
 const initialState = {
-  newTrip: {},
   trip: {},
   errors: {},
+  tripTypes: ['car', 'airplane', 'train', 'bus', 'taxi', 'driver'],
 };
 
 
@@ -23,6 +23,7 @@ export const UPDATE_TRIP_START = 'editTrip/UPDATE_TRIP_START';
 export const UPDATE_TRIP_SUCCESS = 'editTrip/UPDATE_TRIP_SUCCESS';
 export const UPDATE_TRIP_ERROR = 'editTrip/CREATE_TRIP_ERROR';
 export const UPDATE_TRIP = 'editTrip/UPDATE_NEW_TRIP';
+export const SET_TRIP = 'editTrip/SET_NEW_TRIP';
 export const GEOCODE_TRIP_START = 'editTrip/GEOCODE_TRIP_START';
 export const GEOCODE_TRIP_SUCCESS = 'editTrip/GEOCODE_TRIP_SUCCESS';
 export const GEOCODE_TRIP_ERROR = 'editTrip/GEOCODE_TRIP_ERROR';
@@ -31,10 +32,7 @@ export const GEOCODE_TRIP_ERROR = 'editTrip/GEOCODE_TRIP_ERROR';
 export const CREATE_TRIP_START = 'createTrip/CREATE_TRIP_START';
 export const CREATE_TRIP_SUCCESS = 'createTrip/CREATE_TRIP_SUCCESS';
 export const CREATE_TRIP_ERROR = 'createTrip/CREATE_TRIP_ERROR';
-export const UPDATE_NEW_TRIP = 'createTrip/UPDATE_NEW_TRIP';
-export const GEOCODE_NEW_TRIP_START = 'createTrip/GEOCODE_NEW_TRIP_START';
-export const GEOCODE_NEW_TRIP_SUCCESS = 'createTrip/GEOCODE_NEW_TRIP_SUCCESS';
-export const GEOCODE_NEW_TRIP_ERROR = 'createTrip/GEOCODE_NEW_TRIP_ERROR';
+
 
 
 // Action Creators
@@ -47,7 +45,15 @@ export const updateRemoteTrip = updateTrip => ({
 export const updateTrip = (key, value) => ({
   type: UPDATE_TRIP,
   payload: {
-    key, value
+    key,
+    value
+  }
+});
+
+export const setTrip = model => ({
+  type: SET_TRIP,
+  payload: {
+    model
   }
 });
 
@@ -56,32 +62,22 @@ export const createTrip = newTripData => ({
   payload: newTripData
 });
 
-// updates any key/value pair when editing Trip
-export const updateNewTrip = (key, value) => ({
-  type: UPDATE_NEW_TRIP,
-  payload: {
-    key, value
-  }
-});
+
 
 export const geocodeLocation = location => ({
   type: GEOCODE_TRIP_START,
   payload: location
 });
 
-export const geocodeNewLocation = location => ({
-  type: GEOCODE_NEW_TRIP_START,
-  payload: location
-});
+
 
 // export all actions
 export const actions = {
   updateRemoteTrip,
   createTrip,
+  setTrip,
   updateTrip,
-  updateNewTrip,
   geocodeLocation,
-  geocodeNewLocation,
 };
 
 
@@ -89,47 +85,15 @@ export const actions = {
 const actionsMap = {
   [CREATE_TRIP_SUCCESS]: (state) => ({
     ...state,
-    newTrip: makeDefaultTrip(),
+    trip: makeDefaultTrip(),
   }),
-  [UPDATE_NEW_TRIP]: (state, action) => {
-    const { key, value } = action.payload;
-    const newTrip = {
-      ...state.newTrip,
-      [key]: value
-    };
-
-    return {
-      ...state,
-      newTrip,
-    };
-  },
-  [GEOCODE_NEW_TRIP_SUCCESS]: (state, action) => ({
-    ...state,
-    newTrip: {
-      ...state.newTrip,
-      location: action.payload,
-    },
-  }),
-  [GEOCODE_NEW_TRIP_ERROR]: (state, action) => {
-    const { locationString, error } = action.payload;
-
-    return {
-      ...state,
-      newTrip: {
-        ...state.newTrip,
-        location: {
-          formattedAddress: locationString,
-        },
-      },
-      errors: {
-        ...state.errors,
-        newTrip: error,
-      }
-    };
-  },
   [UPDATE_TRIP_SUCCESS]: (state) => ({
     ...state,
     trip: {},
+  }),
+  [SET_TRIP]: (state, action) => ({
+    ...state,
+    trip: action.payload.model,
   }),
   [UPDATE_TRIP]: (state, action) => {
     const { key, value } = action.payload;
@@ -143,13 +107,6 @@ const actionsMap = {
       trip,
     };
   },
-  [GEOCODE_NEW_TRIP_SUCCESS]: (state, action) => ({
-    ...state,
-    trip: {
-      ...state.trip,
-      location: action.payload,
-    },
-  }),
   [GEOCODE_TRIP_ERROR]: (state, action) => {
     const { locationString, error } = action.payload;
 

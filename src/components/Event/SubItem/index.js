@@ -13,17 +13,17 @@ const SubItem = ({ itemType, item }) => {
       case 'trip':
         return Actions.editCreateTrip({
           title: 'Edit Trip',
-          trip: model
+          model
         });
       case 'accommodation':
         return Actions.editCreateAccommodation({
           title: 'Edit Accommodation',
-          accomodation: model
+          model
         });
       default:
         return Actions.editCreateActivity({
           title: 'Edit Activity',
-          activity: model
+          model
         });
     }
   };

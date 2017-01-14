@@ -50,7 +50,8 @@ export const updateRemoteEvent = updateEvent => ({
 export const updateEvent = (key, value) => ({
   type: UPDATE_EVENT,
   payload: {
-    key, value
+    key,
+    value
   }
 });
 
@@ -63,7 +64,8 @@ export const createEvent = newEventData => ({
 export const updateNewEvent = (key, value) => ({
   type: UPDATE_NEW_EVENT,
   payload: {
-    key, value
+    key,
+    value
   }
 });
 

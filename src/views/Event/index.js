@@ -16,7 +16,7 @@ const buttonItems = [
   },
   {
     title: 'accomodation',
-    action: Actions.editCreateAccommodation,
+    action: () => { console.log('click'); Actions.editCreateAccommodation(); },
     icon: 'ios-bulb-outline'
   },
   {

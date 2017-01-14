@@ -3,6 +3,8 @@ import auth from './auth';
 import profile from './profile';
 import events from './events';
 import editCreateEvent from './editCreateEvent';
+import editCreateTrip from './editCreateTrip';
+import editCreateAccommodation from './editCreateAccommodation';
 import routes from './routes';
 
 export default combineReducers({
@@ -10,5 +12,7 @@ export default combineReducers({
   profile,
   events,
   editCreateEvent,
+  editCreateTrip,
+  editCreateAccommodation,
   routes,
 });

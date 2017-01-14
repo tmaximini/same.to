@@ -6,7 +6,7 @@ import styles from './styles';
 import { COLORS } from '../../constants';
 // import { border } from '../../utils';
 
-class EventList extends Component {
+export default class EventList extends Component {
 
   static propTypes = {
     events: PropTypes.arrayOf(PropTypes.object),
@@ -17,7 +17,6 @@ class EventList extends Component {
   constructor(props) {
     super(props);
     const { events } = props;
-    console.info('EVENTS', events);
     const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
     this.onRefresh = this.onRefresh.bind(this);
     this.state = {
@@ -26,8 +25,7 @@ class EventList extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('received props', nextProps);
-    if (true) {
+    if (nextProps.events) {
       console.info('nextProps EVENTS', nextProps.events);
       this.setState({
         dataSource: this.state.dataSource.cloneWithRows(nextProps.events)
@@ -61,5 +59,3 @@ class EventList extends Component {
     );
   }
 }
-
-export default EventList;

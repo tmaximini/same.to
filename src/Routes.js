@@ -87,23 +87,27 @@ const Routes = () => (
     />
     <Scene
       key="editCreateAccommodation"
+      sceneStyle={navBarPadding}
       component={EditCreateAccommodation}
       title="New Accommodation"
     />
     <Scene
       key="editCreateTrip"
       component={EditCreateTrip}
+      sceneStyle={navBarPadding}
       title="New Trip"
     />
     <Scene
       key="event"
       component={EventDetail}
+      sceneStyle={navBarPadding}
       title="Event"
       sceneStyle={navBarPadding}
     />
     <Scene
       key="editCreateEvent"
       component={EditCreatevent}
+      sceneStyle={navBarPadding}
       title="New Event"
       sceneStyle={navBarPadding}
     />
