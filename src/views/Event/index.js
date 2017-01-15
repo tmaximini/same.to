@@ -90,10 +90,10 @@ export default class Event extends Component {
                 </TouchableHighlight>
               </View>
               <View style={styles.box}>
-                <Text style={styles.boxText}>Invites</Text>
+                <Text style={styles.boxText}>Invite</Text>
               </View>
-              <View style={styles.box}>
-                <Text style={styles.boxText}>Members</Text>
+              <View style={[styles.box, { borderRightWidth: 0 }]}>
+                <Text style={styles.boxText}>Participants</Text>
               </View>
             </View>
           </View>
@@ -105,7 +105,11 @@ export default class Event extends Component {
               accommodations={accommodations}
             />
           ) : (
-            <Text>has no items</Text>
+            <View style={styles.noItems}>
+              <Text style={styles.noItemsText}>
+                Bisher wurden keine Trips, Unterkünfte oder Aktivitäten angelegt. Um zu starten, drücke unten auf das Plus.
+              </Text>
+            </View>
           )}
 
           <PlusButton

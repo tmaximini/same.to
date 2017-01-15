@@ -26,6 +26,7 @@ export default StyleSheet.create({
   wrapper: {
     flex: 1,
     alignItems: 'center',
+    padding: 10,
     backgroundColor: COLORS.GREY_OPAQ,
   },
   top: {
@@ -35,17 +36,15 @@ export default StyleSheet.create({
   bottom: {
     flex: 1,
     alignSelf: 'stretch',
-    padding: 10,
+    justifyContent: 'flex-end',
   },
   middle: {
-    flex: 1,
+    flex: 2,
     alignSelf: 'stretch',
-    paddingLeft: 10,
   },
   title: {
     fontSize: 22,
     textAlign: 'left',
-    paddingLeft: 10,
     color: COLORS.WHITE,
   },
   subTitle: {
@@ -57,13 +56,10 @@ export default StyleSheet.create({
   },
   button: {
     fontSize: 26,
-    flex: 2,
     position: 'absolute',
-    paddingRight: 10,
     fontWeight: 'bold',
     textAlign: 'left',
     right: 0,
-    zIndex: 10,
     color: COLORS.CYAN,
   },
 });

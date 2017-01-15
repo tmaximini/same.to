@@ -3,6 +3,7 @@ import { Image, View, Text, TouchableHighlight } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Date from '../../Date';
 import Location from '../../Location';
+import TagList from '../../TagList';
 import styles from './styles';
 
 const background = require('../../../assets/sunflowers.jpg');
@@ -21,7 +22,9 @@ const EventListItem = ({ event }) => {
       >
         <View style={styles.wrapper}>
           <View style={styles.top}>
-
+            <TagList
+              tags={[event.type]}
+            />
           </View>
 
 

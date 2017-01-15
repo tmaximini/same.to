@@ -12,7 +12,7 @@ export default StyleSheet.create({
     flex: 3,
   },
   bgImage: {
-    flex: 4,
+    flex: 5,
     width: null,
     height: null,
     alignSelf: 'stretch',
@@ -54,5 +54,12 @@ export default StyleSheet.create({
   },
   info: {
     flex: 1,
+  },
+  noItems: {
+    padding: 10,
+    flex: 1,
+  },
+  noItemsText: {
+    color: COLORS.WHITE,
   }
 });

@@ -6,11 +6,15 @@ export const border = (color = '#000', width = 4) => ({
   borderWidth: width
 });
 
-export const borderRadius = (size) => ({
+export const borderRadius = size => ({
   borderRadius: size
 });
 
-export const formatDate = (dateString) => format(parse(dateString), 'YYYY-MM-DD');
+export const formatDate = dateString => {
+  console.log('dateString', dateString);
+
+  return format(parse(dateString), 'YYYY-MM-DD');
+};
 
 export const getDateFromString = (string, delimiter = '-') => {
   if (!string) return null;
