@@ -34,8 +34,8 @@ export default StyleSheet.create({
   },
   bottom: {
     flex: 1,
-    ...MIXINS.floatLeft,
-    paddingTop: 10,
+    alignSelf: 'stretch',
+    padding: 10,
   },
   middle: {
     flex: 1,

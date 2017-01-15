@@ -27,7 +27,7 @@ const EventListItem = ({ event }) => {
 
           <TouchableHighlight
             style={styles.middle}
-            onPress={() => Actions.event({ title: name, event: this.props.event })}
+            onPress={() => Actions.event({ title: name, event })}
           >
             <View
               style={styles.main}

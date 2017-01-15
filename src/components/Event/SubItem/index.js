@@ -3,6 +3,7 @@ import { View, Text, Image, TouchableHighlight } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 // import { formatDate } from '../../../utils';
 import Date from '../../Date';
+import TagList from '../../TagList';
 import styles from './styles';
 
 const background = require('../../../assets/sunflowers.jpg');
@@ -59,7 +60,11 @@ const SubItem = ({ itemType, item }) => {
                 date={item.startAt || item.startDate}
               />
             </View>
-            <View style={styles.bottom}></View>
+            <View style={styles.bottom}>
+              <TagList
+                tags={[item.type]}
+              />
+            </View>
           </View>
         </TouchableHighlight>
       </Image>

@@ -14,5 +14,6 @@ export default StyleSheet.create({
   },
   dateText: {
     color: COLORS.WHITE,
+    fontSize: 12,
   },
 });
