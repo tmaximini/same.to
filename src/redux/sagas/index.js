@@ -9,6 +9,11 @@ import {
   watchGeocodeTrip,
   watchGeocodeTripDestination,
 } from './editCreateTrip';
+import {
+  watchCreateAccommodation,
+  watchUpdateAccommodation,
+  watchGeocodeAccommodation,
+} from './editCreateAccommodation';
 
 // SAGAs
 // 1. define worker sagas
@@ -29,5 +34,8 @@ export default function* root() {
     watchUpdateTrip(),
     watchGeocodeTrip(),
     watchGeocodeTripDestination(),
+    watchCreateAccommodation(),
+    watchUpdateAccommodation(),
+    watchGeocodeAccommodation(),
   ];
 }

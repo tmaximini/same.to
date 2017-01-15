@@ -60,11 +60,9 @@ const actionsMap = {
       const { token, loggedIn } = action.payload.auth;
       if (loggedIn && token) {
         updateAuthHeader(token);
-      } else {
-        Actions.login();
       }
     } catch (e) {
-      Actions.login();
+      console.warn(e);
     }
     return state;
   },

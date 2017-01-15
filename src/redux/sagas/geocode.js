@@ -34,7 +34,7 @@ export default function* geocodeAsync(action) {
       type: errorAction,
       payload: {
         error: error.code || error.message,
-        locationString
+        location
       }
     });
   }

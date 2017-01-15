@@ -11,8 +11,8 @@ const makeDefaultAccommodation = () => ({
 const initialState = {
   accommodation: {},
   errors: {},
-  accommodationTypes: ['car', 'airplane', 'train', 'bus', 'taxi', 'driver'],
-  pickupString: null,
+  accommodationTypes: ['hotel', 'hostal', 'house', 'appartment', 'camping', 'other'],
+  locationString: null,
 };
 
 
@@ -103,8 +103,7 @@ const actionsMap = {
     return {
       ...state,
       accommodation: model,
-      pickupString: model.pickupLocation ? model.pickupLocation.formattedAddress : '',
-      destinationString: model.destinationLocation ? model.destinationLocation.formattedAddress : '',
+      locationString: model.pickupLocation ? model.pickupLocation.formattedAddress : '',
     };
   },
   [UPDATE_ACCOMMODATION]: (state, action) => {
