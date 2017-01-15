@@ -11,7 +11,7 @@ const background = require('../../assets/gamescom.jpg');
 const buttonItems = [
   {
     title: 'trip',
-    action: Actions.editCreateTrip,
+    action: () => { console.log('click'); Actions.editCreateTrip(); },
     icon: 'ios-cafe-outline'
   },
   {
@@ -21,7 +21,7 @@ const buttonItems = [
   },
   {
     title: 'activity',
-    action: Actions.editCreateAccommodation,
+    action: () => { console.log('click'); Actions.editCreateTrip(); },
     icon: 'ios-bulb-outline'
   }
 ];
