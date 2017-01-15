@@ -16,7 +16,7 @@ const PlusButton = ({ items, ...rest }) => (
         <Item
           key={index}
           title={item.title}
-          buttonColor={item.color || '#9b59b6'}
+          buttonColor={item.color || COLORS.CYAN}
           onPress={item.action}
         >
           <Icon name={item.icon} style={styles.actionButtonIcon} />

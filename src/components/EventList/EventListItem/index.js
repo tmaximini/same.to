@@ -2,7 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import { Image, View, Text, TouchableHighlight } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Actions } from 'react-native-router-flux';
-import { formatDate } from '../../../utils';
+import Date from '../../Date';
+import Location from '../../Location';
 import styles from './styles';
 
 const background = require('../../../assets/sunflowers.jpg');
@@ -51,19 +52,12 @@ export default class EventListItem extends Component {
               </View>
             </TouchableHighlight>
             <View style={styles.bottom}>
-              <View style={styles.date}>
-                <Icon name="ios-calendar-outline" style={styles.icon} />
-                <View style={styles.dateText}>
-                  <Text style={styles.text}>{formatDate(startAt)}</Text>
-                </View>
-
-              </View>
-              <View style={styles.location}>
-                <Icon name="ios-navigate-outline" style={styles.icon} />
-                <View style={styles.locationText}>
-                  <Text style={styles.text}>{locality || formattedAddress}</Text>
-                </View>
-              </View>
+              <Date
+                date={startAt}
+              />
+              <Location
+                location={location}
+              />
             </View>
           </View>
         </Image>

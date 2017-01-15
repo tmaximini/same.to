@@ -39,17 +39,17 @@ export default StyleSheet.create({
     flex: 2,
     flexDirection: 'row',
   },
-  bottom: {
-    flex: 2,
-    alignSelf: 'flex-start',
-    flexDirection: 'column',
-    paddingTop: 10,
-  },
   middle: {
     flex: 1,
     alignSelf: 'stretch',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  bottom: {
+    flex: 2,
+    alignSelf: 'flex-start',
+    flexDirection: 'column',
+    padding: 10,
   },
   title: {
     fontSize: 20,
@@ -59,8 +59,10 @@ export default StyleSheet.create({
     color: COLORS.WHITE,
   },
   button: {
+    position: 'absolute',
+    right: 10,
     fontSize: 32,
-    flex: 2,
+    paddingLeft: 10,
     fontWeight: 'bold',
     textAlign: 'left',
     color: COLORS.CYAN,
@@ -70,27 +72,4 @@ export default StyleSheet.create({
     fontSize: 12,
     color: COLORS.WHITE,
   },
-  location: {
-    flex: 1,
-    paddingLeft: 12,
-    width: 200,
-    flexDirection: 'row',
-  },
-  date: {
-    flex: 1,
-    paddingLeft: 12,
-    flexDirection: 'row',
-  },
-  icon: {
-    color: COLORS.WHITE,
-    flex: 1,
-    fontSize: 16,
-  },
-  dateText: {
-    flex: 9,
-  },
-  locationText: {
-    flex: 9,
-  }
-
 });

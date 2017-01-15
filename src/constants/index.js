@@ -12,3 +12,12 @@ export const FONT_SIZES = {
   TITLE: 32,
   BUTTON: 16,
 };
+
+export const MIXINS = {
+  floatLeft: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    alignSelf: 'flex-start',
+    justifyContent: 'flex-end',
+  },
+};

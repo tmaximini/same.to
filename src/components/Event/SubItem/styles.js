@@ -2,7 +2,7 @@ import {
   StyleSheet
 } from 'react-native';
 
-import { COLORS } from '../../../constants';
+import { COLORS, MIXINS } from '../../../constants';
 
 export default StyleSheet.create({
   container: {
@@ -30,33 +30,39 @@ export default StyleSheet.create({
   },
   top: {
     flex: 1,
-    flexDirection: 'row',
+    ...MIXINS.floatLeft,
   },
   bottom: {
     flex: 1,
-    alignSelf: 'flex-start',
-    flexDirection: 'column',
+    ...MIXINS.floatLeft,
     paddingTop: 10,
   },
   middle: {
     flex: 1,
     alignSelf: 'stretch',
-    alignItems: 'flex-end',
-    justifyContent: 'center',
+    paddingLeft: 10,
   },
   title: {
-    fontSize: 20,
+    fontSize: 22,
     textAlign: 'left',
-    flex: 1,
     paddingLeft: 10,
     color: COLORS.WHITE,
+  },
+  subTitle: {
+    fontSize: 12,
+    textAlign: 'left',
+    paddingLeft: 10,
+    color: COLORS.WHITE,
+    paddingTop: 7,
   },
   button: {
     fontSize: 26,
     flex: 2,
+    position: 'absolute',
     paddingRight: 10,
     fontWeight: 'bold',
     textAlign: 'left',
+    right: 0,
     zIndex: 10,
     color: COLORS.CYAN,
   },
