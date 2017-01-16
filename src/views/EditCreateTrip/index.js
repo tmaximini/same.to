@@ -86,6 +86,11 @@ export default class EditCreateTrip extends Component {
             />
           </View>
           <View style={styles.inputWrapper}>
+            <Input
+              placeholder="Standort"
+              onChangeText={text => updateTrip('pickupString', text)}
+              icon="ios-locate-outline"
+            />
             <Datepicker
               placeholder="Start Date"
               minDate={today}

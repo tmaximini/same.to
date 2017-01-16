@@ -2,6 +2,8 @@ import {
   StyleSheet
 } from 'react-native';
 
+import { COLORS } from '../../constants';
+
 export default StyleSheet.create({
   inputWrap: {
     flexDirection: 'row',
@@ -11,17 +13,16 @@ export default StyleSheet.create({
   },
   input: {
     flex: 1,
-    paddingHorizontal: 10,
-    backgroundColor: '#FFF',
-  },
-  iconWrap: {
-    paddingHorizontal: 7,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#d73352'
+    padding: 15,
+    fontSize: 14,
+    backgroundColor: COLORS.DARK_GREY,
+    borderRadius: 5,
+    color: COLORS.WHITE,
   },
   icon: {
-    width: 20,
-    height: 20
+    position: 'absolute',
+    right: 10,
+    top: 10,
+    color: COLORS.CYAN,
   }
 });

@@ -2,34 +2,32 @@ import React, { PropTypes } from 'react';
 import {
   View,
   TextInput,
-  Image
 } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import styles from './styles';
 
 
-const Input = (props) => {
-  const {
-    icon,
-    ...rest,
-  } = props;
+const Input = ({ icon, value, ...rest }) => {
+
 
   return (
     <View style={styles.inputWrap}>
-      {icon && (
-        <View style={styles.iconWrap}>
-          <Image
-            source={icon}
-            style={styles.icon}
-            resizeMode="contain"
-          />
-        </View>
-      )}
       <TextInput
         style={styles.input}
         underlineColorAndroid="transparent"
+        placeholderTextColor="#999"
+        returnKeyType="done"
+        value={value}
         {...rest}
       />
+      {icon && (
+        <Icon
+          name={icon}
+          style={styles.icon}
+          size={20}
+        />
+      )}
     </View>
   );
 };
@@ -38,7 +36,8 @@ Input.propTypes = {
   icon: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number
-  ])
+  ]),
+  value: PropTypes.string,
 };
 
 export default Input;

@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
+import { View } from 'react-native';
 import DPicker from 'react-native-datepicker';
+import { COLORS, MIXINS } from '../../constants';
 
 export default class DatePicker extends Component {
 
@@ -21,36 +23,51 @@ export default class DatePicker extends Component {
     } = this.props;
 
     return (
-      <DPicker
-        style={{ width: 200 }}
-        date={date}
-        mode="date"
-        placeholder={placeholder || 'select date'}
-        format="YYYY-MM-DD"
-        minDate={minDate}
-        maxDate={maxDate}
-        confirmBtnText="Confirm"
-        cancelBtnText="Cancel"
-        onDateChange={(nextDate) => onChange(nextDate)}
-        customStyles={{
-          dateIcon: {
-            position: 'absolute',
-            right: 0,
-            top: 4,
-            marginLeft: 0
-          },
-          dateInput: {
-            marginLeft: 36,
-            borderWidth: 0,
-            alignSelf: 'stretch',
-            alignItems: 'center',
-          },
-          dateTouchBody: {
-            alignItems: 'flex-end',
-            justifyContent: 'flex-end',
-          }
-        }}
-      />
+      <View style={{ flex: 1, flexDirection: 'row' }}>
+        <DPicker
+          style={{ flex: 1 }}
+          date={date}
+          mode="date"
+          placeholder={placeholder || 'select date'}
+          format="YYYY-MM-DD"
+          minDate={minDate}
+          maxDate={maxDate}
+          confirmBtnText="Confirm"
+          cancelBtnText="Cancel"
+          onDateChange={(nextDate) => onChange(nextDate)}
+          customStyles={{
+            dateIcon: {
+              position: 'absolute',
+              right: 0,
+              top: 4,
+              marginLeft: 0,
+            },
+            dateInput: {
+              flex: 1,
+              padding: 15,
+              backgroundColor: COLORS.DARK_GREY,
+              borderRadius: 5,
+              borderWidth: 0,
+              alignItems: 'flex-start',
+            },
+            placeholderText: {
+              color: '#999',
+              fontSize: 14,
+            },
+            dateText: {
+              color: COLORS.WHITE,
+              fontSize: 14,
+            },
+            dateTouchBody: {
+              justifyContent: 'center',
+              flex: 1,
+              alignItems: 'flex-start',
+              alignSelf: 'stretch',
+              flexDirection: 'row'
+            }
+          }}
+        />
+      </View>
     );
   }
 }
