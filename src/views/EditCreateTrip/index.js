@@ -39,6 +39,7 @@ export default class EditCreateTrip extends Component {
     super(props);
     this.isNew = true;
     this.saveItem = this.saveItem.bind(this);
+    this.toggleDest = this.toggleDest.bind(this);
   }
 
   componentWillMount() {
@@ -70,6 +71,7 @@ export default class EditCreateTrip extends Component {
       destinationString,
       trip,
     } = this.props;
+    const { hideDest } = this.state;
 
     const today = formatDate(new Date());
 
@@ -112,7 +114,10 @@ export default class EditCreateTrip extends Component {
               onAdressSelect={geocodeDestination}
             />
           </View>
-          <View styles={styles.button}>
+          <View style={styles.spacer}>
+
+          </View>
+          <View style={styles.button}>
             <Button
               text={this.isNew ? 'Save' : 'Update'}
               onPress={() => this.saveItem(trip)}

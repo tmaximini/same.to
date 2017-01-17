@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { View } from 'react-native';
 import DPicker from 'react-native-datepicker';
-import { COLORS, MIXINS } from '../../constants';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { COLORS } from '../../constants';
 
 export default class DatePicker extends Component {
 
@@ -24,10 +25,16 @@ export default class DatePicker extends Component {
 
     return (
       <View style={{ flex: 1, flexDirection: 'row' }}>
+        <Icon
+          name="calendar"
+          style={{ position: 'absolute', right: 10, top: 10, color: COLORS.CYAN, zIndex: 10 }}
+          size={20}
+        />
         <DPicker
           style={{ flex: 1 }}
           date={date}
           mode="date"
+          showIcon={false}
           placeholder={placeholder || 'select date'}
           format="YYYY-MM-DD"
           minDate={minDate}

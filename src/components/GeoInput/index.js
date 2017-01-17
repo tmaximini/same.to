@@ -1,5 +1,7 @@
 import React, { PropTypes } from 'react';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import styles from './styles';
+
 
 export const GOOGLE_MAPS_API_KEY = 'AIzaSyAM93ELRZPJKidnLtt-CIO1TPQT_HF5gqY';
 
@@ -17,21 +19,17 @@ const GeoInput = ({ placeholder, onAdressSelect, ...rest }) => (
       onAdressSelect(data.description);
     }}
     // getDefaultValue={() => ''}
-
+    // textInputProps={{
+    //   onFocus
+    // }}
+    keyboardShouldPersistTaps="always"
     // available options: https://developers.google.com/places/web-service/autocomplete
     query={{
       key: GOOGLE_MAPS_API_KEY,
       language: 'de', // language of the results
       // types: '(cities)', // default: 'geocode'
     }}
-    styles={{
-      description: {
-        color: '#fff',
-      },
-      predefinedPlacesDescription: {
-        color: '#fff',
-      },
-    }}
+    styles={styles}
 
     // Will add a 'Current location' button at the top of the predefined places list
     // currentLocation

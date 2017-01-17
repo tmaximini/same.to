@@ -8,22 +8,28 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: COLORS.BG_GREY,
+    padding: 10,
   },
   form: {
     flex: 1,
   },
   checkboxWrapper: {
-    padding: 10,
-    flex: 1,
+    flex: 2,
+    marginBottom: 20,
   },
   checkboxLabel: {
     marginBottom: 10,
     color: COLORS.WHITE,
   },
   inputWrapper: {
-    flex: 7,
-    padding: 10,
+    flex: 6,
     justifyContent: 'flex-start',
+  },
+  button: {
+    flex: 2,
+  },
+  spacer: {
+    flex: 4,
   }
 });
 
