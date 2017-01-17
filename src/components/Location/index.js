@@ -21,10 +21,10 @@ const Location = ({ location }) => {
 };
 
 Location.propTypes = {
-  location: PropTypes.oneOf(
+  location: PropTypes.oneOfType([
     PropTypes.object,
-    PropTypes.string
-  ),
+    PropTypes.string,
+  ]),
 };
 
 export default Location;

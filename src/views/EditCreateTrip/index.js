@@ -39,7 +39,6 @@ export default class EditCreateTrip extends Component {
     super(props);
     this.isNew = true;
     this.saveItem = this.saveItem.bind(this);
-    this.toggleDest = this.toggleDest.bind(this);
   }
 
   componentWillMount() {
@@ -71,7 +70,6 @@ export default class EditCreateTrip extends Component {
       destinationString,
       trip,
     } = this.props;
-    const { hideDest } = this.state;
 
     const today = formatDate(new Date());
 

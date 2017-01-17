@@ -33,7 +33,7 @@ export default class Event extends Component {
       trips: PropTypes.array.isRequired,
       accommodations: PropTypes.array.isRequired,
       name: PropTypes.string.isRequired,
-      type: PropTypes.string.isRequired,
+      type: PropTypes.string,
       description: PropTypes.string.isRequired,
     }).isRequired,
   }

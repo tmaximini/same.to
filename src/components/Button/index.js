@@ -45,7 +45,7 @@ export default class Button extends Component {
 
   render() {
     const colorStyle = {
-      color: this.props.textColor || (this.props.disabled ? '#ccc' : '#000')
+      color: this.props.textColor || (this.props.disabled ? '#ccc' : '#fff')
     };
     const buttonStyle = {
       borderWidth: this.props.noBorder ? 0 : 1

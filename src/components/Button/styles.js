@@ -1,14 +1,16 @@
 import { StyleSheet } from 'react-native';
+import { COLORS } from '../../constants';
 
 export default StyleSheet.create({
   button: {
-    backgroundColor: 'transparent',
+    backgroundColor: COLORS.CYAN,
     paddingVertical: 15,
     marginVertical: 15,
     alignItems: 'center',
     justifyContent: 'center',
-    borderColor: '#d73352',
-    borderWidth: 1
+    borderColor: COLORS.CYAN,
+    borderWidth: 1,
+    borderRadius: 5,
   },
   buttonText: {
     fontSize: 18,

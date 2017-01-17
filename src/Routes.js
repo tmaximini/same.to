@@ -1,7 +1,8 @@
 import React from 'react';
-import { Navigator, Text, StyleSheet } from 'react-native';
+import { View, Navigator, Text, StyleSheet } from 'react-native';
 import { Scene, Router } from 'react-native-router-flux';
 import { connect } from 'react-redux';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import Home from './views/Home';
 import Login from './views/Login';
 import LostPassword from './views/LostPassword';
@@ -10,6 +11,7 @@ import EditCreateTrip from './views/EditCreateTrip';
 import EditCreateAccommodation from './views/EditCreateAccommodation';
 import EventDetail from './views/Event';
 import EditCreatevent from './views/EditCreateEvent';
+import TabBar from './components/TabBar';
 // import Splash from './views/Splash';
 import { COLORS } from './constants';
 
@@ -24,10 +26,17 @@ const navTabpadding = {
   paddingBottom: 50, // default height of tabbar
 };
 
-const TabIcon = ({ selected, title }) => (
-  <Text style={{ color: selected ? 'red' : 'black' }}>
-    {title}
-  </Text>
+const makeTabIcon = (icon) => ({ selected, title }) => (
+  <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <Icon
+      name={icon}
+      size={22}
+      style={{ color: selected ? COLORS.CYAN : COLORS.WHITE }}
+    />
+    <Text style={{ color: selected ? COLORS.CYAN : COLORS.WHITE, fontSize: 10 }}>
+      {title}
+    </Text>
+  </View>
 );
 
 const TabView = () => (
@@ -62,23 +71,20 @@ const Routes = () => (
     <Scene
       key="tabbar"
       tabs
-      tabBarStyle={{ backgroundColor: COLORS.DARK_GREY }}
+      component={TabBar}
     >
       <Scene
         key="home"
         component={Home}
-        title="Home / Feed"
+        title="Home"
         sceneStyle={navTabpadding}
-        icon={TabIcon}
+        icon={makeTabIcon('home')}
         initial
       />
-      <Scene key="tab2" title="Tab #2" icon={TabIcon}>
-        <Scene key="tab2_1" component={TabView} title="Tab #2_1" />
-        <Scene key="tab2_2" component={TabView} title="Tab #2_2" />
-      </Scene>
-      <Scene key="tab3" component={TabView} title="Tab #3" icon={TabIcon} />
-      <Scene key="tab4" component={TabView} title="Tab #4" icon={TabIcon} />
-      <Scene key="tab5" component={TabView} title="Tab #5" icon={TabIcon} />
+      <Scene key="favorites" component={TabView} title="Favoriten" icon={makeTabIcon('star')} />
+      <Scene key="contacts" component={TabView} title="Kontakte" icon={makeTabIcon('user-circle-o')} />
+      <Scene key="chats" component={TabView} title="Chats" icon={makeTabIcon('comment')} />
+      <Scene key="settings" component={TabView} title="Mehr" icon={makeTabIcon('ellipsis-h')} />
     </Scene>
     <Scene
       key="editCreateProfile"
