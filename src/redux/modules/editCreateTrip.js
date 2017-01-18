@@ -124,8 +124,6 @@ const actionsMap = {
   [SET_TRIP]: (state, action) => {
     const { model } = action.payload;
 
-    console.log('model', model);
-
     return {
       ...state,
       trip: model,

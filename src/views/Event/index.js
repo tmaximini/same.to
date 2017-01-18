@@ -45,12 +45,10 @@ export default class Event extends Component {
   }
 
   editAccommodation() {
-    console.log('editAccommodation');
     Actions.editAccommodation({ event: this.props.event });
   }
 
   editTrip() {
-    console.log('editTrip');
     Actions.editTrip({ event: this.props.event });
   }
 

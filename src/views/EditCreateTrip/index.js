@@ -73,8 +73,6 @@ export default class EditCreateTrip extends Component {
       trip,
     } = this.props;
 
-    console.log('trip', trip);
-
     const today = formatDate(new Date());
 
     return (
