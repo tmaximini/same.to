@@ -4,6 +4,7 @@ import { formatDate, getDateFromString } from '../../utils';
 
 const makeDefaultEvent = () => ({
   type: 'event',
+  name: '',
   startAt: formatDate(new Date()),
   endAt: formatDate(new Date()),
   location: {},
@@ -11,10 +12,10 @@ const makeDefaultEvent = () => ({
 
 // Initial State
 const initialState = {
-  newEvent: makeDefaultEvent(),
-  editEvent: {},
+  event: makeDefaultEvent(),
+  locationString: null,
     // TODO: fetch from server
-  types: ['event', 'party', 'gaming', 'shopping', 'concert', 'cinema', 'dinner', 'sport', 'gameing'],
+  eventTypes: ['event', 'party', 'gaming', 'shopping', 'concert', 'cinema', 'dinner', 'sport', 'gameing'],
   errors: {},
 };
 
@@ -26,6 +27,7 @@ export const UPDATE_EVENT_START = 'editEvent/UPDATE_EVENT_START';
 export const UPDATE_EVENT_SUCCESS = 'editEvent/UPDATE_EVENT_SUCCESS';
 export const UPDATE_EVENT_ERROR = 'editEvent/CREATE_EVENT_ERROR';
 export const UPDATE_EVENT = 'editEvent/UPDATE_NEW_EVENT';
+export const SET_EVENT = 'editEVeditEventENT/SET_NEW_EVENT';
 export const GEOCODE_EVENT_START = 'editEvent/GEOCODE_EVENT_START';
 export const GEOCODE_EVENT_SUCCESS = 'editEvent/GEOCODE_EVENT_SUCCESS';
 export const GEOCODE_EVENT_ERROR = 'editEvent/GEOCODE_EVENT_ERROR';
@@ -34,10 +36,6 @@ export const GEOCODE_EVENT_ERROR = 'editEvent/GEOCODE_EVENT_ERROR';
 export const CREATE_EVENT_START = 'createEvent/CREATE_EVENT_START';
 export const CREATE_EVENT_SUCCESS = 'createEvent/CREATE_EVENT_SUCCESS';
 export const CREATE_EVENT_ERROR = 'createEvent/CREATE_EVENT_ERROR';
-export const UPDATE_NEW_EVENT = 'createEvent/UPDATE_NEW_EVENT';
-export const GEOCODE_NEW_EVENT_START = 'createEvent/GEOCODE_NEW_EVENT_START';
-export const GEOCODE_NEW_EVENT_SUCCESS = 'createEvent/GEOCODE_NEW_EVENT_SUCCESS';
-export const GEOCODE_NEW_EVENT_ERROR = 'createEvent/GEOCODE_NEW_EVENT_ERROR';
 
 
 // Action Creators
@@ -55,19 +53,18 @@ export const updateEvent = (key, value) => ({
   }
 });
 
+export const setEvent = model => ({
+  type: SET_EVENT,
+  payload: {
+    model
+  }
+});
+
 export const createEvent = newEventData => ({
   type: CREATE_EVENT_START,
   payload: newEventData
 });
 
-// updates any key/value pair when editing event
-export const updateNewEvent = (key, value) => ({
-  type: UPDATE_NEW_EVENT,
-  payload: {
-    key,
-    value
-  }
-});
 
 export const geocodeLocation = location => ({
   type: GEOCODE_EVENT_START,
@@ -78,23 +75,15 @@ export const geocodeLocation = location => ({
   }
 });
 
-export const geocodeNewLocation = location => ({
-  type: GEOCODE_NEW_EVENT_START,
-  payload: {
-    location,
-    successAction: GEOCODE_NEW_EVENT_SUCCESS,
-    errorAction: GEOCODE_NEW_EVENT_ERROR,
-  }
-});
+
 
 // export all actions
 export const actions = {
   updateRemoteEvent,
   createEvent,
   updateEvent,
-  updateNewEvent,
+  setEvent,
   geocodeLocation,
-  geocodeNewLocation,
 };
 
 
@@ -112,47 +101,18 @@ const ensureDatesAreValid = event => {
 
 // Action Handlers
 const actionsMap = {
-  [CREATE_EVENT_SUCCESS]: (state) => ({
-    ...state,
-    newEvent: makeDefaultEvent(),
-  }),
-  [UPDATE_NEW_EVENT]: (state, action) => {
-    const { key, value } = action.payload;
-    let newEvent = {
-      ...state.newEvent,
-      [key]: value
-    };
-    if (key === 'startAt' || key === 'endAt') {
-      newEvent = ensureDatesAreValid(newEvent);
-    }
+  // [CREATE_EVENT_SUCCESS]: (state) => ({
+  //   ...state,
+  //   event: makeDefaultEvent(),
+  // }),
+  [SET_EVENT]: (state, action) => {
+    const { model } = action.payload;
+
 
     return {
       ...state,
-      newEvent,
-    };
-  },
-  [GEOCODE_NEW_EVENT_SUCCESS]: (state, action) => ({
-    ...state,
-    newEvent: {
-      ...state.newEvent,
-      location: action.payload,
-    },
-  }),
-  [GEOCODE_NEW_EVENT_ERROR]: (state, action) => {
-    const { locationString, error } = action.payload;
-
-    return {
-      ...state,
-      newEvent: {
-        ...state.newEvent,
-        location: {
-          formattedAddress: locationString,
-        },
-      },
-      errors: {
-        ...state.errors,
-        newEvent: error,
-      }
+      event: model,
+      locationString: model.location ? model.location.formattedAddress : '',
     };
   },
   [UPDATE_EVENT_SUCCESS]: (state) => ({

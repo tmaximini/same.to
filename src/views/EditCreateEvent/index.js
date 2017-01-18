@@ -1,19 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { View } from 'react-native';
-import {
-  Container,
-  Content,
-  List,
-  ListItem,
-  InputGroup,
-  Input,
-  Text,
-  Picker,
-  Button
-} from 'native-base';
-// import Input from '../../components/Input';
-// import Button from '../../components/Button';
+
+import Input from '../../components/Input';
+import Button from '../../components/Button';
 import GeoInput from '../../components/GeoInput';
 import Datepicker from '../../components/Datepicker';
 
@@ -21,126 +11,101 @@ import { actions as editCreateEventActions } from '../../redux/modules/editCreat
 import { formatDate } from '../../utils';
 import styles from './styles';
 
-const Item = Picker.Item;
 
 @connect(
-  state => ({
-    newEvent: state.editCreateEvent.newEvent,
-    eventTypes: state.editCreateEvent.types,
-  }),
+  state => state.editCreateEvent,
   editCreateEventActions,
 )
 export default class EditCreatevent extends Component {
 
   static propTypes = {
-    newEvent: PropTypes.object,
+    event: PropTypes.object,
     eventTypes: PropTypes.arrayOf(PropTypes.string),
-    updateNewEvent: PropTypes.func.isRequired,
+    updateEvent: PropTypes.func.isRequired,
+    updateRemoteEvent: PropTypes.func.isRequired,
     createEvent: PropTypes.func.isRequired,
+    setEvent: PropTypes.func.isRequired,
     geocodeLocation: PropTypes.func.isRequired,
+    locationString: PropTypes.string,
+    model: PropTypes.object,
+  }
+
+  constructor(props) {
+    super(props);
+    this.isNew = true;
+    this.saveItem = this.saveItem.bind(this);
+  }
+
+  componentWillMount() {
+    const { setEvent, model } = this.props;
+    // 'model' is passed when we edit a trip, so we set
+    // editMethod and inital values correctly
+    if (model) {
+      this.isNew = false;
+      setEvent(model);
+    }
+  }
+
+  saveItem(item) {
+    if (this.isNew) {
+      this.props.createEvent(item);
+    } else {
+      this.props.updateRemoteEvent(item);
+    }
   }
 
   render() {
     const {
-      updateNewEvent,
-      newEvent,
-      createEvent,
-      eventTypes,
-      geocodeNewLocation,
+      updateEvent,
+      event,
+      geocodeLocation,
+      locationString,
     } = this.props;
 
     const {
       name,
-      locationString,
       startAt,
       endAt,
-      type,
-      description,
-    } = newEvent;
+    } = event;
 
     const today = formatDate(new Date());
 
     return (
-      <Container>
-        <Content>
-          <List>
-            <ListItem>
-              <InputGroup>
-                <Input
-                  inlineLabel
-                  label="Event Name"
-                  placeholder="What?"
-                  value={name}
-                  onChangeText={(text) => updateNewEvent('name', text)}
-                />
-              </InputGroup>
-            </ListItem>
-          </List>
+      <View style={styles.container}>
+        <View style={styles.form}>
+          <Input
+            placeholder="Event name"
+            onChangeText={text => updateEvent('name', text)}
+            icon="ios-locate-outline"
+            value={name}
+          />
           <GeoInput
             placeholder="Where?"
             enablePoweredByContainer={false}
             value={locationString}
-            onChangeText={(text) => updateNewEvent('locationString', text)}
-            onAdressSelect={geocodeNewLocation}
+            onChangeText={(text) => updateEvent('locationString', text)}
+            onAdressSelect={geocodeLocation}
           />
-          <List>
-            <ListItem>
-              <InputGroup>
-                <Input
-                  inlineLabel
-                  label="Description"
-                  multiline
-                  // numberOfLines={4}
-                  placeholder="some info"
-                  value={description}
-                  onChangeText={(text) => updateNewEvent('description', text)}
-                />
-              </InputGroup>
-            </ListItem>
-            <ListItem>
-              <Text>Event Type</Text>
-              <Picker
-                iosHeader="Event Type"
-                mode="dropdown"
-                selectedValue={type}
-                onValueChange={(val) => updateNewEvent('type', val)}
-              >
-                {eventTypes.map(et => (
-                  <Item
-                    label={et}
-                    value={et}
-                    key={et}
-                  />
-                ))}
-              </Picker>
-            </ListItem>
-          </List>
-          <View>
-            <View style={styles.inputRow}>
-              <Datepicker
-                placeholder="Start Date"
-                minDate={today}
-                date={startAt || today}
-                onChange={(date) => updateNewEvent('startAt', date)}
-              />
-            </View>
-            <View style={styles.inputRow}>
-              <Datepicker
-                placeholder="End Date"
-                date={endAt || today}
-                minDate={startAt || today}
-                onChange={(date) => updateNewEvent('endAt', date)}
-              />
-            </View>
-          </View>
+          <Datepicker
+            placeholder="Start Date"
+            minDate={today}
+            date={startAt || today}
+            onChange={(date) => updateEvent('startAt', date)}
+          />
+          <Datepicker
+            placeholder="End Date"
+            date={endAt || today}
+            minDate={startAt || today}
+            onChange={(date) => updateEvent('endAt', date)}
+          />
+        </View>
+        <View style={styles.button}>
           <Button
-            style={{ alignSelf: 'center', marginTop: 20, marginBottom: 20 }}
-            onPress={() => createEvent(newEvent)}
-          >
-              Create
-          </Button>
-        </Content>
-      </Container>
+            text={this.isNew ? 'Save' : 'Update'}
+            onPress={() => this.saveItem(event)}
+          />
+        </View>
+      </View>
     );
   }
 }

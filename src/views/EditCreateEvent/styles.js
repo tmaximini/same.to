@@ -1,17 +1,24 @@
 import {
-  StyleSheet,
-  PixelRatio,
+  StyleSheet
 } from 'react-native';
+
+import { COLORS } from '../../constants';
 
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#333',
+    backgroundColor: COLORS.BG_GREY,
+    padding: 10,
+    justifyContent: 'flex-start',
+    flexBasis: 0,
+    flexGrow: 1,
   },
-  inputRow: {
-    borderBottomColor: '#47315a',
-    borderBottomWidth: 1 / PixelRatio.get(),
+  form: {
     flex: 1,
-  }
+    flexGrow: 1,
+  },
+  button: {
+    flex: 1,
+  },
 });
 

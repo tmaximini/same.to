@@ -6,7 +6,7 @@ import {
   CREATE_EVENT_START,
   CREATE_EVENT_SUCCESS,
   CREATE_EVENT_ERROR,
-  GEOCODE_NEW_EVENT_START,
+  GEOCODE_EVENT_START,
 } from '../modules/editCreateEvent';
 import { updateAuthHeader } from '../../services/api';
 import { createEvent } from '../../services/events';
@@ -61,5 +61,5 @@ export function* watchCreateEvent() {
 }
 
 export function* watchGeocodeEvent() {
-  yield takeLatest(GEOCODE_NEW_EVENT_START, geocodeAsync);
+  yield takeLatest(GEOCODE_EVENT_START, geocodeAsync);
 }
