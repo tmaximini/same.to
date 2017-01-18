@@ -24,7 +24,6 @@ export const getDateFromString = (string, delimiter = '-') => {
 };
 
 export const toggleArrayItem = (array, item) => {
-  console.log('array', array);
   const index = array.indexOf(item);
   if (index === -1) {
     return [...array, item];
