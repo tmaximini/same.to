@@ -50,7 +50,7 @@ export default class Home extends Component {
           endDegree={315}
           items={[
             { title: 'event', action: Actions.editCreateEvent, icon: 'compass' },
-            { title: 'activity', action: Actions.editCreateEvent, icon: 'home' }
+            { title: 'activity', action: Actions.editCreateEvent, icon: 'coffee' }
           ]}
         />
       </View>
