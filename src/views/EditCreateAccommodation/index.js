@@ -96,7 +96,7 @@ export default class EditCreateAccommodation extends Component {
               onAdressSelect={geocodeLocation}
             />
           </View>
-          <View styles={styles.button}>
+          <View style={styles.button}>
             <Button
               text={this.isNew ? 'Save' : 'Update'}
               onPress={() => this.saveItem(accommodation)}

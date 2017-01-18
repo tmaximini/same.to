@@ -1,28 +1,23 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import { View } from 'react-native';
 import CheckboxItem from './CheckboxItem';
 import styles from './styles';
 
-class CheckboxList extends Component {
+const CheckboxList = ({ items, model, onChange }) => (
+  <View style={styles.container}>
+    {items.map((item, index) => <CheckboxItem
+      item={item}
+      key={index}
+      onChange={onChange}
+      active={model.types.indexOf(item) > -1}
+    />)}
+  </View>
+);
 
-  static propTypes = {
-    items: PropTypes.array,
-    onChange: PropTypes.func,
-  }
-
-  render() {
-    const { items, onChange } = this.props;
-
-    return (
-      <View style={styles.container}>
-        {items.map((item, index) => <CheckboxItem
-          item={item}
-          key={index}
-          onChange={onChange}
-        />)}
-      </View>
-    );
-  }
-}
+CheckboxList.propTypes = {
+  items: PropTypes.array,
+  model: PropTypes.object,
+  onChange: PropTypes.func,
+};
 
 export default CheckboxList;

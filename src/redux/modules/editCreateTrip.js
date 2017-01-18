@@ -1,15 +1,15 @@
-import { formatDate } from '../../utils';
-
+import { formatDate, toggleArrayItem } from '../../utils';
 
 const makeDefaultTrip = () => ({
   startAt: formatDate(new Date()),
   endAt: formatDate(new Date()),
   location: {},
+  types: [],
 });
 
 // Initial State
 const initialState = {
-  trip: {},
+  trip: makeDefaultTrip(),
   errors: {},
   tripTypes: ['car', 'airplane', 'train', 'bus', 'taxi', 'driver'],
   pickupString: null,
@@ -24,7 +24,8 @@ export const UPDATE_TRIP_START = 'editTrip/UPDATE_TRIP_START';
 export const UPDATE_TRIP_SUCCESS = 'editTrip/UPDATE_TRIP_SUCCESS';
 export const UPDATE_TRIP_ERROR = 'editTrip/CREATE_TRIP_ERROR';
 export const UPDATE_TRIP = 'editTrip/UPDATE_TRIP';
-export const SET_TRIP = 'editTrip/SET_NEW_TRIP';
+export const TOGGLE_TYPE = 'editTrip/TOGGLE_TYPE';
+export const SET_TRIP = 'editTrip/SET_TRIP';
 export const GEOCODE_TRIP_START = 'editTrip/GEOCODE_TRIP_START';
 export const GEOCODE_TRIP_SUCCESS = 'editTrip/GEOCODE_TRIP_SUCCESS';
 export const GEOCODE_TRIP_ERROR = 'editTrip/GEOCODE_TRIP_ERROR';
@@ -51,6 +52,13 @@ export const updateTrip = (key, value) => ({
   payload: {
     key,
     value
+  }
+});
+
+export const toggleType = key => ({
+  type: TOGGLE_TYPE,
+  payload: {
+    key,
   }
 });
 
@@ -94,9 +102,13 @@ export const actions = {
   createTrip,
   setTrip,
   updateTrip,
+  toggleType,
   geocodeLocation,
   geocodeDestination
 };
+
+
+
 
 
 // Action Handlers
@@ -131,6 +143,17 @@ const actionsMap = {
     return {
       ...state,
       trip,
+    };
+  },
+  [TOGGLE_TYPE]: (state, action) => {
+    const { key } = action.payload;
+
+    return {
+      ...state,
+      trip: {
+        ...state.trip,
+        types: toggleArrayItem(state.trip.types, key)
+      }
     };
   },
   [GEOCODE_TRIP_SUCCESS]: (state, action) => ({

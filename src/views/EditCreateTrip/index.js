@@ -23,6 +23,7 @@ export default class EditCreateTrip extends Component {
 
   static propTypes = {
     updateTrip: PropTypes.func.isRequired,
+    toggleType: PropTypes.func.isRequired,
     setTrip: PropTypes.func.isRequired,
     updateRemoteTrip: PropTypes.func.isRequired,
     createTrip: PropTypes.func.isRequired,
@@ -64,12 +65,15 @@ export default class EditCreateTrip extends Component {
     const {
       tripTypes,
       updateTrip,
+      toggleType,
       geocodeLocation,
       geocodeDestination,
       pickupString,
       destinationString,
       trip,
     } = this.props;
+
+    console.log('trip', trip);
 
     const today = formatDate(new Date());
 
@@ -82,7 +86,8 @@ export default class EditCreateTrip extends Component {
             </Text>
             <CheckboxList
               items={tripTypes}
-              onChange={updateTrip}
+              model={trip}
+              onChange={toggleType}
             />
           </View>
           <View style={styles.inputWrapper}>

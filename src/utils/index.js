@@ -11,7 +11,7 @@ export const borderRadius = size => ({
 });
 
 export const formatDate = dateString => {
-  console.log('dateString', dateString);
+  // console.log('dateString', dateString);
 
   return format(parse(dateString), 'YYYY-MM-DD');
 };
@@ -21,4 +21,16 @@ export const getDateFromString = (string, delimiter = '-') => {
   const splitted = string.split(delimiter);
 
   return new Date(splitted[0], splitted[1], splitted[2]);
+};
+
+export const toggleArrayItem = (array, item) => {
+  console.log('array', array);
+  const index = array.indexOf(item);
+  if (index === -1) {
+    return [...array, item];
+  }
+  return [
+    ...array.splice(0, index),
+    ...array.splice(index)
+  ];
 };
