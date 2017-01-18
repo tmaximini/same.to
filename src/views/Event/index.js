@@ -11,17 +11,17 @@ const background = require('../../assets/gamescom.jpg');
 const buttonItems = [
   {
     title: 'trip',
-    action: () => { console.log('click'); Actions.editCreateTrip(); },
+    action: () => { Actions.editCreateTrip(); },
     icon: 'ios-cafe-outline'
   },
   {
     title: 'accomodation',
-    action: () => { console.log('click'); Actions.editCreateAccommodation(); },
+    action: () => { Actions.editCreateAccommodation(); },
     icon: 'ios-bulb-outline'
   },
   {
     title: 'activity',
-    action: () => { console.log('click'); Actions.editCreateTrip(); },
+    action: () => { Actions.editCreateTrip(); },
     icon: 'ios-bulb-outline'
   }
 ];
