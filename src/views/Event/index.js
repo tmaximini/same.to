@@ -12,17 +12,17 @@ const buttonItems = [
   {
     title: 'trip',
     action: () => { Actions.editCreateTrip(); },
-    icon: 'ios-cafe-outline'
+    icon: 'car'
   },
   {
     title: 'accomodation',
     action: () => { Actions.editCreateAccommodation(); },
-    icon: 'ios-bulb-outline'
+    icon: 'bed'
   },
   {
     title: 'activity',
     action: () => { Actions.editCreateTrip(); },
-    icon: 'ios-bulb-outline'
+    icon: 'coffee'
   }
 ];
 

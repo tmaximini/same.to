@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import ActionButton from 'react-native-circular-action-menu';
-import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import styles from './styles';
 import { COLORS } from '../../constants';
 

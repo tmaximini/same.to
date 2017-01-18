@@ -49,8 +49,8 @@ export default class Home extends Component {
           startDegree={225}
           endDegree={315}
           items={[
-            { title: 'event', action: Actions.editCreateEvent, icon: 'ios-cafe-outline' },
-            { title: 'activity', action: Actions.editCreateEvent, icon: 'ios-bulb-outline' }
+            { title: 'event', action: Actions.editCreateEvent, icon: 'compass' },
+            { title: 'activity', action: Actions.editCreateEvent, icon: 'home' }
           ]}
         />
       </View>
