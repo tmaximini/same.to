@@ -1,9 +1,15 @@
+import _ from 'lodash';
 import { CREATE_EVENT_SUCCESS } from './editCreateEvent';
+import {
+  CREATE_TRIP_SUCCESS,
+  UPDATE_TRIP_SUCCESS,
+} from './editCreateTrip';
 
 // Initial State
 const initialState = {
   isFetching: false,
   events: [],
+  currentEvent: {},
   error: null,
 };
 
@@ -13,6 +19,7 @@ export const FETCH_EVENTS_START = 'events/FETCH_EVENTS_START';
 export const FETCH_EVENTS_SUCCESS = 'events/FETCH_EVENTS_SUCCESS';
 export const FETCH_EVENTS_ERROR = 'events/FETCH_EVENTS_ERROR';
 export const UPDATE_EVENT = 'events/UPDATE_EVENT';
+export const SET_CURRENT_EVENT = 'events/UPDATE_EVENT';
 
 
 
@@ -29,10 +36,18 @@ export const update = data => ({
   }
 });
 
+export const setCurrentEvent = event => ({
+  type: SET_CURRENT_EVENT,
+  payload: {
+    event
+  }
+});
+
 
 // export all actions
 export const actions = {
   fetchEvents,
+  setCurrentEvent,
   update,
 };
 
@@ -53,6 +68,10 @@ const actionsMap = {
   [FETCH_EVENTS_ERROR]: state => ({ ...state, isFetching: false }),
   // TODO
   [UPDATE_EVENT]: state => ({ ...state }),
+  [SET_CURRENT_EVENT]: (state, action) => ({
+    ...state,
+    currentEvent: action.payload.event,
+  }),
   [CREATE_EVENT_SUCCESS]: (state, action) => {
     const { event } = action.payload;
 
@@ -60,6 +79,34 @@ const actionsMap = {
     return {
       ...state,
       events: [event, ...state.events],
+    };
+  },
+  [UPDATE_TRIP_SUCCESS]: (state, action) => {
+    const { trip } = action.payload;
+    const newEvents = [...state.events];
+    const eventIndex = _.findIndex(newEvents, { id: trip.eventId });
+    const tripIndex = _.findIndex(newEvents.trips, { id: trip.id });
+    newEvents[eventIndex].trips[tripIndex] = trip;
+
+    return {
+      ...state,
+      currentEvent: newEvents[eventIndex],
+      events: newEvents
+    };
+  },
+  [CREATE_TRIP_SUCCESS]: (state, action) => {
+    const { trip } = action.payload;
+    const newEvents = [...state.events];
+    const eventIndex = _.findIndex(newEvents, { id: trip.eventId });
+    const tripIndex = _.findIndex(newEvents.trips, { id: trip.id });
+    if (tripIndex === -1) {
+      newEvents[eventIndex].trips.push(trip);
+    }
+
+    return {
+      ...state,
+      currentEvent: newEvents[eventIndex],
+      events: newEvents
     };
   },
 };
