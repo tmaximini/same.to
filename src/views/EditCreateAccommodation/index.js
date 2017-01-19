@@ -26,11 +26,13 @@ export default class EditCreateAccommodation extends Component {
     setAccommodation: PropTypes.func.isRequired,
     updateRemoteAccommodation: PropTypes.func.isRequired,
     createAccommodation: PropTypes.func.isRequired,
+    toggleType: PropTypes.func.isRequired,
     geocodeLocation: PropTypes.func.isRequired,
     model: PropTypes.object,
     accommodationTypes: PropTypes.array,
     locationString: PropTypes.string,
     accommodation: PropTypes.object,
+    eventId: PropTypes.string,
   }
 
   constructor(props) {
@@ -51,7 +53,8 @@ export default class EditCreateAccommodation extends Component {
 
   saveItem(item) {
     if (this.isNew) {
-      this.props.createAccommodation(item);
+      console.log('eventId', this.props.eventId);
+      this.props.createAccommodation(item, this.props.eventId);
     } else {
       this.props.updateRemoteAccommodation(item);
     }
@@ -63,6 +66,7 @@ export default class EditCreateAccommodation extends Component {
       accommodationTypes,
       updateAccommodation,
       geocodeLocation,
+      toggleType,
       locationString,
       accommodation,
     } = this.props;
@@ -78,7 +82,8 @@ export default class EditCreateAccommodation extends Component {
             </Text>
             <CheckboxList
               items={accommodationTypes}
-              onChange={updateAccommodation}
+              onChange={toggleType}
+              model={accommodation}
             />
           </View>
           <View style={styles.inputWrapper}>

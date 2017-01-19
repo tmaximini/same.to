@@ -1,7 +1,7 @@
 import { post, put } from './api';
 
-export const createAccommodation = data => post(
-  `events/${data.eventId}/accommodations`,
+export const createAccommodation = (data, eventId) => post(
+  `events/${eventId}/accommodations`,
   { ...data }
 );
 

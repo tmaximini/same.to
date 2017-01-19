@@ -1,4 +1,4 @@
-// import { delay } from 'redux-saga';
+import { delay } from 'redux-saga';
 import { takeLatest, call, put } from 'redux-saga/effects';
 import { Actions } from 'react-native-router-flux';
 import geocodeAsync from './geocode';
@@ -16,9 +16,9 @@ import { createAccommodation, updateAccommodation } from '../../services/accommo
 
 
 export function* createAccommodationAsync(action) {
-  const { payload } = action;
+  const { data, eventId } = action.payload;
   try {
-    const response = yield call(createAccommodation, { ...payload });
+    const response = yield call(createAccommodation, { ...data }, eventId);
 
     if (response.error) {
       // in case of error
@@ -41,8 +41,8 @@ export function* createAccommodationAsync(action) {
           event: response
         }
       });
-      // yield call(delay, 100);
-      // yield call(Actions.event);
+      yield call(delay, 100);
+      yield call(Actions.pop, { refresh: {} });
     }
   } catch (error) {
     console.log({ error });
@@ -80,8 +80,8 @@ export function* updateAccommodationAsync(action) {
           event: response
         }
       });
-      // yield call(delay, 100);
-      // yield call(Actions.event);
+      yield call(delay, 100);
+      yield call(Actions.pop, { refresh: {} });
     }
   } catch (error) {
     console.log({ error });

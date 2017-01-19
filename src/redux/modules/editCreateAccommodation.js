@@ -1,15 +1,16 @@
-import { formatDate } from '../../utils';
+import { formatDate, toggleArrayItem } from '../../utils';
 
 
 const makeDefaultAccommodation = () => ({
   startAt: formatDate(new Date()),
   endAt: formatDate(new Date()),
   location: {},
+  types: [],
 });
 
 // Initial State
 const initialState = {
-  accommodation: {},
+  accommodation: makeDefaultAccommodation(),
   errors: {},
   accommodationTypes: ['hotel', 'hostal', 'house', 'appartment', 'camping', 'other'],
   locationString: null,
@@ -24,6 +25,7 @@ export const UPDATE_ACCOMMODATION_SUCCESS = 'editAccommodation/UPDATE_ACCOMMODAT
 export const UPDATE_ACCOMMODATION_ERROR = 'editAccommodation/CREATE_ACCOMMODATION_ERROR';
 export const UPDATE_ACCOMMODATION = 'editAccommodation/UPDATE_ACCOMMODATION';
 export const SET_ACCOMMODATION = 'editAccommodation/SET_ACCOMMODATION';
+export const TOGGLE_TYPE = 'editAccommodation/TOGGLE_TYPE';
 export const GEOCODE_ACCOMMODATION_START = 'editAccommodation/GEOCODE_ACCOMMODATION_START';
 export const GEOCODE_ACCOMMODATION_SUCCESS = 'editAccommodation/GEOCODE_ACCOMMODATION_SUCCESS';
 export const GEOCODE_ACCOMMODATION_ERROR = 'editAccommodation/GEOCODE_ACCOMMODATION_ERROR';
@@ -57,9 +59,19 @@ export const setAccommodation = model => ({
   }
 });
 
-export const createAccommodation = newAccommodationData => ({
+export const toggleType = key => ({
+  type: TOGGLE_TYPE,
+  payload: {
+    key,
+  }
+});
+
+export const createAccommodation = (newAccommodationData, eventId) => ({
   type: CREATE_ACCOMMODATION_START,
-  payload: newAccommodationData
+  payload: {
+    data: newAccommodationData,
+    eventId,
+  },
 });
 
 
@@ -80,6 +92,7 @@ export const actions = {
   updateRemoteAccommodation,
   createAccommodation,
   setAccommodation,
+  toggleType,
   updateAccommodation,
   geocodeLocation,
 };
@@ -93,12 +106,21 @@ const actionsMap = {
   }),
   [UPDATE_ACCOMMODATION_SUCCESS]: (state) => ({
     ...state,
-    accommodation: {},
+    accommodation: makeDefaultAccommodation(),
   }),
+  [TOGGLE_TYPE]: (state, action) => {
+    const { key } = action.payload;
+
+    return {
+      ...state,
+      accommodation: {
+        ...state.accommodation,
+        types: toggleArrayItem(state.accommodation.types, key)
+      }
+    };
+  },
   [SET_ACCOMMODATION]: (state, action) => {
     const { model } = action.payload;
-
-    console.log('accommodation', model);
 
     return {
       ...state,
