@@ -8,6 +8,9 @@ import {
   CREATE_EVENT_ERROR,
   GEOCODE_EVENT_START,
 } from '../modules/editCreateEvent';
+import {
+  FETCH_EVENTS_START,
+} from '../modules/events';
 import { updateAuthHeader } from '../../services/api';
 import { createEvent } from '../../services/events';
 
@@ -37,6 +40,10 @@ export function* createEventAsync(action) {
         payload: {
           event: response
         }
+      });
+      // after create fetch again events to get all updates
+      yield put({
+        type: FETCH_EVENTS_START
       });
       yield call(delay, 100);
       yield call(Actions.home);

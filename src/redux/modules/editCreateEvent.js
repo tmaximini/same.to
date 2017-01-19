@@ -3,11 +3,12 @@ import { formatDate, getDateFromString } from '../../utils';
 
 
 const makeDefaultEvent = () => ({
-  type: 'event',
   name: '',
   startAt: formatDate(new Date()),
   endAt: formatDate(new Date()),
   location: {},
+  trips: [],
+  accommodations: [],
 });
 
 // Initial State
