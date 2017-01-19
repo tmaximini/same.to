@@ -8,8 +8,13 @@ import styles from './styles';
 
 const background = require('../../../assets/sunflowers.jpg');
 
-const EventListItem = ({ event }) => {
+const EventListItem = ({ event, setCurrentEvent }) => {
   const { name, startAt, location } = event;
+  // set current event in reducer
+  const onSelect = () => {
+    setCurrentEvent(event);
+    Actions.event({ title: name });
+  };
 
   return (
     <View
@@ -30,7 +35,7 @@ const EventListItem = ({ event }) => {
 
           <TouchableHighlight
             style={styles.middle}
-            onPress={() => Actions.event({ title: name, event })}
+            onPress={onSelect}
           >
             <View
               style={styles.main}
@@ -60,7 +65,8 @@ const EventListItem = ({ event }) => {
 };
 
 EventListItem.propTypes = {
-  event: PropTypes.object,
+  event: PropTypes.object.isRequired,
+  setCurrentEvent: PropTypes.func.isRequired,
 };
 
 export default EventListItem;

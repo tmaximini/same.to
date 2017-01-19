@@ -8,24 +8,23 @@ import styles from './styles';
 
 const background = require('../../../assets/sunflowers.jpg');
 
-const SubItem = ({ itemType, item }) => {
-
+const SubItem = ({ itemType, item, onSelect }) => {
   const handler = (type, model) => {
+    // set redux active item
+    onSelect(model);
+    // handle route depending on item type
     switch (type) {
       case 'trip':
         return Actions.editCreateTrip({
           title: 'Edit Trip',
-          model
         });
       case 'accommodation':
         return Actions.editCreateAccommodation({
           title: 'Edit Accommodation',
-          model
         });
       default:
         return Actions.editCreateActivity({
           title: 'Edit Activity',
-          model
         });
     }
   };
@@ -75,6 +74,7 @@ const SubItem = ({ itemType, item }) => {
 SubItem.propTypes = {
   itemType: PropTypes.string.isRequired,
   item: PropTypes.object.isRequired,
+  onSelect: PropTypes.func.isRequired,
 };
 
 export default SubItem;

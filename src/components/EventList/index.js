@@ -11,6 +11,7 @@ export default class EventList extends Component {
   static propTypes = {
     events: PropTypes.arrayOf(PropTypes.object),
     refresh: PropTypes.func.isRequired,
+    setCurrentEvent: PropTypes.func.isRequired,
     isRefreshing: PropTypes.bool.isRequired,
   }
 
@@ -39,12 +40,14 @@ export default class EventList extends Component {
   }
 
   render() {
+    const { setCurrentEvent } = this.props;
+
     return (
       <ListView
         enableEmptySections
         style={styles.container}
         dataSource={this.state.dataSource}
-        renderRow={event => <EventListItem event={event} />}
+        renderRow={event => <EventListItem event={event} setCurrentEvent={setCurrentEvent} />}
         refreshControl={
           <RefreshControl
             refreshing={this.props.isRefreshing}

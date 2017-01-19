@@ -23,6 +23,7 @@ export default class Home extends Component {
 
   static propTypes = {
     fetchEvents: PropTypes.func.isRequired,
+    setCurrentEvent: PropTypes.func.isRequired,
     title: PropTypes.string,
     loggedIn: PropTypes.bool.isRequired,
     isRefreshing: PropTypes.bool.isRequired,
@@ -33,6 +34,7 @@ export default class Home extends Component {
     const {
       events,
       fetchEvents,
+      setCurrentEvent,
       isRefreshing,
     } = this.props;
 
@@ -42,6 +44,7 @@ export default class Home extends Component {
           events={events}
           refresh={fetchEvents}
           isRefreshing={isRefreshing}
+          setCurrentEvent={setCurrentEvent}
         />
         <PlusButton
           itemSize={45}

@@ -1,13 +1,32 @@
 import React, { Component, PropTypes } from 'react';
 import { View, Image, Text, TouchableHighlight } from 'react-native';
+import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 // import { formatDate } from '../../utils';
 import SubItemList from '../../components/Event/SubItemList';
 import PlusButton from '../../components/PlusButton';
+
+import {
+  setTrip as setTripAction
+} from '../../redux/modules/editCreateTrip';
+import {
+  setAccommodation as setAccommodationAction
+} from '../../redux/modules/editCreateAccommodation';
+
 import styles from './styles';
 
 const background = require('../../assets/gamescom.jpg');
 
+
+@connect(
+  state => ({
+    event: state.events.currentEvent,
+  }),
+  {
+    setTrip: setTripAction,
+    setAccommodation: setAccommodationAction,
+  },
+)
 export default class Event extends Component {
   static propTypes = {
     event: PropTypes.shape({
@@ -18,6 +37,8 @@ export default class Event extends Component {
       description: PropTypes.string,
       id: PropTypes.string.isRequired,
     }).isRequired,
+    setTrip: PropTypes.func.isRequired,
+    setAccommodation: PropTypes.func.isRequired,
   }
 
   constructor(props) {
@@ -36,8 +57,11 @@ export default class Event extends Component {
 
   render() {
     const {
+      setTrip,
+      setAccommodation,
+    } = this.props;
+    const {
       name,
-      description,
       isPublic,
       startAt,
       accommodations,
@@ -83,6 +107,8 @@ export default class Event extends Component {
             <SubItemList
               trips={trips}
               accommodations={accommodations}
+              setTrip={setTrip}
+              setAccommodation={setAccommodation}
             />
           ) : (
             <View style={styles.noItems}>

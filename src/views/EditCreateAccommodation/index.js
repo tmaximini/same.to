@@ -6,7 +6,7 @@ import {
 
 import { connect } from 'react-redux';
 import { formatDate } from '../../utils';
-import Input from '../../components/Input';
+// import Input from '../../components/Input';
 import Button from '../../components/Button';
 import GeoInput from '../../components/GeoInput';
 import Datepicker from '../../components/Datepicker';

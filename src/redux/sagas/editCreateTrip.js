@@ -41,11 +41,11 @@ export function* createTripAsync(action) {
       yield put({
         type: CREATE_TRIP_SUCCESS,
         payload: {
-          event: response
+          trip: response
         }
       });
       yield call(delay, 100);
-      yield call(Actions.pop);
+      yield call(Actions.pop, { refresh: {} });
     }
   } catch (error) {
     console.log({ error });
@@ -80,11 +80,11 @@ export function* updateTripAsync(action) {
       yield put({
         type: UPDATE_TRIP_SUCCESS,
         payload: {
-          event: response
+          trip: response
         }
       });
       yield call(delay, 100);
-      yield call(Actions.pop);
+      yield call(Actions.pop, { refresh: {} });
     }
   } catch (error) {
     console.log({ error });

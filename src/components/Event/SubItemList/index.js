@@ -6,11 +6,25 @@ import SubItem from '../SubItem';
 import styles from './styles';
 
 
-const SubItemList = ({ accommodations, trips }) => (
+const SubItemList = ({ accommodations, trips, setTrip, setAccommodation }) => (
   <View style={styles.container}>
     <ScrollView>
-      {accommodations.map(ac => <SubItem itemType={'accommodation'} key={ac.id} item={ac} />)}
-      {trips.map(trip => <SubItem itemType={'trip'} key={trip.id} item={trip} />)}
+      {accommodations.map(ac => (
+        <SubItem
+          onSelect={setAccommodation}
+          itemType={'accommodation'}
+          key={ac.id}
+          item={ac}
+        />
+      ))}
+      {trips.map(trip => (
+        <SubItem
+          onSelect={setTrip}
+          itemType={'trip'}
+          key={trip.id}
+          item={trip}
+        />
+      ))}
     </ScrollView>
   </View>
 );
@@ -18,6 +32,8 @@ const SubItemList = ({ accommodations, trips }) => (
 SubItemList.propTypes = {
   trips: PropTypes.array.isRequired,
   accommodations: PropTypes.array.isRequired,
+  setTrip: PropTypes.func.isRequired,
+  setAccommodation: PropTypes.func.isRequired,
 };
 
 export default SubItemList;
