@@ -8,24 +8,6 @@ import styles from './styles';
 
 const background = require('../../assets/gamescom.jpg');
 
-const buttonItems = [
-  {
-    title: 'trip',
-    action: () => { Actions.editCreateTrip(); },
-    icon: 'car'
-  },
-  {
-    title: 'accomodation',
-    action: () => { Actions.editCreateAccommodation(); },
-    icon: 'bed'
-  },
-  {
-    title: 'activity',
-    action: () => { Actions.editCreateTrip(); },
-    icon: 'coffee'
-  }
-];
-
 export default class Event extends Component {
   static propTypes = {
     event: PropTypes.shape({
@@ -34,6 +16,7 @@ export default class Event extends Component {
       accommodations: PropTypes.array.isRequired,
       name: PropTypes.string.isRequired,
       description: PropTypes.string,
+      id: PropTypes.string.isRequired,
     }).isRequired,
   }
 
@@ -54,13 +37,13 @@ export default class Event extends Component {
   render() {
     const {
       name,
-      type,
       description,
       isPublic,
       startAt,
       accommodations,
       trips,
       members,
+      id,
     } = this.props.event;
 
     const hasSubItems = accommodations.length || trips.length;
@@ -114,7 +97,23 @@ export default class Event extends Component {
             radius={80}
             startDegree={225}
             endDegree={315}
-            items={buttonItems}
+            items={[
+              {
+                title: 'trip',
+                action: () => { Actions.editCreateTrip({ eventId: id }); },
+                icon: 'car'
+              },
+              {
+                title: 'accomodation',
+                action: () => { Actions.editCreateAccommodation({ eventId: id }); },
+                icon: 'bed'
+              },
+              {
+                title: 'activity',
+                action: () => { Actions.editCreateTrip({ eventId: id }); },
+                icon: 'coffee'
+              }
+            ]}
           />
         </View>
       </View>

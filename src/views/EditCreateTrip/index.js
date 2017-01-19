@@ -34,6 +34,7 @@ export default class EditCreateTrip extends Component {
     pickupString: PropTypes.string,
     destinationString: PropTypes.string,
     trip: PropTypes.object,
+    eventId: PropTypes.string,
   }
 
   constructor(props) {
@@ -54,12 +55,11 @@ export default class EditCreateTrip extends Component {
 
   saveItem(item) {
     if (this.isNew) {
-      this.props.createTrip(item);
+      this.props.createTrip(item, this.props.eventId);
     } else {
       this.props.updateRemoteTrip(item);
     }
   }
-
 
   render() {
     const {
@@ -72,6 +72,8 @@ export default class EditCreateTrip extends Component {
       destinationString,
       trip,
     } = this.props;
+
+    console.log('pickupString', pickupString);
 
     const today = formatDate(new Date());
 
@@ -89,16 +91,11 @@ export default class EditCreateTrip extends Component {
             />
           </View>
           <View style={styles.inputWrapper}>
-            <Input
-              placeholder="Standort"
-              onChangeText={text => updateTrip('pickupString', text)}
-              icon="ios-locate-outline"
-            />
             <Datepicker
               placeholder="Start Date"
               minDate={today}
-              date={trip.startAt || today}
-              onChange={date => updateTrip('startAt', date)}
+              date={trip.startDate}
+              onChange={date => updateTrip('startDate', date)}
             />
             <GeoInput
               placeholder="Start"

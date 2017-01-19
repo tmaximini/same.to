@@ -5,11 +5,13 @@ import { COLORS } from '../../constants';
 export default StyleSheet.create({
   container: {
     flex: 1,
+    maxHeight: 60,
   },
   description: {
     color: COLORS.WHITE,
     fontSize: 12,
     paddingLeft: 5,
+    padding: 0,
   },
   predefinedPlacesDescription: {
     color: COLORS.WHITE,
@@ -20,11 +22,14 @@ export default StyleSheet.create({
     borderTopWidth: 0,
     borderBottomWidth: 0,
     borderRadius: 5,
+    height: 40,
   },
   textInput: {
     color: COLORS.WHITE,
     backgroundColor: 'transparent',
-    padding: 0,
+    paddingLeft: 5,
+    paddingTop: 0,
+    paddingBottom: 0,
   },
   listView: {
     zIndex: 99,

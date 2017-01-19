@@ -7,8 +7,8 @@ import { COLORS } from '../../constants';
 export default StyleSheet.create({
   inputWrap: {
     flexDirection: 'row',
-    marginVertical: 10,
     height: 40,
+    marginBottom: 20,
     backgroundColor: 'transparent',
   },
   input: {

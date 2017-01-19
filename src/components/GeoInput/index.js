@@ -11,14 +11,14 @@ const GeoInput = ({ placeholder, onAdressSelect, ...rest }) => (
     placeholder={placeholder || 'Search'}
     minLength={2} // minimum length of text to search
     autoFocus={false}
-    listViewDisplayed="false" // true/false/undefined
+    listViewDisplayed="true" // true/false/undefined
     // fetchDetails
     // renderDescription={(row) => row.terms[0].value} // display street only
     onPress={(data, details = null) => { // 'details' is provided when fetchDetails = true
       console.log(data);
       onAdressSelect(data.description);
     }}
-    // getDefaultValue={() => ''}
+    getDefaultValue={() => rest.value}
     // textInputProps={{
     //   onFocus
     // }}

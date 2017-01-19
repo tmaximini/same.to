@@ -1,10 +1,10 @@
 import { formatDate, toggleArrayItem } from '../../utils';
 
 const makeDefaultTrip = () => ({
-  startAt: formatDate(new Date()),
-  endAt: formatDate(new Date()),
+  startDate: null,
   location: {},
   types: [],
+  pickupRadius: 0,
 });
 
 // Initial State
@@ -13,7 +13,7 @@ const initialState = {
   errors: {},
   tripTypes: ['car', 'airplane', 'train', 'bus', 'taxi', 'driver'],
   pickupString: null,
-  destnationString: null,
+  destinationString: null,
 };
 
 
@@ -69,9 +69,12 @@ export const setTrip = model => ({
   }
 });
 
-export const createTrip = newTripData => ({
+export const createTrip = (newTripData, eventId) => ({
   type: CREATE_TRIP_START,
-  payload: newTripData
+  payload: {
+    data: newTripData,
+    eventId
+  },
 });
 
 
@@ -119,7 +122,7 @@ const actionsMap = {
   }),
   [UPDATE_TRIP_SUCCESS]: (state) => ({
     ...state,
-    trip: {},
+    trip: makeDefaultTrip(),
   }),
   [SET_TRIP]: (state, action) => {
     const { model } = action.payload;

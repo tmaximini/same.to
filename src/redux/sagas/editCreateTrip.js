@@ -16,10 +16,12 @@ import { updateAuthHeader } from '../../services/api';
 import { createTrip, updateTrip } from '../../services/trips';
 
 
+console.log('Actions', Actions);
+
 export function* createTripAsync(action) {
-  const { payload } = action;
+  const { data, eventId } = action.payload;
   try {
-    const response = yield call(createTrip, { ...payload });
+    const response = yield call(createTrip, { ...data }, eventId);
 
     if (response.error) {
       // in case of error
@@ -42,8 +44,8 @@ export function* createTripAsync(action) {
           event: response
         }
       });
-      // yield call(delay, 100);
-      // yield call(Actions.event);
+      yield call(delay, 100);
+      yield call(Actions.pop);
     }
   } catch (error) {
     console.log({ error });
@@ -81,8 +83,8 @@ export function* updateTripAsync(action) {
           event: response
         }
       });
-      // yield call(delay, 100);
-      // yield call(Actions.event);
+      yield call(delay, 100);
+      yield call(Actions.pop);
     }
   } catch (error) {
     console.log({ error });
