@@ -29,6 +29,8 @@ const SubItem = ({ itemType, item, onSelect }) => {
     }
   };
 
+  const title = item.name ? item.name : itemType;
+
   const getSubTitle = it => {
     const from = it.pickupLocation ? it.pickupLocation.locality : 'Unknown';
     const to = it.destinationLocation ? it.destinationLocation.locality : 'Unknown';
@@ -48,7 +50,7 @@ const SubItem = ({ itemType, item, onSelect }) => {
         >
           <View style={styles.wrapper}>
             <View style={styles.top}>
-              <Text style={styles.title}>{itemType}</Text>
+              <Text style={styles.title}>{title}</Text>
               {itemType === 'trip' &&
                 <Text style={styles.subTitle}>{getSubTitle(item)}</Text>
               }

@@ -4,6 +4,10 @@ import {
   CREATE_TRIP_SUCCESS,
   UPDATE_TRIP_SUCCESS,
 } from './editCreateTrip';
+import {
+  UPDATE_ACCOMMODATION_SUCCESS,
+  CREATE_ACCOMMODATION_SUCCESS
+} from './editCreateAccommodation';
 
 // Initial State
 const initialState = {
@@ -101,6 +105,34 @@ const actionsMap = {
     const tripIndex = _.findIndex(newEvents.trips, { id: trip.id });
     if (tripIndex === -1) {
       newEvents[eventIndex].trips.push(trip);
+    }
+
+    return {
+      ...state,
+      currentEvent: newEvents[eventIndex],
+      events: newEvents
+    };
+  },
+  [UPDATE_ACCOMMODATION_SUCCESS]: (state, action) => {
+    const { accommodation } = action.payload;
+    const newEvents = [...state.events];
+    const eventIndex = _.findIndex(newEvents, { id: accommodation.eventId });
+    const accommodationIndex = _.findIndex(newEvents.accommodations, { id: accommodation.id });
+    newEvents[eventIndex].accommodations[accommodationIndex] = accommodation;
+
+    return {
+      ...state,
+      currentEvent: newEvents[eventIndex],
+      events: newEvents
+    };
+  },
+  [CREATE_ACCOMMODATION_SUCCESS]: (state, action) => {
+    const { accommodation } = action.payload;
+    const newEvents = [...state.events];
+    const eventIndex = _.findIndex(newEvents, { id: accommodation.eventId });
+    const accommodationIndex = _.findIndex(newEvents.accommodations, { id: accommodation.id });
+    if (accommodationIndex === -1) {
+      newEvents[eventIndex].accommodations.push(accommodation);
     }
 
     return {

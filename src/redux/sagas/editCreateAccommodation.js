@@ -38,7 +38,7 @@ export function* createAccommodationAsync(action) {
       yield put({
         type: CREATE_ACCOMMODATION_SUCCESS,
         payload: {
-          event: response
+          accommodation: response
         }
       });
       yield call(delay, 100);
@@ -77,7 +77,7 @@ export function* updateAccommodationAsync(action) {
       yield put({
         type: UPDATE_ACCOMMODATION_SUCCESS,
         payload: {
-          event: response
+          accommodation: response
         }
       });
       yield call(delay, 100);
