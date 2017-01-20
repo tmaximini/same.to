@@ -48,6 +48,10 @@
 		D00E226B484A44E99C397025 /* Andale Mono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83EDF89BBAFC4963B7CEC4A1 /* Andale Mono.ttf */; };
 		E5885DC16AF14065A7A70E04 /* Courier New.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FDD47C790C044D438E480C57 /* Courier New.ttf */; };
 		C342B04308904924B193675A /* libRNBlur.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4017E62FBB14A0690EB4BDC /* libRNBlur.a */; };
+		DE01159EFB8D425A818E863D /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C6FFC3B71A4EB09A1290F2 /* libReact.a */; };
+		344E08A9085A414D91AD550B /* libyoga.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 23DACF0500B04C5689E4DAC2 /* libyoga.a */; };
+		EB6B5A9B61BC45EC91B4995C /* libcxxreact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCEB0164DDA4CE6BCDE06C5 /* libcxxreact.a */; };
+		55C17428A2B6457FB1C8BB61 /* libjschelpers.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC09809D63E5489899991274 /* libjschelpers.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -300,6 +304,11 @@
 		FDD47C790C044D438E480C57 /* Courier New.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Courier New.ttf"; path = "../node_modules/native-base/Fonts/Courier New.ttf"; sourceTree = "<group>"; };
 		F04674044F8F423DB105ED58 /* RNBlur.xcodeproj */ = {isa = PBXFileReference; name = "RNBlur.xcodeproj"; path = "../node_modules/react-native-blur/ios/RNBlur.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		D4017E62FBB14A0690EB4BDC /* libRNBlur.a */ = {isa = PBXFileReference; name = "libRNBlur.a"; path = "libRNBlur.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		7B062D093FF548C59DBC559F /* RNI18n.xcodeproj */ = {isa = PBXFileReference; name = "RNI18n.xcodeproj"; path = "../node_modules/react-native-i18n/RNI18n.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		F7C6FFC3B71A4EB09A1290F2 /* libReact.a */ = {isa = PBXFileReference; name = "libReact.a"; path = "libReact.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		23DACF0500B04C5689E4DAC2 /* libyoga.a */ = {isa = PBXFileReference; name = "libyoga.a"; path = "libyoga.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		1FCEB0164DDA4CE6BCDE06C5 /* libcxxreact.a */ = {isa = PBXFileReference; name = "libcxxreact.a"; path = "libcxxreact.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		FC09809D63E5489899991274 /* libjschelpers.a */ = {isa = PBXFileReference; name = "libjschelpers.a"; path = "libjschelpers.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -329,6 +338,10 @@
 				07E673AD62C34F68B716E18E /* libRNVectorIcons.a in Frameworks */,
 				5E48BFAFA771403985981094 /* libRNGeocoder.a in Frameworks */,
 				C342B04308904924B193675A /* libRNBlur.a in Frameworks */,
+				DE01159EFB8D425A818E863D /* libReact.a in Frameworks */,
+				344E08A9085A414D91AD550B /* libyoga.a in Frameworks */,
+				EB6B5A9B61BC45EC91B4995C /* libcxxreact.a in Frameworks */,
+				55C17428A2B6457FB1C8BB61 /* libjschelpers.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,6 +518,7 @@
 				5270C74E08624D0C8680ACD9 /* RNVectorIcons.xcodeproj */,
 				254AE2FE26BA4FAFBA4493F4 /* RNGeocoder.xcodeproj */,
 				F04674044F8F423DB105ED58 /* RNBlur.xcodeproj */,
+				7B062D093FF548C59DBC559F /* RNI18n.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -990,6 +1004,10 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/sameto.app/sameto";
@@ -1006,6 +1024,10 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",

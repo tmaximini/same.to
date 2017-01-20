@@ -3543,11 +3543,7 @@ lodash@^3.10.0, lodash@^3.2.0, lodash@^3.5.0:
   version "3.10.1"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
 
-lodash@^4.0.0, lodash@^4.1.0, lodash@^4.11.1, lodash@^4.14.0, lodash@^4.15.0, lodash@^4.16.6, lodash@^4.2.0, lodash@^4.2.1, lodash@^4.3.0, lodash@^4.6.1, lodash@^4.8.0:
-  version "4.17.3"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.3.tgz#557ed7d2a9438cac5fd5a43043ca60cb455e01f7"
-
-lodash@^4.17.4:
+lodash@^4.0.0, lodash@^4.1.0, lodash@^4.11.1, lodash@^4.14.0, lodash@^4.15.0, lodash@^4.16.6, lodash@^4.17.4, lodash@^4.2.0, lodash@^4.2.1, lodash@^4.3.0, lodash@^4.6.1, lodash@^4.8.0:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
@@ -4352,6 +4348,10 @@ react-native-google-places-autocomplete@^1.2.6:
   resolved "https://registry.yarnpkg.com/react-native-google-places-autocomplete/-/react-native-google-places-autocomplete-1.2.6.tgz#beec0ec527b26bceb611f2675e757f7b0d3c4b0f"
   dependencies:
     qs "^5.2.0"
+
+react-native-i18n@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-i18n/-/react-native-i18n-1.0.0.tgz#0c407d9ebb846aae1aa5e05de6503008553f02fd"
 
 react-native-keyboard-aware-scroll-view@0.2.0:
   version "0.2.0"

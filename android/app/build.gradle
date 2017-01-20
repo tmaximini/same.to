@@ -133,6 +133,7 @@ repositories {
 
 
 dependencies {
+    compile project(':react-native-i18n')
     compile project(':react-native-blur')
     compile project(':react-native-geocoder')
     compile project(':react-native-vector-icons')
