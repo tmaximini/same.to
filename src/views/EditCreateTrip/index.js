@@ -6,7 +6,7 @@ import {
 
 import { connect } from 'react-redux';
 import { formatDate } from '../../utils';
-import Input from '../../components/Input';
+import OnOffSwitch from '../../components/OnOffSwitch';
 import Button from '../../components/Button';
 import GeoInput from '../../components/GeoInput';
 import Datepicker from '../../components/Datepicker';
@@ -113,7 +113,11 @@ export default class EditCreateTrip extends Component {
             />
           </View>
           <View style={styles.spacer}>
-
+            <OnOffSwitch
+              name="Make this trip public"
+              value={trip.isPublic}
+              onChange={(val) => updateTrip('isPublic', val)}
+            />
           </View>
           <View style={styles.button}>
             <Button

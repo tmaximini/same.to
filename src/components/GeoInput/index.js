@@ -30,7 +30,6 @@ const GeoInput = ({ placeholder, onAdressSelect, ...rest }) => (
       // textInputProps={{
       //   onFocus
       // }}
-      keyboardShouldPersistTaps="always"
       // available options: https://developers.google.com/places/web-service/autocomplete
       query={{
         key: GOOGLE_MAPS_API_KEY,
