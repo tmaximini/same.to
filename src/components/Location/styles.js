@@ -8,11 +8,14 @@ export default StyleSheet.create({
     alignItems: 'center'
   },
   locationIcon: {
-    color: COLORS.WHITE,
-    fontSize: 20,
+    color: COLORS.CYAN,
+    fontSize: 16,
     marginRight: 7,
+    width: 20,
+    paddingLeft: 3,
   },
   locationText: {
     color: COLORS.WHITE,
+    fontSize: 12,
   },
 });

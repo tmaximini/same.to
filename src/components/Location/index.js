@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { View, Text } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import styles from './styles';
 
 const Location = ({ location }) => {
@@ -12,7 +12,7 @@ const Location = ({ location }) => {
   return (
     <View style={styles.container}>
       <Icon
-        name="ios-navigate-outline"
+        name="map-marker"
         style={styles.locationIcon}
       />
       <Text style={styles.locationText}>{string}</Text>
