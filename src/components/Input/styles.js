@@ -24,5 +24,6 @@ export default StyleSheet.create({
     right: 10,
     top: 10,
     color: COLORS.CYAN,
+    backgroundColor: COLORS.DARK_GREY,
   }
 });

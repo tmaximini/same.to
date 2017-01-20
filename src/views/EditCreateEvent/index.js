@@ -76,7 +76,6 @@ export default class EditCreatevent extends Component {
           <Input
             placeholder="Event name"
             onChangeText={text => updateEvent('name', text)}
-            icon="ios-locate-outline"
             value={name}
           />
           <GeoInput

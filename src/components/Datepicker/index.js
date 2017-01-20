@@ -27,7 +27,14 @@ export default class DatePicker extends Component {
       <View style={{ flex: 1, flexDirection: 'row', maxHeight: 60 }}>
         <Icon
           name="calendar"
-          style={{ position: 'absolute', right: 10, top: 10, color: COLORS.CYAN, zIndex: 10 }}
+          style={{
+            position: 'absolute',
+            right: 10,
+            top: 10,
+            color: COLORS.CYAN,
+            zIndex: 10,
+            backgroundColor: COLORS.DARK_GREY
+          }}
           size={20}
         />
         <DPicker

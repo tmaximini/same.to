@@ -36,5 +36,13 @@ export default StyleSheet.create({
     position: 'absolute',
     top: 30,
     backgroundColor: COLORS.DARK_GREY,
+  },
+  icon: {
+    position: 'absolute',
+    right: 10,
+    top: 10,
+    color: COLORS.CYAN,
+    zIndex: 99,
+    backgroundColor: COLORS.DARK_GREY,
   }
 });

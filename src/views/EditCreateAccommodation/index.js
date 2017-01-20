@@ -6,7 +6,7 @@ import {
 
 import { connect } from 'react-redux';
 import { formatDate } from '../../utils';
-// import Input from '../../components/Input';
+import Input from '../../components/Input';
 import Button from '../../components/Button';
 import GeoInput from '../../components/GeoInput';
 import Datepicker from '../../components/Datepicker';
@@ -87,6 +87,12 @@ export default class EditCreateAccommodation extends Component {
             />
           </View>
           <View style={styles.inputWrapper}>
+            <Input
+              placeholder="Name"
+              onChangeText={text => updateAccommodation('name', text)}
+              icon="bed"
+              value={accommodation.name}
+            />
             <Datepicker
               placeholder="Start Date"
               minDate={today}
