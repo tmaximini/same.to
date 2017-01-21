@@ -27,7 +27,8 @@ export function* handleLoginAsync(action) {
         payload: response,
       });
       yield call(delay, 100);
-      yield call(Actions.home);
+      yield call(Actions.tabbar, { key: 'tabbar', type: 'replace' });
+      yield call(Actions.home, { type: 'replace' });
     }
   } catch (error) {
     console.info({ error });

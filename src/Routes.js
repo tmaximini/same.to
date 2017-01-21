@@ -12,7 +12,7 @@ import EditCreateAccommodation from './views/EditCreateAccommodation';
 import EventDetail from './views/Event';
 import EditCreatevent from './views/EditCreateEvent';
 import TabBar from './components/TabBar';
-// import Splash from './views/Splash';
+import Splash from './views/Splash';
 import { COLORS } from './constants';
 
 const RouterWithRedux = connect()(Router);
@@ -69,6 +69,11 @@ const Routes = () => (
     barButtonIconStyle={styles.barButtonIconStyle}
   >
     <Scene
+      key="start"
+      component={Splash}
+      initial
+    />
+    <Scene
       key="tabbar"
       tabs
       component={TabBar}
@@ -79,7 +84,6 @@ const Routes = () => (
         title="Home"
         sceneStyle={navTabpadding}
         icon={makeTabIcon('home')}
-        initial
       />
       <Scene key="favorites" component={TabView} title="Favoriten" icon={makeTabIcon('star')} />
       <Scene key="contacts" component={TabView} title="Kontakte" icon={makeTabIcon('user-circle-o')} />

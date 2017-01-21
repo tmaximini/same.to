@@ -1,10 +1,10 @@
 import { REHYDRATE } from 'redux-persist/constants';
-import { Actions } from 'react-native-router-flux';
 import { updateAuthHeader } from '../../services/api';
 
 
 // Initial State
 const initialState = {
+  rehydrateFinished: false,
   loggedIn: false,
   email: 'peter.limbach@example.org',
   password: null,
@@ -55,7 +55,7 @@ export const actions = {
 // Action Handlers
 const actionsMap = {
   [REHYDRATE]: (state, action) => {
-    console.info('REHYDRATE!!');
+    console.info('REHYDRATE!!', state);
     try {
       const { token, loggedIn } = action.payload.auth;
       if (loggedIn && token) {
@@ -64,7 +64,11 @@ const actionsMap = {
     } catch (e) {
       console.warn(e);
     }
-    return state;
+
+    const newState = { ...state, rehydrateFinished: true };
+    console.log('newState', newState);
+
+    return newState;
   },
   [LOGIN_SUCCESS]: (state, action) => {
     const { userId, id } = action.payload;
