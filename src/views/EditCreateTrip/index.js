@@ -103,6 +103,7 @@ export default class EditCreateTrip extends Component {
               value={pickupString}
               onChangeText={text => updateTrip('pickupString', text)}
               onAdressSelect={geocodeLocation}
+              zIndex={2}
             />
             <GeoInput
               placeholder="Destination"
@@ -110,14 +111,16 @@ export default class EditCreateTrip extends Component {
               value={destinationString}
               onChangeText={text => updateTrip('destinationString', text)}
               onAdressSelect={geocodeDestination}
+              zIndex={1}
             />
-          </View>
-          <View style={styles.spacer}>
             <OnOffSwitch
               name="Make this trip public"
               value={trip.isPublic}
               onChange={(val) => updateTrip('isPublic', val)}
             />
+          </View>
+          <View style={styles.spacer}>
+
           </View>
           <View style={styles.button}>
             <Button

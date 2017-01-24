@@ -5,9 +5,13 @@ import {
 export default StyleSheet.create({
   container: {
     flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  wrapper: {
-    paddingHorizontal: 15
+  centering: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 8,
   }
 });
 

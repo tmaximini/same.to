@@ -10,7 +10,8 @@ const initialState = {
   isLoading: false,
   token: null,
   userId: null,
-  error: null
+  error: null,
+  rehydrateFinished: false,
 };
 
 
@@ -66,7 +67,7 @@ const actionsMap = {
       }
     }
 
-    return state;
+    return { ...state, ...action.payload.auth, rehydrateFinished: true };
   },
   [LOGIN_SUCCESS]: (state, action) => {
     const { userId, id } = action.payload;

@@ -2,9 +2,11 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import {
-  Text,
   View,
+  ActivityIndicator,
 } from 'react-native';
+
+import styles from './styles';
 
 @connect(
   state => state.auth,
@@ -16,15 +18,6 @@ export default class Splash extends Component {
     loggedIn: PropTypes.bool.isRequired,
   };
 
-  handleRouting = (props) => {
-    if (props.loggedIn) {
-      Actions.tabbar({ key: 'tabbar', type: 'reset' });
-      Actions.home({ type: 'replace' });
-    } else {
-      Actions.login({ type: 'replace' });
-    }
-  }
-
   componentDidMount() {
     this.handleRouting(this.props);
   }
@@ -34,11 +27,25 @@ export default class Splash extends Component {
     this.handleRouting(nextProps);
   }
 
+  handleRouting = (props) => {
+    if (props.rehydrateFinished) {
+      if (props.loggedIn) {
+        Actions.tabbar({ key: 'tabbar', type: 'reset' });
+        Actions.home({ type: 'replace' });
+      } else {
+        Actions.login({ type: 'replace' });
+      }
+    }
+  }
 
   render() {
     return (
-      <View>
-        <Text>Initializing...</Text>
+      <View style={styles.container}>
+        <ActivityIndicator
+          style={styles.centering}
+          animating
+          size="large"
+        />
       </View>
     );
   }

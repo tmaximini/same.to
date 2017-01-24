@@ -6,7 +6,7 @@ import { COLORS } from '../../constants';
 
 export default StyleSheet.create({
   container: {
-    flex: 1,
+    flexGrow: 1,
     backgroundColor: COLORS.BG_GREY,
     padding: 10,
   },
