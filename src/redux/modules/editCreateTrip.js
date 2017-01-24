@@ -5,6 +5,7 @@ const makeDefaultTrip = () => ({
   location: {},
   types: [],
   pickupRadius: 0,
+  isPublic: true,
 });
 
 // Initial State

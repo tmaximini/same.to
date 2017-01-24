@@ -4,7 +4,6 @@ import { updateAuthHeader } from '../../services/api';
 
 // Initial State
 const initialState = {
-  rehydrateFinished: false,
   loggedIn: false,
   email: 'peter.limbach@example.org',
   password: null,
@@ -56,19 +55,18 @@ export const actions = {
 const actionsMap = {
   [REHYDRATE]: (state, action) => {
     console.info('REHYDRATE!!', state);
-    try {
-      const { token, loggedIn } = action.payload.auth;
-      if (loggedIn && token) {
-        updateAuthHeader(token);
+    if (action.payload.auth) {
+      try {
+        const { token, loggedIn } = action.payload.auth;
+        if (loggedIn && token) {
+          updateAuthHeader(token);
+        }
+      } catch (e) {
+        console.warn(e);
       }
-    } catch (e) {
-      console.warn(e);
     }
 
-    const newState = { ...state, rehydrateFinished: true };
-    console.log('newState', newState);
-
-    return newState;
+    return state;
   },
   [LOGIN_SUCCESS]: (state, action) => {
     const { userId, id } = action.payload;

@@ -16,15 +16,22 @@ export default class Splash extends Component {
     loggedIn: PropTypes.bool.isRequired,
   };
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.rehydrateFinished) {
-      if (nextProps.loggedIn) {
-        Actions.tabbar({ key: 'tabbar', type: 'reset' });
-        Actions.home({ type: 'replace' });
-      } else {
-        Actions.login({ type: 'replace' });
-      }
+  handleRouting = (props) => {
+    if (props.loggedIn) {
+      Actions.tabbar({ key: 'tabbar', type: 'reset' });
+      Actions.home({ type: 'replace' });
+    } else {
+      Actions.login({ type: 'replace' });
     }
+  }
+
+  componentDidMount() {
+    this.handleRouting(this.props);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log('nextProps', nextProps);
+    this.handleRouting(nextProps);
   }
 
 

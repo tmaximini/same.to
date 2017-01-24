@@ -71,6 +71,7 @@ const Routes = () => (
     <Scene
       key="start"
       component={Splash}
+      hideNavBar
       initial
     />
     <Scene

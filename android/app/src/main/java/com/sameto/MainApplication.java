@@ -5,7 +5,6 @@ import android.util.Log;
 
 import com.facebook.react.ReactApplication;
 import com.i18n.reactnativei18n.ReactNativeI18n;
-import com.cmcewen.blurview.BlurViewPackage;
 import com.devfd.RNGeocoder.RNGeocoderPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.facebook.react.ReactInstanceManager;
@@ -30,7 +29,6 @@ public class MainApplication extends Application implements ReactApplication {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
             new ReactNativeI18n(),
-            new BlurViewPackage(),
             new RNGeocoderPackage(),
             new VectorIconsPackage()
       );

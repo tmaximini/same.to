@@ -3,7 +3,6 @@ import {
   Image,
   View,
 } from 'react-native';
-import { BlurView } from 'react-native-blur';
 import Tabs from 'react-native-tabs';
 import DefaultRenderer from 'react-native-router-flux/src/DefaultRenderer';
 import Actions from 'react-native-router-flux/src/Actions';
