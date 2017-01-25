@@ -1,7 +1,9 @@
 import React, { PropTypes } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import styles from './styles';
+
+const nafta = require('../../../assets/nafta.png');
 
 const CheckboxItem = ({ item, onChange, active }) => (
   <View style={styles.container}>
@@ -10,11 +12,21 @@ const CheckboxItem = ({ item, onChange, active }) => (
       onPress={() => onChange(item)}
       activeOpacity={0.8}
     >
-      {active && <Icon
-        name="check"
-        size={22}
-        style={styles.icon}
-      />}
+      <Image
+        source={nafta}
+        style={styles.image}
+        resizeMode="cover"
+      >
+        {active && <View
+          style={styles.checked}
+        >
+          <Icon
+            name="check"
+            size={22}
+            style={styles.icon}
+          />
+        </View>}
+      </Image>
 
     </TouchableOpacity>
     <Text style={styles.itemText}>{item}</Text>

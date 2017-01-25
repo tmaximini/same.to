@@ -14,7 +14,6 @@ export default StyleSheet.create({
     marginBottom: 10,
   },
   circle: {
-    backgroundColor: COLORS.CYAN,
     borderRadius: itemWidth * 0.5,
     height: itemWidth - 10,
     width: itemWidth - 10,
@@ -24,13 +23,22 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  trigger: {
+  image: {
     flex: 1,
+    width: null,
+    height: null,
+    alignSelf: 'stretch',
+  },
+  checked: {
+    backgroundColor: COLORS.CYAN_OPAQ,
+    flex: 1,
+    alignSelf: 'stretch',
     alignItems: 'center',
     justifyContent: 'center',
   },
   icon: {
     color: COLORS.WHITE,
+    backgroundColor: 'transparent',
   },
   itemText: {
     color: COLORS.WHITE,

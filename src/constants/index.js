@@ -5,6 +5,7 @@ export const COLORS = {
   CYAN: 'rgba(68,203,198,1)',
   WHITE: '#FFFFFF',
   GREY_OPAQ: 'rgba(39,42,49,0.7)',
+  CYAN_OPAQ: 'rgba(27,203,199,0.7)',
 };
 
 export const FONT_SIZES = {
