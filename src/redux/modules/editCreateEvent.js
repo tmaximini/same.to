@@ -18,6 +18,7 @@ const initialState = {
     // TODO: fetch from server
   eventTypes: ['event', 'party', 'gaming', 'shopping', 'concert', 'cinema', 'dinner', 'sport', 'gameing'],
   errors: {},
+  isNew: true,
 };
 
 
@@ -102,10 +103,11 @@ const ensureDatesAreValid = event => {
 
 // Action Handlers
 const actionsMap = {
-  // [CREATE_EVENT_SUCCESS]: (state) => ({
-  //   ...state,
-  //   event: makeDefaultEvent(),
-  // }),
+  [CREATE_EVENT_SUCCESS]: (state) => ({
+    ...state,
+    event: makeDefaultEvent(),
+    isNew: true,
+  }),
   [SET_EVENT]: (state, action) => {
     const { model } = action.payload;
 
@@ -114,11 +116,13 @@ const actionsMap = {
       ...state,
       event: model,
       locationString: model.location ? model.location.formattedAddress : '',
+      isNew: false,
     };
   },
   [UPDATE_EVENT_SUCCESS]: (state) => ({
     ...state,
-    event: {},
+    event: makeDefaultEvent(),
+    isNew: true,
   }),
   [UPDATE_EVENT]: (state, action) => {
     const { key, value } = action.payload;

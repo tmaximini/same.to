@@ -36,6 +36,7 @@ export default class EditCreateTrip extends Component {
     destinationString: PropTypes.string,
     trip: PropTypes.object,
     eventId: PropTypes.string,
+    isNew: PropTypes.bool.isRequired,
   }
 
   constructor(props) {
@@ -44,18 +45,8 @@ export default class EditCreateTrip extends Component {
     this.saveItem = this.saveItem.bind(this);
   }
 
-  componentWillMount() {
-    const { setTrip, model } = this.props;
-    // 'model' is passed when we edit a trip, so we set
-    // editMethod and inital values correctly
-    if (model) {
-      this.isNew = false;
-      setTrip(model);
-    }
-  }
-
   saveItem(item) {
-    if (this.isNew) {
+    if (this.props.isNew) {
       this.props.createTrip(item, this.props.eventId);
     } else {
       this.props.updateRemoteTrip(item);
@@ -73,8 +64,6 @@ export default class EditCreateTrip extends Component {
       destinationString,
       trip,
     } = this.props;
-
-    console.log('pickupString', pickupString);
 
     const today = formatDate(new Date());
 

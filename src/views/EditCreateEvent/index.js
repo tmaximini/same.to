@@ -28,6 +28,7 @@ export default class EditCreatevent extends Component {
     geocodeLocation: PropTypes.func.isRequired,
     locationString: PropTypes.string,
     model: PropTypes.object,
+    isNew: PropTypes.bool.isRequired,
   }
 
   constructor(props) {
@@ -36,18 +37,9 @@ export default class EditCreatevent extends Component {
     this.saveItem = this.saveItem.bind(this);
   }
 
-  componentWillMount() {
-    const { setEvent, model } = this.props;
-    // 'model' is passed when we edit a trip, so we set
-    // editMethod and inital values correctly
-    if (model) {
-      this.isNew = false;
-      setEvent(model);
-    }
-  }
 
   saveItem(item) {
-    if (this.isNew) {
+    if (this.props.isNew) {
       this.props.createEvent(item);
     } else {
       this.props.updateRemoteEvent(item);

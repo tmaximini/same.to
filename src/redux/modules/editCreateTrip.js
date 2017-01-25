@@ -6,6 +6,7 @@ const makeDefaultTrip = () => ({
   types: [],
   pickupRadius: 0,
   isPublic: true,
+  isNew: true,
 });
 
 // Initial State
@@ -133,6 +134,7 @@ const actionsMap = {
       trip: model,
       pickupString: model.pickupLocation ? model.pickupLocation.formattedAddress : '',
       destinationString: model.destinationLocation ? model.destinationLocation.formattedAddress : '',
+      isNew: false,
     };
   },
   [UPDATE_TRIP]: (state, action) => {

@@ -33,6 +33,7 @@ export default class EditCreateAccommodation extends Component {
     locationString: PropTypes.string,
     accommodation: PropTypes.object,
     eventId: PropTypes.string,
+    isNew: PropTypes.bool.isRequired,
   }
 
   constructor(props) {
@@ -41,18 +42,8 @@ export default class EditCreateAccommodation extends Component {
     this.saveItem = this.saveItem.bind(this);
   }
 
-  componentWillMount() {
-    const { setAccommodation, model } = this.props;
-    // 'model' is passed when we edit a accommodation, so we set
-    // editMethod and inital values correctly
-    if (model) {
-      this.isNew = false;
-      setAccommodation(model);
-    }
-  }
-
   saveItem(item) {
-    if (this.isNew) {
+    if (this.props.isNew) {
       console.log('eventId', this.props.eventId);
       this.props.createAccommodation(item, this.props.eventId);
     } else {
