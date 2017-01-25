@@ -25,5 +25,12 @@ export default StyleSheet.create({
     flexGrow: 1,
     justifyContent: 'flex-end',
   },
+  inputGroup: {
+    flex: 1,
+    flexDirection: 'row',
+  },
+  spacer: {
+    width: 10,
+  },
 });
 

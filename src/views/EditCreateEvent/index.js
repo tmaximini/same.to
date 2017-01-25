@@ -37,7 +37,6 @@ export default class EditCreatevent extends Component {
     this.saveItem = this.saveItem.bind(this);
   }
 
-
   saveItem(item) {
     if (this.props.isNew) {
       this.props.createEvent(item);
