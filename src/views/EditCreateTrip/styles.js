@@ -11,25 +11,18 @@ export default StyleSheet.create({
     padding: 10,
   },
   form: {
-    flex: 1,
+    flexGrow: 1,
   },
   checkboxWrapper: {
-    flex: 2,
+    flex: 3,
     marginBottom: 20,
   },
   checkboxLabel: {
     marginBottom: 10,
     color: COLORS.WHITE,
   },
-  inputWrapper: {
-    flex: 6,
-    justifyContent: 'flex-start',
-  },
   button: {
-    flex: 2,
+    justifyContent: 'flex-end',
   },
-  spacer: {
-    flex: 4,
-  }
 });
 

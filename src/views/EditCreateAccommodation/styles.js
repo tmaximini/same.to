@@ -14,20 +14,15 @@ export default StyleSheet.create({
     flex: 1,
   },
   checkboxWrapper: {
-    flex: 2,
-    marginBottom: 20,
+    flex: 3,
     justifyContent: 'center',
   },
   checkboxLabel: {
     marginBottom: 10,
     color: COLORS.WHITE,
   },
-  inputWrapper: {
-    flex: 6,
-    justifyContent: 'flex-start',
-  },
   button: {
-    flex: 2,
+    flexGrow: 1,
     justifyContent: 'flex-end',
   },
 });

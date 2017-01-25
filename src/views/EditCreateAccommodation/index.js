@@ -86,27 +86,25 @@ export default class EditCreateAccommodation extends Component {
               model={accommodation}
             />
           </View>
-          <View style={styles.inputWrapper}>
-            <Input
-              placeholder="Name"
-              onChangeText={text => updateAccommodation('name', text)}
-              icon="bed"
-              value={accommodation.name}
-            />
-            <Datepicker
-              placeholder="Start Date"
-              minDate={today}
-              date={accommodation.startAt || today}
-              onChange={date => updateAccommodation('startAt', date)}
-            />
-            <GeoInput
-              placeholder="Where"
-              enablePoweredByContainer={false}
-              value={locationString}
-              onChangeText={text => updateAccommodation('locationString', text)}
-              onAdressSelect={geocodeLocation}
-            />
-          </View>
+          <Input
+            placeholder="Name"
+            onChangeText={text => updateAccommodation('name', text)}
+            icon="bed"
+            value={accommodation.name}
+          />
+          <Datepicker
+            placeholder="Start Date"
+            minDate={today}
+            date={accommodation.startAt || today}
+            onChange={date => updateAccommodation('startAt', date)}
+          />
+          <GeoInput
+            placeholder="Where"
+            enablePoweredByContainer={false}
+            value={locationString}
+            onChangeText={text => updateAccommodation('locationString', text)}
+            onAdressSelect={geocodeLocation}
+          />
           <View style={styles.button}>
             <Button
               text={this.isNew ? 'Save' : 'Update'}

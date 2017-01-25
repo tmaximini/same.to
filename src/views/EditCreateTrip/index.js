@@ -91,39 +91,34 @@ export default class EditCreateTrip extends Component {
               onChange={toggleType}
             />
           </View>
-          <View style={styles.inputWrapper}>
-            <Datepicker
-              placeholder="Start Date"
-              minDate={today}
-              date={trip.startDate}
-              onChange={date => updateTrip('startDate', date)}
-            />
-            <GeoInput
-              placeholder="Start"
-              enablePoweredByContainer={false}
-              value={pickupString}
-              onChangeText={text => updateTrip('pickupString', text)}
-              onAdressSelect={geocodeLocation}
-              zIndex={2}
-            />
-            <GeoInput
-              placeholder="Destination"
-              enablePoweredByContainer={false}
-              value={destinationString}
-              onChangeText={text => updateTrip('destinationString', text)}
-              onAdressSelect={geocodeDestination}
-              zIndex={1}
-            />
-            <HR />
-            <OnOffSwitch
-              name="Make this trip public"
-              value={trip.isPublic}
-              onChange={(val) => updateTrip('isPublic', val)}
-            />
-          </View>
-          <View style={styles.spacer}>
-
-          </View>
+          <Datepicker
+            placeholder="Start Date"
+            minDate={today}
+            date={trip.startDate}
+            onChange={date => updateTrip('startDate', date)}
+          />
+          <GeoInput
+            placeholder="Start"
+            enablePoweredByContainer={false}
+            value={pickupString}
+            onChangeText={text => updateTrip('pickupString', text)}
+            onAdressSelect={geocodeLocation}
+            zIndex={2}
+          />
+          <GeoInput
+            placeholder="Destination"
+            enablePoweredByContainer={false}
+            value={destinationString}
+            onChangeText={text => updateTrip('destinationString', text)}
+            onAdressSelect={geocodeDestination}
+            zIndex={1}
+          />
+          <HR />
+          <OnOffSwitch
+            name="Make this trip public"
+            value={trip.isPublic}
+            onChange={(val) => updateTrip('isPublic', val)}
+          />
           <View style={styles.button}>
             <Button
               text={this.isNew ? 'Save' : 'Update'}
