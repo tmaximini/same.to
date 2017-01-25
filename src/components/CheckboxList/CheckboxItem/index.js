@@ -5,19 +5,18 @@ import styles from './styles';
 
 const CheckboxItem = ({ item, onChange, active }) => (
   <View style={styles.container}>
-    <View style={styles.circle}>
-      <TouchableOpacity
-        style={styles.trigger}
-        onPress={() => onChange(item)}
-      >
-        {active && <Icon
-          name="check"
-          size={22}
-          styles={styles.icon}
-        />}
+    <TouchableOpacity
+      style={styles.circle}
+      onPress={() => onChange(item)}
+      activeOpacity={0.8}
+    >
+      {active && <Icon
+        name="check"
+        size={22}
+        style={styles.icon}
+      />}
 
-      </TouchableOpacity>
-    </View>
+    </TouchableOpacity>
     <Text style={styles.itemText}>{item}</Text>
   </View>
 );

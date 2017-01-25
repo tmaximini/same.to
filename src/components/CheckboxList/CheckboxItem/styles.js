@@ -29,6 +29,9 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  icon: {
+    color: COLORS.WHITE,
+  },
   itemText: {
     color: COLORS.WHITE,
     fontSize: 10,

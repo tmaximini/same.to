@@ -29,7 +29,7 @@ export const toggleArrayItem = (array, item) => {
     return [...array, item];
   }
   return [
-    ...array.splice(0, index),
-    ...array.splice(index)
+    ...array.slice(0, index),
+    ...array.slice(index + 1)
   ];
 };
