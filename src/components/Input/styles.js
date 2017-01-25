@@ -6,7 +6,6 @@ import { COLORS } from '../../constants';
 
 export default StyleSheet.create({
   inputWrap: {
-    flexGrow: 1,
     flexDirection: 'row',
     height: 40,
     marginBottom: 20,
@@ -14,7 +13,7 @@ export default StyleSheet.create({
   },
   input: {
     flex: 1,
-    padding: 15,
+    paddingHorizontal: 15,
     fontSize: 14,
     backgroundColor: COLORS.DARK_GREY,
     borderRadius: 5,

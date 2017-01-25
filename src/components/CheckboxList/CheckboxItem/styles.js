@@ -4,8 +4,9 @@ import { COLORS } from '../../../constants';
 export default StyleSheet.create({
   container: {
     backgroundColor: COLORS.CYAN,
-    borderRadius: 25,
-    height: 50,
+    borderRadius: 20,
+    height: 40,
+    width: 40,
     overflow: 'hidden',
     flex: 1,
     alignItems: 'center',

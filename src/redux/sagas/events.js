@@ -5,9 +5,10 @@ import {
   FETCH_EVENTS_SUCCESS,
   FETCH_EVENTS_ERROR,
 } from '../modules/events';
-import { updateAuthHeader } from '../../services/api';
+import {
+  AUTHORIZATION_REQUIRED,
+} from '../modules/auth';
 import { fetchEvents } from '../../services/events';
-// import { multiSet } from '../../services/storage';
 
 
 /**
@@ -28,7 +29,9 @@ export function* fetchEventsAsync(action) {
         }
       });
       if (response.error.statusCode === 401) {
-        updateAuthHeader(null);
+        yield put({
+          type: AUTHORIZATION_REQUIRED
+        });
         yield call(Actions.login);
       }
     } else {

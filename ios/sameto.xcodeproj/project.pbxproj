@@ -252,9 +252,9 @@
 			remoteGlobalIDString = BF8FCF941BFFB184000FCD37;
 			remoteInfo = RNGeocoder;
 		};
-		E9F735161E336D020007D37B /* PBXContainerItemProxy */ = {
+		E994FA411E3798C60094BF06 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = F04674044F8F423DB105ED58 /* RNBlur.xcodeproj */;
+			containerPortal = E994FA3D1E3798C60094BF06 /* RNBlur.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = A68BD7BC1BC31318005F02DF;
 			remoteInfo = RNBlur;
@@ -327,7 +327,7 @@
 		CEDDFE6F31C246F595E15C82 /* Times New Roman.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Times New Roman.ttf"; path = "../node_modules/native-base/Fonts/Times New Roman.ttf"; sourceTree = "<group>"; };
 		D4017E62FBB14A0690EB4BDC /* libRNBlur.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNBlur.a; sourceTree = "<group>"; };
 		DF10C529749E44A485AA166C /* Microsoft Sans Serif.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Microsoft Sans Serif.ttf"; path = "../node_modules/native-base/Fonts/Microsoft Sans Serif.ttf"; sourceTree = "<group>"; };
-		F04674044F8F423DB105ED58 /* RNBlur.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNBlur.xcodeproj; path = "../node_modules/react-native-blur/ios/RNBlur.xcodeproj"; sourceTree = "<group>"; };
+		E994FA3D1E3798C60094BF06 /* RNBlur.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNBlur.xcodeproj; path = "../node_modules/react-native-blur/ios/RNBlur.xcodeproj"; sourceTree = "<group>"; };
 		F7C6FFC3B71A4EB09A1290F2 /* libReact.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libReact.a; sourceTree = "<group>"; };
 		FC09809D63E5489899991274 /* libjschelpers.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libjschelpers.a; sourceTree = "<group>"; };
 		FDD47C790C044D438E480C57 /* Courier New.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Courier New.ttf"; path = "../node_modules/native-base/Fonts/Courier New.ttf"; sourceTree = "<group>"; };
@@ -526,6 +526,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				E994FA3D1E3798C60094BF06 /* RNBlur.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
@@ -539,7 +540,6 @@
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				5270C74E08624D0C8680ACD9 /* RNVectorIcons.xcodeproj */,
 				254AE2FE26BA4FAFBA4493F4 /* RNGeocoder.xcodeproj */,
-				F04674044F8F423DB105ED58 /* RNBlur.xcodeproj */,
 				7B062D093FF548C59DBC559F /* RNI18n.xcodeproj */,
 			);
 			name = Libraries;
@@ -592,19 +592,19 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		E994FA3E1E3798C60094BF06 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E994FA421E3798C60094BF06 /* libRNBlur.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		E9F734F81E336CFD0007D37B /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				E9F7351C1E336D020007D37B /* libRNI18n.a */,
 				E9F7351E1E336D020007D37B /* RNI18nTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		E9F734FA1E336CFD0007D37B /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				E9F735171E336D020007D37B /* libRNBlur.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -723,8 +723,8 @@
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 				},
 				{
-					ProductGroup = E9F734FA1E336CFD0007D37B /* Products */;
-					ProjectRef = F04674044F8F423DB105ED58 /* RNBlur.xcodeproj */;
+					ProductGroup = E994FA3E1E3798C60094BF06 /* Products */;
+					ProjectRef = E994FA3D1E3798C60094BF06 /* RNBlur.xcodeproj */;
 				},
 				{
 					ProductGroup = E93271FC1E226B5700C90A4A /* Products */;
@@ -937,11 +937,11 @@
 			remoteRef = E93272181E226B5800C90A4A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		E9F735171E336D020007D37B /* libRNBlur.a */ = {
+		E994FA421E3798C60094BF06 /* libRNBlur.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRNBlur.a;
-			remoteRef = E9F735161E336D020007D37B /* PBXContainerItemProxy */;
+			remoteRef = E994FA411E3798C60094BF06 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		E9F7351C1E336D020007D37B /* libRNI18n.a */ = {

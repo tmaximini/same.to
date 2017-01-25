@@ -30,6 +30,11 @@ export default class Home extends Component {
     events: PropTypes.arrayOf(PropTypes.object)
   };
 
+  componentDidMount() {
+    this.props.fetchEvents();
+  }
+
+
   render() {
     const {
       events,

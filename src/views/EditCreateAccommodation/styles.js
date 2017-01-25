@@ -16,6 +16,7 @@ export default StyleSheet.create({
   checkboxWrapper: {
     flex: 2,
     marginBottom: 20,
+    justifyContent: 'center',
   },
   checkboxLabel: {
     marginBottom: 10,
@@ -27,9 +28,7 @@ export default StyleSheet.create({
   },
   button: {
     flex: 2,
+    justifyContent: 'flex-end',
   },
-  spacer: {
-    flex: 4,
-  }
 });
 

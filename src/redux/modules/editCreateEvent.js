@@ -4,8 +4,8 @@ import { formatDate, getDateFromString } from '../../utils';
 
 const makeDefaultEvent = () => ({
   name: '',
-  startAt: formatDate(new Date()),
-  endAt: formatDate(new Date()),
+  startAt: null,
+  endAt: null,
   location: {},
   trips: [],
   accommodations: [],

@@ -11,7 +11,9 @@ import {
   UPDATE_ACCOMMODATION_SUCCESS,
   UPDATE_ACCOMMODATION_ERROR,
 } from '../modules/editCreateAccommodation';
-import { updateAuthHeader } from '../../services/api';
+import {
+  AUTHORIZATION_REQUIRED,
+} from '../modules/auth';
 import { createAccommodation, updateAccommodation } from '../../services/accommodations';
 
 
@@ -29,8 +31,10 @@ export function* createAccommodationAsync(action) {
         }
       });
       if (response.error.statusCode === 401) {
-        updateAuthHeader(null);
-        Actions.login();
+        yield put({
+          type: AUTHORIZATION_REQUIRED
+        });
+        yield call(Actions.login);
       }
     } else {
       // success
@@ -68,8 +72,10 @@ export function* updateAccommodationAsync(action) {
         }
       });
       if (response.error.statusCode === 401) {
-        updateAuthHeader(null);
-        Actions.login();
+        yield put({
+          type: AUTHORIZATION_REQUIRED
+        });
+        yield call(Actions.login);
       }
     } else {
       // success

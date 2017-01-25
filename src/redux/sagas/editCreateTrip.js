@@ -12,7 +12,9 @@ import {
   UPDATE_TRIP_SUCCESS,
   UPDATE_TRIP_ERROR,
 } from '../modules/editCreateTrip';
-import { updateAuthHeader } from '../../services/api';
+import {
+  AUTHORIZATION_REQUIRED,
+} from '../modules/auth';
 import { createTrip, updateTrip } from '../../services/trips';
 
 
@@ -32,8 +34,10 @@ export function* createTripAsync(action) {
         }
       });
       if (response.error.statusCode === 401) {
-        updateAuthHeader(null);
-        Actions.login();
+        yield put({
+          type: AUTHORIZATION_REQUIRED
+        });
+        yield call(Actions.login);
       }
     } else {
       // success
@@ -71,8 +75,10 @@ export function* updateTripAsync(action) {
         }
       });
       if (response.error.statusCode === 401) {
-        updateAuthHeader(null);
-        Actions.login();
+        yield put({
+          type: AUTHORIZATION_REQUIRED
+        });
+        yield call(Actions.login);
       }
     } else {
       // success

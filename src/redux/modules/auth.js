@@ -21,6 +21,7 @@ export const LOGIN_SUCCESS = 'auth/LOGIN_SUCCESS';
 export const LOGIN_ERROR = 'auth/LOGIN_ERROR';
 export const LOGOUT = 'auth/LOGOUT';
 export const UPDATE = 'auth/UPDATE';
+export const AUTHORIZATION_REQUIRED = 'auth/AUTHORIZATION_REQUIRED';
 // storage keys
 // export const TOKEN = '@@SAME/TOKEN';
 // export const USERID = '@@SAME/USERID';
@@ -68,6 +69,13 @@ const actionsMap = {
     }
 
     return { ...state, ...action.payload.auth, rehydrateFinished: true };
+  },
+  [AUTHORIZATION_REQUIRED]: state => {
+    updateAuthHeader(null); // reset auth token
+    // reset state
+    return {
+      ...initialState
+    };
   },
   [LOGIN_SUCCESS]: (state, action) => {
     const { userId, id } = action.payload;

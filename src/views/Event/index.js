@@ -59,7 +59,7 @@ export default class Event extends Component {
   shareEvent() {
     Share.share({
       message: 'Yo, this event rocks',
-      url: 'http://facebook.github.io/react-native/',
+      url: 'shareto://facebook.github.io/react-native/',
       title: `Same.to Event ${this.props.event.name}`
     }, {
       dialogTitle: `Same.to Event ${this.props.event.name}`,
@@ -77,11 +77,11 @@ export default class Event extends Component {
     } = this.props;
     const {
       name,
-      isPublic,
-      startAt,
+      // isPublic,
+      // startAt,
       accommodations,
       trips,
-      members,
+      // members,
       id,
     } = this.props.event;
 
@@ -130,7 +130,8 @@ export default class Event extends Component {
           ) : (
             <View style={styles.noItems}>
               <Text style={styles.noItemsText}>
-                Bisher wurden keine Trips, Unterkünfte oder Aktivitäten angelegt. Um zu starten, drücke unten auf das Plus.
+                Bisher wurden keine Trips, Unterkünfte oder Aktivitäten angelegt.
+                Um zu starten, drücke unten auf das Plus.
               </Text>
             </View>
           )}

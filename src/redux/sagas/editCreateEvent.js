@@ -11,7 +11,9 @@ import {
 import {
   FETCH_EVENTS_START,
 } from '../modules/events';
-import { updateAuthHeader } from '../../services/api';
+import {
+  AUTHORIZATION_REQUIRED,
+} from '../modules/auth';
 import { createEvent } from '../../services/events';
 
 
@@ -29,8 +31,10 @@ export function* createEventAsync(action) {
         }
       });
       if (response.error.statusCode === 401) {
-        updateAuthHeader(null);
-        Actions.login();
+        yield put({
+          type: AUTHORIZATION_REQUIRED
+        });
+        yield call(Actions.login);
       }
     } else {
       // success

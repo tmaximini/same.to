@@ -85,18 +85,21 @@ export default class EditCreatevent extends Component {
             onChangeText={(text) => updateEvent('locationString', text)}
             onAdressSelect={geocodeLocation}
           />
-          <Datepicker
-            placeholder="Start Date"
-            minDate={today}
-            date={startAt || today}
-            onChange={(date) => updateEvent('startAt', date)}
-          />
-          <Datepicker
-            placeholder="End Date"
-            date={endAt || today}
-            minDate={startAt || today}
-            onChange={(date) => updateEvent('endAt', date)}
-          />
+          <View style={styles.inputGroup}>
+            <Datepicker
+              placeholder="Start Date"
+              minDate={today}
+              date={startAt}
+              onChange={(date) => updateEvent('startAt', date)}
+            />
+            <View style={styles.spacer}></View>
+            <Datepicker
+              placeholder="End Date"
+              date={endAt}
+              minDate={startAt || today}
+              onChange={(date) => updateEvent('endAt', date)}
+            />
+          </View>
         </View>
         <View style={styles.button}>
           <Button

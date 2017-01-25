@@ -10,15 +10,20 @@ export default StyleSheet.create({
     backgroundColor: COLORS.BG_GREY,
     padding: 10,
     justifyContent: 'flex-start',
-    flexBasis: 0,
-    flexGrow: 1,
   },
   form: {
     flex: 1,
-    flexGrow: 1,
+  },
+  inputGroup: {
+    flex: 1,
+    flexDirection: 'row',
+  },
+  spacer: {
+    width: 10,
   },
   button: {
     flex: 1,
+    justifyContent: 'flex-end'
   },
 });
 
