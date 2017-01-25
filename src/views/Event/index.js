@@ -113,7 +113,7 @@ export default class Event extends Component {
               <View style={styles.box}>
                 <Text style={styles.boxText}>Invite</Text>
               </View>
-              <View style={[styles.box, { borderRightWidth: 0 }]}>
+              <View style={[styles.box, styles.lastBox]}>
                 <Text style={styles.boxText}>Participants</Text>
               </View>
             </View>

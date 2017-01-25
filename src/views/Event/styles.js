@@ -45,9 +45,11 @@ export default StyleSheet.create({
     backgroundColor: COLORS.DARK_GREY,
     borderColor: COLORS.WHITE,
     borderRightWidth: 1,
-    flexWrap: 'wrap',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  lastBox: {
+    borderRightWidth: 0,
   },
   boxText: {
     color: COLORS.WHITE,

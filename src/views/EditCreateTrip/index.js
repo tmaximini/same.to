@@ -11,6 +11,7 @@ import Button from '../../components/Button';
 import GeoInput from '../../components/GeoInput';
 import Datepicker from '../../components/Datepicker';
 import CheckboxList from '../../components/CheckboxList';
+import HR from '../../components/HR';
 import { actions as tripActions } from '../../redux/modules/editCreateTrip';
 
 import styles from './styles';
@@ -113,6 +114,7 @@ export default class EditCreateTrip extends Component {
               onAdressSelect={geocodeDestination}
               zIndex={1}
             />
+            <HR />
             <OnOffSwitch
               name="Make this trip public"
               value={trip.isPublic}
