@@ -41,7 +41,6 @@ export default class EditCreateAccommodation extends Component {
 
   constructor(props) {
     super(props);
-    this.isNew = true;
     this.saveItem = this.saveItem.bind(this);
   }
 
@@ -111,7 +110,7 @@ export default class EditCreateAccommodation extends Component {
           </View>
           <View style={styles.button}>
             <Button
-              text={this.isNew ? 'Save' : 'Update'}
+              text={this.props.isNew ? 'Save' : 'Update'}
               onPress={() => this.saveItem(accommodation)}
             />
           </View>

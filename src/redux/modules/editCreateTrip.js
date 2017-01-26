@@ -6,7 +6,6 @@ const makeDefaultTrip = () => ({
   types: [],
   pickupRadius: 0,
   isPublic: true,
-  isNew: true,
 });
 
 // Initial State
@@ -16,6 +15,7 @@ const initialState = {
   tripTypes: ['car', 'airplane', 'train', 'bus', 'taxi', 'driver'],
   pickupString: null,
   destinationString: null,
+  isNew: true,
 };
 
 
@@ -121,10 +121,12 @@ const actionsMap = {
   [CREATE_TRIP_SUCCESS]: (state) => ({
     ...state,
     trip: makeDefaultTrip(),
+    isNew: true,
   }),
   [UPDATE_TRIP_SUCCESS]: (state) => ({
     ...state,
     trip: makeDefaultTrip(),
+    isNew: true,
   }),
   [SET_TRIP]: (state, action) => {
     const { model } = action.payload;

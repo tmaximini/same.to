@@ -41,7 +41,6 @@ export default class EditCreateTrip extends Component {
 
   constructor(props) {
     super(props);
-    this.isNew = true;
     this.saveItem = this.saveItem.bind(this);
   }
 
@@ -110,7 +109,7 @@ export default class EditCreateTrip extends Component {
           />
           <View style={styles.button}>
             <Button
-              text={this.isNew ? 'Save' : 'Update'}
+              text={this.props.isNew ? 'Save' : 'Update'}
               onPress={() => this.saveItem(trip)}
             />
           </View>
