@@ -9,6 +9,8 @@ import EventList from '../../components/EventList';
 import PlusButton from '../../components/PlusButton';
 
 import { actions as eventActions } from '../../redux/modules/events';
+import { resetEvent as resetEventAction } from '../../redux/modules/editCreateEvent';
+import { resetActivity as resetActivityAction } from '../../redux/modules/editCreateActivity';
 import styles from './styles';
 
 @connect(
@@ -17,11 +19,16 @@ import styles from './styles';
     isRefreshing: state.events.isFetching,
     loggedIn: state.auth.loggedIn,
   }),
-  eventActions,
+  {
+    ...eventActions,
+    resetEvent: resetEventAction,
+    resetActivity: resetActivityAction,
+  }
 )
 export default class Home extends Component {
 
   static propTypes = {
+    resetEvent: PropTypes.func.isRequired,
     fetchEvents: PropTypes.func.isRequired,
     setCurrentEvent: PropTypes.func.isRequired,
     title: PropTypes.string,
@@ -34,13 +41,13 @@ export default class Home extends Component {
     this.props.fetchEvents();
   }
 
-
   render() {
     const {
       events,
       fetchEvents,
       setCurrentEvent,
       isRefreshing,
+      resetEvent,
     } = this.props;
 
     return (
@@ -57,8 +64,21 @@ export default class Home extends Component {
           startDegree={225}
           endDegree={315}
           items={[
-            { title: 'event', action: Actions.editCreateEvent, icon: 'compass' },
-            { title: 'activity', action: Actions.editCreateEvent, icon: 'coffee' }
+            {
+              title: 'event',
+              action: () => {
+                resetEvent();
+                Actions.editCreateEvent();
+              },
+              icon: 'compass'
+            },
+            {
+              title: 'activity',
+              action: () => {
+                Actions.editCreateActivity();
+              },
+              icon: 'coffee'
+            }
           ]}
         />
       </View>

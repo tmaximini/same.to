@@ -12,11 +12,14 @@ import GeoInput from '../../components/GeoInput';
 import Datepicker from '../../components/Datepicker';
 import CheckboxList from '../../components/CheckboxList';
 import Select from '../../components/Select';
+import OnOffSwitch from '../../components/OnOffSwitch';
+import HR from '../../components/HR';
 import { actions as accommodationActions } from '../../redux/modules/editCreateAccommodation';
 
 import styles from './styles';
 
-const overstays = [1,2,3,4,5,6,7,8,9,10].map(i => ({ value: i, label: `${i} night(s)`}));
+// TODO: i18n
+const overstays = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(i => ({ value: i, label: `${i} night(s)` }));
 
 @connect(
   state => state.editCreateAccommodation,
@@ -31,7 +34,6 @@ export default class EditCreateAccommodation extends Component {
     createAccommodation: PropTypes.func.isRequired,
     toggleType: PropTypes.func.isRequired,
     geocodeLocation: PropTypes.func.isRequired,
-    model: PropTypes.object,
     accommodationTypes: PropTypes.array,
     locationString: PropTypes.string,
     accommodation: PropTypes.object,
@@ -86,13 +88,13 @@ export default class EditCreateAccommodation extends Component {
             icon="bed"
             value={accommodation.name}
           />
-          <GeoInput
+          {/* <GeoInput
             placeholder="Where"
             enablePoweredByContainer={false}
             value={locationString}
             onChangeText={text => updateAccommodation('locationString', text)}
             onAdressSelect={geocodeLocation}
-          />
+          /> */}
           <View style={styles.inputGroup}>
             <Datepicker
               placeholder="Start Date"
@@ -108,6 +110,12 @@ export default class EditCreateAccommodation extends Component {
               onChange={val => updateAccommodation('overnightStays', val)}
             />
           </View>
+          <HR />
+          <OnOffSwitch
+            name="Make this accommodation public"
+            value={accommodation.isPublic}
+            onChange={(val) => updateAccommodation('isPublic', val)}
+          />
           <View style={styles.button}>
             <Button
               text={this.props.isNew ? 'Save' : 'Update'}

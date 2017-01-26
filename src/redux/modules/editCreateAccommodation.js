@@ -6,6 +6,7 @@ const makeDefaultAccommodation = () => ({
   endAt: formatDate(new Date()),
   location: {},
   types: [],
+  isPublic: false,
 });
 
 // Initial State
@@ -26,6 +27,7 @@ export const UPDATE_ACCOMMODATION_SUCCESS = 'editAccommodation/UPDATE_ACCOMMODAT
 export const UPDATE_ACCOMMODATION_ERROR = 'editAccommodation/CREATE_ACCOMMODATION_ERROR';
 export const UPDATE_ACCOMMODATION = 'editAccommodation/UPDATE_ACCOMMODATION';
 export const SET_ACCOMMODATION = 'editAccommodation/SET_ACCOMMODATION';
+export const RESET_ACCOMMODATION = 'editAccommodation/RESET_ACCOMMODATION';
 export const TOGGLE_TYPE = 'editAccommodation/TOGGLE_TYPE';
 export const GEOCODE_ACCOMMODATION_START = 'editAccommodation/GEOCODE_ACCOMMODATION_START';
 export const GEOCODE_ACCOMMODATION_SUCCESS = 'editAccommodation/GEOCODE_ACCOMMODATION_SUCCESS';
@@ -58,6 +60,11 @@ export const setAccommodation = model => ({
   payload: {
     model
   }
+});
+
+
+export const resetAccommodation = () => ({
+  type: RESET_ACCOMMODATION,
 });
 
 export const toggleType = key => ({
@@ -96,6 +103,7 @@ export const actions = {
   toggleType,
   updateAccommodation,
   geocodeLocation,
+  resetAccommodation,
 };
 
 
@@ -107,6 +115,11 @@ const actionsMap = {
     isNew: true,
   }),
   [UPDATE_ACCOMMODATION_SUCCESS]: (state) => ({
+    ...state,
+    accommodation: makeDefaultAccommodation(),
+    isNew: true,
+  }),
+  [RESET_ACCOMMODATION]: (state) => ({
     ...state,
     accommodation: makeDefaultAccommodation(),
     isNew: true,

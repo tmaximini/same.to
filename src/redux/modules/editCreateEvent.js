@@ -1,5 +1,5 @@
 import { isBefore } from 'date-fns';
-import { formatDate, getDateFromString } from '../../utils';
+import { getDateFromString } from '../../utils';
 
 
 const makeDefaultEvent = () => ({
@@ -9,6 +9,7 @@ const makeDefaultEvent = () => ({
   location: {},
   trips: [],
   accommodations: [],
+  isPublic: true,
 });
 
 // Initial State
@@ -29,7 +30,8 @@ export const UPDATE_EVENT_START = 'editEvent/UPDATE_EVENT_START';
 export const UPDATE_EVENT_SUCCESS = 'editEvent/UPDATE_EVENT_SUCCESS';
 export const UPDATE_EVENT_ERROR = 'editEvent/CREATE_EVENT_ERROR';
 export const UPDATE_EVENT = 'editEvent/UPDATE_EVENT';
-export const SET_EVENT = 'editEVeditEventENT/SET_EVENT';
+export const SET_EVENT = 'editEvent/SET_EVENT';
+export const RESET_EVENT = 'editEvent/RESET_EVENT';
 export const GEOCODE_EVENT_START = 'editEvent/GEOCODE_EVENT_START';
 export const GEOCODE_EVENT_SUCCESS = 'editEvent/GEOCODE_EVENT_SUCCESS';
 export const GEOCODE_EVENT_ERROR = 'editEvent/GEOCODE_EVENT_ERROR';
@@ -62,6 +64,10 @@ export const setEvent = model => ({
   }
 });
 
+export const resetEvent = () => ({
+  type: RESET_EVENT,
+});
+
 export const createEvent = newEventData => ({
   type: CREATE_EVENT_START,
   payload: newEventData
@@ -86,6 +92,7 @@ export const actions = {
   updateEvent,
   setEvent,
   geocodeLocation,
+  resetEvent,
 };
 
 
@@ -108,9 +115,13 @@ const actionsMap = {
     event: makeDefaultEvent(),
     isNew: true,
   }),
+  [RESET_EVENT]: (state) => ({
+    ...state,
+    event: makeDefaultEvent(),
+    isNew: true,
+  }),
   [SET_EVENT]: (state, action) => {
     const { model } = action.payload;
-
 
     return {
       ...state,

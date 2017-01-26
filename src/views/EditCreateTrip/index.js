@@ -7,11 +7,11 @@ import {
 import { connect } from 'react-redux';
 import { formatDate } from '../../utils';
 import OnOffSwitch from '../../components/OnOffSwitch';
+import HR from '../../components/HR';
 import Button from '../../components/Button';
 import GeoInput from '../../components/GeoInput';
 import Datepicker from '../../components/Datepicker';
 import CheckboxList from '../../components/CheckboxList';
-import HR from '../../components/HR';
 import { actions as tripActions } from '../../redux/modules/editCreateTrip';
 
 import styles from './styles';
@@ -30,7 +30,6 @@ export default class EditCreateTrip extends Component {
     createTrip: PropTypes.func.isRequired,
     geocodeLocation: PropTypes.func.isRequired,
     geocodeDestination: PropTypes.func.isRequired,
-    model: PropTypes.object,
     tripTypes: PropTypes.array,
     pickupString: PropTypes.string,
     destinationString: PropTypes.string,

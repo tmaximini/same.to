@@ -14,7 +14,7 @@ export default StyleSheet.create({
     flex: 1,
   },
   checkboxWrapper: {
-    flex: 3,
+    flex: 3.5,
     justifyContent: 'center',
   },
   checkboxLabel: {

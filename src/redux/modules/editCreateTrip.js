@@ -1,4 +1,4 @@
-import { formatDate, toggleArrayItem } from '../../utils';
+import { toggleArrayItem } from '../../utils';
 
 const makeDefaultTrip = () => ({
   startDate: null,
@@ -28,6 +28,7 @@ export const UPDATE_TRIP_ERROR = 'editTrip/CREATE_TRIP_ERROR';
 export const UPDATE_TRIP = 'editTrip/UPDATE_TRIP';
 export const TOGGLE_TYPE = 'editTrip/TOGGLE_TYPE';
 export const SET_TRIP = 'editTrip/SET_TRIP';
+export const RESET_TRIP = 'editTrip/RESET_TRIP';
 export const GEOCODE_TRIP_START = 'editTrip/GEOCODE_TRIP_START';
 export const GEOCODE_TRIP_SUCCESS = 'editTrip/GEOCODE_TRIP_SUCCESS';
 export const GEOCODE_TRIP_ERROR = 'editTrip/GEOCODE_TRIP_ERROR';
@@ -71,6 +72,10 @@ export const setTrip = model => ({
   }
 });
 
+export const resetTrip = () => ({
+  type: RESET_TRIP,
+});
+
 export const createTrip = (newTripData, eventId) => ({
   type: CREATE_TRIP_START,
   payload: {
@@ -109,7 +114,8 @@ export const actions = {
   updateTrip,
   toggleType,
   geocodeLocation,
-  geocodeDestination
+  geocodeDestination,
+  resetTrip
 };
 
 
@@ -124,6 +130,11 @@ const actionsMap = {
     isNew: true,
   }),
   [UPDATE_TRIP_SUCCESS]: (state) => ({
+    ...state,
+    trip: makeDefaultTrip(),
+    isNew: true,
+  }),
+  [RESET_TRIP]: (state) => ({
     ...state,
     trip: makeDefaultTrip(),
     isNew: true,

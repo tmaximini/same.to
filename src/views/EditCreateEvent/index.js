@@ -6,6 +6,8 @@ import Input from '../../components/Input';
 import Button from '../../components/Button';
 import GeoInput from '../../components/GeoInput';
 import Datepicker from '../../components/Datepicker';
+import OnOffSwitch from '../../components/OnOffSwitch';
+import HR from '../../components/HR';
 
 import { actions as editCreateEventActions } from '../../redux/modules/editCreateEvent';
 import { formatDate } from '../../utils';
@@ -27,7 +29,6 @@ export default class EditCreatevent extends Component {
     setEvent: PropTypes.func.isRequired,
     geocodeLocation: PropTypes.func.isRequired,
     locationString: PropTypes.string,
-    model: PropTypes.object,
     isNew: PropTypes.bool.isRequired,
   }
 
@@ -91,6 +92,12 @@ export default class EditCreatevent extends Component {
             />
           </View>
         </View>
+        <HR />
+        <OnOffSwitch
+          name="Make this event public"
+          value={event.isPublic}
+          onChange={(val) => updateEvent('isPublic', val)}
+        />
         <View style={styles.button}>
           <Button
             text={this.props.isNew ? 'Save' : 'Update'}

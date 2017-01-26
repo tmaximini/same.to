@@ -7,11 +7,17 @@ import SubItemList from '../../components/Event/SubItemList';
 import PlusButton from '../../components/PlusButton';
 
 import {
-  setTrip as setTripAction
+  setTrip as setTripAction,
+  resetTrip as resetTripAction
 } from '../../redux/modules/editCreateTrip';
 import {
-  setAccommodation as setAccommodationAction
+  setAccommodation as setAccommodationAction,
+  resetAccommodation as resetAccommodationAction,
 } from '../../redux/modules/editCreateAccommodation';
+import {
+  setActivity as setActivityAction,
+  resetActivity as resetActivityAction,
+} from '../../redux/modules/editCreateActivity';
 import { COLORS } from '../../constants';
 import styles from './styles';
 
@@ -25,6 +31,10 @@ const background = require('../../assets/gamescom.jpg');
   {
     setTrip: setTripAction,
     setAccommodation: setAccommodationAction,
+    setActivity: setActivityAction,
+    resetTrip: resetTripAction,
+    resetAccommodation: resetAccommodationAction,
+    resetActivity: resetActivityAction,
   },
 )
 export default class Event extends Component {
@@ -39,6 +49,10 @@ export default class Event extends Component {
     }).isRequired,
     setTrip: PropTypes.func.isRequired,
     setAccommodation: PropTypes.func.isRequired,
+    setActivity: PropTypes.func.isRequired,
+    resetTrip: PropTypes.func.isRequired,
+    resetActivity: PropTypes.func.isRequired,
+    resetAccommodation: PropTypes.func.isRequired,
   }
 
   constructor(props) {
@@ -74,6 +88,10 @@ export default class Event extends Component {
     const {
       setTrip,
       setAccommodation,
+      setActivity,
+      resetTrip,
+      resetActivity,
+      resetAccommodation,
     } = this.props;
     const {
       name,
@@ -126,6 +144,7 @@ export default class Event extends Component {
               accommodations={accommodations}
               setTrip={setTrip}
               setAccommodation={setAccommodation}
+              setActivity={setActivity}
             />
           ) : (
             <View style={styles.noItems}>
@@ -144,17 +163,26 @@ export default class Event extends Component {
             items={[
               {
                 title: 'trip',
-                action: () => { Actions.editCreateTrip({ eventId: id }); },
+                action: () => {
+                  resetTrip();
+                  Actions.editCreateTrip({ eventId: id });
+                },
                 icon: 'car'
               },
               {
                 title: 'accomodation',
-                action: () => { Actions.editCreateAccommodation({ eventId: id }); },
+                action: () => {
+                  resetAccommodation();
+                  Actions.editCreateAccommodation({ eventId: id });
+                },
                 icon: 'bed'
               },
               {
                 title: 'activity',
-                action: () => { Actions.editCreateTrip({ eventId: id }); },
+                action: () => {
+                  resetActivity();
+                  Actions.editCreateActivity({ eventId: id });
+                },
                 icon: 'coffee'
               }
             ]}
