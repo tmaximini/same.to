@@ -8,6 +8,7 @@ import Login from './views/Login';
 import LostPassword from './views/LostPassword';
 import EditCreateProfile from './views/EditCreateProfile';
 import EditCreateTrip from './views/EditCreateTrip';
+import EditCreateActivity from './views/EditCreateActivity';
 import EditCreateAccommodation from './views/EditCreateAccommodation';
 import EventDetail from './views/Event';
 import EditCreatevent from './views/EditCreateEvent';
@@ -101,6 +102,12 @@ const Routes = () => (
       sceneStyle={navBarPadding}
       component={EditCreateAccommodation}
       title="New Accommodation"
+    />
+    <Scene
+      key="editCreateActivity"
+      sceneStyle={navBarPadding}
+      component={EditCreateActivity}
+      title="New Activity"
     />
     <Scene
       key="editCreateTrip"

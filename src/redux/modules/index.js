@@ -5,6 +5,7 @@ import events from './events';
 import editCreateEvent from './editCreateEvent';
 import editCreateTrip from './editCreateTrip';
 import editCreateAccommodation from './editCreateAccommodation';
+import editCreateActivity from './editCreateActivity';
 import routes from './routes';
 
 export default combineReducers({
@@ -14,5 +15,6 @@ export default combineReducers({
   editCreateEvent,
   editCreateTrip,
   editCreateAccommodation,
+  editCreateActivity,
   routes,
 });

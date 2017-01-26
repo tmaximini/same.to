@@ -14,6 +14,11 @@ import {
   watchUpdateAccommodation,
   watchGeocodeAccommodation,
 } from './editCreateAccommodation';
+import {
+  watchCreateActivity,
+  watchUpdateActivity,
+  watchGeocodeActivity,
+} from './editCreateActivity';
 
 // SAGAs
 // 1. define worker sagas
@@ -37,5 +42,8 @@ export default function* root() {
     watchCreateAccommodation(),
     watchUpdateAccommodation(),
     watchGeocodeAccommodation(),
+    watchCreateActivity(),
+    watchUpdateActivity(),
+    watchGeocodeActivity(),
   ];
 }
