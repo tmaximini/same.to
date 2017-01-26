@@ -13,11 +13,13 @@ export default StyleSheet.create({
     borderRadius: 5,
   },
   select: {
-    marginLeft: 5,
+    marginLeft: 15,
+    justifyContent: 'center',
+    borderWidth: 0,
   },
   label: {
     color: 'white',
-    fontWeight: 'bold',
+    fontSize: 16,
   },
   icon: {
     position: 'absolute',

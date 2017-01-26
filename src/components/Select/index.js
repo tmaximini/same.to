@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
-import { View } from 'react-native';
-import { Picker } from 'native-base';
+import { View, Picker } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import styles from './styles';
 
@@ -9,10 +8,10 @@ const Item = Picker.Item;
 const Select = ({ icon, value, onChange, items, placeholder, ...rest }) => (
   <View style={styles.inputWrap}>
     <Picker
-      mode="dropdown"
       iosHeader={placeholder}
       style={styles.select}
-      itemStyle={{ color: 'white' }}
+      itemStyle={{ color: '#fff', fontSize: 14, textAlign: 'left', paddingLeft: 15, borderWidth: 0 }}
+      textStyle={{ borderWidth: 0 }}
       selectedValue={value}
       onValueChange={onChange}
       {...rest}
@@ -23,7 +22,7 @@ const Select = ({ icon, value, onChange, items, placeholder, ...rest }) => (
       <Icon
         name={icon}
         style={styles.icon}
-        size={20}
+        size={18}
       />
     )}
   </View>
