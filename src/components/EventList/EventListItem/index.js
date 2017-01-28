@@ -36,6 +36,7 @@ const EventListItem = ({ event, setCurrentEvent }) => {
           <TouchableHighlight
             style={styles.middle}
             onPress={onSelect}
+            underlayColor="transparent"
           >
             <View
               style={styles.main}

@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 
 import styles from './styles';
-
+import { COLORS } from '../../constants';
 
 export default class Button extends Component {
   static propTypes = {
@@ -15,7 +15,9 @@ export default class Button extends Component {
     onPress: PropTypes.func.isRequired,
     activeOpacity: PropTypes.number,
     noBorder: PropTypes.bool,
+    noBackground: PropTypes.bool,
     textColor: PropTypes.string,
+    style: PropTypes.object,
   }
 
   constructor() {
@@ -48,7 +50,8 @@ export default class Button extends Component {
       color: this.props.textColor || (this.props.disabled ? '#ccc' : '#fff')
     };
     const buttonStyle = {
-      borderWidth: this.props.noBorder ? 0 : 1
+      borderWidth: this.props.noBorder ? 0 : 1,
+      backgroundColor: this.props.noBackground ? 'transparent' : COLORS.CYAN,
     };
     const underlayColor = this.props.disabled ? '#E0F4FF' : '#B8CCD8';
     return (

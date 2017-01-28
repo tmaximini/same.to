@@ -3,10 +3,10 @@ import { COLORS } from '../../constants';
 
 export default StyleSheet.create({
   container: {
-    height: 1,
-    backgroundColor: COLORS.DARK_GREY,
-    marginBottom: 10,
-    marginHorizontal: 3,
-    zIndex: 0,
+    flex: 1,
+    padding: 10,
+    backgroundColor: COLORS.BG_GREY,
+  },
+  contentContainer: {
   },
 });

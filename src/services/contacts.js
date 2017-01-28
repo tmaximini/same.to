@@ -1,5 +1,8 @@
-import { get, post } from './api';
+import { get, post, getUserId } from './api';
 
-export const fetchContacts = () => get('contacts');
+export const fetchContacts = () => get(`members/${getUserId()}/contacts`);
 
-export const createContact = data => post('contacts', { ...data });
+export const createContact = data => post(
+  `members/${getUserId()}/contacts`,
+  { ...data }
+);

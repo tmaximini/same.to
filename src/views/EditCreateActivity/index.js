@@ -97,6 +97,7 @@ export default class EditCreateActivity extends Component {
               value={locationString}
               onChangeText={text => updateActivity('locationString', text)}
               onAdressSelect={geocodeLocation}
+              zIndex={2}
             />
           </View>
           <HR />

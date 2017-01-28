@@ -2,6 +2,7 @@
 
 import { watchLogin } from './auth';
 import { watchFetchEvents } from './events';
+import { watchFetchContacts } from './contacts';
 import { watchCreateEvent, watchGeocodeEvent } from './editCreateEvent';
 import {
   watchCreateTrip,
@@ -33,6 +34,7 @@ export default function* root() {
   yield [
     watchLogin(),
     watchFetchEvents(),
+    watchFetchContacts(),
     watchCreateEvent(),
     watchGeocodeEvent(),
     watchCreateTrip(),

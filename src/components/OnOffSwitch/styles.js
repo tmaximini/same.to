@@ -7,6 +7,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'flex-start',
     justifyContent: 'space-between',
+    zIndex: 0,
   },
   label: {
     padding: 5,

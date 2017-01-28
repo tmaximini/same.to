@@ -7,7 +7,7 @@ import {
   LOGIN_ERROR,
 } from '../modules/auth';
 import { login as handleLogin } from '../../services/auth';
-import { updateAuthHeader } from '../../services/api';
+import { updateAuthHeader, updateUserId } from '../../services/api';
 
 
 /**
@@ -17,11 +17,12 @@ export function* handleLoginAsync(action) {
   const { payload } = action;
   try {
     const response = yield call(handleLogin, { ...payload });
-    const { id, error } = response;
+    const { id, userId, error } = response;
     if (error) {
       throw error;
     } else {
       updateAuthHeader(id);
+      updateUserId(userId);
       yield put({
         type: LOGIN_SUCCESS,
         payload: response,

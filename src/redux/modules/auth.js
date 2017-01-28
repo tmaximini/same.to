@@ -1,5 +1,5 @@
 import { REHYDRATE } from 'redux-persist/constants';
-import { updateAuthHeader } from '../../services/api';
+import { updateAuthHeader, updateUserId } from '../../services/api';
 
 
 // Initial State
@@ -59,9 +59,10 @@ const actionsMap = {
     console.info('REHYDRATE!!', state);
     if (action.payload.auth) {
       try {
-        const { token, loggedIn } = action.payload.auth;
+        const { token, loggedIn, userId } = action.payload.auth;
         if (loggedIn && token) {
           updateAuthHeader(token);
+          updateUserId(userId);
         }
       } catch (e) {
         console.warn(e);

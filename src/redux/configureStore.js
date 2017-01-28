@@ -51,7 +51,7 @@ export default function configureStore(initialState) {
   sagaMiddleware.run(rootSaga);
   const persistor = persistStore(store, {
     storage: AsyncStorage,
-    whitelist: ['auth', 'events', 'profile'] // only sync those to offline storage
+    whitelist: ['auth', 'events', 'profile', 'contacts'] // only sync those to offline storage
   });
   // remember persistor
   store.persistor = persistor;

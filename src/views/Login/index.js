@@ -64,7 +64,6 @@ export default class Login extends Component {
         <VerticalCentered>
           <WithPadding>
             <Button
-              style={{ backgroundColor: '#d73352' }}
               onPress={() => console.log('facebook')}
             >
               <Text style={styles.buttonText}>Login with Facebook</Text>
@@ -83,7 +82,6 @@ export default class Login extends Component {
               secureTextEntry
             />
             <Button
-              style={{ backgroundColor: '#d73352' }}
               onPress={this.handleLogin}
             >
               <Text style={styles.buttonText}>Sign In</Text>
@@ -93,12 +91,14 @@ export default class Login extends Component {
                 text="Register"
                 textColor="#fff"
                 noBorder
+                noBackground
                 onPress={Actions.lostPassword}
               />
               <Button
                 text="Forgot Password?"
                 textColor="#fff"
                 noBorder
+                noBackground
                 onPress={Actions.lostPassword}
               />
             </View>

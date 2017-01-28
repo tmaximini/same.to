@@ -4,6 +4,7 @@ import { Scene, Router } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Home from './views/Home';
+import Contacts from './views/Contacts';
 import Login from './views/Login';
 import LostPassword from './views/LostPassword';
 import EditCreateProfile from './views/EditCreateProfile';
@@ -87,10 +88,32 @@ const Routes = () => (
         sceneStyle={navTabpadding}
         icon={makeTabIcon('home')}
       />
-      <Scene key="favorites" component={TabView} title="Favoriten" icon={makeTabIcon('star')} />
-      <Scene key="contacts" component={TabView} title="Kontakte" icon={makeTabIcon('user-circle-o')} />
-      <Scene key="chats" component={TabView} title="Chats" icon={makeTabIcon('comment')} />
-      <Scene key="settings" component={TabView} title="Mehr" icon={makeTabIcon('ellipsis-h')} />
+      <Scene
+        key="favorites"
+        component={TabView}
+        title="Favoriten"
+        icon={makeTabIcon('star')}
+        sceneStyle={navTabpadding}
+      />
+      <Scene
+        key="contacts"
+        component={Contacts}
+        title="Kontakte"
+        icon={makeTabIcon('user-circle-o')}
+        sceneStyle={navTabpadding}
+      />
+      <Scene
+        key="chats"
+        component={TabView}
+        title="Chats"
+        icon={makeTabIcon('comment')}
+      />
+      <Scene
+        key="settings"
+        component={TabView}
+        title="Mehr"
+        icon={makeTabIcon('ellipsis-h')}
+      />
     </Scene>
     <Scene
       key="editCreateProfile"

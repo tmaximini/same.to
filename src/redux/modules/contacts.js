@@ -1,8 +1,9 @@
-import { CREATE_CONTACT_SUCCESS } from './editCreateContact';
+// import { CREATE_CONTACT_SUCCESS } from './editCreateContact';
 
 // Initial State
 const initialState = {
   isFetching: false,
+  isRefreshing: false,
   contacts: [],
   error: null,
 };
@@ -53,15 +54,15 @@ const actionsMap = {
   [FETCH_CONTACTS_ERROR]: state => ({ ...state, isFetching: false }),
   // TODO
   [UPDATE_CONTACT]: state => ({ ...state }),
-  [CREATE_CONTACT_SUCCESS]: (state, action) => {
-    const { contact } = action.payload;
+  // [CREATE_CONTACT_SUCCESS]: (state, action) => {
+  //   const { contact } = action.payload;
 
-    // add new contact to list
-    return {
-      ...state,
-      contacts: [contact, ...state.contacts],
-    };
-  },
+  //   // add new contact to list
+  //   return {
+  //     ...state,
+  //     contacts: [contact, ...state.contacts],
+  //   };
+  // },
 };
 
 
