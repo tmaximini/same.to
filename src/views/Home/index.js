@@ -29,6 +29,7 @@ export default class Home extends Component {
 
   static propTypes = {
     resetEvent: PropTypes.func.isRequired,
+    resetActivity: PropTypes.func.isRequired,
     fetchEvents: PropTypes.func.isRequired,
     setCurrentEvent: PropTypes.func.isRequired,
     title: PropTypes.string,
@@ -48,6 +49,7 @@ export default class Home extends Component {
       setCurrentEvent,
       isRefreshing,
       resetEvent,
+      resetActivity,
     } = this.props;
 
     return (
@@ -75,6 +77,7 @@ export default class Home extends Component {
             {
               title: 'activity',
               action: () => {
+                resetActivity();
                 Actions.editCreateActivity();
               },
               icon: 'coffee'
