@@ -4,6 +4,7 @@ import {
   View,
 } from 'react-native';
 
+
 import { connect } from 'react-redux';
 import NavigationBar from 'react-native-navbar';
 import { Actions } from 'react-native-router-flux';
@@ -15,6 +16,13 @@ import Button from '../../components/Button';
 import styles from './styles';
 // import { border } from '../../utils';
 
+const FBSDK = require('react-native-fbsdk');
+
+const {
+  LoginManager,
+  LoginButton,
+  AccessToken
+} = FBSDK;
 
 @connect(
   state => ({
@@ -44,6 +52,33 @@ export default class Login extends Component {
     }
   }
 
+  handleFacebookLogin = () => {
+    LoginManager.logInWithReadPermissions(['email']).then(
+      result => {
+        if (result.isCancelled) {
+          alert('Login was cancelled');
+        } else {
+          alert('Login was successful with permissions: '
+            + result.grantedPermissions.toString());
+        }
+      },
+      error => {
+        alert('Login failed with error: ' + error);
+      }
+    );
+  }
+
+  onLoginFinished = (err, response) => {
+    console.log('login finished', response);
+    AccessToken.getCurrentAccessToken().then(
+      (err, data) => console.log('token', err, data)
+    );
+  }
+
+  onLogoutFinished = (err, response) => {
+    console.log('logout finished', response);
+  }
+
   render() {
     const {
       update,
@@ -63,11 +98,10 @@ export default class Login extends Component {
         />
         <VerticalCentered>
           <WithPadding>
-            <Button
-              onPress={() => console.log('facebook')}
-            >
-              <Text style={styles.buttonText}>Login with Facebook</Text>
-            </Button>
+            <LoginButton
+              onLoginFinished={this.onLoginFinished}
+              onLogoutFinished={this.onLogoutFinished}
+            />
             <Text style={styles.or}>Or</Text>
             {error && <Text style={styles.error}>{error}</Text>}
             <Input
