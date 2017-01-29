@@ -1,10 +1,8 @@
 import { StyleSheet, Dimensions } from 'react-native';
-import { COLORS } from '../../../constants';
+import { COLORS, MIXINS } from '../../../constants';
 
 const { width } = Dimensions.get('window');
 const itemWidth = (width * (1 / 4)) - 20;
-
-console.log('itemWidth', itemWidth);
 
 export default StyleSheet.create({
   container: {
@@ -24,10 +22,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
   image: {
-    flex: 1,
-    width: null,
-    height: null,
-    alignSelf: 'stretch',
+    ...MIXINS.image
   },
   checked: {
     backgroundColor: COLORS.CYAN_OPAQ,

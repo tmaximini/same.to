@@ -21,4 +21,10 @@ export const MIXINS = {
     alignSelf: 'flex-start',
     justifyContent: 'flex-end',
   },
+  image: {
+    flex: 1,
+    width: null,
+    height: null,
+    alignSelf: 'stretch',
+  }
 };

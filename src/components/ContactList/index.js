@@ -17,7 +17,6 @@ export default class ContactList extends Component {
 
   constructor(props) {
     super(props);
-    console.log('props', props);
     const { contacts } = props;
     const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
     this.onRefresh = this.onRefresh.bind(this);
@@ -36,7 +35,6 @@ export default class ContactList extends Component {
   }
 
   onRefresh() {
-    console.info('on refresh called!');
     this.props.refresh();
   }
 

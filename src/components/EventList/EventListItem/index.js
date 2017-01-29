@@ -19,7 +19,6 @@ const EventListItem = ({ event, setCurrentEvent }) => {
   return (
     <View
       style={styles.container}
-      source={background}
     >
       <Image
         source={background}
