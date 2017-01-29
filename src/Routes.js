@@ -13,6 +13,7 @@ import EditCreateActivity from './views/EditCreateActivity';
 import EditCreateAccommodation from './views/EditCreateAccommodation';
 import EventDetail from './views/Event';
 import EditCreatevent from './views/EditCreateEvent';
+import Detail from './views/Detail';
 import TabBar from './components/TabBar';
 import Splash from './views/Splash';
 import { COLORS } from './constants';
@@ -143,6 +144,27 @@ const Routes = () => (
       component={EventDetail}
       sceneStyle={navBarPadding}
       title="Event"
+      sceneStyle={navBarPadding}
+    />
+    <Scene
+      key="trip"
+      component={Detail}
+      sceneStyle={navBarPadding}
+      title="Trip Details"
+      sceneStyle={navBarPadding}
+    />
+    <Scene
+      key="accommodation"
+      component={Detail}
+      sceneStyle={navBarPadding}
+      title="Accommodation Details"
+      sceneStyle={navBarPadding}
+    />
+    <Scene
+      key="activity"
+      component={Detail}
+      sceneStyle={navBarPadding}
+      title="Activity Details"
       sceneStyle={navBarPadding}
     />
     <Scene

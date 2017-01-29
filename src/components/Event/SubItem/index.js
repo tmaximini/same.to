@@ -13,19 +13,27 @@ const SubItem = ({ itemType, item, onSelect }) => {
     // set redux active item
     onSelect(model);
     // handle route depending on item type
+    // switch (type) {
+    //   case 'trip':
+    //     return Actions.editCreateTrip({
+    //       title: 'Edit Trip',
+    //     });
+    //   case 'accommodation':
+    //     return Actions.editCreateAccommodation({
+    //       title: 'Edit Accommodation',
+    //     });
+    //   default:
+    //     return Actions.editCreateActivity({
+    //       title: 'Edit Activity',
+    //     });
+    // }
     switch (type) {
       case 'trip':
-        return Actions.editCreateTrip({
-          title: 'Edit Trip',
-        });
+        return Actions.trip({ item: model, itemType: type });
       case 'accommodation':
-        return Actions.editCreateAccommodation({
-          title: 'Edit Accommodation',
-        });
+        return Actions.accommodation({ item: model, itemType: type });
       default:
-        return Actions.editCreateActivity({
-          title: 'Edit Activity',
-        });
+        return Actions.activity({ item: model, itemType: type });
     }
   };
 

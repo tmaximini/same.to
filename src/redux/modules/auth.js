@@ -12,6 +12,7 @@ const initialState = {
   userId: null,
   error: null,
   rehydrateFinished: false,
+  facebook: {},
 };
 
 

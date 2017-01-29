@@ -4,13 +4,9 @@ import {
 } from 'react-native';
 
 import { connect } from 'react-redux';
-import { Actions } from 'react-native-router-flux';
 import ContactList from '../../components/ContactList';
-// import PlusButton from '../../components/PlusButton';
 
 import { actions as contactActions } from '../../redux/modules/contacts';
-// import { resetEvent as resetEventAction } from '../../redux/modules/editCreateEvent';
-// import { resetActivity as resetActivityAction } from '../../redux/modules/editCreateActivity';
 import styles from './styles';
 
 @connect(

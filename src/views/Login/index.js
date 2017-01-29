@@ -70,13 +70,12 @@ export default class Login extends Component {
 
   onLoginFinished = (err, response) => {
     console.log('login finished', response);
-    AccessToken.getCurrentAccessToken().then(
-      (err, data) => console.log('token', err, data)
-    );
+    AccessToken.getCurrentAccessToken()
+      .then(data => this.props.update('facebook', data));
   }
 
-  onLogoutFinished = (err, response) => {
-    console.log('logout finished', response);
+  onLogoutFinished = () => {
+    this.props.update('facebook', {});
   }
 
   render() {

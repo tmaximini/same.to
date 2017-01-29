@@ -10,9 +10,9 @@ export default class ContactList extends Component {
 
   static propTypes = {
     contacts: PropTypes.arrayOf(PropTypes.object),
-    refresh: PropTypes.func.isRequired,
+    refresh: PropTypes.func,
     setCurrentContact: PropTypes.func,
-    isRefreshing: PropTypes.bool.isRequired,
+    isRefreshing: PropTypes.bool,
   }
 
   constructor(props) {
@@ -39,7 +39,7 @@ export default class ContactList extends Component {
   }
 
   render() {
-    const { setCurrentContact } = this.props;
+    const { setCurrentContact, refresh } = this.props;
 
     return (
       <ListView
@@ -48,14 +48,16 @@ export default class ContactList extends Component {
         dataSource={this.state.dataSource}
         renderRow={contact => <ContactListItem contact={contact} setCurrentContact={setCurrentContact} />}
         refreshControl={
-          <RefreshControl
-            refreshing={this.props.isRefreshing}
-            onRefresh={this.onRefresh}
-            tintColor={COLORS.CYAN}
-            title="Refreshing..."
-            titleColor={COLORS.WHITE}
-            progressBackgroundColor={COLORS.CYAN}
-          />
+          refresh ? (
+            <RefreshControl
+              refreshing={this.props.isRefreshing}
+              onRefresh={this.onRefresh}
+              tintColor={COLORS.CYAN}
+              title="Refreshing..."
+              titleColor={COLORS.WHITE}
+              progressBackgroundColor={COLORS.CYAN}
+            />
+          ) : null
         }
       />
     );
