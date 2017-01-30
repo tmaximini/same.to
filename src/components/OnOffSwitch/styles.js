@@ -8,6 +8,7 @@ export default StyleSheet.create({
     alignItems: 'flex-start',
     justifyContent: 'space-between',
     zIndex: 0,
+    backgroundColor: 'transparent'
   },
   label: {
     padding: 5,

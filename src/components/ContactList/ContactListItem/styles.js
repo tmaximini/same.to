@@ -5,25 +5,23 @@ import { COLORS, MIXINS } from '../../../constants';
 export default StyleSheet.create({
   container: {
     flex: 1,
-    height: 100,
+    height: 80,
     marginBottom: 10,
-    backgroundColor: COLORS.DARK_GREY,
     overflow: 'hidden',
-    borderRadius: 5,
-    borderWidth: 1,
-    borderColor: COLORS.CYAN,
+    borderBottomWidth: 1,
+    borderColor: COLORS.DARK_GREY,
   },
   top: {
     flex: 1,
     alignItems: 'flex-start',
     flexDirection: 'row',
-    padding: 10,
+    padding: 5,
   },
   bottom: {
     flex: 1,
     alignItems: 'center',
     flexDirection: 'row',
-    padding: 10,
+    padding: 5,
   },
   left: {
     flex: 3,

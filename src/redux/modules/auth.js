@@ -102,6 +102,18 @@ const actionsMap = {
       password: null,
     };
   },
+  [FACEBOOK_LOGIN_SUCCESS]: (state, action) => {
+    const { userId, access_token } = action.payload;
+
+    return {
+      ...state,
+      loggedIn: true,
+      userId,
+      token: access_token,
+      error: null,
+      password: null,
+    };
+  },
   [LOGIN_ERROR]: (state, action) => ({
     ...state,
     loggedIn: false,

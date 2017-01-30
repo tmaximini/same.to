@@ -1,6 +1,9 @@
 import React, { PropTypes } from 'react';
 import { View, Text, TouchableHighlight, Image } from 'react-native';
 import ContactList from '../ContactList';
+import Date from '../Date';
+import OnOffSwitch from '../OnOffSwitch';
+import TagList from '../TagList';
 import styles from './styles';
 
 const plansee = require('../../assets/plansee.jpg');
@@ -15,8 +18,21 @@ const ItemDetail = ({ itemType, item }) => (
       >
         <View style={styles.header}>
           <Text style={styles.title}>
-            {itemType} - {item.id}
+            {item.name}
           </Text>
+          <Date
+            date={item.date}
+          />
+          <TagList
+            tags={item.types}
+          />
+        </View>
+        <View style={styles.topRight}>
+          <OnOffSwitch
+            name="Ich nehme teil"
+            value={false}
+            onChange={() => {}}
+          />
         </View>
       </Image>
       <View style={styles.details}>

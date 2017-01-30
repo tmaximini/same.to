@@ -55,7 +55,7 @@ export default function configureStore(initialState) {
   });
   // remember persistor
   store.persistor = persistor;
-  persistor.purge(); // uncomment to drop offline data
+  // persistor.purge(); // uncomment to drop offline data
 
   return store;
 }

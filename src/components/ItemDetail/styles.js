@@ -26,8 +26,14 @@ export default StyleSheet.create({
   header: {
     flex: 1,
     backgroundColor: COLORS.GREY_OPAQ,
-    alignItems: 'center',
+    alignItems: 'flex-start',
     justifyContent: 'center',
+    paddingLeft: 20,
+  },
+  topRight: {
+    position: 'absolute',
+    right: 20,
+    bottom: 20,
   },
   title: {
     fontSize: 24,
