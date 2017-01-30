@@ -35,6 +35,7 @@ export default class Login extends Component {
   static propTypes = {
     update: PropTypes.func.isRequired,
     login: PropTypes.func.isRequired,
+    facebookLogin: PropTypes.func.isRequired,
     auth: PropTypes.shape({
       email: PropTypes.string,
       username: PropTypes.string
@@ -69,9 +70,11 @@ export default class Login extends Component {
   }
 
   onLoginFinished = (err, response) => {
-    console.log('login finished', response);
     AccessToken.getCurrentAccessToken()
-      .then(data => this.props.update('facebook', data));
+      .then(data => {
+        this.props.update('facebook', data);
+        this.props.facebookLogin({ access_token: data.accessToken });
+      });
   }
 
   onLogoutFinished = () => {

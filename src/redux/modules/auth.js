@@ -20,6 +20,9 @@ const initialState = {
 export const LOGIN_START = 'auth/LOGIN_START';
 export const LOGIN_SUCCESS = 'auth/LOGIN_SUCCESS';
 export const LOGIN_ERROR = 'auth/LOGIN_ERROR';
+export const FACEBOOK_LOGIN_START = 'auth/FACEBOOK_LOGIN_START';
+export const FACEBOOK_LOGIN_SUCCESS = 'auth/FACEBOOK_LOGIN_SUCCESS';
+export const FACEBOOK_LOGIN_ERROR = 'auth/FACEBOOK_LOGIN_ERROR';
 export const LOGOUT = 'auth/LOGOUT';
 export const UPDATE = 'auth/UPDATE';
 export const AUTHORIZATION_REQUIRED = 'auth/AUTHORIZATION_REQUIRED';
@@ -37,6 +40,13 @@ export const login = ({ email, password }) => ({
   }
 });
 
+export const facebookLogin = ({ access_token }) => ({
+  type: FACEBOOK_LOGIN_START,
+  payload: {
+    access_token,
+  }
+});
+
 // updates any key/value pair in the state
 export const update = (key, value) => ({
   type: UPDATE,
@@ -50,6 +60,7 @@ export const update = (key, value) => ({
 // export all actions
 export const actions = {
   login,
+  facebookLogin,
   update,
 };
 

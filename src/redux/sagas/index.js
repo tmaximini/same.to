@@ -1,6 +1,6 @@
 // import { fork } from 'redux-saga/effects';
 
-import { watchLogin } from './auth';
+import { watchLogin, watchFBLogin } from './auth';
 import { watchFetchEvents } from './events';
 import { watchFetchContacts } from './contacts';
 import { watchCreateEvent, watchGeocodeEvent } from './editCreateEvent';
@@ -33,6 +33,7 @@ import {
 export default function* root() {
   yield [
     watchLogin(),
+    watchFBLogin(),
     watchFetchEvents(),
     watchFetchContacts(),
     watchCreateEvent(),
