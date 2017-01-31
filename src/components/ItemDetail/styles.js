@@ -17,6 +17,7 @@ export default StyleSheet.create({
     height: null,
     alignSelf: 'stretch',
     overflow: 'hidden',
+    justifyContent: 'center',
   },
   bottom: {
     flex: 5,
@@ -28,19 +29,37 @@ export default StyleSheet.create({
     backgroundColor: COLORS.GREY_OPAQ,
     alignItems: 'flex-start',
     justifyContent: 'center',
-    paddingLeft: 20,
+  },
+  headerWrapper: {
+    paddingLeft: 30,
+    maxHeight: 100,
+    alignSelf: 'stretch',
+    flex: 1,
+    justifyContent: 'space-between',
+  },
+  date: {
+    height: 10,
+    flex: 1,
+    paddingTop: 8,
   },
   topRight: {
     position: 'absolute',
     right: 20,
-    bottom: 20,
+    bottom: 0,
+  },
+  titleWrap: {
+    flex: 2,
   },
   title: {
-    fontSize: 24,
-    color: 'white',
+    fontSize: 26,
+    color: COLORS.WHITE,
   },
   details: {
     flex: 1,
+  },
+  tags: {
+    flex: 1,
+    paddingTop: 8,
   },
   buttons: {
     flex: 1,

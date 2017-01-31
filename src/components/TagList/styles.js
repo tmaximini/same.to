@@ -6,5 +6,6 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     ...MIXINS.floatLeft,
+    alignItems: 'center',
   },
 });

@@ -5,7 +5,7 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     ...MIXINS.floatLeft,
-    alignItems: 'center'
+    alignItems: 'center',
   },
   dateIcon: {
     color: COLORS.CYAN,

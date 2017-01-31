@@ -17,22 +17,30 @@ const ItemDetail = ({ itemType, item }) => (
         resizeMode="cover"
       >
         <View style={styles.header}>
-          <Text style={styles.title}>
-            {item.name}
-          </Text>
-          <Date
-            date={item.date}
-          />
-          <TagList
-            tags={item.types}
-          />
-        </View>
-        <View style={styles.topRight}>
-          <OnOffSwitch
-            name="Ich nehme teil"
-            value={false}
-            onChange={() => {}}
-          />
+          <View style={styles.headerWrapper}>
+            <View style={styles.titleWrap}>
+              <Text style={styles.title}>
+                {item.name}
+              </Text>
+            </View>
+            <View style={styles.date}>
+              <Date
+                date={item.startAt}
+              />
+            </View>
+            <View style={styles.tags}>
+              <TagList
+                tags={item.types}
+              />
+            </View>
+            <View style={styles.topRight}>
+              <OnOffSwitch
+                name="Ich nehme teil"
+                value={false}
+                onChange={() => {}}
+              />
+            </View>
+          </View>
         </View>
       </Image>
       <View style={styles.details}>

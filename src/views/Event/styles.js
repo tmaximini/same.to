@@ -31,7 +31,7 @@ export default StyleSheet.create({
   },
   title: {
     fontSize: 24,
-    color: 'white',
+    color: COLORS.WHITE,
   },
   details: {
     flex: 1,
