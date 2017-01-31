@@ -16,7 +16,7 @@ const OnOffSwitch = ({ name, value, onChange }) => (
 );
 
 OnOffSwitch.propTypes = {
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
   value: PropTypes.bool.isRequired,
   onChange: PropTypes.func.isRequired,
 };

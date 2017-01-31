@@ -10,12 +10,12 @@ export default StyleSheet.create({
   locationIcon: {
     color: COLORS.CYAN,
     fontSize: 16,
-    marginRight: 7,
+    marginRight: 5,
     width: 20,
     paddingLeft: 3,
   },
   locationText: {
     color: COLORS.WHITE,
-    fontSize: 12,
+    fontSize: 14,
   },
 });

@@ -35,10 +35,12 @@ const ItemDetail = ({ itemType, item }) => (
             </View>
             <View style={styles.topRight}>
               <OnOffSwitch
-                name="Ich nehme teil"
                 value={false}
                 onChange={() => {}}
               />
+              <Text style={styles.participateText}>
+                Ich nehme teil
+              </Text>
             </View>
           </View>
         </View>

@@ -10,11 +10,11 @@ export default StyleSheet.create({
   dateIcon: {
     color: COLORS.CYAN,
     fontSize: 16,
-    marginRight: 7,
+    marginRight: 5,
     width: 20,
   },
   dateText: {
     color: COLORS.WHITE,
-    fontSize: 12,
+    fontSize: 14,
   },
 });

@@ -48,7 +48,7 @@ export default StyleSheet.create({
     bottom: 0,
   },
   titleWrap: {
-    flex: 2,
+    flex: 1.2,
   },
   title: {
     fontSize: 26,
@@ -59,7 +59,7 @@ export default StyleSheet.create({
   },
   tags: {
     flex: 1,
-    paddingTop: 8,
+    paddingTop: 5,
   },
   buttons: {
     flex: 1,
@@ -87,6 +87,10 @@ export default StyleSheet.create({
     flex: 1,
   },
   noItemsText: {
+    color: COLORS.WHITE,
+  },
+  participateText: {
+    paddingTop: 8,
     color: COLORS.WHITE,
   }
 });
