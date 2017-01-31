@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { View, Text, Image, TouchableHighlight } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-// import { formatDate } from '../../../utils';
+import { canEdit } from '../../../utils';
 import Date from '../../Date';
 import TagList from '../../TagList';
 import styles from './styles';
@@ -9,31 +9,45 @@ import styles from './styles';
 const background = require('../../../assets/sunflowers.jpg');
 
 const SubItem = ({ itemType, item, onSelect }) => {
+  // will be called by pressing right navbar button
+  const editFunc = () => {
+    onSelect(item);
+    switch (itemType) {
+      case 'trip':
+        return Actions.editCreateTrip({
+          title: 'Edit Trip',
+        });
+      case 'accommodation':
+        return Actions.editCreateAccommodation({
+          title: 'Edit Accommodation',
+        });
+      default:
+        return Actions.editCreateActivity({
+          title: 'Edit Activity',
+        });
+    }
+  };
+
   const handler = (type, model) => {
     // set redux active item
     onSelect(model);
+
+    // params are same for all routes
+    const params = {
+      item: model,
+      itemType: type,
+      onRight: canEdit(model) ? editFunc : undefined,
+      rightTitle: canEdit(model) ? 'edit' : undefined,
+    };
+
     // handle route depending on item type
-    // switch (type) {
-    //   case 'trip':
-    //     return Actions.editCreateTrip({
-    //       title: 'Edit Trip',
-    //     });
-    //   case 'accommodation':
-    //     return Actions.editCreateAccommodation({
-    //       title: 'Edit Accommodation',
-    //     });
-    //   default:
-    //     return Actions.editCreateActivity({
-    //       title: 'Edit Activity',
-    //     });
-    // }
     switch (type) {
       case 'trip':
-        return Actions.trip({ item: model, itemType: type });
+        return Actions.trip(params);
       case 'accommodation':
-        return Actions.accommodation({ item: model, itemType: type });
+        return Actions.accommodation(params);
       default:
-        return Actions.activity({ item: model, itemType: type });
+        return Actions.activity(params);
     }
   };
 

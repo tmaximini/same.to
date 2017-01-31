@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { View, Text, TouchableHighlight, Image, Dimensions } from 'react-native';
+import { share } from '../../utils';
 import ContactList from '../ContactList';
 import Date from '../Date';
 import Button from '../Button';
@@ -52,7 +53,11 @@ const ItemDetail = ({ itemType, item }) => (
         <View style={styles.buttons}>
           <View style={styles.box}>
             <TouchableHighlight
-              onPress={this.shareEvent}
+              onPress={share({
+                message: `check out this ${itemType}`,
+                url: `sameto://events/${item.eventId}/${itemType}s/${item.id}`,
+                title: `${item.name} - ${itemType}`
+              })}
             >
               <Text style={styles.boxText}>Share</Text>
             </TouchableHighlight>

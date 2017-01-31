@@ -1,5 +1,7 @@
-
+import { Share } from 'react-native';
 import { parse, format } from 'date-fns';
+import { COLORS } from '../constants';
+import { getUserId } from '../services/api';
 
 export const border = (color = '#000', width = 4) => ({
   borderColor: color,
@@ -32,4 +34,40 @@ export const toggleArrayItem = (array, item) => {
     ...array.slice(0, index),
     ...array.slice(index + 1)
   ];
+};
+
+
+export const share = ({ message = 'share message', title = 'share title', url, dialogTitle }) => () => { // eslint-disable-line
+  Share.share({
+    message,
+    url,
+    title,
+  }, {
+    dialogTitle: dialogTitle || title,
+    excludedActivityTypes: [],
+    tintColor: COLORS.CYAN,
+  })
+  .then(result => console.log('shared successfully', result))
+  .catch(error => console.warn('error with sharing', error));
+};
+
+
+export const isOrganizer = model => {
+  const userId = getUserId();
+  return model.organizerId && model.organizerId === userId;
+};
+
+export const isMember = model => {
+  const userId = getUserId();
+  return model.memberIds && model.memberIds.index(userId) > -1;
+};
+
+export const canEdit = model => {
+  const userId = getUserId();
+  return userId && isOrganizer(model);
+};
+
+export const canAdd = model => {
+  const userId = getUserId();
+  return userId && (isOrganizer(model) || isMember(model));
 };

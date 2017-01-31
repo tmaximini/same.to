@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
-import { View, Image, Text, TouchableHighlight, Share } from 'react-native';
+import { View, Image, Text, TouchableHighlight } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-// import { formatDate } from '../../utils';
+import { share } from '../../utils';
 import SubItemList from '../../components/Event/SubItemList';
 import PlusButton from '../../components/PlusButton';
 
@@ -18,7 +18,6 @@ import {
   setActivity as setActivityAction,
   resetActivity as resetActivityAction,
 } from '../../redux/modules/editCreateActivity';
-import { COLORS } from '../../constants';
 import styles from './styles';
 
 const background = require('../../assets/gamescom.jpg');
@@ -59,7 +58,6 @@ export default class Event extends Component {
     super(props);
     this.editAccommodation = this.editAccommodation.bind(this);
     this.editTrip = this.editTrip.bind(this);
-    this.shareEvent = this.shareEvent.bind(this);
   }
 
   editAccommodation() {
@@ -68,20 +66,6 @@ export default class Event extends Component {
 
   editTrip() {
     Actions.editTrip({ event: this.props.event });
-  }
-
-  shareEvent() {
-    Share.share({
-      message: 'Yo, this event rocks',
-      url: 'shareto://facebook.github.io/react-native/',
-      title: `Same.to Event ${this.props.event.name}`
-    }, {
-      dialogTitle: `Same.to Event ${this.props.event.name}`,
-      excludedActivityTypes: [],
-      tintColor: COLORS.CYAN,
-    })
-    .then(result => console.log('shared successfully', result))
-    .catch(error => this.setState({ error: error.message }));
   }
 
   render() {
@@ -123,7 +107,11 @@ export default class Event extends Component {
             <View style={styles.buttons}>
               <View style={styles.box}>
                 <TouchableHighlight
-                  onPress={this.shareEvent}
+                  onPress={share({
+                    message: 'check out this event',
+                    url: `sameto://events/${id}`,
+                    title: `Same.to: ${name}`
+                  })}
                 >
                   <Text style={styles.boxText}>Share</Text>
                 </TouchableHighlight>

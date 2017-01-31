@@ -4,16 +4,28 @@ import { Actions } from 'react-native-router-flux';
 import Date from '../../Date';
 import Location from '../../Location';
 import TagList from '../../TagList';
+import { canEdit } from '../../../utils';
 import styles from './styles';
 
 const background = require('../../../assets/sunflowers.jpg');
 
-const EventListItem = ({ event, setCurrentEvent }) => {
+const EventListItem = ({ event, setCurrentEvent, setEvent }) => {
   const { name, startAt, location } = event;
+
+  //
+  const editEvent = () => {
+    setEvent(event);
+    Actions.editCreateEvent({ event, title: 'Edit Event' });
+  };
+
   // set current event in reducer
   const onSelect = () => {
     setCurrentEvent(event);
-    Actions.event({ title: name });
+    Actions.event({
+      title: name,
+      onRight: canEdit(event) ? editEvent : undefined,
+      rightTitle: canEdit(event) ? 'edit' : undefined,
+    });
   };
 
   return (
@@ -67,6 +79,7 @@ const EventListItem = ({ event, setCurrentEvent }) => {
 EventListItem.propTypes = {
   event: PropTypes.object.isRequired,
   setCurrentEvent: PropTypes.func.isRequired,
+  setEvent: PropTypes.func.isRequired,
 };
 
 export default EventListItem;

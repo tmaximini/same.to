@@ -9,7 +9,10 @@ import EventList from '../../components/EventList';
 import PlusButton from '../../components/PlusButton';
 
 import { actions as eventActions } from '../../redux/modules/events';
-import { resetEvent as resetEventAction } from '../../redux/modules/editCreateEvent';
+import {
+  resetEvent as resetEventAction,
+  setEvent as setEventAction
+} from '../../redux/modules/editCreateEvent';
 import { resetActivity as resetActivityAction } from '../../redux/modules/editCreateActivity';
 import styles from './styles';
 
@@ -23,11 +26,13 @@ import styles from './styles';
     ...eventActions,
     resetEvent: resetEventAction,
     resetActivity: resetActivityAction,
+    setEvent: setEventAction,
   }
 )
 export default class Home extends Component {
 
   static propTypes = {
+    setEvent: PropTypes.func.isRequired,
     resetEvent: PropTypes.func.isRequired,
     resetActivity: PropTypes.func.isRequired,
     fetchEvents: PropTypes.func.isRequired,
@@ -49,6 +54,7 @@ export default class Home extends Component {
       setCurrentEvent,
       isRefreshing,
       resetEvent,
+      setEvent,
       resetActivity,
     } = this.props;
 
@@ -59,6 +65,7 @@ export default class Home extends Component {
           refresh={fetchEvents}
           isRefreshing={isRefreshing}
           setCurrentEvent={setCurrentEvent}
+          setEvent={setEvent}
         />
         <PlusButton
           itemSize={45}

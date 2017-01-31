@@ -29,6 +29,10 @@ const navTabpadding = {
   paddingBottom: 50, // default height of tabbar
 };
 
+const cyanText = {
+  color: COLORS.CYAN
+};
+
 const makeTabIcon = (icon) => ({ selected, title }) => (
   <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
     <Icon
@@ -145,6 +149,7 @@ const Routes = () => (
       sceneStyle={navBarPadding}
       title="Event"
       sceneStyle={navBarPadding}
+      rightButtonTextStyle={cyanText}
     />
     <Scene
       key="trip"
@@ -152,6 +157,7 @@ const Routes = () => (
       sceneStyle={navBarPadding}
       title="Trip Details"
       sceneStyle={navBarPadding}
+      rightButtonTextStyle={cyanText}
     />
     <Scene
       key="accommodation"
@@ -159,6 +165,7 @@ const Routes = () => (
       sceneStyle={navBarPadding}
       title="Accommodation Details"
       sceneStyle={navBarPadding}
+      rightButtonTextStyle={cyanText}
     />
     <Scene
       key="activity"
@@ -166,6 +173,7 @@ const Routes = () => (
       sceneStyle={navBarPadding}
       title="Activity Details"
       sceneStyle={navBarPadding}
+      rightButtonTextStyle={cyanText}
     />
     <Scene
       key="editCreateEvent"
