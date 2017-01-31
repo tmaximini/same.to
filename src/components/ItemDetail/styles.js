@@ -31,7 +31,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
   headerWrapper: {
-    paddingLeft: 30,
+    paddingLeft: 20,
     maxHeight: 100,
     alignSelf: 'stretch',
     flex: 1,
@@ -92,5 +92,16 @@ export default StyleSheet.create({
   participateText: {
     paddingTop: 8,
     color: COLORS.WHITE,
+  },
+  actionButtons: {
+    position: 'absolute',
+    alignSelf: 'stretch',
+    bottom: 0,
+    left: 10,
+    right: 10,
+    flexDirection: 'row',
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'space-between'
   }
 });

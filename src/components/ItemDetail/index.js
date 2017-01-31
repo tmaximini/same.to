@@ -1,12 +1,15 @@
 import React, { PropTypes } from 'react';
-import { View, Text, TouchableHighlight, Image } from 'react-native';
+import { View, Text, TouchableHighlight, Image, Dimensions } from 'react-native';
 import ContactList from '../ContactList';
 import Date from '../Date';
+import Button from '../Button';
 import OnOffSwitch from '../OnOffSwitch';
 import TagList from '../TagList';
 import styles from './styles';
 
 const plansee = require('../../assets/plansee.jpg');
+
+const { width } = Dimensions.get('window');
 
 const ItemDetail = ({ itemType, item }) => (
   <View style={styles.container}>
@@ -63,6 +66,18 @@ const ItemDetail = ({ itemType, item }) => (
     <View style={styles.bottom}>
       <ContactList
         contacts={item.members}
+      />
+    </View>
+    <View style={styles.actionButtons}>
+      <Button
+        text="Chat erstellen"
+        onPress={() => {}}
+        style={{ width: (width / 2) - 15 }}
+      />
+      <Button
+        text="Alle Teilnehmer"
+        onPress={() => {}}
+        style={{ width: (width / 2) - 15 }}
       />
     </View>
   </View>
