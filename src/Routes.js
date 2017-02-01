@@ -15,6 +15,7 @@ import EventDetail from './views/Event';
 import EditCreatevent from './views/EditCreateEvent';
 import Detail from './views/Detail';
 import TabBar from './components/TabBar';
+import Chat from './views/Chat';
 import Splash from './views/Splash';
 import { COLORS } from './constants';
 
@@ -109,9 +110,10 @@ const Routes = () => (
       />
       <Scene
         key="chats"
-        component={TabView}
+        component={Chat}
         title="Chats"
         icon={makeTabIcon('comment')}
+        sceneStyle={navTabpadding}
       />
       <Scene
         key="settings"
