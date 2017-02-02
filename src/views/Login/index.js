@@ -3,7 +3,7 @@ import {
   Text,
   View,
 } from 'react-native';
-
+import KeyboardSpacer from 'react-native-keyboard-spacer';
 
 import { connect } from 'react-redux';
 import NavigationBar from 'react-native-navbar';
@@ -140,6 +140,7 @@ export default class Login extends Component {
             </View>
           </WithPadding>
         </VerticalCentered>
+        <KeyboardSpacer />
       </View>
     );
   }
