@@ -7,7 +7,7 @@ import {
   LOGIN_ERROR,
   FACEBOOK_LOGIN_START,
   FACEBOOK_LOGIN_SUCCESS,
-  FACEBOOK_LOGIN_ERROR,
+  // FACEBOOK_LOGIN_ERROR,
 } from '../modules/auth';
 import {
   login as handleLogin,

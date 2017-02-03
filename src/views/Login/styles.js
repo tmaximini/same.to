@@ -19,7 +19,8 @@ export default StyleSheet.create({
   },
   or: {
     textAlign: 'center',
-    color: COLORS.WHITE
+    color: COLORS.WHITE,
+    paddingVertical: 10,
   },
   error: {
     textAlign: 'center',

@@ -9,6 +9,8 @@ import reducer from './modules';
 
 import rootSaga from './sagas';
 
+let PERSISTOR = null;
+
 let composeEnhancers = compose;
 if (__DEV__) {
   GLOBAL.XMLHttpRequest = GLOBAL.originalXMLHttpRequest || GLOBAL.XMLHttpRequest;
@@ -54,8 +56,14 @@ export default function configureStore(initialState) {
     whitelist: ['auth', 'events', 'profile', 'contacts'] // only sync those to offline storage
   });
   // remember persistor
-  store.persistor = persistor;
-  // persistor.purge(); // uncomment to drop offline data
+  PERSISTOR = persistor;
+  persistor.purge(); // uncomment to drop offline data
 
   return store;
 }
+
+export const purgeOfflineStorage = () => {
+  if (PERSISTOR && typeof PERSISTOR.purge === 'function') {
+    PERSISTOR.purge();
+  }
+};

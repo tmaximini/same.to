@@ -1,5 +1,6 @@
 import { REHYDRATE } from 'redux-persist/constants';
 import { updateAuthHeader, updateUserId } from '../../services/api';
+import { purgeOfflineStorage } from '../configureStore';
 
 
 // Initial State
@@ -83,8 +84,13 @@ const actionsMap = {
 
     return { ...state, ...action.payload.auth, rehydrateFinished: true };
   },
-  [AUTHORIZATION_REQUIRED]: state => {
+  [LOGIN_START]: (state) => ({
+    ...state,
+    isLoading: true,
+  }),
+  [AUTHORIZATION_REQUIRED]: () => {
     updateAuthHeader(null); // reset auth token
+    purgeOfflineStorage(); // reset offline data
     // reset state
     return {
       ...initialState
@@ -100,6 +106,7 @@ const actionsMap = {
       token: id,
       error: null,
       password: null,
+      isLoading: false,
     };
   },
   [FACEBOOK_LOGIN_SUCCESS]: (state, action) => {
@@ -112,14 +119,16 @@ const actionsMap = {
       token: access_token,
       error: null,
       password: null,
+      isLoading: false,
     };
   },
   [LOGIN_ERROR]: (state, action) => ({
     ...state,
     loggedIn: false,
     error: 'Login Failed',
+    isLoading: false,
   }),
-  [LOGOUT]: state => ({ ...state, loggedIn: false }),
+  [LOGOUT]: state => ({ ...state, loggedIn: false, isLoading: false }),
   [UPDATE]: (state, action) => ({ ...state, [action.payload.key]: action.payload.value }),
 };
 
