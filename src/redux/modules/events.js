@@ -1,5 +1,8 @@
 import _ from 'lodash';
-import { CREATE_EVENT_SUCCESS } from './editCreateEvent';
+import {
+  CREATE_EVENT_SUCCESS,
+  UPDATE_EVENT_SUCCESS,
+} from './editCreateEvent';
 import {
   CREATE_TRIP_SUCCESS,
   UPDATE_TRIP_SUCCESS,
@@ -22,7 +25,6 @@ const initialState = {
 export const FETCH_EVENTS_START = 'events/FETCH_EVENTS_START';
 export const FETCH_EVENTS_SUCCESS = 'events/FETCH_EVENTS_SUCCESS';
 export const FETCH_EVENTS_ERROR = 'events/FETCH_EVENTS_ERROR';
-export const UPDATE_EVENT = 'events/UPDATE_EVENT';
 export const SET_CURRENT_EVENT = 'events/UPDATE_EVENT';
 
 
@@ -32,13 +34,13 @@ export const fetchEvents = () => ({
   type: FETCH_EVENTS_START
 });
 
-// updates any key/value pair in the state
-export const update = data => ({
-  type: UPDATE_EVENT,
-  payload: {
-    ...data
-  }
-});
+// // updates any key/value pair in the state
+// export const update = data => ({
+//   type: UPDATE_EVENT,
+//   payload: {
+//     ...data
+//   }
+// });
 
 export const setCurrentEvent = event => ({
   type: SET_CURRENT_EVENT,
@@ -52,7 +54,6 @@ export const setCurrentEvent = event => ({
 export const actions = {
   fetchEvents,
   setCurrentEvent,
-  update,
 };
 
 
@@ -70,8 +71,6 @@ const actionsMap = {
     };
   },
   [FETCH_EVENTS_ERROR]: state => ({ ...state, isFetching: false }),
-  // TODO
-  [UPDATE_EVENT]: state => ({ ...state }),
   [SET_CURRENT_EVENT]: (state, action) => ({
     ...state,
     currentEvent: action.payload.event,
@@ -83,6 +82,18 @@ const actionsMap = {
     return {
       ...state,
       events: [event, ...state.events],
+    };
+  },
+  [UPDATE_EVENT_SUCCESS]: (state, action) => {
+    const { event } = action.payload;
+    const newEvents = [...state.events];
+    const eventIndex = _.findIndex(newEvents, { id: event.id });
+    newEvents[eventIndex] = event;
+
+    return {
+      ...state,
+      events: newEvents,
+      currentEvent: event,
     };
   },
   [UPDATE_TRIP_SUCCESS]: (state, action) => {

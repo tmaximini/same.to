@@ -3,7 +3,11 @@
 import { watchLogin, watchFBLogin } from './auth';
 import { watchFetchEvents } from './events';
 import { watchFetchContacts } from './contacts';
-import { watchCreateEvent, watchGeocodeEvent } from './editCreateEvent';
+import {
+  watchCreateEvent,
+  watchUpdateEvent,
+  watchGeocodeEvent,
+} from './editCreateEvent';
 import {
   watchCreateTrip,
   watchUpdateTrip,
@@ -37,6 +41,7 @@ export default function* root() {
     watchFetchEvents(),
     watchFetchContacts(),
     watchCreateEvent(),
+    watchUpdateEvent(),
     watchGeocodeEvent(),
     watchCreateTrip(),
     watchUpdateTrip(),
