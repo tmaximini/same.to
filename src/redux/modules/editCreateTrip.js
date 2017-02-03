@@ -1,7 +1,7 @@
 import { toggleArrayItem } from '../../utils';
 
 const makeDefaultTrip = () => ({
-  startDate: null,
+  startAt: null,
   location: {},
   types: [],
   pickupRadius: 0,

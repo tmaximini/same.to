@@ -81,8 +81,8 @@ export default class EditCreateTrip extends Component {
           <Datepicker
             placeholder="Start Date"
             minDate={today}
-            date={trip.startDate}
-            onChange={date => updateTrip('startDate', date)}
+            date={trip.startAt}
+            onChange={date => updateTrip('startAt', date)}
           />
           <GeoInput
             placeholder="Start"

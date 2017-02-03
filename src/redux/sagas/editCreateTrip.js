@@ -18,8 +18,6 @@ import {
 import { createTrip, updateTrip } from '../../services/trips';
 
 
-console.log('Actions', Actions);
-
 export function* createTripAsync(action) {
   const { data, eventId } = action.payload;
   try {
