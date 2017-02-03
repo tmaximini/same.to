@@ -11,7 +11,7 @@ const PlusButton = ({ items, ...rest }) => (
     buttonColor={COLORS.CYAN}
     {...rest}
   >
-    {items.map((item, index) => {
+    {items.length > 0 && items.map((item, index) => {
       return (
         <Item
           key={index}
@@ -33,6 +33,10 @@ PlusButton.propTypes = {
     color: PropTypes.string,
     icon: PropTypes.string
   }))
+};
+
+PlusButton.defaultProps = {
+  items: []
 };
 
 export default PlusButton;
