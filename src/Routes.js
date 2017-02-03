@@ -56,6 +56,7 @@ const TabView = () => (
 const styles = StyleSheet.create({
   navBar: {
     backgroundColor: COLORS.DARK_GREY,
+    borderBottomWidth: 0,
   },
   navBarTitle: {
     color: COLORS.WHITE
