@@ -6,6 +6,7 @@ import {
 
 import { connect } from 'react-redux';
 import { formatDate } from '../../utils';
+import KeyboardSpacer from 'react-native-keyboard-spacer';
 import OnOffSwitch from '../../components/OnOffSwitch';
 import HR from '../../components/HR';
 import Button from '../../components/Button';
@@ -113,6 +114,7 @@ export default class EditCreateTrip extends Component {
             />
           </View>
         </View>
+        <KeyboardSpacer />
       </View>
     );
   }

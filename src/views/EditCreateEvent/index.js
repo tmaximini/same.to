@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { View } from 'react-native';
-
+import KeyboardSpacer from 'react-native-keyboard-spacer';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import GeoInput from '../../components/GeoInput';
@@ -104,6 +104,7 @@ export default class EditCreatevent extends Component {
             onPress={() => this.saveItem(event)}
           />
         </View>
+        <KeyboardSpacer />
       </View>
     );
   }

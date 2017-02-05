@@ -5,6 +5,7 @@ import {
 } from 'react-native';
 
 import { connect } from 'react-redux';
+import KeyboardSpacer from 'react-native-keyboard-spacer';
 import { formatDate } from '../../utils';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
@@ -113,6 +114,7 @@ export default class EditCreateActivity extends Component {
             />
           </View>
         </View>
+        <KeyboardSpacer />
       </View>
     );
   }

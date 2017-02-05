@@ -5,6 +5,7 @@ import {
 } from 'react-native';
 
 import { connect } from 'react-redux';
+import KeyboardSpacer from 'react-native-keyboard-spacer';
 import { formatDate } from '../../utils';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
@@ -88,13 +89,13 @@ export default class EditCreateAccommodation extends Component {
             icon="bed"
             value={accommodation.name}
           />
-          {/* <GeoInput
+          <GeoInput
             placeholder="Where"
             enablePoweredByContainer={false}
             value={locationString}
             onChangeText={text => updateAccommodation('locationString', text)}
             onAdressSelect={geocodeLocation}
-          /> */}
+          />
           <View style={styles.inputGroup}>
             <Datepicker
               placeholder="Start Date"
@@ -123,6 +124,7 @@ export default class EditCreateAccommodation extends Component {
             />
           </View>
         </View>
+        <KeyboardSpacer />
       </View>
     );
   }
