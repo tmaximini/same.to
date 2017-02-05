@@ -1,4 +1,8 @@
 // import { fork } from 'redux-saga/effects';
+// SAGAs
+// 1. define worker sagas
+// 2. define watcher sagas
+// 3. define root saga as single point of entry to start all sagas at once
 
 import {
   watchLogin,
@@ -28,12 +32,11 @@ import {
   watchUpdateActivity,
   watchGeocodeActivity,
 } from './editCreateActivity';
-
-// SAGAs
-// 1. define worker sagas
-// 2. define watcher sagas
-// 3. define root saga as single point of entry to start all sagas at once
-
+import {
+  watchCreateProfile,
+  watchUpdateProfile,
+  watchGeocodeProfile,
+} from './editCreateProfile';
 
 /*
  * The entry point for all the sagas used in this application.
@@ -58,5 +61,8 @@ export default function* root() {
     watchCreateActivity(),
     watchUpdateActivity(),
     watchGeocodeActivity(),
+    watchCreateProfile(),
+    watchUpdateProfile(),
+    watchGeocodeProfile(),
   ];
 }
