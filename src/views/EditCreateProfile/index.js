@@ -4,17 +4,14 @@ import {
 } from 'react-native';
 
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import Input from '../../components/Input';
-import { actions as profileActions } from '../../redux/modules/profile';
+import { actions as profileActions } from '../../redux/modules/editCreateProfile';
 
 import styles from './styles';
 
 @connect(
-  state => ({
-    profile: state.profile
-  }),
-  dispatch => bindActionCreators(profileActions, dispatch)
+  state => state.profile,
+  profileActions,
 )
 export default class EditProfile extends Component {
 

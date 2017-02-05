@@ -1,13 +1,16 @@
 import {
-  StyleSheet
+  StyleSheet,
 } from 'react-native';
-
 import { COLORS } from '../../constants';
 
 export default StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: COLORS.BG_GREY,
+  },
+  wrapper: {
+    flex: 1,
+    justifyContent: 'flex-end',
   },
   background: {
     width: null,
@@ -29,6 +32,17 @@ export default StyleSheet.create({
   buttonWrapper: {
     flexDirection: 'row',
     justifyContent: 'space-around'
-  }
+  },
+  logoWrapper: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    minHeight: 100,
+    maxHeight: 200,
+  },
+  logo: {
+    width: 100,
+    height: 100,
+  },
 });
 

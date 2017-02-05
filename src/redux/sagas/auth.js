@@ -7,11 +7,14 @@ import {
   LOGIN_ERROR,
   FACEBOOK_LOGIN_START,
   FACEBOOK_LOGIN_SUCCESS,
-  // FACEBOOK_LOGIN_ERROR,
+  REGISTER_START,
+  REGISTER_SUCCESS,
+  REGISTER_ERROR,
 } from '../modules/auth';
 import {
   login as handleLogin,
-  loginFacebook,
+  loginFacebook as handleLoginFacebook,
+  register as handleRegister,
 } from '../../services/auth';
 import { updateAuthHeader, updateUserId } from '../../services/api';
 
@@ -51,7 +54,7 @@ export function* handleFBLoginAsync(action) {
   const { payload } = action;
   console.log('payload', payload);
   try {
-    const response = yield call(loginFacebook, { ...payload });
+    const response = yield call(handleLoginFacebook, { ...payload });
     const { access_token, userId, error } = response;
     if (error || (typeof response === 'string' && /error/.test(response))) {
       throw error;
@@ -76,6 +79,33 @@ export function* handleFBLoginAsync(action) {
   }
 }
 
+export function* handleRegisterAsync(action) {
+  const { payload } = action;
+  try {
+    const response = yield call(handleRegister, { ...payload });
+    const { id, userId, error } = response;
+    if (error) {
+      throw error;
+    } else {
+      updateAuthHeader(id);
+      updateUserId(userId);
+      yield put({
+        type: REGISTER_SUCCESS,
+        payload: response,
+      });
+      yield call(delay, 100);
+      yield call(Actions.editCreateProfile, { type: 'replace' });
+    }
+  } catch (error) {
+    console.info({ error });
+    yield put({
+      type: REGISTER_ERROR,
+      error
+    });
+    yield call(Actions.login);
+  }
+}
+
 
 export function* watchLogin() {
   // spawn new task on each action, cancel the one before if not yet finished
@@ -85,4 +115,8 @@ export function* watchLogin() {
 export function* watchFBLogin() {
   // spawn new task on each action, cancel the one before if not yet finished
   yield takeLatest(FACEBOOK_LOGIN_START, handleFBLoginAsync);
+}
+
+export function* watchRegister() {
+  yield takeLatest(REGISTER_START, handleRegisterAsync);
 }

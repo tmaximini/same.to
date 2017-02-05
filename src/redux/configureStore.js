@@ -62,6 +62,7 @@ export default function configureStore(initialState) {
   return store;
 }
 
+// probably call this on logout so next user won't see any unrelated offline content
 export const purgeOfflineStorage = () => {
   if (PERSISTOR && typeof PERSISTOR.purge === 'function') {
     PERSISTOR.purge();

@@ -6,8 +6,9 @@ import { purgeOfflineStorage } from '../configureStore';
 // Initial State
 const initialState = {
   loggedIn: false,
-  email: 'peter.limbach@example.org',
+  email: 'Thomas.maximini@example.org',
   password: null,
+  name: null,
   isLoading: false,
   token: null,
   userId: null,
@@ -18,6 +19,9 @@ const initialState = {
 
 
 // Constants (Actions)
+export const REGISTER_START = 'auth/REGISTER_START';
+export const REGISTER_SUCCESS = 'auth/REGISTER_SUCCESS';
+export const REGISTER_ERROR = 'auth/REGISTER_ERROR';
 export const LOGIN_START = 'auth/LOGIN_START';
 export const LOGIN_SUCCESS = 'auth/LOGIN_SUCCESS';
 export const LOGIN_ERROR = 'auth/LOGIN_ERROR';
@@ -33,6 +37,15 @@ export const AUTHORIZATION_REQUIRED = 'auth/AUTHORIZATION_REQUIRED';
 
 
 // Action Creators
+export const register = ({ name, email, password }) => ({
+  type: REGISTER_START,
+  payload: {
+    name,
+    email,
+    password,
+  }
+});
+
 export const login = ({ email, password }) => ({
   type: LOGIN_START,
   payload: {
@@ -57,12 +70,22 @@ export const update = (key, value) => ({
   }
 });
 
+export const resetErrors = () => ({
+  type: UPDATE,
+  payload: {
+    key: 'error',
+    value: null,
+  }
+});
+
 
 // export all actions
 export const actions = {
   login,
   facebookLogin,
   update,
+  register,
+  resetErrors
 };
 
 

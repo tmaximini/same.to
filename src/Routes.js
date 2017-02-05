@@ -6,6 +6,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Home from './views/Home';
 import Contacts from './views/Contacts';
 import Login from './views/Login';
+import Register from './views/Register';
 import LostPassword from './views/LostPassword';
 import EditCreateProfile from './views/EditCreateProfile';
 import EditCreateTrip from './views/EditCreateTrip';
@@ -56,6 +57,10 @@ const TabView = () => (
 const styles = StyleSheet.create({
   navBar: {
     backgroundColor: COLORS.DARK_GREY,
+    borderBottomWidth: 0,
+  },
+  navBarLight: {
+    backgroundColor: COLORS.BG_GREY,
     borderBottomWidth: 0,
   },
   navBarTitle: {
@@ -126,7 +131,7 @@ const Routes = () => (
     <Scene
       key="editCreateProfile"
       component={EditCreateProfile}
-      title="New Profile"
+      title="Create Profile"
     />
     <Scene
       key="editCreateAccommodation"
@@ -194,7 +199,13 @@ const Routes = () => (
       key="login"
       component={Login}
       title="Login"
-      hideNavBar
+      navigationBarStyle={styles.navBarLight}
+    />
+    <Scene
+      key="register"
+      component={Register}
+      title="Register"
+      navigationBarStyle={styles.navBarLight}
     />
   </RouterWithRedux>
 );
