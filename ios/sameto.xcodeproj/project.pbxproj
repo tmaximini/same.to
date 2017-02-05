@@ -59,6 +59,7 @@
 		E9EF736E1E3E1ECF0065641B /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9EF73681E3E1ECF0065641B /* FBSDKLoginKit.framework */; };
 		E9EF736F1E3E1ECF0065641B /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9EF73691E3E1ECF0065641B /* FBSDKShareKit.framework */; };
 		EB6B5A9B61BC45EC91B4995C /* libcxxreact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCEB0164DDA4CE6BCDE06C5 /* libcxxreact.a */; };
+		AC04EF1344744ED084498634 /* libRNImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E0328E6D32D84F3BB4DFA177 /* libRNImagePicker.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -353,6 +354,8 @@
 		F7C6FFC3B71A4EB09A1290F2 /* libReact.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libReact.a; sourceTree = "<group>"; };
 		FC09809D63E5489899991274 /* libjschelpers.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libjschelpers.a; sourceTree = "<group>"; };
 		FDD47C790C044D438E480C57 /* Courier New.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Courier New.ttf"; path = "../node_modules/native-base/Fonts/Courier New.ttf"; sourceTree = "<group>"; };
+		A75B9CA0EE04474D8F16C93A /* RNImagePicker.xcodeproj */ = {isa = PBXFileReference; name = "RNImagePicker.xcodeproj"; path = "../node_modules/react-native-image-picker/ios/RNImagePicker.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		E0328E6D32D84F3BB4DFA177 /* libRNImagePicker.a */ = {isa = PBXFileReference; name = "libRNImagePicker.a"; path = "libRNImagePicker.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -393,6 +396,7 @@
 				E9EF736D1E3E1ECF0065641B /* FBSDKCoreKit.framework in Frameworks */,
 				55C17428A2B6457FB1C8BB61 /* libjschelpers.a in Frameworks */,
 				62100918FCF149F5B0A5D2A7 /* libRCTFBSDK.a in Frameworks */,
+				AC04EF1344744ED084498634 /* libRNImagePicker.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -578,6 +582,7 @@
 				254AE2FE26BA4FAFBA4493F4 /* RNGeocoder.xcodeproj */,
 				7B062D093FF548C59DBC559F /* RNI18n.xcodeproj */,
 				518FBFD55FD04F84B5BB27B3 /* RCTFBSDK.xcodeproj */,
+				A75B9CA0EE04474D8F16C93A /* RNImagePicker.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1141,6 +1146,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/sameto.app/sameto";
@@ -1157,6 +1163,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",

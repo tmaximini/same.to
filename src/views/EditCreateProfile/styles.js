@@ -1,5 +1,6 @@
 import {
-  StyleSheet
+  StyleSheet,
+  PixelRatio,
 } from 'react-native';
 
 import { COLORS } from '../../constants';
@@ -20,5 +21,24 @@ export default StyleSheet.create({
   spacer: {
     width: 10,
   },
+  avatarWrapper: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  avatarContainer: {
+    backgroundColor: COLORS.CYAN,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  avatar: {
+    borderRadius: 60,
+    width: 120,
+    height: 120
+  },
+  avatarText: {
+    color: COLORS.WHITE,
+  }
 });
 

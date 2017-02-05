@@ -4432,6 +4432,10 @@ react-native-i18n@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/react-native-i18n/-/react-native-i18n-1.0.0.tgz#0c407d9ebb846aae1aa5e05de6503008553f02fd"
 
+react-native-image-picker@latest:
+  version "0.25.1"
+  resolved "https://registry.yarnpkg.com/react-native-image-picker/-/react-native-image-picker-0.25.1.tgz#0743f1c30bb942559560295e3408f9fce73da44b"
+
 react-native-invertible-scroll-view@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/react-native-invertible-scroll-view/-/react-native-invertible-scroll-view-1.0.0.tgz#60ceb384dc950c34eba3a5aeda39f97cdc7d4e23"
