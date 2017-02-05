@@ -140,7 +140,7 @@ const actionsMap = {
     return {
       ...state,
       activity: model,
-      locationString: model.pickupLocation ? model.pickupLocation.formattedAddress : '',
+      locationString: model.location ? model.location.formattedAddress : '',
       isNew: false,
     };
   },
@@ -160,7 +160,7 @@ const actionsMap = {
     ...state,
     activity: {
       ...state.activity,
-      pickupLocation: action.payload,
+      location: action.payload,
     },
   }),
   [GEOCODE_ACTIVITY_ERROR]: (state, action) => {
@@ -170,7 +170,7 @@ const actionsMap = {
       ...state,
       activity: {
         ...state.activity,
-        pickupLocation: {
+        location: {
           formattedAddress: locationString,
         },
       },
