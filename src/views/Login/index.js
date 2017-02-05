@@ -16,7 +16,7 @@ import {
 import Input from '../../components/Input';
 import { actions as authActions } from '../../redux/modules/auth';
 
-import { VerticalCentered, WithPadding } from '../../components/Layout';
+import { WithPadding } from '../../components/Layout';
 import Button from '../../components/Button';
 import { COLORS } from '../../constants';
 import styles from './styles';

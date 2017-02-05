@@ -57,34 +57,33 @@ export default class Login extends Component {
   render() {
     const {
       update,
+      resetErrors,
       name,
       email,
       password,
       error,
       isLoading,
-      resetErrors,
     } = this.props;
 
     return (
       <View style={styles.container}>
-        <View style={styles.wrapper}>
-          <View style={styles.logoWrapper}>
-            <Image
-              source={logo}
-              resizeMode="cover"
-              style={styles.logo}
-            />
-          </View>
-          {isLoading ? (
-            <ActivityIndicator
-              animating
-              color={COLORS.CYAN}
-              style={{ height: 80 }}
-              size="large"
-            />
-          ) : (
+        {isLoading ? (
+          <ActivityIndicator
+            animating
+            color={COLORS.CYAN}
+            style={{ height: 80 }}
+            size="large"
+          />
+        ) : (
+          <View style={styles.wrapper}>
+            <View style={styles.logoWrapper}>
+              <Image
+                source={logo}
+                resizeMode="cover"
+                style={styles.logo}
+              />
+            </View>
             <WithPadding>
-
               {error && <Text style={styles.error}>{error}</Text>}
               <Input
                 placeholder="Name"
@@ -117,8 +116,8 @@ export default class Login extends Component {
                 }}
               />
             </WithPadding>
-          )}
-        </View>
+          </View>
+        )}
         <KeyboardSpacer />
       </View>
     );

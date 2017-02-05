@@ -8,35 +8,32 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import styles from './styles';
 
 
-const Input = ({ icon, value, ...rest }) => {
-
-
-  return (
-    <View style={styles.inputWrap}>
-      <TextInput
-        style={styles.input}
-        underlineColorAndroid="transparent"
-        placeholderTextColor="#999"
-        returnKeyType="done"
-        value={value}
-        {...rest}
+const Input = ({ icon, value, style, ...rest }) => (
+  <View style={[styles.inputWrap, style]}>
+    <TextInput
+      style={styles.input}
+      underlineColorAndroid="transparent"
+      placeholderTextColor="#999"
+      returnKeyType="done"
+      value={value}
+      {...rest}
+    />
+    {icon && (
+      <Icon
+        name={icon}
+        style={styles.icon}
+        size={20}
       />
-      {icon && (
-        <Icon
-          name={icon}
-          style={styles.icon}
-          size={20}
-        />
-      )}
-    </View>
-  );
-};
+    )}
+  </View>
+);
 
 Input.propTypes = {
   icon: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number
   ]),
+  style: PropTypes.object,
   value: PropTypes.string,
 };
 

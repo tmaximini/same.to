@@ -41,9 +41,9 @@ export const CREATE_ACTIVITY_ERROR = 'createActivity/CREATE_ACTIVITY_ERROR';
 
 
 // Action Creators
-export const updateRemoteActivity = updateActivity => ({
+export const updateRemoteActivity = updatedActivity => ({
   type: UPDATE_ACTIVITY_START,
-  payload: updateActivity
+  payload: updatedActivity
 });
 
 // updates any key/value pair for a new Activity
