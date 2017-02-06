@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -45,6 +46,7 @@
 		9268D0538A6F4220AD6960E6 /* Roboto_medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B3785EDACF694089B8A69228 /* Roboto_medium.ttf */; };
 		960A2F801F754EB0B3E3395A /* Arial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A23540BBD214F99A2C10998 /* Arial.ttf */; };
 		AA475276F88841F18ACF6D41 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D99A986AE1744FC8E960B8A /* MaterialCommunityIcons.ttf */; };
+		AC04EF1344744ED084498634 /* libRNImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E0328E6D32D84F3BB4DFA177 /* libRNImagePicker.a */; };
 		BD0DB4A734CA4D9EA424E711 /* Arial Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CC385AFEE1814F42A61CA4C9 /* Arial Black.ttf */; };
 		BF8F43699C404AD9A7FDEC61 /* Georgia.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87546A25D3064BC793C5F942 /* Georgia.ttf */; };
 		BFFACA00CDE0450CA902B8CA /* SF-UI-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = A408272EE5904616B8B12346 /* SF-UI-Text-Regular.otf */; };
@@ -52,6 +54,8 @@
 		D00E226B484A44E99C397025 /* Andale Mono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83EDF89BBAFC4963B7CEC4A1 /* Andale Mono.ttf */; };
 		DE01159EFB8D425A818E863D /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C6FFC3B71A4EB09A1290F2 /* libReact.a */; };
 		E5885DC16AF14065A7A70E04 /* Courier New.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FDD47C790C044D438E480C57 /* Courier New.ttf */; };
+		E98C675E1E48C40D00DEDF65 /* HockeySDK.embeddedframework in Resources */ = {isa = PBXBuildFile; fileRef = E98C675D1E48C40D00DEDF65 /* HockeySDK.embeddedframework */; };
+		E98C67601E48C41400DEDF65 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E98C675F1E48C41400DEDF65 /* HockeySDK.framework */; };
 		E9EF736A1E3E1ECF0065641B /* AccountKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9EF73641E3E1ECF0065641B /* AccountKit.framework */; };
 		E9EF736B1E3E1ECF0065641B /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9EF73651E3E1ECF0065641B /* Bolts.framework */; };
 		E9EF736C1E3E1ECF0065641B /* FBNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9EF73661E3E1ECF0065641B /* FBNotifications.framework */; };
@@ -59,7 +63,6 @@
 		E9EF736E1E3E1ECF0065641B /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9EF73681E3E1ECF0065641B /* FBSDKLoginKit.framework */; };
 		E9EF736F1E3E1ECF0065641B /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9EF73691E3E1ECF0065641B /* FBSDKShareKit.framework */; };
 		EB6B5A9B61BC45EC91B4995C /* libcxxreact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCEB0164DDA4CE6BCDE06C5 /* libcxxreact.a */; };
-		AC04EF1344744ED084498634 /* libRNImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E0328E6D32D84F3BB4DFA177 /* libRNImagePicker.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -259,6 +262,13 @@
 			remoteGlobalIDString = BF8FCF941BFFB184000FCD37;
 			remoteInfo = RNGeocoder;
 		};
+		E95827AD1E48B60E006ED614 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A75B9CA0EE04474D8F16C93A /* RNImagePicker.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 014A3B5C1C6CF33500B6D375;
+			remoteInfo = RNImagePicker;
+		};
 		E994FA411E3798C60094BF06 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E994FA3D1E3798C60094BF06 /* RNBlur.xcodeproj */;
@@ -333,6 +343,7 @@
 		9F156DABC85C4BB7944C715E /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		A3112A4F098647CD9519C4EC /* libRNGeocoder.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNGeocoder.a; sourceTree = "<group>"; };
 		A408272EE5904616B8B12346 /* SF-UI-Text-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-UI-Text-Regular.otf"; path = "../node_modules/native-base/Fonts/SF-UI-Text-Regular.otf"; sourceTree = "<group>"; };
+		A75B9CA0EE04474D8F16C93A /* RNImagePicker.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNImagePicker.xcodeproj; path = "../node_modules/react-native-image-picker/ios/RNImagePicker.xcodeproj"; sourceTree = "<group>"; };
 		A9B80988CF06466E89F0C900 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		AA94B0BF11F64875BD41620F /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		AEE29A5DE1174BCC84BBB13D /* Comic Sans MS.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Comic Sans MS.ttf"; path = "../node_modules/native-base/Fonts/Comic Sans MS.ttf"; sourceTree = "<group>"; };
@@ -343,6 +354,10 @@
 		CEDDFE6F31C246F595E15C82 /* Times New Roman.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Times New Roman.ttf"; path = "../node_modules/native-base/Fonts/Times New Roman.ttf"; sourceTree = "<group>"; };
 		D4017E62FBB14A0690EB4BDC /* libRNBlur.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNBlur.a; sourceTree = "<group>"; };
 		DF10C529749E44A485AA166C /* Microsoft Sans Serif.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Microsoft Sans Serif.ttf"; path = "../node_modules/native-base/Fonts/Microsoft Sans Serif.ttf"; sourceTree = "<group>"; };
+		E0328E6D32D84F3BB4DFA177 /* libRNImagePicker.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNImagePicker.a; sourceTree = "<group>"; };
+		E98C675B1E48C37200DEDF65 /* HockeySDK.embeddedframework */ = {isa = PBXFileReference; lastKnownFileType = folder; name = HockeySDK.embeddedframework; path = "HockeySDK-iOS/HockeySDK.embeddedframework"; sourceTree = "<group>"; };
+		E98C675D1E48C40D00DEDF65 /* HockeySDK.embeddedframework */ = {isa = PBXFileReference; lastKnownFileType = folder; name = HockeySDK.embeddedframework; path = "HockeySDK-iOS/HockeySDK.embeddedframework"; sourceTree = "<group>"; };
+		E98C675F1E48C41400DEDF65 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HockeySDK.framework; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDK.framework"; sourceTree = "<group>"; };
 		E98F7C741E3E40BC001C9697 /* sameto.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = sameto.entitlements; path = sameto/sameto.entitlements; sourceTree = "<group>"; };
 		E994FA3D1E3798C60094BF06 /* RNBlur.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNBlur.xcodeproj; path = "../node_modules/react-native-blur/ios/RNBlur.xcodeproj"; sourceTree = "<group>"; };
 		E9EF73641E3E1ECF0065641B /* AccountKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AccountKit.framework; path = ../../../../Documents/FacebookSDK/AccountKit.framework; sourceTree = "<group>"; };
@@ -354,8 +369,6 @@
 		F7C6FFC3B71A4EB09A1290F2 /* libReact.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libReact.a; sourceTree = "<group>"; };
 		FC09809D63E5489899991274 /* libjschelpers.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libjschelpers.a; sourceTree = "<group>"; };
 		FDD47C790C044D438E480C57 /* Courier New.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Courier New.ttf"; path = "../node_modules/native-base/Fonts/Courier New.ttf"; sourceTree = "<group>"; };
-		A75B9CA0EE04474D8F16C93A /* RNImagePicker.xcodeproj */ = {isa = PBXFileReference; name = "RNImagePicker.xcodeproj"; path = "../node_modules/react-native-image-picker/ios/RNImagePicker.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
-		E0328E6D32D84F3BB4DFA177 /* libRNImagePicker.a */ = {isa = PBXFileReference; name = "libRNImagePicker.a"; path = "libRNImagePicker.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -397,6 +410,7 @@
 				55C17428A2B6457FB1C8BB61 /* libjschelpers.a in Frameworks */,
 				62100918FCF149F5B0A5D2A7 /* libRCTFBSDK.a in Frameworks */,
 				AC04EF1344744ED084498634 /* libRNImagePicker.a in Frameworks */,
+				E98C67601E48C41400DEDF65 /* HockeySDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -560,6 +574,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				E98C675F1E48C41400DEDF65 /* HockeySDK.framework */,
 				E9EF73641E3E1ECF0065641B /* AccountKit.framework */,
 				E9EF73651E3E1ECF0065641B /* Bolts.framework */,
 				E9EF73661E3E1ECF0065641B /* FBNotifications.framework */,
@@ -599,11 +614,13 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				E98C675D1E48C40D00DEDF65 /* HockeySDK.embeddedframework */,
 				13B07FAE1A68108700A75B9A /* sameto */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* sametoTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				51440EB329B04D86B88CB719 /* Resources */,
+				E98C675A1E48C37200DEDF65 /* Frameworks */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -632,6 +649,22 @@
 				E93272191E226B5800C90A4A /* libRNGeocoder.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		E958278C1E48B60E006ED614 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E95827AE1E48B60E006ED614 /* libRNImagePicker.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E98C675A1E48C37200DEDF65 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E98C675B1E48C37200DEDF65 /* HockeySDK.embeddedframework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		E994FA3E1E3798C60094BF06 /* Products */ = {
@@ -688,6 +721,7 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				E95827B01E48B689006ED614 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -792,6 +826,10 @@
 				{
 					ProductGroup = E9F734F81E336CFD0007D37B /* Products */;
 					ProjectRef = 7B062D093FF548C59DBC559F /* RNI18n.xcodeproj */;
+				},
+				{
+					ProductGroup = E958278C1E48B60E006ED614 /* Products */;
+					ProjectRef = A75B9CA0EE04474D8F16C93A /* RNImagePicker.xcodeproj */;
 				},
 				{
 					ProductGroup = E93271CD1E226A7A00C90A4A /* Products */;
@@ -996,6 +1034,13 @@
 			remoteRef = E93272181E226B5800C90A4A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		E95827AE1E48B60E006ED614 /* libRNImagePicker.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNImagePicker.a;
+			remoteRef = E95827AD1E48B60E006ED614 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		E994FA421E3798C60094BF06 /* libRNBlur.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1052,6 +1097,7 @@
 				BFFACA00CDE0450CA902B8CA /* SF-UI-Text-Regular.otf in Resources */,
 				8B83B38A3196434F9D89EDB5 /* Skia.ttf in Resources */,
 				8B1737F044F948A09C0446C8 /* Times New Roman.ttf in Resources */,
+				E98C675E1E48C40D00DEDF65 /* HockeySDK.embeddedframework in Resources */,
 				0A5044573C0D408EB0207EA5 /* Entypo.ttf in Resources */,
 				2F2DDBEF4E70482088FBAF17 /* EvilIcons.ttf in Resources */,
 				456B8DCC108A4CCFB54207F7 /* FontAwesome.ttf in Resources */,
@@ -1081,6 +1127,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/packager/react-native-xcode.sh";
+		};
+		E95827B01E48B689006ED614 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "FILE=\"${SRCROOT}/HockeySDK-iOS/BuildAgent\"\nif [ -f \"$FILE\" ]; then\n\"$FILE\"\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1186,7 +1245,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = JLSQJ985KZ;
-				FRAMEWORK_SEARCH_PATHS = "~/Documents/FacebookSDK";
+				FRAMEWORK_SEARCH_PATHS = (
+					"~/Documents/FacebookSDK",
+					"$(PROJECT_DIR)/HockeySDK-iOS/HockeySDK.embeddedframework",
+				);
 				INFOPLIST_FILE = sameto/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -1207,7 +1269,10 @@
 				CODE_SIGN_ENTITLEMENTS = sameto/sameto.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JLSQJ985KZ;
-				FRAMEWORK_SEARCH_PATHS = "~/Documents/FacebookSDK";
+				FRAMEWORK_SEARCH_PATHS = (
+					"~/Documents/FacebookSDK",
+					"$(PROJECT_DIR)/HockeySDK-iOS/HockeySDK.embeddedframework",
+				);
 				INFOPLIST_FILE = sameto/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
