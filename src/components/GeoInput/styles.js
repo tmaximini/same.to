@@ -30,6 +30,7 @@ export default StyleSheet.create({
     paddingLeft: 5,
     paddingTop: 0,
     paddingBottom: 0,
+    fontSize: 14,
   },
   listView: {
     zIndex: 200,
