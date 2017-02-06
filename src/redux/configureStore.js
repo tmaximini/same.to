@@ -55,9 +55,9 @@ export default function configureStore(initialState) {
     storage: AsyncStorage,
     whitelist: ['auth', 'events', 'profile', 'contacts'] // only sync those to offline storage
   });
-  // remember persistor
+  // remember persistor object
   PERSISTOR = persistor;
-  persistor.purge(); // uncomment to drop offline data
+  // persistor.purge(); // uncomment to drop offline data
 
   return store;
 }

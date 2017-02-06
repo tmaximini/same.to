@@ -9,6 +9,7 @@ import Actions from 'react-native-router-flux/src/Actions';
 import TabbedView from 'react-native-router-flux/src/TabbedView';
 import { deepestExplicitValueForKey } from 'react-native-router-flux/src/Util';
 import { COLORS } from '../../constants';
+import styles from './styles';
 
 class TabBar extends Component {
 
@@ -79,7 +80,7 @@ class TabBar extends Component {
       >
         <TabbedView
           navigationState={this.props.navigationState}
-          style={{ flex: 1, backgroundColor: COLORS.DARK_GREY }}
+          style={styles.tabBar}
           renderScene={this.renderScene}
         />
         {!hideTabBar && state.children.filter(el => el.icon).length > 0 &&

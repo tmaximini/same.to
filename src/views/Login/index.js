@@ -97,6 +97,14 @@ export default class Login extends Component {
 
     return (
       <View style={styles.container}>
+      {isLoading ? (
+          <ActivityIndicator
+            animating
+            color={COLORS.CYAN}
+            style={{ height: 80 }}
+            size="large"
+          />
+        ) : (
         <View style={styles.wrapper}>
           <View style={styles.logoWrapper}>
             <Image
@@ -105,61 +113,51 @@ export default class Login extends Component {
               style={styles.logo}
             />
           </View>
-
-          {isLoading ? (
-            <ActivityIndicator
-              animating
-              color={COLORS.CYAN}
-              style={{ height: 80 }}
-              size="large"
+          <WithPadding>
+            <Button
+              onPress={this.onFacebookLogin}
+            >
+              <Text style={styles.buttonText}>Mit Facebook anmelden</Text>
+            </Button>
+            <Text style={styles.or}>Or</Text>
+            {error && <Text style={styles.error}>{error}</Text>}
+            <Input
+              placeholder="E-Mail"
+              value={email}
+              onChangeText={(text) => update('email', text)}
             />
-          ) : (
-            <WithPadding>
-              <Button
-                onPress={this.onFacebookLogin}
-              >
-                <Text style={styles.buttonText}>Mit Facebook anmelden</Text>
-              </Button>
-              <Text style={styles.or}>Or</Text>
-              {error && <Text style={styles.error}>{error}</Text>}
-              <Input
-                placeholder="E-Mail"
-                value={email}
-                onChangeText={(text) => update('email', text)}
-              />
-              <Input
-                placeholder="Password"
-                value={password}
-                onChangeText={(text) => update('password', text)}
-                secureTextEntry
-              />
-              <Button
-                onPress={this.onLogin}
-              >
-                <Text style={styles.buttonText}>Sign In</Text>
-              </Button>
-              <Button
-                text="Register"
-                textColor="#fff"
-                noBackground
-                onPress={() => {
-                  resetErrors();
-                  Actions.register();
-                }}
-              />
-              {/*
-              <Button
-                text="Forgot Password?"
-                textColor="#fff"
-                noBorder
-                noBackground
-                onPress={Actions.lostPassword}
-              />
-              */}
-            </WithPadding>
-          )}
-
+            <Input
+              placeholder="Password"
+              value={password}
+              onChangeText={(text) => update('password', text)}
+              secureTextEntry
+            />
+            <Button
+              onPress={this.onLogin}
+            >
+              <Text style={styles.buttonText}>Sign In</Text>
+            </Button>
+            <Button
+              text="Register"
+              textColor="#fff"
+              noBackground
+              onPress={() => {
+                resetErrors();
+                Actions.register();
+              }}
+            />
+            {/*
+            <Button
+              text="Forgot Password?"
+              textColor="#fff"
+              noBorder
+              noBackground
+              onPress={Actions.lostPassword}
+            />
+            */}
+          </WithPadding>
         </View>
+        )}
         <KeyboardSpacer />
       </View>
     );

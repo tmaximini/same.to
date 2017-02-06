@@ -82,17 +82,17 @@ export const actions = {
 
 // Action Handlers
 const actionsMap = {
-  [CREATE_PROFILE_SUCCESS]: (state) => ({
+  [CREATE_PROFILE_SUCCESS]: state => ({
     ...state,
     profile: makeDefaultProfile(),
     isNew: true,
   }),
-  [UPDATE_PROFILE_SUCCESS]: (state) => ({
+  [UPDATE_PROFILE_SUCCESS]: state => ({
     ...state,
     profile: makeDefaultProfile(),
     isNew: true,
   }),
-  [RESET_PROFILE]: (state) => ({
+  [RESET_PROFILE]: state => ({
     ...state,
     profile: makeDefaultProfile(),
     isNew: true,

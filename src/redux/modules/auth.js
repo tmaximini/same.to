@@ -7,7 +7,7 @@ import { purgeOfflineStorage } from '../configureStore';
 // Initial State
 const initialState = {
   loggedIn: false,
-  email: 'thomas.maximini@example.org',
+  email: 'peter.limbach@example.org',
   password: null,
   username: null,
   isLoading: false,
