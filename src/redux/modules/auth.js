@@ -1,3 +1,4 @@
+import DeviceInfo from 'react-native-device-info';
 import { REHYDRATE } from 'redux-persist/constants';
 import { updateAuthHeader, updateUserId } from '../../services/api';
 import { purgeOfflineStorage } from '../configureStore';
@@ -6,15 +7,16 @@ import { purgeOfflineStorage } from '../configureStore';
 // Initial State
 const initialState = {
   loggedIn: false,
-  email: 'Thomas.maximini@example.org',
+  email: 'thomas.maximini@example.org',
   password: null,
-  name: null,
+  username: null,
   isLoading: false,
   token: null,
   userId: null,
   error: null,
   rehydrateFinished: false,
   facebook: {},
+  deviceId: DeviceInfo.getUniqueID(),
 };
 
 
@@ -37,12 +39,10 @@ export const AUTHORIZATION_REQUIRED = 'auth/AUTHORIZATION_REQUIRED';
 
 
 // Action Creators
-export const register = ({ name, email, password }) => ({
+export const register = data => ({
   type: REGISTER_START,
   payload: {
-    name,
-    email,
-    password,
+    ...data
   }
 });
 

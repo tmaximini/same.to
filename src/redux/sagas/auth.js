@@ -94,7 +94,7 @@ export function* handleRegisterAsync(action) {
         payload: response,
       });
       yield call(delay, 100);
-      yield call(Actions.editCreateProfile, { type: 'replace' });
+      yield call(Actions.editCreateProfile, { type: 'reset' });
     }
   } catch (error) {
     console.info({ error });

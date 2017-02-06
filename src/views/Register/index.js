@@ -31,6 +31,7 @@ export default class Login extends Component {
     resetErrors: PropTypes.func.isRequired,
     register: PropTypes.func.isRequired,
     email: PropTypes.string,
+    deviceId: PropTypes.string,
     username: PropTypes.string,
     password: PropTypes.string,
     name: PropTypes.string,
@@ -45,11 +46,11 @@ export default class Login extends Component {
   }
 
   onRegister() {
-    const { register, update, name, email, password } = this.props;
+    const { register, update, username, email, password, deviceId } = this.props;
     if (email && password) {
-      register({ name, email, password });
+      register({ username, email, password, deviceId });
     } else {
-      update('error', 'Name, E-Mail and Password required');
+      update('error', 'Username, E-Mail and Password required');
     }
   }
 
@@ -58,7 +59,7 @@ export default class Login extends Component {
     const {
       update,
       resetErrors,
-      name,
+      username,
       email,
       password,
       error,
@@ -86,9 +87,9 @@ export default class Login extends Component {
             <WithPadding>
               {error && <Text style={styles.error}>{error}</Text>}
               <Input
-                placeholder="Name"
-                value={name}
-                onChangeText={(text) => update('name', text)}
+                placeholder="Username"
+                value={username}
+                onChangeText={(text) => update('username', text)}
               />
               <Input
                 placeholder="E-Mail"
