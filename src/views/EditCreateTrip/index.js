@@ -25,7 +25,7 @@ export default class EditCreateTrip extends Component {
 
   static propTypes = {
     updateTrip: PropTypes.func.isRequired,
-    toggleType: PropTypes.func.isRequired,
+    toggleCategory: PropTypes.func.isRequired,
     setTrip: PropTypes.func.isRequired,
     updateRemoteTrip: PropTypes.func.isRequired,
     createTrip: PropTypes.func.isRequired,
@@ -56,7 +56,7 @@ export default class EditCreateTrip extends Component {
     const {
       tripTypes,
       updateTrip,
-      toggleType,
+      toggleCategory,
       geocodeLocation,
       geocodeDestination,
       pickupString,
@@ -76,7 +76,7 @@ export default class EditCreateTrip extends Component {
             <CheckboxList
               items={tripTypes}
               model={trip}
-              onChange={toggleType}
+              onChange={toggleCategory}
             />
           </View>
           <Datepicker

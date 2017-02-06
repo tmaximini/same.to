@@ -12,11 +12,7 @@ export const borderRadius = size => ({
   borderRadius: size
 });
 
-export const formatDate = dateString => {
-  // console.log('dateString', dateString);
-
-  return format(parse(dateString), 'YYYY-MM-DD');
-};
+export const formatDate = dateString => format(parse(dateString), 'YYYY-MM-DD');
 
 export const getDateFromString = (string, delimiter = '-') => {
   if (!string) return null;

@@ -9,7 +9,7 @@ const CheckboxList = ({ items, model, onChange }) => (
       item={item}
       key={index}
       onChange={onChange}
-      active={model.types.indexOf(item) > -1}
+      active={model.categories.indexOf(item) > -1}
     />)}
   </View>
 );

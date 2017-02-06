@@ -34,7 +34,7 @@ const ItemDetail = ({ itemType, item }) => (
             </View>
             <View style={styles.tags}>
               <TagList
-                tags={item.types}
+                tags={item.categories}
               />
             </View>
             <View style={styles.topRight}>

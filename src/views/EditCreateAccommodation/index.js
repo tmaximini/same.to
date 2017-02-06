@@ -33,7 +33,7 @@ export default class EditCreateAccommodation extends Component {
     setAccommodation: PropTypes.func.isRequired,
     updateRemoteAccommodation: PropTypes.func.isRequired,
     createAccommodation: PropTypes.func.isRequired,
-    toggleType: PropTypes.func.isRequired,
+    toggleCategory: PropTypes.func.isRequired,
     geocodeLocation: PropTypes.func.isRequired,
     accommodationTypes: PropTypes.array,
     locationString: PropTypes.string,
@@ -61,7 +61,7 @@ export default class EditCreateAccommodation extends Component {
       accommodationTypes,
       updateAccommodation,
       geocodeLocation,
-      toggleType,
+      toggleCategory,
       locationString,
       accommodation,
     } = this.props;
@@ -79,7 +79,7 @@ export default class EditCreateAccommodation extends Component {
             </Text>
             <CheckboxList
               items={accommodationTypes}
-              onChange={toggleType}
+              onChange={toggleCategory}
               model={accommodation}
             />
           </View>

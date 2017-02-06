@@ -3,7 +3,7 @@ import { toggleArrayItem } from '../../utils';
 const makeDefaultTrip = () => ({
   startAt: null,
   location: {},
-  types: [],
+  categories: [],
   pickupRadius: 0,
   isPublic: true,
 });
@@ -26,7 +26,7 @@ export const UPDATE_TRIP_START = 'editTrip/UPDATE_TRIP_START';
 export const UPDATE_TRIP_SUCCESS = 'editTrip/UPDATE_TRIP_SUCCESS';
 export const UPDATE_TRIP_ERROR = 'editTrip/CREATE_TRIP_ERROR';
 export const UPDATE_TRIP = 'editTrip/UPDATE_TRIP';
-export const TOGGLE_TYPE = 'editTrip/TOGGLE_TYPE';
+export const TOGGLE_CATEGORY = 'editTrip/TOGGLE_CATEGORY';
 export const SET_TRIP = 'editTrip/SET_TRIP';
 export const RESET_TRIP = 'editTrip/RESET_TRIP';
 export const GEOCODE_TRIP_START = 'editTrip/GEOCODE_TRIP_START';
@@ -58,8 +58,8 @@ export const updateTrip = (key, value) => ({
   }
 });
 
-export const toggleType = key => ({
-  type: TOGGLE_TYPE,
+export const toggleCategory = key => ({
+  type: TOGGLE_CATEGORY,
   payload: {
     key,
   }
@@ -112,7 +112,7 @@ export const actions = {
   createTrip,
   setTrip,
   updateTrip,
-  toggleType,
+  toggleCategory,
   geocodeLocation,
   geocodeDestination,
   resetTrip
@@ -162,14 +162,14 @@ const actionsMap = {
       trip,
     };
   },
-  [TOGGLE_TYPE]: (state, action) => {
+  [TOGGLE_CATEGORY]: (state, action) => {
     const { key } = action.payload;
 
     return {
       ...state,
       trip: {
         ...state.trip,
-        types: toggleArrayItem(state.trip.types, key)
+        categories: toggleArrayItem(state.trip.categories, key)
       }
     };
   },

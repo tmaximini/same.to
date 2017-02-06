@@ -85,7 +85,7 @@ const SubItem = ({ itemType, item, onSelect }) => {
             </View>
             <View style={styles.bottom}>
               <TagList
-                tags={[item.type]}
+                tags={item.categories}
               />
             </View>
           </View>

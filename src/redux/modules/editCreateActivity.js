@@ -5,7 +5,7 @@ const makeDefaultActivity = () => ({
   startAt: formatDate(new Date()),
   name: '',
   location: {},
-  types: [],
+  categories: [],
   isPublic: false,
 });
 
@@ -28,7 +28,7 @@ export const UPDATE_ACTIVITY_ERROR = 'editActivity/CREATE_ACTIVITY_ERROR';
 export const UPDATE_ACTIVITY = 'editActivity/UPDATE_ACTIVITY';
 export const SET_ACTIVITY = 'editActivity/SET_ACTIVITY';
 export const RESET_ACTIVITY = 'editActivity/RESET_ACTIVITY';
-export const TOGGLE_TYPE = 'editActivity/TOGGLE_TYPE';
+export const TOGGLE_CATEGORY = 'editActivity/TOGGLE_CATEGORY';
 export const GEOCODE_ACTIVITY_START = 'editActivity/GEOCODE_ACTIVITY_START';
 export const GEOCODE_ACTIVITY_SUCCESS = 'editActivity/GEOCODE_ACTIVITY_SUCCESS';
 export const GEOCODE_ACTIVITY_ERROR = 'editActivity/GEOCODE_ACTIVITY_ERROR';
@@ -66,8 +66,8 @@ export const resetActivity = () => ({
   type: RESET_ACTIVITY,
 });
 
-export const toggleType = key => ({
-  type: TOGGLE_TYPE,
+export const toggleCategory = key => ({
+  type: TOGGLE_CATEGORY,
   payload: {
     key,
   }
@@ -99,7 +99,7 @@ export const actions = {
   updateRemoteActivity,
   createActivity,
   setActivity,
-  toggleType,
+  toggleCategory,
   updateActivity,
   geocodeLocation,
   resetActivity,
@@ -123,14 +123,14 @@ const actionsMap = {
     activity: makeDefaultActivity(),
     isNew: true,
   }),
-  [TOGGLE_TYPE]: (state, action) => {
+  [TOGGLE_CATEGORY]: (state, action) => {
     const { key } = action.payload;
 
     return {
       ...state,
       activity: {
         ...state.activity,
-        types: toggleArrayItem(state.activity.types, key)
+        categories: toggleArrayItem(state.activity.categories, key)
       }
     };
   },

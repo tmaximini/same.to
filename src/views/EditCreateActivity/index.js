@@ -30,7 +30,7 @@ export default class EditCreateActivity extends Component {
     setActivity: PropTypes.func.isRequired,
     updateRemoteActivity: PropTypes.func.isRequired,
     createActivity: PropTypes.func.isRequired,
-    toggleType: PropTypes.func.isRequired,
+    toggleCategory: PropTypes.func.isRequired,
     geocodeLocation: PropTypes.func.isRequired,
     activityTypes: PropTypes.array,
     locationString: PropTypes.string,
@@ -58,7 +58,7 @@ export default class EditCreateActivity extends Component {
       activityTypes,
       updateActivity,
       geocodeLocation,
-      toggleType,
+      toggleCategory,
       locationString,
       activity,
     } = this.props;
@@ -74,7 +74,7 @@ export default class EditCreateActivity extends Component {
             </Text>
             <CheckboxList
               items={activityTypes}
-              onChange={toggleType}
+              onChange={toggleCategory}
               model={activity}
             />
           </View>
