@@ -45,6 +45,7 @@ export default class Event extends Component {
       name: PropTypes.string.isRequired,
       description: PropTypes.string,
       id: PropTypes.string.isRequired,
+      type: PropTypes.string.isRequired,
     }).isRequired,
     setTrip: PropTypes.func.isRequired,
     setAccommodation: PropTypes.func.isRequired,
@@ -84,10 +85,12 @@ export default class Event extends Component {
       accommodations,
       trips,
       // members,
+      type,
       id,
     } = this.props.event;
 
     const hasSubItems = accommodations.length || trips.length;
+    const isEvent = type === 'event';
 
     return (
       <View style={styles.container}>
@@ -95,7 +98,6 @@ export default class Event extends Component {
           <Image
             style={styles.bgImage}
             source={background}
-
           >
             <View style={styles.header}>
               <Text style={styles.title}>
@@ -119,9 +121,11 @@ export default class Event extends Component {
               <View style={styles.box}>
                 <Text style={styles.boxText}>Invite</Text>
               </View>
-              <View style={[styles.box, styles.lastBox]}>
-                <Text style={styles.boxText}>Participants</Text>
-              </View>
+              {isEvent && (
+                <View style={[styles.box, styles.lastBox]}>
+                  <Text style={styles.boxText}>Participants</Text>
+                </View>
+              )}
             </View>
           </View>
         </View>
@@ -143,7 +147,7 @@ export default class Event extends Component {
             </View>
           )}
 
-          <PlusButton
+          {isEvent && <PlusButton
             itemSize={45}
             radius={80}
             startDegree={225}
@@ -175,6 +179,7 @@ export default class Event extends Component {
               }
             ]}
           />
+          }
         </View>
       </View>
     );
