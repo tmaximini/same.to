@@ -1,6 +1,6 @@
 // Initial State
-
 const makeDefaultProfile = () => ({
+  username: null,
   firstName: null,
   lastName: null,
   email: null,
@@ -10,7 +10,7 @@ const makeDefaultProfile = () => ({
   occupation: null,
   interests: [],
   uploadedImage: null,
-  location: {}
+  location: {},
 });
 
 const initialState = {
@@ -45,6 +45,14 @@ export const update = (key, value) => ({
   }
 });
 
+export const updateRemoteProfile = profile => ({
+  type: UPDATE_PROFILE_START,
+  payload: {
+    ...profile
+  }
+});
+
+
 export const setProfile = model => ({
   type: SET_PROFILE,
   payload: {
@@ -68,6 +76,7 @@ export const actions = {
   update,
   setProfile,
   geocodeLocation,
+  updateRemoteProfile,
 };
 
 

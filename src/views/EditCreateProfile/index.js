@@ -16,6 +16,7 @@ import Input from '../../components/Input';
 import GeoInput from '../../components/GeoInput';
 import Button from '../../components/Button';
 import { actions as profileActions } from '../../redux/modules/editCreateProfile';
+import { getProfile } from '../../services/profiles';
 
 import styles from './styles';
 
@@ -27,6 +28,8 @@ export default class EditCreateProfile extends Component {
 
   static propTypes = {
     update: PropTypes.func.isRequired,
+    updateRemoteProfile: PropTypes.func.isRequired,
+    setProfile: PropTypes.func.isRequired,
     geocodeLocation: PropTypes.func.isRequired,
     locationString: PropTypes.string,
     isNew: PropTypes.bool,
@@ -37,6 +40,7 @@ export default class EditCreateProfile extends Component {
       employer: PropTypes.string,
       hobbies: PropTypes.string,
       gender: PropTypes.string,
+      image: PropTypes.object,
     }),
   };
 
@@ -46,8 +50,20 @@ export default class EditCreateProfile extends Component {
       avatarSource: null
     };
     this.handleImageUpload = this.handleImageUpload.bind(this);
+    this.isValid = this.isValid.bind(this);
   }
 
+
+  componentWillMount() {
+    getProfile()
+      .then(this.props.setProfile);
+  }
+
+  isValid() {
+    const { profile } = this.props;
+    const { firstName, lastName, location } = profile;
+    return firstName && lastName && location;
+  }
 
   handleImageUpload() {
     const options = {
@@ -101,6 +117,7 @@ export default class EditCreateProfile extends Component {
       geocodeLocation,
       locationString,
       isNew,
+      updateRemoteProfile,
     } = this.props;
 
     const { avatarSource } = this.state;
@@ -112,7 +129,13 @@ export default class EditCreateProfile extends Component {
       employer,
       hobbies,
       gender,
+      image,
     } = profile;
+
+    let fbImageUri;
+    if (image && image.thumbs) {
+      fbImageUri = image.thumbs['320x320'];
+    }
 
     return (
       <View style={styles.container}>
@@ -120,8 +143,8 @@ export default class EditCreateProfile extends Component {
           <View style={styles.avatarWrapper}>
             <TouchableOpacity onPress={this.handleImageUpload}>
               <View style={[styles.avatar, styles.avatarContainer, { marginBottom: 20 }]}>
-                {avatarSource === null ? <Text style={styles.avatarText}>Select a Photo</Text> :
-                  <Image style={styles.avatar} source={avatarSource} />
+                {(!avatarSource && !fbImageUri) ? <Text style={styles.avatarText}>Select a Photo</Text> :
+                  <Image style={styles.avatar} source={avatarSource || { uri: fbImageUri }} />
                 }
               </View>
             </TouchableOpacity>
@@ -169,7 +192,8 @@ export default class EditCreateProfile extends Component {
           />
           <Button
             text={isNew ? 'Save' : 'Update'}
-            onPress={() => {}}
+            onPress={() => updateRemoteProfile(profile)}
+            disabled={!this.isValid()}
           />
           <KeyboardSpacer />
         </ScrollView>

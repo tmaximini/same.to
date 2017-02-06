@@ -66,8 +66,17 @@ export function* handleFBLoginAsync(action) {
         payload: response,
       });
       yield call(delay, 100);
-      yield call(Actions.tabbar, { key: 'tabbar', type: 'replace' });
-      yield call(Actions.home, { type: 'replace' });
+
+      /**
+       * here we need to decide wheter to send user to home or to profile / intro
+       * depending on api response (new user?)
+       */
+      if (false) {
+        yield call(Actions.tabbar, { key: 'tabbar', type: 'replace' });
+        yield call(Actions.home, { type: 'replace' });
+      } else {
+        yield call(Actions.editCreateProfile, { type: 'replace' });
+      }
     }
   } catch (error) {
     console.info({ error });
