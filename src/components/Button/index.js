@@ -54,12 +54,16 @@ export default class Button extends Component {
       backgroundColor: this.props.noBackground ? 'transparent' : COLORS.CYAN,
     };
     const underlayColor = this.props.disabled ? '#E0F4FF' : '#B8CCD8';
+    const disabledStyle = {
+      backgroundColor: this.props.disabled ? COLORS.BG_GREY : (this.props.noBackground ? 'transparent' : COLORS.CYAN),
+      borderColor: this.props.disabled ? COLORS.DARK_GREY : COLORS.CYAN,
+    };
     return (
       <TouchableHighlight
         onHideUnderlay={this.onUnhighlight}
         onPress={this.onPress}
         onShowUnderlay={this.onHighlight}
-        style={[styles.button, buttonStyle, this.props.style]}
+        style={[styles.button, buttonStyle, disabledStyle, this.props.style]}
         underlayColor={underlayColor}
         activeOpacity={this.props.activeOpacity}
       >
