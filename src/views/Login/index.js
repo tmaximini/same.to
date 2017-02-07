@@ -124,6 +124,7 @@ export default class Login extends Component {
             <Input
               placeholder="E-Mail"
               value={email}
+              keyboardType="email-address"
               onChangeText={(text) => update('email', text)}
             />
             <Input

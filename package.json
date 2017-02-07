@@ -19,6 +19,7 @@
   "dependencies": {
     "date-fns": "^1.22.0",
     "lodash": "^4.17.4",
+    "nachos-ui": "^0.1.2",
     "native-base": "^0.5.20",
     "react": "15.4.1",
     "react-native": "0.40.0",
@@ -41,7 +42,8 @@
     "redux": "3.6.0",
     "redux-logger": "^2.7.4",
     "redux-persist": "^4.0.1",
-    "redux-saga": "^0.14.0"
+    "redux-saga": "^0.14.0",
+    "socket.io-client": "^1.7.2"
   },
   "devDependencies": {
     "babel-cli": "6.5.1",

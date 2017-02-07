@@ -5,11 +5,18 @@ import { COLORS, MIXINS } from '../../../constants';
 export default StyleSheet.create({
   container: {
     flex: 1,
-    height: 80,
+    height: 70,
     marginBottom: 10,
     overflow: 'hidden',
     borderBottomWidth: 1,
     borderColor: COLORS.DARK_GREY,
+  },
+  touchable: {
+    flex: 1,
+    backgroundColor: 'red',
+  },
+  wrapper: {
+    flex: 1,
   },
   top: {
     flex: 1,
@@ -32,49 +39,38 @@ export default StyleSheet.create({
     alignItems: 'flex-end',
   },
   avatar: {
-    width: 36,
-    height: 36,
-    borderRadius: 18,
+    width: 50,
+    height: 50,
+    borderRadius: 25,
     overflow: 'hidden',
+    marginRight: 10,
   },
   image: {
     ...MIXINS.image,
-  },
-  personDetails: {
-    flex: 1,
-    marginLeft: 8,
-    paddingTop: 2,
-    alignItems: 'flex-start',
   },
   nameText: {
     color: COLORS.WHITE,
     fontSize: 13,
     fontWeight: 'bold',
-  },
-  locationText: {
-    color: COLORS.WHITE,
-    fontSize: 10,
-    paddingTop: 2,
-  },
-  workText: {
-    color: COLORS.WHITE,
-    fontSize: 8,
-  },
-  interests: {
-    color: COLORS.WHITE,
-    fontSize: 8,
+    paddingTop: 3,
   },
   actions: {
     flex: 1,
-    alignItems: 'flex-end',
+    alignItems: 'center',
     alignSelf: 'flex-end',
-    justifyContent: 'flex-end',
-    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingBottom: 10,
+    paddingTop: 6,
   },
-  iconButton: {
-    paddingHorizontal: 10,
+  dateTime: {
+    color: COLORS.WHITE,
+    fontSize: 10,
   },
-  icon: {
-    color: COLORS.CYAN
+  lastMessage: {
+    paddingTop: 5,
+  },
+  conversation: {
+    color: COLORS.WHITE,
+    fontSize: 10,
   }
 });

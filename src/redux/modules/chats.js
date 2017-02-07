@@ -15,7 +15,7 @@ export const FETCH_CHATS_START = 'chats/FETCH_CHATS_START';
 export const FETCH_CHATS_SUCCESS = 'chats/FETCH_CHATS_SUCCESS';
 export const FETCH_CHATS_ERROR = 'chats/FETCH_CHATS_ERROR';
 export const UPDATE_CHAT = 'chats/UPDATE_CHAT';
-export const SET_CHAT = 'chats/UPDATE_CHAT';
+export const SET_CHAT = 'chats/SET_CHAT';
 
 
 
