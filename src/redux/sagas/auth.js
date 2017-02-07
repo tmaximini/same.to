@@ -92,12 +92,12 @@ export function* handleRegisterAsync(action) {
   const { payload } = action;
   try {
     const response = yield call(handleRegister, { ...payload });
-    const { id, userId, error } = response;
+    const { id, token, error } = response;
     if (error) {
       throw error;
     } else {
-      updateAuthHeader(id);
-      updateUserId(userId);
+      updateAuthHeader(token);
+      updateUserId(id);
       yield put({
         type: REGISTER_SUCCESS,
         payload: response,

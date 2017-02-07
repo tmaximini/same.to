@@ -87,11 +87,16 @@ const actionsMap = {
     profile: makeDefaultProfile(),
     isNew: true,
   }),
-  [UPDATE_PROFILE_SUCCESS]: state => ({
-    ...state,
-    profile: makeDefaultProfile(),
-    isNew: true,
-  }),
+  [UPDATE_PROFILE_SUCCESS]: (state, action) => {
+    const { profile } = action.payload;
+
+    return {
+      ...state,
+      profile,
+      locationString: profile.location ? profile.location.formattedAddress : state.locationString,
+      isNew: false,
+    };
+  },
   [RESET_PROFILE]: state => ({
     ...state,
     profile: makeDefaultProfile(),

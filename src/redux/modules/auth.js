@@ -145,7 +145,20 @@ const actionsMap = {
       isLoading: false,
     };
   },
-  [LOGIN_ERROR]: (state, action) => ({
+  [REGISTER_SUCCESS]: (state, action) => {
+    const { id, token } = action.payload;
+
+    return {
+      ...state,
+      loggedIn: true,
+      userId: id,
+      token,
+      error: null,
+      password: null,
+      isLoading: false,
+    };
+  },
+  [LOGIN_ERROR]: state => ({
     ...state,
     loggedIn: false,
     error: 'Login Failed',
