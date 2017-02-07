@@ -16,6 +16,8 @@ const Input = ({ icon, value, style, ...rest }) => (
       placeholderTextColor="#999"
       returnKeyType="done"
       value={value}
+      autoCapitalize="none"
+      autoCorrect={false}
       {...rest}
     />
     {icon && (
