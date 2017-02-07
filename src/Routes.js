@@ -16,6 +16,7 @@ import EventDetail from './views/Event';
 import EditCreatevent from './views/EditCreateEvent';
 import Detail from './views/Detail';
 import TabBar from './components/TabBar';
+import Chats from './views/Chats';
 import Chat from './views/Chat';
 import Splash from './views/Splash';
 import { COLORS } from './constants';
@@ -116,7 +117,7 @@ const Routes = () => (
       />
       <Scene
         key="chats"
-        component={Chat}
+        component={Chats}
         title="Chats"
         icon={makeTabIcon('comment')}
         sceneStyle={navTabpadding}
@@ -156,7 +157,6 @@ const Routes = () => (
       component={EventDetail}
       sceneStyle={navBarPadding}
       title="Event"
-      sceneStyle={navBarPadding}
       rightButtonTextStyle={cyanText}
     />
     <Scene
@@ -164,7 +164,6 @@ const Routes = () => (
       component={Detail}
       sceneStyle={navBarPadding}
       title="Trip Details"
-      sceneStyle={navBarPadding}
       rightButtonTextStyle={cyanText}
     />
     <Scene
@@ -172,7 +171,6 @@ const Routes = () => (
       component={Detail}
       sceneStyle={navBarPadding}
       title="Accommodation Details"
-      sceneStyle={navBarPadding}
       rightButtonTextStyle={cyanText}
     />
     <Scene
@@ -180,7 +178,6 @@ const Routes = () => (
       component={Detail}
       sceneStyle={navBarPadding}
       title="Activity Details"
-      sceneStyle={navBarPadding}
       rightButtonTextStyle={cyanText}
     />
     <Scene
@@ -188,6 +185,11 @@ const Routes = () => (
       component={EditCreatevent}
       sceneStyle={navBarPadding}
       title="New Event"
+    />
+    <Scene
+      key="chat"
+      component={Chat}
+      title="Chat"
       sceneStyle={navBarPadding}
     />
     <Scene

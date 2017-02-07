@@ -40,6 +40,9 @@ import {
 import {
   watchToggleParticipate,
 } from './detail';
+import {
+  watchFetchChats,
+} from './chats';
 
 /*
  * The entry point for all the sagas used in this application.
@@ -68,5 +71,6 @@ export default function* root() {
     watchUpdateProfile(),
     watchGeocodeProfile(),
     watchToggleParticipate(),
+    watchFetchChats(),
   ];
 }
