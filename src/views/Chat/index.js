@@ -29,7 +29,7 @@ class ChatView extends Component {
     return (
       <View style={styles.container}>
         <Chat
-          currentChat={currentChat}
+          chat={currentChat}
           socket={socket}
         />
       </View>
