@@ -37,6 +37,9 @@ import {
   watchUpdateProfile,
   watchGeocodeProfile,
 } from './editCreateProfile';
+import {
+  watchToggleParticipate,
+} from './detail';
 
 /*
  * The entry point for all the sagas used in this application.
@@ -64,5 +67,6 @@ export default function* root() {
     watchCreateProfile(),
     watchUpdateProfile(),
     watchGeocodeProfile(),
+    watchToggleParticipate(),
   ];
 }

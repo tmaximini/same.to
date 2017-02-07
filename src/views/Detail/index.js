@@ -1,19 +1,38 @@
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { View } from 'react-native';
+import { connect } from 'react-redux';
 import ItemDetail from '../../components/ItemDetail';
+import {
+  actions as detailActions
+} from '../../redux/modules/detail';
+import { getUserId } from '../../services/api';
 import styles from './styles';
 
-const Detail = ({ item, ...rest }) => (
-  <View style={styles.container}>
-    <ItemDetail
-      item={item}
-      {...rest}
-    />
-  </View>
-);
+@connect(
+  state => state.detail,
+  detailActions,
+)
+export default class Detail extends Component {
 
-Detail.propTypes = {
-  item: PropTypes.object.isRequired,
-};
+  static propTypes = {
+    item: PropTypes.object.isRequired,
+    toggleParticipate: PropTypes.func.isRequired,
+  };
 
-export default Detail;
+  render() {
+    const userId = getUserId();
+    const { item, toggleParticipate, ...rest } = this.props;
+
+    return (
+      <View style={styles.container}>
+        <ItemDetail
+          item={item}
+          participates={item.memberIds.includes(userId)}
+          onToggle={toggleParticipate}
+          {...rest}
+        />
+      </View>
+    );
+  }
+
+}

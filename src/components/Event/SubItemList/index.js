@@ -6,12 +6,13 @@ import SubItem from '../SubItem';
 import styles from './styles';
 
 
-const SubItemList = ({ accommodations, trips, setTrip, setAccommodation }) => (
+const SubItemList = ({ accommodations, trips, setTrip, setAccommodation, setDetail }) => (
   <View style={styles.container}>
     <ScrollView>
       {accommodations.map(ac => (
         <SubItem
           onSelect={setAccommodation}
+          setDetail={setDetail}
           itemType={'accommodation'}
           key={ac.id}
           item={ac}
@@ -20,6 +21,7 @@ const SubItemList = ({ accommodations, trips, setTrip, setAccommodation }) => (
       {trips.map(trip => (
         <SubItem
           onSelect={setTrip}
+          setDetail={setDetail}
           itemType={'trip'}
           key={trip.id}
           item={trip}
@@ -34,6 +36,7 @@ SubItemList.propTypes = {
   accommodations: PropTypes.array.isRequired,
   setTrip: PropTypes.func.isRequired,
   setAccommodation: PropTypes.func.isRequired,
+  setDetail: PropTypes.func.isRequired,
 };
 
 export default SubItemList;

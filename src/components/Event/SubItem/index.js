@@ -8,7 +8,7 @@ import styles from './styles';
 
 const background = require('../../../assets/sunflowers.jpg');
 
-const SubItem = ({ itemType, item, onSelect }) => {
+const SubItem = ({ itemType, item, onSelect, setDetail }) => {
   // will be called by pressing right navbar button
   const editFunc = () => {
     onSelect(item);
@@ -30,12 +30,13 @@ const SubItem = ({ itemType, item, onSelect }) => {
 
   const handler = (type, model) => {
     // set redux active item
-    onSelect(model);
+    setDetail({
+      itemType: type,
+      item: model,
+    });
 
     // params are same for all routes
     const params = {
-      item: model,
-      itemType: type,
       onRight: canEdit(model) ? editFunc : undefined,
       rightTitle: canEdit(model) ? 'edit' : undefined,
     };
@@ -99,6 +100,7 @@ SubItem.propTypes = {
   itemType: PropTypes.string.isRequired,
   item: PropTypes.object.isRequired,
   onSelect: PropTypes.func.isRequired,
+  setDetail: PropTypes.func.isRequired,
 };
 
 export default SubItem;

@@ -18,6 +18,9 @@ import {
   setActivity as setActivityAction,
   resetActivity as resetActivityAction,
 } from '../../redux/modules/editCreateActivity';
+import {
+  setDetail as setDetailAction,
+} from '../../redux/modules/detail';
 import styles from './styles';
 
 const background = require('../../assets/gamescom.jpg');
@@ -34,6 +37,7 @@ const background = require('../../assets/gamescom.jpg');
     resetTrip: resetTripAction,
     resetAccommodation: resetAccommodationAction,
     resetActivity: resetActivityAction,
+    setDetail: setDetailAction,
   },
 )
 export default class Event extends Component {
@@ -50,6 +54,7 @@ export default class Event extends Component {
     setTrip: PropTypes.func.isRequired,
     setAccommodation: PropTypes.func.isRequired,
     setActivity: PropTypes.func.isRequired,
+    setDetail: PropTypes.func.isRequired,
     resetTrip: PropTypes.func.isRequired,
     resetActivity: PropTypes.func.isRequired,
     resetAccommodation: PropTypes.func.isRequired,
@@ -77,6 +82,7 @@ export default class Event extends Component {
       resetTrip,
       resetActivity,
       resetAccommodation,
+      setDetail,
     } = this.props;
     const {
       name,
@@ -137,6 +143,7 @@ export default class Event extends Component {
               setTrip={setTrip}
               setAccommodation={setAccommodation}
               setActivity={setActivity}
+              setDetail={setDetail}
             />
           ) : (
             <View style={styles.noItems}>

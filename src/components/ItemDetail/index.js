@@ -12,7 +12,8 @@ const plansee = require('../../assets/plansee.jpg');
 
 const { width } = Dimensions.get('window');
 
-const ItemDetail = ({ itemType, item }) => (
+
+const ItemDetail = ({ itemType, participates, onToggle, item }) => (
   <View style={styles.container}>
     <View style={styles.top}>
       <Image
@@ -39,8 +40,11 @@ const ItemDetail = ({ itemType, item }) => (
             </View>
             <View style={styles.topRight}>
               <OnOffSwitch
-                value={false}
-                onChange={() => {}}
+                value={participates}
+                onChange={() => onToggle({
+                  item,
+                  itemType
+                })}
               />
               <Text style={styles.participateText}>
                 Ich nehme teil
@@ -91,6 +95,8 @@ const ItemDetail = ({ itemType, item }) => (
 ItemDetail.propTypes = {
   itemType: PropTypes.string,
   item: PropTypes.object.isRequired,
+  participates: PropTypes.bool.isRequired,
+  onToggle: PropTypes.func.isRequired,
 };
 
 export default ItemDetail;

@@ -3,6 +3,7 @@ import auth from './auth';
 import editCreateProfile from './editCreateProfile';
 import events from './events';
 import contacts from './contacts';
+import detail from './detail';
 import editCreateEvent from './editCreateEvent';
 import editCreateTrip from './editCreateTrip';
 import editCreateAccommodation from './editCreateAccommodation';
@@ -14,6 +15,7 @@ export default combineReducers({
   editCreateProfile,
   events,
   contacts,
+  detail,
   editCreateEvent,
   editCreateTrip,
   editCreateAccommodation,
