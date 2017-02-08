@@ -6,6 +6,19 @@ export default StyleSheet.create({
     flex: 1,
     backgroundColor: COLORS.BG_GREY,
   },
+  nameWrapper: {
+    flex: 0.5,
+    alignItems: 'center',
+    alignSelf: 'stretch',
+    justifyContent: 'flex-start',
+    paddingBottom: 2,
+  },
+  left: {
+    alignItems: 'flex-start',
+  },
+  right: {
+    alignItems: 'flex-end',
+  },
   name: {
     fontSize: 10,
     padding: 5,

@@ -6,7 +6,8 @@ import {
   actions as chatActions
 } from '../../redux/modules/chats';
 import {
-  API_BASE
+  API_BASE,
+  getAuthToken,
 } from '../../services/api';
 import Chat from '../../components/Chat';
 import styles from './styles';
@@ -24,7 +25,7 @@ class ChatView extends Component {
 
   render() {
     const { currentChat } = this.props;
-    const socket = socketIOClient(API_BASE);
+    const socket = socketIOClient(`${API_BASE}/conversations?access_token=${getAuthToken()}`);
 
     return (
       <View style={styles.container}>

@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableHighlight } from 'react-native';
 import { GiftedChat, Bubble } from 'react-native-gifted-chat';
 import _ from 'lodash';
 import { getUserId } from '../../services/api';
@@ -20,15 +20,18 @@ export default class Example extends Component {
 
   static propTypes = {
     chat: PropTypes.object.isRequired,
+    socket: PropTypes.object.isRequired,
   }
 
   constructor(props) {
     super(props);
     this.state = { messages: [] };
     this.onSend = this.onSend.bind(this);
+    this.onConnect = this.onConnect.bind(this);
     this.renderBubble = this.renderBubble.bind(this);
     this.renderSend = this.renderSend.bind(this);
     this.getUserNameById = this.getUserNameById.bind(this);
+    this.getAvatar = this.getAvatar.bind(this);
   }
 
   componentWillMount() {
@@ -55,21 +58,54 @@ export default class Example extends Component {
         user: {
           _id: msg.fromId,
           name: this.getUserNameById(members, msg.fromId),
-          avatar: 'https://facebook.github.io/react/img/logo_og.png',
+          avatar: this.getAvatar(members, msg.fromId),
         },
       }))
     });
   }
 
+  onConnect() {
+    const { socket, chat } = this.props;
+    socket.emit('join', chat.id);
+    socket.on('message', this.onReceive);
+  }
+
   onSend(messages = []) {
+    this.props.socket.emit('message', { text: messages[0].text });
     this.setState((previousState) => ({
       messages: GiftedChat.append(previousState.messages, messages),
     }));
   }
 
+  onReceive(text) {
+    console.log('RECEIVED SOMETHING', text);
+    // this.setState((previousState) => {
+    //   return {
+    //     messages: GiftedChat.append(previousState.messages, {
+    //       _id: Math.round(Math.random() * 1000000),
+    //       text: text,
+    //       createdAt: new Date(),
+    //       user: {
+    //         _id: 2,
+    //         name: 'React Native',
+    //         // avatar: 'https://facebook.github.io/react/img/logo_og.png',
+    //       },
+    //     }),
+    //   };
+    // });
+  }
+
   getUserNameById(members, id) {
     const user = _.find(members, { id });
     return `${user.firstName} ${user.lastName}`;
+  }
+
+  getAvatar(members, id) {
+    const user = _.find(members, { id });
+    // console.log('user', user);
+    return user.image && user.image.thumbs['100x100']
+      ? user.image.thumbs['100x100']
+      : 'https://facebook.github.io/react/img/logo_og.png';
   }
 
   renderBubble(props) {
@@ -84,9 +120,17 @@ export default class Example extends Component {
         />
       );
     }
+    // console.log(props);
+    const name = (
+      props.position === 'right'
+      ? null // 'Ich'
+      : props.currentMessage.user.name
+    );
     return (
       <View>
-        <Text style={styles.name}>{props.currentMessage.user.name}</Text>
+        <View style={[styles.nameWrapper, styles[props.position]]}>
+          <Text style={styles.name}>{name}</Text>
+        </View>
         <Bubble
           {...props}
           wrapperStyle={bubbleStyle}
@@ -96,7 +140,13 @@ export default class Example extends Component {
   }
 
   renderSend() {
-    return <Text style={styles.send}>Send</Text>;
+    return (
+      <TouchableHighlight
+        onPress={this.onSend}
+      >
+        <Text style={styles.send}>Send</Text>
+      </TouchableHighlight>
+    );
   }
 
 
@@ -111,14 +161,12 @@ export default class Example extends Component {
   // }
 
   render() {
-    console.log('this.state.messages', this.state.messages);
     return (
       <View style={styles.container}>
         <GiftedChat
           messages={this.state.messages}
           onSend={this.onSend}
           renderBubble={this.renderBubble}
-          renderSend={this.renderSend}
           user={{
             _id: getUserId(),
           }}
