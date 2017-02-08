@@ -142,7 +142,7 @@ const actionsMap = {
       token: access_token,
       error: null,
       password: null,
-      isLoading: false,
+      // isLoading: false,
     };
   },
   [REGISTER_SUCCESS]: (state, action) => {

@@ -11,12 +11,14 @@ import {
   REGISTER_SUCCESS,
   REGISTER_ERROR,
 } from '../modules/auth';
+import { SET_PROFILE } from '../modules/editCreateProfile';
 import {
   login as handleLogin,
   loginFacebook as handleLoginFacebook,
   register as handleRegister,
 } from '../../services/auth';
 import { updateAuthHeader, updateUserId } from '../../services/api';
+import { getProfile } from '../../services/profiles';
 
 
 /**
@@ -65,17 +67,22 @@ export function* handleFBLoginAsync(action) {
         type: FACEBOOK_LOGIN_SUCCESS,
         payload: response,
       });
-      yield call(delay, 100);
+      // yield call(delay, 100);
 
       /**
        * here we need to decide wheter to send user to home or to profile / intro
-       * depending on api response (new user?)
+       * depending on api response (signupCompleted?)
        */
-      if (false) {
+      const profile = yield call(getProfile);
+      yield put({
+        type: SET_PROFILE,
+        payload: profile,
+      });
+      if (profile.signupCompleted) {
         yield call(Actions.tabbar, { key: 'tabbar', type: 'replace' });
         yield call(Actions.home, { type: 'replace' });
       } else {
-        yield call(Actions.editCreateProfile, { type: 'replace' });
+        yield call(Actions.editCreateProfile, { type: 'replace', profile });
       }
     }
   } catch (error) {

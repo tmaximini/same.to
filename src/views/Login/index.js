@@ -62,8 +62,10 @@ export default class Login extends Component {
   onFacebookLogin() {
     LoginManager.logInWithReadPermissions(['email', 'public_profile']).then(
       result => {
+        this.props.update('isLoading', true);
         if (result.isCancelled) {
           console.log('Login was cancelled');
+          this.props.update('isLoading', false);
         } else {
           this.onLoginFinished();
         }
@@ -71,6 +73,7 @@ export default class Login extends Component {
       error => {
         alert(`Login failed with error: ${error}`);
         this.props.update('error', error);
+        this.props.update('isLoading', false);
       }
     );
   }
@@ -98,12 +101,14 @@ export default class Login extends Component {
     return (
       <View style={styles.container}>
       {isLoading ? (
+        <View style={styles.loadingWrapper}>
           <ActivityIndicator
             animating
             color={COLORS.CYAN}
             style={{ height: 80 }}
             size="large"
           />
+        </View>
         ) : (
         <View style={styles.wrapper}>
           <View style={styles.logoWrapper}>
