@@ -74,9 +74,12 @@ export function* handleFBLoginAsync(action) {
        * depending on api response (signupCompleted?)
        */
       const profile = yield call(getProfile);
+      console.log('profile', profile);
       yield put({
         type: SET_PROFILE,
-        payload: profile,
+        payload: {
+          model: profile
+        },
       });
       if (profile.signupCompleted) {
         yield call(Actions.tabbar, { key: 'tabbar', type: 'replace' });
