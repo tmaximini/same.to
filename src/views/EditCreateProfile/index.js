@@ -129,6 +129,7 @@ export default class EditCreateProfile extends Component {
       employer,
       hobbies,
       gender,
+      location,
       image,
     } = profile;
 
@@ -136,6 +137,11 @@ export default class EditCreateProfile extends Component {
     if (image && image.thumbs) {
       fbImageUri = image.thumbs['320x320'];
     }
+
+    let locality;
+    if (location && location.locality) {
+      locality = location.locality;
+    };
 
     return (
       <View style={styles.container}>
@@ -181,7 +187,7 @@ export default class EditCreateProfile extends Component {
           <GeoInput
             placeholder="Wohnort"
             enablePoweredByContainer={false}
-            value={locationString}
+            value={locationString || locality}
             onChangeText={text => update('locationString', text)}
             onAdressSelect={geocodeLocation}
           />

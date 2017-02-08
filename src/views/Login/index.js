@@ -60,7 +60,7 @@ export default class Login extends Component {
   }
 
   onFacebookLogin() {
-    LoginManager.logInWithReadPermissions(['email']).then(
+    LoginManager.logInWithReadPermissions(['email', 'public_profile']).then(
       result => {
         if (result.isCancelled) {
           console.log('Login was cancelled');

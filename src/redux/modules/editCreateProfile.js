@@ -1,3 +1,5 @@
+import DeviceInfo from 'react-native-device-info';
+
 // Initial State
 const makeDefaultProfile = () => ({
   username: null,
@@ -48,7 +50,8 @@ export const update = (key, value) => ({
 export const updateRemoteProfile = profile => ({
   type: UPDATE_PROFILE_START,
   payload: {
-    ...profile
+    ...profile,
+    deviceId: DeviceInfo.getUniqueID(),
   }
 });
 
