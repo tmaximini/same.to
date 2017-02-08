@@ -15,6 +15,7 @@ import EditCreateAccommodation from './views/EditCreateAccommodation';
 import EventDetail from './views/Event';
 import EditCreatevent from './views/EditCreateEvent';
 import Detail from './views/Detail';
+import Profile from './views/Profile';
 import TabBar from './components/TabBar';
 import Chats from './views/Chats';
 import Chat from './views/Chat';
@@ -190,6 +191,12 @@ const Routes = () => (
       key="chat"
       component={Chat}
       title="Chat"
+      sceneStyle={navBarPadding}
+    />
+    <Scene
+      key="profile"
+      component={Profile}
+      title="Profile"
       sceneStyle={navBarPadding}
     />
     <Scene

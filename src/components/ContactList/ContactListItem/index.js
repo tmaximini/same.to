@@ -5,11 +5,15 @@ import {
   Image,
   TouchableHighlight,
 } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/Ionicons';
 import styles from './styles';
 
 const face = require('../../../assets/hj.jpg');
 
+const getName = c => (
+  `${c.firstName} ${c.lastName}`
+);
 const getLocation = c => (
   c.location ? c.location.locality : 'Unknown'
 );
@@ -24,25 +28,32 @@ const getInterests = c => (
 
 const ContactListItem = ({ contact }) => {
 
-  console.log('contact', contact);
+  const handler = () => Actions.profile({
+    profile: contact,
+    title: getName(contact),
+  });
 
   return (
     <View style={styles.container}>
       <View style={styles.top}>
         <View style={styles.left}>
-          <View
+          <TouchableHighlight
             style={styles.avatar}
+            onPress={handler}
           >
             <Image
               source={face}
               style={styles.image}
               resizeMode="cover"
             />
-          </View>
+          </TouchableHighlight>
           <View style={styles.personDetails}>
-            <View style={styles.name}>
-              <Text style={styles.nameText}>{contact.firstName} {contact.lastName}</Text>
-            </View>
+            <TouchableHighlight
+              style={styles.name}
+              onPress={handler}
+            >
+              <Text style={styles.nameText}>{getName(contact)}</Text>
+            </TouchableHighlight>
             <View style={styles.location}>
               <Text style={styles.locationText}>{getLocation(contact)}</Text>
             </View>
