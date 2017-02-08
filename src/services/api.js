@@ -1,4 +1,4 @@
-let AUTH_HEADER = '';
+let AUTH_TOKEN = '';
 let USER_ID = '';
 
 export const API_BASE = 'https://same.wearekiai.de/api/';
@@ -7,7 +7,7 @@ export const API_BASE = 'https://same.wearekiai.de/api/';
 // setter
 export const updateAuthHeader = token => {
   console.info('updating auth header');
-  AUTH_HEADER = token;
+  AUTH_TOKEN = token;
 };
 
 export const updateUserId = id => {
@@ -16,11 +16,12 @@ export const updateUserId = id => {
 };
 
 export const getUserId = () => USER_ID;
+export const getAuthToken = () => AUTH_TOKEN;
 
 const getHeaders = () => ({
   Accept: 'application/json',
   'Content-Type': 'application/json',
-  Authorization: AUTH_HEADER
+  Authorization: AUTH_TOKEN
 });
 
 const getQueryString = params => {
