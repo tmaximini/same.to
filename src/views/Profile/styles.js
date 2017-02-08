@@ -9,18 +9,34 @@ export default StyleSheet.create({
   wrapper: {
     flex: 1,
     backgroundColor: COLORS.BG_GREY,
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    paddingTop: 40
   },
   avatar: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
+    width: 150,
+    height: 150,
+    borderRadius: 75,
     overflow: 'hidden',
-    marginRight: 10,
   },
-  nameText: {
+  interests: {
+    flexDirection: 'row',
+    marginTop: 15,
+  },
+  textBox: {
+    marginTop: 15,
+  },
+  interestBox: {
+    backgroundColor: COLORS.CYAN,
+    margin: 2.5,
+    padding: 5,
+  },
+  interestText: {
     color: COLORS.WHITE,
     fontSize: 13,
-    fontWeight: 'bold',
-    paddingTop: 3,
+  },
+  text: {
+    color: COLORS.WHITE,
+    fontSize: 13,
   },
 });

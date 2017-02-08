@@ -9,7 +9,7 @@ import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/Ionicons';
 import styles from './styles';
 
-const face = require('../../../assets/hj.jpg');
+const fallback = require('../../../assets/hj.jpg');
 
 const getName = c => (
   `${c.firstName} ${c.lastName}`
@@ -24,6 +24,9 @@ const getInterests = c => (
   (c.interests && c.interests.length > 0)
     ? c.interests.join(', ')
     : ''
+);
+const getAvatar = c => (
+  c && c.image && c.image.thumbs ? { uri: c.image.thumbs['320x320'] } : fallback
 );
 
 const ContactListItem = ({ contact }) => {
@@ -42,7 +45,7 @@ const ContactListItem = ({ contact }) => {
             onPress={handler}
           >
             <Image
-              source={face}
+              source={getAvatar(contact)}
               style={styles.image}
               resizeMode="cover"
             />

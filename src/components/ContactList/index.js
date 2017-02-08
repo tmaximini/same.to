@@ -63,3 +63,7 @@ export default class ContactList extends Component {
     );
   }
 }
+
+ContactList.defaultProps = {
+  contacts: []
+};
