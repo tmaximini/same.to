@@ -46,7 +46,12 @@ export default class ContactList extends Component {
         enableEmptySections
         style={styles.container}
         dataSource={this.state.dataSource}
-        renderRow={contact => <ContactListItem contact={contact} setCurrentContact={setCurrentContact} />}
+        renderRow={contact => (
+          <ContactListItem
+            contact={contact}
+            setCurrentContact={setCurrentContact}
+          />
+        )}
         refreshControl={
           refresh ? (
             <RefreshControl

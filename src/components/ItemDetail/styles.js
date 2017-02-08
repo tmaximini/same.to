@@ -22,7 +22,6 @@ export default StyleSheet.create({
   bottom: {
     flex: 5,
     backgroundColor: COLORS.BG_GREY,
-    padding: 10,
   },
   header: {
     flex: 1,

@@ -98,6 +98,8 @@ export default class Event extends Component {
     const hasSubItems = accommodations.length || trips.length;
     const isEvent = type === 'event';
 
+    const getMiddleBoxStyles = () => (isEvent ? styles.box : [styles.box, styles.lastBox]);
+
     return (
       <View style={styles.container}>
         <View style={styles.top}>
@@ -113,24 +115,30 @@ export default class Event extends Component {
           </Image>
           <View style={styles.details}>
             <View style={styles.buttons}>
-              <View style={styles.box}>
-                <TouchableHighlight
-                  onPress={share({
-                    message: 'check out this event',
-                    url: `sameto://events/${id}`,
-                    title: `Same.to: ${name}`
-                  })}
-                >
-                  <Text style={styles.boxText}>Share</Text>
-                </TouchableHighlight>
-              </View>
-              <View style={styles.box}>
+              <TouchableHighlight
+                style={styles.box}
+                onPress={share({
+                  message: 'check out this event',
+                  url: `sameto://events/${id}`,
+                  title: `Same.to: ${name}`
+                })}
+              >
+                <Text style={styles.boxText}>Share</Text>
+              </TouchableHighlight>
+              <TouchableHighlight
+                style={getMiddleBoxStyles()}
+                onPress={share({
+                  message: `Join me with ${name}`,
+                  url: `sameto://events/${id}`,
+                  title: `Same.to: ${name}`
+                })}
+              >
                 <Text style={styles.boxText}>Invite</Text>
-              </View>
+              </TouchableHighlight>
               {isEvent && (
-                <View style={[styles.box, styles.lastBox]}>
+                <TouchableHighlight style={[styles.box, styles.lastBox]}>
                   <Text style={styles.boxText}>Participants</Text>
-                </View>
+                </TouchableHighlight>
               )}
             </View>
           </View>

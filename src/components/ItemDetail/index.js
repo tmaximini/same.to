@@ -55,20 +55,26 @@ const ItemDetail = ({ itemType, participates, onToggle, item }) => (
       </Image>
       <View style={styles.details}>
         <View style={styles.buttons}>
-          <View style={styles.box}>
-            <TouchableHighlight
-              onPress={share({
-                message: `check out this ${itemType}`,
-                url: `sameto://events/${item.eventId}/${itemType}s/${item.id}`,
-                title: `${item.name} - ${itemType}`
-              })}
-            >
-              <Text style={styles.boxText}>Share</Text>
-            </TouchableHighlight>
-          </View>
-          <View style={[styles.box, styles.lastBox]}>
+          <TouchableHighlight
+            style={styles.box}
+            onPress={share({
+              message: `check out this ${itemType}`,
+              url: `sameto://events/${item.eventId}/${itemType}s/${item.id}`,
+              title: `${item.name} - ${itemType}`
+            })}
+          >
+            <Text style={styles.boxText}>Share</Text>
+          </TouchableHighlight>
+          <TouchableHighlight
+            style={[styles.box, styles.lastBox]}
+            onPress={share({
+              message: `check out this ${itemType}`,
+              url: `sameto://events/${item.eventId}/${itemType}s/${item.id}`,
+              title: `${item.name} - ${itemType}`
+            })}
+          >
             <Text style={styles.boxText}>Invite</Text>
-          </View>
+          </TouchableHighlight>
         </View>
       </View>
     </View>
