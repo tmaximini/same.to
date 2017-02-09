@@ -22,7 +22,6 @@ export default class EditCreatevent extends Component {
 
   static propTypes = {
     event: PropTypes.object,
-    eventTypes: PropTypes.arrayOf(PropTypes.string),
     updateEvent: PropTypes.func.isRequired,
     updateRemoteEvent: PropTypes.func.isRequired,
     createEvent: PropTypes.func.isRequired,
@@ -75,8 +74,9 @@ export default class EditCreatevent extends Component {
             value={locationString}
             onChangeText={(text) => updateEvent('locationString', text)}
             onAdressSelect={geocodeLocation}
+            zIndex={99}
           />
-          <View style={styles.inputGroup}>
+          <View style={[styles.inputGroup, { zIndex: 1, elevation: 0 }]}>
             <Datepicker
               placeholder="Start Date"
               minDate={today}
