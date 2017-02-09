@@ -20,6 +20,7 @@ import TabBar from './components/TabBar';
 import Chats from './views/Chats';
 import Chat from './views/Chat';
 import Splash from './views/Splash';
+import Settings from './views/Settings';
 import { COLORS } from './constants';
 
 const RouterWithRedux = connect()(Router);
@@ -125,9 +126,10 @@ const Routes = () => (
       />
       <Scene
         key="settings"
-        component={TabView}
+        component={Settings}
         title="Mehr"
         icon={makeTabIcon('ellipsis-h')}
+        sceneStyle={navTabpadding}
       />
     </Scene>
     <Scene
