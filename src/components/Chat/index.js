@@ -40,39 +40,22 @@ export default class Example extends Component {
   componentWillMount() {
     // bind socket listeners
     this.onConnect();
-
-    // this.setState({
-    //   messages: [
-    //     {
-    //       _id: 1,
-    //       text: 'Hello developer',
-    //       createdAt: new Date(Date.UTC(2016, 7, 30, 17, 20, 0)),
-    //       user: {
-    //         _id: 2,
-    //         name: 'React Native',
-    //         avatar: 'https://facebook.github.io/react/img/logo_og.png',
-    //       },
-    //     },
-    //   ],
-    // });
-
     const { messages } = this.props.chat;
     this.setState({
-      messages: messages.map(this.transformMessageFormat)
+      messages: messages.reverse().map(this.transformMessageFormat)
     });
   }
 
   onConnect() {
-    const { socket } = this.props;
-    // socket.emit('joinChannel', chat.id);
+    const { socket, chat } = this.props;
+    socket.emit('join', chat.id);
     socket.on('message', this.onReceive);
   }
 
   onSend(messages = []) {
-    const { socket, chat } = this.props;
+    const { socket } = this.props;
     const msg = {
       text: messages[0].text,
-      conversationId: chat.id,
     };
     socket.emit('message', msg);
     this.appendMessages(messages);
@@ -81,7 +64,7 @@ export default class Example extends Component {
   onReceive(msg) {
     const mappedMsg = this.transformMessageFormat(msg);
     // don't append our own messages
-    if (mappedMsg.fromId !== getUserId()) {
+    if (msg.fromId !== getUserId()) {
       this.appendMessages([mappedMsg]);
     }
   }
@@ -101,6 +84,20 @@ export default class Example extends Component {
       : 'https://facebook.github.io/react/img/logo_og.png';
   }
 
+
+  /**
+   * maps message to the expected format of gifted-chat
+   // {
+   //   _id: 1,
+   //   text: 'Hello developer',
+   //   createdAt: new Date(Date.UTC(2016, 7, 30, 17, 20, 0)),
+   //   user: {
+   //     _id: 2,
+   //     name: 'React Native',
+   //     avatar: 'https://facebook.github.io/react/img/logo_og.png',
+   //   },
+   // },
+   */
   transformMessageFormat(msg) {
     return {
       _id: msg.id,
