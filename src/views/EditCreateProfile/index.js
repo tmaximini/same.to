@@ -36,9 +36,9 @@ export default class EditCreateProfile extends Component {
     profile: PropTypes.shape({
       firstName: PropTypes.string,
       lastName: PropTypes.string,
-      occupaction: PropTypes.string,
-      employer: PropTypes.string,
-      hobbies: PropTypes.string,
+      occupation: PropTypes.string,
+      company: PropTypes.string,
+      interests: PropTypes.string,
       gender: PropTypes.string,
       image: PropTypes.object,
     }),
@@ -125,9 +125,9 @@ export default class EditCreateProfile extends Component {
     const {
       firstName,
       lastName,
-      occupaction,
-      employer,
-      hobbies,
+      occupation,
+      company,
+      interests,
       gender,
       location,
       image,
@@ -142,6 +142,8 @@ export default class EditCreateProfile extends Component {
     if (location && location.locality) {
       locality = location.locality;
     };
+
+    console.log('profile', profile);
 
     return (
       <View style={styles.container}>
@@ -176,13 +178,13 @@ export default class EditCreateProfile extends Component {
           </View>
           <Input
             placeholder="Tätigkeit"
-            value={occupaction}
-            onChangeText={(text) => update('occupaction', text)}
+            value={occupation}
+            onChangeText={(text) => update('occupation', text)}
           />
           <Input
             placeholder="Arbeitgeber"
-            value={employer}
-            onChangeText={(text) => update('employer', text)}
+            value={company}
+            onChangeText={(text) => update('company', text)}
           />
           <GeoInput
             placeholder="Wohnort"
@@ -193,8 +195,8 @@ export default class EditCreateProfile extends Component {
           />
           <Input
             placeholder="Hobbies"
-            value={hobbies}
-            onChangeText={(text) => update('hobbies', text)}
+            value={interests ? interests.join(', ') : null}
+            onChangeText={(text) => update('interests', text.split(', '))}
           />
           <Button
             text={isNew ? 'Save' : 'Update'}

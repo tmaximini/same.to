@@ -8,7 +8,7 @@ const makeDefaultProfile = () => ({
   email: null,
   avatar: null,
   gender: null,
-  employer: null,
+  company: null,
   occupation: null,
   interests: [],
   uploadedImage: null,
