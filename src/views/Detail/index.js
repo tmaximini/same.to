@@ -23,6 +23,7 @@ export default class Detail extends Component {
   static propTypes = {
     item: PropTypes.object.isRequired,
     toggleParticipate: PropTypes.func.isRequired,
+    createChat: PropTypes.func.isRequired,
   };
 
   render() {
@@ -34,6 +35,7 @@ export default class Detail extends Component {
         <ItemDetail
           item={item}
           participates={item.memberIds.includes(userId)}
+          createChat={createChat}
           onToggle={toggleParticipate}
           {...rest}
         />

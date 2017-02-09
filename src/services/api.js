@@ -2,6 +2,7 @@ let AUTH_TOKEN = '';
 let USER_ID = '';
 
 export const API_BASE = 'https://same.wearekiai.de/api/';
+// export const API_BASE = 'http://0.0.0.0:3000/api/';
 
 
 // setter

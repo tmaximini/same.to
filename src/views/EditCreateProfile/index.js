@@ -38,7 +38,10 @@ export default class EditCreateProfile extends Component {
       lastName: PropTypes.string,
       occupation: PropTypes.string,
       company: PropTypes.string,
-      interests: PropTypes.string,
+      interests: PropTypes.oneOfType([
+        PropTypes.string,,
+        PropTypes.array,
+      ]),
       gender: PropTypes.string,
       image: PropTypes.object,
     }),
