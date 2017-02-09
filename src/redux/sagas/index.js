@@ -42,6 +42,7 @@ import {
 } from './detail';
 import {
   watchFetchChats,
+  watchCreateChat,
 } from './chats';
 
 /*
@@ -72,5 +73,6 @@ export default function* root() {
     watchGeocodeProfile(),
     watchToggleParticipate(),
     watchFetchChats(),
+    watchCreateChat(),
   ];
 }

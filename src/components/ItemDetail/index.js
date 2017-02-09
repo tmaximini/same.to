@@ -13,7 +13,7 @@ const plansee = require('../../assets/plansee.jpg');
 const { width } = Dimensions.get('window');
 
 
-const ItemDetail = ({ itemType, participates, onToggle, item }) => (
+const ItemDetail = ({ itemType, participates, onToggle, createChat, item }) => (
   <View style={styles.container}>
     <View style={styles.top}>
       <Image
@@ -86,7 +86,13 @@ const ItemDetail = ({ itemType, participates, onToggle, item }) => (
     <View style={styles.actionButtons}>
       <Button
         text="Chat erstellen"
-        onPress={() => {}}
+        disabled={item.memberIds.length < 2}
+        onPress={() => {
+          createChat({
+            subject: `${itemType} - ${item.name}`,
+            memberIds: item.memberIds
+          });
+        }}
         style={{ width: (width / 2) - 15 }}
       />
       <Button
@@ -103,6 +109,7 @@ ItemDetail.propTypes = {
   item: PropTypes.object.isRequired,
   participates: PropTypes.bool.isRequired,
   onToggle: PropTypes.func.isRequired,
+  createChat: PropTypes.func.isRequired,
 };
 
 export default ItemDetail;

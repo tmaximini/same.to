@@ -14,6 +14,9 @@ const initialState = {
 export const FETCH_CHATS_START = 'chats/FETCH_CHATS_START';
 export const FETCH_CHATS_SUCCESS = 'chats/FETCH_CHATS_SUCCESS';
 export const FETCH_CHATS_ERROR = 'chats/FETCH_CHATS_ERROR';
+export const CREATE_CHAT_START = 'chats/CREATE_CHAT_START';
+export const CREATE_CHAT_SUCCESS = 'chats/CREATE_CHAT_SUCCESS';
+export const CREATE_CHAT_ERROR = 'chats/CREATE_CHAT_ERROR';
 export const UPDATE_CHAT = 'chats/UPDATE_CHAT';
 export const SET_CHAT = 'chats/SET_CHAT';
 
@@ -22,6 +25,13 @@ export const SET_CHAT = 'chats/SET_CHAT';
 // Action Creators
 export const fetchChats = () => ({
   type: FETCH_CHATS_START
+});
+
+export const createChat = chat => ({
+  type: CREATE_CHAT_START,
+  payload: {
+    chat
+  }
 });
 
 // updates any key/value pair in the state
@@ -62,17 +72,6 @@ const actionsMap = {
     };
   },
   [FETCH_CHATS_ERROR]: state => ({ ...state, isFetching: false }),
-  // TODO
-  [UPDATE_CHAT]: state => ({ ...state }),
-  // [CREATE_CHAT_SUCCESS]: (state, action) => {
-  //   const { chat } = action.payload;
-
-  //   // add new chat to list
-  //   return {
-  //     ...state,
-  //     chats: [chat, ...state.chats],
-  //   };
-  // },
   [UPDATE_CHAT]: (state, action) => {
     const { key, value } = action.payload;
     const currentChat = {

@@ -4,11 +4,17 @@ import {
   FETCH_CHATS_START,
   FETCH_CHATS_SUCCESS,
   FETCH_CHATS_ERROR,
+  CREATE_CHAT_START,
+  CREATE_CHAT_SUCCESS,
+  CREATE_CHAT_ERROR,
 } from '../modules/chats';
 import {
   AUTHORIZATION_REQUIRED,
 } from '../modules/auth';
-import { fetchChats } from '../../services/chats';
+import {
+  fetchChats,
+  createChat,
+} from '../../services/chats';
 
 
 /**
@@ -52,7 +58,49 @@ export function* fetchChatsAsync(action) {
   }
 }
 
+export function* createChatAsync(action) {
+  const { chat } = action.payload;
+  try {
+    const response = yield call(createChat, { ...chat });
+
+    if (response.error) {
+      // in case of error
+      yield put({
+        type: CREATE_CHAT_ERROR,
+        payload: {
+          error: response.error
+        }
+      });
+      // if (response.error.statusCode === 401) {
+      //   yield put({
+      //     type: AUTHORIZATION_REQUIRED
+      //   });
+      //   yield call(Actions.login);
+      // }
+    } else {
+      // success
+      yield put({
+        type: CREATE_CHAT_SUCCESS,
+        payload: {
+          chat: response
+        }
+      });
+    }
+  } catch (error) {
+    console.log({ error });
+    yield put({
+      type: CREATE_CHAT_ERROR,
+      payload: {
+        error
+      },
+    });
+  }
+}
+
 export function* watchFetchChats() {
-  // spawn new task on each action, cancel the one before if not yet finished
   yield takeLatest(FETCH_CHATS_START, fetchChatsAsync);
+}
+
+export function* watchCreateChat() {
+  yield takeLatest(CREATE_CHAT_START, createChatAsync);
 }

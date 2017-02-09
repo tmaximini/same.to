@@ -5,12 +5,18 @@ import ItemDetail from '../../components/ItemDetail';
 import {
   actions as detailActions
 } from '../../redux/modules/detail';
+import {
+  createChat
+} from '../../redux/modules/chats';
 import { getUserId } from '../../services/api';
 import styles from './styles';
 
 @connect(
   state => state.detail,
-  detailActions,
+  {
+    ...detailActions,
+    createChat
+  }
 )
 export default class Detail extends Component {
 
