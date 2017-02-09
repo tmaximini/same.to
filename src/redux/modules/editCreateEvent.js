@@ -9,6 +9,7 @@ const makeDefaultEvent = () => ({
   location: {},
   trips: [],
   accommodations: [],
+  type: 'event',
   isPublic: true,
 });
 
@@ -16,8 +17,6 @@ const makeDefaultEvent = () => ({
 const initialState = {
   event: makeDefaultEvent(),
   locationString: null,
-    // TODO: fetch from server
-  eventTypes: ['event', 'party', 'gaming', 'shopping', 'concert', 'cinema', 'dinner', 'sport', 'gameing'],
   errors: {},
   isNew: true,
 };
