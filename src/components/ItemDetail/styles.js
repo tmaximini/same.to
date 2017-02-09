@@ -50,8 +50,13 @@ export default StyleSheet.create({
     flex: 1.2,
   },
   title: {
-    fontSize: 26,
+    fontSize: 24,
     color: COLORS.WHITE,
+  },
+  titleCaret: {
+    color: COLORS.CYAN,
+    padding: 5,
+    top: -6,
   },
   details: {
     flex: 1,

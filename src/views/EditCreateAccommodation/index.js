@@ -70,6 +70,12 @@ export default class EditCreateAccommodation extends Component {
 
     const today = formatDate(new Date());
 
+    let defaultLocationValue = locationString || (
+      location
+        ? location.locality
+        : null
+    );
+
     return (
       <View style={styles.container}>
         <View style={styles.form}>
@@ -92,7 +98,7 @@ export default class EditCreateAccommodation extends Component {
           <GeoInput
             placeholder="Where"
             enablePoweredByContainer={false}
-            value={locationString || location.locality}
+            value={defaultLocationValue}
             onChangeText={text => updateAccommodation('locationString', text)}
             onAdressSelect={geocodeLocation}
           />

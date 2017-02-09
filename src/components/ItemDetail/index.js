@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { View, Text, TouchableHighlight, Image, Dimensions } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 import { share } from '../../utils';
 import ContactList from '../ContactList';
 import Date from '../Date';
@@ -12,6 +13,32 @@ const plansee = require('../../assets/plansee.jpg');
 
 const { width } = Dimensions.get('window');
 
+const getTitle = (itemType, item) => {
+  switch (itemType) {
+    case 'trip':
+      return (
+        <View style={{ flexDirection: 'row' }}>
+          <Text style={styles.title}>
+            {item.pickupLocation ? item.pickupLocation.locality : 'unknown'}
+          </Text>
+          <Icon
+            size={34}
+            name="ios-arrow-forward"
+            style={styles.titleCaret}
+          />
+          <Text style={styles.title}>
+            {item.destinationLocation ? item.destinationLocation.locality : 'unknown'}
+          </Text>
+        </View>
+      );
+    default:
+      return (
+        <Text style={styles.title}>
+          {item.name}
+        </Text>
+      );
+  }
+};
 
 const ItemDetail = ({ itemType, participates, onToggle, createChat, item }) => (
   <View style={styles.container}>
@@ -24,9 +51,7 @@ const ItemDetail = ({ itemType, participates, onToggle, createChat, item }) => (
         <View style={styles.header}>
           <View style={styles.headerWrapper}>
             <View style={styles.titleWrap}>
-              <Text style={styles.title}>
-                {item.name}
-              </Text>
+              {getTitle(itemType, item)}
             </View>
             <View style={styles.date}>
               <Date
@@ -86,7 +111,7 @@ const ItemDetail = ({ itemType, participates, onToggle, createChat, item }) => (
     <View style={styles.actionButtons}>
       <Button
         text="Chat erstellen"
-        disabled={item.memberIds.length < 2}
+        disabled={item.memberIds.length < 2 || !participates}
         onPress={() => {
           createChat({
             subject: `${itemType} - ${item.name}`,
