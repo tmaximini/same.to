@@ -66,7 +66,7 @@ export default class EditCreateAccommodation extends Component {
       accommodation,
     } = this.props;
 
-    const { overnightStays } = accommodation;
+    const { overnightStays, location } = accommodation;
 
     const today = formatDate(new Date());
 
@@ -92,7 +92,7 @@ export default class EditCreateAccommodation extends Component {
           <GeoInput
             placeholder="Where"
             enablePoweredByContainer={false}
-            value={locationString}
+            value={locationString || location.locality}
             onChangeText={text => updateAccommodation('locationString', text)}
             onAdressSelect={geocodeLocation}
           />

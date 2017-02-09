@@ -46,7 +46,7 @@ export function* createAccommodationAsync(action) {
         }
       });
       yield call(delay, 100);
-      yield call(Actions.pop, { refresh: {} });
+      yield call(Actions.pop, { refresh: { accommodation: response } });
     }
   } catch (error) {
     console.log({ error });

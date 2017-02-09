@@ -1,6 +1,15 @@
 /**
  * because all detail views are very similar, I use a shared redux and view for all of them
  */
+import {
+  UPDATE_TRIP_SUCCESS
+} from './editCreateTrip';
+import {
+  UPDATE_ACTIVITY_SUCCESS
+} from './editCreateActivity';
+import {
+  UPDATE_ACCOMMODATION_SUCCESS
+} from './editCreateAccommodation';
 
 // Initial State
 const initialState = {
@@ -71,6 +80,18 @@ const actionsMap = {
       item,
     };
   },
+  [UPDATE_ACCOMMODATION_SUCCESS]: (state, action) => ({
+    ...state,
+    item: action.payload.accommodation,
+  }),
+  [UPDATE_TRIP_SUCCESS]: (state, action) => ({
+    ...state,
+    item: action.payload.trip,
+  }),
+  [UPDATE_ACTIVITY_SUCCESS]: (state, action) => ({
+    ...state,
+    item: action.payload.activity,
+  }),
 };
 
 

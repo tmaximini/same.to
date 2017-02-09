@@ -109,10 +109,9 @@ const ensureDatesAreValid = event => {
 
 // Action Handlers
 const actionsMap = {
-  [CREATE_EVENT_SUCCESS]: (state) => ({
+  [CREATE_EVENT_SUCCESS]: (state, action) => ({
     ...state,
-    event: makeDefaultEvent(),
-    isNew: true,
+    event: action.payload.event,
   }),
   [RESET_EVENT]: (state) => ({
     ...state,
@@ -129,9 +128,9 @@ const actionsMap = {
       isNew: false,
     };
   },
-  [UPDATE_EVENT_SUCCESS]: (state) => ({
+  [UPDATE_EVENT_SUCCESS]: (state, action) => ({
     ...state,
-    event: makeDefaultEvent(),
+    event: action.payload.event,
     isNew: true,
   }),
   [UPDATE_EVENT]: (state, action) => {

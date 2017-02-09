@@ -76,7 +76,7 @@ export function* updateTripAsync(action) {
         yield put({
           type: AUTHORIZATION_REQUIRED
         });
-        yield call(Actions.login);
+        yield call(Actions.login, { type: 'replace' });
       }
     } else {
       // success
@@ -88,7 +88,7 @@ export function* updateTripAsync(action) {
         }
       });
       yield call(delay, 100);
-      yield call(Actions.pop, { refresh: {} });
+      yield call(Actions.pop, { refresh: { trip: response } });
     }
   } catch (error) {
     console.log({ error });

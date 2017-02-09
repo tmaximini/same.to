@@ -32,7 +32,7 @@ export function* fetchEventsAsync(action) {
         yield put({
           type: AUTHORIZATION_REQUIRED
         });
-        yield call(Actions.login);
+        yield call(Actions.login, { type: 'replace' });
       }
     } else {
       // success

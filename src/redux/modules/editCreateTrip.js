@@ -129,10 +129,9 @@ const actionsMap = {
     trip: makeDefaultTrip(),
     isNew: true,
   }),
-  [UPDATE_TRIP_SUCCESS]: (state) => ({
+  [UPDATE_TRIP_SUCCESS]: (state, action) => ({
     ...state,
-    trip: makeDefaultTrip(),
-    isNew: true,
+    trip: action.payload.trip,
   }),
   [RESET_TRIP]: (state) => ({
     ...state,

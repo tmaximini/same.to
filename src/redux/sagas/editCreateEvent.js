@@ -93,7 +93,7 @@ export function* updateEventAsync(action) {
         }
       });
       yield call(delay, 100);
-      yield call(Actions.pop, { refresh: {} });
+      yield call(Actions.pop, { refresh: { event: response } });
     }
   } catch (error) {
     console.log({ error });

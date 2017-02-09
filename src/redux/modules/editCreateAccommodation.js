@@ -114,10 +114,9 @@ const actionsMap = {
     accommodation: makeDefaultAccommodation(),
     isNew: true,
   }),
-  [UPDATE_ACCOMMODATION_SUCCESS]: (state) => ({
+  [UPDATE_ACCOMMODATION_SUCCESS]: (state, action) => ({
     ...state,
-    accommodation: makeDefaultAccommodation(),
-    isNew: true,
+    accommodation: action.payload.accommodation,
   }),
   [RESET_ACCOMMODATION]: (state) => ({
     ...state,
@@ -141,7 +140,7 @@ const actionsMap = {
     return {
       ...state,
       accommodation: model,
-      locationString: model.pickupLocation ? model.pickupLocation.formattedAddress : '',
+      locationString: model.location ? model.location.formattedAddress : '',
       isNew: false,
     };
   },
@@ -161,7 +160,7 @@ const actionsMap = {
     ...state,
     accommodation: {
       ...state.accommodation,
-      pickupLocation: action.payload,
+      location: action.payload,
     },
   }),
   [GEOCODE_ACCOMMODATION_ERROR]: (state, action) => {
@@ -171,7 +170,7 @@ const actionsMap = {
       ...state,
       accommodation: {
         ...state.accommodation,
-        pickupLocation: {
+        location: {
           formattedAddress: locationString,
         },
       },

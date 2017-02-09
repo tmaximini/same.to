@@ -87,7 +87,7 @@ export function* updateProfileAsync(action) {
         }
       });
       yield call(delay, 100);
-      yield call(Actions.pop, { refresh: {} });
+      yield call(Actions.pop, { refresh: { profile: response } });
     }
   } catch (error) {
     console.log({ error });

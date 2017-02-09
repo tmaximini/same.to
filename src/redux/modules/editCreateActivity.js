@@ -113,10 +113,9 @@ const actionsMap = {
     activity: makeDefaultActivity(),
     isNew: true,
   }),
-  [UPDATE_ACTIVITY_SUCCESS]: (state) => ({
+  [UPDATE_ACTIVITY_SUCCESS]: (state, action) => ({
     ...state,
-    activity: makeDefaultActivity(),
-    isNew: true,
+    activity: action.payload.activity,
   }),
   [RESET_ACTIVITY]: (state) => ({
     ...state,
