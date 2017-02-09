@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { View } from 'react-native';
-import KeyboardSpacer from 'react-native-keyboard-spacer';
+import KeyboardScroll from '../../components/KeyboardScroll';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import GeoInput from '../../components/GeoInput';
@@ -62,49 +62,50 @@ export default class EditCreatevent extends Component {
 
     return (
       <View style={styles.container}>
-        <View style={styles.form}>
-          <Input
-            placeholder="Event name"
-            onChangeText={text => updateEvent('name', text)}
-            value={name}
-          />
-          <GeoInput
-            placeholder="Where?"
-            enablePoweredByContainer={false}
-            value={locationString}
-            onChangeText={(text) => updateEvent('locationString', text)}
-            onAdressSelect={geocodeLocation}
-            zIndex={99}
-          />
-          <View style={[styles.inputGroup, { zIndex: 1, elevation: 0 }]}>
-            <Datepicker
-              placeholder="Start Date"
-              minDate={today}
-              date={startAt}
-              onChange={(date) => updateEvent('startAt', date)}
+        <KeyboardScroll>
+          <View style={styles.form}>
+            <Input
+              placeholder="Event name"
+              onChangeText={text => updateEvent('name', text)}
+              value={name}
             />
-            <View style={styles.spacer}></View>
-            <Datepicker
-              placeholder="End Date"
-              date={endAt}
-              minDate={startAt || today}
-              onChange={(date) => updateEvent('endAt', date)}
+            <GeoInput
+              placeholder="Where?"
+              enablePoweredByContainer={false}
+              value={locationString}
+              onChangeText={(text) => updateEvent('locationString', text)}
+              onAdressSelect={geocodeLocation}
+              zIndex={99}
+            />
+            <View style={[styles.inputGroup, { zIndex: 1, elevation: 0 }]}>
+              <Datepicker
+                placeholder="Start Date"
+                minDate={today}
+                date={startAt}
+                onChange={(date) => updateEvent('startAt', date)}
+              />
+              <View style={styles.spacer}></View>
+              <Datepicker
+                placeholder="End Date"
+                date={endAt}
+                minDate={startAt || today}
+                onChange={(date) => updateEvent('endAt', date)}
+              />
+            </View>
+          </View>
+          <HR />
+          <OnOffSwitch
+            name="Make this event public"
+            value={event.isPublic}
+            onChange={(val) => updateEvent('isPublic', val)}
+          />
+          <View style={styles.button}>
+            <Button
+              text={this.props.isNew ? 'Save' : 'Update'}
+              onPress={() => this.saveItem(event)}
             />
           </View>
-        </View>
-        <HR />
-        <OnOffSwitch
-          name="Make this event public"
-          value={event.isPublic}
-          onChange={(val) => updateEvent('isPublic', val)}
-        />
-        <View style={styles.button}>
-          <Button
-            text={this.props.isNew ? 'Save' : 'Update'}
-            onPress={() => this.saveItem(event)}
-          />
-        </View>
-        <KeyboardSpacer />
+        </KeyboardScroll>
       </View>
     );
   }

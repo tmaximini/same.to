@@ -5,8 +5,8 @@ import {
 } from 'react-native';
 
 import { connect } from 'react-redux';
-import KeyboardSpacer from 'react-native-keyboard-spacer';
 import { formatDate } from '../../utils';
+import KeyboardScroll from '../../components/KeyboardScroll';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import GeoInput from '../../components/GeoInput';
@@ -70,61 +70,68 @@ export default class EditCreateAccommodation extends Component {
 
     const today = formatDate(new Date());
 
+    let defaultLocationValue = locationString || (
+      location
+        ? location.locality
+        : null
+    );
+
     return (
       <View style={styles.container}>
-        <View style={styles.form}>
-          <View style={styles.checkboxWrapper}>
-            <Text style={styles.checkboxLabel}>
-              Accommodation Types
-            </Text>
-            <CheckboxList
-              items={accommodationTypes}
-              onChange={toggleCategory}
-              model={accommodation}
+        <KeyboardScroll>
+          <View style={styles.form}>
+            <View style={styles.checkboxWrapper}>
+              <Text style={styles.checkboxLabel}>
+                Accommodation Types
+              </Text>
+              <CheckboxList
+                items={accommodationTypes}
+                onChange={toggleCategory}
+                model={accommodation}
+              />
+            </View>
+            <Input
+              placeholder="Name"
+              onChangeText={text => updateAccommodation('name', text)}
+              icon="bed"
+              value={accommodation.name}
             />
+            <GeoInput
+              placeholder="Where"
+              enablePoweredByContainer={false}
+              value={defaultLocationValue}
+              onChangeText={text => updateAccommodation('locationString', text)}
+              onAdressSelect={geocodeLocation}
+            />
+            <View style={styles.inputGroup}>
+              <Datepicker
+                placeholder="Start Date"
+                minDate={today}
+                date={accommodation.startAt || today}
+                onChange={date => updateAccommodation('startAt', date)}
+              />
+              <View style={styles.spacer}></View>
+              <Select
+                placeholder="Dauer"
+                value={overnightStays}
+                items={overstays}
+                onChange={val => updateAccommodation('overnightStays', val)}
+              />
+            </View>
+            <HR />
+            <OnOffSwitch
+              name="Make this accommodation public"
+              value={accommodation.isPublic}
+              onChange={(val) => updateAccommodation('isPublic', val)}
+            />
+            <View style={styles.button}>
+              <Button
+                text={this.props.isNew ? 'Save' : 'Update'}
+                onPress={() => this.saveItem(accommodation)}
+              />
+            </View>
           </View>
-          <Input
-            placeholder="Name"
-            onChangeText={text => updateAccommodation('name', text)}
-            icon="bed"
-            value={accommodation.name}
-          />
-          <GeoInput
-            placeholder="Where"
-            enablePoweredByContainer={false}
-            value={locationString || location.locality}
-            onChangeText={text => updateAccommodation('locationString', text)}
-            onAdressSelect={geocodeLocation}
-          />
-          <View style={styles.inputGroup}>
-            <Datepicker
-              placeholder="Start Date"
-              minDate={today}
-              date={accommodation.startAt || today}
-              onChange={date => updateAccommodation('startAt', date)}
-            />
-            <View style={styles.spacer}></View>
-            <Select
-              placeholder="Dauer"
-              value={overnightStays}
-              items={overstays}
-              onChange={val => updateAccommodation('overnightStays', val)}
-            />
-          </View>
-          <HR />
-          <OnOffSwitch
-            name="Make this accommodation public"
-            value={accommodation.isPublic}
-            onChange={(val) => updateAccommodation('isPublic', val)}
-          />
-          <View style={styles.button}>
-            <Button
-              text={this.props.isNew ? 'Save' : 'Update'}
-              onPress={() => this.saveItem(accommodation)}
-            />
-          </View>
-        </View>
-        <KeyboardSpacer />
+        </KeyboardScroll>
       </View>
     );
   }

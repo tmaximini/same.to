@@ -5,11 +5,10 @@ import {
   ActivityIndicator,
   Image,
 } from 'react-native';
-import KeyboardSpacer from 'react-native-keyboard-spacer';
-
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import Input from '../../components/Input';
+import KeyboardScroll from '../../components/KeyboardScroll';
 import { actions as authActions } from '../../redux/modules/auth';
 
 import { WithPadding } from '../../components/Layout';
@@ -68,59 +67,60 @@ export default class Login extends Component {
 
     return (
       <View style={styles.container}>
-        {isLoading ? (
-          <ActivityIndicator
-            animating
-            color={COLORS.CYAN}
-            style={{ height: 80 }}
-            size="large"
-          />
-        ) : (
-          <View style={styles.wrapper}>
-            <View style={styles.logoWrapper}>
-              <Image
-                source={logo}
-                resizeMode="cover"
-                style={styles.logo}
-              />
+        <KeyboardScroll>
+          {isLoading ? (
+            <ActivityIndicator
+              animating
+              color={COLORS.CYAN}
+              style={{ height: 80 }}
+              size="large"
+            />
+          ) : (
+            <View style={styles.wrapper}>
+              <View style={styles.logoWrapper}>
+                <Image
+                  source={logo}
+                  resizeMode="cover"
+                  style={styles.logo}
+                />
+              </View>
+              <WithPadding>
+                {error && <Text style={styles.error}>{error}</Text>}
+                <Input
+                  placeholder="Username"
+                  value={username}
+                  onChangeText={(text) => update('username', text)}
+                />
+                <Input
+                  placeholder="E-Mail"
+                  value={email}
+                  keyboardType="email-address"
+                  onChangeText={(text) => update('email', text)}
+                />
+                <Input
+                  placeholder="Password"
+                  value={password}
+                  onChangeText={(text) => update('password', text)}
+                  secureTextEntry
+                />
+                <Button
+                  onPress={this.onRegister}
+                >
+                  <Text style={styles.buttonText}>Register</Text>
+                </Button>
+                <Button
+                  text="Login"
+                  textColor="#fff"
+                  noBackground
+                  onPress={() => {
+                    resetErrors();
+                    Actions.pop();
+                  }}
+                />
+              </WithPadding>
             </View>
-            <WithPadding>
-              {error && <Text style={styles.error}>{error}</Text>}
-              <Input
-                placeholder="Username"
-                value={username}
-                onChangeText={(text) => update('username', text)}
-              />
-              <Input
-                placeholder="E-Mail"
-                value={email}
-                keyboardType="email-address"
-                onChangeText={(text) => update('email', text)}
-              />
-              <Input
-                placeholder="Password"
-                value={password}
-                onChangeText={(text) => update('password', text)}
-                secureTextEntry
-              />
-              <Button
-                onPress={this.onRegister}
-              >
-                <Text style={styles.buttonText}>Register</Text>
-              </Button>
-              <Button
-                text="Login"
-                textColor="#fff"
-                noBackground
-                onPress={() => {
-                  resetErrors();
-                  Actions.pop();
-                }}
-              />
-            </WithPadding>
-          </View>
-        )}
-        <KeyboardSpacer />
+          )}
+        </KeyboardScroll>
       </View>
     );
   }

@@ -56,6 +56,24 @@ export const actions = {
   setCurrentEvent,
 };
 
+const updateEvents = (lastState, subitem, collection) => {
+  const newEvents = [...lastState.events];
+  const eventIndex = _.findIndex(newEvents, { id: subitem.eventId });
+  const index = _.findIndex(newEvents[collection], { id: subitem.id });
+  if (index === -1) {
+    newEvents[eventIndex][collection].push(subitem);
+  } else {
+    newEvents[eventIndex][collection][index] = subitem;
+  }
+
+  console.log('newEvents[eventIndex]', newEvents[eventIndex]);
+
+  return {
+    ...lastState,
+    currentEvent: newEvents[eventIndex],
+    events: newEvents
+  };
+};
 
 
 // Action Handlers
@@ -98,59 +116,19 @@ const actionsMap = {
   },
   [UPDATE_TRIP_SUCCESS]: (state, action) => {
     const { trip } = action.payload;
-    const newEvents = [...state.events];
-    const eventIndex = _.findIndex(newEvents, { id: trip.eventId });
-    const tripIndex = _.findIndex(newEvents.trips, { id: trip.id });
-    newEvents[eventIndex].trips[tripIndex] = trip;
-
-    return {
-      ...state,
-      currentEvent: newEvents[eventIndex],
-      events: newEvents
-    };
+    return updateEvents(state, trip, 'trips');
   },
   [CREATE_TRIP_SUCCESS]: (state, action) => {
     const { trip } = action.payload;
-    const newEvents = [...state.events];
-    const eventIndex = _.findIndex(newEvents, { id: trip.eventId });
-    const tripIndex = _.findIndex(newEvents.trips, { id: trip.id });
-    if (tripIndex === -1) {
-      newEvents[eventIndex].trips.push(trip);
-    }
-
-    return {
-      ...state,
-      currentEvent: newEvents[eventIndex],
-      events: newEvents
-    };
+    return updateEvents(state, trip, 'trips');
   },
   [UPDATE_ACCOMMODATION_SUCCESS]: (state, action) => {
     const { accommodation } = action.payload;
-    const newEvents = [...state.events];
-    const eventIndex = _.findIndex(newEvents, { id: accommodation.eventId });
-    const accommodationIndex = _.findIndex(newEvents.accommodations, { id: accommodation.id });
-    newEvents[eventIndex].accommodations[accommodationIndex] = accommodation;
-
-    return {
-      ...state,
-      currentEvent: newEvents[eventIndex],
-      events: newEvents
-    };
+    return updateEvents(state, accommodation, 'accommodations');
   },
   [CREATE_ACCOMMODATION_SUCCESS]: (state, action) => {
     const { accommodation } = action.payload;
-    const newEvents = [...state.events];
-    const eventIndex = _.findIndex(newEvents, { id: accommodation.eventId });
-    const accommodationIndex = _.findIndex(newEvents.accommodations, { id: accommodation.id });
-    if (accommodationIndex === -1) {
-      newEvents[eventIndex].accommodations.push(accommodation);
-    }
-
-    return {
-      ...state,
-      currentEvent: newEvents[eventIndex],
-      events: newEvents
-    };
+    return updateEvents(state, accommodation, 'accommodations');
   },
 };
 
