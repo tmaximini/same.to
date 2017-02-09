@@ -27,14 +27,20 @@ export default class Example extends Component {
     super(props);
     this.state = { messages: [] };
     this.onSend = this.onSend.bind(this);
+    this.onReceive = this.onReceive.bind(this);
     this.onConnect = this.onConnect.bind(this);
     this.renderBubble = this.renderBubble.bind(this);
     this.renderSend = this.renderSend.bind(this);
     this.getUserNameById = this.getUserNameById.bind(this);
     this.getAvatar = this.getAvatar.bind(this);
+    this.appendMessages = this.appendMessages.bind(this);
+    this.transformMessageFormat = this.transformMessageFormat.bind(this);
   }
 
   componentWillMount() {
+    // bind socket listeners
+    this.onConnect();
+
     // this.setState({
     //   messages: [
     //     {
@@ -49,63 +55,69 @@ export default class Example extends Component {
     //     },
     //   ],
     // });
-    const { messages, members } = this.props.chat;
+
+    const { messages } = this.props.chat;
     this.setState({
-      messages: messages.map(msg => ({
-        _id: msg.id,
-        text: msg.text,
-        createdAt: msg.createdAt,
-        user: {
-          _id: msg.fromId,
-          name: this.getUserNameById(members, msg.fromId),
-          avatar: this.getAvatar(members, msg.fromId),
-        },
-      }))
+      messages: messages.map(this.transformMessageFormat)
     });
   }
 
   onConnect() {
-    const { socket, chat } = this.props;
-    socket.emit('join', chat.id);
+    const { socket } = this.props;
+    // socket.emit('joinChannel', chat.id);
     socket.on('message', this.onReceive);
   }
 
   onSend(messages = []) {
-    this.props.socket.emit('message', { text: messages[0].text });
-    this.setState((previousState) => ({
-      messages: GiftedChat.append(previousState.messages, messages),
-    }));
+    const { socket, chat } = this.props;
+    const msg = {
+      text: messages[0].text,
+      conversationId: chat.id,
+    };
+    socket.emit('message', msg);
+    this.appendMessages(messages);
   }
 
-  onReceive(text) {
-    console.log('RECEIVED SOMETHING', text);
-    // this.setState((previousState) => {
-    //   return {
-    //     messages: GiftedChat.append(previousState.messages, {
-    //       _id: Math.round(Math.random() * 1000000),
-    //       text: text,
-    //       createdAt: new Date(),
-    //       user: {
-    //         _id: 2,
-    //         name: 'React Native',
-    //         // avatar: 'https://facebook.github.io/react/img/logo_og.png',
-    //       },
-    //     }),
-    //   };
-    // });
+  onReceive(msg) {
+    const mappedMsg = this.transformMessageFormat(msg);
+    // don't append our own messages
+    if (mappedMsg.fromId !== getUserId()) {
+      this.appendMessages([mappedMsg]);
+    }
   }
 
-  getUserNameById(members, id) {
+  getUserNameById(id) {
+    const { members } = this.props.chat;
     const user = _.find(members, { id });
     return `${user.firstName} ${user.lastName}`;
   }
 
-  getAvatar(members, id) {
+  getAvatar(id) {
+    const { members } = this.props.chat;
     const user = _.find(members, { id });
     // console.log('user', user);
     return user.image && user.image.thumbs['100x100']
       ? user.image.thumbs['100x100']
       : 'https://facebook.github.io/react/img/logo_og.png';
+  }
+
+  transformMessageFormat(msg) {
+    return {
+      _id: msg.id,
+      text: msg.text,
+      createdAt: msg.createdAt,
+      user: {
+        _id: msg.fromId,
+        name: this.getUserNameById(msg.fromId),
+        avatar: this.getAvatar(msg.fromId),
+      },
+    };
+  }
+
+  appendMessages(messages) {
+    this.setState((previousState) => ({
+      messages: GiftedChat.append(previousState.messages, messages),
+    }));
   }
 
   renderBubble(props) {
@@ -148,17 +160,6 @@ export default class Example extends Component {
       </TouchableHighlight>
     );
   }
-
-
-  // renderCustomView(props) {
-  //   return (
-  //     <View style={styles.container}>
-  //       <View
-  //         {...props}
-  //       />
-  //     </View>
-  //   );
-  // }
 
   render() {
     return (

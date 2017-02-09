@@ -25,7 +25,7 @@ class ChatView extends Component {
 
   render() {
     const { currentChat } = this.props;
-    const socket = socketIOClient(`${API_BASE}/conversations?access_token=${getAuthToken()}`);
+    const socket = socketIOClient(`${API_BASE}conversations?access_token=${getAuthToken()}`);
 
     return (
       <View style={styles.container}>
