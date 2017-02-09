@@ -28,7 +28,6 @@ export default class EventList extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.events) {
-      console.info('nextProps EVENTS', nextProps.events);
       this.setState({
         dataSource: this.state.dataSource.cloneWithRows(nextProps.events)
       });
@@ -36,7 +35,6 @@ export default class EventList extends Component {
   }
 
   onRefresh() {
-    console.info('on refresh called!');
     this.props.refresh();
   }
 
