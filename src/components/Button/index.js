@@ -53,7 +53,7 @@ export default class Button extends Component {
       borderWidth: this.props.noBorder ? 0 : 1,
       backgroundColor: this.props.noBackground ? 'transparent' : COLORS.CYAN,
     };
-    const underlayColor = this.props.disabled ? '#E0F4FF' : '#B8CCD8';
+    const underlayColor = this.props.disabled ? 'transparent' : '#B8CCD8';
     const disabledStyle = {
       backgroundColor: this.props.disabled ? COLORS.BG_GREY : (this.props.noBackground ? 'transparent' : COLORS.CYAN),
       borderColor: this.props.disabled ? COLORS.DARK_GREY : COLORS.CYAN,
