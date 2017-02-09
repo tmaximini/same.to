@@ -10,7 +10,7 @@ import {
 
 import { connect } from 'react-redux';
 import ImagePicker from 'react-native-image-picker';
-import KeyboardSpacer from 'react-native-keyboard-spacer';
+import KeyboardScroll from '../../components/KeyboardScroll';
 import Input from '../../components/Input';
 // import PlusButton from '../../components/PlusButton';
 import GeoInput from '../../components/GeoInput';
@@ -150,7 +150,7 @@ export default class EditCreateProfile extends Component {
 
     return (
       <View style={styles.container}>
-        <ScrollView contentContainerStyle={styles.wrapper}>
+        <KeyboardScroll>
           <View style={styles.avatarWrapper}>
             <TouchableOpacity onPress={this.handleImageUpload}>
               <View style={[styles.avatar, styles.avatarContainer, { marginBottom: 20 }]}>
@@ -206,8 +206,7 @@ export default class EditCreateProfile extends Component {
             onPress={() => updateRemoteProfile(profile)}
             disabled={!this.isValid()}
           />
-          <KeyboardSpacer />
-        </ScrollView>
+        </KeyboardScroll>
       </View>
     );
   }

@@ -42,7 +42,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     minHeight: 100,
-    maxHeight: 200,
+    maxHeight: 100,
   },
   logo: {
     width: 100,
