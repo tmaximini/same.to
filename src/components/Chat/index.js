@@ -42,7 +42,7 @@ export default class Example extends Component {
     this.onConnect();
     const { messages } = this.props.chat;
     this.setState({
-      messages: messages.reverse().map(this.transformMessageFormat)
+      messages: messages.map(this.transformMessageFormat)
     });
   }
 

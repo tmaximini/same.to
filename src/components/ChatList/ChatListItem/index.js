@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import { View, Text, TouchableHighlight, Image } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { Badge } from 'nachos-ui';
+import format from 'date-fns/format';
 import { canEdit } from '../../../utils';
 import { COLORS } from '../../../constants';
 import styles from './styles';
@@ -10,6 +11,22 @@ import styles from './styles';
 const face = require('../../../assets/hj.jpg');
 
 const ChatListItem = ({ chat, setCurrentChat }) => {
+
+  const lastMessage = (
+    chat.messages.length > 0 ? chat.messages[0] : null
+  );
+
+  const txt = (
+    lastMessage
+      ? `${lastMessage.from.firstName} ${lastMessage.from.lastName}: ${lastMessage.text}`
+      : null
+  );
+
+  const time = (
+    lastMessage
+      ? format(lastMessage.createdAt, 'HH:mm')
+      : null
+  );
 
   return (
     <TouchableHighlight
@@ -37,17 +54,19 @@ const ChatListItem = ({ chat, setCurrentChat }) => {
                 <Text style={styles.nameText}>{chat.subject}</Text>
               </View>
               <View style={styles.lastMessage}>
-                <Text style={styles.conversation}>blabla</Text>
+                <Text style={styles.conversation}>{txt}</Text>
               </View>
             </View>
           </View>
           <View style={styles.right}>
             <View style={styles.actions}>
-              <Text style={styles.dateTime}>8:30</Text>
-              <Badge
-                color={COLORS.CYAN}
-                value={5}
-              />
+              <Text style={styles.dateTime}>{time}</Text>
+              {lastMessage && (
+                <Badge
+                  color={COLORS.CYAN}
+                  value={chat.messages.length}
+                />
+              )}
             </View>
           </View>
         </View>
