@@ -28,7 +28,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>3</string>
+	<string>4</string>
 	<key>FacebookAppID</key>
 	<string>183278445471295</string>
 	<key>FacebookDisplayName</key>
@@ -53,14 +53,14 @@
 			</dict>
 		</dict>
 	</dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>we need your profile photo</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Allow us to scan documents and capture images.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string></string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Needed in order for camera to work.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>we need your profile photo</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Andale Mono.ttf</string>

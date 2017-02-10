@@ -1295,6 +1295,7 @@
 				PRODUCT_NAME = sameto;
 				PROVISIONING_PROFILE = "e93c5b90-77a3-4eba-9f7e-1da10c871b59";
 				PROVISIONING_PROFILE_SPECIFIER = "XC iOS Ad Hoc: *";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1322,6 +1323,7 @@
 				PRODUCT_NAME = sameto;
 				PROVISIONING_PROFILE = "e93c5b90-77a3-4eba-9f7e-1da10c871b59";
 				PROVISIONING_PROFILE_SPECIFIER = "XC iOS Ad Hoc: *";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

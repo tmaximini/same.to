@@ -85,6 +85,7 @@ export default class Login extends Component {
       .then(data => {
         this.props.update('facebook', data);
         this.props.facebookLogin({ access_token: data.accessToken });
+        this.props.update('isLoading', false);
       });
   }
 
