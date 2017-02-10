@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -64,6 +63,8 @@
 		E9EF736E1E3E1ECF0065641B /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9EF73681E3E1ECF0065641B /* FBSDKLoginKit.framework */; };
 		E9EF736F1E3E1ECF0065641B /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9EF73691E3E1ECF0065641B /* FBSDKShareKit.framework */; };
 		EB6B5A9B61BC45EC91B4995C /* libcxxreact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCEB0164DDA4CE6BCDE06C5 /* libcxxreact.a */; };
+		AAD9CCEE3F704802BDC9DA92 /* libRNFetchBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57D681A3CF4740C4AD346566 /* libRNFetchBlob.a */; };
+		E8224DAFB5024F0E9E536602 /* libRNUploader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CC3C7AFA547541DBAF2FA1C7 /* libRNUploader.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -379,6 +380,10 @@
 		F7C6FFC3B71A4EB09A1290F2 /* libReact.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libReact.a; sourceTree = "<group>"; };
 		FC09809D63E5489899991274 /* libjschelpers.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libjschelpers.a; sourceTree = "<group>"; };
 		FDD47C790C044D438E480C57 /* Courier New.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Courier New.ttf"; path = "../node_modules/native-base/Fonts/Courier New.ttf"; sourceTree = "<group>"; };
+		702B217DF0ED4C7FAE4AD616 /* RNFetchBlob.xcodeproj */ = {isa = PBXFileReference; name = "RNFetchBlob.xcodeproj"; path = "../node_modules/react-native-fetch-blob/ios/RNFetchBlob.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		57D681A3CF4740C4AD346566 /* libRNFetchBlob.a */ = {isa = PBXFileReference; name = "libRNFetchBlob.a"; path = "libRNFetchBlob.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		0A58813A804344D6B6D334E5 /* RNUploader.xcodeproj */ = {isa = PBXFileReference; name = "RNUploader.xcodeproj"; path = "../node_modules/react-native-uploader/RNUploader/RNUploader.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		CC3C7AFA547541DBAF2FA1C7 /* libRNUploader.a */ = {isa = PBXFileReference; name = "libRNUploader.a"; path = "libRNUploader.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -422,6 +427,8 @@
 				AC04EF1344744ED084498634 /* libRNImagePicker.a in Frameworks */,
 				E98C67601E48C41400DEDF65 /* HockeySDK.framework in Frameworks */,
 				09FE2530CDC5401EAB546928 /* libRNDeviceInfo.a in Frameworks */,
+				AAD9CCEE3F704802BDC9DA92 /* libRNFetchBlob.a in Frameworks */,
+				E8224DAFB5024F0E9E536602 /* libRNUploader.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -610,6 +617,8 @@
 				518FBFD55FD04F84B5BB27B3 /* RCTFBSDK.xcodeproj */,
 				A75B9CA0EE04474D8F16C93A /* RNImagePicker.xcodeproj */,
 				9C1DD02C232B481FA846C560 /* RNDeviceInfo.xcodeproj */,
+				702B217DF0ED4C7FAE4AD616 /* RNFetchBlob.xcodeproj */,
+				0A58813A804344D6B6D334E5 /* RNUploader.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1239,6 +1248,8 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/sameto.app/sameto";
@@ -1255,6 +1266,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",

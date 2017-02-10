@@ -16,7 +16,7 @@ import Input from '../../components/Input';
 import GeoInput from '../../components/GeoInput';
 import Button from '../../components/Button';
 import { actions as profileActions } from '../../redux/modules/editCreateProfile';
-import { getProfile } from '../../services/profiles';
+import { getProfile, uploadImage } from '../../services/profiles';
 
 import styles from './styles';
 
@@ -39,7 +39,7 @@ export default class EditCreateProfile extends Component {
       occupation: PropTypes.string,
       company: PropTypes.string,
       interests: PropTypes.oneOfType([
-        PropTypes.string,,
+        PropTypes.string,
         PropTypes.array,
       ]),
       gender: PropTypes.string,
@@ -97,7 +97,9 @@ export default class EditCreateProfile extends Component {
         let source;
 
         // You can display the image using either data...
-        source = { uri: `data:image/jpeg;base64,${response.data}` };
+        // source = { uri: `data:image/jpeg;base64,${response.data}` };
+
+
 
         // Or a reference to the platform specific asset location
         if (Platform.OS === 'android') {
@@ -105,6 +107,9 @@ export default class EditCreateProfile extends Component {
         } else {
           source = { uri: response.uri.replace('file://', '') };
         }
+
+        uploadImage(response)
+          .then(res => console.log('YOYOYOY', res));
 
         this.setState({
           avatarSource: source
@@ -144,9 +149,7 @@ export default class EditCreateProfile extends Component {
     let locality;
     if (location && location.locality) {
       locality = location.locality;
-    };
-
-    console.log('profile', profile);
+    }
 
     return (
       <View style={styles.container}>
