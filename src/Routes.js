@@ -136,6 +136,7 @@ const Routes = () => (
       key="editCreateProfile"
       component={EditCreateProfile}
       title="Create Profile"
+      sceneStyle={navBarPadding}
     />
     <Scene
       key="editCreateAccommodation"

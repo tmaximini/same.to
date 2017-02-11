@@ -1,6 +1,5 @@
 import {
   StyleSheet,
-  PixelRatio,
 } from 'react-native';
 
 import { COLORS } from '../../constants';
@@ -10,11 +9,11 @@ export default StyleSheet.create({
     flex: 1,
     backgroundColor: COLORS.BG_GREY,
     padding: 10,
+    justifyContent: 'flex-start'
   },
   wrapper: {
-    paddingHorizontal: 15,
-    flex: 1,
-    justifyContent: 'flex-end'
+    flexGrow: 1,
+    justifyContent: 'flex-start'
   },
   inputGroup: {
     flexDirection: 'row',
@@ -24,10 +23,8 @@ export default StyleSheet.create({
     flexGrow: 0,
   },
   avatarWrapper: {
-    flex: 1,
-    justifyContent: 'flex-end',
     alignItems: 'center',
-    marginBottom: 20,
+    marginVertical: 20,
   },
   avatarContainer: {
     backgroundColor: COLORS.CYAN,

@@ -6,6 +6,7 @@ import { COLORS } from '../../constants';
 
 export default StyleSheet.create({
   inputWrap: {
+    flexGrow: 0,
     flexDirection: 'row',
     height: 40,
     marginBottom: 10,

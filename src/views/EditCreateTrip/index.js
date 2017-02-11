@@ -106,13 +106,11 @@ export default class EditCreateTrip extends Component {
             value={trip.isPublic}
             onChange={(val) => updateTrip('isPublic', val)}
           />
-          <View style={styles.button}>
-            <Button
-              text={this.props.isNew ? 'Save' : 'Update'}
-              onPress={() => this.saveItem(trip)}
-            />
-          </View>
         </KeyboardScroll>
+        <Button
+          text={this.props.isNew ? 'Save' : 'Update'}
+          onPress={() => this.saveItem(trip)}
+        />
       </View>
     );
   }

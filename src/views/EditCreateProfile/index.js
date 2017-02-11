@@ -149,53 +149,55 @@ export default class EditCreateProfile extends Component {
     return (
       <View style={styles.container}>
         <KeyboardScroll>
-          <View style={styles.avatarWrapper}>
-            <TouchableOpacity onPress={this.handleImageUpload}>
-              <View style={[styles.avatar, styles.avatarContainer, { marginBottom: 20 }]}>
-                {(!avatarSource && !fbImageUri)
-                  ? <Text style={styles.avatarText}>Select a Photo</Text>
-                  : <Image style={styles.avatar} source={avatarSource || { uri: fbImageUri }} />
-                }
-              </View>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.inputGroup}>
+          <View style={styles.wrapper}>
+            <View style={styles.avatarWrapper}>
+              <TouchableOpacity onPress={this.handleImageUpload}>
+                <View style={[styles.avatar, styles.avatarContainer, { marginBottom: 20 }]}>
+                  {(!avatarSource && !fbImageUri)
+                    ? <Text style={styles.avatarText}>Select a Photo</Text>
+                    : <Image style={styles.avatar} source={avatarSource || { uri: fbImageUri }} />
+                  }
+                </View>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.inputGroup}>
+              <Input
+                placeholder="First Name"
+                value={firstName}
+                onChangeText={(text) => update('firstName', text)}
+                style={{ flexGrow: 1 }}
+              />
+              <View style={styles.spacer} />
+              <Input
+                placeholder="Last Name"
+                value={lastName}
+                onChangeText={(text) => update('lastName', text)}
+                style={{ flexGrow: 1 }}
+              />
+            </View>
             <Input
-              placeholder="First Name"
-              value={firstName}
-              onChangeText={(text) => update('firstName', text)}
-              style={{ flex: 1 }}
+              placeholder="Tätigkeit"
+              value={occupation}
+              onChangeText={(text) => update('occupation', text)}
             />
-            <View style={styles.spacer} />
             <Input
-              placeholder="Last Name"
-              value={lastName}
-              onChangeText={(text) => update('lastName', text)}
-              style={{ flex: 1 }}
+              placeholder="Arbeitgeber"
+              value={company}
+              onChangeText={(text) => update('company', text)}
+            />
+            <GeoInput
+              placeholder="Wohnort"
+              enablePoweredByContainer={false}
+              value={locationString || locality}
+              onChangeText={text => update('locationString', text)}
+              onAdressSelect={geocodeLocation}
+            />
+            <Input
+              placeholder="Hobbies"
+              value={interests ? interests.join(', ') : null}
+              onChangeText={(text) => update('interests', text.split(', '))}
             />
           </View>
-          <Input
-            placeholder="Tätigkeit"
-            value={occupation}
-            onChangeText={(text) => update('occupation', text)}
-          />
-          <Input
-            placeholder="Arbeitgeber"
-            value={company}
-            onChangeText={(text) => update('company', text)}
-          />
-          <GeoInput
-            placeholder="Wohnort"
-            enablePoweredByContainer={false}
-            value={locationString || locality}
-            onChangeText={text => update('locationString', text)}
-            onAdressSelect={geocodeLocation}
-          />
-          <Input
-            placeholder="Hobbies"
-            value={interests ? interests.join(', ') : null}
-            onChangeText={(text) => update('interests', text.split(', '))}
-          />
         </KeyboardScroll>
         <Button
           text={isNew ? 'Save' : 'Update'}
