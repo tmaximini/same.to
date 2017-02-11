@@ -9,6 +9,7 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: COLORS.BG_GREY,
+    padding: 10,
   },
   wrapper: {
     paddingHorizontal: 15,
@@ -20,6 +21,7 @@ export default StyleSheet.create({
   },
   spacer: {
     width: 10,
+    flexGrow: 0,
   },
   avatarWrapper: {
     flex: 1,

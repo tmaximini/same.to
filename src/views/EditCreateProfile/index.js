@@ -39,7 +39,7 @@ export default class EditCreateProfile extends Component {
       occupation: PropTypes.string,
       company: PropTypes.string,
       interests: PropTypes.oneOfType([
-        PropTypes.string,,
+        PropTypes.string,
         PropTypes.array,
       ]),
       gender: PropTypes.string,
@@ -144,9 +144,7 @@ export default class EditCreateProfile extends Component {
     let locality;
     if (location && location.locality) {
       locality = location.locality;
-    };
-
-    console.log('profile', profile);
+    }
 
     return (
       <View style={styles.container}>
@@ -154,16 +152,13 @@ export default class EditCreateProfile extends Component {
           <View style={styles.avatarWrapper}>
             <TouchableOpacity onPress={this.handleImageUpload}>
               <View style={[styles.avatar, styles.avatarContainer, { marginBottom: 20 }]}>
-                {(!avatarSource && !fbImageUri) ? <Text style={styles.avatarText}>Select a Photo</Text> :
-                  <Image style={styles.avatar} source={avatarSource || { uri: fbImageUri }} />
+                {(!avatarSource && !fbImageUri)
+                  ? <Text style={styles.avatarText}>Select a Photo</Text>
+                  : <Image style={styles.avatar} source={avatarSource || { uri: fbImageUri }} />
                 }
               </View>
             </TouchableOpacity>
           </View>
-          {/*<Button
-            text="Upload Image"
-            onPress={this.handleImageUpload}
-          />*/}
           <View style={styles.inputGroup}>
             <Input
               placeholder="First Name"
@@ -171,7 +166,7 @@ export default class EditCreateProfile extends Component {
               onChangeText={(text) => update('firstName', text)}
               style={{ flex: 1 }}
             />
-            <View style={styles.spacer}></View>
+            <View style={styles.spacer} />
             <Input
               placeholder="Last Name"
               value={lastName}
@@ -201,12 +196,12 @@ export default class EditCreateProfile extends Component {
             value={interests ? interests.join(', ') : null}
             onChangeText={(text) => update('interests', text.split(', '))}
           />
-          <Button
-            text={isNew ? 'Save' : 'Update'}
-            onPress={() => updateRemoteProfile(profile)}
-            disabled={!this.isValid()}
-          />
         </KeyboardScroll>
+        <Button
+          text={isNew ? 'Save' : 'Update'}
+          onPress={() => updateRemoteProfile(profile)}
+          disabled={!this.isValid()}
+        />
       </View>
     );
   }

@@ -4,8 +4,7 @@ import { COLORS } from '../../constants';
 
 export default StyleSheet.create({
   container: {
-    flex: 1,
-    maxHeight: 60,
+    flexGrow: 1,
   },
   description: {
     color: COLORS.WHITE,

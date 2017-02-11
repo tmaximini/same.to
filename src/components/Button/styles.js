@@ -5,7 +5,6 @@ export default StyleSheet.create({
   button: {
     backgroundColor: COLORS.CYAN,
     padding: 10,
-    marginVertical: 15,
     alignItems: 'center',
     justifyContent: 'center',
     borderColor: COLORS.CYAN,
@@ -14,7 +13,6 @@ export default StyleSheet.create({
   },
   buttonText: {
     fontSize: 18,
-    margin: 5,
     textAlign: 'center',
   },
 });

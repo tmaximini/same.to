@@ -3,7 +3,7 @@ import { COLORS } from '../../constants';
 
 export default StyleSheet.create({
   container: {
-    flex: 1,
+    flexGrow: 1,
     flexDirection: 'row',
     alignItems: 'flex-start',
     justifyContent: 'space-between',

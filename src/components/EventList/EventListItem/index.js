@@ -29,8 +29,11 @@ const EventListItem = ({ event, setCurrentEvent, setEvent }) => {
   };
 
   return (
-    <View
+    <TouchableHighlight
       style={styles.container}
+      onPress={onSelect}
+      activeOpacity={0.6}
+      underlayColor="transparent"
     >
       <Image
         source={background}
@@ -43,11 +46,8 @@ const EventListItem = ({ event, setCurrentEvent, setEvent }) => {
             />
           </View>
 
-
-          <TouchableHighlight
+          <View
             style={styles.middle}
-            onPress={onSelect}
-            underlayColor="transparent"
           >
             <View
               style={styles.main}
@@ -61,7 +61,7 @@ const EventListItem = ({ event, setCurrentEvent, setEvent }) => {
                 </Text>
               </View>
             </View>
-          </TouchableHighlight>
+          </View>
           <View style={styles.bottom}>
             <Date
               date={startAt}
@@ -72,7 +72,7 @@ const EventListItem = ({ event, setCurrentEvent, setEvent }) => {
           </View>
         </View>
       </Image>
-    </View>
+    </TouchableHighlight>
   );
 };
 

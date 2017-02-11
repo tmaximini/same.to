@@ -63,35 +63,33 @@ export default class EditCreatevent extends Component {
     return (
       <View style={styles.container}>
         <KeyboardScroll>
-          <View style={styles.form}>
-            <Input
-              placeholder="Event name"
-              onChangeText={text => updateEvent('name', text)}
-              value={name}
+          <Input
+            placeholder="Event name"
+            onChangeText={text => updateEvent('name', text)}
+            value={name}
+          />
+          <GeoInput
+            placeholder="Where?"
+            enablePoweredByContainer={false}
+            value={locationString}
+            onChangeText={(text) => updateEvent('locationString', text)}
+            onAdressSelect={geocodeLocation}
+            zIndex={99}
+          />
+          <View style={styles.inputGroup}>
+            <Datepicker
+              placeholder="Start Date"
+              minDate={today}
+              date={startAt}
+              onChange={(date) => updateEvent('startAt', date)}
             />
-            <GeoInput
-              placeholder="Where?"
-              enablePoweredByContainer={false}
-              value={locationString}
-              onChangeText={(text) => updateEvent('locationString', text)}
-              onAdressSelect={geocodeLocation}
-              zIndex={99}
+            <View style={styles.spacer} />
+            <Datepicker
+              placeholder="End Date"
+              date={endAt}
+              minDate={startAt || today}
+              onChange={(date) => updateEvent('endAt', date)}
             />
-            <View style={[styles.inputGroup, { zIndex: 1, elevation: 0 }]}>
-              <Datepicker
-                placeholder="Start Date"
-                minDate={today}
-                date={startAt}
-                onChange={(date) => updateEvent('startAt', date)}
-              />
-              <View style={styles.spacer}></View>
-              <Datepicker
-                placeholder="End Date"
-                date={endAt}
-                minDate={startAt || today}
-                onChange={(date) => updateEvent('endAt', date)}
-              />
-            </View>
           </View>
           <HR />
           <OnOffSwitch
@@ -99,13 +97,11 @@ export default class EditCreatevent extends Component {
             value={event.isPublic}
             onChange={(val) => updateEvent('isPublic', val)}
           />
-          <View style={styles.button}>
-            <Button
-              text={this.props.isNew ? 'Save' : 'Update'}
-              onPress={() => this.saveItem(event)}
-            />
-          </View>
         </KeyboardScroll>
+        <Button
+          text={this.props.isNew ? 'Save' : 'Update'}
+          onPress={() => this.saveItem(event)}
+        />
       </View>
     );
   }

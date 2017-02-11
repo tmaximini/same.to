@@ -4,8 +4,8 @@ import DPicker from 'react-native-datepicker';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { COLORS } from '../../constants';
 
-export const DatePicker = ({ date, placeholder, minDate, maxDate, onChange }) => (
-  <View style={{ flex: 1, flexDirection: 'row', maxHeight: 60 }}>
+export const DatePicker = ({ date, placeholder, minDate, maxDate, onChange, grow = true }) => (
+  <View style={{ flexShrink: 0, flexGrow: (grow ? 1 : 0), flexBasis: 1, flexDirection: 'row', marginBottom: 10 }}>
     <Icon
       name="calendar"
       style={{
@@ -19,7 +19,7 @@ export const DatePicker = ({ date, placeholder, minDate, maxDate, onChange }) =>
       size={20}
     />
     <DPicker
-      style={{ flex: 1 }}
+      style={{ flex: 1, marginBottom: 0 }}
       date={date}
       mode="date"
       showIcon={false}
@@ -70,7 +70,8 @@ DatePicker.propTypes = {
   placeholder: PropTypes.string,
   minDate: PropTypes.string,
   maxDate: PropTypes.string,
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
+  grow: PropTypes.bool,
 };
 
 export default DatePicker;

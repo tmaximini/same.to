@@ -19,7 +19,7 @@ export default StyleSheet.create({
     overflow: 'hidden',
   },
   wrapper: {
-    flex: 1,
+    flexGrow: 1,
     alignItems: 'center',
     backgroundColor: COLORS.GREY_OPAQ,
     padding: 10,
@@ -48,7 +48,6 @@ export default StyleSheet.create({
     fontSize: 20,
     paddingTop: 7,
     textAlign: 'left',
-    flex: 1,
     color: COLORS.WHITE,
   },
   button: {

@@ -22,11 +22,13 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
   image: {
-    ...MIXINS.image
+    ...MIXINS.image,
+    borderRadius: (itemWidth - 10) * 0.5
   },
   checked: {
+    borderRadius: (itemWidth - 10) * 0.5,
     backgroundColor: COLORS.CYAN_OPAQ,
-    flex: 1,
+    flexGrow: 1,
     alignSelf: 'stretch',
     alignItems: 'center',
     justifyContent: 'center',

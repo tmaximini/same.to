@@ -12,10 +12,7 @@ export default StyleSheet.create({
   },
   form: {
     flexGrow: 1,
-  },
-  checkboxWrapper: {
-    flex: 2.5,
-    marginBottom: 20,
+    flexShrink: 0,
   },
   checkboxLabel: {
     marginBottom: 10,
@@ -25,4 +22,3 @@ export default StyleSheet.create({
     justifyContent: 'flex-end',
   },
 });
-

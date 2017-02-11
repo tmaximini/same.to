@@ -68,54 +68,49 @@ export default class EditCreateActivity extends Component {
     return (
       <View style={styles.container}>
         <KeyboardScroll>
-          <View style={styles.form}>
-            <View style={styles.checkboxWrapper}>
-              <Text style={styles.checkboxLabel}>
-                Activity Types
-              </Text>
-              <CheckboxList
-                items={activityTypes}
-                onChange={toggleCategory}
-                model={activity}
-              />
-            </View>
-            <Input
-              placeholder="Name"
-              onChangeText={text => updateActivity('name', text)}
-              icon="bed"
-              value={activity.name}
+          <Text style={styles.checkboxLabel}>
+            Activity Types
+          </Text>
+          <CheckboxList
+            items={activityTypes}
+            onChange={toggleCategory}
+            model={activity}
+          />
+          <Input
+            placeholder="Name"
+            onChangeText={text => updateActivity('name', text)}
+            icon="bed"
+            value={activity.name}
+          />
+          <View style={styles.inputGroup}>
+            <Datepicker
+              placeholder="Start Date"
+              minDate={today}
+              date={activity.startAt || today}
+              onChange={date => updateActivity('startAt', date)}
             />
-            <View style={styles.inputGroup}>
-              <Datepicker
-                placeholder="Start Date"
-                minDate={today}
-                date={activity.startAt || today}
-                onChange={date => updateActivity('startAt', date)}
-              />
-              <View style={styles.spacer}></View>
-              <GeoInput
-                placeholder="Where"
-                enablePoweredByContainer={false}
-                value={locationString}
-                onChangeText={text => updateActivity('locationString', text)}
-                onAdressSelect={geocodeLocation}
-                zIndex={2}
-              />
-            </View>
-            <HR />
-            <OnOffSwitch
-              name="Make this activity public"
-              value={activity.isPublic}
-              onChange={(val) => updateActivity('isPublic', val)}
+            <View style={styles.spacer} />
+            <GeoInput
+              placeholder="Where"
+              enablePoweredByContainer={false}
+              value={locationString}
+              onChangeText={text => updateActivity('locationString', text)}
+              onAdressSelect={geocodeLocation}
+              zIndex={99}
+              grow
             />
-            <View style={styles.button}>
-              <Button
-                text={this.props.isNew ? 'Save' : 'Update'}
-                onPress={() => this.saveItem(activity)}
-              />
-            </View>
           </View>
+          <HR />
+          <OnOffSwitch
+            name="Make this activity public"
+            value={activity.isPublic}
+            onChange={(val) => updateActivity('isPublic', val)}
+          />
         </KeyboardScroll>
+        <Button
+          text={this.props.isNew ? 'Save' : 'Update'}
+          onPress={() => this.saveItem(activity)}
+        />
       </View>
     );
   }

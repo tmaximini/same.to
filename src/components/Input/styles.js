@@ -8,11 +8,11 @@ export default StyleSheet.create({
   inputWrap: {
     flexDirection: 'row',
     height: 40,
-    marginBottom: 20,
+    marginBottom: 10,
     backgroundColor: 'transparent',
   },
   input: {
-    flex: 1,
+    flexGrow: 1,
     paddingHorizontal: 15,
     fontSize: 14,
     backgroundColor: COLORS.DARK_GREY,

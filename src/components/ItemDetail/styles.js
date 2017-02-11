@@ -6,7 +6,7 @@ import { COLORS } from '../../constants';
 
 export default StyleSheet.create({
   container: {
-    flex: 1,
+    flexGrow: 1,
   },
   top: {
     flex: 3,
@@ -21,6 +21,7 @@ export default StyleSheet.create({
   },
   bottom: {
     flex: 5,
+    paddingBottom: 60,
     backgroundColor: COLORS.BG_GREY,
   },
   header: {
@@ -100,11 +101,11 @@ export default StyleSheet.create({
   actionButtons: {
     position: 'absolute',
     alignSelf: 'stretch',
-    bottom: 0,
+    bottom: 10,
     left: 10,
     right: 10,
     flexDirection: 'row',
-    flex: 1,
+    flexGrow: 1,
     alignItems: 'center',
     justifyContent: 'space-between'
   }

@@ -6,7 +6,9 @@ export default StyleSheet.create({
     alignSelf: 'stretch',
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
-    flex: 1,
-    flexWrap: 'wrap'
+    flexGrow: 0,
+    flexShrink: 0,
+    flexWrap: 'wrap',
+    marginBottom: 15
   },
 });

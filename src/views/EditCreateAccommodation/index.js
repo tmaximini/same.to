@@ -79,59 +79,56 @@ export default class EditCreateAccommodation extends Component {
     return (
       <View style={styles.container}>
         <KeyboardScroll>
-          <View style={styles.form}>
-            <View style={styles.checkboxWrapper}>
-              <Text style={styles.checkboxLabel}>
-                Accommodation Types
-              </Text>
-              <CheckboxList
-                items={accommodationTypes}
-                onChange={toggleCategory}
-                model={accommodation}
-              />
-            </View>
-            <Input
-              placeholder="Name"
-              onChangeText={text => updateAccommodation('name', text)}
-              icon="bed"
-              value={accommodation.name}
+          <Text style={styles.checkboxLabel}>
+            Accommodation Types
+          </Text>
+          <CheckboxList
+            items={accommodationTypes}
+            onChange={toggleCategory}
+            model={accommodation}
+          />
+          <Input
+            placeholder="Name"
+            onChangeText={text => updateAccommodation('name', text)}
+            icon="bed"
+            value={accommodation.name}
+          />
+          <GeoInput
+            placeholder="Where"
+            enablePoweredByContainer={false}
+            value={defaultLocationValue}
+            onChangeText={text => updateAccommodation('locationString', text)}
+            onAdressSelect={geocodeLocation}
+          />
+          <View style={styles.inputGroup}>
+            <Datepicker
+              placeholder="Start Date"
+              minDate={today}
+              date={accommodation.startAt || today}
+              onChange={date => updateAccommodation('startAt', date)}
+              grow
             />
-            <GeoInput
-              placeholder="Where"
-              enablePoweredByContainer={false}
-              value={defaultLocationValue}
-              onChangeText={text => updateAccommodation('locationString', text)}
-              onAdressSelect={geocodeLocation}
+            <View style={styles.spacer} />
+            <Select
+              placeholder="Dauer"
+              value={overnightStays}
+              items={overstays}
+              onChange={val => updateAccommodation('overnightStays', val)}
             />
-            <View style={styles.inputGroup}>
-              <Datepicker
-                placeholder="Start Date"
-                minDate={today}
-                date={accommodation.startAt || today}
-                onChange={date => updateAccommodation('startAt', date)}
-              />
-              <View style={styles.spacer}></View>
-              <Select
-                placeholder="Dauer"
-                value={overnightStays}
-                items={overstays}
-                onChange={val => updateAccommodation('overnightStays', val)}
-              />
-            </View>
-            <HR />
-            <OnOffSwitch
-              name="Make this accommodation public"
-              value={accommodation.isPublic}
-              onChange={(val) => updateAccommodation('isPublic', val)}
-            />
-            <View style={styles.button}>
-              <Button
-                text={this.props.isNew ? 'Save' : 'Update'}
-                onPress={() => this.saveItem(accommodation)}
-              />
-            </View>
           </View>
+          <HR />
+          <OnOffSwitch
+            name="Make this accommodation public"
+            value={accommodation.isPublic}
+            onChange={(val) => updateAccommodation('isPublic', val)}
+          />
         </KeyboardScroll>
+        <View style={styles.button}>
+          <Button
+            text={this.props.isNew ? 'Save' : 'Update'}
+            onPress={() => this.saveItem(accommodation)}
+          />
+        </View>
       </View>
     );
   }
