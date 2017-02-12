@@ -66,7 +66,10 @@ export default class EditCreateTrip extends Component {
     const today = formatDate(new Date());
 
     return (
-      <Form>
+      <Form
+        buttonText={this.props.isNew ? 'Save' : 'Update'}
+        onSubmit={() => this.saveItem(trip)}
+      >
         <CheckboxList
           label="Mit folgenden Transportmitteln würde ich reisen"
           items={tripTypes}
@@ -101,10 +104,6 @@ export default class EditCreateTrip extends Component {
           name="Make this trip public"
           value={trip.isPublic}
           onChange={(val) => updateTrip('isPublic', val)}
-        />
-        <Button
-          text={this.props.isNew ? 'Save' : 'Update'}
-          onPress={() => this.saveItem(trip)}
         />
       </Form>
     );

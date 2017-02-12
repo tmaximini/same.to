@@ -72,7 +72,10 @@ export default class EditCreateAccommodation extends Component {
     );
 
     return (
-      <Form>
+      <Form
+        buttonText={this.props.isNew ? 'Save' : 'Update'}
+        onSubmit={() => this.saveItem(accommodation)}
+      >
         <CheckboxList
           label="Accommodation Types"
           items={accommodationTypes}
@@ -112,10 +115,6 @@ export default class EditCreateAccommodation extends Component {
           name="Make this accommodation public"
           value={accommodation.isPublic}
           onChange={(val) => updateAccommodation('isPublic', val)}
-        />
-        <Button
-          text={this.props.isNew ? 'Save' : 'Update'}
-          onPress={() => this.saveItem(accommodation)}
         />
       </Form>
     );

@@ -147,7 +147,11 @@ export default class EditCreateProfile extends Component {
     }
 
     return (
-      <Form>
+      <Form
+        buttonText={this.props.isNew ? 'Save' : 'Update'}
+        onSubmit={() => updateRemoteProfile(profile)}
+        buttonDisabled={!this.isValid()}
+      >
         <View style={styles.wrapper}>
           <View style={styles.avatarWrapper}>
             <TouchableOpacity onPress={this.handleImageUpload}>
@@ -196,11 +200,6 @@ export default class EditCreateProfile extends Component {
             onChangeText={(text) => update('interests', text.split(', '))}
           />
         </View>
-        <Button
-          text={isNew ? 'Save' : 'Update'}
-          onPress={() => updateRemoteProfile(profile)}
-          disabled={!this.isValid()}
-        />
       </Form>
     );
   }

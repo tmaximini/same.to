@@ -65,7 +65,10 @@ export default class EditCreateActivity extends Component {
     const today = formatDate(new Date());
 
     return (
-      <Form>
+      <Form
+        buttonText={this.props.isNew ? 'Save' : 'Update'}
+        onSubmit={() => this.saveItem(activity)}
+      >
         <CheckboxList
           label="Activity Types"
           items={activityTypes}
@@ -100,10 +103,6 @@ export default class EditCreateActivity extends Component {
           name="Make this activity public"
           value={activity.isPublic}
           onChange={(val) => updateActivity('isPublic', val)}
-        />
-        <Button
-          text={this.props.isNew ? 'Save' : 'Update'}
-          onPress={() => this.saveItem(activity)}
         />
       </Form>
     );

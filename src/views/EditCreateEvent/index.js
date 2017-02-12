@@ -60,7 +60,10 @@ export default class EditCreatevent extends Component {
     const today = formatDate(new Date());
 
     return (
-      <Form>
+      <Form
+        buttonText={this.props.isNew ? 'Save' : 'Update'}
+        onSubmit={() => this.saveItem(event)}
+      >
         <Input
           placeholder="Event name"
           onChangeText={text => updateEvent('name', text)}
@@ -93,10 +96,6 @@ export default class EditCreatevent extends Component {
           name="Make this event public"
           value={event.isPublic}
           onChange={(val) => updateEvent('isPublic', val)}
-        />
-        <Button
-          text={this.props.isNew ? 'Save' : 'Update'}
-          onPress={() => this.saveItem(event)}
         />
       </Form>
     );
