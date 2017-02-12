@@ -5,8 +5,9 @@ import {
 } from 'react-native';
 
 import { connect } from 'react-redux';
-import KeyboardScroll from '../../components/KeyboardScroll';
 import { formatDate } from '../../utils';
+import Form from '../../layouts/form';
+import InputGroup from '../../components/InputGroup';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import GeoInput from '../../components/GeoInput';
@@ -15,8 +16,6 @@ import CheckboxList from '../../components/CheckboxList';
 import OnOffSwitch from '../../components/OnOffSwitch';
 import HR from '../../components/HR';
 import { actions as activityActions } from '../../redux/modules/editCreateActivity';
-
-import styles from './styles';
 
 
 @connect(
@@ -66,52 +65,47 @@ export default class EditCreateActivity extends Component {
     const today = formatDate(new Date());
 
     return (
-      <View style={styles.container}>
-        <KeyboardScroll>
-          <Text style={styles.checkboxLabel}>
-            Activity Types
-          </Text>
-          <CheckboxList
-            items={activityTypes}
-            onChange={toggleCategory}
-            model={activity}
+      <Form>
+        <CheckboxList
+          label="Activity Types"
+          items={activityTypes}
+          onChange={toggleCategory}
+          model={activity}
+        />
+        <Input
+          placeholder="Name"
+          onChangeText={text => updateActivity('name', text)}
+          icon="bed"
+          value={activity.name}
+        />
+        <InputGroup>
+          <Datepicker
+            placeholder="Start Date"
+            minDate={today}
+            date={activity.startAt || today}
+            onChange={date => updateActivity('startAt', date)}
           />
-          <Input
-            placeholder="Name"
-            onChangeText={text => updateActivity('name', text)}
-            icon="bed"
-            value={activity.name}
+          <GeoInput
+            placeholder="Where"
+            enablePoweredByContainer={false}
+            value={locationString}
+            onChangeText={text => updateActivity('locationString', text)}
+            onAdressSelect={geocodeLocation}
+            zIndex={99}
+            grow
           />
-          <View style={styles.inputGroup}>
-            <Datepicker
-              placeholder="Start Date"
-              minDate={today}
-              date={activity.startAt || today}
-              onChange={date => updateActivity('startAt', date)}
-            />
-            <View style={styles.spacer} />
-            <GeoInput
-              placeholder="Where"
-              enablePoweredByContainer={false}
-              value={locationString}
-              onChangeText={text => updateActivity('locationString', text)}
-              onAdressSelect={geocodeLocation}
-              zIndex={99}
-              grow
-            />
-          </View>
-          <HR />
-          <OnOffSwitch
-            name="Make this activity public"
-            value={activity.isPublic}
-            onChange={(val) => updateActivity('isPublic', val)}
-          />
-        </KeyboardScroll>
+        </InputGroup>
+        <HR />
+        <OnOffSwitch
+          name="Make this activity public"
+          value={activity.isPublic}
+          onChange={(val) => updateActivity('isPublic', val)}
+        />
         <Button
           text={this.props.isNew ? 'Save' : 'Update'}
           onPress={() => this.saveItem(activity)}
         />
-      </View>
+      </Form>
     );
   }
 }

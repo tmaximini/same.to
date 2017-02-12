@@ -14,6 +14,10 @@ export const FONT_SIZES = {
   BUTTON: 16,
 };
 
+export const PADDINGS = {
+  STANDARD: 12,
+};
+
 export const MIXINS = {
   floatLeft: {
     flexDirection: 'row',

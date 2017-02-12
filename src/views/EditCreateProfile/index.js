@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import {
   View,
-  ScrollView,
   Platform,
   Image,
   TouchableOpacity,
@@ -10,7 +9,8 @@ import {
 
 import { connect } from 'react-redux';
 import ImagePicker from 'react-native-image-picker';
-import KeyboardScroll from '../../components/KeyboardScroll';
+import Form from '../../layouts/form';
+import InputGroup from '../../components/InputGroup';
 import Input from '../../components/Input';
 // import PlusButton from '../../components/PlusButton';
 import GeoInput from '../../components/GeoInput';
@@ -147,64 +147,61 @@ export default class EditCreateProfile extends Component {
     }
 
     return (
-      <View style={styles.container}>
-        <KeyboardScroll>
-          <View style={styles.wrapper}>
-            <View style={styles.avatarWrapper}>
-              <TouchableOpacity onPress={this.handleImageUpload}>
-                <View style={[styles.avatar, styles.avatarContainer, { marginBottom: 20 }]}>
-                  {(!avatarSource && !fbImageUri)
-                    ? <Text style={styles.avatarText}>Select a Photo</Text>
-                    : <Image style={styles.avatar} source={avatarSource || { uri: fbImageUri }} />
-                  }
-                </View>
-              </TouchableOpacity>
-            </View>
-            <View style={styles.inputGroup}>
-              <Input
-                placeholder="First Name"
-                value={firstName}
-                onChangeText={(text) => update('firstName', text)}
-                style={{ flexGrow: 1 }}
-              />
-              <View style={styles.spacer} />
-              <Input
-                placeholder="Last Name"
-                value={lastName}
-                onChangeText={(text) => update('lastName', text)}
-                style={{ flexGrow: 1 }}
-              />
-            </View>
-            <Input
-              placeholder="Tätigkeit"
-              value={occupation}
-              onChangeText={(text) => update('occupation', text)}
-            />
-            <Input
-              placeholder="Arbeitgeber"
-              value={company}
-              onChangeText={(text) => update('company', text)}
-            />
-            <GeoInput
-              placeholder="Wohnort"
-              enablePoweredByContainer={false}
-              value={locationString || locality}
-              onChangeText={text => update('locationString', text)}
-              onAdressSelect={geocodeLocation}
-            />
-            <Input
-              placeholder="Hobbies"
-              value={interests ? interests.join(', ') : null}
-              onChangeText={(text) => update('interests', text.split(', '))}
-            />
+      <Form>
+        <View style={styles.wrapper}>
+          <View style={styles.avatarWrapper}>
+            <TouchableOpacity onPress={this.handleImageUpload}>
+              <View style={[styles.avatar, styles.avatarContainer, { marginBottom: 20 }]}>
+                {(!avatarSource && !fbImageUri)
+                  ? <Text style={styles.avatarText}>Select a Photo</Text>
+                  : <Image style={styles.avatar} source={avatarSource || { uri: fbImageUri }} />
+                }
+              </View>
+            </TouchableOpacity>
           </View>
-        </KeyboardScroll>
+          <InputGroup>
+            <Input
+              placeholder="First Name"
+              value={firstName}
+              onChangeText={(text) => update('firstName', text)}
+              style={{ flexGrow: 1 }}
+            />
+            <Input
+              placeholder="Last Name"
+              value={lastName}
+              onChangeText={(text) => update('lastName', text)}
+              style={{ flexGrow: 1 }}
+            />
+          </InputGroup>
+          <Input
+            placeholder="Tätigkeit"
+            value={occupation}
+            onChangeText={(text) => update('occupation', text)}
+          />
+          <Input
+            placeholder="Arbeitgeber"
+            value={company}
+            onChangeText={(text) => update('company', text)}
+          />
+          <GeoInput
+            placeholder="Wohnort"
+            enablePoweredByContainer={false}
+            value={locationString || locality}
+            onChangeText={text => update('locationString', text)}
+            onAdressSelect={geocodeLocation}
+          />
+          <Input
+            placeholder="Hobbies"
+            value={interests ? interests.join(', ') : null}
+            onChangeText={(text) => update('interests', text.split(', '))}
+          />
+        </View>
         <Button
           text={isNew ? 'Save' : 'Update'}
           onPress={() => updateRemoteProfile(profile)}
           disabled={!this.isValid()}
         />
-      </View>
+      </Form>
     );
   }
 }

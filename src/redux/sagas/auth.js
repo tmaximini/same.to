@@ -38,9 +38,19 @@ export function* handleLoginAsync(action) {
         type: LOGIN_SUCCESS,
         payload: response,
       });
-      yield call(delay, 100);
-      yield call(Actions.tabbar, { key: 'tabbar', type: 'replace' });
-      yield call(Actions.home, { type: 'replace' });
+      const profile = yield call(getProfile);
+      yield put({
+        type: SET_PROFILE,
+        payload: {
+          model: profile
+        },
+      });
+      if (profile.signupCompleted) {
+        yield call(Actions.tabbar, { key: 'tabbar', type: 'replace' });
+        yield call(Actions.home, { type: 'replace' });
+      } else {
+        yield call(Actions.editCreateProfile, { type: 'replace', profile });
+      }
     }
   } catch (error) {
     console.info({ error });

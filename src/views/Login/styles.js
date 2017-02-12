@@ -4,10 +4,6 @@ import {
 import { COLORS } from '../../constants';
 
 export default StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: COLORS.BG_GREY,
-  },
   wrapper: {
     flex: 1,
     justifyContent: 'flex-end',
@@ -19,10 +15,6 @@ export default StyleSheet.create({
   background: {
     width: null,
     height: null,
-  },
-  buttonText: {
-    color: '#fff',
-    fontSize: 18
   },
   or: {
     textAlign: 'center',
@@ -41,8 +33,6 @@ export default StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    minHeight: 100,
-    maxHeight: 100,
   },
   logo: {
     width: 100,

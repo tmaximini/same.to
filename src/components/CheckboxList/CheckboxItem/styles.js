@@ -1,15 +1,15 @@
 import { StyleSheet, Dimensions } from 'react-native';
-import { COLORS, MIXINS } from '../../../constants';
+import { COLORS, MIXINS, PADDINGS } from '../../../constants';
 
 const { width } = Dimensions.get('window');
-const itemWidth = (width * (1 / 4)) - 20;
+const itemWidth = (width * (1 / 4)) - (2 * PADDINGS.STANDARD);
 
 export default StyleSheet.create({
   container: {
     width: itemWidth,
     marginRight: 15,
     marginTop: 5,
-    marginBottom: 10,
+    marginBottom: PADDINGS.STANDARD,
   },
   circle: {
     borderRadius: itemWidth * 0.5,

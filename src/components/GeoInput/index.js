@@ -8,7 +8,7 @@ import styles from './styles';
 export const GOOGLE_MAPS_API_KEY = 'AIzaSyAM93ELRZPJKidnLtt-CIO1TPQT_HF5gqY';
 
 const GeoInput = ({ placeholder, onAdressSelect, zIndex, grow, ...rest }) => (
-  <View style={{ zIndex: zIndex || 1, marginBottom: 10, flexGrow: (grow ? 1 : 0), }}>
+  <View style={{ zIndex: zIndex || 1, marginBottom: 12, flexGrow: (grow ? 1 : 0), }}>
     <Icon
       name="globe"
       style={styles.icon}

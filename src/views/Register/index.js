@@ -7,11 +7,9 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import Input from '../../components/Input';
-import KeyboardScroll from '../../components/KeyboardScroll';
 import { actions as authActions } from '../../redux/modules/auth';
-
-import { WithPadding } from '../../components/Layout';
+import Input from '../../components/Input';
+import Form from '../../layouts/form';
 import Button from '../../components/Button';
 import { COLORS } from '../../constants';
 import styles from '../Login/styles';
@@ -66,62 +64,56 @@ export default class Login extends Component {
     } = this.props;
 
     return (
-      <View style={styles.container}>
-        <KeyboardScroll>
-          {isLoading ? (
-            <ActivityIndicator
-              animating
-              color={COLORS.CYAN}
-              style={{ height: 80 }}
-              size="large"
-            />
-          ) : (
-            <View style={styles.wrapper}>
-              <View style={styles.logoWrapper}>
-                <Image
-                  source={logo}
-                  resizeMode="cover"
-                  style={styles.logo}
-                />
-              </View>
-              <WithPadding>
-                {error && <Text style={styles.error}>{error}</Text>}
-                <Input
-                  placeholder="Username"
-                  value={username}
-                  onChangeText={(text) => update('username', text)}
-                />
-                <Input
-                  placeholder="E-Mail"
-                  value={email}
-                  keyboardType="email-address"
-                  onChangeText={(text) => update('email', text)}
-                />
-                <Input
-                  placeholder="Password"
-                  value={password}
-                  onChangeText={(text) => update('password', text)}
-                  secureTextEntry
-                />
-                <Button
-                  onPress={this.onRegister}
-                >
-                  <Text style={styles.buttonText}>Register</Text>
-                </Button>
-                <Button
-                  text="Login"
-                  textColor="#fff"
-                  noBackground
-                  onPress={() => {
-                    resetErrors();
-                    Actions.pop();
-                  }}
-                />
-              </WithPadding>
+      <Form>
+        {isLoading ? (
+          <ActivityIndicator
+            animating
+            color={COLORS.CYAN}
+            style={{ height: 80 }}
+            size="large"
+          />
+        ) : (
+          <View style={styles.wrapper}>
+            <View style={styles.logoWrapper}>
+              <Image
+                source={logo}
+                resizeMode="cover"
+                style={styles.logo}
+              />
             </View>
-          )}
-        </KeyboardScroll>
-      </View>
+            {error && <Text style={styles.error}>{error}</Text>}
+            <Input
+              placeholder="Username"
+              value={username}
+              onChangeText={(text) => update('username', text)}
+            />
+            <Input
+              placeholder="E-Mail"
+              value={email}
+              keyboardType="email-address"
+              onChangeText={(text) => update('email', text)}
+            />
+            <Input
+              placeholder="Password"
+              value={password}
+              onChangeText={(text) => update('password', text)}
+              secureTextEntry
+            />
+            <Button
+              onPress={this.onRegister}
+              text="Register"
+            />
+            <Button
+              text="Login"
+              noBackground
+              onPress={() => {
+                resetErrors();
+                Actions.pop();
+              }}
+            />
+          </View>
+        )}
+      </Form>
     );
   }
 }

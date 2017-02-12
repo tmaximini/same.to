@@ -2,10 +2,10 @@ import React, { PropTypes } from 'react';
 import { View } from 'react-native';
 import DPicker from 'react-native-datepicker';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { COLORS } from '../../constants';
+import { COLORS, PADDINGS } from '../../constants';
 
 export const DatePicker = ({ date, placeholder, minDate, maxDate, onChange, grow = true }) => (
-  <View style={{ flexShrink: 0, flexGrow: (grow ? 1 : 0), flexBasis: 1, flexDirection: 'row', marginBottom: 10 }}>
+  <View style={{ flexShrink: 0, flexGrow: (grow ? 1 : 0), flexBasis: 1, flexDirection: 'row', marginBottom: PADDINGS.STANDARD }}>
     <Icon
       name="calendar"
       style={{

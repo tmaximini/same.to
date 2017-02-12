@@ -6,7 +6,7 @@ import {
 
 import { connect } from 'react-redux';
 import { formatDate } from '../../utils';
-import KeyboardScroll from '../../components/KeyboardScroll';
+import Form from '../../layouts/form';
 import OnOffSwitch from '../../components/OnOffSwitch';
 import HR from '../../components/HR';
 import Button from '../../components/Button';
@@ -15,7 +15,6 @@ import Datepicker from '../../components/Datepicker';
 import CheckboxList from '../../components/CheckboxList';
 import { actions as tripActions } from '../../redux/modules/editCreateTrip';
 
-import styles from './styles';
 
 @connect(
   state => state.editCreateTrip,
@@ -67,51 +66,47 @@ export default class EditCreateTrip extends Component {
     const today = formatDate(new Date());
 
     return (
-      <View style={styles.container}>
-        <KeyboardScroll>
-          <Text style={styles.checkboxLabel}>
-            Mit folgenden Transportmitteln würde ich reisen
-          </Text>
-          <CheckboxList
-            items={tripTypes}
-            model={trip}
-            onChange={toggleCategory}
-          />
-          <Datepicker
-            placeholder="Start Date"
-            minDate={today}
-            date={trip.startAt}
-            onChange={date => updateTrip('startAt', date)}
-            grow={false}
-          />
-          <GeoInput
-            placeholder="Start"
-            enablePoweredByContainer={false}
-            value={pickupString}
-            onChangeText={text => updateTrip('pickupString', text)}
-            onAdressSelect={geocodeLocation}
-            zIndex={2}
-          />
-          <GeoInput
-            placeholder="Destination"
-            enablePoweredByContainer={false}
-            value={destinationString}
-            onChangeText={text => updateTrip('destinationString', text)}
-            onAdressSelect={geocodeDestination}
-            zIndex={1}
-          />
-          <HR />
-          <OnOffSwitch
-            name="Make this trip public"
-            value={trip.isPublic}
-            onChange={(val) => updateTrip('isPublic', val)}
-          />
-        </KeyboardScroll>
+      <Form>
+        <CheckboxList
+          label="Mit folgenden Transportmitteln würde ich reisen"
+          items={tripTypes}
+          model={trip}
+          onChange={toggleCategory}
+        />
+        <Datepicker
+          placeholder="Start Date"
+          minDate={today}
+          date={trip.startAt}
+          onChange={date => updateTrip('startAt', date)}
+          grow={false}
+        />
+        <GeoInput
+          placeholder="Start"
+          enablePoweredByContainer={false}
+          value={pickupString}
+          onChangeText={text => updateTrip('pickupString', text)}
+          onAdressSelect={geocodeLocation}
+          zIndex={2}
+        />
+        <GeoInput
+          placeholder="Destination"
+          enablePoweredByContainer={false}
+          value={destinationString}
+          onChangeText={text => updateTrip('destinationString', text)}
+          onAdressSelect={geocodeDestination}
+          zIndex={1}
+        />
+        <HR />
+        <OnOffSwitch
+          name="Make this trip public"
+          value={trip.isPublic}
+          onChange={(val) => updateTrip('isPublic', val)}
+        />
         <Button
           text={this.props.isNew ? 'Save' : 'Update'}
           onPress={() => this.saveItem(trip)}
         />
-      </View>
+      </Form>
     );
   }
 }

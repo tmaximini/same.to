@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { COLORS } from '../../constants';
+import { COLORS, PADDINGS } from '../../constants';
 
 export default StyleSheet.create({
   button: {
@@ -10,6 +10,7 @@ export default StyleSheet.create({
     borderColor: COLORS.CYAN,
     borderWidth: 1,
     borderRadius: 5,
+    marginBottom: PADDINGS.STANDARD,
   },
   buttonText: {
     fontSize: 18,

@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { View } from 'react-native';
-import KeyboardScroll from '../../components/KeyboardScroll';
+import Form from '../../layouts/form';
+import InputGroup from '../../components/InputGroup';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import GeoInput from '../../components/GeoInput';
@@ -11,7 +11,6 @@ import HR from '../../components/HR';
 
 import { actions as editCreateEventActions } from '../../redux/modules/editCreateEvent';
 import { formatDate } from '../../utils';
-import styles from './styles';
 
 
 @connect(
@@ -61,48 +60,45 @@ export default class EditCreatevent extends Component {
     const today = formatDate(new Date());
 
     return (
-      <View style={styles.container}>
-        <KeyboardScroll>
-          <Input
-            placeholder="Event name"
-            onChangeText={text => updateEvent('name', text)}
-            value={name}
+      <Form>
+        <Input
+          placeholder="Event name"
+          onChangeText={text => updateEvent('name', text)}
+          value={name}
+        />
+        <GeoInput
+          placeholder="Where?"
+          enablePoweredByContainer={false}
+          value={locationString}
+          onChangeText={(text) => updateEvent('locationString', text)}
+          onAdressSelect={geocodeLocation}
+          zIndex={99}
+        />
+        <InputGroup>
+          <Datepicker
+            placeholder="Start Date"
+            minDate={today}
+            date={startAt}
+            onChange={(date) => updateEvent('startAt', date)}
           />
-          <GeoInput
-            placeholder="Where?"
-            enablePoweredByContainer={false}
-            value={locationString}
-            onChangeText={(text) => updateEvent('locationString', text)}
-            onAdressSelect={geocodeLocation}
-            zIndex={99}
+          <Datepicker
+            placeholder="End Date"
+            date={endAt}
+            minDate={startAt || today}
+            onChange={(date) => updateEvent('endAt', date)}
           />
-          <View style={styles.inputGroup}>
-            <Datepicker
-              placeholder="Start Date"
-              minDate={today}
-              date={startAt}
-              onChange={(date) => updateEvent('startAt', date)}
-            />
-            <View style={styles.spacer} />
-            <Datepicker
-              placeholder="End Date"
-              date={endAt}
-              minDate={startAt || today}
-              onChange={(date) => updateEvent('endAt', date)}
-            />
-          </View>
-          <HR />
-          <OnOffSwitch
-            name="Make this event public"
-            value={event.isPublic}
-            onChange={(val) => updateEvent('isPublic', val)}
-          />
-        </KeyboardScroll>
+        </InputGroup>
+        <HR />
+        <OnOffSwitch
+          name="Make this event public"
+          value={event.isPublic}
+          onChange={(val) => updateEvent('isPublic', val)}
+        />
         <Button
           text={this.props.isNew ? 'Save' : 'Update'}
           onPress={() => this.saveItem(event)}
         />
-      </View>
+      </Form>
     );
   }
 }

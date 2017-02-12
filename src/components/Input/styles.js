@@ -2,14 +2,14 @@ import {
   StyleSheet
 } from 'react-native';
 
-import { COLORS } from '../../constants';
+import { COLORS, PADDINGS } from '../../constants';
 
 export default StyleSheet.create({
   inputWrap: {
     flexGrow: 0,
     flexDirection: 'row',
     height: 40,
-    marginBottom: 10,
+    marginBottom: PADDINGS.STANDARD,
     backgroundColor: 'transparent',
   },
   input: {

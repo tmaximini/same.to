@@ -14,11 +14,10 @@ import {
   LoginManager,
   AccessToken
 } from 'react-native-fbsdk';
-import KeyboardScroll from '../../components/KeyboardScroll';
+import Form from '../../layouts/form';
 import Input from '../../components/Input';
 import { actions as authActions } from '../../redux/modules/auth';
 
-import { WithPadding } from '../../components/Layout';
 import Button from '../../components/Button';
 import { COLORS } from '../../constants';
 import styles from './styles';
@@ -102,73 +101,67 @@ export default class Login extends Component {
 
 
     return (
-      <View style={styles.container}>
-        <KeyboardScroll>
-        {isLoading ? (
-          <View style={styles.loadingWrapper}>
-            <ActivityIndicator
-              animating
-              color={COLORS.CYAN}
-              style={{ height: 80 }}
-              size="large"
+      <Form>
+      {isLoading ? (
+        <View style={styles.loadingWrapper}>
+          <ActivityIndicator
+            animating
+            color={COLORS.CYAN}
+            style={{ height: 80 }}
+            size="large"
+          />
+        </View>
+        ) : (
+        <View style={styles.wrapper}>
+          <View style={styles.logoWrapper}>
+            <Image
+              source={logo}
+              resizeMode="cover"
+              style={styles.logo}
             />
           </View>
-          ) : (
-          <View style={styles.wrapper}>
-            <View style={styles.logoWrapper}>
-              <Image
-                source={logo}
-                resizeMode="cover"
-                style={styles.logo}
-              />
-            </View>
-            <WithPadding>
-              <Button
-                onPress={this.onFacebookLogin}
-              >
-                <Text style={styles.buttonText}>Mit Facebook anmelden</Text>
-              </Button>
-              {error && <Text style={styles.error}>{error}</Text>}
-              <Input
-                placeholder="E-Mail"
-                value={email}
-                keyboardType="email-address"
-                onChangeText={(text) => update('email', text)}
-              />
-              <Input
-                placeholder="Password"
-                value={password}
-                onChangeText={(text) => update('password', text)}
-                secureTextEntry
-              />
-              <Button
-                onPress={this.onLogin}
-              >
-                <Text style={styles.buttonText}>Sign In</Text>
-              </Button>
-              <Button
-                text="Register"
-                textColor="#fff"
-                noBackground
-                onPress={() => {
-                  resetErrors();
-                  Actions.register();
-                }}
-              />
-              {/*
-              <Button
-                text="Forgot Password?"
-                textColor="#fff"
-                noBorder
-                noBackground
-                onPress={Actions.lostPassword}
-              />
-              */}
-            </WithPadding>
-          </View>
-          )}
-        </KeyboardScroll>
-      </View>
+          <Button
+            onPress={this.onFacebookLogin}
+            text="Mit Facebook anmelden"
+          />
+          {error && <Text style={styles.error}>{error}</Text>}
+          <Input
+            placeholder="E-Mail"
+            value={email}
+            keyboardType="email-address"
+            onChangeText={(text) => update('email', text)}
+          />
+          <Input
+            placeholder="Password"
+            value={password}
+            onChangeText={(text) => update('password', text)}
+            secureTextEntry
+          />
+          <Button
+            onPress={this.onLogin}
+            text="Sign In"
+          />
+          <Button
+            text="Register"
+            textColor="#fff"
+            noBackground
+            onPress={() => {
+              resetErrors();
+              Actions.register();
+            }}
+          />
+          {/*
+          <Button
+            text="Forgot Password?"
+            textColor="#fff"
+            noBorder
+            noBackground
+            onPress={Actions.lostPassword}
+          />
+          */}
+        </View>
+        )}
+      </Form>
     );
   }
 }
