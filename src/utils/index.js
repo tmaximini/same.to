@@ -1,7 +1,10 @@
 import { Share } from 'react-native';
-import { parse, format } from 'date-fns';
+import DeviceInfo from 'react-native-device-info';
+import moment from 'moment';
 import { COLORS } from '../constants';
 import { getUserId } from '../services/api';
+
+moment.locale(DeviceInfo.getDeviceLocale());
 
 export const border = (color = '#000', width = 4) => ({
   borderColor: color,
@@ -12,7 +15,7 @@ export const borderRadius = size => ({
   borderRadius: size
 });
 
-export const formatDate = dateString => format(parse(dateString), 'YYYY-MM-DD');
+export const formatDate = dateString => moment(dateString).calendar();
 
 export const getDateFromString = (string, delimiter = '-') => {
   if (!string) return null;
