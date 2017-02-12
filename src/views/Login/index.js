@@ -124,6 +124,7 @@ export default class Login extends Component {
             onPress={this.onFacebookLogin}
             text="Mit Facebook anmelden"
           />
+          <Text style={styles.or}>or</Text>
           {error && <Text style={styles.error}>{error}</Text>}
           <Input
             placeholder="E-Mail"

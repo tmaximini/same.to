@@ -1,7 +1,7 @@
 import {
   StyleSheet,
 } from 'react-native';
-import { COLORS } from '../../constants';
+import { COLORS, PADDINGS } from '../../constants';
 
 export default StyleSheet.create({
   wrapper: {
@@ -19,7 +19,7 @@ export default StyleSheet.create({
   or: {
     textAlign: 'center',
     color: COLORS.WHITE,
-    paddingVertical: 10,
+    marginBottom: PADDINGS.STANDARD,
   },
   error: {
     textAlign: 'center',
