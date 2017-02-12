@@ -1,12 +1,12 @@
 import { StyleSheet } from 'react-native';
 
-import { COLORS } from '../../../constants';
+import { COLORS, PADDINGS } from '../../../constants';
 
 export default StyleSheet.create({
   container: {
     flex: 1,
     height: 140,
-    marginBottom: 10,
+    marginBottom: PADDINGS.STANDARD,
     backgroundColor: COLORS.BG_GREY,
     overflow: 'hidden',
     borderRadius: 5,
@@ -22,7 +22,7 @@ export default StyleSheet.create({
     flexGrow: 1,
     alignItems: 'center',
     backgroundColor: COLORS.GREY_OPAQ,
-    padding: 10,
+    padding: PADDINGS.STANDARD,
   },
   main: {
     flex: 1,

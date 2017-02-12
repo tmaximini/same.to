@@ -2,9 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { ListView, RefreshControl } from 'react-native';
 
 import EventListItem from './EventListItem';
-import styles from './styles';
-import { COLORS } from '../../constants';
-// import { border } from '../../utils';
+import { COLORS, MIXINS } from '../../constants';
 
 export default class EventList extends Component {
 
@@ -44,7 +42,7 @@ export default class EventList extends Component {
     return (
       <ListView
         enableEmptySections
-        style={styles.container}
+        style={MIXINS.container}
         dataSource={this.state.dataSource}
         renderRow={event => <EventListItem
           event={event}

@@ -19,6 +19,11 @@ export const PADDINGS = {
 };
 
 export const MIXINS = {
+  container: {
+    flex: 1,
+    padding: PADDINGS.STANDARD,
+    backgroundColor: COLORS.BG_GREY,
+  },
   floatLeft: {
     flexDirection: 'row',
     alignItems: 'flex-start',

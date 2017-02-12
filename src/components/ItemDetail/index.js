@@ -119,11 +119,13 @@ const ItemDetail = ({ itemType, participates, onToggle, createChat, item }) => (
           });
         }}
         style={{ width: (width / 2) - 15 }}
+        smallText
       />
       <Button
         text="Alle Teilnehmer"
         onPress={() => {}}
         style={{ width: (width / 2) - 15 }}
+        smallText
       />
     </View>
   </View>

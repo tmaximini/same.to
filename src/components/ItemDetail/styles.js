@@ -101,7 +101,7 @@ export default StyleSheet.create({
   actionButtons: {
     position: 'absolute',
     alignSelf: 'stretch',
-    bottom: 10,
+    bottom: 0,
     left: 10,
     right: 10,
     flexDirection: 'row',

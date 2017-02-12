@@ -2,12 +2,12 @@ import React, { PropTypes } from 'react';
 import { View, ScrollView } from 'react-native';
 // import Accommodation from '../Accommodation';
 // import Trip from '../Trip';
-import SubItem from '../SubItem';
-import styles from './styles';
+import SubItem from './SubItem';
+import { MIXINS } from '../../constants';
 
 
 const SubItemList = ({ accommodations, trips, setTrip, setAccommodation, setDetail }) => (
-  <View style={styles.container}>
+  <View style={MIXINS.container}>
     <ScrollView>
       {accommodations.map(ac => (
         <SubItem

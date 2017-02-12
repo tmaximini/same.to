@@ -10,6 +10,7 @@ import { COLORS } from '../../constants';
 export default class Button extends Component {
   static propTypes = {
     disabled: PropTypes.bool,
+    smallText: PropTypes.bool,
     text: PropTypes.string,
     children: PropTypes.element,
     onPress: PropTypes.func.isRequired,
@@ -58,6 +59,7 @@ export default class Button extends Component {
       backgroundColor: this.props.disabled ? COLORS.BG_GREY : (this.props.noBackground ? 'transparent' : COLORS.CYAN),
       borderColor: this.props.disabled ? COLORS.DARK_GREY : COLORS.CYAN,
     };
+    const textStyle = (this.props.text.length > 14 || this.props.smallText) ? { fontSize: 14 } : { fontSize: 18 };
     return (
       <TouchableHighlight
         onHideUnderlay={this.onUnhighlight}
@@ -68,7 +70,7 @@ export default class Button extends Component {
         activeOpacity={this.props.activeOpacity}
       >
         {this.props.text
-          ? <Text style={[styles.buttonText, colorStyle]}>{this.props.text}</Text>
+          ? <Text style={[styles.buttonText, colorStyle, textStyle]}>{this.props.text}</Text>
           : this.props.children
         }
       </TouchableHighlight>

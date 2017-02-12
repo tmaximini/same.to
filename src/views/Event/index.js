@@ -3,7 +3,7 @@ import { View, Image, Text, TouchableHighlight } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { share } from '../../utils';
-import SubItemList from '../../components/Event/SubItemList';
+import SubItemList from '../../components/SubItemList';
 import PlusButton from '../../components/PlusButton';
 
 import {
