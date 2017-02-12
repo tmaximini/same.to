@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Image, View, Text, TouchableHighlight } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import Icon from 'react-native-vector-icons/Ionicons';
 import Date from '../../Date';
 import Location from '../../Location';
 import TagList from '../../TagList';
@@ -41,11 +42,13 @@ const EventListItem = ({ event, setCurrentEvent, setEvent }) => {
       >
         <View style={styles.wrapper}>
           <View style={styles.top}>
-            <TagList
-              tags={[event.type]}
-            />
+            {event.categories && (
+              <TagList
+                align="flex-start"
+                tags={event.categories}
+              />
+            )}
           </View>
-
           <View
             style={styles.middle}
           >
@@ -56,9 +59,11 @@ const EventListItem = ({ event, setCurrentEvent, setEvent }) => {
                 <Text style={styles.title}>
                   {name}
                 </Text>
-                <Text style={styles.button}>
-                  >
-                </Text>
+                <Icon
+                  size={34}
+                  name="ios-arrow-forward"
+                  style={styles.titleCaret}
+                />
               </View>
             </View>
           </View>

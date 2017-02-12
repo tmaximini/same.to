@@ -103,6 +103,7 @@ export default class Login extends Component {
               onPress={this.onRegister}
               text="Register"
             />
+            <Text style={styles.or}>or</Text>
             <Button
               text="Login"
               noBackground

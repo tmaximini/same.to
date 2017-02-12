@@ -9,7 +9,7 @@ const Date = ({ date, size }) => (
     <Icon
       name="calendar"
       style={styles.dateIcon}
-      size={size || 16}
+      size={size || 14}
     />
     <Text style={styles.dateText}>{formatDate(date)}</Text>
   </View>

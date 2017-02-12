@@ -15,6 +15,7 @@ export default StyleSheet.create({
     flex: 1,
     width: null,
     height: null,
+    borderRadius: 5,
     alignSelf: 'stretch',
     overflow: 'hidden',
   },
@@ -33,6 +34,14 @@ export default StyleSheet.create({
   top: {
     flex: 1,
     alignSelf: 'stretch',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+  },
+  titleCaret: {
+    color: COLORS.CYAN,
+    position: 'absolute',
+    right: 0,
+    top: 3,
   },
   middle: {
     flex: 1,

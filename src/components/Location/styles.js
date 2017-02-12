@@ -9,10 +9,9 @@ export default StyleSheet.create({
   },
   locationIcon: {
     color: COLORS.CYAN,
-    fontSize: 16,
-    marginRight: 5,
-    width: 20,
+    marginRight: 3,
     paddingLeft: 3,
+    width: 15,
   },
   locationText: {
     color: COLORS.WHITE,

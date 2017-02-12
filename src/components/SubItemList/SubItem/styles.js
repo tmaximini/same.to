@@ -2,20 +2,21 @@ import {
   StyleSheet
 } from 'react-native';
 
-import { COLORS, MIXINS } from '../../../constants';
+import { COLORS, MIXINS, PADDINGS } from '../../../constants';
 
 export default StyleSheet.create({
   container: {
     flex: 1,
     borderWidth: 1,
     borderColor: COLORS.DARK_GREY,
-    marginBottom: 10,
+    marginBottom: PADDINGS.STANDARD,
     height: 100,
     borderRadius: 5,
     overflow: 'hidden',
   },
   bgImage: {
     flex: 1,
+    borderRadius: 5,
     width: null,
     height: null,
     alignSelf: 'stretch',
@@ -40,11 +41,16 @@ export default StyleSheet.create({
     justifyContent: 'flex-end',
   },
   middle: {
-    flex: 2,
+    flex: 1,
     alignSelf: 'stretch',
   },
+  titleCaret: {
+    color: COLORS.CYAN,
+    position: 'absolute',
+    right: 0,
+  },
   title: {
-    fontSize: 22,
+    fontSize: 20,
     textAlign: 'left',
     color: COLORS.WHITE,
   },

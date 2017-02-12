@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { View, Text, Image, TouchableHighlight } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import Icon from 'react-native-vector-icons/Ionicons';
 import { canEdit } from '../../../utils';
 import Date from '../../Date';
 import TagList from '../../TagList';
@@ -79,13 +80,18 @@ const SubItem = ({ itemType, item, onSelect, setDetail }) => {
               }
             </View>
             <View style={styles.middle}>
-              <Text style={styles.button}>></Text>
+              <Icon
+                size={30}
+                name="ios-arrow-forward"
+                style={styles.titleCaret}
+              />
               <Date
                 date={item.startAt || item.startDate}
               />
             </View>
             <View style={styles.bottom}>
               <TagList
+                align="flex-end"
                 tags={item.categories}
               />
             </View>

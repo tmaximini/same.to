@@ -3,7 +3,7 @@ import { View, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import styles from './styles';
 
-const Location = ({ location }) => {
+const Location = ({ location, size }) => {
 
   const string = typeof location === 'string'
     ? location
@@ -14,6 +14,7 @@ const Location = ({ location }) => {
       <Icon
         name="map-marker"
         style={styles.locationIcon}
+        size={size || 14}
       />
       <Text style={styles.locationText}>{string}</Text>
     </View>

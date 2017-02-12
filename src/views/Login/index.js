@@ -142,6 +142,7 @@ export default class Login extends Component {
             onPress={this.onLogin}
             text="Sign In"
           />
+          <Text style={styles.or}>or</Text>
           <Button
             text="Register"
             textColor="#fff"

@@ -9,9 +9,8 @@ export default StyleSheet.create({
   },
   dateIcon: {
     color: COLORS.CYAN,
-    fontSize: 16,
-    marginRight: 5,
-    width: 20,
+    marginRight: 3,
+    width: 15,
   },
   dateText: {
     color: COLORS.WHITE,
