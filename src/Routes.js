@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Home from './views/Home';
 import Contacts from './views/Contacts';
+import Favorites from './views/Favorites';
 import Login from './views/Login';
 import Register from './views/Register';
 import LostPassword from './views/LostPassword';
@@ -105,7 +106,7 @@ const Routes = () => (
       />
       <Scene
         key="favorites"
-        component={TabView}
+        component={Favorites}
         title="Favoriten"
         icon={makeTabIcon('star')}
         sceneStyle={navTabpadding}

@@ -7,7 +7,7 @@ export const createContact = data => post(
   { ...data }
 );
 
-export const getFavorites = () => get('members/me/favorites');
+export const fetchFavorites = () => get('members/me/favorites');
 
 export const addToFavorites = memberId => post('members/me/favorites', {
   memberId

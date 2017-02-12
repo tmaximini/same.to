@@ -10,7 +10,10 @@ import {
   watchRegister,
 } from './auth';
 import { watchFetchEvents } from './events';
-import { watchFetchContacts } from './contacts';
+import {
+  watchFetchContacts,
+  watchFetchFavorites,
+} from './contacts';
 import {
   watchCreateEvent,
   watchUpdateEvent,
@@ -55,6 +58,7 @@ export default function* root() {
     watchRegister(),
     watchFetchEvents(),
     watchFetchContacts(),
+    watchFetchFavorites(),
     watchCreateEvent(),
     watchUpdateEvent(),
     watchGeocodeEvent(),

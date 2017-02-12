@@ -64,7 +64,6 @@ export function* handleLoginAsync(action) {
 
 export function* handleFBLoginAsync(action) {
   const { payload } = action;
-  console.log('payload', payload);
   try {
     const response = yield call(handleLoginFacebook, { ...payload });
     const { access_token, userId, error } = response;
@@ -84,7 +83,6 @@ export function* handleFBLoginAsync(action) {
        * depending on api response (signupCompleted?)
        */
       const profile = yield call(getProfile);
-      console.log('profile', profile);
       yield put({
         type: SET_PROFILE,
         payload: {
