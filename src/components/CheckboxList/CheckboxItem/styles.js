@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet, Dimensions, PixelRatio } from 'react-native';
 import { COLORS, MIXINS, PADDINGS } from '../../../constants';
 
 const { width } = Dimensions.get('window');
@@ -25,6 +25,15 @@ export default StyleSheet.create({
     ...MIXINS.image,
     borderRadius: (itemWidth - 10) * 0.5
   },
+  inactive: {
+    borderRadius: (itemWidth - 10) * 0.5,
+    borderColor: COLORS.CYAN,
+    flexGrow: 1,
+    borderWidth: 1,
+    alignSelf: 'stretch',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   checked: {
     borderRadius: (itemWidth - 10) * 0.5,
     backgroundColor: COLORS.CYAN_OPAQ,
@@ -39,7 +48,7 @@ export default StyleSheet.create({
   },
   itemText: {
     color: COLORS.WHITE,
-    fontSize: 10,
+    fontSize: 8,
     textAlign: 'center'
   }
 });

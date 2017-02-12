@@ -66,5 +66,7 @@ export default function configureStore(initialState) {
 export const purgeOfflineStorage = () => {
   if (PERSISTOR && typeof PERSISTOR.purge === 'function') {
     PERSISTOR.purge();
+  } else {
+    console.warn('could not purge offline storage', PERSISTOR);
   }
 };

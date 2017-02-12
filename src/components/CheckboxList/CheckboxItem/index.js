@@ -12,11 +12,12 @@ const CheckboxItem = ({ item, onChange, active }) => (
       onPress={() => onChange(item)}
       activeOpacity={0.8}
     >
-      <Image
+      {/*<Image
         source={nafta}
         style={styles.image}
         resizeMode="cover"
-      >
+      >*/}
+      <View style={styles.inactive}>
         {active && <View
           style={styles.checked}
         >
@@ -26,7 +27,8 @@ const CheckboxItem = ({ item, onChange, active }) => (
             style={styles.icon}
           />
         </View>}
-      </Image>
+      </View>
+      {/*</Image>*/}
 
     </TouchableOpacity>
     <Text style={styles.itemText}>{item}</Text>

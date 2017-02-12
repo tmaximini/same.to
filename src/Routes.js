@@ -52,11 +52,9 @@ const makeTabIcon = (icon) => ({ selected, title }) => (
   </View>
 );
 
-const TabView = () => (
-  <Text>
-    TAB VIEW
-  </Text>
-);
+const getSceneStyle = () => ({
+  backgroundColor: COLORS.BG_GREY,
+});
 
 const styles = StyleSheet.create({
   navBar: {
@@ -82,6 +80,7 @@ const styles = StyleSheet.create({
 const Routes = () => (
   <RouterWithRedux
     navigationBarStyle={styles.navBar}
+    getSceneStyle={getSceneStyle}
     titleStyle={styles.navBarTitle}
     barButtonTextStyle={styles.barButtonTextStyle}
     barButtonIconStyle={styles.barButtonIconStyle}
