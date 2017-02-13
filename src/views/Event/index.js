@@ -45,6 +45,7 @@ export default class Event extends Component {
     event: PropTypes.shape({
       members: PropTypes.array.isRequired,
       trips: PropTypes.array.isRequired,
+      activities: PropTypes.array.isRequired,
       accommodations: PropTypes.array.isRequired,
       name: PropTypes.string.isRequired,
       description: PropTypes.string,
@@ -88,6 +89,7 @@ export default class Event extends Component {
       name,
       // isPublic,
       // startAt,
+      activities,
       accommodations,
       trips,
       // members,
@@ -148,6 +150,7 @@ export default class Event extends Component {
             <SubItemList
               trips={trips}
               accommodations={accommodations}
+              activities={activities}
               setTrip={setTrip}
               setAccommodation={setAccommodation}
               setActivity={setActivity}

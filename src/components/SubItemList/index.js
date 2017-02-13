@@ -6,7 +6,9 @@ import SubItem from './SubItem';
 import { MIXINS } from '../../constants';
 
 
-const SubItemList = ({ accommodations, trips, setTrip, setAccommodation, setDetail }) => (
+const SubItemList = (
+  { activities, accommodations, trips, setTrip, setAccommodation, setActivity, setDetail }
+) => (
   <View style={MIXINS.container}>
     <ScrollView>
       {accommodations.map(ac => (
@@ -27,14 +29,25 @@ const SubItemList = ({ accommodations, trips, setTrip, setAccommodation, setDeta
           item={trip}
         />
       ))}
+      {activities.map(activity => (
+        <SubItem
+          onSelect={setActivity}
+          setDetail={setDetail}
+          itemType={'activity'}
+          key={activity.id}
+          item={activity}
+        />
+      ))}
     </ScrollView>
   </View>
 );
 
 SubItemList.propTypes = {
   trips: PropTypes.array.isRequired,
+  activities: PropTypes.array.isRequired,
   accommodations: PropTypes.array.isRequired,
   setTrip: PropTypes.func.isRequired,
+  setActivity: PropTypes.func.isRequired,
   setAccommodation: PropTypes.func.isRequired,
   setDetail: PropTypes.func.isRequired,
 };

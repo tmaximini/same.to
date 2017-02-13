@@ -11,6 +11,10 @@ import {
   UPDATE_ACCOMMODATION_SUCCESS,
   CREATE_ACCOMMODATION_SUCCESS
 } from './editCreateAccommodation';
+import {
+  UPDATE_ACTIVITY_SUCCESS,
+  CREATE_ACTIVITY_SUCCESS,
+} from './editCreateActivity';
 
 // Initial State
 const initialState = {
@@ -129,6 +133,14 @@ const actionsMap = {
   [CREATE_ACCOMMODATION_SUCCESS]: (state, action) => {
     const { accommodation } = action.payload;
     return updateEvents(state, accommodation, 'accommodations');
+  },
+  [UPDATE_ACTIVITY_SUCCESS]: (state, action) => {
+    const { activity } = action.payload;
+    return updateEvents(state, activity, 'activities');
+  },
+  [CREATE_ACTIVITY_SUCCESS]: (state, action) => {
+    const { activity } = action.payload;
+    return updateEvents(state, activity, 'activities');
   },
 };
 
