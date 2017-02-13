@@ -202,6 +202,7 @@ const Routes = () => (
       component={Profile}
       title="Profile"
       sceneStyle={navBarPadding}
+      rightButtonTextStyle={cyanText}
     />
     <Scene
       key="lostPassword"

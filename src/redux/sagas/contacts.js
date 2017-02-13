@@ -19,6 +19,9 @@ import {
   REMOVE_CONTACT_START,
   REMOVE_CONTACT_SUCCESS,
   REMOVE_CONTACT_ERROR,
+  SEARCH_CONTACTS_START,
+  SEARCH_CONTACTS_SUCCESS,
+  SEARCH_CONTACTS_ERROR,
 } from '../modules/contacts';
 import { AUTHORIZATION_REQUIRED } from '../modules/auth';
 import {
@@ -28,6 +31,7 @@ import {
   removeContact,
   addFavorite,
   removeFavorite,
+  searchContacts,
 } from '../../services/contacts';
 
 
@@ -104,6 +108,40 @@ export function* fetchFavoritesAsync() {
     console.log({ error });
     yield put({
       type: FETCH_FAVORITES_ERROR,
+      error
+    });
+  }
+}
+
+
+export function* searchContactsAsync(action) {
+  try {
+    const { query } = action.payload;
+    console.log('action', action, query);
+    const response = yield call(searchContacts, query);
+
+    if (response.error) {
+      // in case of error
+      yield put({
+        type: SEARCH_CONTACTS_ERROR,
+        payload: {
+          result: [],
+          error: response.error
+        }
+      });
+    } else {
+      // success
+      yield put({
+        type: SEARCH_CONTACTS_SUCCESS,
+        payload: {
+          result: response
+        }
+      });
+    }
+  } catch (error) {
+    console.log({ error });
+    yield put({
+      type: SEARCH_CONTACTS_ERROR,
       error
     });
   }
@@ -200,4 +238,8 @@ export function* watchAddContact() {
 
 export function* watchRemoveContact() {
   yield takeLatest(REMOVE_CONTACT_START, removeContactAsync);
+}
+
+export function* watchSearchContacts() {
+  yield takeLatest(SEARCH_CONTACTS_START, searchContactsAsync);
 }

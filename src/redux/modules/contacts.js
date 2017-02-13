@@ -6,7 +6,10 @@ const initialState = {
   isRefreshing: false,
   contacts: [],
   favorites: [],
+  contactSearchResults: [],
+  favoritesSearchResults: [],
   error: null,
+  isSearching: false,
 };
 
 
@@ -23,12 +26,18 @@ export const ADD_FAVORITE_ERROR = 'contacts/ADD_FAVORITE_ERROR';
 export const REMOVE_FAVORITE_START = 'contacts/REMOVE_FAVORITE_START';
 export const REMOVE_FAVORITE_SUCCESS = 'contacts/REMOVE_FAVORITE_SUCCESS';
 export const REMOVE_FAVORITE_ERROR = 'contacts/REMOVE_FAVORITE_ERROR';
+export const SEARCH_FAVORITES_START = 'contacts/SEARCH_FAVORITES_START';
+export const SEARCH_FAVORITES_SUCCESS = 'contacts/SEARCH_FAVORITES_SUCCESS';
+export const SEARCH_FAVORITES_ERROR = 'contacts/SEARCH_FAVORITES_ERROR';
 export const ADD_CONTACT_START = 'contacts/ADD_CONTACT_START';
 export const ADD_CONTACT_SUCCESS = 'contacts/ADD_CONTACT_SUCCESS';
 export const ADD_CONTACT_ERROR = 'contacts/ADD_CONTACT_ERROR';
 export const REMOVE_CONTACT_START = 'contacts/REMOVE_CONTACT_START';
 export const REMOVE_CONTACT_SUCCESS = 'contacts/REMOVE_CONTACT_SUCCESS';
 export const REMOVE_CONTACT_ERROR = 'contacts/REMOVE_CONTACT_ERROR';
+export const SEARCH_CONTACTS_START = 'contacts/SEARCH_CONTACTS_START';
+export const SEARCH_CONTACTS_SUCCESS = 'contacts/SEARCH_CONTACTS_SUCCESS';
+export const SEARCH_CONTACTS_ERROR = 'contacts/SEARCH_CONTACTS_ERROR';
 export const UPDATE_CONTACT = 'contacts/UPDATE_CONTACT';
 
 
@@ -41,6 +50,7 @@ export const fetchContacts = () => ({
 export const fetchFavorites = () => ({
   type: FETCH_FAVORITES_START
 });
+
 
 export const addFavorite = contact => ({
   type: ADD_FAVORITE_START,
@@ -70,6 +80,20 @@ export const removeContact = contact => ({
   }
 });
 
+export const searchContacts = query => ({
+  type: SEARCH_CONTACTS_START,
+  payload: {
+    query
+  }
+});
+
+export const searchFavorites = query => ({
+  type: SEARCH_FAVORITES_START,
+  payload: {
+    query
+  }
+});
+
 // updates any key/value pair in the state
 export const update = data => ({
   type: UPDATE_CONTACT,
@@ -88,6 +112,8 @@ export const actions = {
   addContact,
   removeFavorite,
   removeContact,
+  searchContacts,
+  searchFavorites,
 };
 
 

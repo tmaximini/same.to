@@ -4,6 +4,7 @@ import {
 } from 'react-native';
 
 import { connect } from 'react-redux';
+import Search from '../../components/Search';
 import ContactList from '../../components/ContactList';
 import PlusButton from '../../components/PlusButton';
 import { share } from '../../utils';
@@ -20,6 +21,7 @@ export default class Contacts extends Component {
   static propTypes = {
     contacts: PropTypes.arrayOf(PropTypes.object),
     fetchContacts: PropTypes.func.isRequired,
+    searchContacts: PropTypes.func.isRequired,
     isRefreshing: PropTypes.bool,
   };
 
@@ -32,11 +34,17 @@ export default class Contacts extends Component {
       contacts,
       fetchContacts,
       isRefreshing,
+      searchContacts,
       ...rest,
     } = this.props;
 
     return (
       <View style={styles.container}>
+        <Search
+          onCancel={() => this.setState({ members: contacts })}
+          onSearch={text => searchContacts(text)}
+          onChange={text => console.log('change')}
+        />
         <ContactList
           contacts={contacts}
           refresh={fetchContacts}

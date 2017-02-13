@@ -36,10 +36,12 @@ const getAvatar = c => (
 );
 
 const ContactListItem = ({ contact, addFavorite, addContact }) => {
-
+  const editFunc = () => Actions.editCreateProfile({ profile: contact });
   const handler = () => Actions.profile({
     profile: contact,
     title: getName(contact),
+    onRight: isMe(contact) ? editFunc : undefined,
+    rightTitle: isMe(contact) ? 'edit' : undefined,
   });
 
   return (

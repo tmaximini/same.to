@@ -18,3 +18,5 @@ export const addFavorite = memberId => post(
 );
 
 export const removeFavorite = memberId => del(`members/me/favorites/${memberId}`);
+
+export const searchContacts = query => get('members/search', { query, email: query });
