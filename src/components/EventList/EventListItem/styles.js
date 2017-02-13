@@ -58,6 +58,13 @@ export default StyleSheet.create({
     paddingTop: 7,
     textAlign: 'left',
     color: COLORS.WHITE,
+    fontWeight: 'bold',
+    textShadowColor: COLORS.DARK_GREY,
+    textShadowOffset: {
+      width: 2,
+      height: 2,
+    },
+    textShadowRadius: 2,
   },
   button: {
     position: 'absolute',

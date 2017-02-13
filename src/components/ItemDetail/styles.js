@@ -11,48 +11,21 @@ export default StyleSheet.create({
   top: {
     flex: 3,
   },
-  bgImage: {
-    flex: 5,
-    width: null,
-    height: null,
-    alignSelf: 'stretch',
-    overflow: 'hidden',
-    justifyContent: 'center',
-  },
   bottom: {
     flex: 5,
     paddingBottom: 60,
     backgroundColor: COLORS.BG_GREY,
   },
-  header: {
-    flex: 1,
-    backgroundColor: COLORS.GREY_OPAQ,
-    alignItems: 'flex-start',
-    justifyContent: 'center',
-  },
-  headerWrapper: {
-    paddingLeft: 20,
-    maxHeight: 100,
-    alignSelf: 'stretch',
-    flex: 1,
-    justifyContent: 'space-between',
-  },
-  date: {
-    height: 10,
-    flex: 1,
-    paddingTop: 8,
-  },
-  topRight: {
-    position: 'absolute',
-    right: 20,
-    bottom: 0,
-  },
-  titleWrap: {
-    flex: 1.2,
-  },
   title: {
     fontSize: 24,
+    fontWeight: 'bold',
     color: COLORS.WHITE,
+    textShadowColor: COLORS.DARK_GREY,
+    textShadowOffset: {
+      width: 2,
+      height: 2,
+    },
+    textShadowRadius: 2,
   },
   titleCaret: {
     color: COLORS.CYAN,
@@ -92,10 +65,6 @@ export default StyleSheet.create({
     flex: 1,
   },
   noItemsText: {
-    color: COLORS.WHITE,
-  },
-  participateText: {
-    paddingTop: 8,
     color: COLORS.WHITE,
   },
   actionButtons: {

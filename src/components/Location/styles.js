@@ -16,5 +16,11 @@ export default StyleSheet.create({
   locationText: {
     color: COLORS.WHITE,
     fontSize: 14,
+    textShadowColor: COLORS.DARK_GREY,
+    textShadowOffset: {
+      width: 1,
+      height: 1,
+    },
+    textShadowRadius: 2,
   },
 });

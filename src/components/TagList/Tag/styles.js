@@ -12,5 +12,11 @@ export default StyleSheet.create({
   tagText: {
     color: COLORS.WHITE,
     fontSize: 8,
+    textShadowColor: COLORS.DARK_GREY,
+    textShadowOffset: {
+      width: 0.5,
+      height: 0.5,
+    },
+    textShadowRadius: 1,
   }
 });

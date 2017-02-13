@@ -54,6 +54,13 @@ export default StyleSheet.create({
     fontSize: 20,
     textAlign: 'left',
     color: COLORS.WHITE,
+    fontWeight: 'bold',
+    textShadowColor: COLORS.DARK_GREY,
+    textShadowOffset: {
+      width: 2,
+      height: 2,
+    },
+    textShadowRadius: 3,
   },
   subTitle: {
     fontSize: 12,

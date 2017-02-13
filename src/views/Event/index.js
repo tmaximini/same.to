@@ -104,13 +104,19 @@ export default class Event extends Component {
 
     const getMiddleBoxStyles = () => (isEvent ? styles.box : [styles.box, styles.lastBox]);
 
+    const getHeader = () => (
+      <EventHeader
+        event={event}
+        background={background}
+        onToggle={() => {}}
+        participates
+      />
+    );
+
     return (
       <View style={styles.container}>
         <View style={styles.top}>
-          <EventHeader
-            event={event}
-            background={background}
-          />
+          {getHeader()}
           <View style={styles.details}>
             <View style={styles.buttons}>
               <TouchableHighlight

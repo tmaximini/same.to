@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { Actions } from 'react-native-router-flux';
 import { share } from '../../utils';
 import ContactList from '../ContactList';
+import EventHeader from '../EventHeader';
 import Date from '../Date';
 import Button from '../Button';
 import OnOffSwitch from '../OnOffSwitch';
@@ -44,41 +45,16 @@ const getTitle = (itemType, item) => {
 const ItemDetail = ({ itemType, participates, onToggle, createChat, item, ...rest }) => (
   <View style={styles.container}>
     <View style={styles.top}>
-      <Image
-        style={styles.bgImage}
-        source={plansee}
-        resizeMode="cover"
-      >
-        <View style={styles.header}>
-          <View style={styles.headerWrapper}>
-            <View style={styles.titleWrap}>
-              {getTitle(itemType, item)}
-            </View>
-            <View style={styles.date}>
-              <Date
-                date={item.startAt}
-              />
-            </View>
-            <View style={styles.tags}>
-              <TagList
-                tags={item.categories}
-              />
-            </View>
-            <View style={styles.topRight}>
-              <OnOffSwitch
-                value={participates}
-                onChange={() => onToggle({
-                  item,
-                  itemType
-                })}
-              />
-              <Text style={styles.participateText}>
-                Ich nehme teil
-              </Text>
-            </View>
-          </View>
-        </View>
-      </Image>
+      <EventHeader
+        event={item}
+        onToggle={() => onToggle({
+          item,
+          itemType
+        })}
+        participates={participates}
+        renderTitle={() => getTitle(itemType, item)}
+        background={plansee}
+      />
       <View style={styles.details}>
         <View style={styles.buttons}>
           <TouchableHighlight
@@ -104,11 +80,6 @@ const ItemDetail = ({ itemType, participates, onToggle, createChat, item, ...res
         </View>
       </View>
     </View>
-    {/*<Search
-      onChange={() => {}}
-      onSearch={() => {}}
-      onCancel={() => {}}
-    />*/}
     <View style={styles.bottom}>
       <ContactList
         contacts={item.members}
