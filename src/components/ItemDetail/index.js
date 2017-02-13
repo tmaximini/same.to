@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { View, Text, TouchableHighlight, Image, Dimensions } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { Actions } from 'react-native-router-flux';
 import { share } from '../../utils';
 import ContactList from '../ContactList';
 import Date from '../Date';
@@ -103,6 +104,11 @@ const ItemDetail = ({ itemType, participates, onToggle, createChat, item, ...res
         </View>
       </View>
     </View>
+    {/*<Search
+      onChange={() => {}}
+      onSearch={() => {}}
+      onCancel={() => {}}
+    />*/}
     <View style={styles.bottom}>
       <ContactList
         contacts={item.members}
@@ -124,7 +130,7 @@ const ItemDetail = ({ itemType, participates, onToggle, createChat, item, ...res
       />
       <Button
         text="Alle Teilnehmer"
-        onPress={() => {}}
+        onPress={() => Actions.participants({ members: item.members })}
         style={{ width: (width / 2) - 15 }}
         smallText
       />

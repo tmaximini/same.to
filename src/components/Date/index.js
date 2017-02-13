@@ -11,7 +11,7 @@ const Date = ({ date, size }) => (
       style={styles.dateIcon}
       size={size || 14}
     />
-    <Text style={styles.dateText}>{moment(date).calendar()}</Text>
+    <Text style={[styles.dateText, { fontSize: size || 14 }]}>{moment(date).calendar()}</Text>
   </View>
 );
 
