@@ -129,7 +129,7 @@ const actionsMap = {
       token: id,
       error: null,
       password: null,
-      isLoading: false,
+      // isLoading: false,
     };
   },
   [FACEBOOK_LOGIN_SUCCESS]: (state, action) => {

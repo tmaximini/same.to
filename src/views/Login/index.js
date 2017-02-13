@@ -55,6 +55,7 @@ export default class Login extends Component {
     const { login, update, email, password } = this.props;
     if (email && password) {
       login({ email, password });
+      setTimeout(() => this.props.update('isLoading', false), 2500);
     } else {
       update('error', 'E-Mail and Password required');
     }
@@ -84,7 +85,7 @@ export default class Login extends Component {
       .then(data => {
         this.props.update('facebook', data);
         this.props.facebookLogin({ access_token: data.accessToken });
-        this.props.update('isLoading', false);
+        setTimeout(() => this.props.update('isLoading', false), 2500);
       });
   }
 
