@@ -13,6 +13,10 @@ import { watchFetchEvents } from './events';
 import {
   watchFetchContacts,
   watchFetchFavorites,
+  watchAddContact,
+  watchRemoveContact,
+  watchAddFavorite,
+  watchRemoveFavorite,
 } from './contacts';
 import {
   watchCreateEvent,
@@ -59,6 +63,10 @@ export default function* root() {
     watchFetchEvents(),
     watchFetchContacts(),
     watchFetchFavorites(),
+    watchAddContact(),
+    watchRemoveContact(),
+    watchAddFavorite(),
+    watchRemoveFavorite(),
     watchCreateEvent(),
     watchUpdateEvent(),
     watchGeocodeEvent(),

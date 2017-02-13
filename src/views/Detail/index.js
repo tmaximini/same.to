@@ -8,6 +8,9 @@ import {
 import {
   createChat
 } from '../../redux/modules/chats';
+import {
+  actions as contactActions
+} from '../../redux/modules/contacts';
 import { getUserId } from '../../services/api';
 import styles from './styles';
 
@@ -15,6 +18,7 @@ import styles from './styles';
   state => state.detail,
   {
     ...detailActions,
+    ...contactActions,
     createChat
   }
 )
@@ -35,6 +39,7 @@ export default class Detail extends Component {
         <ItemDetail
           item={item}
           participates={item.memberIds.includes(userId)}
+          contactActions={contactActions}
           createChat={createChat}
           onToggle={toggleParticipate}
           {...rest}

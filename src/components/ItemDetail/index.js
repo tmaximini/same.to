@@ -40,7 +40,7 @@ const getTitle = (itemType, item) => {
   }
 };
 
-const ItemDetail = ({ itemType, participates, onToggle, createChat, item }) => (
+const ItemDetail = ({ itemType, participates, onToggle, createChat, item, ...rest }) => (
   <View style={styles.container}>
     <View style={styles.top}>
       <Image
@@ -106,6 +106,7 @@ const ItemDetail = ({ itemType, participates, onToggle, createChat, item }) => (
     <View style={styles.bottom}>
       <ContactList
         contacts={item.members}
+        {...rest}
       />
     </View>
     <View style={styles.actionButtons}>

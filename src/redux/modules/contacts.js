@@ -17,6 +17,18 @@ export const FETCH_CONTACTS_ERROR = 'contacts/FETCH_CONTACTS_ERROR';
 export const FETCH_FAVORITES_START = 'contacts/FETCH_FAVORITES_START';
 export const FETCH_FAVORITES_SUCCESS = 'contacts/FETCH_FAVORITES_SUCCESS';
 export const FETCH_FAVORITES_ERROR = 'contacts/FETCH_FAVORITES_ERROR';
+export const ADD_FAVORITE_START = 'contacts/ADD_FAVORITE_START';
+export const ADD_FAVORITE_SUCCESS = 'contacts/ADD_FAVORITE_SUCCESS';
+export const ADD_FAVORITE_ERROR = 'contacts/ADD_FAVORITE_ERROR';
+export const REMOVE_FAVORITE_START = 'contacts/REMOVE_FAVORITE_START';
+export const REMOVE_FAVORITE_SUCCESS = 'contacts/REMOVE_FAVORITE_SUCCESS';
+export const REMOVE_FAVORITE_ERROR = 'contacts/REMOVE_FAVORITE_ERROR';
+export const ADD_CONTACT_START = 'contacts/ADD_CONTACT_START';
+export const ADD_CONTACT_SUCCESS = 'contacts/ADD_CONTACT_SUCCESS';
+export const ADD_CONTACT_ERROR = 'contacts/ADD_CONTACT_ERROR';
+export const REMOVE_CONTACT_START = 'contacts/REMOVE_CONTACT_START';
+export const REMOVE_CONTACT_SUCCESS = 'contacts/REMOVE_CONTACT_SUCCESS';
+export const REMOVE_CONTACT_ERROR = 'contacts/REMOVE_CONTACT_ERROR';
 export const UPDATE_CONTACT = 'contacts/UPDATE_CONTACT';
 
 
@@ -28,6 +40,34 @@ export const fetchContacts = () => ({
 
 export const fetchFavorites = () => ({
   type: FETCH_FAVORITES_START
+});
+
+export const addFavorite = contact => ({
+  type: ADD_FAVORITE_START,
+  payload: {
+    contact
+  }
+});
+
+export const removeFavorite = contact => ({
+  type: REMOVE_FAVORITE_START,
+  payload: {
+    contact
+  }
+});
+
+export const addContact = contact => ({
+  type: ADD_CONTACT_START,
+  payload: {
+    contact
+  }
+});
+
+export const removeContact = contact => ({
+  type: REMOVE_CONTACT_START,
+  payload: {
+    contact
+  }
 });
 
 // updates any key/value pair in the state
@@ -44,6 +84,10 @@ export const actions = {
   fetchContacts,
   fetchFavorites,
   update,
+  addFavorite,
+  addContact,
+  removeFavorite,
+  removeContact,
 };
 
 

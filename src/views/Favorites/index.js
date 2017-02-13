@@ -32,6 +32,7 @@ export default class Favorites extends Component {
       favorites,
       fetchFavorites,
       isRefreshing,
+      ...rest
     } = this.props;
 
     return (
@@ -40,18 +41,9 @@ export default class Favorites extends Component {
           contacts={favorites}
           refresh={fetchFavorites}
           isRefreshing={isRefreshing}
+          contactActions={contactActions}
+          {...rest}
         />
-        {/*<PlusButton
-          itemSize={45}
-          radius={80}
-          startDegree={225}
-          endDegree={315}
-          onPress={share({
-            message: 'hey, join me on same.to',
-            title: 'Same.to invitation',
-            url: 'http://same.to/some-generic-invitaton-link/that/peter/has/to/implement'
-          })}
-        />*/}
       </View>
     );
   }

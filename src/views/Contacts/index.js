@@ -32,6 +32,7 @@ export default class Contacts extends Component {
       contacts,
       fetchContacts,
       isRefreshing,
+      ...rest,
     } = this.props;
 
     return (
@@ -40,6 +41,7 @@ export default class Contacts extends Component {
           contacts={contacts}
           refresh={fetchContacts}
           isRefreshing={isRefreshing}
+          {...rest}
         />
         <PlusButton
           itemSize={45}

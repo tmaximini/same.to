@@ -39,7 +39,7 @@ export default class ContactList extends Component {
   }
 
   render() {
-    const { setCurrentContact, refresh } = this.props;
+    const { setCurrentContact, refresh, ...rest } = this.props;
 
     return (
       <ListView
@@ -50,6 +50,7 @@ export default class ContactList extends Component {
           <ContactListItem
             contact={contact}
             setCurrentContact={setCurrentContact}
+            {...rest}
           />
         )}
         refreshControl={

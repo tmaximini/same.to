@@ -7,9 +7,15 @@ import {
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { getUserId } from '../../../services/api';
 import styles from './styles';
 
 const fallback = require('../../../assets/hj.jpg');
+
+const isMe = c => c.id === getUserId();
+
+const isContact = c => false; // TODO
+const isFavorite = c => false; // TODO
 
 const getName = c => (
   `${c.firstName} ${c.lastName}`
@@ -29,7 +35,7 @@ const getAvatar = c => (
   c && c.image && c.image.thumbs ? { uri: c.image.thumbs['320x320'] } : fallback
 );
 
-const ContactListItem = ({ contact }) => {
+const ContactListItem = ({ contact, addFavorite, addContact }) => {
 
   const handler = () => Actions.profile({
     profile: contact,
@@ -63,26 +69,30 @@ const ContactListItem = ({ contact }) => {
           </View>
         </View>
         <View style={styles.right}>
-          <View style={styles.actions}>
-            <TouchableHighlight
-              style={styles.iconButton}
-            >
-              <Icon
-                name="ios-star"
-                style={styles.icon}
-                size={23}
-              />
-            </TouchableHighlight>
-            <TouchableHighlight
-              style={styles.iconButton}
-            >
-              <Icon
-                name="ios-person-add"
-                style={styles.icon}
-                size={23}
-              />
-            </TouchableHighlight>
-          </View>
+          {!isMe(contact) && (
+            <View style={styles.actions}>
+              <TouchableHighlight
+                style={styles.iconButton}
+                onPress={() => addFavorite(contact)}
+              >
+                <Icon
+                  name="ios-star"
+                  style={styles.icon}
+                  size={23}
+                />
+              </TouchableHighlight>
+              <TouchableHighlight
+                style={styles.iconButton}
+                onPress={() => addContact(contact)}
+              >
+                <Icon
+                  name={isContact(contact) ? 'ios-person-add' : 'ios-person-add'}
+                  style={styles.icon}
+                  size={23}
+                />
+              </TouchableHighlight>
+            </View>
+          )}
         </View>
       </View>
       <View style={styles.bottom}>
@@ -110,6 +120,10 @@ const ContactListItem = ({ contact }) => {
 
 ContactListItem.propTypes = {
   contact: PropTypes.object.isRequired,
+  addFavorite: PropTypes.func.isRequired,
+  removeFavorite: PropTypes.func.isRequired,
+  addContact: PropTypes.func.isRequired,
+  removeContact: PropTypes.func.isRequired,
 };
 
 export default ContactListItem;
