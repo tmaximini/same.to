@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import Form from '../../layouts/form';
 import InputGroup from '../../components/InputGroup';
 import Input from '../../components/Input';
-import Button from '../../components/Button';
 import GeoInput from '../../components/GeoInput';
 import Datepicker from '../../components/Datepicker';
 import OnOffSwitch from '../../components/OnOffSwitch';

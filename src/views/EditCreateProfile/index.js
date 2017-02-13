@@ -14,7 +14,6 @@ import InputGroup from '../../components/InputGroup';
 import Input from '../../components/Input';
 // import PlusButton from '../../components/PlusButton';
 import GeoInput from '../../components/GeoInput';
-import Button from '../../components/Button';
 import { actions as profileActions } from '../../redux/modules/editCreateProfile';
 import { getProfile } from '../../services/profiles';
 

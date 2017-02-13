@@ -105,7 +105,7 @@ export default class Login extends Component {
             />
             <Text style={styles.or}>or</Text>
             <Button
-              text="Login"
+              text="Sign in"
               noBackground
               onPress={() => {
                 resetErrors();

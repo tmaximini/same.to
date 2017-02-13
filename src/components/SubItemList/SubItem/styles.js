@@ -28,12 +28,13 @@ export default StyleSheet.create({
   wrapper: {
     flex: 1,
     alignItems: 'center',
-    padding: 10,
+    padding: PADDINGS.STANDARD,
     backgroundColor: COLORS.GREY_OPAQ,
   },
   top: {
     flex: 1,
     ...MIXINS.floatLeft,
+    alignItems: 'flex-start'
   },
   bottom: {
     flex: 1,
@@ -57,9 +58,9 @@ export default StyleSheet.create({
   subTitle: {
     fontSize: 12,
     textAlign: 'left',
-    paddingLeft: 10,
+    paddingLeft: PADDINGS.STANDARD / 2,
     color: COLORS.WHITE,
-    paddingTop: 7,
+    paddingTop: PADDINGS.STANDARD / 2,
   },
   button: {
     fontSize: 26,

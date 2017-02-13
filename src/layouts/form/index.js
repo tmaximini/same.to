@@ -11,11 +11,13 @@ const Form = ({ children, buttonText, onSubmit, buttonDisabled }) => (
     >
       {children}
     </KeyboardScroll>
-    <Button
-      text={buttonText}
-      onPress={onSubmit}
-      disabled={buttonDisabled}
-    />
+    {(buttonText && onSubmit) ? (
+      <Button
+        text={buttonText}
+        onPress={onSubmit}
+        disabled={buttonDisabled}
+      />
+    ) : null}
   </View>
 );
 
@@ -25,8 +27,8 @@ Form.propTypes = {
     PropTypes.array
   ]),
   buttonDisabled: PropTypes.bool,
-  buttonText: PropTypes.string.isRequired,
-  onSubmit: PropTypes.func.isRequired,
+  buttonText: PropTypes.string,
+  onSubmit: PropTypes.func,
 };
 
 Form.defaultProps = {

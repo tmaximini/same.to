@@ -45,7 +45,7 @@ Select.propTypes = {
 Select.defaultProps = {
   onChange: () => {},
   items: [],
-  icon: 'caret-down',
+  icon: 'sort',
   placeholder: 'select one'
 };
 
