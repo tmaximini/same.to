@@ -6,6 +6,7 @@ export default StyleSheet.create({
     flexGrow: 0,
     flexBasis: 1,
     flexDirection: 'row',
+    zIndex: 99,
   },
   spacer: {
     width: PADDINGS.STANDARD,

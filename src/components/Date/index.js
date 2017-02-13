@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { View, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { formatDate } from '../../utils';
+import moment from 'moment';
 import styles from './styles';
 
 const Date = ({ date, size }) => (
@@ -11,7 +11,7 @@ const Date = ({ date, size }) => (
       style={styles.dateIcon}
       size={size || 14}
     />
-    <Text style={styles.dateText}>{formatDate(date)}</Text>
+    <Text style={styles.dateText}>{moment(date).calendar()}</Text>
   </View>
 );
 

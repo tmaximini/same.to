@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Home from './views/Home';
 import Contacts from './views/Contacts';
+import Participants from './views/Participants';
 import Favorites from './views/Favorites';
 import Login from './views/Login';
 import Register from './views/Register';
@@ -218,6 +219,12 @@ const Routes = () => (
       component={Register}
       title="Register"
       navigationBarStyle={styles.navBarLight}
+    />
+    <Scene
+      key="participants"
+      component={Participants}
+      title="All Participants"
+      sceneStyle={navBarPadding}
     />
   </RouterWithRedux>
 );

@@ -1,8 +1,9 @@
 import React, { Component, PropTypes } from 'react';
-import { View, Image, Text, TouchableHighlight } from 'react-native';
+import { View, Text, TouchableHighlight } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { share } from '../../utils';
+import EventHeader from '../../components/EventHeader';
 import SubItemList from '../../components/SubItemList';
 import PlusButton from '../../components/PlusButton';
 
@@ -84,6 +85,7 @@ export default class Event extends Component {
       resetActivity,
       resetAccommodation,
       setDetail,
+      event,
     } = this.props;
     const {
       name,
@@ -92,10 +94,10 @@ export default class Event extends Component {
       activities,
       accommodations,
       trips,
-      // members,
+      members,
       type,
       id,
-    } = this.props.event;
+    } = event;
 
     const hasSubItems = accommodations.length || trips.length;
     const isEvent = type === 'event';
@@ -105,16 +107,10 @@ export default class Event extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.top}>
-          <Image
-            style={styles.bgImage}
-            source={background}
-          >
-            <View style={styles.header}>
-              <Text style={styles.title}>
-                {name}
-              </Text>
-            </View>
-          </Image>
+          <EventHeader
+            event={event}
+            background={background}
+          />
           <View style={styles.details}>
             <View style={styles.buttons}>
               <TouchableHighlight
@@ -138,7 +134,10 @@ export default class Event extends Component {
                 <Text style={styles.boxText}>Invite</Text>
               </TouchableHighlight>
               {isEvent && (
-                <TouchableHighlight style={[styles.box, styles.lastBox]}>
+                <TouchableHighlight
+                  style={[styles.box, styles.lastBox]}
+                  onPress={() => Actions.participants({ members })}
+                >
                   <Text style={styles.boxText}>Participants</Text>
                 </TouchableHighlight>
               )}

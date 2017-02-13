@@ -49,7 +49,7 @@ export function* handleLoginAsync(action) {
         yield call(Actions.tabbar, { key: 'tabbar', type: 'replace' });
         yield call(Actions.home, { type: 'replace' });
       } else {
-        yield call(Actions.editCreateProfile, { type: 'replace', profile });
+        yield call(Actions.editCreateProfile, { type: 'replace', profile, firstRun: true });
       }
     }
   } catch (error) {
@@ -93,7 +93,7 @@ export function* handleFBLoginAsync(action) {
         yield call(Actions.tabbar, { key: 'tabbar', type: 'replace' });
         yield call(Actions.home, { type: 'replace' });
       } else {
-        yield call(Actions.editCreateProfile, { type: 'replace', profile });
+        yield call(Actions.editCreateProfile, { type: 'replace', profile, firstRun: true });
       }
     }
   } catch (error) {

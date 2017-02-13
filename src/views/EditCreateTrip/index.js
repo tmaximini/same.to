@@ -1,15 +1,9 @@
 import React, { Component, PropTypes } from 'react';
-import {
-  View,
-  Text,
-} from 'react-native';
-
 import { connect } from 'react-redux';
 import { formatDate } from '../../utils';
 import Form from '../../layouts/form';
 import OnOffSwitch from '../../components/OnOffSwitch';
 import HR from '../../components/HR';
-import Button from '../../components/Button';
 import GeoInput from '../../components/GeoInput';
 import Datepicker from '../../components/Datepicker';
 import CheckboxList from '../../components/CheckboxList';
