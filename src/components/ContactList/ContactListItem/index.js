@@ -23,9 +23,17 @@ const getName = c => (
 const getLocation = c => (
   c.location ? c.location.locality : 'Unknown'
 );
-const getOccupaction = c => (
-  `${c.occupation} bei ${c.company}`
-);
+const getOccupaction = c => {
+  if (c.occupation && c.company) {
+    return `${c.occupation} bei ${c.company}`;
+  } else if (c.occupation) {
+    return c.occupation;
+  } else if (c.company) {
+    return c.company;
+  }
+  return null;
+};
+
 const getInterests = c => (
   (c.interests && c.interests.length > 0)
     ? c.interests.join(', ')

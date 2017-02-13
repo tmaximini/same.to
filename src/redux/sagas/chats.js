@@ -71,12 +71,6 @@ export function* createChatAsync(action) {
           error: response.error
         }
       });
-      // if (response.error.statusCode === 401) {
-      //   yield put({
-      //     type: AUTHORIZATION_REQUIRED
-      //   });
-      //   yield call(Actions.login);
-      // }
     } else {
       // success
       yield put({

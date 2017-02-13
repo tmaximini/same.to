@@ -133,6 +133,7 @@ const ItemDetail = ({ itemType, participates, onToggle, createChat, item, ...res
         onPress={() => Actions.participants({ members: item.members })}
         style={{ width: (width / 2) - 15 }}
         smallText
+        disabled={item.memberIds.length === 0}
       />
     </View>
   </View>
