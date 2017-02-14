@@ -11,6 +11,7 @@ import { connect } from 'react-redux';
 import ImagePicker from 'react-native-image-picker';
 import Form from '../../layouts/form';
 import InputGroup from '../../components/InputGroup';
+import GenderSelect from '../../components/GenderSelect';
 import Input from '../../components/Input';
 // import PlusButton from '../../components/PlusButton';
 import GeoInput from '../../components/GeoInput';
@@ -118,7 +119,7 @@ export default class EditCreateProfile extends Component {
       update,
       geocodeLocation,
       locationString,
-      isNew,
+      // isNew,
       updateRemoteProfile,
     } = this.props;
 
@@ -197,6 +198,10 @@ export default class EditCreateProfile extends Component {
             placeholder="Hobbies"
             value={interests ? interests.join(', ') : null}
             onChangeText={(text) => update('interests', text.split(', '))}
+          />
+          <GenderSelect
+            onChange={(val) => update('gender', val)}
+            gender="male"
           />
         </View>
       </Form>
