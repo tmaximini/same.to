@@ -2,14 +2,14 @@ import {
   StyleSheet
 } from 'react-native';
 
-import { COLORS } from '../../constants';
+import { COLORS, FONT_SIZES } from '../../constants';
 
 export default StyleSheet.create({
   container: {
     flexGrow: 1,
   },
   top: {
-    flex: 3,
+    flex: 4,
   },
   bottom: {
     flex: 5,
@@ -17,7 +17,7 @@ export default StyleSheet.create({
     backgroundColor: COLORS.BG_GREY,
   },
   title: {
-    fontSize: 24,
+    fontSize: FONT_SIZES.title(),
     fontWeight: 'bold',
     color: COLORS.WHITE,
     textShadowColor: COLORS.DARK_GREY,
@@ -29,8 +29,8 @@ export default StyleSheet.create({
   },
   titleCaret: {
     color: COLORS.CYAN,
-    padding: 5,
-    top: -6,
+    paddingHorizontal: 5,
+    top: -4,
   },
   details: {
     flex: 1,

@@ -44,7 +44,10 @@ const getAvatar = c => (
 );
 
 const ContactListItem = ({ contact, addFavorite, addContact }) => {
-  const editFunc = () => Actions.editCreateProfile({ profile: contact });
+  const editFunc = () => Actions.editCreateProfile({
+    profile: contact,
+    title: 'Edit Profile'
+  });
   const handler = () => Actions.profile({
     profile: contact,
     title: getName(contact),

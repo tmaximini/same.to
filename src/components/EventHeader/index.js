@@ -21,12 +21,12 @@ const EventHeader = ({ event, renderTitle, onToggle, participates, background })
       </View>
       <View style={{ flex: 1 }}>
         {renderTitle ? renderTitle() : (
-          <Text style={styles.title}>
+          <Text numberOfLines={1} style={styles.title}>
             {event.name}
           </Text>
         )}
       </View>
-      <View style={{ flex: 1, justifyContent: 'center', alignSelf: 'stretch' }}>
+      <View style={{ flex: 1, justifyContent: 'center', alignSelf: 'stretch', alignItems: 'flex-start' }}>
         {event.location && (
           <Location
             location={event.location}

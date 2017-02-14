@@ -5,9 +5,6 @@ import styles from './styles';
 const fallback = require('../../assets/hj.jpg');
 
 const Profile = ({ profile }) => {
-
-  console.log('profile', profile);
-
   const avatar = profile.image ? { uri: profile.image.thumbs['320x320'] } : fallback;
 
   return (

@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { COLORS, PADDINGS } from '../../constants';
+import { COLORS, PADDINGS, FONT_SIZES } from '../../constants';
 
 export default StyleSheet.create({
   bgImage: {
@@ -14,10 +14,11 @@ export default StyleSheet.create({
     backgroundColor: COLORS.GREY_OPAQ,
     alignItems: 'flex-start',
     justifyContent: 'center',
-    padding: 2 * PADDINGS.STANDARD,
+    paddingHorizontal: 2 * PADDINGS.STANDARD,
+    paddingVertical: PADDINGS.STANDARD,
   },
   title: {
-    fontSize: 24,
+    fontSize: FONT_SIZES.title(),
     fontWeight: 'bold',
     color: COLORS.WHITE,
     textShadowColor: COLORS.DARK_GREY,
@@ -35,5 +36,6 @@ export default StyleSheet.create({
   participateText: {
     paddingTop: 6,
     color: COLORS.WHITE,
+    fontSize: FONT_SIZES.topInfo(),
   },
 });

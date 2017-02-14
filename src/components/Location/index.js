@@ -7,7 +7,7 @@ const Location = ({ location, size }) => {
 
   const string = typeof location === 'string'
     ? location
-    : (location.locality || location.formattedAddress);
+    : (location.locality || location.formattedAddress || 'unknown');
 
   return (
     <View style={styles.container}>

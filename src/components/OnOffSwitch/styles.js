@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { COLORS } from '../../constants';
+import { COLORS, FONT_SIZES } from '../../constants';
 
 export default StyleSheet.create({
   container: {
@@ -12,7 +12,8 @@ export default StyleSheet.create({
   },
   label: {
     padding: 5,
-    color: COLORS.WHITE
+    color: COLORS.WHITE,
+    fontSize: FONT_SIZES.topInfo(),
   }
 
 });

@@ -2,7 +2,7 @@ import {
   StyleSheet
 } from 'react-native';
 
-import { COLORS } from '../../constants';
+import { COLORS, FONT_SIZES, PADDINGS } from '../../constants';
 
 export default StyleSheet.create({
   container: {
@@ -27,10 +27,6 @@ export default StyleSheet.create({
     backgroundColor: COLORS.GREY_OPAQ,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  title: {
-    fontSize: 24,
-    color: COLORS.WHITE,
   },
   details: {
     flex: 1,
@@ -57,10 +53,11 @@ export default StyleSheet.create({
     flex: 1,
   },
   noItems: {
-    padding: 10,
+    padding: PADDINGS.STANDARD,
     flex: 1,
   },
   noItemsText: {
     color: COLORS.WHITE,
+    fontSize: FONT_SIZES.topInfo(),
   }
 });

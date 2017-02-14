@@ -20,7 +20,7 @@ const getTitle = (itemType, item) => {
     case 'trip':
       return (
         <View style={{ flexDirection: 'row' }}>
-          <Text style={styles.title}>
+          <Text numberOfLines={1} style={[styles.title]}>
             {item.pickupLocation ? item.pickupLocation.locality : 'unknown'}
           </Text>
           <Icon
@@ -28,14 +28,14 @@ const getTitle = (itemType, item) => {
             name="ios-arrow-forward"
             style={styles.titleCaret}
           />
-          <Text style={styles.title}>
+          <Text numberOfLines={1} style={styles.title}>
             {item.destinationLocation ? item.destinationLocation.locality : 'unknown'}
           </Text>
         </View>
       );
     default:
       return (
-        <Text style={styles.title}>
+        <Text numberOfLines={1} style={styles.title}>
           {item.name}
         </Text>
       );

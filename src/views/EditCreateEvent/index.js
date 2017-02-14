@@ -74,7 +74,7 @@ export default class EditCreatevent extends Component {
           value={locationString}
           onChangeText={(text) => updateEvent('locationString', text)}
           onAdressSelect={geocodeLocation}
-          zIndex={99}
+          zIndex={100}
         />
         <InputGroup>
           <Datepicker

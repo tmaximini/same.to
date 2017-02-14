@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { COLORS, MIXINS } from '../../constants';
+import { COLORS, MIXINS, FONT_SIZES } from '../../constants';
 
 export default StyleSheet.create({
   container: {
@@ -14,7 +14,7 @@ export default StyleSheet.create({
   },
   dateText: {
     color: COLORS.WHITE,
-    fontSize: 14,
+    fontSize: FONT_SIZES.topInfo(),
     paddingTop: 1,
     textShadowColor: COLORS.DARK_GREY,
     textShadowOffset: {

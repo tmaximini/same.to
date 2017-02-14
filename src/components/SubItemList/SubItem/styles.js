@@ -2,7 +2,7 @@ import {
   StyleSheet
 } from 'react-native';
 
-import { COLORS, MIXINS, PADDINGS } from '../../../constants';
+import { COLORS, MIXINS, PADDINGS, FONT_SIZES } from '../../../constants';
 
 export default StyleSheet.create({
   container: {
@@ -51,7 +51,7 @@ export default StyleSheet.create({
     right: 0,
   },
   title: {
-    fontSize: 20,
+    fontSize: FONT_SIZES.subTitle(),
     textAlign: 'left',
     color: COLORS.WHITE,
     fontWeight: 'bold',

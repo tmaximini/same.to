@@ -1,3 +1,7 @@
+import { Dimensions, PixelRatio } from 'react-native';
+
+const { width } = Dimensions.get('window');
+
 
 export const COLORS = {
   BG_GREY: '#272C34',
@@ -9,9 +13,9 @@ export const COLORS = {
 };
 
 export const FONT_SIZES = {
-  BIG: 24,
-  TITLE: 32,
-  BUTTON: 16,
+  title: () => (width / PixelRatio > 400 ? 24 : 20),
+  subTitle: () => (width / PixelRatio > 400 ? 20 : 18),
+  topInfo: () => (width / PixelRatio > 400 ? 14 : 12),
 };
 
 export const PADDINGS = {

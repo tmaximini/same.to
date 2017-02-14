@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import { COLORS, PADDINGS } from '../../../constants';
+import { COLORS, PADDINGS, FONT_SIZES } from '../../../constants';
 
 export default StyleSheet.create({
   container: {
@@ -54,7 +54,7 @@ export default StyleSheet.create({
     flexDirection: 'column',
   },
   title: {
-    fontSize: 20,
+    fontSize: FONT_SIZES.subTitle(),
     paddingTop: 7,
     textAlign: 'left',
     color: COLORS.WHITE,

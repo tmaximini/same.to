@@ -111,7 +111,7 @@ const ensureDatesAreValid = event => {
 const actionsMap = {
   [CREATE_EVENT_SUCCESS]: (state, action) => ({
     ...state,
-    event: action.payload.event,
+    event: makeDefaultEvent(),
   }),
   [RESET_EVENT]: (state) => ({
     ...state,

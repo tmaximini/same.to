@@ -68,12 +68,16 @@ const EventListItem = ({ event, setCurrentEvent, setEvent }) => {
             </View>
           </View>
           <View style={styles.bottom}>
-            <Date
-              date={startAt}
-            />
-            <Location
-              location={location}
-            />
+            {startAt && (
+              <Date
+                date={startAt}
+              />
+            )}
+            {location && (
+              <Location
+                location={location}
+              />
+            )}
           </View>
         </View>
       </Image>

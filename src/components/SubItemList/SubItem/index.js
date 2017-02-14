@@ -74,14 +74,14 @@ const SubItem = ({ itemType, item, onSelect, setDetail }) => {
         >
           <View style={styles.wrapper}>
             <View style={styles.top}>
-              <Text style={styles.title}>{title}</Text>
+              <Text numberOfLines={1} style={styles.title}>{title}</Text>
               {itemType === 'trip' &&
-                <Text style={styles.subTitle}>{getSubTitle(item)}</Text>
+                <Text numberOfLines={1} style={styles.subTitle}>{getSubTitle(item)}</Text>
               }
             </View>
             <View style={styles.middle}>
               <Icon
-                size={30}
+                size={32}
                 name="ios-arrow-forward"
                 style={styles.titleCaret}
               />

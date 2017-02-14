@@ -37,7 +37,7 @@ const navTabpadding = {
 };
 
 const cyanText = {
-  color: COLORS.CYAN
+  color: COLORS.CYAN,
 };
 
 const makeTabIcon = (icon) => ({ selected, title }) => (
@@ -54,7 +54,7 @@ const makeTabIcon = (icon) => ({ selected, title }) => (
 );
 
 const getSceneStyle = () => ({
-  backgroundColor: COLORS.BG_GREY,
+  backgroundColor: 'transparent',
 });
 
 const styles = StyleSheet.create({
