@@ -99,7 +99,7 @@ export default class Event extends Component {
       id,
     } = event;
 
-    const hasSubItems = accommodations.length || trips.length;
+    const hasSubItems = accommodations.length || trips.length || activities.length;
     const isEvent = type === 'event';
 
     const getMiddleBoxStyles = () => (isEvent ? styles.box : [styles.box, styles.lastBox]);

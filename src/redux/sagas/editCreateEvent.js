@@ -53,7 +53,7 @@ export function* createEventAsync(action) {
         type: FETCH_EVENTS_START
       });
       yield call(delay, 100);
-      yield call(Actions.home);
+      yield call(Actions.pop, { refresh: {} });
     }
   } catch (error) {
     console.log({ error });
