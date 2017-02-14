@@ -87,6 +87,8 @@ const ContactListItem = ({ contact, addFavorite, addContact }) => {
               <TouchableHighlight
                 style={styles.iconButton}
                 onPress={() => addFavorite(contact)}
+                activeOpacity={0.6}
+                underlayColor="transparent"
               >
                 <Icon
                   name="ios-star"
@@ -97,6 +99,8 @@ const ContactListItem = ({ contact, addFavorite, addContact }) => {
               <TouchableHighlight
                 style={styles.iconButton}
                 onPress={() => addContact(contact)}
+                activeOpacity={0.6}
+                underlayColor="transparent"
               >
                 <Icon
                   name={isContact(contact) ? 'ios-person-add' : 'ios-person-add'}

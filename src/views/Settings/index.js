@@ -26,11 +26,15 @@ const settings = [
     }
   },
   {
-    title: 'Impressum',
+    title: 'Freunde einladen',
     action: () => {},
   },
   {
-    title: 'Whatever',
+    title: 'Feedback senden',
+    action: () => {},
+  },
+  {
+    title: 'Impressum',
     action: () => {},
   },
 ];
@@ -44,6 +48,8 @@ const Settings = () => (
             key={s.title}
             style={styles.setting}
             onPress={s.action}
+            activeOpacity={0.6}
+            underlayColor="transparent"
           >
             <Text style={styles.settingText}>
               {s.title}
