@@ -15,5 +15,6 @@ export default StyleSheet.create({
   buttonText: {
     fontSize: 18,
     textAlign: 'center',
+    fontFamily: 'Montserrat',
   },
 });

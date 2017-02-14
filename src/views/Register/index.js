@@ -82,11 +82,11 @@ export default class Login extends Component {
               />
             </View>
             {error && <Text style={styles.error}>{error}</Text>}
-            <Input
+            {/*<Input
               placeholder="Username"
               value={username}
               onChangeText={(text) => update('username', text)}
-            />
+            />*/}
             <Input
               placeholder="E-Mail"
               value={email}

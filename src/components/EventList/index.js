@@ -10,6 +10,7 @@ export default class EventList extends Component {
     events: PropTypes.arrayOf(PropTypes.object),
     refresh: PropTypes.func.isRequired,
     setCurrentEvent: PropTypes.func.isRequired,
+    setDetail: PropTypes.func.isRequired,
     setEvent: PropTypes.func.isRequired,
     isRefreshing: PropTypes.bool.isRequired,
   }
@@ -37,7 +38,7 @@ export default class EventList extends Component {
   }
 
   render() {
-    const { setCurrentEvent, setEvent } = this.props;
+    const { setCurrentEvent, setEvent, setDetail } = this.props;
 
     return (
       <ListView
@@ -48,6 +49,7 @@ export default class EventList extends Component {
           event={event}
           setCurrentEvent={setCurrentEvent}
           setEvent={setEvent}
+          setDetail={setDetail}
         />}
         refreshControl={
           <RefreshControl

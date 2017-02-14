@@ -7,6 +7,7 @@ import { COLORS, FONT_SIZES, PADDINGS } from '../../constants';
 export default StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: COLORS.BG_GREY,
   },
   top: {
     flex: 3,
@@ -38,7 +39,7 @@ export default StyleSheet.create({
   box: {
     flex: 1,
     backgroundColor: COLORS.DARK_GREY,
-    borderColor: COLORS.WHITE,
+    borderColor: COLORS.BG_GREY,
     borderRightWidth: 1,
     alignItems: 'center',
     justifyContent: 'center',
@@ -48,6 +49,7 @@ export default StyleSheet.create({
   },
   boxText: {
     color: COLORS.WHITE,
+    fontFamily: 'Montserrat',
   },
   info: {
     flex: 1,
@@ -59,5 +61,6 @@ export default StyleSheet.create({
   noItemsText: {
     color: COLORS.WHITE,
     fontSize: FONT_SIZES.topInfo(),
+    fontFamily: 'Montserrat',
   }
 });

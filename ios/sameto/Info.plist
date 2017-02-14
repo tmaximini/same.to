@@ -63,6 +63,9 @@
 	<string>we need your profile photo</string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Montserrat-SemiBold.otf</string>
+		<string>Montserrat-Bold.otf</string>
+		<string>Montserrat-Regular.otf</string>
 		<string>Andale Mono.ttf</string>
 		<string>Arial Black.ttf</string>
 		<string>Arial.ttf</string>

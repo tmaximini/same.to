@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import { COLORS, PADDINGS, FONT_SIZES } from '../../../constants';
+import { COLORS, PADDINGS, MIXINS, FONT_SIZES } from '../../../constants';
 
 export default StyleSheet.create({
   container: {
@@ -54,17 +54,10 @@ export default StyleSheet.create({
     flexDirection: 'column',
   },
   title: {
+    ...MIXINS.title,
     fontSize: FONT_SIZES.subTitle(),
     paddingTop: 7,
     textAlign: 'left',
-    color: COLORS.WHITE,
-    fontWeight: 'bold',
-    textShadowColor: COLORS.DARK_GREY,
-    textShadowOffset: {
-      width: 2,
-      height: 2,
-    },
-    textShadowRadius: 2,
   },
   button: {
     position: 'absolute',

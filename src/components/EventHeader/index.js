@@ -26,7 +26,7 @@ const EventHeader = ({ event, renderTitle, onToggle, participates, background })
           </Text>
         )}
       </View>
-      <View style={{ flex: 1, justifyContent: 'center', alignSelf: 'stretch', alignItems: 'flex-start' }}>
+      <View style={{ flex: 1, justifyContent: 'flex-end', alignSelf: 'stretch', alignItems: 'flex-end' }}>
         {event.location && (
           <Location
             location={event.location}

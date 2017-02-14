@@ -134,6 +134,7 @@ export default class EditCreateProfile extends Component {
       gender,
       location,
       image,
+      signupCompleted,
     } = profile;
 
     let fbImageUri;
@@ -148,7 +149,7 @@ export default class EditCreateProfile extends Component {
 
     return (
       <Form
-        buttonText={this.props.isNew ? 'Save' : 'Update'}
+        buttonText={signupCompleted ? 'Update' : 'Continue'}
         onSubmit={() => updateRemoteProfile(profile)}
         buttonDisabled={!this.isValid()}
       >
@@ -201,7 +202,7 @@ export default class EditCreateProfile extends Component {
           />
           <GenderSelect
             onChange={(val) => update('gender', val)}
-            gender="male"
+            gender={gender}
           />
         </View>
       </Form>

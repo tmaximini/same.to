@@ -51,18 +51,12 @@ export default StyleSheet.create({
     right: 0,
   },
   title: {
+    ...MIXINS.title,
     fontSize: FONT_SIZES.subTitle(),
     textAlign: 'left',
-    color: COLORS.WHITE,
-    fontWeight: 'bold',
-    textShadowColor: COLORS.DARK_GREY,
-    textShadowOffset: {
-      width: 2,
-      height: 2,
-    },
-    textShadowRadius: 3,
   },
   subTitle: {
+    ...MIXINS.topInfo,
     fontSize: 12,
     textAlign: 'left',
     paddingLeft: PADDINGS.STANDARD / 2,

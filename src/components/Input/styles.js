@@ -19,6 +19,7 @@ export default StyleSheet.create({
     backgroundColor: COLORS.DARK_GREY,
     borderRadius: 5,
     color: COLORS.WHITE,
+    fontFamily: 'Montserrat',
   },
   icon: {
     position: 'absolute',

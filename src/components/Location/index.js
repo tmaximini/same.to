@@ -14,7 +14,7 @@ const Location = ({ location, size }) => {
       <Icon
         name="map-marker"
         style={styles.locationIcon}
-        size={size || 14}
+        size={size || 16}
       />
       <Text style={styles.locationText}>{string}</Text>
     </View>

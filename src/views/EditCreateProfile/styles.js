@@ -25,6 +25,7 @@ export default StyleSheet.create({
   },
   avatarText: {
     color: COLORS.WHITE,
+    fontFamily: 'Montserrat',
   }
 });
 

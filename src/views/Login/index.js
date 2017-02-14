@@ -124,6 +124,7 @@ export default class Login extends Component {
           <Button
             onPress={this.onFacebookLogin}
             text="Mit Facebook anmelden"
+            noResize
           />
           <Text style={styles.or}>or</Text>
           {error && <Text style={styles.error}>{error}</Text>}

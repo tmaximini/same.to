@@ -3,6 +3,7 @@ import { View, Navigator, Text, StyleSheet } from 'react-native';
 import { Scene, Router } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Home from './views/Home';
 import Contacts from './views/Contacts';
 import Participants from './views/Participants';
@@ -38,16 +39,30 @@ const navTabpadding = {
 
 const cyanText = {
   color: COLORS.CYAN,
+  fontFamily: 'Montserrat',
 };
 
-const makeTabIcon = (icon) => ({ selected, title }) => (
+const makeTabIcon = (icon, size = 22, material = false) => ({ selected, title }) => (
   <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-    <Icon
-      name={icon}
-      size={22}
-      style={{ color: selected ? COLORS.CYAN : COLORS.WHITE }}
-    />
-    <Text style={{ color: selected ? COLORS.CYAN : COLORS.WHITE, fontSize: 10 }}>
+    {material ? (
+      <MaterialIcon
+        name={icon}
+        size={size}
+        style={{ color: selected ? COLORS.CYAN : COLORS.WHITE }}
+      />
+    ) : (
+      <Icon
+        name={icon}
+        size={size}
+        style={{ color: selected ? COLORS.CYAN : COLORS.WHITE }}
+      />
+    )}
+    <Text style={{
+      color: selected ? COLORS.CYAN : COLORS.WHITE,
+      fontSize: 10,
+      paddingTop: 22 - size,
+      fontFamily: 'Montserrat',
+    }}>
       {title}
     </Text>
   </View>
@@ -67,7 +82,8 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0,
   },
   navBarTitle: {
-    color: COLORS.WHITE
+    color: COLORS.WHITE,
+    fontFamily: 'Montserrat',
   },
   barButtonTextStyle: {
     color: COLORS.CYAN
@@ -115,21 +131,21 @@ const Routes = () => (
         key="contacts"
         component={Contacts}
         title="Kontakte"
-        icon={makeTabIcon('user-circle-o')}
+        icon={makeTabIcon('user-circle-o', 20)}
         sceneStyle={navTabpadding}
       />
       <Scene
         key="chats"
         component={Chats}
         title="Chats"
-        icon={makeTabIcon('comment')}
+        icon={makeTabIcon('comment', 20)}
         sceneStyle={navTabpadding}
       />
       <Scene
         key="settings"
         component={Settings}
         title="Mehr"
-        icon={makeTabIcon('ellipsis-h')}
+        icon={makeTabIcon('dots-horizontal', 22, true)}
         sceneStyle={navTabpadding}
       />
     </Scene>
@@ -161,7 +177,7 @@ const Routes = () => (
       key="event"
       component={EventDetail}
       sceneStyle={navBarPadding}
-      title="Event"
+      title="Event Details"
       rightButtonTextStyle={cyanText}
     />
     <Scene

@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions, PixelRatio } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 import { COLORS, MIXINS, PADDINGS } from '../../../constants';
 
 const { width } = Dimensions.get('window');
@@ -49,6 +49,7 @@ export default StyleSheet.create({
   itemText: {
     color: COLORS.WHITE,
     fontSize: 8,
-    textAlign: 'center'
+    textAlign: 'center',
+    fontFamily: 'Montserrat',
   }
 });

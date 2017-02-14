@@ -17,7 +17,7 @@ export const COLORS = {
 export const FONT_SIZES = {
   title: () => (width > 320 ? 24 : 20),
   subTitle: () => (width > 320 ? 20 : 18),
-  topInfo: () => (width > 320 ? 14 : 12),
+  topInfo: () => (width > 320 ? 12 : 10),
 };
 
 export const PADDINGS = {
@@ -41,5 +41,22 @@ export const MIXINS = {
     width: null,
     height: null,
     alignSelf: 'stretch',
+  },
+  title: {
+    color: COLORS.WHITE,
+    fontSize: FONT_SIZES.title(),
+    fontFamily: 'Montserrat',
+    fontWeight: 'bold',
+    textShadowColor: COLORS.DARK_GREY,
+    textShadowOffset: {
+      width: 2,
+      height: 2,
+    },
+    textShadowRadius: 3,
+  },
+  topInfo: {
+    color: COLORS.WHITE,
+    fontSize: FONT_SIZES.topInfo(),
+    fontFamily: 'Montserrat',
   }
 };

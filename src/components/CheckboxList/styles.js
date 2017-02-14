@@ -8,6 +8,7 @@ export default StyleSheet.create({
   checkboxLabel: {
     marginBottom: PADDINGS.STANDARD,
     color: COLORS.WHITE,
+    fontFamily: 'Montserrat',
   },
   itemWrapper: {
     flexDirection: 'row',

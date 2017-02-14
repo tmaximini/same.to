@@ -29,7 +29,7 @@ export default StyleSheet.create({
   settingText: {
     color: COLORS.WHITE,
     fontSize: 16,
-    fontWeight: 'bold',
+    fontFamily: 'Montserrat',
   },
   logoWrapper: {
     flex: 1,

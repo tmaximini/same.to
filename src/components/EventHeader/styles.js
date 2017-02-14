@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { COLORS, PADDINGS, FONT_SIZES } from '../../constants';
+import { COLORS, PADDINGS, MIXINS } from '../../constants';
 
 export default StyleSheet.create({
   bgImage: {
@@ -18,24 +18,15 @@ export default StyleSheet.create({
     paddingVertical: PADDINGS.STANDARD,
   },
   title: {
-    fontSize: FONT_SIZES.title(),
-    fontWeight: 'bold',
-    color: COLORS.WHITE,
-    textShadowColor: COLORS.DARK_GREY,
-    textShadowOffset: {
-      width: 2,
-      height: 2,
-    },
-    textShadowRadius: 3,
+    ...MIXINS.title,
   },
   topRight: {
     position: 'absolute',
     right: 0,
-    bottom: 0,
+    bottom: 4,
   },
   participateText: {
+    ...MIXINS.topInfo,
     paddingTop: 6,
-    color: COLORS.WHITE,
-    fontSize: FONT_SIZES.topInfo(),
   },
 });

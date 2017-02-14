@@ -56,6 +56,14 @@
 		D00E226B484A44E99C397025 /* Andale Mono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83EDF89BBAFC4963B7CEC4A1 /* Andale Mono.ttf */; };
 		DE01159EFB8D425A818E863D /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C6FFC3B71A4EB09A1290F2 /* libReact.a */; };
 		E5885DC16AF14065A7A70E04 /* Courier New.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FDD47C790C044D438E480C57 /* Courier New.ttf */; };
+		E94EA1DC1E534DF800F655AB /* Montserrat-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = E95B6D1A1E534BF20035B5A5 /* Montserrat-Black.otf */; };
+		E94EA1DD1E534DF800F655AB /* Montserrat-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E95B6D1B1E534BF20035B5A5 /* Montserrat-Bold.otf */; };
+		E94EA1DE1E534DF800F655AB /* Montserrat-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E95B6D1C1E534BF20035B5A5 /* Montserrat-ExtraBold.otf */; };
+		E94EA1DF1E534DF800F655AB /* Montserrat-Hairline.otf in Resources */ = {isa = PBXBuildFile; fileRef = E95B6D1D1E534BF20035B5A5 /* Montserrat-Hairline.otf */; };
+		E94EA1E01E534DF800F655AB /* Montserrat-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E95B6D1E1E534BF20035B5A5 /* Montserrat-Light.otf */; };
+		E94EA1E11E534DF800F655AB /* Montserrat-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E95B6D1F1E534BF20035B5A5 /* Montserrat-Regular.otf */; };
+		E94EA1E21E534DF800F655AB /* Montserrat-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E95B6D201E534BF20035B5A5 /* Montserrat-SemiBold.otf */; };
+		E94EA1E31E534DF800F655AB /* Montserrat-UltraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = E95B6D211E534BF20035B5A5 /* Montserrat-UltraLight.otf */; };
 		E98C675E1E48C40D00DEDF65 /* HockeySDK.embeddedframework in Resources */ = {isa = PBXBuildFile; fileRef = E98C675D1E48C40D00DEDF65 /* HockeySDK.embeddedframework */; };
 		E98C67601E48C41400DEDF65 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E98C675F1E48C41400DEDF65 /* HockeySDK.framework */; };
 		E9EF736A1E3E1ECF0065641B /* AccountKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9EF73641E3E1ECF0065641B /* AccountKit.framework */; };
@@ -375,6 +383,14 @@
 		D4017E62FBB14A0690EB4BDC /* libRNBlur.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNBlur.a; sourceTree = "<group>"; };
 		DF10C529749E44A485AA166C /* Microsoft Sans Serif.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Microsoft Sans Serif.ttf"; path = "../node_modules/native-base/Fonts/Microsoft Sans Serif.ttf"; sourceTree = "<group>"; };
 		E0328E6D32D84F3BB4DFA177 /* libRNImagePicker.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNImagePicker.a; sourceTree = "<group>"; };
+		E95B6D1A1E534BF20035B5A5 /* Montserrat-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Black.otf"; sourceTree = "<group>"; };
+		E95B6D1B1E534BF20035B5A5 /* Montserrat-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.otf"; sourceTree = "<group>"; };
+		E95B6D1C1E534BF20035B5A5 /* Montserrat-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBold.otf"; sourceTree = "<group>"; };
+		E95B6D1D1E534BF20035B5A5 /* Montserrat-Hairline.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Hairline.otf"; sourceTree = "<group>"; };
+		E95B6D1E1E534BF20035B5A5 /* Montserrat-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.otf"; sourceTree = "<group>"; };
+		E95B6D1F1E534BF20035B5A5 /* Montserrat-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.otf"; sourceTree = "<group>"; };
+		E95B6D201E534BF20035B5A5 /* Montserrat-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.otf"; sourceTree = "<group>"; };
+		E95B6D211E534BF20035B5A5 /* Montserrat-UltraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-UltraLight.otf"; sourceTree = "<group>"; };
 		E98C675B1E48C37200DEDF65 /* HockeySDK.embeddedframework */ = {isa = PBXFileReference; lastKnownFileType = folder; name = HockeySDK.embeddedframework; path = "HockeySDK-iOS/HockeySDK.embeddedframework"; sourceTree = "<group>"; };
 		E98C675D1E48C40D00DEDF65 /* HockeySDK.embeddedframework */ = {isa = PBXFileReference; lastKnownFileType = folder; name = HockeySDK.embeddedframework; path = "HockeySDK-iOS/HockeySDK.embeddedframework"; sourceTree = "<group>"; };
 		E98C675F1E48C41400DEDF65 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HockeySDK.framework; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDK.framework"; sourceTree = "<group>"; };
@@ -549,6 +565,14 @@
 		51440EB329B04D86B88CB719 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E95B6D1A1E534BF20035B5A5 /* Montserrat-Black.otf */,
+				E95B6D1B1E534BF20035B5A5 /* Montserrat-Bold.otf */,
+				E95B6D1C1E534BF20035B5A5 /* Montserrat-ExtraBold.otf */,
+				E95B6D1D1E534BF20035B5A5 /* Montserrat-Hairline.otf */,
+				E95B6D1E1E534BF20035B5A5 /* Montserrat-Light.otf */,
+				E95B6D1F1E534BF20035B5A5 /* Montserrat-Regular.otf */,
+				E95B6D201E534BF20035B5A5 /* Montserrat-SemiBold.otf */,
+				E95B6D211E534BF20035B5A5 /* Montserrat-UltraLight.otf */,
 				83EDF89BBAFC4963B7CEC4A1 /* Andale Mono.ttf */,
 				CC385AFEE1814F42A61CA4C9 /* Arial Black.ttf */,
 				3A23540BBD214F99A2C10998 /* Arial.ttf */,
@@ -1146,6 +1170,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E94EA1DC1E534DF800F655AB /* Montserrat-Black.otf in Resources */,
+				E94EA1DD1E534DF800F655AB /* Montserrat-Bold.otf in Resources */,
+				E94EA1DE1E534DF800F655AB /* Montserrat-ExtraBold.otf in Resources */,
+				E94EA1DF1E534DF800F655AB /* Montserrat-Hairline.otf in Resources */,
+				E94EA1E01E534DF800F655AB /* Montserrat-Light.otf in Resources */,
+				E94EA1E11E534DF800F655AB /* Montserrat-Regular.otf in Resources */,
+				E94EA1E21E534DF800F655AB /* Montserrat-SemiBold.otf in Resources */,
+				E94EA1E31E534DF800F655AB /* Montserrat-UltraLight.otf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				D00E226B484A44E99C397025 /* Andale Mono.ttf in Resources */,

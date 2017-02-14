@@ -87,7 +87,6 @@ const SubItem = ({ itemType, item, onSelect, setDetail }) => {
               />
               <Date
                 date={item.startAt || item.startDate}
-                size={12}
               />
             </View>
             <View style={styles.bottom}>

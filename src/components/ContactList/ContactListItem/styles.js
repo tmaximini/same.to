@@ -50,19 +50,24 @@ export default StyleSheet.create({
     color: COLORS.WHITE,
     fontSize: 13,
     fontWeight: 'bold',
+    fontFamily: 'Montserrat',
   },
   locationText: {
     color: COLORS.WHITE,
     fontSize: 10,
     paddingTop: 2,
+    fontFamily: 'Montserrat',
   },
   workText: {
     color: COLORS.WHITE,
     fontSize: 8,
+    fontFamily: 'Montserrat',
+    marginBottom: 2,
   },
   interests: {
     color: COLORS.WHITE,
     fontSize: 8,
+    fontFamily: 'Montserrat',
   },
   actions: {
     flex: 1,

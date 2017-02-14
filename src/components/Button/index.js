@@ -17,6 +17,7 @@ export default class Button extends Component {
     activeOpacity: PropTypes.number,
     noBorder: PropTypes.bool,
     noBackground: PropTypes.bool,
+    noResize: PropTypes.bool,
     textColor: PropTypes.string,
     style: PropTypes.object,
   }
@@ -47,31 +48,43 @@ export default class Button extends Component {
   }
 
   render() {
+    const {
+      textColor,
+      noBackground,
+      noBorder,
+      noResize,
+      text,
+      style,
+      smallText,
+      activeOpacity,
+      disabled,
+      children,
+    } = this.props;
     const colorStyle = {
-      color: this.props.textColor || (this.props.disabled ? '#ccc' : '#fff')
+      color: textColor || (disabled ? '#ccc' : '#fff')
     };
     const buttonStyle = {
-      borderWidth: this.props.noBorder ? 0 : 1,
-      backgroundColor: this.props.noBackground ? 'transparent' : COLORS.CYAN,
+      borderWidth: noBorder ? 0 : 1,
+      backgroundColor: noBackground ? 'transparent' : COLORS.CYAN,
     };
-    const underlayColor = this.props.disabled ? 'transparent' : COLORS.CYAN_OPAQ;
+    const underlayColor = disabled ? 'transparent' : COLORS.CYAN_OPAQ;
     const disabledStyle = {
-      backgroundColor: this.props.disabled ? COLORS.BG_GREY : (this.props.noBackground ? 'transparent' : COLORS.CYAN),
-      borderColor: this.props.disabled ? COLORS.DARK_GREY : COLORS.CYAN,
+      backgroundColor: disabled ? COLORS.BG_GREY : (noBackground ? 'transparent' : COLORS.CYAN),
+      borderColor: disabled ? COLORS.DARK_GREY : COLORS.CYAN,
     };
-    const textStyle = (this.props.text.length > 14 || this.props.smallText) ? { fontSize: 14 } : { fontSize: 18 };
+    const textStyle = ((text.length > 14 && !noResize) || smallText) ? { fontSize: 14 } : { fontSize: 18 };
     return (
       <TouchableHighlight
         onHideUnderlay={this.onUnhighlight}
         onPress={this.onPress}
         onShowUnderlay={this.onHighlight}
-        style={[styles.button, buttonStyle, disabledStyle, this.props.style]}
+        style={[styles.button, buttonStyle, disabledStyle, style]}
         underlayColor={underlayColor}
-        activeOpacity={this.props.activeOpacity}
+        activeOpacity={activeOpacity}
       >
-        {this.props.text
-          ? <Text style={[styles.buttonText, colorStyle, textStyle]}>{this.props.text}</Text>
-          : this.props.children
+        {text
+          ? <Text style={[styles.buttonText, colorStyle, textStyle]}>{text}</Text>
+          : children
         }
       </TouchableHighlight>
     );

@@ -48,10 +48,12 @@ export const DatePicker = ({ date, placeholder, minDate, maxDate, onChange, grow
         placeholderText: {
           color: '#999',
           fontSize: 14,
+          fontFamily: 'Montserrat',
         },
         dateText: {
           color: COLORS.WHITE,
           fontSize: 14,
+          fontFamily: 'Montserrat',
         },
         dateTouchBody: {
           justifyContent: 'center',

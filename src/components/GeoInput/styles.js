@@ -11,10 +11,12 @@ export default StyleSheet.create({
     fontSize: 12,
     paddingLeft: 5,
     padding: 0,
+    fontFamily: 'Montserrat',
   },
   predefinedPlacesDescription: {
     color: COLORS.WHITE,
     fontSize: 10,
+    fontFamily: 'Montserrat',
   },
   textInputContainer: {
     backgroundColor: COLORS.DARK_GREY,
@@ -30,6 +32,7 @@ export default StyleSheet.create({
     paddingTop: 0,
     paddingBottom: 0,
     fontSize: 14,
+    fontFamily: 'Montserrat',
   },
   listView: {
     zIndex: 200,

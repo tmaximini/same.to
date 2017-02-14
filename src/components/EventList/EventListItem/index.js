@@ -10,7 +10,7 @@ import styles from './styles';
 
 const background = require('../../../assets/sunflowers.jpg');
 
-const EventListItem = ({ event, setCurrentEvent, setEvent }) => {
+const EventListItem = ({ event, setCurrentEvent, setEvent, setDetail }) => {
   const { name, startAt, location } = event;
 
   //
@@ -19,14 +19,26 @@ const EventListItem = ({ event, setCurrentEvent, setEvent }) => {
     Actions.editCreateEvent({ event, title: 'Edit Event' });
   };
 
+  const editActivity = () => {
+    setEvent(event);
+    Actions.editCreateActivity({ activity: event, title: 'Edit Activity' });
+  };
+
   // set current event in reducer
   const onSelect = () => {
-    setCurrentEvent(event);
-    Actions.event({
-      title: name,
-      onRight: canEdit(event) ? editEvent : undefined,
-      rightTitle: canEdit(event) ? 'edit' : undefined,
-    });
+    if (event.type === 'event') {
+      setCurrentEvent(event);
+      Actions.event({
+        onRight: canEdit(event) ? editEvent : undefined,
+        rightTitle: canEdit(event) ? 'edit' : undefined,
+      });
+    } else {
+      setDetail({ itemType: 'activity', item: event });
+      Actions.activity({
+        onRight: canEdit(event) ? editActivity : undefined,
+        rightTitle: canEdit(event) ? 'edit' : undefined,
+      });
+    }
   };
 
   return (
@@ -68,14 +80,14 @@ const EventListItem = ({ event, setCurrentEvent, setEvent }) => {
             </View>
           </View>
           <View style={styles.bottom}>
-            {startAt && (
-              <Date
-                date={startAt}
-              />
-            )}
             {location && (
               <Location
                 location={location}
+              />
+            )}
+            {startAt && (
+              <Date
+                date={startAt}
               />
             )}
           </View>

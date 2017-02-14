@@ -2,11 +2,12 @@ import {
   StyleSheet
 } from 'react-native';
 
-import { COLORS, FONT_SIZES } from '../../constants';
+import { COLORS, MIXINS } from '../../constants';
 
 export default StyleSheet.create({
   container: {
     flexGrow: 1,
+    backgroundColor: COLORS.BG_GREY,
   },
   top: {
     flex: 4,
@@ -17,15 +18,7 @@ export default StyleSheet.create({
     backgroundColor: COLORS.BG_GREY,
   },
   title: {
-    fontSize: FONT_SIZES.title(),
-    fontWeight: 'bold',
-    color: COLORS.WHITE,
-    textShadowColor: COLORS.DARK_GREY,
-    textShadowOffset: {
-      width: 2,
-      height: 2,
-    },
-    textShadowRadius: 2,
+    ...MIXINS.title
   },
   titleCaret: {
     color: COLORS.CYAN,
@@ -46,7 +39,7 @@ export default StyleSheet.create({
   box: {
     flex: 1,
     backgroundColor: COLORS.DARK_GREY,
-    borderColor: COLORS.WHITE,
+    borderColor: COLORS.BG_GREY,
     borderRightWidth: 1,
     alignItems: 'center',
     justifyContent: 'center',
@@ -56,6 +49,7 @@ export default StyleSheet.create({
   },
   boxText: {
     color: COLORS.WHITE,
+    fontFamily: 'Montserrat',
   },
   info: {
     flex: 1,

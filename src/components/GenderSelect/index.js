@@ -21,7 +21,7 @@ const newButtonTheme = {
 themeManager.setSource('SegmentedControlButton', () => (newButtonTheme));
 
 const GenderSelect = ({ gender, onChange }) => (
-  <View style={{ flexGrow: 0, paddingHorizontal: width / 3, alignItems: 'center' }}>
+  <View style={{ flexGrow: 0, paddingHorizontal: width / 4, alignItems: 'center' }}>
     <Switcher
       onChange={value => onChange(value)}
       direction="row"
@@ -34,6 +34,10 @@ const GenderSelect = ({ gender, onChange }) => (
       <SegmentedControlButton
         value="female"
         iconName="md-female"
+      />
+      <SegmentedControlButton
+        value="transgender"
+        iconName="md-transgender"
       />
     </Switcher>
   </View>
