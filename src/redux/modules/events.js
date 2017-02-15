@@ -20,6 +20,8 @@ import {
 const initialState = {
   isFetching: false,
   events: [],
+  searchString: null,
+  searchResults: [],
   currentEvent: {},
   error: null,
 };
@@ -33,6 +35,9 @@ export const SET_CURRENT_EVENT = 'events/UPDATE_EVENT';
 export const TOGGLE_PARTICIPATE_EVENT_START = 'events/TOGGLE_PARTICIPATE_EVENT_START';
 export const TOGGLE_PARTICIPATE_EVENT_SUCCESS = 'events/TOGGLE_PARTICIPATE_EVENT_SUCCESS';
 export const TOGGLE_PARTICIPATE_EVENT_ERROR = 'events/TOGGLE_PARTICIPATE_EVENT_ERROR';
+export const SEARCH_EVENTS_START = 'events/SEARCH_EVENTS_START';
+export const SEARCH_EVENTS_SUCCESS = 'events/SEARCH_EVENTS_SUCCESS';
+export const SEARCH_EVENTS_ERROR = 'events/SEARCH_EVENTS_ERROR';
 
 
 
@@ -55,11 +60,19 @@ export const setCurrentEvent = event => ({
   }
 });
 
+export const searchEvents = query => ({
+  type: SEARCH_EVENTS_START,
+  payload: {
+    query
+  }
+});
+
 // export all actions
 export const actions = {
   fetchEvents,
   setCurrentEvent,
   toggleParticipateEvent,
+  searchEvents,
 };
 
 const updateEvents = (lastState, subitem, collection) => {
@@ -99,6 +112,14 @@ const actionsMap = {
     ...state,
     currentEvent: action.payload.event,
   }),
+  [SEARCH_EVENTS_SUCCESS]: (state, action) => {
+    const { result } = action.payload;
+
+    return {
+      ...state,
+      searchResults: result,
+    };
+  },
   [CREATE_EVENT_SUCCESS]: (state, action) => {
     const { event } = action.payload;
 

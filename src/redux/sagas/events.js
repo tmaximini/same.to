@@ -7,11 +7,17 @@ import {
   TOGGLE_PARTICIPATE_EVENT_START,
   TOGGLE_PARTICIPATE_EVENT_SUCCESS,
   TOGGLE_PARTICIPATE_EVENT_ERROR,
+  SEARCH_EVENTS_START,
+  SEARCH_EVENTS_SUCCESS,
+  SEARCH_EVENTS_ERROR,
 } from '../modules/events';
 import {
   AUTHORIZATION_REQUIRED,
 } from '../modules/auth';
-import { fetchEvents } from '../../services/events';
+import {
+  fetchEvents,
+  searchEvents,
+} from '../../services/events';
 import {
   joinEvent,
   leaveEvent,
@@ -96,10 +102,44 @@ export function* toggleParticipateAsync(action) {
   }
 }
 
+export function* searchEventsAsync(action) {
+  const { query } = action.payload;
+  try {
+    const response = yield call(searchEvents, query);
+    if (response.error) {
+      // in case of error
+      yield put({
+        type: SEARCH_EVENTS_ERROR,
+        payload: {
+          error: response.error
+        }
+      });
+    } else {
+      // success
+      yield put({
+        type: SEARCH_EVENTS_SUCCESS,
+        payload: {
+          result: response
+        }
+      });
+    }
+  } catch (error) {
+    console.log({ error });
+    yield put({
+      type: SEARCH_EVENTS_ERROR,
+      error
+    });
+  }
+}
+
 export function* watchFetchEvents() {
   yield takeLatest(FETCH_EVENTS_START, fetchEventsAsync);
 }
 
 export function* watchParticipateEvent() {
   yield takeLatest(TOGGLE_PARTICIPATE_EVENT_START, toggleParticipateAsync);
+}
+
+export function* watchSearchEvents() {
+  yield takeLatest(SEARCH_EVENTS_START, searchEventsAsync);
 }

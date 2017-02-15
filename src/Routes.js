@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, Navigator, Text, StyleSheet } from 'react-native';
-import { Scene, Router } from 'react-native-router-flux';
+import { View, Navigator, Text, StyleSheet, TouchableHighlight } from 'react-native';
+import { Scene, Router, Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -17,6 +17,7 @@ import EditCreateActivity from './views/EditCreateActivity';
 import EditCreateAccommodation from './views/EditCreateAccommodation';
 import EditCreateChat from './views/EditCreateChat';
 import EventDetail from './views/Event';
+import SearchEvents from './views/SearchEvents';
 import EditCreatevent from './views/EditCreateEvent';
 import Detail from './views/Detail';
 import Profile from './views/Profile';
@@ -97,6 +98,17 @@ const styles = StyleSheet.create({
   },
 });
 
+const makeSearchButton = () => (
+  <TouchableHighlight
+    onPress={Actions.searchEvents}
+    style={{ justifyContent: 'center', alignItems: 'center', marginTop: 2, marginRight: 5 }}
+    underlayColor="transparent"
+    activeOpacity={0.6}
+  >
+    <Icon name="search" size={20} color={COLORS.CYAN} />
+  </TouchableHighlight>
+);
+
 
 const Routes = () => (
   <RouterWithRedux
@@ -124,6 +136,7 @@ const Routes = () => (
         title="Home"
         sceneStyle={navTabpadding}
         icon={makeTabIcon('home')}
+        renderRightButton={makeSearchButton}
       />
       <Scene
         key="favorites"
@@ -189,6 +202,13 @@ const Routes = () => (
       component={EventDetail}
       sceneStyle={navBarPadding}
       title="Event Details"
+      rightButtonTextStyle={cyanText}
+    />
+    <Scene
+      key="searchEvents"
+      component={SearchEvents}
+      sceneStyle={navBarPadding}
+      title="Search Events"
       rightButtonTextStyle={cyanText}
     />
     <Scene

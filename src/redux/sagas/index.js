@@ -12,6 +12,7 @@ import {
 import {
   watchFetchEvents,
   watchParticipateEvent,
+  watchSearchEvents,
 } from './events';
 import {
   watchFetchContacts,
@@ -65,6 +66,7 @@ export default function* root() {
     watchFBLogin(),
     watchRegister(),
     watchFetchEvents(),
+    watchSearchEvents(),
     watchParticipateEvent(),
     watchFetchContacts(),
     watchFetchFavorites(),

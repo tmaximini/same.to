@@ -8,3 +8,5 @@ export const updateEvent = data => put(
   `events/${data.id}`,
   { ...data }
 );
+
+export const searchEvents = query => get('events/search', { query });
