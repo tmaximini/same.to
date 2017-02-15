@@ -30,6 +30,9 @@ export const FETCH_EVENTS_START = 'events/FETCH_EVENTS_START';
 export const FETCH_EVENTS_SUCCESS = 'events/FETCH_EVENTS_SUCCESS';
 export const FETCH_EVENTS_ERROR = 'events/FETCH_EVENTS_ERROR';
 export const SET_CURRENT_EVENT = 'events/UPDATE_EVENT';
+export const TOGGLE_PARTICIPATE_EVENT_START = 'events/TOGGLE_PARTICIPATE_EVENT_START';
+export const TOGGLE_PARTICIPATE_EVENT_SUCCESS = 'events/TOGGLE_PARTICIPATE_EVENT_SUCCESS';
+export const TOGGLE_PARTICIPATE_EVENT_ERROR = 'events/TOGGLE_PARTICIPATE_EVENT_ERROR';
 
 
 
@@ -38,13 +41,12 @@ export const fetchEvents = () => ({
   type: FETCH_EVENTS_START
 });
 
-// // updates any key/value pair in the state
-// export const update = data => ({
-//   type: UPDATE_EVENT,
-//   payload: {
-//     ...data
-//   }
-// });
+export const toggleParticipateEvent = event => ({
+  type: TOGGLE_PARTICIPATE_EVENT_START,
+  payload: {
+    event
+  }
+});
 
 export const setCurrentEvent = event => ({
   type: SET_CURRENT_EVENT,
@@ -53,11 +55,11 @@ export const setCurrentEvent = event => ({
   }
 });
 
-
 // export all actions
 export const actions = {
   fetchEvents,
   setCurrentEvent,
+  toggleParticipateEvent,
 };
 
 const updateEvents = (lastState, subitem, collection) => {
@@ -107,6 +109,18 @@ const actionsMap = {
     };
   },
   [UPDATE_EVENT_SUCCESS]: (state, action) => {
+    const { event } = action.payload;
+    const newEvents = [...state.events];
+    const eventIndex = _.findIndex(newEvents, { id: event.id });
+    newEvents[eventIndex] = event;
+
+    return {
+      ...state,
+      events: newEvents,
+      currentEvent: event,
+    };
+  },
+  [TOGGLE_PARTICIPATE_EVENT_SUCCESS]: (state, action) => {
     const { event } = action.payload;
     const newEvents = [...state.events];
     const eventIndex = _.findIndex(newEvents, { id: event.id });

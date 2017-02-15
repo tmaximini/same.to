@@ -3,6 +3,7 @@ import { View, Text, TouchableHighlight } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { share } from '../../utils';
+import { getUserId } from '../../services/api';
 import EventHeader from '../../components/EventHeader';
 import SubItemList from '../../components/SubItemList';
 import PlusButton from '../../components/PlusButton';
@@ -11,6 +12,9 @@ import {
   setTrip as setTripAction,
   resetTrip as resetTripAction
 } from '../../redux/modules/editCreateTrip';
+import {
+  toggleParticipateEvent as toggleParticipateEventAction
+} from '../../redux/modules/events';
 import {
   setAccommodation as setAccommodationAction,
   resetAccommodation as resetAccommodationAction,
@@ -39,6 +43,7 @@ const background = require('../../assets/gamescom.jpg');
     resetAccommodation: resetAccommodationAction,
     resetActivity: resetActivityAction,
     setDetail: setDetailAction,
+    toggleParticipateEvent: toggleParticipateEventAction,
   },
 )
 export default class Event extends Component {
@@ -60,6 +65,7 @@ export default class Event extends Component {
     resetTrip: PropTypes.func.isRequired,
     resetActivity: PropTypes.func.isRequired,
     resetAccommodation: PropTypes.func.isRequired,
+    toggleParticipateEvent: PropTypes.func.isRequired,
   }
 
   constructor(props) {
@@ -86,6 +92,7 @@ export default class Event extends Component {
       resetAccommodation,
       setDetail,
       event,
+      toggleParticipateEvent,
     } = this.props;
     const {
       name,
@@ -95,6 +102,7 @@ export default class Event extends Component {
       accommodations,
       trips,
       members,
+      memberIds,
       type,
       id,
     } = event;
@@ -108,8 +116,8 @@ export default class Event extends Component {
       <EventHeader
         event={event}
         background={background}
-        onToggle={() => {}}
-        participates
+        onToggle={() => toggleParticipateEvent(event)}
+        participates={memberIds.includes(getUserId())}
       />
     );
 

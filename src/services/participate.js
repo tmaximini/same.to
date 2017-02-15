@@ -12,8 +12,9 @@ export const joinAccommodation = (eventId, id) => get(
   `events/${eventId}/accommodations/${id}/join`
 );
 
+// because activity is basically an event
 export const joinActivity = (eventId, id) => get(
-  `events/${eventId}/activities/${id}/join`
+  `events/${id}/join`
 );
 
 export const leaveEvent = eventId => del(
@@ -28,6 +29,7 @@ export const leaveAccommodation = (eventId, id) => del(
   `events/${eventId}/accommodations/${id}/leave`
 );
 
+// because activity is basically an event
 export const leaveActivity = (eventId, id) => del(
-  `events/${eventId}/activities/${id}/leave`
+  `events/${id}/leave`
 );

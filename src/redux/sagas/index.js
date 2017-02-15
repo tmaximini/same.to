@@ -9,7 +9,10 @@ import {
   watchFBLogin,
   watchRegister,
 } from './auth';
-import { watchFetchEvents } from './events';
+import {
+  watchFetchEvents,
+  watchParticipateEvent,
+} from './events';
 import {
   watchFetchContacts,
   watchFetchFavorites,
@@ -62,6 +65,7 @@ export default function* root() {
     watchFBLogin(),
     watchRegister(),
     watchFetchEvents(),
+    watchParticipateEvent(),
     watchFetchContacts(),
     watchFetchFavorites(),
     watchAddContact(),
