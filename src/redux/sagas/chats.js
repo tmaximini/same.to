@@ -80,14 +80,16 @@ export function* createChatAsync(action) {
           chat: response
         }
       });
-      yield call(delay, 50);
+      yield call(delay, 100);
+
       yield call(Actions.tabbar, { key: 'tabbar', type: 'reset' });
       yield call(Actions.home, { type: 'replace', onBack: null, hideBackImage: true });
+      // // TODO: redirect to new chat
 
-      // TODO: redirect to new chat
-
-      // yield call(delay, 50);
-      // yield call(Actions.chats, { type: 'replace' });
+      // yield call(delay, 100);
+      // // yield call(Actions.chats);
+      // // yield call(Actions.chats, { type: 'replace', onBack: null, hideBackImage: true });
+      // // yield call(Actions.chat);
     }
   } catch (error) {
     console.log({ error });

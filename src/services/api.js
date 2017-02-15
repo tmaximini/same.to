@@ -7,12 +7,10 @@ export const API_BASE = 'https://same.wearekiai.de/api/';
 
 // setter
 export const updateAuthHeader = token => {
-  console.info('updating auth header');
   AUTH_TOKEN = token;
 };
 
 export const updateUserId = id => {
-  console.info('updating user id');
   USER_ID = id;
 };
 
