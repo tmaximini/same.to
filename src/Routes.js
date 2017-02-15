@@ -24,6 +24,7 @@ import Chats from './views/Chats';
 import Chat from './views/Chat';
 import Splash from './views/Splash';
 import Settings from './views/Settings';
+import { Onboarding1, Onboarding2, Onboarding3 } from './views/Onboarding';
 import { COLORS } from './constants';
 
 const RouterWithRedux = connect()(Router);
@@ -57,12 +58,14 @@ const makeTabIcon = (icon, size = 22, material = false) => ({ selected, title })
         style={{ color: selected ? COLORS.CYAN : COLORS.WHITE }}
       />
     )}
-    <Text style={{
-      color: selected ? COLORS.CYAN : COLORS.WHITE,
-      fontSize: 10,
-      paddingTop: 22 - size,
-      fontFamily: 'Montserrat',
-    }}>
+    <Text
+      style={{
+        color: selected ? COLORS.CYAN : COLORS.WHITE,
+        fontSize: 10,
+        paddingTop: (22 - size) > 0 ? ((22 - size) + 1) : 0,
+        fontFamily: 'Montserrat',
+      }}
+    >
       {title}
     </Text>
   </View>
@@ -106,7 +109,6 @@ const Routes = () => (
       key="start"
       component={Splash}
       hideNavBar
-      initial
     />
     <Scene
       key="tabbar"
@@ -236,6 +238,28 @@ const Routes = () => (
       component={Register}
       title="Register"
       navigationBarStyle={styles.navBarLight}
+    />
+    <Scene
+      key="onboarding1"
+      component={Onboarding1}
+      title="Erste Schritte"
+      navigationBarStyle={styles.navBarLight}
+      sceneStyle={navBarPadding}
+      initial
+    />
+    <Scene
+      key="onboarding2"
+      component={Onboarding2}
+      title="Erste Schritte"
+      navigationBarStyle={styles.navBarLight}
+      sceneStyle={navBarPadding}
+    />
+    <Scene
+      key="onboarding3"
+      component={Onboarding3}
+      title="Erste Schritte"
+      navigationBarStyle={styles.navBarLight}
+      sceneStyle={navBarPadding}
     />
     <Scene
       key="participants"
