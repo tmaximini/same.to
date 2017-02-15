@@ -1,3 +1,4 @@
+import { delay } from 'redux-saga';
 import { takeLatest, call, put } from 'redux-saga/effects';
 import { Actions } from 'react-native-router-flux';
 import {
@@ -79,6 +80,14 @@ export function* createChatAsync(action) {
           chat: response
         }
       });
+      yield call(delay, 50);
+      yield call(Actions.tabbar, { key: 'tabbar', type: 'reset' });
+      yield call(Actions.home, { type: 'replace', onBack: null, hideBackImage: true });
+
+      // TODO: redirect to new chat
+
+      // yield call(delay, 50);
+      // yield call(Actions.chats, { type: 'replace' });
     }
   } catch (error) {
     console.log({ error });

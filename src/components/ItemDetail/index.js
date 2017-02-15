@@ -1,14 +1,11 @@
 import React, { PropTypes } from 'react';
-import { View, Text, TouchableHighlight, Image, Dimensions } from 'react-native';
+import { View, Text, TouchableHighlight, Dimensions } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Actions } from 'react-native-router-flux';
 import { share } from '../../utils';
 import ContactList from '../ContactList';
 import EventHeader from '../EventHeader';
-import Date from '../Date';
 import Button from '../Button';
-import OnOffSwitch from '../OnOffSwitch';
-import TagList from '../TagList';
 import styles from './styles';
 
 const plansee = require('../../assets/plansee.jpg');
@@ -42,7 +39,7 @@ const getTitle = (itemType, item) => {
   }
 };
 
-const ItemDetail = ({ itemType, participates, onToggle, createChat, item, ...rest }) => (
+const ItemDetail = ({ itemType, participates, onToggle, item, resetChat, ...rest }) => (
   <View style={styles.container}>
     <View style={styles.top}>
       <EventHeader
@@ -91,9 +88,10 @@ const ItemDetail = ({ itemType, participates, onToggle, createChat, item, ...res
         text="Chat erstellen"
         disabled={item.memberIds.length < 2 || !participates}
         onPress={() => {
-          createChat({
-            subject: `${itemType} - ${item.name}`,
-            memberIds: item.memberIds
+          resetChat();
+          Actions.editCreateChat({
+            proposedSubject: item.name,
+            proposedMembers: item.members,
           });
         }}
         style={{ width: (width / 2) - 15 }}
@@ -115,7 +113,7 @@ ItemDetail.propTypes = {
   item: PropTypes.object.isRequired,
   participates: PropTypes.bool.isRequired,
   onToggle: PropTypes.func.isRequired,
-  createChat: PropTypes.func.isRequired,
+  resetChat: PropTypes.func.isRequired,
 };
 
 export default ItemDetail;

@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/Ionicons';
+import FAIcon from 'react-native-vector-icons/FontAwesome';
 import { getUserId } from '../../../services/api';
 import styles from './styles';
 
@@ -43,17 +44,22 @@ const getAvatar = c => (
   c && c.image && c.image.thumbs ? { uri: c.image.thumbs['320x320'] } : fallback
 );
 
-const ContactListItem = ({ contact, addFavorite, addContact }) => {
+const ContactListItem = ({ contact, addFavorite, addContact, onToggle, isActive }) => {
   const editFunc = () => Actions.editCreateProfile({
     profile: contact,
     title: 'Edit Profile'
   });
-  const handler = () => Actions.profile({
-    profile: contact,
-    title: getName(contact),
-    onRight: isMe(contact) ? editFunc : undefined,
-    rightTitle: isMe(contact) ? 'edit' : undefined,
-  });
+  const handler = () => {
+    if (onToggle) {
+      return onToggle(contact.id);
+    }
+    return Actions.profile({
+      profile: contact,
+      title: getName(contact),
+      onRight: isMe(contact) ? editFunc : undefined,
+      rightTitle: isMe(contact) ? 'edit' : undefined,
+    });
+  };
 
   return (
     <View style={styles.container}>
@@ -62,17 +68,31 @@ const ContactListItem = ({ contact, addFavorite, addContact }) => {
           <TouchableHighlight
             style={styles.avatar}
             onPress={handler}
+            underlayColor="transparent"
           >
-            <Image
-              source={getAvatar(contact)}
-              style={styles.image}
-              resizeMode="cover"
-            />
+            <View style={styles.imageWrapper}>
+              <Image
+                source={getAvatar(contact)}
+                style={styles.image}
+                resizeMode="cover"
+              />
+              {isActive && (
+                <View style={styles.checked}>
+                  <FAIcon
+                    name="check"
+                    size={18}
+                    style={{ color: '#fff' }}
+                  />
+                </View>
+              )}
+            </View>
           </TouchableHighlight>
+
           <View style={styles.personDetails}>
             <TouchableHighlight
               style={styles.name}
               onPress={handler}
+              underlayColor="transparent"
             >
               <Text style={styles.nameText}>{getName(contact)}</Text>
             </TouchableHighlight>
@@ -137,10 +157,12 @@ const ContactListItem = ({ contact, addFavorite, addContact }) => {
 
 ContactListItem.propTypes = {
   contact: PropTypes.object.isRequired,
-  addFavorite: PropTypes.func.isRequired,
-  removeFavorite: PropTypes.func.isRequired,
-  addContact: PropTypes.func.isRequired,
-  removeContact: PropTypes.func.isRequired,
+  addFavorite: PropTypes.func,
+  removeFavorite: PropTypes.func,
+  addContact: PropTypes.func,
+  removeContact: PropTypes.func,
+  onToggle: PropTypes.func,
+  isActive: PropTypes.bool,
 };
 
 export default ContactListItem;

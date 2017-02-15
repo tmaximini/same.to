@@ -15,6 +15,7 @@ import EditCreateProfile from './views/EditCreateProfile';
 import EditCreateTrip from './views/EditCreateTrip';
 import EditCreateActivity from './views/EditCreateActivity';
 import EditCreateAccommodation from './views/EditCreateAccommodation';
+import EditCreateChat from './views/EditCreateChat';
 import EventDetail from './views/Event';
 import EditCreatevent from './views/EditCreateEvent';
 import Detail from './views/Detail';
@@ -176,6 +177,12 @@ const Routes = () => (
       component={EditCreateTrip}
       sceneStyle={navBarPadding}
       title="New Trip"
+    />
+    <Scene
+      key="editCreateChat"
+      component={EditCreateChat}
+      sceneStyle={navBarPadding}
+      title="New Chat"
     />
     <Scene
       key="event"

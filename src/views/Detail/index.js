@@ -6,11 +6,11 @@ import {
   actions as detailActions
 } from '../../redux/modules/detail';
 import {
-  createChat
-} from '../../redux/modules/chats';
-import {
   actions as contactActions
 } from '../../redux/modules/contacts';
+import {
+  actions as chatActions
+} from '../../redux/modules/chats';
 import { getUserId } from '../../services/api';
 import styles from './styles';
 
@@ -19,7 +19,7 @@ import styles from './styles';
   {
     ...detailActions,
     ...contactActions,
-    createChat
+    ...chatActions
   }
 )
 export default class Detail extends Component {
@@ -27,12 +27,12 @@ export default class Detail extends Component {
   static propTypes = {
     item: PropTypes.object.isRequired,
     toggleParticipate: PropTypes.func.isRequired,
-    createChat: PropTypes.func.isRequired,
+    resetChat: PropTypes.func.isRequired,
   };
 
   render() {
     const userId = getUserId();
-    const { item, toggleParticipate, ...rest } = this.props;
+    const { item, toggleParticipate, resetChat, ...rest } = this.props;
 
     return (
       <View style={styles.container}>
@@ -40,8 +40,8 @@ export default class Detail extends Component {
           item={item}
           participates={item.memberIds.includes(userId)}
           contactActions={contactActions}
-          createChat={createChat}
           onToggle={toggleParticipate}
+          resetChat={resetChat}
           {...rest}
         />
       </View>

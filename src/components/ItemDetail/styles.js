@@ -23,7 +23,7 @@ export default StyleSheet.create({
   titleCaret: {
     color: COLORS.CYAN,
     paddingHorizontal: 5,
-    top: -4,
+    top: 0,
   },
   details: {
     flex: 1,

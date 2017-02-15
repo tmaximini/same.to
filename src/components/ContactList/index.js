@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { ListView, RefreshControl } from 'react-native';
 
-import ContactListItem from './ContactListItem';
+import ContactListItem from '../ContactCheckList/ContactCheckListItem';
 import styles from './styles';
 import { COLORS } from '../../constants';
 // import { border } from '../../utils';

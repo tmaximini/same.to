@@ -4,7 +4,7 @@ import { COLORS, MIXINS } from '../../../constants';
 
 export default StyleSheet.create({
   container: {
-    flex: 1,
+    flexGrow: 0,
     height: 80,
     marginBottom: 10,
     overflow: 'hidden',
@@ -32,13 +32,42 @@ export default StyleSheet.create({
     alignItems: 'flex-end',
   },
   avatar: {
+    flexGrow: 0,
     width: 36,
     height: 36,
     borderRadius: 18,
     overflow: 'hidden',
+    borderColor: COLORS.CYAN,
+    alignSelf: 'stretch',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  checked: {
+    flex: 1,
+    borderRadius: 18,
+    backgroundColor: COLORS.CYAN_OPAQ,
+    position: 'absolute',
+    alignSelf: 'stretch',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 36,
+    height: 36,
+  },
+  imageWrapper: {
+    flexGrow: 1,
+    alignSelf: 'stretch',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   image: {
-    ...MIXINS.image,
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    overflow: 'hidden',
+    borderColor: COLORS.CYAN,
+    alignSelf: 'stretch',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   personDetails: {
     flex: 1,
@@ -46,6 +75,7 @@ export default StyleSheet.create({
     paddingTop: 2,
     alignItems: 'flex-start',
   },
+
   nameText: {
     color: COLORS.WHITE,
     fontSize: 13,
@@ -55,7 +85,7 @@ export default StyleSheet.create({
   locationText: {
     color: COLORS.WHITE,
     fontSize: 10,
-    paddingTop: 2,
+    paddingVertical: 2,
     fontFamily: 'Montserrat',
   },
   workText: {

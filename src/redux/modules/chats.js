@@ -1,12 +1,18 @@
-// import { CREATE_CHAT_SUCCESS } from './editCreateChat';
+import { toggleArrayItem } from '../../utils';
+
+const makeDefaultChat = () => ({
+  subject: null,
+  memberIds: []
+});
 
 // Initial State
 const initialState = {
   isFetching: false,
   isRefreshing: false,
   chats: [],
-  currentChat: null,
+  currentChat: makeDefaultChat(),
   error: null,
+  isNew: true,
 };
 
 
@@ -17,8 +23,13 @@ export const FETCH_CHATS_ERROR = 'chats/FETCH_CHATS_ERROR';
 export const CREATE_CHAT_START = 'chats/CREATE_CHAT_START';
 export const CREATE_CHAT_SUCCESS = 'chats/CREATE_CHAT_SUCCESS';
 export const CREATE_CHAT_ERROR = 'chats/CREATE_CHAT_ERROR';
+export const UPDATE_REMOTE_CHAT_START = 'chats/UPDATE_REMOTE_CHAT_START';
+export const UPDATE_REMOTE_CHAT_SUCCESS = 'chats/UPDATE_REMOTE_CHAT_SUCCESS';
+export const UPDATE_REMOTE_CHAT_ERROR = 'chats/UPDATE_REMOTE_CHAT_ERROR';
 export const UPDATE_CHAT = 'chats/UPDATE_CHAT';
 export const SET_CHAT = 'chats/SET_CHAT';
+export const RESET_CHAT = 'chats/RESET_CHAT';
+export const TOGGLE_CHAT_MEMBER = 'chats/TOGGLE_CHAT_MEMBER';
 
 
 
@@ -34,11 +45,19 @@ export const createChat = chat => ({
   }
 });
 
+export const updateRemoteChat = chat => ({
+  type: UPDATE_REMOTE_CHAT_START,
+  payload: {
+    chat
+  }
+});
+
 // updates any key/value pair in the state
-export const update = data => ({
+export const updateChat = (key, value) => ({
   type: UPDATE_CHAT,
   payload: {
-    ...data
+    key,
+    value,
   }
 });
 
@@ -49,12 +68,27 @@ export const setCurrentChat = chat => ({
   }
 });
 
+export const resetChat = () => ({
+  type: RESET_CHAT,
+});
+
+export const toggleChatMember = memberId => ({
+  type: TOGGLE_CHAT_MEMBER,
+  payload: {
+    memberId
+  }
+});
+
 
 // export all actions
 export const actions = {
   fetchChats,
-  update,
+  updateChat,
   setCurrentChat,
+  createChat,
+  updateRemoteChat,
+  toggleChatMember,
+  resetChat,
 };
 
 
@@ -92,6 +126,27 @@ const actionsMap = {
       currentChat: chat,
     };
   },
+  [TOGGLE_CHAT_MEMBER]: (state, action) => {
+    const { memberId } = action.payload;
+
+    return {
+      ...state,
+      currentChat: {
+        ...state.currentChat,
+        memberIds: toggleArrayItem(state.currentChat.memberIds, memberId)
+      },
+    };
+  },
+  [CREATE_CHAT_SUCCESS]: (state, action) => ({
+    ...state,
+    currentChat: makeDefaultChat(),
+    isNew: true,
+  }),
+  [RESET_CHAT]: (state) => ({
+    ...state,
+    currentChat: makeDefaultChat(),
+    isNew: true,
+  })
 };
 
 
