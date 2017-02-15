@@ -2,7 +2,7 @@ import { StyleSheet, Dimensions } from 'react-native';
 import { COLORS, MIXINS, PADDINGS } from '../../../constants';
 
 const { width } = Dimensions.get('window');
-const itemWidth = (width * (1 / 4)) - (2 * PADDINGS.STANDARD);
+const itemWidth = (width * (1 / 4)) - PADDINGS.DOUBLE;
 
 export default StyleSheet.create({
   container: {

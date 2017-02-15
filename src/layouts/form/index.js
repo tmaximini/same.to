@@ -4,8 +4,8 @@ import KeyboardScroll from '../../components/KeyboardScroll';
 import Button from '../../components/Button';
 import styles from './styles';
 
-const Form = ({ children, buttonText, onSubmit, buttonDisabled }) => (
-  <View style={styles.container}>
+const Form = ({ children, buttonText, onSubmit, buttonDisabled, style }) => (
+  <View style={[styles.container, style]}>
     <KeyboardScroll
       extraScrollHeight={20}
     >
@@ -29,11 +29,13 @@ Form.propTypes = {
   buttonDisabled: PropTypes.bool,
   buttonText: PropTypes.string,
   onSubmit: PropTypes.func,
+  style: PropTypes.object,
 };
 
 Form.defaultProps = {
   buttonDisabled: false,
-  onSubmit: () => {}
+  onSubmit: () => {},
+  style: {},
 };
 
 export default Form;

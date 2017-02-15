@@ -22,6 +22,7 @@ export const FONT_SIZES = {
 
 export const PADDINGS = {
   STANDARD: 12,
+  DOUBLE: 24,
 };
 
 export const MIXINS = {

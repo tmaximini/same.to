@@ -33,7 +33,7 @@ export default StyleSheet.create({
   },
   logoWrapper: {
     flex: 1,
-    width: width - (2 * PADDINGS.STANDARD),
+    width: width - PADDINGS.DOUBLE,
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'stretch',

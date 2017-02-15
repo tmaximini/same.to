@@ -14,7 +14,7 @@ export default StyleSheet.create({
     backgroundColor: COLORS.GREY_OPAQ,
     alignItems: 'flex-start',
     justifyContent: 'center',
-    paddingHorizontal: 2 * PADDINGS.STANDARD,
+    paddingHorizontal: PADDINGS.DOUBLE,
     paddingVertical: PADDINGS.STANDARD,
   },
   title: {
