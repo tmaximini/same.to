@@ -29,6 +29,7 @@ export default class Example extends Component {
     this.onSend = this.onSend.bind(this);
     this.onReceive = this.onReceive.bind(this);
     this.onConnect = this.onConnect.bind(this);
+    this.onDisonnect = this.onDisonnect.bind(this);
     this.renderBubble = this.renderBubble.bind(this);
     this.renderSend = this.renderSend.bind(this);
     this.getUserNameById = this.getUserNameById.bind(this);
@@ -46,10 +47,20 @@ export default class Example extends Component {
     });
   }
 
+  componentWillUnmount() {
+    this.onDisonnect();
+  }
+
   onConnect() {
     const { socket, chat } = this.props;
     socket.emit('join', chat.id);
     socket.on('message', this.onReceive);
+  }
+
+  onDisonnect() {
+    const { socket, chat } = this.props;
+    socket.emit('leave', chat.id);
+    socket.disconnect();
   }
 
   onSend(messages = []) {
