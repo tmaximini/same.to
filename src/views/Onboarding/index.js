@@ -103,8 +103,8 @@ export const Onboarding3 = () => (
   <Form
     buttonText="Ich bin bereit"
     onSubmit={() => {
-      Actions.tabbar({ key: 'tabbar', type: 'replace' });
-      Actions.home({ type: 'replace' });
+      Actions.tabbar({ key: 'tabbar', type: 'reset', onBack: null, hideBackImage: true });
+      Actions.home({ type: 'reset', onBack: null, hideBackImage: true });
     }}
   >
     <View style={styles.wrapper}>

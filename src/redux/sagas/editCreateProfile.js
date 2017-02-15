@@ -60,6 +60,8 @@ export function* createProfileAsync(action) {
 
 export function* updateProfileAsync(action) {
   const { payload } = action;
+  // check signupCompleted BEFORE updating the profile
+  const { signupCompleted } = payload;
   try {
     const response = yield call(updateProfile, { ...payload });
 
@@ -86,8 +88,15 @@ export function* updateProfileAsync(action) {
           profile: response
         }
       });
-      yield call(delay, 100);
-      yield call(Actions.home, { refresh: {} });
+
+      if (signupCompleted) {
+        // user came from settings
+        yield call(Actions.pop, { refresh: {} });
+      } else {
+        // first time user, send to onBoarding
+        // yield call(Actions.tabbar, { key: 'tabbar', type: 'replace' });
+        yield call(Actions.onboarding1);
+      }
     }
   } catch (error) {
     console.log({ error });

@@ -59,5 +59,11 @@ export const MIXINS = {
     color: COLORS.WHITE,
     fontSize: FONT_SIZES.topInfo(),
     fontFamily: 'Montserrat',
+  },
+  lightText: {
+    color: COLORS.WHITE,
+    fontSize: 18,
+    fontFamily: 'Montserrat',
+    fontWeight: '100',
   }
 };

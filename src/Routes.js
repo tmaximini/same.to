@@ -108,7 +108,9 @@ const Routes = () => (
     <Scene
       key="start"
       component={Splash}
+      onLeft={undefined}
       hideNavBar
+      initial
     />
     <Scene
       key="tabbar"
@@ -245,7 +247,6 @@ const Routes = () => (
       title="Erste Schritte"
       navigationBarStyle={styles.navBarLight}
       sceneStyle={navBarPadding}
-      initial
     />
     <Scene
       key="onboarding2"

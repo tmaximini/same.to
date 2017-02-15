@@ -28,8 +28,7 @@ export default StyleSheet.create({
     marginBottom: PADDINGS.DOUBLE,
   },
   text: {
-    ...MIXINS.topInfo,
-    fontSize: 14,
+    ...MIXINS.lightText,
     textAlign: 'center',
   },
   icon: {

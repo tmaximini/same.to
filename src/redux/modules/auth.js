@@ -105,7 +105,13 @@ const actionsMap = {
       }
     }
 
-    return { ...state, ...action.payload.auth, rehydrateFinished: true };
+    return {
+      ...state,
+      ...action.payload.auth,
+      rehydrateFinished: true,
+      error: null,
+      password: null,
+    };
   },
   [LOGIN_START]: (state) => ({
     ...state,

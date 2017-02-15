@@ -2,18 +2,20 @@ import { get, post, del } from './api';
 
 export const fetchContacts = () => get('members/me/contacts');
 
-export const addContact = data => post(
+export const addContact = member => post(
   'members/me/contacts',
-  { ...data }
+  {
+    memberId: member.id
+  }
 );
 export const removeContact = memberId => del(`members/me/contacts/${memberId}`);
 
 export const fetchFavorites = () => get('members/me/favorites');
 
-export const addFavorite = memberId => post(
+export const addFavorite = member => post(
   'members/me/favorites',
   {
-    memberId
+    memberId: member.id
   }
 );
 

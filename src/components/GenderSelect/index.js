@@ -35,10 +35,10 @@ const GenderSelect = ({ gender, onChange }) => (
         value="female"
         iconName="md-female"
       />
-      <SegmentedControlButton
+      {/*<SegmentedControlButton
         value="transgender"
         iconName="md-transgender"
-      />
+      />*/}
     </Switcher>
   </View>
 );
