@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import Form from '../../layouts/form';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
-import EventResult from './EventResult';
+import EventResult from '../../components/EventResult';
 import {
   actions as eventActions
 } from '../../redux/modules/events';
@@ -20,6 +20,7 @@ class SearchEvents extends Component {
   static propTypes = {
     searchResults: PropTypes.array,
     searchEvents: PropTypes.func.isRequired,
+    setCurrentEvent: PropTypes.func.isRequired,
   }
 
   constructor(props) {
@@ -29,9 +30,17 @@ class SearchEvents extends Component {
     };
   }
 
+  // componentWillUnmount() {
+  //   this.props.resetSearch();
+  // }
+
   render() {
     const { query } = this.state;
-    const { searchEvents, searchResults } = this.props;
+    const {
+      searchEvents,
+      searchResults,
+      setCurrentEvent,
+    } = this.props;
 
     return (
       <Form
@@ -54,7 +63,9 @@ class SearchEvents extends Component {
             {searchResults && searchResults.length > 0 ? (
               searchResults.map(result => (
                 <EventResult
+                  key={result.id}
                   event={result}
+                  setEvent={setCurrentEvent}
                 />
               ))
             ) : null}

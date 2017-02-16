@@ -12,6 +12,7 @@ export default StyleSheet.create({
   extraText: {
     ...MIXINS.topInfo,
     paddingBottom: PADDINGS.STANDARD,
+    paddingTop: 6,
     fontWeight: '200',
   }
 });
