@@ -3,7 +3,8 @@ import { View, Text, TouchableHighlight, Image } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { Badge } from 'nachos-ui';
 import format from 'date-fns/format';
-import { canEdit } from '../../../utils';
+// import { canEdit } from '../../../utils';
+import { getUserId } from '../../../services/api';
 import { COLORS } from '../../../constants';
 import styles from './styles';
 
@@ -16,10 +17,30 @@ const ChatListItem = ({ chat, setCurrentChat }) => {
     chat.messages.length > 0 ? chat.messages[0] : null
   );
 
+  const getOtherMembers = () => {
+    const me = getUserId();
+
+    return chat.members.filter(m => m.id !== me);
+  };
+
+  const getMembersText = () => {
+    const otherMembers = getOtherMembers();
+
+    return otherMembers.map(m => `${m.firstName} ${m.lastName}`).join(',');
+  };
+
+  const getChatImage = () => {
+    const otherMembers = getOtherMembers();
+
+    return otherMembers[0].image && otherMembers[0].image.thumbs
+      ? { uri: otherMembers[0].image.thumbs['320x320'] }
+      : face;
+  };
+
   const txt = (
     lastMessage
       ? `${lastMessage.from.firstName} ${lastMessage.from.lastName}: ${lastMessage.text}`
-      : null
+      : getMembersText()
   );
 
   const time = (
@@ -44,7 +65,7 @@ const ChatListItem = ({ chat, setCurrentChat }) => {
               style={styles.avatar}
             >
               <Image
-                source={face}
+                source={getChatImage()}
                 style={styles.image}
                 resizeMode="cover"
               />

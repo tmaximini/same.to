@@ -21,6 +21,7 @@ export default class Example extends Component {
   static propTypes = {
     chat: PropTypes.object.isRequired,
     socket: PropTypes.object.isRequired,
+    fetchChats: PropTypes.func.isRequired,
   }
 
   constructor(props) {
@@ -58,7 +59,10 @@ export default class Example extends Component {
   }
 
   onDisonnect() {
+    console.log('unmouting chat');
     const { socket, chat } = this.props;
+    // refresh chat list
+    this.props.fetchChats();
     socket.emit('leave', chat.id);
     socket.disconnect();
   }

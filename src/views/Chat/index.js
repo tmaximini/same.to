@@ -21,10 +21,11 @@ class ChatView extends Component {
 
   static propTypes = {
     currentChat: PropTypes.object,
+    fetchChats: PropTypes.func.isRequired,
   }
 
   render() {
-    const { currentChat } = this.props;
+    const { currentChat, fetchChats } = this.props;
     const socket = socketIOClient(`${API_BASE}conversations?access_token=${getAuthToken()}`);
 
     return (
@@ -32,6 +33,7 @@ class ChatView extends Component {
         <Chat
           chat={currentChat}
           socket={socket}
+          fetchChats={fetchChats}
         />
       </View>
     );
