@@ -53,6 +53,8 @@ export default StyleSheet.create({
     fontSize: 13,
     fontWeight: 'bold',
     paddingTop: 3,
+    paddingRight: 5,
+    fontFamily: 'Montserrat',
   },
   actions: {
     flex: 1,
@@ -67,10 +69,18 @@ export default StyleSheet.create({
     fontSize: 10,
   },
   lastMessage: {
-    paddingTop: 5,
+    paddingRight: 5,
+  },
+  lastUserText: {
+    paddingTop: 6,
+    paddingBottom: 3,
+    color: COLORS.WHITE,
+    fontSize: 9,
+    fontWeight: 'bold',
+    fontFamily: 'Montserrat',
   },
   conversation: {
     color: COLORS.WHITE,
-    fontSize: 10,
+    fontSize: 9,
   }
 });

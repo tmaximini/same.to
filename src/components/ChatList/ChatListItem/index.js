@@ -13,15 +13,13 @@ const face = require('../../../assets/hj.jpg');
 
 const ChatListItem = ({ chat, setCurrentChat }) => {
 
+  const me = getUserId();
+
   const lastMessage = (
     chat.messages.length > 0 ? chat.messages[0] : null
   );
 
-  const getOtherMembers = () => {
-    const me = getUserId();
-
-    return chat.members.filter(m => m.id !== me);
-  };
+  const getOtherMembers = () => chat.members.filter(m => m.id !== me);
 
   const getMembersText = () => {
     const otherMembers = getOtherMembers();
@@ -39,8 +37,8 @@ const ChatListItem = ({ chat, setCurrentChat }) => {
 
   const txt = (
     lastMessage
-      ? `${lastMessage.from.firstName} ${lastMessage.from.lastName}: ${lastMessage.text}`
-      : getMembersText()
+      ? `${lastMessage.from.id === me ? 'Du' : lastMessage.from.firstName}: ${lastMessage.text}`
+      : null
   );
 
   const time = (
@@ -72,10 +70,13 @@ const ChatListItem = ({ chat, setCurrentChat }) => {
             </View>
             <View style={styles.personDetails}>
               <View style={styles.name}>
-                <Text style={styles.nameText}>{chat.subject}</Text>
+                <Text numberOfLines={1} style={styles.nameText}>{chat.subject}</Text>
+              </View>
+              <View style={styles.lastUser}>
+                <Text numberOfLines={1} style={styles.lastUserText}>{getMembersText()}</Text>
               </View>
               <View style={styles.lastMessage}>
-                <Text style={styles.conversation}>{txt}</Text>
+                <Text numberOfLines={1} style={styles.conversation}>{txt}</Text>
               </View>
             </View>
           </View>
