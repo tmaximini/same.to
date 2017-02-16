@@ -10,6 +10,13 @@ export default class Search extends Component {
     onChange: PropTypes.func,
   };
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      focus: false
+    };
+  }
+
   render() {
     const { onSearch, onCancel, onChange } = this.props;
 
@@ -22,11 +29,14 @@ export default class Search extends Component {
         textFieldBackgroundColor={COLORS.DARK_GREY}
         placeholder="Search"
         onChangeText={onChange}
+        showsCancelButton={this.state.focus}
+        onFocus={() => this.setState({ focus: true })}
         onSearchButtonPress={(text) => {
           this.refs.searchBar.unFocus();
           onSearch(text);
         }}
         onCancelButtonPress={() => {
+          this.setState({ focus: false });
           this.refs.searchBar.unFocus();
           onCancel();
         }}
