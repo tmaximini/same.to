@@ -5,17 +5,23 @@ import {
   View,
   ActivityIndicator,
 } from 'react-native';
-
+import {
+  actions as profileActions
+} from '../../redux/modules/editCreateProfile';
+import { updateAuthHeader, updateUserId } from '../../services/api';
 import styles from './styles';
 
 @connect(
   state => state.auth,
-  {},
+  profileActions,
 )
 export default class Splash extends Component {
 
   static propTypes = {
     loggedIn: PropTypes.bool.isRequired,
+    fetchProfile: PropTypes.func.isRequired,
+    userId: PropTypes.string,
+    token: PropTypes.string,
   };
 
   componentDidMount() {
@@ -30,8 +36,12 @@ export default class Splash extends Component {
   handleRouting = (props) => {
     if (props.rehydrateFinished) {
       if (props.loggedIn) {
+        const { userId, token } = props;
+        updateUserId(userId);
+        updateAuthHeader(token);
         Actions.tabbar({ key: 'tabbar', type: 'reset' });
         Actions.home({ type: 'replace' });
+        this.props.fetchProfile();
       } else {
         Actions.login({ type: 'replace' });
       }

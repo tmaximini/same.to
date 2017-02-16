@@ -48,6 +48,7 @@ import {
   watchCreateProfile,
   watchUpdateProfile,
   watchGeocodeProfile,
+  watchFetchProfile,
 } from './editCreateProfile';
 import {
   watchToggleParticipate,
@@ -91,6 +92,7 @@ export default function* root() {
     watchCreateProfile(),
     watchUpdateProfile(),
     watchGeocodeProfile(),
+    watchFetchProfile(),
     watchToggleParticipate(),
     watchFetchChats(),
     watchCreateChat(),

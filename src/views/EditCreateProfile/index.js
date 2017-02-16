@@ -13,10 +13,8 @@ import Form from '../../layouts/form';
 import InputGroup from '../../components/InputGroup';
 import GenderSelect from '../../components/GenderSelect';
 import Input from '../../components/Input';
-// import PlusButton from '../../components/PlusButton';
 import GeoInput from '../../components/GeoInput';
 import { actions as profileActions } from '../../redux/modules/editCreateProfile';
-import { getProfile } from '../../services/profiles';
 
 import styles from './styles';
 
@@ -54,12 +52,6 @@ export default class EditCreateProfile extends Component {
     };
     this.handleImageUpload = this.handleImageUpload.bind(this);
     this.isValid = this.isValid.bind(this);
-  }
-
-
-  componentWillMount() {
-    getProfile()
-      .then(this.props.setProfile);
   }
 
   isValid() {

@@ -27,6 +27,9 @@ const initialState = {
 export const CREATE_PROFILE_START = 'profile/CREATE_PROFILE_START';
 export const CREATE_PROFILE_SUCCESS = 'profile/CREATE_PROFILE_SUCCESS';
 export const CREATE_PROFILE_ERROR = 'profile/CREATE_PROFILE_ERROR';
+export const FETCH_PROFILE_START = 'profile/FETCH_PROFILE_START';
+export const FETCH_PROFILE_SUCCESS = 'profile/FETCH_PROFILE_SUCCESS';
+export const FETCH_PROFILE_ERROR = 'profile/FETCH_PROFILE_ERROR';
 export const UPDATE_PROFILE_START = 'profile/UPDATE_PROFILE_START';
 export const UPDATE_PROFILE_SUCCESS = 'profile/UPDATE_PROFILE_SUCCESS';
 export const UPDATE_PROFILE_ERROR = 'profile/UPDATE_PROFILE_ERROR';
@@ -47,6 +50,10 @@ export const update = (key, value) => ({
   }
 });
 
+export const fetchProfile = () => ({
+  type: FETCH_PROFILE_START
+});
+
 export const updateRemoteProfile = profile => ({
   type: UPDATE_PROFILE_START,
   payload: {
@@ -54,7 +61,6 @@ export const updateRemoteProfile = profile => ({
     deviceId: DeviceInfo.getUniqueID(),
   }
 });
-
 
 export const setProfile = model => ({
   type: SET_PROFILE,
@@ -80,6 +86,7 @@ export const actions = {
   setProfile,
   geocodeLocation,
   updateRemoteProfile,
+  fetchProfile,
 };
 
 
@@ -133,6 +140,10 @@ const actionsMap = {
       ...state.profile,
       location: action.payload,
     },
+  }),
+  [FETCH_PROFILE_SUCCESS]: (state, action) => ({
+    ...state,
+    profile: action.payload.profile,
   }),
   [GEOCODE_PROFILE_ERROR]: (state, action) => {
     const { locationString, error } = action.payload;

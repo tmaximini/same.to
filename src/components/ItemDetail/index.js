@@ -86,7 +86,7 @@ const ItemDetail = ({ itemType, participates, onToggle, item, resetChat, ...rest
     <View style={styles.actionButtons}>
       <Button
         text="Chat erstellen"
-        disabled={item.memberIds.length < 2 || !participates}
+        disabled={(item.members && item.members.length < 2) || !participates}
         onPress={() => {
           resetChat();
           Actions.editCreateChat({

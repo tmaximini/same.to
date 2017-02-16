@@ -29,7 +29,7 @@ const SubItemList = (
           item={trip}
         />
       ))}
-      {activities.map(activity => (
+      {activities && activities.map(activity => (
         <SubItem
           onSelect={setActivity}
           setDetail={setDetail}

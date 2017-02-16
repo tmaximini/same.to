@@ -10,11 +10,14 @@ import {
   UPDATE_PROFILE_START,
   UPDATE_PROFILE_SUCCESS,
   UPDATE_PROFILE_ERROR,
+  FETCH_PROFILE_START,
+  FETCH_PROFILE_SUCCESS,
+  FETCH_PROFILE_ERROR,
 } from '../modules/editCreateProfile';
 import {
   AUTHORIZATION_REQUIRED,
 } from '../modules/auth';
-import { createProfile, updateProfile } from '../../services/profiles';
+import { createProfile, updateProfile, getProfile } from '../../services/profiles';
 
 
 export function* createProfileAsync(action) {
@@ -108,6 +111,37 @@ export function* updateProfileAsync(action) {
 }
 
 
+export function* fetchProfileAsync() {
+  try {
+    const response = yield call(getProfile);
+
+    if (response.error) {
+      // in case of error
+      yield put({
+        type: FETCH_PROFILE_ERROR,
+        payload: {
+          error: response.error
+        }
+      });
+    } else {
+      // success
+      yield put({
+        type: FETCH_PROFILE_SUCCESS,
+        payload: {
+          profile: response
+        }
+      });
+    }
+  } catch (error) {
+    console.log({ error });
+    yield put({
+      type: FETCH_PROFILE_ERROR,
+      error
+    });
+  }
+}
+
+
 
 // WATCHERS
 export function* watchCreateProfile() {
@@ -121,4 +155,8 @@ export function* watchUpdateProfile() {
 
 export function* watchGeocodeProfile() {
   yield takeLatest(GEOCODE_PROFILE_START, geocodeAsync);
+}
+
+export function* watchFetchProfile() {
+  yield takeLatest(FETCH_PROFILE_START, fetchProfileAsync);
 }
