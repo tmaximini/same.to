@@ -16,10 +16,10 @@ const Profile = ({ profile }) => {
           source={avatar}
         />
         <View style={styles.textBox}>
-          <Text style={styles.text}>Berlin</Text>
+          <Text style={styles.text}>{profile.location ? profile.location.locality : ''}</Text>
         </View>
         <View style={styles.textBox}>
-          <Text style={styles.text}>{profile.occupation ? profile.occupation : 'unknown'}</Text>
+          <Text style={styles.text}>{profile.occupation ? profile.occupation : ''}</Text>
         </View>
         <View style={styles.interests}>
           {profile.interests && profile.interests.length ?

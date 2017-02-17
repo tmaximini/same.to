@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import I18n from 'react-native-i18n';
 import {
   Text,
   View,
@@ -66,7 +67,6 @@ export default class Login extends Component {
       result => {
         this.props.update('isLoading', true);
         if (result.isCancelled) {
-          console.log('Login was cancelled');
           this.props.update('isLoading', false);
         } else {
           this.onLoginFinished();
@@ -123,30 +123,30 @@ export default class Login extends Component {
           </View>
           <Button
             onPress={this.onFacebookLogin}
-            text="Mit Facebook anmelden"
+            text={I18n.t('login_facebook')}
             noResize
           />
           <Text style={styles.or}>or</Text>
           {error && <Text style={styles.error}>{error}</Text>}
           <Input
-            placeholder="E-Mail"
+            placeholder={I18n.t('email')}
             value={email}
             keyboardType="email-address"
             onChangeText={(text) => update('email', text)}
           />
           <Input
-            placeholder="Password"
+            placeholder={I18n.t('password')}
             value={password}
             onChangeText={(text) => update('password', text)}
             secureTextEntry
           />
           <Button
             onPress={this.onLogin}
-            text="Sign In"
+            text={I18n.t('login')}
           />
-          <Text style={styles.or}>or</Text>
+          <Text style={styles.or}>{I18n.t('or')}</Text>
           <Button
-            text="Register"
+            text={I18n.t('register')}
             textColor="#fff"
             noBackground
             onPress={() => {
@@ -154,15 +154,6 @@ export default class Login extends Component {
               Actions.register();
             }}
           />
-          {/*
-          <Button
-            text="Forgot Password?"
-            textColor="#fff"
-            noBorder
-            noBackground
-            onPress={Actions.lostPassword}
-          />
-          */}
         </View>
         )}
       </Form>

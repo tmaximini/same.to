@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Navigator, Text, StyleSheet, TouchableHighlight } from 'react-native';
 import { Scene, Router, Actions } from 'react-native-router-flux';
+import I18n from 'react-native-i18n';
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -135,7 +136,7 @@ const Routes = () => (
       <Scene
         key="home"
         component={Home}
-        title="Home"
+        title={I18n.t('home')}
         sceneStyle={navTabpadding}
         icon={makeTabIcon('home')}
         renderRightButton={makeSearchButton}
@@ -143,28 +144,28 @@ const Routes = () => (
       <Scene
         key="favorites"
         component={Favorites}
-        title="Favoriten"
+        title={I18n.t('favorites')}
         icon={makeTabIcon('star')}
         sceneStyle={navTabpadding}
       />
       <Scene
         key="contacts"
         component={Contacts}
-        title="Kontakte"
+        title={I18n.t('contacts')}
         icon={makeTabIcon('user-circle-o', 20)}
         sceneStyle={navTabpadding}
       />
       <Scene
         key="chats"
         component={Chats}
-        title="Chats"
+        title={I18n.t('chats')}
         icon={makeTabIcon('comment', 20)}
         sceneStyle={navTabpadding}
       />
       <Scene
         key="settings"
         component={Settings}
-        title="Mehr"
+        title={I18n.t('more')}
         icon={makeTabIcon('dots-horizontal', 22, true)}
         sceneStyle={navTabpadding}
       />
@@ -172,78 +173,78 @@ const Routes = () => (
     <Scene
       key="editCreateProfile"
       component={EditCreateProfile}
-      title="Create Profile"
+      title={I18n.t('create_profile')}
       sceneStyle={navBarPadding}
     />
     <Scene
       key="editCreateAccommodation"
       sceneStyle={navBarPadding}
       component={EditCreateAccommodation}
-      title="New Accommodation"
+      title={I18n.t('new_accommodation')}
     />
     <Scene
       key="editCreateActivity"
       sceneStyle={navBarPadding}
       component={EditCreateActivity}
-      title="New Activity"
+      title={I18n.t('new_activity')}
     />
     <Scene
       key="editCreateTrip"
       component={EditCreateTrip}
       sceneStyle={navBarPadding}
-      title="New Trip"
+      title={I18n.t('new_trip')}
     />
     <Scene
       key="editCreateChat"
       component={EditCreateChat}
       sceneStyle={navBarPadding}
-      title="New Chat"
+      title={I18n.t('new_chat')}
     />
     <Scene
       key="event"
       component={EventDetail}
       sceneStyle={navBarPadding}
-      title="Event Details"
+      title={I18n.t('event_details')}
       rightButtonTextStyle={cyanText}
     />
     <Scene
       key="searchEvents"
       component={SearchEvents}
       sceneStyle={navBarPadding}
-      title="Search Events"
+      title={I18n.t('search_events')}
       rightButtonTextStyle={cyanText}
     />
     <Scene
       key="trip"
       component={Detail}
       sceneStyle={navBarPadding}
-      title="Trip Details"
+      title={I18n.t('trip_details')}
       rightButtonTextStyle={cyanText}
     />
     <Scene
       key="accommodation"
       component={Detail}
       sceneStyle={navBarPadding}
-      title="Accommodation Details"
+      title={I18n.t('housing_details')}
       rightButtonTextStyle={cyanText}
     />
     <Scene
       key="activity"
       component={Detail}
       sceneStyle={navBarPadding}
-      title="Activity Details"
+      title={I18n.t('activity_details')}
       rightButtonTextStyle={cyanText}
     />
     <Scene
       key="editCreateEvent"
       component={EditCreatevent}
       sceneStyle={navBarPadding}
-      title="New Event"
+      title={I18n.t('new_event')}
     />
     <Scene
       key="chat"
       component={Chat}
-      title="Chat"
+      title={I18n.t('chat')}
       sceneStyle={navBarPadding}
       rightButtonTextStyle={cyanText}
       onRight={() => Actions.editCreateChat({ title: 'Edit Conversation' })}
@@ -252,64 +253,64 @@ const Routes = () => (
     <Scene
       key="profile"
       component={Profile}
-      title="Profile"
+      title={I18n.t('profile')}
       sceneStyle={navBarPadding}
       rightButtonTextStyle={cyanText}
     />
-    <Scene
+    {/*<Scene
       key="lostPassword"
       component={LostPassword}
       title="Lost Password"
-    />
+    />*/}
     <Scene
       key="login"
       component={Login}
-      title="Login"
+      title={I18n.t('login')}
       navigationBarStyle={styles.navBarLight}
     />
     <Scene
       key="register"
       component={Register}
-      title="Register"
+      title={I18n.t('register')}
       navigationBarStyle={styles.navBarLight}
     />
     <Scene
       key="onboarding1"
       component={Onboarding1}
-      title="Erste Schritte"
+      title={I18n.t('getting_started')}
       navigationBarStyle={styles.navBarLight}
       sceneStyle={navBarPadding}
     />
     <Scene
       key="onboarding2"
       component={Onboarding2}
-      title="Erste Schritte"
+      title={I18n.t('getting_started')}
       navigationBarStyle={styles.navBarLight}
       sceneStyle={navBarPadding}
     />
     <Scene
       key="onboarding3"
       component={Onboarding3}
-      title="Erste Schritte"
+      title={I18n.t('getting_started')}
       navigationBarStyle={styles.navBarLight}
       sceneStyle={navBarPadding}
     />
     <Scene
       key="participants"
       component={Participants}
-      title="All Participants"
+      title={I18n.t('participants')}
       sceneStyle={navBarPadding}
     />
     <Scene
       key="feedback"
       component={Feedback}
-      title="Feedback"
+      title={I18n.t('send_feedback')}
       sceneStyle={navBarPadding}
     />
     <Scene
       key="impressum"
       component={Impressum}
-      title="Impressum"
+      title={I18n.t('impressum')}
       sceneStyle={navBarPadding}
     />
   </RouterWithRedux>

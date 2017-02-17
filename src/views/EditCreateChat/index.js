@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import I18n from 'react-native-i18n';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import Form from '../../layouts/form';
@@ -57,7 +58,7 @@ export default class EditCreateActivity extends Component {
 
     return (
       <Form
-        buttonText={currentChat.id ? 'Update' : 'Create'}
+        buttonText={currentChat.id ? I18n.t('save') : I18n.t('create')}
         onSubmit={() => this.saveItem()}
       >
         <View style={styles.wrapper}>

@@ -1,4 +1,5 @@
 import React from 'react';
+import I18n from 'react-native-i18n';
 import { ScrollView, Text } from 'react-native';
 import styles from './styles';
 

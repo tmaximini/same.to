@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import I18n from 'react-native-i18n';
 import {
   View,
   Text,
@@ -56,7 +57,7 @@ export default class Contacts extends Component {
           }}
         />
         <Form
-          buttonText="Freunde einladen"
+          buttonText={I18n.t('invite_friends')}
           onSubmit={share({
             message: 'Join me on same.to',
             url: 'sameto://invite/url/to/be/defined',
@@ -74,11 +75,11 @@ export default class Contacts extends Component {
             <View style={styles.noItems}>
               {searching ? (
                 <Text style={styles.noItemsText}>
-                  Keine Ergebnisse zu dieser Suche.
+                  {I18n.t('no_search_result')}
                 </Text>
               ) : (
                 <Text style={styles.noItemsText}>
-                  Du hast derzeit noch keine Kontakte. Füge deinen ersten Kontakt hinzu oder lade Freunde zur App ein.
+                  {I18n.t('no_contacts_yet')}
                 </Text>
               )}
             </View>

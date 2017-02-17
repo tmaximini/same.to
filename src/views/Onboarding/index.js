@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
+import I18n from 'react-native-i18n';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
 import { Actions } from 'react-native-router-flux';
@@ -12,7 +13,7 @@ const ob3 = require('../../assets/Onboarding3.png');
 
 export const Onboarding1 = () => (
   <Form
-    buttonText="Weiter"
+    buttonText={I18n.t('next')}
     onSubmit={Actions.onboarding2}
   >
     <View style={styles.wrapper}>
@@ -25,12 +26,12 @@ export const Onboarding1 = () => (
       </View>
       <View style={styles.textBox}>
         <Text style={styles.text}>
-          Plane deine Reise, Unterkunft und Aktivitäten
+          {I18n.t('onboarding1')}
         </Text>
       </View>
       <View style={styles.textBox}>
         <Text style={styles.text}>
-          Finde Matches aus deiner Region für eine gemeinsame Anreise und Aktivitäten.
+          {I18n.t('onboarding2')}
         </Text>
       </View>
       <View style={styles.dots}>
@@ -56,7 +57,7 @@ export const Onboarding1 = () => (
 
 export const Onboarding2 = () => (
   <Form
-    buttonText="Weiter"
+    buttonText={I18n.t('next')}
     onSubmit={Actions.onboarding3}
   >
     <View style={styles.wrapper}>
@@ -69,12 +70,12 @@ export const Onboarding2 = () => (
       </View>
       <View style={styles.textBox}>
         <Text style={styles.text}>
-          Plane Aktivitäten wie Feiern, Sport, Networking oder Dating.
+          {I18n.t('onboarding3')}
         </Text>
       </View>
       <View style={styles.textBox}>
         <Text style={styles.text}>
-          Lade Freunde dazu ein und finde Gleichgesinnte aus der Region.
+          {I18n.t('onboarding4')}
         </Text>
       </View>
       <View style={styles.dots}>
@@ -101,7 +102,7 @@ export const Onboarding2 = () => (
 
 export const Onboarding3 = () => (
   <Form
-    buttonText="Ich bin bereit"
+    buttonText={I18n.t('i_am_ready')}
     onSubmit={() => {
       Actions.tabbar({ key: 'tabbar', type: 'reset', onBack: null, hideBackImage: true });
       Actions.home({ type: 'reset', onBack: null, hideBackImage: true });
@@ -117,12 +118,12 @@ export const Onboarding3 = () => (
       </View>
       <View style={styles.textBox}>
         <Text style={styles.text}>
-          Finde Gleichgesinnte in deiner Nähe.
+          {I18n.t('onboarding5')}
         </Text>
       </View>
       <View style={styles.textBox}>
         <Text style={styles.text}>
-          Suche einfach nach Interessen, Orten, Uni uvm.
+          {I18n.t('onboarding6')}
         </Text>
       </View>
       <View style={styles.dots}>

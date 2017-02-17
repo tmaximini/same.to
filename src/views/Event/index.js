@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { View, Text, TouchableHighlight } from 'react-native';
+import I18n from 'react-native-i18n';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { share } from '../../utils';
@@ -135,7 +136,7 @@ export default class Event extends Component {
                   title: `Same.to: ${name}`
                 })}
               >
-                <Text style={styles.boxText}>Share</Text>
+                <Text style={styles.boxText}>{I18n.t('share')}</Text>
               </TouchableHighlight>
               <TouchableHighlight
                 style={getMiddleBoxStyles()}
@@ -145,14 +146,14 @@ export default class Event extends Component {
                   title: `Same.to: ${name}`
                 })}
               >
-                <Text style={styles.boxText}>Invite</Text>
+                <Text style={styles.boxText}>{I18n.t('invite')}</Text>
               </TouchableHighlight>
               {isEvent && (
                 <TouchableHighlight
                   style={[styles.box, styles.lastBox]}
                   onPress={() => Actions.participants({ members })}
                 >
-                  <Text style={styles.boxText}>Participants</Text>
+                  <Text style={styles.boxText}>{I18n.t('participants')}</Text>
                 </TouchableHighlight>
               )}
             </View>
@@ -172,8 +173,7 @@ export default class Event extends Component {
           ) : (
             <View style={styles.noItems}>
               <Text style={styles.noItemsText}>
-                Bisher wurden keine Trips, Unterkünfte oder Aktivitäten angelegt.
-                Um zu starten, drücke unten auf das Plus.
+                {I18n.t('no_subitems_yet')}
               </Text>
             </View>
           )}

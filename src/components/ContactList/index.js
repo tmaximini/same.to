@@ -28,7 +28,6 @@ export default class ContactList extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.contacts) {
-      console.info('nextProps ContactS', nextProps.contacts);
       this.setState({
         dataSource: this.state.dataSource.cloneWithRows(nextProps.contacts)
       });

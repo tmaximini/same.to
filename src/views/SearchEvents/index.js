@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import I18n from 'react-native-i18n';
 import { View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';

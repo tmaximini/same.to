@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import I18n from 'react-native-i18n';
 import { View, Text, TouchableHighlight, Image } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { Badge } from 'nachos-ui';

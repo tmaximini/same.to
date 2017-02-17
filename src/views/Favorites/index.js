@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import I18n from 'react-native-i18n';
 import {
   View,
   Text,
@@ -36,8 +37,9 @@ export default class Favorites extends Component {
 
     return (
       <Form
-        buttonText="Favoriten suchen"
+        buttonText={I18n.t('search_favorites')}
         onPress={() => {}}
+        buttonProps={{ noResize: true }}
       >
         <View style={styles.container}>
           {favorites && favorites.length ? (
@@ -51,7 +53,7 @@ export default class Favorites extends Component {
           ) : (
             <View style={styles.noItems}>
               <Text style={styles.noItemsText}>
-                Du hast derzeit noch keine Favoriten. Favorisiere deine Kontakte oder finde Favoriten mit der Suche.
+                {I18n.t('no_favorites_yet')}
               </Text>
             </View>
           )}

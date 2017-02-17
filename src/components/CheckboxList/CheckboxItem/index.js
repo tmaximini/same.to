@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import I18n from 'react-native-i18n';
 import { View, Text, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import styles from './styles';
@@ -24,7 +25,7 @@ const CheckboxItem = ({ item, onChange, active }) => (
       {/*</Image>*/}
 
     </TouchableOpacity>
-    <Text style={styles.itemText}>{item}</Text>
+    <Text style={styles.itemText}>{I18n.t(item)}</Text>
   </View>
 );
 

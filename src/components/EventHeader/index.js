@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { View, Text, Image } from 'react-native';
+import I18n from 'react-native-i18n';
 import Location from '../../components/Location';
 import TagList from '../../components/TagList';
 import Date from '../../components/Date';
@@ -38,7 +39,7 @@ const EventHeader = ({ event, renderTitle, onToggle, participates, background })
           />
           {event.overnightStays && (
             <Text style={styles.overnightStays}>
-              {event.overnightStays} Übernachtungen
+              {event.overnightStays} {I18n.t('overnight_stays')}
             </Text>
           )}
         </View>
@@ -49,7 +50,7 @@ const EventHeader = ({ event, renderTitle, onToggle, participates, background })
             onChange={onToggle}
           />
           <Text style={styles.participateText}>
-            Ich nehme teil
+             {I18n.t('taking_part')}
           </Text>
         </View>
       </View>

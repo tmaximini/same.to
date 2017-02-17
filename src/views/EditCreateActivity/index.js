@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import I18n from 'react-native-i18n';
 import { connect } from 'react-redux';
 import { formatDate } from '../../utils';
 import Form from '../../layouts/form';
@@ -58,7 +59,7 @@ export default class EditCreateActivity extends Component {
 
     return (
       <Form
-        buttonText={activity.id ? 'Update' : 'Save'}
+        buttonText={activity.id ? I18n.t('save') : I18n.t('create')}
         onSubmit={() => this.saveItem(activity)}
       >
         <CheckboxList

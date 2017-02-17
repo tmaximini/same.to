@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import I18n from 'react-native-i18n';
 import {
   View,
   Platform,
@@ -139,7 +140,7 @@ export default class EditCreateProfile extends Component {
 
     return (
       <Form
-        buttonText={signupCompleted ? 'Update' : 'Continue'}
+        buttonText={signupCompleted ? I18n.t('save') : I18n.t('continue')}
         onSubmit={() => updateRemoteProfile(profile)}
         buttonDisabled={!this.isValid()}
       >
@@ -156,37 +157,37 @@ export default class EditCreateProfile extends Component {
           </View>
           <InputGroup>
             <Input
-              placeholder="First Name"
+              placeholder={I18n.t('first_name')}
               value={firstName}
               onChangeText={(text) => update('firstName', text)}
               style={{ flexGrow: 1 }}
             />
             <Input
-              placeholder="Last Name"
+              placeholder={I18n.t('last_name')}
               value={lastName}
               onChangeText={(text) => update('lastName', text)}
               style={{ flexGrow: 1 }}
             />
           </InputGroup>
           <Input
-            placeholder="Tätigkeit"
+            placeholder={I18n.t('occupation')}
             value={occupation}
             onChangeText={(text) => update('occupation', text)}
           />
           <Input
-            placeholder="Arbeitgeber"
+            placeholder={I18n.t('employer')}
             value={company}
             onChangeText={(text) => update('company', text)}
           />
           <GeoInput
-            placeholder="Wohnort"
+            placeholder={I18n.t('city')}
             enablePoweredByContainer={false}
             value={locationString || locality}
             onChangeText={text => update('locationString', text)}
             onAdressSelect={geocodeLocation}
           />
           <Input
-            placeholder="Hobbies"
+            placeholder={I18n.t('interests')}
             value={interests ? interests.join(', ') : null}
             onChangeText={(text) => update('interests', text.split(', '))}
           />

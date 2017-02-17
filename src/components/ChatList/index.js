@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import I18n from 'react-native-i18n';
 import { ListView, RefreshControl } from 'react-native';
 
 import ChatListItem from './ChatListItem';

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
+import I18n from 'react-native-i18n';
 import Form from '../../layouts/form';
 import Input from '../../components/Input';
 import styles from './styles';
@@ -15,11 +16,11 @@ export default class Feedback extends Component {
     return (
       <Form
         onSubmit={() => {}}
-        buttonText="Feedback senden"
+        buttonText={I18n.t('send_feedback')}
       >
         <View style={styles.container}>
           <Input
-            placeholder="Was können wir an Same.to verbessern?"
+            placeholder={I18n.t('feedback_better')}
             value={this.state.feedback}
             numberOfLines={10}
             onChangeText={text => this.setState({ feedback: text })}

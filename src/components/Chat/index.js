@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import I18n from 'react-native-i18n';
 import { View, Text, TouchableHighlight } from 'react-native';
 import { GiftedChat, Bubble } from 'react-native-gifted-chat';
 import _ from 'lodash';

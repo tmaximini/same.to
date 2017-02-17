@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import I18n from 'react-native-i18n';
 import { connect } from 'react-redux';
 import { formatDate } from '../../utils';
 import Form from '../../layouts/form';
@@ -60,24 +61,24 @@ export default class EditCreateTrip extends Component {
 
     return (
       <Form
-        buttonText={trip.id ? 'Update' : 'Save'}
+        buttonText={trip.id ? I18n.t('save') : I18n.t('create')}
         onSubmit={() => this.saveItem(trip)}
       >
         <CheckboxList
-          label="Mit folgenden Transportmitteln würde ich reisen"
+          label={I18n.t('i_would_travel')}
           items={tripTypes}
           model={trip}
           onChange={toggleCategory}
         />
         <Datepicker
-          placeholder="Start Date"
+          placeholder={`${I18n.t('start')} ${I18n.t('date')}`}
           minDate={today}
           date={trip.startAt}
           onChange={date => updateTrip('startAt', date)}
           grow={false}
         />
         <GeoInput
-          placeholder="Start"
+          placeholder={I18n.t('from')}
           enablePoweredByContainer={false}
           value={pickupString}
           onChangeText={text => updateTrip('pickupString', text)}
@@ -85,7 +86,7 @@ export default class EditCreateTrip extends Component {
           zIndex={2}
         />
         <GeoInput
-          placeholder="Destination"
+          placeholder={I18n.t('to')}
           enablePoweredByContainer={false}
           value={destinationString}
           onChangeText={text => updateTrip('destinationString', text)}
@@ -94,7 +95,7 @@ export default class EditCreateTrip extends Component {
         />
         <HR />
         <OnOffSwitch
-          name="Make this trip public"
+          name={I18n.t('make_trip_public')}
           value={trip.isPublic}
           onChange={(val) => updateTrip('isPublic', val)}
         />

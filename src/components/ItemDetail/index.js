@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import I18n from 'react-native-i18n';
 import { View, Text, TouchableHighlight, Dimensions } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Actions } from 'react-native-router-flux';
@@ -18,7 +19,7 @@ const getTitle = (itemType, item) => {
       return (
         <View style={{ flexDirection: 'row' }}>
           <Text numberOfLines={1} style={[styles.title]}>
-            {item.pickupLocation ? item.pickupLocation.locality : 'unknown'}
+            {item.pickupLocation ? item.pickupLocation.locality : ''}
           </Text>
           <Icon
             size={34}
@@ -26,7 +27,7 @@ const getTitle = (itemType, item) => {
             style={[styles.titleCaret, { top: width > 320 ? 0 : -4 }]}
           />
           <Text numberOfLines={1} style={styles.title}>
-            {item.destinationLocation ? item.destinationLocation.locality : 'unknown'}
+            {item.destinationLocation ? item.destinationLocation.locality : ''}
           </Text>
         </View>
       );
@@ -85,7 +86,7 @@ const ItemDetail = ({ itemType, participates, onToggle, item, resetChat, ...rest
     </View>
     <View style={styles.actionButtons}>
       <Button
-        text="Chat erstellen"
+        text={I18n.t('create_chat')}
         disabled={(item.members && item.members.length < 2) || !participates}
         onPress={() => {
           resetChat();
@@ -98,7 +99,7 @@ const ItemDetail = ({ itemType, participates, onToggle, item, resetChat, ...rest
         smallText
       />
       <Button
-        text="Alle Teilnehmer"
+        text={I18n.t('all_participants')}
         onPress={() => Actions.participants({ members: item.members })}
         style={{ width: (width / 2) - 15 }}
         smallText

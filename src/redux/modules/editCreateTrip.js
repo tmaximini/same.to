@@ -12,7 +12,7 @@ const makeDefaultTrip = () => ({
 const initialState = {
   trip: makeDefaultTrip(),
   errors: {},
-  tripTypes: ['car', 'airplane', 'train', 'bus', 'taxi', 'driver'],
+  tripTypes: ['car', 'plane', 'train', 'bus', 'taxi', 'limo'],
   pickupString: null,
   destinationString: null,
 };

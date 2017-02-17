@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Image, View, Text, TouchableHighlight } from 'react-native';
+import I18n from 'react-native-i18n';
 import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Date from '../../Date';
@@ -16,12 +17,12 @@ const EventListItem = ({ event, setCurrentEvent, setEvent, setDetail, setActivit
   //
   const editEvent = () => {
     setEvent(event);
-    Actions.editCreateEvent({ event, title: 'Edit Event' });
+    Actions.editCreateEvent({ event, title: I18n.t('edit_event') });
   };
 
   const editActivity = () => {
     setActivity(event);
-    Actions.editCreateActivity({ activity: event, title: 'Edit Activity' });
+    Actions.editCreateActivity({ activity: event, title: I18n.t('edit_activity') });
   };
 
   // set current event in reducer
@@ -30,13 +31,14 @@ const EventListItem = ({ event, setCurrentEvent, setEvent, setDetail, setActivit
       setCurrentEvent(event);
       Actions.event({
         onRight: canEdit(event) ? editEvent : undefined,
-        rightTitle: canEdit(event) ? 'edit' : undefined,
+        rightTitle: canEdit(event) ? I18n.t('edit') : undefined,
       });
     } else {
       setDetail({ itemType: 'activity', item: event });
       Actions.activity({
+        title: event.name,
         onRight: canEdit(event) ? editActivity : undefined,
-        rightTitle: canEdit(event) ? 'edit' : undefined,
+        rightTitle: canEdit(event) ? I18n.t('edit') : undefined,
       });
     }
   };

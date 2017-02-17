@@ -92,7 +92,6 @@ export const actions = {
 // Action Handlers
 const actionsMap = {
   [REHYDRATE]: (state, action) => {
-    console.info('REHYDRATE!!', state);
     if (action.payload.auth) {
       try {
         const { token, loggedIn, userId } = action.payload.auth;

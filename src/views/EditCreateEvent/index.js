@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import I18n from 'react-native-i18n';
 import { connect } from 'react-redux';
 import Form from '../../layouts/form';
 import InputGroup from '../../components/InputGroup';
@@ -59,7 +60,7 @@ export default class EditCreatevent extends Component {
 
     return (
       <Form
-        buttonText={event.id ? 'Update' : 'Save'}
+        buttonText={event.id ? I18n.t('save') : I18n.t('create')}
         onSubmit={() => this.saveItem(event)}
       >
         <Input

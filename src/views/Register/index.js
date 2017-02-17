@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import I18n from 'react-native-i18n';
 import {
   Text,
   View,
@@ -43,9 +44,9 @@ export default class Login extends Component {
   }
 
   onRegister() {
-    const { register, update, username, email, password, deviceId } = this.props;
+    const { register, update, email, password, deviceId } = this.props;
     if (email && password) {
-      register({ username, email, password, deviceId });
+      register({ email, password, deviceId });
     } else {
       update('error', 'Username, E-Mail and Password required');
     }
@@ -56,7 +57,6 @@ export default class Login extends Component {
     const {
       update,
       resetErrors,
-      username,
       email,
       password,
       error,
@@ -88,24 +88,24 @@ export default class Login extends Component {
               onChangeText={(text) => update('username', text)}
             />*/}
             <Input
-              placeholder="E-Mail"
+              placeholder={I18n.t('email')}
               value={email}
               keyboardType="email-address"
               onChangeText={(text) => update('email', text)}
             />
             <Input
-              placeholder="Password"
+              placeholder={I18n.t('password')}
               value={password}
               onChangeText={(text) => update('password', text)}
               secureTextEntry
             />
             <Button
               onPress={this.onRegister}
-              text="Register"
+              text={I18n.t('register')}
             />
             <Text style={styles.or}>or</Text>
             <Button
-              text="Sign in"
+              text={I18n.t('login')}
               noBackground
               onPress={() => {
                 resetErrors();
