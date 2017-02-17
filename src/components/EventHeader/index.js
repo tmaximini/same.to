@@ -12,7 +12,7 @@ const EventHeader = ({ event, renderTitle, onToggle, participates, background })
     source={background}
   >
     <View style={styles.header}>
-      <View style={{ flex: 1.5, alignItems: 'flex-start' }}>
+      <View style={{ flex: 2, alignItems: 'flex-start' }}>
         {event.categories && (
           <TagList
             tags={event.categories}
@@ -26,15 +26,23 @@ const EventHeader = ({ event, renderTitle, onToggle, participates, background })
           </Text>
         )}
       </View>
-      <View style={{ flex: 1, justifyContent: 'flex-end', alignSelf: 'stretch', alignItems: 'flex-end' }}>
+      <View style={{ flex: 1, justifyContent: 'flex-end', alignSelf: 'stretch', alignItems: 'flex-end', paddingTop: 12 }}>
         {event.location && (
           <Location
             location={event.location}
           />
         )}
-        <Date
-          date={event.startAt}
-        />
+        <View style={styles.overnight}>
+          <Date
+            date={event.startAt}
+          />
+          {event.overnightStays && (
+            <Text style={styles.overnightStays}>
+              {event.overnightStays} Übernachtungen
+            </Text>
+          )}
+        </View>
+
         <View style={styles.topRight}>
           <OnOffSwitch
             value={participates}

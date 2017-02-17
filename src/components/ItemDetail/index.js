@@ -23,7 +23,7 @@ const getTitle = (itemType, item) => {
           <Icon
             size={34}
             name="ios-arrow-forward"
-            style={styles.titleCaret}
+            style={[styles.titleCaret, { top: width > 320 ? 0 : -4 }]}
           />
           <Text numberOfLines={1} style={styles.title}>
             {item.destinationLocation ? item.destinationLocation.locality : 'unknown'}

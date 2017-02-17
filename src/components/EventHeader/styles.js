@@ -23,10 +23,20 @@ export default StyleSheet.create({
   topRight: {
     position: 'absolute',
     right: 0,
-    bottom: 4,
+    bottom: 0,
   },
   participateText: {
     ...MIXINS.topInfo,
     paddingTop: 6,
   },
+  overnight: {
+    flexGrow: 1,
+    alignSelf: 'stretch',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-end',
+  },
+  overnightStays: {
+    ...MIXINS.topInfo,
+    textAlign: 'left'
+  }
 });
