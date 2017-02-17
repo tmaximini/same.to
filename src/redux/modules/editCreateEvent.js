@@ -18,7 +18,6 @@ const initialState = {
   event: makeDefaultEvent(),
   locationString: null,
   errors: {},
-  isNew: true,
 };
 
 
@@ -111,12 +110,12 @@ const ensureDatesAreValid = event => {
 const actionsMap = {
   [CREATE_EVENT_SUCCESS]: (state, action) => ({
     ...state,
+    locationString: null,
     event: makeDefaultEvent(),
   }),
   [RESET_EVENT]: (state) => ({
     ...state,
     event: makeDefaultEvent(),
-    isNew: true,
   }),
   [SET_EVENT]: (state, action) => {
     const { model } = action.payload;
@@ -125,13 +124,12 @@ const actionsMap = {
       ...state,
       event: model,
       locationString: model.location ? model.location.formattedAddress : '',
-      isNew: false,
     };
   },
   [UPDATE_EVENT_SUCCESS]: (state, action) => ({
     ...state,
+    locationString: null,
     event: action.payload.event,
-    isNew: true,
   }),
   [UPDATE_EVENT]: (state, action) => {
     const { key, value } = action.payload;

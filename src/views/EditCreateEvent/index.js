@@ -26,7 +26,6 @@ export default class EditCreatevent extends Component {
     setEvent: PropTypes.func.isRequired,
     geocodeLocation: PropTypes.func.isRequired,
     locationString: PropTypes.string,
-    isNew: PropTypes.bool.isRequired,
   }
 
   constructor(props) {
@@ -35,10 +34,10 @@ export default class EditCreatevent extends Component {
   }
 
   saveItem(item) {
-    if (this.props.isNew) {
-      this.props.createEvent(item);
-    } else {
+    if (item.id) {
       this.props.updateRemoteEvent(item);
+    } else {
+      this.props.createEvent(item);
     }
   }
 
@@ -60,7 +59,7 @@ export default class EditCreatevent extends Component {
 
     return (
       <Form
-        buttonText={this.props.isNew ? 'Save' : 'Update'}
+        buttonText={event.id ? 'Update' : 'Save'}
         onSubmit={() => this.saveItem(event)}
       >
         <Input

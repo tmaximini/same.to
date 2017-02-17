@@ -12,7 +12,6 @@ const initialState = {
   chats: [],
   currentChat: makeDefaultChat(),
   error: null,
-  isNew: true,
 };
 
 
@@ -140,17 +139,14 @@ const actionsMap = {
   [CREATE_CHAT_SUCCESS]: (state, action) => ({
     ...state,
     currentChat: action.payload.chat,
-    isNew: false,
   }),
   [UPDATE_REMOTE_CHAT_SUCCESS]: (state, action) => ({
     ...state,
     currentChat: action.payload.chat,
-    isNew: false,
   }),
   [RESET_CHAT]: (state) => ({
     ...state,
     currentChat: makeDefaultChat(),
-    isNew: true,
   })
 };
 

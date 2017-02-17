@@ -29,7 +29,6 @@ export default class EditCreateActivity extends Component {
     locationString: PropTypes.string,
     activity: PropTypes.object,
     eventId: PropTypes.string,
-    isNew: PropTypes.bool.isRequired,
   }
 
   constructor(props) {

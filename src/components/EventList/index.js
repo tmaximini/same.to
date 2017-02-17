@@ -9,9 +9,6 @@ export default class EventList extends Component {
   static propTypes = {
     events: PropTypes.arrayOf(PropTypes.object),
     refresh: PropTypes.func.isRequired,
-    setCurrentEvent: PropTypes.func.isRequired,
-    setDetail: PropTypes.func.isRequired,
-    setEvent: PropTypes.func.isRequired,
     isRefreshing: PropTypes.bool.isRequired,
   }
 
@@ -38,7 +35,6 @@ export default class EventList extends Component {
   }
 
   render() {
-
     return (
       <ListView
         enableEmptySections

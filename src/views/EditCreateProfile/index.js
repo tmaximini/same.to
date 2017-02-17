@@ -30,7 +30,6 @@ export default class EditCreateProfile extends Component {
     setProfile: PropTypes.func.isRequired,
     geocodeLocation: PropTypes.func.isRequired,
     locationString: PropTypes.string,
-    isNew: PropTypes.bool,
     profile: PropTypes.shape({
       firstName: PropTypes.string,
       lastName: PropTypes.string,
@@ -111,7 +110,6 @@ export default class EditCreateProfile extends Component {
       update,
       geocodeLocation,
       locationString,
-      // isNew,
       updateRemoteProfile,
     } = this.props;
 

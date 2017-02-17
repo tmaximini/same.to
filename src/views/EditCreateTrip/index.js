@@ -29,7 +29,6 @@ export default class EditCreateTrip extends Component {
     destinationString: PropTypes.string,
     trip: PropTypes.object,
     eventId: PropTypes.string,
-    isNew: PropTypes.bool.isRequired,
   }
 
   constructor(props) {
@@ -38,10 +37,10 @@ export default class EditCreateTrip extends Component {
   }
 
   saveItem(item) {
-    if (this.props.isNew) {
-      this.props.createTrip(item, this.props.eventId);
-    } else {
+    if (item.id) {
       this.props.updateRemoteTrip(item);
+    } else {
+      this.props.createTrip(item, this.props.eventId);
     }
   }
 
@@ -61,7 +60,7 @@ export default class EditCreateTrip extends Component {
 
     return (
       <Form
-        buttonText={this.props.isNew ? 'Save' : 'Update'}
+        buttonText={trip.id ? 'Update' : 'Save'}
         onSubmit={() => this.saveItem(trip)}
       >
         <CheckboxList

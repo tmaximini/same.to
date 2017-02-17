@@ -15,7 +15,6 @@ const initialState = {
   errors: {},
   accommodationTypes: ['hotel', 'hostal', 'house', 'appartment', 'camping', 'other'],
   locationString: null,
-  isNew: true,
 };
 
 
@@ -112,7 +111,6 @@ const actionsMap = {
   [CREATE_ACCOMMODATION_SUCCESS]: (state) => ({
     ...state,
     accommodation: makeDefaultAccommodation(),
-    isNew: true,
   }),
   [UPDATE_ACCOMMODATION_SUCCESS]: (state, action) => ({
     ...state,
@@ -121,7 +119,6 @@ const actionsMap = {
   [RESET_ACCOMMODATION]: (state) => ({
     ...state,
     accommodation: makeDefaultAccommodation(),
-    isNew: true,
   }),
   [TOGGLE_CATEGORY]: (state, action) => {
     const { key } = action.payload;
@@ -141,7 +138,6 @@ const actionsMap = {
       ...state,
       accommodation: model,
       locationString: model.location ? model.location.formattedAddress : '',
-      isNew: false,
     };
   },
   [UPDATE_ACCOMMODATION]: (state, action) => {

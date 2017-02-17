@@ -19,7 +19,6 @@ const initialState = {
   profile: makeDefaultProfile(),
   locationString: null,
   errors: null,
-  isNew: true,
 };
 
 
@@ -95,7 +94,6 @@ const actionsMap = {
   [CREATE_PROFILE_SUCCESS]: state => ({
     ...state,
     profile: makeDefaultProfile(),
-    isNew: true,
   }),
   [UPDATE_PROFILE_SUCCESS]: (state, action) => {
     const { profile } = action.payload;
@@ -104,13 +102,11 @@ const actionsMap = {
       ...state,
       profile,
       locationString: profile.location ? profile.location.formattedAddress : state.locationString,
-      isNew: false,
     };
   },
   [RESET_PROFILE]: state => ({
     ...state,
     profile: makeDefaultProfile(),
-    isNew: true,
   }),
   [SET_PROFILE]: (state, action) => {
     const { model } = action.payload;
@@ -119,7 +115,6 @@ const actionsMap = {
       ...state,
       profile: model,
       locationString: model.location ? model.location.formattedAddress : '',
-      isNew: false,
     };
   },
   [UPDATE_PROFILE]: (state, action) => {

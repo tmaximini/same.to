@@ -244,7 +244,7 @@ const Routes = () => (
       title="Chat"
       sceneStyle={navBarPadding}
       rightButtonTextStyle={cyanText}
-      onRight={() => Actions.editCreateChat({ title: 'Edit Conversation', isNew: false })}
+      onRight={() => Actions.editCreateChat({ title: 'Edit Conversation' })}
       rightTitle="edit"
     />
     <Scene

@@ -38,19 +38,19 @@ export function* handleLoginAsync(action) {
         type: LOGIN_SUCCESS,
         payload: response,
       });
-      // const profile = yield call(getProfile);
-      // yield put({
-      //   type: SET_PROFILE,
-      //   payload: {
-      //     model: profile
-      //   },
-      // });
-      // if (profile.signupCompleted) {
-      //   yield call(Actions.tabbar, { key: 'tabbar', type: 'replace' });
-      //   yield call(Actions.home, { type: 'replace' });
-      // } else {
-      //   yield call(Actions.editCreateProfile, { type: 'replace', profile });
-      // }
+      const profile = yield call(getProfile);
+      yield put({
+        type: SET_PROFILE,
+        payload: {
+          model: profile
+        },
+      });
+      if (profile.signupCompleted) {
+        yield call(Actions.tabbar, { key: 'tabbar', type: 'replace' });
+        yield call(Actions.home, { type: 'replace' });
+      } else {
+        yield call(Actions.editCreateProfile, { type: 'replace', profile });
+      }
     }
   } catch (error) {
     console.info({ error });
@@ -82,19 +82,19 @@ export function* handleFBLoginAsync(action) {
        * here we need to decide wheter to send user to home or to profile / intro
        * depending on api response (signupCompleted?)
        */
-      // const profile = yield call(getProfile);
-      // yield put({
-      //   type: SET_PROFILE,
-      //   payload: {
-      //     model: profile
-      //   },
-      // });
-      // if (profile.signupCompleted) {
-      //   yield call(Actions.tabbar, { key: 'tabbar', type: 'replace' });
-      //   yield call(Actions.home, { type: 'replace' });
-      // } else {
-      //   yield call(Actions.editCreateProfile, { type: 'replace', profile });
-      // }
+      const profile = yield call(getProfile);
+      yield put({
+        type: SET_PROFILE,
+        payload: {
+          model: profile
+        },
+      });
+      if (profile.signupCompleted) {
+        yield call(Actions.tabbar, { key: 'tabbar', type: 'replace' });
+        yield call(Actions.home, { type: 'replace' });
+      } else {
+        yield call(Actions.editCreateProfile, { type: 'replace', profile });
+      }
     }
   } catch (error) {
     console.info({ error });

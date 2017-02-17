@@ -24,7 +24,6 @@ export default class EditCreateActivity extends Component {
     toggleChatMember: PropTypes.func.isRequired,
     proposedSubject: PropTypes.string,
     proposedMembers: PropTypes.array,
-    isNew: PropTypes.bool.isRequired
   }
 
   constructor(props) {

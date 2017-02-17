@@ -15,7 +15,6 @@ const initialState = {
   tripTypes: ['car', 'airplane', 'train', 'bus', 'taxi', 'driver'],
   pickupString: null,
   destinationString: null,
-  isNew: true,
 };
 
 
@@ -127,7 +126,6 @@ const actionsMap = {
   [CREATE_TRIP_SUCCESS]: (state) => ({
     ...state,
     trip: makeDefaultTrip(),
-    isNew: true,
   }),
   [UPDATE_TRIP_SUCCESS]: (state, action) => ({
     ...state,
@@ -136,7 +134,6 @@ const actionsMap = {
   [RESET_TRIP]: (state) => ({
     ...state,
     trip: makeDefaultTrip(),
-    isNew: true,
   }),
   [SET_TRIP]: (state, action) => {
     const { model } = action.payload;
@@ -146,7 +143,6 @@ const actionsMap = {
       trip: model,
       pickupString: model.pickupLocation ? model.pickupLocation.formattedAddress : '',
       destinationString: model.destinationLocation ? model.destinationLocation.formattedAddress : '',
-      isNew: false,
     };
   },
   [UPDATE_TRIP]: (state, action) => {

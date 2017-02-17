@@ -16,7 +16,6 @@ const initialState = {
   errors: {},
   activityTypes: ['party', 'gaming', 'shopping', 'concert', 'cinema', 'dinner', 'sport', 'gameing'],
   locationString: null,
-  isNew: true,
 };
 
 
@@ -112,7 +111,6 @@ const actionsMap = {
   [CREATE_ACTIVITY_SUCCESS]: (state) => ({
     ...state,
     activity: makeDefaultActivity(),
-    isNew: true,
   }),
   [UPDATE_ACTIVITY_SUCCESS]: (state, action) => ({
     ...state,
@@ -121,7 +119,6 @@ const actionsMap = {
   [RESET_ACTIVITY]: (state) => ({
     ...state,
     activity: makeDefaultActivity(),
-    isNew: true,
   }),
   [TOGGLE_CATEGORY]: (state, action) => {
     const { key } = action.payload;
@@ -141,7 +138,6 @@ const actionsMap = {
       ...state,
       activity: model,
       locationString: model.location ? model.location.formattedAddress : '',
-      isNew: false,
     };
   },
   [UPDATE_ACTIVITY]: (state, action) => {
