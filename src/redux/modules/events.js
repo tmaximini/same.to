@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import { REHYDRATE } from 'redux-persist/constants';
 import {
   CREATE_EVENT_SUCCESS,
   UPDATE_EVENT_SUCCESS,
@@ -97,6 +98,11 @@ const updateEvents = (lastState, subitem, collection) => {
 
 // Action Handlers
 const actionsMap = {
+    // don't rehydrate search results
+  [REHYDRATE]: state => ({
+    ...state,
+    searchResults: [],
+  }),
   [FETCH_EVENTS_START]: state => ({ ...state, isFetching: true }),
   [FETCH_EVENTS_SUCCESS]: (state, action) => {
     const { events } = action.payload;
