@@ -16,5 +16,6 @@ export default StyleSheet.create({
     fontSize: 18,
     textAlign: 'center',
     fontFamily: 'Montserrat',
+    paddingBottom: 1,
   },
 });
