@@ -16,7 +16,7 @@ const bubbleStyle = {
 };
 
 
-export default class Example extends Component {
+export default class Chat extends Component {
 
   static propTypes = {
     chat: PropTypes.object.isRequired,

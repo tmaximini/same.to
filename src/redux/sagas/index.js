@@ -56,6 +56,7 @@ import {
 import {
   watchFetchChats,
   watchCreateChat,
+  watchUpdateChat,
 } from './chats';
 
 /*
@@ -96,5 +97,6 @@ export default function* root() {
     watchToggleParticipate(),
     watchFetchChats(),
     watchCreateChat(),
+    watchUpdateChat(),
   ];
 }

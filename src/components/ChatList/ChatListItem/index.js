@@ -24,7 +24,7 @@ const ChatListItem = ({ chat, setCurrentChat }) => {
   const getMembersText = () => {
     const otherMembers = getOtherMembers();
 
-    return otherMembers.map(m => `${m.firstName} ${m.lastName}`).join(',');
+    return otherMembers.map(m => `${m.firstName} ${m.lastName}`).join(', ');
   };
 
   const getChatImage = () => {

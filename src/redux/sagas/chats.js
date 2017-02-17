@@ -8,6 +8,9 @@ import {
   CREATE_CHAT_START,
   CREATE_CHAT_SUCCESS,
   CREATE_CHAT_ERROR,
+  UPDATE_REMOTE_CHAT_START,
+  UPDATE_REMOTE_CHAT_SUCCESS,
+  UPDATE_REMOTE_CHAT_ERROR,
 } from '../modules/chats';
 import {
   AUTHORIZATION_REQUIRED,
@@ -15,6 +18,7 @@ import {
 import {
   fetchChats,
   createChat,
+  updateChat,
 } from '../../services/chats';
 
 
@@ -77,24 +81,53 @@ export function* createChatAsync(action) {
       yield put({
         type: CREATE_CHAT_SUCCESS,
         payload: {
-          chat: response
+          chat: { ...response, messages: [] }
         }
       });
-      yield call(delay, 100);
 
-      yield call(Actions.tabbar, { key: 'tabbar', type: 'reset' });
-      yield call(Actions.home, { type: 'replace', onBack: null, hideBackImage: true });
-      // // TODO: redirect to new chat
-
-      // yield call(delay, 100);
-      // // yield call(Actions.chats);
-      // // yield call(Actions.chats, { type: 'replace', onBack: null, hideBackImage: true });
-      // // yield call(Actions.chat);
+      yield call(Actions.chat, { title: response.subject });
+      // setTimeout(Actions.chat, 300);
     }
   } catch (error) {
     console.log({ error });
     yield put({
       type: CREATE_CHAT_ERROR,
+      payload: {
+        error
+      },
+    });
+  }
+}
+
+export function* updateChatAsync(action) {
+  const { chat } = action.payload;
+  try {
+    const response = yield call(updateChat, { ...chat });
+
+    if (response.error) {
+      // in case of error
+      yield put({
+        type: UPDATE_REMOTE_CHAT_ERROR,
+        payload: {
+          error: response.error
+        }
+      });
+    } else {
+      // success
+      yield put({
+        type: UPDATE_REMOTE_CHAT_SUCCESS,
+        payload: {
+          chat: response
+        }
+      });
+
+      yield call(Actions.pop, { refresh: { currentChat: response }});
+      // setTimeout(Actions.chat, 300);
+    }
+  } catch (error) {
+    console.log({ error });
+    yield put({
+      type: UPDATE_REMOTE_CHAT_ERROR,
       payload: {
         error
       },
@@ -108,4 +141,8 @@ export function* watchFetchChats() {
 
 export function* watchCreateChat() {
   yield takeLatest(CREATE_CHAT_START, createChatAsync);
+}
+
+export function* watchUpdateChat() {
+  yield takeLatest(UPDATE_REMOTE_CHAT_START, updateChatAsync);
 }

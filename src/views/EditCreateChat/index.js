@@ -33,16 +33,18 @@ export default class EditCreateActivity extends Component {
   }
 
   componentDidMount() {
-    this.props.updateChat('subject', this.props.proposedSubject);
+    const { updateChat, proposedSubject } = this.props;
+    if (proposedSubject) {
+      updateChat('subject', proposedSubject);
+    }
   }
 
   saveItem() {
-    const { isNew, currentChat, createChat, updateRemoteChat } = this.props;
-    if (isNew) {
-      console.log('currentChat', currentChat);
-      createChat(currentChat);
-    } else {
+    const { currentChat, createChat, updateRemoteChat } = this.props;
+    if (currentChat.id) {
       updateRemoteChat(currentChat);
+    } else {
+      createChat(currentChat);
     }
   }
 
@@ -56,7 +58,7 @@ export default class EditCreateActivity extends Component {
 
     return (
       <Form
-        buttonText={this.props.isNew ? 'Create' : 'Update'}
+        buttonText={currentChat.id ? 'Update' : 'Create'}
         onSubmit={() => this.saveItem()}
       >
         <View style={styles.wrapper}>
@@ -70,16 +72,20 @@ export default class EditCreateActivity extends Component {
             onChangeText={text => updateChat('subject', text)}
             value={currentChat.subject}
           />
-          <View style={styles.labelWrapper}>
-            <Text style={styles.label}>
-              Chat mit folgenden Teilnehmern erstellen
-            </Text>
-          </View>
-          <ContactCheckList
-            members={proposedMembers}
-            onToggle={toggleChatMember}
-            activeMemberIds={currentChat.memberIds}
-          />
+          {proposedMembers && (
+            <View>
+              <View style={styles.labelWrapper}>
+                <Text style={styles.label}>
+                  Chat mit folgenden Teilnehmern erstellen
+                </Text>
+              </View>
+              <ContactCheckList
+                members={proposedMembers}
+                onToggle={toggleChatMember}
+                activeMemberIds={currentChat.memberIds}
+              />
+            </View>
+          )}
         </View>
       </Form>
     );
