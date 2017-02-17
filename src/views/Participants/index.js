@@ -58,6 +58,7 @@ class Participants extends Component {
         />
         <ContactList
           contacts={members}
+          style={{ padding: 12 }}
           {...rest}
         />
       </View>

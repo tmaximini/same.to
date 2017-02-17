@@ -26,8 +26,6 @@ class Chats extends Component {
   }
 
   render() {
-    console.log('this.props', this.props);
-
     const {
       chats,
       isRefreshing,

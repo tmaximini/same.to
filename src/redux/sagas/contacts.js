@@ -117,7 +117,6 @@ export function* fetchFavoritesAsync() {
 export function* searchContactsAsync(action) {
   try {
     const { query } = action.payload;
-    console.log('action', action, query);
     const response = yield call(searchContacts, query);
 
     if (response.error) {

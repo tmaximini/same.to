@@ -2,7 +2,7 @@ import {
   StyleSheet
 } from 'react-native';
 
-import { COLORS, MIXINS } from '../../constants';
+import { COLORS, MIXINS, PADDINGS } from '../../constants';
 
 export default StyleSheet.create({
   container: {
@@ -14,6 +14,7 @@ export default StyleSheet.create({
   },
   bottom: {
     flex: 5,
+    padding: PADDINGS.STANDARD,
     paddingBottom: 60,
     backgroundColor: COLORS.BG_GREY,
   },

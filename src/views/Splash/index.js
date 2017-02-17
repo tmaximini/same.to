@@ -29,7 +29,6 @@ export default class Splash extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('nextProps', nextProps);
     this.handleRouting(nextProps);
   }
 

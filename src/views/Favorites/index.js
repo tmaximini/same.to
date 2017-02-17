@@ -1,13 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 import {
   View,
+  Text,
 } from 'react-native';
 
 import { connect } from 'react-redux';
 import ContactList from '../../components/ContactList';
-// import PlusButton from '../../components/PlusButton';
-// import { share } from '../../utils';
-
+import Form from '../../layouts/form';
 import { actions as contactActions } from '../../redux/modules/contacts';
 import styles from './styles';
 
@@ -36,15 +35,28 @@ export default class Favorites extends Component {
     } = this.props;
 
     return (
-      <View style={styles.container}>
-        <ContactList
-          contacts={favorites}
-          refresh={fetchFavorites}
-          isRefreshing={isRefreshing}
-          contactActions={contactActions}
-          {...rest}
-        />
-      </View>
+      <Form
+        buttonText="Favoriten suchen"
+        onPress={() => {}}
+      >
+        <View style={styles.container}>
+          {favorites && favorites.length ? (
+            <ContactList
+              contacts={favorites}
+              refresh={fetchFavorites}
+              isRefreshing={isRefreshing}
+              contactActions={contactActions}
+              {...rest}
+            />
+          ) : (
+            <View style={styles.noItems}>
+              <Text style={styles.noItemsText}>
+                Du hast derzeit noch keine Favoriten. Favorisiere deine Kontakte oder finde Favoriten mit der Suche.
+              </Text>
+            </View>
+          )}
+        </View>
+      </Form>
     );
   }
 }

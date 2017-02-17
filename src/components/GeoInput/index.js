@@ -23,7 +23,6 @@ const GeoInput = ({ placeholder, onAdressSelect, zIndex, grow, ...rest }) => (
       // fetchDetails
       // renderDescription={(row) => row.terms[0].value} // display street only
       onPress={(data, details = null) => { // 'details' is provided when fetchDetails = true
-        console.log(data);
         onAdressSelect(data.description);
       }}
       getDefaultValue={() => rest.value}

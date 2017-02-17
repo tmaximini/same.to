@@ -30,9 +30,15 @@ const ChatListItem = ({ chat, setCurrentChat }) => {
   const getChatImage = () => {
     const otherMembers = getOtherMembers();
 
-    return otherMembers[0].image && otherMembers[0].image.thumbs
-      ? { uri: otherMembers[0].image.thumbs['320x320'] }
-      : face;
+    let img = null;
+    for (let i = 0; i < otherMembers.length; i++) {
+      if (otherMembers[i].image && otherMembers[i].image.thumbs) {
+        img = { uri: otherMembers[i].image.thumbs['320x320'] };
+        break;
+      }
+    }
+
+    return img || face;
   };
 
   const txt = (

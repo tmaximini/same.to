@@ -5,7 +5,6 @@ import { COLORS, PADDINGS } from '../../constants';
 
 const { width } = Dimensions.get('window');
 const buttonTheme = themeManager.getStyle('SegmentedControlButton');
-console.log('buttonTheme', buttonTheme);
 const newButtonTheme = {
   ...buttonTheme,
   BUTTON_FONT_COLOR: COLORS.WHITE,

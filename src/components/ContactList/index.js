@@ -13,6 +13,7 @@ export default class ContactList extends Component {
     refresh: PropTypes.func,
     setCurrentContact: PropTypes.func,
     isRefreshing: PropTypes.bool,
+    style: PropTypes.object,
   }
 
   constructor(props) {
@@ -39,12 +40,12 @@ export default class ContactList extends Component {
   }
 
   render() {
-    const { setCurrentContact, refresh, ...rest } = this.props;
+    const { setCurrentContact, refresh, style, ...rest } = this.props;
 
     return (
       <ListView
         enableEmptySections
-        style={styles.container}
+        style={[styles.container, style]}
         dataSource={this.state.dataSource}
         renderRow={contact => (
           <ContactListItem
@@ -71,5 +72,6 @@ export default class ContactList extends Component {
 }
 
 ContactList.defaultProps = {
-  contacts: []
+  contacts: [],
+  style: {},
 };

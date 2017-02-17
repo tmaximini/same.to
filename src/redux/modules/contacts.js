@@ -143,16 +143,10 @@ const actionsMap = {
   [FETCH_CONTACTS_ERROR]: state => ({ ...state, isFetching: false }),
   [FETCH_FAVORITES_ERROR]: state => ({ ...state, isFetching: false }),
   // TODO
-  [UPDATE_CONTACT]: state => ({ ...state }),
-  // [CREATE_CONTACT_SUCCESS]: (state, action) => {
-  //   const { contact } = action.payload;
-
-  //   // add new contact to list
-  //   return {
-  //     ...state,
-  //     contacts: [contact, ...state.contacts],
-  //   };
-  // },
+  [SEARCH_CONTACTS_SUCCESS]: (state, action) => ({
+    ...state,
+    contactSearchResults: action.payload.result,
+  }),
 };
 
 
