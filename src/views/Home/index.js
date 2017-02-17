@@ -84,7 +84,7 @@ export default class Home extends Component {
               title: 'event',
               action: () => {
                 resetEvent();
-                Actions.editCreateEvent();
+                Actions.searchEvents();
               },
               icon: 'compass'
             },
