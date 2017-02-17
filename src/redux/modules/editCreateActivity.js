@@ -24,7 +24,7 @@ const initialState = {
 // edit
 export const UPDATE_ACTIVITY_START = 'editActivity/UPDATE_ACTIVITY_START';
 export const UPDATE_ACTIVITY_SUCCESS = 'editActivity/UPDATE_ACTIVITY_SUCCESS';
-export const UPDATE_ACTIVITY_ERROR = 'editActivity/CREATE_ACTIVITY_ERROR';
+export const UPDATE_ACTIVITY_ERROR = 'editActivity/UPDATE_ACTIVITY_ERROR';
 export const UPDATE_ACTIVITY = 'editActivity/UPDATE_ACTIVITY';
 export const SET_ACTIVITY = 'editActivity/SET_ACTIVITY';
 export const RESET_ACTIVITY = 'editActivity/RESET_ACTIVITY';
