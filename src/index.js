@@ -11,11 +11,12 @@ import Routes from './Routes';
 
 
 // i18n setup
+const locale = DeviceInfo.getDeviceLocale();
 I18n.fallbacks = true;
 I18n.translations = translations;
-moment.locale(DeviceInfo.getDeviceLocale());
+moment.locale(locale);
+I18n.locale = locale;
 
-console.log('DeviceInfo.getDeviceLocale()', DeviceInfo.getDeviceLocale(), I18n.currentLocale());
 
 const store = configureStore();
 

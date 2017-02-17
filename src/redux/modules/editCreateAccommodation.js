@@ -37,6 +37,11 @@ export const CREATE_ACCOMMODATION_START = 'createAccommodation/CREATE_ACCOMMODAT
 export const CREATE_ACCOMMODATION_SUCCESS = 'createAccommodation/CREATE_ACCOMMODATION_SUCCESS';
 export const CREATE_ACCOMMODATION_ERROR = 'createAccommodation/CREATE_ACCOMMODATION_ERROR';
 
+// types
+export const GET_ACCOMMODATION_TYPES_START = 'createAccommodation/GET_ACCOMMODATION_TYPES_START';
+export const GET_ACCOMMODATION_TYPES_SUCCESS = 'createAccommodation/GET_ACCOMMODATION_TYPES_SUCCESS';
+export const GET_ACCOMMODATION_TYPES_ERROR = 'createAccommodation/GET_ACCOMMODATION_TYPES_ERROR';
+
 
 
 // Action Creators
@@ -61,9 +66,12 @@ export const setAccommodation = model => ({
   }
 });
 
-
 export const resetAccommodation = () => ({
   type: RESET_ACCOMMODATION,
+});
+
+export const getTypes = () => ({
+  type: GET_ACCOMMODATION_TYPES_START,
 });
 
 export const toggleCategory = key => ({
@@ -103,11 +111,16 @@ export const actions = {
   updateAccommodation,
   geocodeLocation,
   resetAccommodation,
+  getTypes,
 };
 
 
 // Action Handlers
 const actionsMap = {
+  [GET_ACCOMMODATION_TYPES_SUCCESS]: (state, action) => ({
+    ...state,
+    types: action.payload,
+  }),
   [CREATE_ACCOMMODATION_SUCCESS]: (state) => ({
     ...state,
     accommodation: makeDefaultAccommodation(),

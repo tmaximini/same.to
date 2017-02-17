@@ -1,7 +1,10 @@
 import { Share } from 'react-native';
+import DeviceInfo from 'react-native-device-info';
 import moment from 'moment';
 import { COLORS } from '../constants';
 import { getUserId } from '../services/api';
+
+moment.locale(DeviceInfo.getDeviceLocale());
 
 export const border = (color = '#000', width = 4) => ({
   borderColor: color,

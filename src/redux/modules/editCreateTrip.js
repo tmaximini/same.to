@@ -40,6 +40,11 @@ export const CREATE_TRIP_START = 'createTrip/CREATE_TRIP_START';
 export const CREATE_TRIP_SUCCESS = 'createTrip/CREATE_TRIP_SUCCESS';
 export const CREATE_TRIP_ERROR = 'createTrip/CREATE_TRIP_ERROR';
 
+// types
+export const GET_TRIP_TYPES_START = 'createTrip/GET_TRIP_TYPES_START';
+export const GET_TRIP_TYPES_SUCCESS = 'createTrip/GET_TRIP_TYPES_SUCCESS';
+export const GET_TRIP_TYPES_ERROR = 'createTrip/GET_TRIP_TYPES_ERROR';
+
 
 
 // Action Creators
@@ -73,6 +78,10 @@ export const setTrip = model => ({
 
 export const resetTrip = () => ({
   type: RESET_TRIP,
+});
+
+export const getTypes = () => ({
+  type: GET_TRIP_TYPES_START,
 });
 
 export const createTrip = (newTripData, eventId) => ({
@@ -114,7 +123,8 @@ export const actions = {
   toggleCategory,
   geocodeLocation,
   geocodeDestination,
-  resetTrip
+  resetTrip,
+  getTypes,
 };
 
 
@@ -123,6 +133,10 @@ export const actions = {
 
 // Action Handlers
 const actionsMap = {
+  [GET_TRIP_TYPES_SUCCESS]: (state, action) => ({
+    ...state,
+    tripTypes: action.payload,
+  }),
   [CREATE_TRIP_SUCCESS]: (state) => ({
     ...state,
     trip: makeDefaultTrip(),

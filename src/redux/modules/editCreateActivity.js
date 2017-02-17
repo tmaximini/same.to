@@ -38,6 +38,11 @@ export const CREATE_ACTIVITY_START = 'createActivity/CREATE_ACTIVITY_START';
 export const CREATE_ACTIVITY_SUCCESS = 'createActivity/CREATE_ACTIVITY_SUCCESS';
 export const CREATE_ACTIVITY_ERROR = 'createActivity/CREATE_ACTIVITY_ERROR';
 
+// types
+export const GET_ACTIVITY_TYPES_START = 'createActivity/GET_ACTIVITY_TYPES_START';
+export const GET_ACTIVITY_TYPES_SUCCESS = 'createActivity/GET_ACTIVITY_TYPES_SUCCESS';
+export const GET_ACTIVITY_TYPES_ERROR = 'createActivity/GET_ACTIVITY_TYPES_ERROR';
+
 
 
 // Action Creators
@@ -64,6 +69,10 @@ export const setActivity = model => ({
 
 export const resetActivity = () => ({
   type: RESET_ACTIVITY,
+});
+
+export const getTypes = () => ({
+  type: GET_ACTIVITY_TYPES_START,
 });
 
 export const toggleCategory = key => ({
@@ -103,11 +112,16 @@ export const actions = {
   updateActivity,
   geocodeLocation,
   resetActivity,
+  getTypes,
 };
 
 
 // Action Handlers
 const actionsMap = {
+  [GET_ACTIVITY_TYPES_SUCCESS]: (state, action) => ({
+    ...state,
+    activityTypes: action.payload,
+  }),
   [CREATE_ACTIVITY_SUCCESS]: (state) => ({
     ...state,
     activity: makeDefaultActivity(),

@@ -8,17 +8,34 @@ import {
 import {
   actions as profileActions
 } from '../../redux/modules/editCreateProfile';
+import {
+  actions as tripActions
+} from '../../redux/modules/editCreateTrip';
+import {
+  actions as activityActions
+} from '../../redux/modules/editCreateActivity';
+import {
+  actions as accommodationActions
+} from '../../redux/modules/editCreateAccommodation';
 import { updateAuthHeader, updateUserId } from '../../services/api';
 import styles from './styles';
 
 @connect(
   state => state.auth,
-  profileActions,
+  {
+    fetchProfile: profileActions.fetchProfile,
+    getTripTypes: tripActions.getTypes,
+    getAccommodationTypes: accommodationActions.getTypes,
+    getActivityTypes: activityActions.getTypes,
+  }
 )
 export default class Splash extends Component {
 
   static propTypes = {
     loggedIn: PropTypes.bool.isRequired,
+    getActivityTypes: PropTypes.func.isRequired,
+    getTripTypes: PropTypes.func.isRequired,
+    getAccommodationTypes: PropTypes.func.isRequired,
     fetchProfile: PropTypes.func.isRequired,
     userId: PropTypes.string,
     token: PropTypes.string,
@@ -26,6 +43,10 @@ export default class Splash extends Component {
 
   componentDidMount() {
     this.handleRouting(this.props);
+    const { getTripTypes, getAccommodationTypes, getActivityTypes } = this.props;
+    getTripTypes();
+    getAccommodationTypes();
+    getActivityTypes();
   }
 
   componentWillReceiveProps(nextProps) {

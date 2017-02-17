@@ -39,7 +39,7 @@ const translations = {
     more: 'More',
     event: 'event',
     search: 'search',
-    event_not_found: 'You couldn´t find the event you were looking for? Create it now and invite your friends.',
+    event_not_found: 'You couldn\'t find the event you were looking for? Create it now and invite your friends.',
     create: 'create',
     event_name: 'event name',
     location: 'location',
@@ -96,6 +96,7 @@ const translations = {
     edit: 'edit',
     fine_like_minded: 'find like-minded people',
     search_favorites: 'Search favorites',
+    search_events: 'Search events',
     circuit: 'circuit',
     radius: 'radius',
     add_contacts: 'add contacts',
@@ -224,6 +225,7 @@ const translations = {
     edit: 'Bearbeiten',
     fine_like_minded: 'Finde Gleichgesinnte',
     search_favorites: 'Favoriten suchen',
+    search_events: 'Events suchen',
     circuit: 'Umkreis',
     radius: 'Umkreis',
     add_contacts: 'Kontakte hinzufügen',
@@ -258,7 +260,7 @@ const translations = {
   }
 };
 
-// translations['de-US'] = translations.de;
-// translations['de-DE'] = translations.de;
+translations['de-US'] = translations.de;
+translations['de-DE'] = { ...translations.de };
 
 export default translations;

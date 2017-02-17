@@ -58,6 +58,11 @@ import {
   watchCreateChat,
   watchUpdateChat,
 } from './chats';
+import {
+  watchFetchAccommodationTypes,
+  watchFetchTripTypes,
+  watchFetchActivityTypes,
+} from './types';
 
 /*
  * The entry point for all the sagas used in this application.
@@ -98,5 +103,8 @@ export default function* root() {
     watchFetchChats(),
     watchCreateChat(),
     watchUpdateChat(),
+    watchFetchAccommodationTypes(),
+    watchFetchTripTypes(),
+    watchFetchActivityTypes(),
   ];
 }

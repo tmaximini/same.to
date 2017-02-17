@@ -46,19 +46,19 @@ class SearchEvents extends Component {
     return (
       <Form
         onSubmit={Actions.editCreateEvent}
-        buttonText="Event erstellen"
+        buttonText={I18n.t('search_events')}
         buttonProps={{ noBackground: true }}
-        extraText="Du konntest das Event, das du gesucht hast, nicht finden? Erstelle es jetzt und lade deine Freunde ein."
+        extraText={I18n.t('event_not_found')}
       >
         <View style={styles.wrapper}>
           <Input
             value={query}
-            placeholder="Nach Events suchen"
+            placeholder={I18n.t('search_events')}
             onChangeText={text => this.setState({ query: text })}
           />
           <Button
             onPress={() => searchEvents(query)}
-            text="Suchen"
+            text={I18n.t('search')}
           />
           <View style={styles.results}>
             {searchResults && searchResults.length > 0 ? (
@@ -71,9 +71,7 @@ class SearchEvents extends Component {
               ))
             ) : null}
           </View>
-
         </View>
-
       </Form>
     );
   }
