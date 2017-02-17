@@ -13,7 +13,15 @@ import { actions as accommodationActions } from '../../redux/modules/editCreateA
 
 
 // TODO: i18n
-const overstays = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(i => ({ value: i, label: `${i} night(s)` }));
+const makeOverstays = () => {
+  const arr = [];
+  for (let i = 1; i < 32; i++) {
+    arr.push({ value: i, label: `${i} night(s)` });
+  }
+  return arr;
+};
+
+const overstays = makeOverstays();
 
 @connect(
   state => state.editCreateAccommodation,
