@@ -5,6 +5,7 @@ const makeDefaultActivity = () => ({
   startAt: formatDate(new Date()),
   name: '',
   location: {},
+  type: 'activity',
   categories: [],
   isPublic: false,
 });

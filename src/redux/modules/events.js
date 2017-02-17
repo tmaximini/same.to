@@ -177,11 +177,17 @@ const actionsMap = {
   },
   [UPDATE_ACTIVITY_SUCCESS]: (state, action) => {
     const { activity } = action.payload;
-    return updateEvents(state, activity, 'activities');
+    if (activity.eventId) {
+      return updateEvents(state, activity, 'activities');
+    }
+    return state;
   },
   [CREATE_ACTIVITY_SUCCESS]: (state, action) => {
     const { activity } = action.payload;
-    return updateEvents(state, activity, 'activities');
+    if (activity.eventId) {
+      return updateEvents(state, activity, 'activities');
+    }
+    return state;
   },
 };
 

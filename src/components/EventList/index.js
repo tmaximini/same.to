@@ -38,7 +38,6 @@ export default class EventList extends Component {
   }
 
   render() {
-    const { setCurrentEvent, setEvent, setDetail } = this.props;
 
     return (
       <ListView
@@ -47,9 +46,7 @@ export default class EventList extends Component {
         dataSource={this.state.dataSource}
         renderRow={event => <EventListItem
           event={event}
-          setCurrentEvent={setCurrentEvent}
-          setEvent={setEvent}
-          setDetail={setDetail}
+          {...this.props}
         />}
         refreshControl={
           <RefreshControl

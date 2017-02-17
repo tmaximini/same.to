@@ -38,11 +38,10 @@ export default class EditCreateActivity extends Component {
   }
 
   saveItem(item) {
-    if (this.props.isNew) {
-      console.log('eventId', this.props.eventId);
-      this.props.createActivity(item, this.props.eventId);
-    } else {
+    if (item.id) {
       this.props.updateRemoteActivity(item);
+    } else {
+      this.props.createActivity(item, this.props.eventId);
     }
   }
 
@@ -60,7 +59,7 @@ export default class EditCreateActivity extends Component {
 
     return (
       <Form
-        buttonText={this.props.isNew ? 'Save' : 'Update'}
+        buttonText={activity.id ? 'Update' : 'Save'}
         onSubmit={() => this.saveItem(activity)}
       >
         <CheckboxList

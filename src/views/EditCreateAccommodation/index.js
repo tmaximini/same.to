@@ -41,11 +41,10 @@ export default class EditCreateAccommodation extends Component {
   }
 
   saveItem(item) {
-    if (this.props.isNew) {
-      console.log('eventId', this.props.eventId);
-      this.props.createAccommodation(item, this.props.eventId);
-    } else {
+    if (item.id) {
       this.props.updateRemoteAccommodation(item);
+    } else {
+      this.props.createAccommodation(item, this.props.eventId);
     }
   }
 
@@ -63,7 +62,7 @@ export default class EditCreateAccommodation extends Component {
 
     return (
       <Form
-        buttonText={this.props.isNew ? 'Save' : 'Update'}
+        buttonText={accommodation.id ? 'Update' : 'Save'}
         onSubmit={() => this.saveItem(accommodation)}
       >
         <CheckboxList

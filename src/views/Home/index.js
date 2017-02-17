@@ -16,7 +16,10 @@ import {
 import {
   setDetail as setDetailAction,
 } from '../../redux/modules/detail';
-import { resetActivity as resetActivityAction } from '../../redux/modules/editCreateActivity';
+import {
+  resetActivity as resetActivityAction,
+  setActivity as setActivityAction,
+} from '../../redux/modules/editCreateActivity';
 import styles from './styles';
 
 @connect(
@@ -30,6 +33,7 @@ import styles from './styles';
     resetEvent: resetEventAction,
     resetActivity: resetActivityAction,
     setEvent: setEventAction,
+    setActivity: setActivityAction,
     setDetail: setDetailAction,
   }
 )
@@ -39,6 +43,7 @@ export default class Home extends Component {
     setEvent: PropTypes.func.isRequired,
     resetEvent: PropTypes.func.isRequired,
     resetActivity: PropTypes.func.isRequired,
+    setActivity: PropTypes.func.isRequired,
     fetchEvents: PropTypes.func.isRequired,
     setCurrentEvent: PropTypes.func.isRequired,
     setDetail: PropTypes.func.isRequired,
@@ -61,6 +66,7 @@ export default class Home extends Component {
       resetEvent,
       setEvent,
       resetActivity,
+      setActivity,
       setDetail,
     } = this.props;
 
@@ -72,6 +78,7 @@ export default class Home extends Component {
           isRefreshing={isRefreshing}
           setCurrentEvent={setCurrentEvent}
           setEvent={setEvent}
+          setActivity={setActivity}
           setDetail={setDetail}
         />
         <PlusButton

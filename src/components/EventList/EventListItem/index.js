@@ -10,7 +10,7 @@ import styles from './styles';
 
 const background = require('../../../assets/sunflowers.jpg');
 
-const EventListItem = ({ event, setCurrentEvent, setEvent, setDetail }) => {
+const EventListItem = ({ event, setCurrentEvent, setEvent, setDetail, setActivity }) => {
   const { name, startAt, location } = event;
 
   //
@@ -20,7 +20,7 @@ const EventListItem = ({ event, setCurrentEvent, setEvent, setDetail }) => {
   };
 
   const editActivity = () => {
-    setEvent(event);
+    setActivity(event);
     Actions.editCreateActivity({ activity: event, title: 'Edit Activity' });
   };
 
@@ -101,6 +101,8 @@ EventListItem.propTypes = {
   event: PropTypes.object.isRequired,
   setCurrentEvent: PropTypes.func.isRequired,
   setEvent: PropTypes.func.isRequired,
+  setActivity: PropTypes.func.isRequired,
+  setDetail: PropTypes.func.isRequired,
 };
 
 export default EventListItem;
