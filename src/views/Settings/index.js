@@ -1,8 +1,9 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { Actions } from 'react-native-router-flux';
 import { View, TouchableHighlight, Image, Text } from 'react-native';
 import { purgeOfflineStorage } from '../../redux/configureStore';
 import { updateAuthHeader, updateUserId } from '../../services/api';
+import { share } from '../../utils';
 import styles from './styles';
 
 const logo = require('../../assets/same.png');
@@ -27,15 +28,19 @@ const settings = [
   },
   {
     title: 'Freunde einladen',
-    action: () => {},
+    action: share({
+      message: 'Join me on same.to',
+      url: 'sameto://invite/url/to/be/defined',
+      title: 'Invite friend'
+    }),
   },
   {
     title: 'Feedback senden',
-    action: () => {},
+    action: () => Actions.feedback(),
   },
   {
     title: 'Impressum',
-    action: () => {},
+    action: () => Actions.impressum(),
   },
 ];
 

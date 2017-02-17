@@ -10,12 +10,14 @@ const Form = ({
   onSubmit,
   buttonDisabled,
   buttonProps,
+  scrollEnabled,
   extraText,
   style
 }) => (
   <View style={[styles.container, style]}>
     <KeyboardScroll
       extraScrollHeight={20}
+      scrollEnabled={scrollEnabled}
     >
       {children}
     </KeyboardScroll>
@@ -44,12 +46,14 @@ Form.propTypes = {
   style: PropTypes.object,
   extraText: PropTypes.string,
   buttonProps: PropTypes.object,
+  scrollEnabled: PropTypes.bool,
 };
 
 Form.defaultProps = {
   buttonDisabled: false,
   onSubmit: () => {},
   style: {},
+  scrollEnabled: true
 };
 
 export default Form;

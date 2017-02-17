@@ -26,6 +26,8 @@ import Chats from './views/Chats';
 import Chat from './views/Chat';
 import Splash from './views/Splash';
 import Settings from './views/Settings';
+import Feedback from './views/Feedback';
+import Impressum from './views/Impressum';
 import { Onboarding1, Onboarding2, Onboarding3 } from './views/Onboarding';
 import { COLORS } from './constants';
 
@@ -296,6 +298,18 @@ const Routes = () => (
       key="participants"
       component={Participants}
       title="All Participants"
+      sceneStyle={navBarPadding}
+    />
+    <Scene
+      key="feedback"
+      component={Feedback}
+      title="Feedback"
+      sceneStyle={navBarPadding}
+    />
+    <Scene
+      key="impressum"
+      component={Impressum}
+      title="Impressum"
       sceneStyle={navBarPadding}
     />
   </RouterWithRedux>
