@@ -4,7 +4,6 @@ import { formatDate } from '../../utils';
 import Form from '../../layouts/form';
 import Input from '../../components/Input';
 import InputGroup from '../../components/InputGroup';
-import GeoInput from '../../components/GeoInput';
 import Datepicker from '../../components/Datepicker';
 import CheckboxList from '../../components/CheckboxList';
 import Select from '../../components/Select';
@@ -54,21 +53,13 @@ export default class EditCreateAccommodation extends Component {
     const {
       accommodationTypes,
       updateAccommodation,
-      geocodeLocation,
       toggleCategory,
-      locationString,
       accommodation,
     } = this.props;
 
-    const { overnightStays, location } = accommodation;
+    const { overnightStays } = accommodation;
 
     const today = formatDate(new Date());
-
-    let defaultLocationValue = locationString || (
-      location
-        ? location.locality
-        : null
-    );
 
     return (
       <Form
@@ -86,13 +77,6 @@ export default class EditCreateAccommodation extends Component {
           onChangeText={text => updateAccommodation('name', text)}
           icon="bed"
           value={accommodation.name}
-        />
-        <GeoInput
-          placeholder="Where"
-          enablePoweredByContainer={false}
-          value={defaultLocationValue}
-          onChangeText={text => updateAccommodation('locationString', text)}
-          onAdressSelect={geocodeLocation}
         />
         <InputGroup>
           <Datepicker
