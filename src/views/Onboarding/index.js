@@ -26,12 +26,12 @@ export const Onboarding1 = () => (
       </View>
       <View style={styles.textBox}>
         <Text style={styles.text}>
-          {I18n.t('onboarding1')}
+          {I18n.t('onboardText1')}
         </Text>
       </View>
       <View style={styles.textBox}>
         <Text style={styles.text}>
-          {I18n.t('onboarding2')}
+          {I18n.t('onboardText2')}
         </Text>
       </View>
       <View style={styles.dots}>
@@ -70,12 +70,12 @@ export const Onboarding2 = () => (
       </View>
       <View style={styles.textBox}>
         <Text style={styles.text}>
-          {I18n.t('onboarding3')}
+          {I18n.t('onboardText3')}
         </Text>
       </View>
       <View style={styles.textBox}>
         <Text style={styles.text}>
-          {I18n.t('onboarding4')}
+          {I18n.t('onboardText4')}
         </Text>
       </View>
       <View style={styles.dots}>
@@ -118,12 +118,12 @@ export const Onboarding3 = () => (
       </View>
       <View style={styles.textBox}>
         <Text style={styles.text}>
-          {I18n.t('onboarding5')}
+          {I18n.t('onboardText5')}
         </Text>
       </View>
       <View style={styles.textBox}>
         <Text style={styles.text}>
-          {I18n.t('onboarding6')}
+          {I18n.t('onboardText6')}
         </Text>
       </View>
       <View style={styles.dots}>

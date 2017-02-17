@@ -1,4 +1,8 @@
 import DeviceInfo from 'react-native-device-info';
+import {
+  REGISTER_SUCCESS,
+  LOGOUT,
+} from './auth';
 
 // Initial State
 const makeDefaultProfile = () => ({
@@ -152,6 +156,17 @@ const actionsMap = {
       }
     };
   },
+  [REGISTER_SUCCESS]: (state, action) => ({
+    ...state,
+    profile: {
+      ...state.profile,
+      ...action.payload,
+    }
+  }),
+  [LOGOUT]: state => ({
+    ...state,
+    profile: makeDefaultProfile(),
+  }),
 };
 
 // Reducer
