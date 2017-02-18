@@ -69,11 +69,11 @@ export default StyleSheet.create({
     fontSize: 10,
   },
   lastMessage: {
-    paddingRight: 6,
+    paddingRight: 15,
   },
   lastUserText: {
     paddingTop: 6,
-    paddingRight: 6,
+    paddingRight: 15,
     paddingBottom: 3,
     color: COLORS.WHITE,
     fontSize: 9,

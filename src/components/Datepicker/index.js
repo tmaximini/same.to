@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import I18n from 'react-native-i18n';
 import { View } from 'react-native';
 import DPicker from 'react-native-datepicker';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -27,8 +28,8 @@ export const DatePicker = ({ date, placeholder, minDate, maxDate, onChange, grow
       format="YYYY-MM-DD"
       minDate={minDate}
       maxDate={maxDate}
-      confirmBtnText="Confirm"
-      cancelBtnText="Cancel"
+      confirmBtnText={I18n.t('confirm')}
+      cancelBtnText={I18n.t('cancel')}
       onDateChange={(nextDate) => onChange(nextDate)}
       customStyles={{
         dateIcon: {

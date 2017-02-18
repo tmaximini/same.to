@@ -44,6 +44,7 @@ export default class ContactList extends Component {
     return (
       <ListView
         enableEmptySections
+        automaticallyAdjustContentInsets={false}
         style={[styles.container, style]}
         dataSource={this.state.dataSource}
         renderRow={contact => (
