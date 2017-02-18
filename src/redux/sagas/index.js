@@ -22,6 +22,8 @@ import {
   watchAddFavorite,
   watchRemoveFavorite,
   watchSearchContacts,
+  watchSearchFavorites,
+  watchGeocodeSearchFavorites,
 } from './contacts';
 import {
   watchCreateEvent,
@@ -82,6 +84,8 @@ export default function* root() {
     watchAddFavorite(),
     watchRemoveFavorite(),
     watchSearchContacts(),
+    watchSearchFavorites(),
+    watchGeocodeSearchFavorites(),
     watchCreateEvent(),
     watchUpdateEvent(),
     watchGeocodeEvent(),

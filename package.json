@@ -17,7 +17,9 @@
     "port": 5678
   },
   "rnpm": {
-    "assets": ["./src/assets/fonts"]
+    "assets": [
+      "./src/assets/fonts"
+    ]
   },
   "dependencies": {
     "date-fns": "^1.22.0",

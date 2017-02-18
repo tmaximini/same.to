@@ -19,6 +19,7 @@ import EditCreateAccommodation from './views/EditCreateAccommodation';
 import EditCreateChat from './views/EditCreateChat';
 import EventDetail from './views/Event';
 import SearchEvents from './views/SearchEvents';
+import SearchFavorites from './views/SearchFavorites';
 import EditCreatevent from './views/EditCreateEvent';
 import Detail from './views/Detail';
 import Profile from './views/Profile';
@@ -212,6 +213,13 @@ const Routes = () => (
       component={SearchEvents}
       sceneStyle={navBarPadding}
       title={I18n.t('search_events')}
+      rightButtonTextStyle={cyanText}
+    />
+    <Scene
+      key="searchFavorites"
+      component={SearchFavorites}
+      sceneStyle={navBarPadding}
+      title={I18n.t('search_favorites')}
       rightButtonTextStyle={cyanText}
     />
     <Scene

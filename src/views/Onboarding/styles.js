@@ -42,6 +42,6 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignSelf: 'stretch',
-    marginTop: PADDINGS.DOUBLE,
+    marginTop: PADDINGS.STANDARD,
   }
 });

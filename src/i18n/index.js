@@ -135,6 +135,7 @@ const translations = {
     unknown: 'unknown',
     other: 'other',
     where: 'where',
+    searching: 'searching...',
   },
 
   de: {
@@ -275,6 +276,7 @@ const translations = {
     chat_members: 'Chat mit folgenden Teilnehmern erstellen',
     unknown: 'Unbekannt',
     other: 'Sonstige',
+    searching: 'Suche...',
   }
 };
 

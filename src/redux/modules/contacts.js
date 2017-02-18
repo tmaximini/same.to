@@ -8,6 +8,7 @@ const initialState = {
   favorites: [],
   contactSearchResults: [],
   favoritesSearchResults: [],
+  favoritesSearchLocation: {},
   error: null,
   isSearching: false,
 };
@@ -38,6 +39,9 @@ export const REMOVE_CONTACT_ERROR = 'contacts/REMOVE_CONTACT_ERROR';
 export const SEARCH_CONTACTS_START = 'contacts/SEARCH_CONTACTS_START';
 export const SEARCH_CONTACTS_SUCCESS = 'contacts/SEARCH_CONTACTS_SUCCESS';
 export const SEARCH_CONTACTS_ERROR = 'contacts/SEARCH_CONTACTS_ERROR';
+export const GEOCODE_LOCATION_START = 'contacts/GEOCODE_LOCATION_START';
+export const GEOCODE_LOCATION_SUCCESS = 'contacts/GEOCODE_LOCATION_SUCCESS';
+export const GEOCODE_LOCATION_ERROR = 'contacts/GEOCODE_LOCATION_ERROR';
 export const UPDATE_CONTACT = 'contacts/UPDATE_CONTACT';
 
 
@@ -87,10 +91,10 @@ export const searchContacts = query => ({
   }
 });
 
-export const searchFavorites = query => ({
+export const searchFavorites = searchData => ({
   type: SEARCH_FAVORITES_START,
   payload: {
-    query
+    ...searchData
   }
 });
 
@@ -99,6 +103,15 @@ export const update = data => ({
   type: UPDATE_CONTACT,
   payload: {
     ...data
+  }
+});
+
+export const geocodeLocation = location => ({
+  type: GEOCODE_LOCATION_START,
+  payload: {
+    location,
+    successAction: GEOCODE_LOCATION_SUCCESS,
+    errorAction: GEOCODE_LOCATION_ERROR,
   }
 });
 
@@ -114,6 +127,7 @@ export const actions = {
   removeContact,
   searchContacts,
   searchFavorites,
+  geocodeLocation,
 };
 
 
@@ -142,10 +156,28 @@ const actionsMap = {
   },
   [FETCH_CONTACTS_ERROR]: state => ({ ...state, isFetching: false }),
   [FETCH_FAVORITES_ERROR]: state => ({ ...state, isFetching: false }),
-  // TODO
+
+  [SEARCH_CONTACTS_START]: state => ({
+    ...state,
+    isSearching: true,
+  }),
+  [SEARCH_FAVORITES_START]: state => ({
+    ...state,
+    isSearching: true,
+  }),
   [SEARCH_CONTACTS_SUCCESS]: (state, action) => ({
     ...state,
     contactSearchResults: action.payload.result,
+    isSearching: false,
+  }),
+  [SEARCH_FAVORITES_SUCCESS]: (state, action) => ({
+    ...state,
+    favoritesSearchResults: action.payload.result,
+    isSearching: false,
+  }),
+  [GEOCODE_LOCATION_SUCCESS]: (state, action) => ({
+    ...state,
+    favoritesSearchLocation: action.payload,
   }),
 };
 

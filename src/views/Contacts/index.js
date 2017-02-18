@@ -25,10 +25,11 @@ export default class Contacts extends Component {
     fetchContacts: PropTypes.func.isRequired,
     searchContacts: PropTypes.func.isRequired,
     isRefreshing: PropTypes.bool,
+    isSearching: PropTypes.bool,
   };
 
   state = {
-    searching: false
+    searchMode: false
   };
 
   componentDidMount() {
@@ -42,17 +43,18 @@ export default class Contacts extends Component {
       fetchContacts,
       isRefreshing,
       searchContacts,
+      isSearching,
       ...rest,
     } = this.props;
-    const { searching } = this.state;
-    const members = searching ? contactSearchResults : contacts;
+    const { searchMode } = this.state;
+    const members = searchMode ? contactSearchResults : contacts;
 
     return (
       <View style={styles.container}>
         <Search
-          onCancel={() => this.setState({ searching: false })}
+          onCancel={() => this.setState({ searchMode: false })}
           onSearch={text => {
-            this.setState({ searching: true });
+            this.setState({ searchMode: true });
             searchContacts(text);
           }}
         />
@@ -63,6 +65,7 @@ export default class Contacts extends Component {
             url: 'sameto://invite/url/to/be/defined',
             title: 'Invite friend'
           })}
+          buttonProps={{ noResize: true }}
         >
           {members && members.length > 0 ? (
             <ContactList
@@ -73,9 +76,9 @@ export default class Contacts extends Component {
             />
           ) : (
             <View style={styles.noItems}>
-              {searching ? (
+              {searchMode ? (
                 <Text style={styles.noItemsText}>
-                  {I18n.t('no_search_result')}
+                  {isSearching ? I18n.t('searching') : I18n.t('no_search_result')}
                 </Text>
               ) : (
                 <Text style={styles.noItemsText}>

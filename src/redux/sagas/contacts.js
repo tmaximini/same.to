@@ -1,5 +1,6 @@
 import { takeLatest, call, put } from 'redux-saga/effects';
 import { Actions } from 'react-native-router-flux';
+import geocodeAsync from './geocode';
 import {
   FETCH_CONTACTS_START,
   FETCH_CONTACTS_SUCCESS,
@@ -22,6 +23,10 @@ import {
   SEARCH_CONTACTS_START,
   SEARCH_CONTACTS_SUCCESS,
   SEARCH_CONTACTS_ERROR,
+  SEARCH_FAVORITES_START,
+  SEARCH_FAVORITES_SUCCESS,
+  SEARCH_FAVORITES_ERROR,
+  GEOCODE_LOCATION_START,
 } from '../modules/contacts';
 import { AUTHORIZATION_REQUIRED } from '../modules/auth';
 import {
@@ -32,6 +37,7 @@ import {
   addFavorite,
   removeFavorite,
   searchContacts,
+  searchFavorites,
 } from '../../services/contacts';
 
 
@@ -146,6 +152,37 @@ export function* searchContactsAsync(action) {
   }
 }
 
+export function* searchFavoritesAsync(action) {
+  try {
+    const response = yield call(searchFavorites, action.payload);
+
+    if (response.error) {
+      // in case of error
+      yield put({
+        type: SEARCH_FAVORITES_ERROR,
+        payload: {
+          result: [],
+          error: response.error
+        }
+      });
+    } else {
+      // success
+      yield put({
+        type: SEARCH_FAVORITES_SUCCESS,
+        payload: {
+          result: response
+        }
+      });
+    }
+  } catch (error) {
+    console.log({ error });
+    yield put({
+      type: SEARCH_FAVORITES_ERROR,
+      error
+    });
+  }
+}
+
 function* addRemoveRemote({ action, params, successAction, errorAction }) {
   try {
     const response = yield call(action, params);
@@ -242,3 +279,12 @@ export function* watchRemoveContact() {
 export function* watchSearchContacts() {
   yield takeLatest(SEARCH_CONTACTS_START, searchContactsAsync);
 }
+
+export function* watchSearchFavorites() {
+  yield takeLatest(SEARCH_FAVORITES_START, searchFavoritesAsync);
+}
+
+export function* watchGeocodeSearchFavorites() {
+  yield takeLatest(GEOCODE_LOCATION_START, geocodeAsync);
+}
+

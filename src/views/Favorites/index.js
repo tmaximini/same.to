@@ -4,7 +4,7 @@ import {
   View,
   Text,
 } from 'react-native';
-
+import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import ContactList from '../../components/ContactList';
 import Form from '../../layouts/form';
@@ -38,7 +38,7 @@ export default class Favorites extends Component {
     return (
       <Form
         buttonText={I18n.t('search_favorites')}
-        onPress={() => {}}
+        onSubmit={Actions.searchFavorites}
         buttonProps={{ noResize: true }}
       >
         <View style={styles.container}>
