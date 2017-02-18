@@ -6,8 +6,8 @@ import {
   Image,
   TouchableOpacity,
   Text,
+  NativeModules,
 } from 'react-native';
-
 import { connect } from 'react-redux';
 import ImagePicker from 'react-native-image-picker';
 import Form from '../../layouts/form';
@@ -16,8 +16,11 @@ import GenderSelect from '../../components/GenderSelect';
 import Input from '../../components/Input';
 import GeoInput from '../../components/GeoInput';
 import { actions as profileActions } from '../../redux/modules/editCreateProfile';
-
+import { uploadImage } from '../../services/profiles';
+import { API_BASE, getAuthToken } from '../../services/api';
 import styles from './styles';
+
+const RNUploader = NativeModules.RNUploader;
 
 @connect(
   state => state.editCreateProfile,
@@ -97,6 +100,40 @@ export default class EditCreateProfile extends Component {
         } else {
           source = { uri: response.uri.replace('file://', '') };
         }
+
+        // { uri: imgObj.origURL, name: imgObj.fileName }
+        // uploadImage(response);
+        const files = [
+          {
+            name: 'file',
+            filename: response.fileName,
+            filepath: response.origURL,  // image from camera roll/assets library
+            filetype: 'image/jpeg',
+          },
+        ];
+
+        console.log('files', files);
+
+        const opts = {
+          url: `${API_BASE}members/me/upload`,
+          files,
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            Authorization: getAuthToken()
+          },  // optional
+        };
+
+        RNUploader.upload(opts, (err, response) => {
+          if (err) {
+            console.log(err);
+            return;
+          }
+          const status = response.status;
+          const responseString = response.data;
+          console.log('upload complete with status ' + status, responseString);
+        });
+
 
         this.setState({
           avatarSource: source
