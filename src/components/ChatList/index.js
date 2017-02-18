@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import I18n from 'react-native-i18n';
+// import I18n from 'react-native-i18n';
 import { ListView, RefreshControl } from 'react-native';
 
 import ChatListItem from './ChatListItem';
@@ -13,7 +13,7 @@ export default class ChatList extends Component {
     chats: PropTypes.arrayOf(PropTypes.object),
     refresh: PropTypes.func.isRequired,
     setCurrentChat: PropTypes.func.isRequired,
-    // setChat: PropTypes.func.isRequired,
+    showActionSheetWithOptions: PropTypes.func.isRequired,
     isRefreshing: PropTypes.bool.isRequired,
   }
 
@@ -29,7 +29,7 @@ export default class ChatList extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.chats) {
-      console.info('nextProps Chats', nextProps.chats);
+      // console.info('nextProps Chats', nextProps.chats);
       this.setState({
         dataSource: this.state.dataSource.cloneWithRows(nextProps.chats)
       });
@@ -37,12 +37,11 @@ export default class ChatList extends Component {
   }
 
   onRefresh() {
-    console.info('on refresh called!');
     this.props.refresh();
   }
 
   render() {
-    const { setCurrentChat } = this.props;
+    const { setCurrentChat, showActionSheetWithOptions } = this.props;
 
     return (
       <ListView
@@ -52,6 +51,7 @@ export default class ChatList extends Component {
         renderRow={chat => <ChatListItem
           chat={chat}
           setCurrentChat={setCurrentChat}
+          showActionSheetWithOptions={showActionSheetWithOptions}
         />}
         refreshControl={
           <RefreshControl

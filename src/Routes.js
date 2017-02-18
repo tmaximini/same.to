@@ -255,8 +255,6 @@ const Routes = () => (
       title={I18n.t('chat')}
       sceneStyle={navBarPadding}
       rightButtonTextStyle={cyanText}
-      onRight={() => Actions.editCreateChat({ title: 'Edit Conversation' })}
-      rightTitle="edit"
     />
     <Scene
       key="profile"

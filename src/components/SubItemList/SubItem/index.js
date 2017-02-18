@@ -1,13 +1,12 @@
 import React, { PropTypes } from 'react';
 import I18n from 'react-native-i18n';
-import { View, Text, Image, TouchableHighlight, TouchableOpacity } from 'react-native';
+import { View, Text, Image, TouchableHighlight } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/Ionicons';
-import EntypoIcon from 'react-native-vector-icons/Entypo';
 import { canEdit } from '../../../utils';
+import EditButton from '../../EditButton';
 import Date from '../../Date';
 import TagList from '../../TagList';
-import { COLORS } from '../../../constants';
 import styles from './styles';
 
 const background = require('../../../assets/sunflowers.jpg');
@@ -55,15 +54,9 @@ const SubItem = ({ itemType, item, onSelect, setDetail, showActionSheetWithOptio
   };
 
   const renderRightButton = () => (
-    <TouchableOpacity
+    <EditButton
       onPress={showAndHandleActionSheet}
-    >
-      <EntypoIcon
-        name="dots-three-horizontal"
-        color={COLORS.CYAN}
-        size={22}
-      />
-    </TouchableOpacity>
+    />
   );
 
   const handler = (type, model) => {

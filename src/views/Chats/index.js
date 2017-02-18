@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
+import { connectActionSheet } from '@exponent/react-native-action-sheet';
 import {
   actions as chatActions
 } from '../../redux/modules/chats';
@@ -11,6 +12,7 @@ import styles from './styles';
   state => state.chats,
   chatActions,
 )
+@connectActionSheet
 class Chats extends Component {
   static propTypes = {
     chats: PropTypes.arrayOf(
@@ -39,6 +41,7 @@ class Chats extends Component {
           setCurrentChat={setCurrentChat}
           isRefreshing={isRefreshing}
           refresh={fetchChats}
+          {...this.props}
         />
       </View>
     );

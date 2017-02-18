@@ -138,6 +138,7 @@ const translations = {
     searching: 'searching...',
     delete: 'Delete',
     cancel: 'Cancel',
+    edit_chat: 'Edit chat'
   },
 
   de: {
@@ -281,6 +282,7 @@ const translations = {
     searching: 'Suche...',
     delete: 'Löschen',
     cancel: 'Abbrechen',
+    edit_chat: 'Chat bearbeiten'
   }
 };
 

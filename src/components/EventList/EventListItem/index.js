@@ -1,14 +1,13 @@
 import React, { PropTypes } from 'react';
-import { Image, View, Text, TouchableHighlight, TouchableOpacity } from 'react-native';
+import { Image, View, Text, TouchableHighlight } from 'react-native';
 import I18n from 'react-native-i18n';
 import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/Ionicons';
-import EntypoIcon from 'react-native-vector-icons/Entypo';
+import EditButton from '../../EditButton';
 import Date from '../../Date';
 import Location from '../../Location';
 import TagList from '../../TagList';
 import { canEdit } from '../../../utils';
-import { COLORS } from '../../../constants';
 import styles from './styles';
 
 const background = require('../../../assets/sunflowers.jpg');
@@ -61,15 +60,9 @@ const EventListItem = ({
   };
 
   const renderRightButton = () => (
-    <TouchableOpacity
+    <EditButton
       onPress={showAndHandleActionSheet}
-    >
-      <EntypoIcon
-        name="dots-three-horizontal"
-        color={COLORS.CYAN}
-        size={22}
-      />
-    </TouchableOpacity>
+    />
   );
 
   // set current event in reducer

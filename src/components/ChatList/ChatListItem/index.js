@@ -4,6 +4,7 @@ import { View, Text, TouchableHighlight, Image } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { Badge } from 'nachos-ui';
 import format from 'date-fns/format';
+import EditButton from '../../../components/EditButton';
 // import { canEdit } from '../../../utils';
 import { getUserId } from '../../../services/api';
 import { COLORS } from '../../../constants';
@@ -12,9 +13,38 @@ import styles from './styles';
 // const background = require('../../../assets/sunflowers.jpg');
 const face = require('../../../assets/hj.jpg');
 
-const ChatListItem = ({ chat, setCurrentChat }) => {
+const ChatListItem = ({ chat, setCurrentChat, showActionSheetWithOptions }) => {
 
   const me = getUserId();
+
+  const showAndHandleActionSheet = () => {
+    const options = [I18n.t('edit'), I18n.t('delete'), I18n.t('cancel')];
+    const destructiveButtonIndex = 1;
+    const cancelButtonIndex = 2;
+    showActionSheetWithOptions({
+      options,
+      cancelButtonIndex,
+      destructiveButtonIndex,
+    },
+    (buttonIndex) => {
+      // Do something here depending on the button index selected
+      if (buttonIndex === 0) {
+        // edit
+        Actions.editCreateChat({ title: I18n.t('edit_chat') });
+      }
+      if (buttonIndex === 1) {
+        // delete
+        return console.log('delete chat');
+      }
+      return null;
+    });
+  };
+
+  const renderRightButton = () => (
+    <EditButton
+      onPress={showAndHandleActionSheet}
+    />
+  );
 
   const lastMessage = (
     chat.messages.length > 0 ? chat.messages[0] : null
@@ -60,7 +90,10 @@ const ChatListItem = ({ chat, setCurrentChat }) => {
       underlayColor="transparent"
       onPress={() => {
         setCurrentChat(chat);
-        Actions.chat({ title: chat.subject });
+        Actions.chat({
+          title: chat.subject,
+          renderRightButton
+        });
       }}
     >
       <View style={styles.wrapper}>
@@ -102,12 +135,12 @@ const ChatListItem = ({ chat, setCurrentChat }) => {
       </View>
     </TouchableHighlight>
   );
-}
+};
 
 ChatListItem.propTypes = {
   chat: PropTypes.object.isRequired,
   setCurrentChat: PropTypes.func.isRequired,
-  // setChat: PropTypes.func.isRequired,
+  showActionSheetWithOptions: PropTypes.func.isRequired,
 };
 
 export default ChatListItem;
