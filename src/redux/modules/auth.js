@@ -54,6 +54,10 @@ export const login = ({ email, password }) => ({
   }
 });
 
+export const logout = () => ({
+  type: LOGOUT,
+});
+
 export const facebookLogin = ({ access_token }) => ({
   type: FACEBOOK_LOGIN_START,
   payload: {
@@ -82,6 +86,7 @@ export const resetErrors = () => ({
 // export all actions
 export const actions = {
   login,
+  logout,
   facebookLogin,
   update,
   register,
