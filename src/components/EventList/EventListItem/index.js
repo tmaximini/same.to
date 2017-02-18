@@ -1,20 +1,29 @@
 import React, { PropTypes } from 'react';
-import { Image, View, Text, TouchableHighlight } from 'react-native';
+import { Image, View, Text, TouchableHighlight, TouchableOpacity } from 'react-native';
 import I18n from 'react-native-i18n';
 import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/Ionicons';
+import EntypoIcon from 'react-native-vector-icons/Entypo';
 import Date from '../../Date';
 import Location from '../../Location';
 import TagList from '../../TagList';
 import { canEdit } from '../../../utils';
+import { COLORS } from '../../../constants';
 import styles from './styles';
 
 const background = require('../../../assets/sunflowers.jpg');
 
-const EventListItem = ({ event, setCurrentEvent, setEvent, setDetail, setActivity }) => {
+const EventListItem = ({
+  event,
+  setCurrentEvent,
+  setEvent,
+  setDetail,
+  setActivity,
+  showActionSheetWithOptions,
+}) => {
   const { name, startAt, location } = event;
 
-  //
+
   const editEvent = () => {
     setEvent(event);
     Actions.editCreateEvent({ event, title: I18n.t('edit_event') });
@@ -25,20 +34,56 @@ const EventListItem = ({ event, setCurrentEvent, setEvent, setDetail, setActivit
     Actions.editCreateActivity({ activity: event, title: I18n.t('edit_activity') });
   };
 
+  const showAndHandleActionSheet = () => {
+    const options = [I18n.t('edit'), I18n.t('delete'), I18n.t('cancel')];
+    const destructiveButtonIndex = 1;
+    const cancelButtonIndex = 2;
+    showActionSheetWithOptions({
+      options,
+      cancelButtonIndex,
+      destructiveButtonIndex,
+    },
+    (buttonIndex) => {
+      // Do something here depending on the button index selected
+      if (buttonIndex === 0) {
+        // edit
+        if (event.type === 'event') {
+          return editEvent();
+        }
+        return editActivity();
+      }
+      if (buttonIndex === 1) {
+        // delete
+        return console.log('delete event');
+      }
+      return null;
+    });
+  };
+
+  const renderRightButton = () => (
+    <TouchableOpacity
+      onPress={showAndHandleActionSheet}
+    >
+      <EntypoIcon
+        name="dots-three-horizontal"
+        color={COLORS.CYAN}
+        size={22}
+      />
+    </TouchableOpacity>
+  );
+
   // set current event in reducer
   const onSelect = () => {
     if (event.type === 'event') {
       setCurrentEvent(event);
       Actions.event({
-        onRight: canEdit(event) ? editEvent : undefined,
-        rightTitle: canEdit(event) ? I18n.t('edit') : undefined,
+        renderRightButton: canEdit(event) ? renderRightButton : undefined,
       });
     } else {
       setDetail({ itemType: 'activity', item: event });
       Actions.activity({
         title: event.name,
-        onRight: canEdit(event) ? editActivity : undefined,
-        rightTitle: canEdit(event) ? I18n.t('edit') : undefined,
+        renderRightButton: canEdit(event) ? renderRightButton : undefined,
       });
     }
   };
@@ -105,6 +150,7 @@ EventListItem.propTypes = {
   setEvent: PropTypes.func.isRequired,
   setActivity: PropTypes.func.isRequired,
   setDetail: PropTypes.func.isRequired,
+  showActionSheetWithOptions: PropTypes.func.isRequired,
 };
 
 export default EventListItem;

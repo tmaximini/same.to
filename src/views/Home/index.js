@@ -2,12 +2,11 @@ import React, { Component, PropTypes } from 'react';
 import {
   View,
 } from 'react-native';
-
 import { connect } from 'react-redux';
+import { connectActionSheet } from '@exponent/react-native-action-sheet';
 import { Actions } from 'react-native-router-flux';
 import EventList from '../../components/EventList';
 import PlusButton from '../../components/PlusButton';
-
 import { actions as eventActions } from '../../redux/modules/events';
 import {
   resetEvent as resetEventAction,
@@ -37,9 +36,10 @@ import styles from './styles';
     setDetail: setDetailAction,
   }
 )
+@connectActionSheet
 export default class Home extends Component {
-
   static propTypes = {
+    showActionSheetWithOptions: PropTypes.func.isRequired,
     setEvent: PropTypes.func.isRequired,
     resetEvent: PropTypes.func.isRequired,
     resetActivity: PropTypes.func.isRequired,
@@ -68,6 +68,7 @@ export default class Home extends Component {
       resetActivity,
       setActivity,
       setDetail,
+      showActionSheetWithOptions,
     } = this.props;
 
     return (
@@ -80,6 +81,7 @@ export default class Home extends Component {
           setEvent={setEvent}
           setActivity={setActivity}
           setDetail={setDetail}
+          showActionSheetWithOptions={showActionSheetWithOptions}
         />
         <PlusButton
           itemSize={45}

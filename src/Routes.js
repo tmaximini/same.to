@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
 const makeSearchButton = () => (
   <TouchableHighlight
     onPress={Actions.searchEvents}
-    style={{ justifyContent: 'center', alignItems: 'center', marginTop: 2, marginRight: 5 }}
+    style={{ justifyContent: 'center', alignItems: 'center', paddingVertical: 5, paddingHorizontal: 5 }}
     underlayColor="transparent"
     activeOpacity={0.6}
   >

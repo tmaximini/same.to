@@ -1,6 +1,7 @@
 import React from 'react';
 import { AppRegistry } from 'react-native';
 import { Provider } from 'react-redux';
+import { ActionSheetProvider } from '@exponent/react-native-action-sheet';
 import DeviceInfo from 'react-native-device-info';
 import I18n from 'react-native-i18n';
 import moment from 'moment';
@@ -21,9 +22,11 @@ I18n.locale = locale;
 const store = configureStore();
 
 const sameto = () => (
-  <Provider store={store}>
-    <Routes />
-  </Provider>
+  <ActionSheetProvider>
+    <Provider store={store}>
+      <Routes />
+    </Provider>
+  </ActionSheetProvider>
 );
 
 AppRegistry.registerComponent('sameto', () => sameto);

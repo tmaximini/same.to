@@ -3,6 +3,7 @@ import { View, Text, TouchableHighlight } from 'react-native';
 import I18n from 'react-native-i18n';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
+import { connectActionSheet } from '@exponent/react-native-action-sheet';
 import { share } from '../../utils';
 import { getUserId } from '../../services/api';
 import EventHeader from '../../components/EventHeader';
@@ -47,6 +48,7 @@ const background = require('../../assets/gamescom.jpg');
     toggleParticipateEvent: toggleParticipateEventAction,
   },
 )
+@connectActionSheet
 export default class Event extends Component {
   static propTypes = {
     event: PropTypes.shape({
@@ -67,6 +69,7 @@ export default class Event extends Component {
     resetActivity: PropTypes.func.isRequired,
     resetAccommodation: PropTypes.func.isRequired,
     toggleParticipateEvent: PropTypes.func.isRequired,
+    showActionSheetWithOptions: PropTypes.func.isRequired,
   }
 
   constructor(props) {
@@ -94,6 +97,7 @@ export default class Event extends Component {
       setDetail,
       event,
       toggleParticipateEvent,
+      showActionSheetWithOptions,
     } = this.props;
     const {
       name,
@@ -169,6 +173,7 @@ export default class Event extends Component {
               setAccommodation={setAccommodation}
               setActivity={setActivity}
               setDetail={setDetail}
+              showActionSheetWithOptions={showActionSheetWithOptions}
             />
           ) : (
             <View style={styles.noItems}>
@@ -216,4 +221,3 @@ export default class Event extends Component {
     );
   }
 }
-

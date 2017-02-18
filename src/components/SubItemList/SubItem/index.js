@@ -1,16 +1,18 @@
 import React, { PropTypes } from 'react';
 import I18n from 'react-native-i18n';
-import { View, Text, Image, TouchableHighlight } from 'react-native';
+import { View, Text, Image, TouchableHighlight, TouchableOpacity } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/Ionicons';
+import EntypoIcon from 'react-native-vector-icons/Entypo';
 import { canEdit } from '../../../utils';
 import Date from '../../Date';
 import TagList from '../../TagList';
+import { COLORS } from '../../../constants';
 import styles from './styles';
 
 const background = require('../../../assets/sunflowers.jpg');
 
-const SubItem = ({ itemType, item, onSelect, setDetail }) => {
+const SubItem = ({ itemType, item, onSelect, setDetail, showActionSheetWithOptions }) => {
   // will be called by pressing right navbar button
   const editFunc = () => {
     onSelect(item);
@@ -30,6 +32,40 @@ const SubItem = ({ itemType, item, onSelect, setDetail }) => {
     }
   };
 
+  const showAndHandleActionSheet = () => {
+    const options = [I18n.t('edit'), I18n.t('delete'), I18n.t('cancel')];
+    const destructiveButtonIndex = 1;
+    const cancelButtonIndex = 2;
+    showActionSheetWithOptions({
+      options,
+      cancelButtonIndex,
+      destructiveButtonIndex,
+    },
+    (buttonIndex) => {
+      // Do something here depending on the button index selected
+      if (buttonIndex === 0) {
+        // edit
+        editFunc();
+      }
+      if (buttonIndex === 1) {
+        // delete
+        console.log('delete event');
+      }
+    });
+  };
+
+  const renderRightButton = () => (
+    <TouchableOpacity
+      onPress={showAndHandleActionSheet}
+    >
+      <EntypoIcon
+        name="dots-three-horizontal"
+        color={COLORS.CYAN}
+        size={22}
+      />
+    </TouchableOpacity>
+  );
+
   const handler = (type, model) => {
     // set redux active item
     setDetail({
@@ -39,8 +75,7 @@ const SubItem = ({ itemType, item, onSelect, setDetail }) => {
 
     // params are same for all routes
     const params = {
-      onRight: canEdit(model) ? editFunc : undefined,
-      rightTitle: canEdit(model) ? 'edit' : undefined,
+      renderRightButton: canEdit(model) ? renderRightButton : undefined,
     };
 
     // handle route depending on item type
@@ -108,6 +143,7 @@ SubItem.propTypes = {
   item: PropTypes.object.isRequired,
   onSelect: PropTypes.func.isRequired,
   setDetail: PropTypes.func.isRequired,
+  showActionSheetWithOptions: PropTypes.func.isRequired,
 };
 
 export default SubItem;

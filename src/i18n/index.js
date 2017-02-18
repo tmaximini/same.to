@@ -98,7 +98,7 @@ const translations = {
     create_chat: 'Create chat',
     participants: 'participants',
     housing_details: 'housing details',
-    edit: 'edit',
+    edit: 'Edit',
     fine_like_minded: 'find like-minded people',
     search_favorites: 'Search favorites',
     search_events: 'Search events',
@@ -136,6 +136,8 @@ const translations = {
     other: 'other',
     where: 'where',
     searching: 'searching...',
+    delete: 'Delete',
+    cancel: 'Cancel',
   },
 
   de: {
@@ -277,6 +279,8 @@ const translations = {
     unknown: 'Unbekannt',
     other: 'Sonstige',
     searching: 'Suche...',
+    delete: 'Löschen',
+    cancel: 'Abbrechen',
   }
 };
 
