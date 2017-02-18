@@ -51,6 +51,7 @@ export default StyleSheet.create({
   boxText: {
     color: COLORS.WHITE,
     fontFamily: 'Montserrat',
+    paddingBottom: 2,
   },
   info: {
     flex: 1,

@@ -46,7 +46,7 @@ class SearchEvents extends Component {
     return (
       <Form
         onSubmit={Actions.editCreateEvent}
-        buttonText={I18n.t('search_events')}
+        buttonText={I18n.t('create_event')}
         buttonProps={{ noBackground: true }}
         extraText={I18n.t('event_not_found')}
       >

@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import I18n from 'react-native-i18n';
 import { View, Text, Image, TouchableHighlight } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -16,15 +17,15 @@ const SubItem = ({ itemType, item, onSelect, setDetail }) => {
     switch (itemType) {
       case 'trip':
         return Actions.editCreateTrip({
-          title: 'Edit Trip',
+          title: I18n.t('edit_trip'),
         });
       case 'accommodation':
         return Actions.editCreateAccommodation({
-          title: 'Edit Accommodation',
+          title: I18n.t('edit_accommodation'),
         });
       default:
         return Actions.editCreateActivity({
-          title: 'Edit Activity',
+          title: I18n.t('edit_activity'),
         });
     }
   };
@@ -56,10 +57,10 @@ const SubItem = ({ itemType, item, onSelect, setDetail }) => {
   const title = item.name ? item.name : itemType;
 
   const getSubTitle = it => {
-    const from = it.pickupLocation ? it.pickupLocation.locality : 'Unknown';
-    const to = it.destinationLocation ? it.destinationLocation.locality : 'Unknown';
+    const from = it.pickupLocation ? it.pickupLocation.locality : I18n.t('unknown');
+    const to = it.destinationLocation ? it.destinationLocation.locality : I18n.t('unknown');
 
-    return `Von ${from} nach ${to}`;
+    return `${I18n.t('from')} ${from} ${I18n.t('to')} ${to}`;
   };
 
   return (

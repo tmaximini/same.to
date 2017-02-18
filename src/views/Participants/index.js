@@ -35,11 +35,12 @@ class Participants extends Component {
 
   filterResults(query) {
     const { members } = this.props;
+    const q = query.toLowerCase();
     this.setState({
       members: _.filter(members, item =>
-        item.firstName.includes(query) ||
-        item.lastName.includes(query) ||
-        item.email.includes(query)
+        item.firstName.toLowerCase().includes(q) ||
+        item.lastName.toLowerCase().includes(q) ||
+        item.email.toLowerCase().includes(q)
       )
     });
   }

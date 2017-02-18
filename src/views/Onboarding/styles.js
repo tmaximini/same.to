@@ -26,6 +26,7 @@ export default StyleSheet.create({
   },
   textBox: {
     marginBottom: PADDINGS.DOUBLE,
+    paddingHorizontal: PADDINGS.DOUBLE,
   },
   text: {
     ...MIXINS.lightText,

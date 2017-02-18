@@ -1,4 +1,5 @@
 import React, { PropTypes, Component } from 'react';
+import I18n from 'react-native-i18n';
 import SearchBar from 'react-native-search-bar';
 import { COLORS } from '../../constants';
 
@@ -27,7 +28,7 @@ export default class Search extends Component {
         tintColor={COLORS.DARK_GREY}
         barTintColor={COLORS.WHITE}
         textFieldBackgroundColor={COLORS.DARK_GREY}
-        placeholder="Search"
+        placeholder={I18n.t('search')}
         onChangeText={onChange}
         showsCancelButton={this.state.focus}
         onFocus={() => this.setState({ focus: true })}

@@ -17,7 +17,7 @@ import { actions as accommodationActions } from '../../redux/modules/editCreateA
 const makeOverstays = () => {
   const arr = [];
   for (let i = 1; i < 32; i++) {
-    arr.push({ value: i, label: `${i} night(s)` });
+    arr.push({ value: i, label: `${i} ${I18n.t('nights')}` });
   }
   return arr;
 };

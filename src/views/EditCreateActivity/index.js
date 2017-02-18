@@ -63,37 +63,35 @@ export default class EditCreateActivity extends Component {
         onSubmit={() => this.saveItem(activity)}
       >
         <CheckboxList
-          label="Activity Types"
+          label={I18n.t('activities')}
           items={activityTypes}
           onChange={toggleCategory}
           model={activity}
         />
         <Input
-          placeholder="Name"
+          placeholder={I18n.t('name')}
           onChangeText={text => updateActivity('name', text)}
           icon="coffee"
           value={activity.name}
         />
-        <InputGroup>
-          <Datepicker
-            placeholder="Start Date"
-            minDate={today}
-            date={activity.startAt || today}
-            onChange={date => updateActivity('startAt', date)}
-          />
-          <GeoInput
-            placeholder="Where"
-            enablePoweredByContainer={false}
-            value={locationString}
-            onChangeText={text => updateActivity('locationString', text)}
-            onAdressSelect={geocodeLocation}
-            zIndex={99}
-            grow
-          />
-        </InputGroup>
+        <Datepicker
+          placeholder={I18n.t('start_date')}
+          minDate={today}
+          date={activity.startAt || today}
+          onChange={date => updateActivity('startAt', date)}
+          grow={false}
+        />
+        <GeoInput
+          placeholder={I18n.t('location')}
+          enablePoweredByContainer={false}
+          value={locationString}
+          onChangeText={text => updateActivity('locationString', text)}
+          onAdressSelect={geocodeLocation}
+          zIndex={99}
+        />
         <HR />
         <OnOffSwitch
-          name="Make this activity public"
+          name={I18n.t('make_activity_public')}
           value={activity.isPublic}
           onChange={(val) => updateActivity('isPublic', val)}
         />

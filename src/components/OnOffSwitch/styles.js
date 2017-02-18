@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { COLORS, MIXINS } from '../../constants';
+import { PADDINGS, MIXINS } from '../../constants';
 
 export default StyleSheet.create({
   container: {
@@ -8,7 +8,8 @@ export default StyleSheet.create({
     alignItems: 'flex-start',
     justifyContent: 'space-between',
     zIndex: 0,
-    backgroundColor: 'transparent'
+    backgroundColor: 'transparent',
+    marginBottom: PADDINGS.STANDARD,
   },
   label: {
     padding: 5,
