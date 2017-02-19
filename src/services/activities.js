@@ -1,15 +1,4 @@
-import { post, put } from './api';
-
-// export const createActivity = (data, eventId) => post(
-//   `events/${eventId}/activities`,
-//   { ...data }
-// );
-
-// export const updateActivity = data => put(
-//   `events/${data.eventId}/activities/${data.id}`,
-//   { ...data }
-// );
-
+import { post, put, del } from './api';
 
 export const createActivity = (data, eventId) => post(
   'events',
@@ -23,3 +12,5 @@ export const updateActivity = data => put(
   `events/${data.id}`,
   { ...data }
 );
+
+export const deleteActivity = data => del(`events/${data.id}`);
