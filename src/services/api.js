@@ -83,11 +83,7 @@ export const del = url => fetch(`${API_BASE}${url}`,
     method: 'DELETE',
     headers: getHeaders(),
   })
-  .then(response => response.json())
+  .then(response => response)
   .catch(error => {
     console.info({ error });
-    // remove auth header on 401
-    if (error.statusCode === 401) {
-      updateAuthHeader(null);
-    }
   });

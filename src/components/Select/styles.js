@@ -16,7 +16,8 @@ export default StyleSheet.create({
     marginLeft: 15,
     justifyContent: 'center',
     borderWidth: 0,
-    top: -45,
+    top: -44,
+    paddingVertical: 2,
   },
   label: {
     color: 'white',

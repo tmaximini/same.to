@@ -14,6 +14,9 @@ import {
   DELETE_CHAT_START,
   DELETE_CHAT_SUCCESS,
   DELETE_CHAT_ERROR,
+  LEAVE_CHAT_START,
+  LEAVE_CHAT_SUCCESS,
+  LEAVE_CHAT_ERROR,
 } from '../modules/chats';
 import {
   AUTHORIZATION_REQUIRED,
@@ -23,6 +26,7 @@ import {
   createChat,
   updateChat,
   deleteChat,
+  leaveChat,
 } from '../../services/chats';
 
 
@@ -176,6 +180,41 @@ export function* deleteChatAsync(action) {
   }
 }
 
+export function* leaveChatAsync(action) {
+  const { payload } = action;
+  try {
+    const response = yield call(leaveChat, { ...payload });
+
+    if (response.error) {
+      // in case of error
+      yield put({
+        type: LEAVE_CHAT_ERROR,
+        payload: {
+          error: response.error
+        }
+      });
+    } else {
+      // success
+      yield put({
+        type: LEAVE_CHAT_SUCCESS,
+        payload: {
+          chat: payload
+        }
+      });
+
+      yield call(Actions.pop, { refresh: {} });
+    }
+  } catch (error) {
+    console.log({ error });
+    yield put({
+      type: LEAVE_CHAT_ERROR,
+      payload: {
+        error
+      },
+    });
+  }
+}
+
 export function* watchFetchChats() {
   yield takeLatest(FETCH_CHATS_START, fetchChatsAsync);
 }
@@ -190,4 +229,8 @@ export function* watchUpdateChat() {
 
 export function* watchDeleteChat() {
   yield takeLatest(DELETE_CHAT_START, deleteChatAsync);
+}
+
+export function* watchLeaveChat() {
+  yield takeLatest(LEAVE_CHAT_START, leaveChatAsync);
 }

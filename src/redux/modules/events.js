@@ -8,14 +8,17 @@ import {
 import {
   CREATE_TRIP_SUCCESS,
   UPDATE_TRIP_SUCCESS,
+  DELETE_TRIP_SUCCESS,
 } from './editCreateTrip';
 import {
   UPDATE_ACCOMMODATION_SUCCESS,
-  CREATE_ACCOMMODATION_SUCCESS
+  CREATE_ACCOMMODATION_SUCCESS,
+  DELETE_ACCOMMODATION_SUCCESS,
 } from './editCreateAccommodation';
 import {
   UPDATE_ACTIVITY_SUCCESS,
   CREATE_ACTIVITY_SUCCESS,
+  DELETE_ACTIVITY_SUCCESS,
 } from './editCreateActivity';
 
 // Initial State
@@ -97,6 +100,21 @@ const updateEvents = (lastState, subitem, collection) => {
 };
 
 
+const removeSubItem = (lastState, subitem, collection) => {
+  const newEvents = [...lastState.events];
+  const eventIndex = _.findIndex(newEvents, { id: subitem.eventId });
+  const index = _.findIndex(newEvents[collection], { id: subitem.id });
+  // remove the subitem from the collection
+  newEvents[eventIndex][collection].splice(index, 1);
+
+  return {
+    ...lastState,
+    currentEvent: newEvents[eventIndex],
+    events: newEvents
+  };
+};
+
+
 // Action Handlers
 const actionsMap = {
     // don't rehydrate search results
@@ -169,21 +187,36 @@ const actionsMap = {
       currentEvent: event,
     };
   },
+  [CREATE_TRIP_SUCCESS]: (state, action) => {
+    const { trip } = action.payload;
+    return updateEvents(state, trip, 'trips');
+  },
   [UPDATE_TRIP_SUCCESS]: (state, action) => {
     const { trip } = action.payload;
     return updateEvents(state, trip, 'trips');
   },
-  [CREATE_TRIP_SUCCESS]: (state, action) => {
+  [DELETE_TRIP_SUCCESS]: (state, action) => {
     const { trip } = action.payload;
-    return updateEvents(state, trip, 'trips');
+    return removeSubItem(state, trip, 'trips');
+  },
+  [CREATE_ACCOMMODATION_SUCCESS]: (state, action) => {
+    const { accommodation } = action.payload;
+    return updateEvents(state, accommodation, 'accommodations');
   },
   [UPDATE_ACCOMMODATION_SUCCESS]: (state, action) => {
     const { accommodation } = action.payload;
     return updateEvents(state, accommodation, 'accommodations');
   },
-  [CREATE_ACCOMMODATION_SUCCESS]: (state, action) => {
+  [DELETE_ACCOMMODATION_SUCCESS]: (state, action) => {
     const { accommodation } = action.payload;
-    return updateEvents(state, accommodation, 'accommodations');
+    return removeSubItem(state, accommodation, 'accommodations');
+  },
+  [CREATE_ACTIVITY_SUCCESS]: (state, action) => {
+    const { activity } = action.payload;
+    if (activity.eventId) {
+      return updateEvents(state, activity, 'activities');
+    }
+    return state;
   },
   [UPDATE_ACTIVITY_SUCCESS]: (state, action) => {
     const { activity } = action.payload;
@@ -192,10 +225,10 @@ const actionsMap = {
     }
     return state;
   },
-  [CREATE_ACTIVITY_SUCCESS]: (state, action) => {
+  [DELETE_ACTIVITY_SUCCESS]: (state, action) => {
     const { activity } = action.payload;
     if (activity.eventId) {
-      return updateEvents(state, activity, 'activities');
+      return removeSubItem(state, activity, 'activities');
     }
     return state;
   },

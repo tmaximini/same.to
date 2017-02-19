@@ -144,7 +144,8 @@ const translations = {
       one: '1 night',
       other: '{{count}} nights',
       zero: '0 nights',
-    }
+    },
+    leave_chat: 'Leave chat',
   },
 
   de: {
@@ -293,7 +294,8 @@ const translations = {
       one: '1 Nacht',
       other: '{{count}} Nächte',
       zero: '0 Nächte',
-    }
+    },
+    leave_chat: 'Chat verlassen',
   }
 };
 

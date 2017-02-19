@@ -107,7 +107,7 @@ export default class EditCreateProfile extends Component {
           {
             name: 'file',
             filename: response.fileName,
-            filepath: response.origURL,  // image from camera roll/assets library
+            filepath: response.uri || response.origURL || response.path,
             filetype: 'image/jpeg',
           },
         ];

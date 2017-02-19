@@ -13,12 +13,17 @@ import styles from './styles';
 // const background = require('../../../assets/sunflowers.jpg');
 const face = require('../../../assets/hj.jpg');
 
-const ChatListItem = ({ chat, setCurrentChat, showActionSheetWithOptions }) => {
+const ChatListItem = ({
+  chat,
+  setCurrentChat,
+  showActionSheetWithOptions,
+  leaveChat,
+}) => {
 
   const me = getUserId();
 
   const showAndHandleActionSheet = () => {
-    const options = [I18n.t('edit'), I18n.t('delete'), I18n.t('cancel')];
+    const options = [I18n.t('edit'), I18n.t('leave_chat'), I18n.t('cancel')];
     const destructiveButtonIndex = 1;
     const cancelButtonIndex = 2;
     showActionSheetWithOptions({
@@ -33,10 +38,9 @@ const ChatListItem = ({ chat, setCurrentChat, showActionSheetWithOptions }) => {
         Actions.editCreateChat({ title: I18n.t('edit_chat') });
       }
       if (buttonIndex === 1) {
-        // delete
-        return console.log('delete chat');
+        // leave
+        leaveChat(chat);
       }
-      return null;
     });
   };
 
@@ -141,6 +145,7 @@ ChatListItem.propTypes = {
   chat: PropTypes.object.isRequired,
   setCurrentChat: PropTypes.func.isRequired,
   showActionSheetWithOptions: PropTypes.func.isRequired,
+  leaveChat: PropTypes.func.isRequired,
 };
 
 export default ChatListItem;

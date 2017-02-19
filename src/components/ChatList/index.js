@@ -41,8 +41,6 @@ export default class ChatList extends Component {
   }
 
   render() {
-    const { setCurrentChat, showActionSheetWithOptions } = this.props;
-
     return (
       <ListView
         enableEmptySections
@@ -50,8 +48,7 @@ export default class ChatList extends Component {
         dataSource={this.state.dataSource}
         renderRow={chat => <ChatListItem
           chat={chat}
-          setCurrentChat={setCurrentChat}
-          showActionSheetWithOptions={showActionSheetWithOptions}
+          {...this.props}
         />}
         refreshControl={
           <RefreshControl

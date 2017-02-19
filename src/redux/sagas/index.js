@@ -64,6 +64,7 @@ import {
   watchCreateChat,
   watchUpdateChat,
   watchDeleteChat,
+  watchLeaveChat,
 } from './chats';
 import {
   watchFetchAccommodationTypes,
@@ -120,5 +121,6 @@ export default function* root() {
     watchDeleteAccommodation(),
     watchDeleteTrip(),
     watchDeleteChat(),
+    watchLeaveChat(),
   ];
 }

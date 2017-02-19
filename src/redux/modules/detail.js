@@ -2,7 +2,7 @@
  * because all detail views are very similar, I use a shared redux and view for all of them
  */
 import {
-  UPDATE_TRIP_SUCCESS
+  UPDATE_TRIP_SUCCESS,
 } from './editCreateTrip';
 import {
   UPDATE_ACTIVITY_SUCCESS

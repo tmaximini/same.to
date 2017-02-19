@@ -32,6 +32,9 @@ export const TOGGLE_CHAT_MEMBER = 'chats/TOGGLE_CHAT_MEMBER';
 export const DELETE_CHAT_START = 'chats/DELETE_CHAT_START';
 export const DELETE_CHAT_SUCCESS = 'chats/DELETE_CHAT_SUCCESS';
 export const DELETE_CHAT_ERROR = 'chats/DELETE_CHAT_ERROR';
+export const LEAVE_CHAT_START = 'chats/LEAVE_CHAT_START';
+export const LEAVE_CHAT_SUCCESS = 'chats/LEAVE_CHAT_SUCCESS';
+export const LEAVE_CHAT_ERROR = 'chats/LEAVE_CHAT_ERROR';
 
 
 // Action Creators
@@ -48,6 +51,11 @@ export const createChat = chat => ({
 
 export const deleteChat = chat => ({
   type: DELETE_CHAT_START,
+  payload: chat,
+});
+
+export const leaveChat = chat => ({
+  type: LEAVE_CHAT_START,
   payload: chat,
 });
 
@@ -96,6 +104,7 @@ export const actions = {
   toggleChatMember,
   resetChat,
   deleteChat,
+  leaveChat,
 };
 
 
