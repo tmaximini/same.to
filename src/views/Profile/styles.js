@@ -21,7 +21,15 @@ export default StyleSheet.create({
   },
   interests: {
     flexDirection: 'row',
+    alignSelf: 'stretch',
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    flexGrow: 0,
+    flexShrink: 0,
+    flexWrap: 'wrap',
     marginTop: 15,
+    paddingHorizontal: 12,
+
   },
   textBox: {
     marginTop: 15,

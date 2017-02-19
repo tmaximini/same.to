@@ -23,11 +23,13 @@ const Profile = ({ profile }) => {
         </View>
         <View style={styles.interests}>
           {profile.interests && profile.interests.length ?
-            (profile.interests.map((interest, index) => (
-              <View key={index} style={styles.interestBox}>
-                <Text style={styles.interestText}>{interest}</Text>
-              </View>
-            ))
+            (profile.interests
+              .filter(interest => typeof interest === 'string' && interest.length > 1)
+              .map((interest, index) => (
+                <View key={index} style={styles.interestBox}>
+                  <Text style={styles.interestText}>{interest}</Text>
+                </View>
+            ) : null)
           ) : null}
         </View>
       </View>
