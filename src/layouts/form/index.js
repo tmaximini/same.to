@@ -24,7 +24,7 @@ const Form = ({
     {extraText && (
       <Text style={styles.extraText}>{extraText}</Text>
     )}
-    {(buttonText && onSubmit) ? (
+    {buttonText ? (
       <Button
         text={buttonText}
         onPress={onSubmit}

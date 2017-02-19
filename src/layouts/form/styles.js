@@ -8,6 +8,7 @@ export default StyleSheet.create({
     paddingHorizontal: PADDINGS.STANDARD,
     paddingTop: PADDINGS.STANDARD,
     flexShrink: 0,
+    flex: 1,
   },
   extraText: {
     ...MIXINS.topInfo,
