@@ -19,7 +19,6 @@ const EventListItem = ({
   setDetail,
   setActivity,
   deleteEvent,
-  deleteActivity,
   showActionSheetWithOptions,
 }) => {
   const { name, startAt, location } = event;
@@ -54,10 +53,7 @@ const EventListItem = ({
       }
       if (buttonIndex === 1) {
         // delete
-        if (event.type === 'event') {
-          return deleteEvent(event);
-        }
-        return deleteActivity(event);
+        return deleteEvent(event);
       }
       return null;
     });
@@ -148,7 +144,6 @@ EventListItem.propTypes = {
   setActivity: PropTypes.func.isRequired,
   setDetail: PropTypes.func.isRequired,
   showActionSheetWithOptions: PropTypes.func.isRequired,
-  deleteActivity: PropTypes.func.isRequired,
   deleteEvent: PropTypes.func.isRequired,
 };
 

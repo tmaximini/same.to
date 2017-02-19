@@ -3,6 +3,7 @@ import { REHYDRATE } from 'redux-persist/constants';
 import {
   CREATE_EVENT_SUCCESS,
   UPDATE_EVENT_SUCCESS,
+  DELETE_EVENT_SUCCESS,
 } from './editCreateEvent';
 import {
   CREATE_TRIP_SUCCESS,
@@ -145,6 +146,15 @@ const actionsMap = {
       ...state,
       events: newEvents,
       currentEvent: event,
+    };
+  },
+  [DELETE_EVENT_SUCCESS]: (state, action) => {
+    const { event } = action.payload;
+    const newEvents = [...state.events.filter(e => e.id !== event.id)];
+
+    return {
+      ...state,
+      events: newEvents,
     };
   },
   [TOGGLE_PARTICIPATE_EVENT_SUCCESS]: (state, action) => {

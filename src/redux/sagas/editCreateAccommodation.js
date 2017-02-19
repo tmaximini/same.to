@@ -122,12 +122,14 @@ export function* deleteAccommodationAsync(action) {
     } else {
       // success
       console.info('accommodation deleted!', response);
-      yield put({
-        type: DELETE_ACCOMMODATION_SUCCESS,
-        payload: {
-          accommodation: payload
-        }
-      });
+      if (payload.eventId) {
+        yield put({
+          type: DELETE_ACCOMMODATION_SUCCESS,
+          payload: {
+            accommodation: payload
+          }
+        });
+      }
       yield call(delay, 100);
       yield call(Actions.pop, { refresh: {} });
     }

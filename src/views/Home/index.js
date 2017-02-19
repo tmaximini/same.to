@@ -37,7 +37,6 @@ import styles from './styles';
     setActivity: setActivityAction,
     setDetail: setDetailAction,
     deleteEvent: deleteEventAction,
-    deleteActivity: deleteActivityAction
   }
 )
 @connectActionSheet
@@ -45,7 +44,6 @@ export default class Home extends Component {
   static propTypes = {
     showActionSheetWithOptions: PropTypes.func.isRequired,
     setEvent: PropTypes.func.isRequired,
-    deleteActivity: PropTypes.func.isRequired,
     deleteEvent: PropTypes.func.isRequired,
     resetEvent: PropTypes.func.isRequired,
     resetActivity: PropTypes.func.isRequired,

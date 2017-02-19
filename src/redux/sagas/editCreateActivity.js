@@ -15,6 +15,9 @@ import {
   DELETE_ACTIVITY_ERROR,
 } from '../modules/editCreateActivity';
 import {
+  FETCH_EVENTS_START
+} from '../modules/events';
+import {
   AUTHORIZATION_REQUIRED,
 } from '../modules/auth';
 import {
@@ -51,6 +54,9 @@ export function* createActivityAsync(action) {
         payload: {
           activity: response
         }
+      });
+      yield put({
+        type: FETCH_EVENTS_START,
       });
       yield call(delay, 100);
       yield call(Actions.pop, { refresh: {} });
@@ -143,7 +149,6 @@ export function* deleteActivityAsync(action) {
 
 // WATCHERS
 export function* watchCreateActivity() {
-  // spawn new task on each action, cancel the one before if not yet finished
   yield takeLatest(CREATE_ACTIVITY_START, createActivityAsync);
 }
 
