@@ -94,6 +94,7 @@ export default class EditCreateActivity extends Component {
           name={I18n.t('make_activity_public')}
           value={activity.isPublic}
           onChange={(val) => updateActivity('isPublic', val)}
+          style={{ marginBottom: 12 }}
         />
       </Form>
     );

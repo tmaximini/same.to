@@ -12,7 +12,8 @@ import PlusButton from '../../components/PlusButton';
 
 import {
   setTrip as setTripAction,
-  resetTrip as resetTripAction
+  resetTrip as resetTripAction,
+  deleteTrip as deleteTripAction,
 } from '../../redux/modules/editCreateTrip';
 import {
   toggleParticipateEvent as toggleParticipateEventAction
@@ -20,10 +21,12 @@ import {
 import {
   setAccommodation as setAccommodationAction,
   resetAccommodation as resetAccommodationAction,
+  deleteAccommodation as deleteAccommodationAction,
 } from '../../redux/modules/editCreateAccommodation';
 import {
   setActivity as setActivityAction,
   resetActivity as resetActivityAction,
+  deleteActivity as deleteActivityAction,
 } from '../../redux/modules/editCreateActivity';
 import {
   setDetail as setDetailAction,
@@ -46,6 +49,9 @@ const background = require('../../assets/gamescom.jpg');
     resetActivity: resetActivityAction,
     setDetail: setDetailAction,
     toggleParticipateEvent: toggleParticipateEventAction,
+    deleteTrip: deleteTripAction,
+    deleteAccommodation: deleteAccommodationAction,
+    deleteActivity: deleteActivityAction,
   },
 )
 @connectActionSheet
@@ -174,6 +180,7 @@ export default class Event extends Component {
               setActivity={setActivity}
               setDetail={setDetail}
               showActionSheetWithOptions={showActionSheetWithOptions}
+              {...this.props}
             />
           ) : (
             <View style={styles.noItems}>

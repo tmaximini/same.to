@@ -79,7 +79,6 @@ const translations = {
     single_room: 'single room',
     double_room: 'double room',
     appartment: 'appartment',
-    nights: 'night(s)',
     make_accommodation_public: 'Make housing public',
     create_activity: 'create activity',
     food: 'food',
@@ -140,6 +139,12 @@ const translations = {
     cancel: 'Cancel',
     edit_chat: 'Edit chat',
     confirm: 'Confirm',
+    trip_details: 'Trip details',
+    nights: {
+      one: '1 night',
+      other: '{{count}} nights',
+      zero: '0 nights',
+    }
   },
 
   de: {
@@ -224,7 +229,6 @@ const translations = {
     double_room: 'Mehrbettzimmer',
     hostal: 'Hostal',
     appartment: 'Appartment',
-    nights: 'Nächte',
     make_accommodation_public: 'Unterkunft öffentlich machen',
     create_activity: 'Aktivität anlegen',
     food: 'Essen',
@@ -238,7 +242,7 @@ const translations = {
     gaming: 'Gaming',
     concert: 'Konzert',
     make_activity_public: 'Aktivität öffentlich machen',
-    trip_detail: 'Tripdetails',
+    trip_details: 'Tripdetails',
     taking_part: 'Ich nehme teil',
     create_chat: 'Chat erstellen',
     participants: 'Teilnehmer',
@@ -275,7 +279,7 @@ const translations = {
     feedback_better: 'Was können wir an Same.to verbessern?',
     send_feedback: 'Feedback senden',
     logout: 'Abmelden',
-    edit_profile: 'Profile bearbeiten',
+    edit_profile: 'Profil bearbeiten',
     chat_topic: 'Thema des Chats',
     chat_members: 'Chat mit folgenden Teilnehmern erstellen',
     unknown: 'Unbekannt',
@@ -285,6 +289,11 @@ const translations = {
     cancel: 'Abbrechen',
     edit_chat: 'Chat bearbeiten',
     confirm: 'Auswählen',
+    nights: {
+      one: '1 Nacht',
+      other: '{{count}} Nächte',
+      zero: '0 Nächte',
+    }
   }
 };
 

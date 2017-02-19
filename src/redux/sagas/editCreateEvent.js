@@ -10,6 +10,9 @@ import {
   UPDATE_EVENT_START,
   UPDATE_EVENT_SUCCESS,
   UPDATE_EVENT_ERROR,
+  DELETE_EVENT_START,
+  DELETE_EVENT_SUCCESS,
+  DELETE_EVENT_ERROR,
 } from '../modules/editCreateEvent';
 import {
   FETCH_EVENTS_START,
@@ -17,7 +20,11 @@ import {
 import {
   AUTHORIZATION_REQUIRED,
 } from '../modules/auth';
-import { createEvent, updateEvent } from '../../services/events';
+import {
+  createEvent,
+  updateEvent,
+  deleteEvent,
+} from '../../services/events';
 
 
 export function* createEventAsync(action) {
@@ -106,8 +113,39 @@ export function* updateEventAsync(action) {
 }
 
 
+export function* deleteEventAsync(action) {
+  const { payload } = action;
+  try {
+    const response = yield call(deleteEvent, { ...payload });
 
-
+    if (response.error) {
+      // in case of error
+      yield put({
+        type: DELETE_EVENT_ERROR,
+        payload: {
+          error: response.error
+        }
+      });
+    } else {
+      // success
+      console.info('Event deleted!', response);
+      yield put({
+        type: DELETE_EVENT_SUCCESS,
+        payload: {
+          event: payload
+        }
+      });
+      yield call(delay, 100);
+      yield call(Actions.pop, { refresh: {} });
+    }
+  } catch (error) {
+    console.log({ error });
+    yield put({
+      type: DELETE_EVENT_ERROR,
+      error
+    });
+  }
+}
 
 
 // WATCHERS
@@ -122,4 +160,8 @@ export function* watchUpdateEvent() {
 
 export function* watchGeocodeEvent() {
   yield takeLatest(GEOCODE_EVENT_START, geocodeAsync);
+}
+
+export function* watchDeleteEvent() {
+  yield takeLatest(DELETE_EVENT_START, deleteEventAsync);
 }

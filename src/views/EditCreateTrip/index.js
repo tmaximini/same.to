@@ -98,6 +98,7 @@ export default class EditCreateTrip extends Component {
           name={I18n.t('make_trip_public')}
           value={trip.isPublic}
           onChange={(val) => updateTrip('isPublic', val)}
+          style={{ marginBottom: 12 }}
         />
       </Form>
     );

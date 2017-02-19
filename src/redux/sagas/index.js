@@ -29,22 +29,26 @@ import {
   watchCreateEvent,
   watchUpdateEvent,
   watchGeocodeEvent,
+  watchDeleteEvent,
 } from './editCreateEvent';
 import {
   watchCreateTrip,
   watchUpdateTrip,
   watchGeocodeTrip,
   watchGeocodeTripDestination,
+  watchDeleteTrip,
 } from './editCreateTrip';
 import {
   watchCreateAccommodation,
   watchUpdateAccommodation,
   watchGeocodeAccommodation,
+  watchDeleteAccommodation,
 } from './editCreateAccommodation';
 import {
   watchCreateActivity,
   watchUpdateActivity,
   watchGeocodeActivity,
+  watchDeleteActivity,
 } from './editCreateActivity';
 import {
   watchCreateProfile,
@@ -59,6 +63,7 @@ import {
   watchFetchChats,
   watchCreateChat,
   watchUpdateChat,
+  watchDeleteChat,
 } from './chats';
 import {
   watchFetchAccommodationTypes,
@@ -110,5 +115,10 @@ export default function* root() {
     watchFetchAccommodationTypes(),
     watchFetchTripTypes(),
     watchFetchActivityTypes(),
+    watchDeleteEvent(),
+    watchDeleteActivity(),
+    watchDeleteAccommodation(),
+    watchDeleteTrip(),
+    watchDeleteChat(),
   ];
 }

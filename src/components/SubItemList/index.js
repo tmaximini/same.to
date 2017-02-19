@@ -9,42 +9,39 @@ import { MIXINS } from '../../constants';
 const SubItemList = ({
   activities,
   accommodations,
-  trips, setTrip,
+  trips,
+  setTrip,
   setAccommodation,
   setActivity,
-  setDetail,
-  showActionSheetWithOptions,
+  ...rest
 }) => (
   <View style={MIXINS.container}>
     <ScrollView>
-      {accommodations.map(ac => (
+      {accommodations && accommodations.map(ac => (
         <SubItem
           onSelect={setAccommodation}
-          setDetail={setDetail}
           itemType={'accommodation'}
-          showActionSheetWithOptions={showActionSheetWithOptions}
           key={ac.id}
           item={ac}
+          {...rest}
         />
       ))}
-      {trips.map(trip => (
+      {trips && trips.map(trip => (
         <SubItem
           onSelect={setTrip}
-          setDetail={setDetail}
-          showActionSheetWithOptions={showActionSheetWithOptions}
           itemType={'trip'}
           key={trip.id}
           item={trip}
+          {...rest}
         />
       ))}
       {activities && activities.map(activity => (
         <SubItem
           onSelect={setActivity}
-          setDetail={setDetail}
-          showActionSheetWithOptions={showActionSheetWithOptions}
           itemType={'activity'}
           key={activity.id}
           item={activity}
+          {...rest}
         />
       ))}
     </ScrollView>

@@ -39,6 +39,11 @@ export const CREATE_EVENT_START = 'createEvent/CREATE_EVENT_START';
 export const CREATE_EVENT_SUCCESS = 'createEvent/CREATE_EVENT_SUCCESS';
 export const CREATE_EVENT_ERROR = 'createEvent/CREATE_EVENT_ERROR';
 
+// delete
+export const DELETE_EVENT_START = 'createEvent/DELETE_EVENT_START';
+export const DELETE_EVENT_SUCCESS = 'createvent/DELETE_EVENT_SUCCESS';
+export const DELETE_EVENT_ERROR = 'createEvent/DELETE_EVENT_ERROR';
+
 
 // Action Creators
 export const updateRemoteEvent = updateEvent => ({
@@ -71,6 +76,11 @@ export const createEvent = newEventData => ({
   payload: newEventData
 });
 
+export const deleteEvent = event => ({
+  type: DELETE_EVENT_START,
+  payload: event
+});
+
 
 export const geocodeLocation = location => ({
   type: GEOCODE_EVENT_START,
@@ -91,6 +101,7 @@ export const actions = {
   setEvent,
   geocodeLocation,
   resetEvent,
+  deleteEvent,
 };
 
 

@@ -29,7 +29,9 @@ export const UPDATE_CHAT = 'chats/UPDATE_CHAT';
 export const SET_CHAT = 'chats/SET_CHAT';
 export const RESET_CHAT = 'chats/RESET_CHAT';
 export const TOGGLE_CHAT_MEMBER = 'chats/TOGGLE_CHAT_MEMBER';
-
+export const DELETE_CHAT_START = 'chats/DELETE_CHAT_START';
+export const DELETE_CHAT_SUCCESS = 'chats/DELETE_CHAT_SUCCESS';
+export const DELETE_CHAT_ERROR = 'chats/DELETE_CHAT_ERROR';
 
 
 // Action Creators
@@ -42,6 +44,11 @@ export const createChat = chat => ({
   payload: {
     chat
   }
+});
+
+export const deleteChat = chat => ({
+  type: DELETE_CHAT_START,
+  payload: chat,
 });
 
 export const updateRemoteChat = chat => ({
@@ -88,6 +95,7 @@ export const actions = {
   updateRemoteChat,
   toggleChatMember,
   resetChat,
+  deleteChat,
 };
 
 

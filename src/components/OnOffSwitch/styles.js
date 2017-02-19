@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { PADDINGS, MIXINS } from '../../constants';
+import { MIXINS } from '../../constants';
 
 export default StyleSheet.create({
   container: {
@@ -9,7 +9,6 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
     zIndex: 0,
     backgroundColor: 'transparent',
-    marginBottom: PADDINGS.STANDARD,
   },
   label: {
     padding: 5,

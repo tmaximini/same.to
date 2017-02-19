@@ -16,7 +16,7 @@ import GenderSelect from '../../components/GenderSelect';
 import Input from '../../components/Input';
 import GeoInput from '../../components/GeoInput';
 import { actions as profileActions } from '../../redux/modules/editCreateProfile';
-import { uploadImage } from '../../services/profiles';
+// import { uploadImage } from '../../services/profiles';
 import { API_BASE, getAuthToken } from '../../services/api';
 import styles from './styles';
 

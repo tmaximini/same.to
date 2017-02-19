@@ -11,6 +11,9 @@ import {
   UPDATE_REMOTE_CHAT_START,
   UPDATE_REMOTE_CHAT_SUCCESS,
   UPDATE_REMOTE_CHAT_ERROR,
+  DELETE_CHAT_START,
+  DELETE_CHAT_SUCCESS,
+  DELETE_CHAT_ERROR,
 } from '../modules/chats';
 import {
   AUTHORIZATION_REQUIRED,
@@ -19,6 +22,7 @@ import {
   fetchChats,
   createChat,
   updateChat,
+  deleteChat,
 } from '../../services/chats';
 
 
@@ -135,6 +139,43 @@ export function* updateChatAsync(action) {
   }
 }
 
+
+export function* deleteChatAsync(action) {
+  const { payload } = action;
+  try {
+    const response = yield call(deleteChat, { ...payload });
+
+    if (response.error) {
+      // in case of error
+      yield put({
+        type: DELETE_CHAT_ERROR,
+        payload: {
+          error: response.error
+        }
+      });
+    } else {
+      // success
+      yield put({
+        type: DELETE_CHAT_SUCCESS,
+        payload: {
+          chat: payload
+        }
+      });
+
+      yield call(Actions.pop, { refresh: {} });
+      // setTimeout(Actions.chat, 300);
+    }
+  } catch (error) {
+    console.log({ error });
+    yield put({
+      type: DELETE_CHAT_ERROR,
+      payload: {
+        error
+      },
+    });
+  }
+}
+
 export function* watchFetchChats() {
   yield takeLatest(FETCH_CHATS_START, fetchChatsAsync);
 }
@@ -145,4 +186,8 @@ export function* watchCreateChat() {
 
 export function* watchUpdateChat() {
   yield takeLatest(UPDATE_REMOTE_CHAT_START, updateChatAsync);
+}
+
+export function* watchDeleteChat() {
+  yield takeLatest(DELETE_CHAT_START, deleteChatAsync);
 }

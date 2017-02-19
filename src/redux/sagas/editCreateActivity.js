@@ -10,11 +10,18 @@ import {
   UPDATE_ACTIVITY_START,
   UPDATE_ACTIVITY_SUCCESS,
   UPDATE_ACTIVITY_ERROR,
+  DELETE_ACTIVITY_START,
+  DELETE_ACTIVITY_SUCCESS,
+  DELETE_ACTIVITY_ERROR,
 } from '../modules/editCreateActivity';
 import {
   AUTHORIZATION_REQUIRED,
 } from '../modules/auth';
-import { createActivity, updateActivity } from '../../services/activities';
+import {
+  createActivity,
+  updateActivity,
+  deleteActivity,
+} from '../../services/activities';
 
 
 export function* createActivityAsync(action) {
@@ -99,8 +106,39 @@ export function* updateActivityAsync(action) {
 }
 
 
+export function* deleteActivityAsync(action) {
+  const { payload } = action;
+  try {
+    const response = yield call(deleteActivity, { ...payload });
 
-
+    if (response.error) {
+      // in case of error
+      yield put({
+        type: DELETE_ACTIVITY_ERROR,
+        payload: {
+          error: response.error
+        }
+      });
+    } else {
+      // success
+      console.info('activity deleted!', response);
+      yield put({
+        type: DELETE_ACTIVITY_SUCCESS,
+        payload: {
+          activity: payload
+        }
+      });
+      yield call(delay, 100);
+      yield call(Actions.pop, { refresh: {} });
+    }
+  } catch (error) {
+    console.log({ error });
+    yield put({
+      type: DELETE_ACTIVITY_ERROR,
+      error
+    });
+  }
+}
 
 
 // WATCHERS
@@ -115,4 +153,8 @@ export function* watchUpdateActivity() {
 
 export function* watchGeocodeActivity() {
   yield takeLatest(GEOCODE_ACTIVITY_START, geocodeAsync);
+}
+
+export function* watchDeleteActivity() {
+  yield takeLatest(DELETE_ACTIVITY_START, deleteActivityAsync);
 }

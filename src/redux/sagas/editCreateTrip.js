@@ -11,11 +11,18 @@ import {
   UPDATE_TRIP_START,
   UPDATE_TRIP_SUCCESS,
   UPDATE_TRIP_ERROR,
+  DELETE_TRIP_START,
+  DELETE_TRIP_SUCCESS,
+  DELETE_TRIP_ERROR,
 } from '../modules/editCreateTrip';
 import {
   AUTHORIZATION_REQUIRED,
 } from '../modules/auth';
-import { createTrip, updateTrip } from '../../services/trips';
+import {
+  createTrip,
+  updateTrip,
+  deleteTrip,
+} from '../../services/trips';
 
 
 export function* createTripAsync(action) {
@@ -100,8 +107,39 @@ export function* updateTripAsync(action) {
 }
 
 
+export function* deleteTripAsync(action) {
+  const { payload } = action;
+  try {
+    const response = yield call(deleteTrip, { ...payload });
 
-
+    if (response.error) {
+      // in case of error
+      yield put({
+        type: DELETE_TRIP_ERROR,
+        payload: {
+          error: response.error
+        }
+      });
+    } else {
+      // success
+      console.info('trip deleted!', response);
+      yield put({
+        type: DELETE_TRIP_SUCCESS,
+        payload: {
+          trip: payload
+        }
+      });
+      yield call(delay, 100);
+      yield call(Actions.pop, { refresh: { trip: response } });
+    }
+  } catch (error) {
+    console.log({ error });
+    yield put({
+      type: DELETE_TRIP_ERROR,
+      error
+    });
+  }
+}
 
 
 // WATCHERS
@@ -120,4 +158,8 @@ export function* watchGeocodeTrip() {
 
 export function* watchGeocodeTripDestination() {
   yield takeLatest(GEOCODE_TRIP_DESTINATION_START, geocodeAsync);
+}
+
+export function* watchDeleteTrip() {
+  yield takeLatest(DELETE_TRIP_START, deleteTripAsync);
 }

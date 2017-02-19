@@ -7,6 +7,7 @@ const makeDefaultAccommodation = () => ({
   location: {},
   categories: [],
   isPublic: false,
+  overnightStays: 1,
 });
 
 // Initial State
@@ -41,6 +42,10 @@ export const CREATE_ACCOMMODATION_ERROR = 'createAccommodation/CREATE_ACCOMMODAT
 export const GET_ACCOMMODATION_TYPES_START = 'createAccommodation/GET_ACCOMMODATION_TYPES_START';
 export const GET_ACCOMMODATION_TYPES_SUCCESS = 'createAccommodation/GET_ACCOMMODATION_TYPES_SUCCESS';
 export const GET_ACCOMMODATION_TYPES_ERROR = 'createAccommodation/GET_ACCOMMODATION_TYPES_ERROR';
+
+export const DELETE_ACCOMMODATION_START = 'createAccommodation/DELETE_ACCOMMODATION_START';
+export const DELETE_ACCOMMODATION_SUCCESS = 'createAccommodation/DELETE_ACCOMMODATION_SUCCESS';
+export const DELETE_ACCOMMODATION_ERROR = 'createAccommodation/DELETE_ACCOMMODATION_ERROR';
 
 
 
@@ -89,7 +94,10 @@ export const createAccommodation = (newAccommodationData, eventId) => ({
   },
 });
 
-
+export const deleteAccommodation = accommodation => ({
+  type: DELETE_ACCOMMODATION_START,
+  payload: accommodation,
+});
 
 export const geocodeLocation = location => ({
   type: GEOCODE_ACCOMMODATION_START,
@@ -112,6 +120,7 @@ export const actions = {
   geocodeLocation,
   resetAccommodation,
   getTypes,
+  deleteAccommodation,
 };
 
 

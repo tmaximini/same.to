@@ -38,6 +38,11 @@ export const CREATE_ACTIVITY_START = 'createActivity/CREATE_ACTIVITY_START';
 export const CREATE_ACTIVITY_SUCCESS = 'createActivity/CREATE_ACTIVITY_SUCCESS';
 export const CREATE_ACTIVITY_ERROR = 'createActivity/CREATE_ACTIVITY_ERROR';
 
+// delete
+export const DELETE_ACTIVITY_START = 'createActivity/DELETE_ACTIVITY_START';
+export const DELETE_ACTIVITY_SUCCESS = 'createActivity/DELETE_ACTIVITY_SUCCESS';
+export const DELETE_ACTIVITY_ERROR = 'createActivity/DELETE_ACTIVITY_ERROR';
+
 // types
 export const GET_ACTIVITY_TYPES_START = 'createActivity/GET_ACTIVITY_TYPES_START';
 export const GET_ACTIVITY_TYPES_SUCCESS = 'createActivity/GET_ACTIVITY_TYPES_SUCCESS';
@@ -90,7 +95,10 @@ export const createActivity = (newActivityData, eventId) => ({
   },
 });
 
-
+export const deleteActivity = activity => ({
+  type: CREATE_ACTIVITY_START,
+  payload: activity,
+});
 
 export const geocodeLocation = location => ({
   type: GEOCODE_ACTIVITY_START,
@@ -113,6 +121,7 @@ export const actions = {
   geocodeLocation,
   resetActivity,
   getTypes,
+  deleteActivity,
 };
 
 

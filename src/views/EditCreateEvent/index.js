@@ -95,6 +95,7 @@ export default class EditCreatevent extends Component {
           name="Make this event public"
           value={event.isPublic}
           onChange={(val) => updateEvent('isPublic', val)}
+          style={{ marginBottom: 12 }}
         />
       </Form>
     );

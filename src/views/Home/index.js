@@ -10,7 +10,8 @@ import PlusButton from '../../components/PlusButton';
 import { actions as eventActions } from '../../redux/modules/events';
 import {
   resetEvent as resetEventAction,
-  setEvent as setEventAction
+  setEvent as setEventAction,
+  deleteEvent as deleteEventAction,
 } from '../../redux/modules/editCreateEvent';
 import {
   setDetail as setDetailAction,
@@ -18,6 +19,7 @@ import {
 import {
   resetActivity as resetActivityAction,
   setActivity as setActivityAction,
+  deleteActivity as deleteActivityAction,
 } from '../../redux/modules/editCreateActivity';
 import styles from './styles';
 
@@ -34,6 +36,8 @@ import styles from './styles';
     setEvent: setEventAction,
     setActivity: setActivityAction,
     setDetail: setDetailAction,
+    deleteEvent: deleteEventAction,
+    deleteActivity: deleteActivityAction
   }
 )
 @connectActionSheet
@@ -41,6 +45,8 @@ export default class Home extends Component {
   static propTypes = {
     showActionSheetWithOptions: PropTypes.func.isRequired,
     setEvent: PropTypes.func.isRequired,
+    deleteActivity: PropTypes.func.isRequired,
+    deleteEvent: PropTypes.func.isRequired,
     resetEvent: PropTypes.func.isRequired,
     resetActivity: PropTypes.func.isRequired,
     setActivity: PropTypes.func.isRequired,
@@ -61,14 +67,9 @@ export default class Home extends Component {
     const {
       events,
       fetchEvents,
-      setCurrentEvent,
       isRefreshing,
       resetEvent,
-      setEvent,
       resetActivity,
-      setActivity,
-      setDetail,
-      showActionSheetWithOptions,
     } = this.props;
 
     return (
@@ -77,11 +78,7 @@ export default class Home extends Component {
           events={events}
           refresh={fetchEvents}
           isRefreshing={isRefreshing}
-          setCurrentEvent={setCurrentEvent}
-          setEvent={setEvent}
-          setActivity={setActivity}
-          setDetail={setDetail}
-          showActionSheetWithOptions={showActionSheetWithOptions}
+          {...this.props}
         />
         <PlusButton
           itemSize={45}

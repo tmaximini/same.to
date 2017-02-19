@@ -11,7 +11,16 @@ import styles from './styles';
 
 const background = require('../../../assets/sunflowers.jpg');
 
-const SubItem = ({ itemType, item, onSelect, setDetail, showActionSheetWithOptions }) => {
+const SubItem = ({
+  itemType,
+  item,
+  onSelect,
+  setDetail,
+  showActionSheetWithOptions,
+  deleteTrip,
+  deleteAccommodation,
+  deleteActivity,
+}) => {
   // will be called by pressing right navbar button
   const editFunc = () => {
     onSelect(item);
@@ -28,6 +37,17 @@ const SubItem = ({ itemType, item, onSelect, setDetail, showActionSheetWithOptio
         return Actions.editCreateActivity({
           title: I18n.t('edit_activity'),
         });
+    }
+  };
+
+  const deleteFunc = () => {
+    switch (itemType) {
+      case 'trip':
+        return deleteTrip(item);
+      case 'accommodation':
+        return deleteAccommodation(item);
+      default:
+        return deleteActivity(item);
     }
   };
 
@@ -48,7 +68,7 @@ const SubItem = ({ itemType, item, onSelect, setDetail, showActionSheetWithOptio
       }
       if (buttonIndex === 1) {
         // delete
-        console.log('delete event');
+        deleteFunc();
       }
     });
   };
@@ -137,6 +157,9 @@ SubItem.propTypes = {
   onSelect: PropTypes.func.isRequired,
   setDetail: PropTypes.func.isRequired,
   showActionSheetWithOptions: PropTypes.func.isRequired,
+  deleteTrip: PropTypes.func.isRequired,
+  deleteAccommodation: PropTypes.func.isRequired,
+  deleteActivity: PropTypes.func.isRequired,
 };
 
 export default SubItem;

@@ -10,11 +10,18 @@ import {
   UPDATE_ACCOMMODATION_START,
   UPDATE_ACCOMMODATION_SUCCESS,
   UPDATE_ACCOMMODATION_ERROR,
+  DELETE_ACCOMMODATION_START,
+  DELETE_ACCOMMODATION_SUCCESS,
+  DELETE_ACCOMMODATION_ERROR,
 } from '../modules/editCreateAccommodation';
 import {
   AUTHORIZATION_REQUIRED,
 } from '../modules/auth';
-import { createAccommodation, updateAccommodation } from '../../services/accommodations';
+import {
+  createAccommodation,
+  updateAccommodation,
+  deleteAccommodation,
+} from '../../services/accommodations';
 
 
 export function* createAccommodationAsync(action) {
@@ -99,6 +106,41 @@ export function* updateAccommodationAsync(action) {
 }
 
 
+export function* deleteAccommodationAsync(action) {
+  const { payload } = action;
+  try {
+    const response = yield call(deleteAccommodation, { ...payload });
+
+    if (response.error) {
+      // in case of error
+      yield put({
+        type: DELETE_ACCOMMODATION_ERROR,
+        payload: {
+          error: response.error
+        }
+      });
+    } else {
+      // success
+      console.info('accommodation deleted!', response);
+      yield put({
+        type: DELETE_ACCOMMODATION_SUCCESS,
+        payload: {
+          accommodation: payload
+        }
+      });
+      yield call(delay, 100);
+      yield call(Actions.pop, { refresh: {} });
+    }
+  } catch (error) {
+    console.log({ error });
+    yield put({
+      type: DELETE_ACCOMMODATION_ERROR,
+      error
+    });
+  }
+}
+
+
 
 
 
@@ -115,4 +157,8 @@ export function* watchUpdateAccommodation() {
 
 export function* watchGeocodeAccommodation() {
   yield takeLatest(GEOCODE_ACCOMMODATION_START, geocodeAsync);
+}
+
+export function* watchDeleteAccommodation() {
+  yield takeLatest(DELETE_ACCOMMODATION_START, deleteAccommodationAsync);
 }

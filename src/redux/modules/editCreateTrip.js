@@ -40,6 +40,11 @@ export const CREATE_TRIP_START = 'createTrip/CREATE_TRIP_START';
 export const CREATE_TRIP_SUCCESS = 'createTrip/CREATE_TRIP_SUCCESS';
 export const CREATE_TRIP_ERROR = 'createTrip/CREATE_TRIP_ERROR';
 
+// delete
+export const DELETE_TRIP_START = 'createTrip/DELETE_TRIP_START';
+export const DELETE_TRIP_SUCCESS = 'createTrip/DELETE_TRIP_SUCCESS';
+export const DELETE_TRIP_ERROR = 'createTrip/DELETE_TRIP_ERROR';
+
 // types
 export const GET_TRIP_TYPES_START = 'createTrip/GET_TRIP_TYPES_START';
 export const GET_TRIP_TYPES_SUCCESS = 'createTrip/GET_TRIP_TYPES_SUCCESS';
@@ -92,7 +97,10 @@ export const createTrip = (newTripData, eventId) => ({
   },
 });
 
-
+export const deleteTrip = trip => ({
+  type: DELETE_TRIP_START,
+  payload: trip
+});
 
 export const geocodeLocation = location => ({
   type: GEOCODE_TRIP_START,
@@ -125,6 +133,7 @@ export const actions = {
   geocodeDestination,
   resetTrip,
   getTypes,
+  deleteTrip,
 };
 
 

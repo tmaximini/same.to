@@ -18,16 +18,17 @@ const EventListItem = ({
   setEvent,
   setDetail,
   setActivity,
+  deleteEvent,
+  deleteActivity,
   showActionSheetWithOptions,
 }) => {
   const { name, startAt, location } = event;
 
-
+  // functions to be called on Acionsheed edit button
   const editEvent = () => {
     setEvent(event);
     Actions.editCreateEvent({ event, title: I18n.t('edit_event') });
   };
-
   const editActivity = () => {
     setActivity(event);
     Actions.editCreateActivity({ activity: event, title: I18n.t('edit_activity') });
@@ -53,7 +54,10 @@ const EventListItem = ({
       }
       if (buttonIndex === 1) {
         // delete
-        return console.log('delete event');
+        if (event.type === 'event') {
+          return deleteEvent(event);
+        }
+        return deleteActivity(event);
       }
       return null;
     });
@@ -144,6 +148,8 @@ EventListItem.propTypes = {
   setActivity: PropTypes.func.isRequired,
   setDetail: PropTypes.func.isRequired,
   showActionSheetWithOptions: PropTypes.func.isRequired,
+  deleteActivity: PropTypes.func.isRequired,
+  deleteEvent: PropTypes.func.isRequired,
 };
 
 export default EventListItem;

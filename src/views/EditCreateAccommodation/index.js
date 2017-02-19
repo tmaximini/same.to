@@ -13,16 +13,7 @@ import HR from '../../components/HR';
 import { actions as accommodationActions } from '../../redux/modules/editCreateAccommodation';
 
 
-// TODO: i18n
-const makeOverstays = () => {
-  const arr = [];
-  for (let i = 1; i < 32; i++) {
-    arr.push({ value: i, label: `${i} ${I18n.t('nights')}` });
-  }
-  return arr;
-};
 
-const overstays = makeOverstays();
 
 @connect(
   state => state.editCreateAccommodation,
@@ -56,6 +47,15 @@ export default class EditCreateAccommodation extends Component {
     }
   }
 
+  makeOverstays = () => {
+    const arr = [];
+    for (let i = 1; i < 32; i++) {
+      arr.push({ value: i, label: `${I18n.t('nights', { count: i })}` });
+    }
+    return arr;
+  }
+
+
   render() {
     const {
       accommodationTypes,
@@ -74,7 +74,7 @@ export default class EditCreateAccommodation extends Component {
         onSubmit={() => this.saveItem(accommodation)}
       >
         <CheckboxList
-          label="Accommodation Types"
+          label={I18n.t('accommodations')}
           items={accommodationTypes}
           onChange={toggleCategory}
           model={accommodation}
@@ -96,7 +96,7 @@ export default class EditCreateAccommodation extends Component {
           <Select
             placeholder={I18n.t('overnight_stays')}
             value={overnightStays}
-            items={overstays}
+            items={this.makeOverstays()}
             onChange={val => updateAccommodation('overnightStays', val)}
           />
         </InputGroup>
@@ -105,6 +105,7 @@ export default class EditCreateAccommodation extends Component {
           name={I18n.t('make_accommodation_public')}
           value={accommodation.isPublic}
           onChange={(val) => updateAccommodation('isPublic', val)}
+          style={{ marginBottom: 12 }}
         />
       </Form>
     );

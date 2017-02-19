@@ -74,6 +74,9 @@
 		E94EA1E31E534DF800F655AB /* Montserrat-UltraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = E95B6D211E534BF20035B5A5 /* Montserrat-UltraLight.otf */; };
 		E98C675E1E48C40D00DEDF65 /* HockeySDK.embeddedframework in Resources */ = {isa = PBXBuildFile; fileRef = E98C675D1E48C40D00DEDF65 /* HockeySDK.embeddedframework */; };
 		E98C67601E48C41400DEDF65 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E98C675F1E48C41400DEDF65 /* HockeySDK.framework */; };
+		E9EDF76D1E59A6AA00D6B7B2 /* Images-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9EDF76C1E59A6AA00D6B7B2 /* Images-2.xcassets */; };
+		E9EDF7931E59A6E200D6B7B2 /* Images-3.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9EDF7921E59A6E200D6B7B2 /* Images-3.xcassets */; };
+		E9EDF7951E59A74700D6B7B2 /* Images-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9EDF7941E59A74700D6B7B2 /* Images-2.xcassets */; };
 		E9EF736A1E3E1ECF0065641B /* AccountKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9EF73641E3E1ECF0065641B /* AccountKit.framework */; };
 		E9EF736B1E3E1ECF0065641B /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9EF73651E3E1ECF0065641B /* Bolts.framework */; };
 		E9EF736C1E3E1ECF0065641B /* FBNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9EF73661E3E1ECF0065641B /* FBNotifications.framework */; };
@@ -431,6 +434,9 @@
 		E98C675F1E48C41400DEDF65 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HockeySDK.framework; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDK.framework"; sourceTree = "<group>"; };
 		E98F7C741E3E40BC001C9697 /* sameto.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = sameto.entitlements; path = sameto/sameto.entitlements; sourceTree = "<group>"; };
 		E994FA3D1E3798C60094BF06 /* RNBlur.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNBlur.xcodeproj; path = "../node_modules/react-native-blur/ios/RNBlur.xcodeproj"; sourceTree = "<group>"; };
+		E9EDF76C1E59A6AA00D6B7B2 /* Images-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = "Images-2.xcassets"; path = "sameto/Images-2.xcassets"; sourceTree = "<group>"; };
+		E9EDF7921E59A6E200D6B7B2 /* Images-3.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = "Images-3.xcassets"; path = "sameto/Images-3.xcassets"; sourceTree = "<group>"; };
+		E9EDF7941E59A74700D6B7B2 /* Images-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = "Images-2.xcassets"; path = "sameto/Images-2.xcassets"; sourceTree = "<group>"; };
 		E9EF73641E3E1ECF0065641B /* AccountKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AccountKit.framework; path = ../../../../Documents/FacebookSDK/AccountKit.framework; sourceTree = "<group>"; };
 		E9EF73651E3E1ECF0065641B /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = ../../../../Documents/FacebookSDK/Bolts.framework; sourceTree = "<group>"; };
 		E9EF73661E3E1ECF0065641B /* FBNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBNotifications.framework; path = ../../../../Documents/FacebookSDK/FBNotifications.framework; sourceTree = "<group>"; };
@@ -581,6 +587,9 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				E9EDF76C1E59A6AA00D6B7B2 /* Images-2.xcassets */,
+				E9EDF7921E59A6E200D6B7B2 /* Images-3.xcassets */,
+				E9EDF7941E59A74700D6B7B2 /* Images-2.xcassets */,
 			);
 			name = sameto;
 			sourceTree = "<group>";
@@ -1262,6 +1271,7 @@
 				E94EA1DF1E534DF800F655AB /* Montserrat-Hairline.otf in Resources */,
 				E94EA1E01E534DF800F655AB /* Montserrat-Light.otf in Resources */,
 				E94EA1E11E534DF800F655AB /* Montserrat-Regular.otf in Resources */,
+				E9EDF7951E59A74700D6B7B2 /* Images-2.xcassets in Resources */,
 				E94EA1E21E534DF800F655AB /* Montserrat-SemiBold.otf in Resources */,
 				E94EA1E31E534DF800F655AB /* Montserrat-UltraLight.otf in Resources */,
 				13B07FBF1A68108700A75B9A /* AppIcon.appiconset in Resources */,
@@ -1286,6 +1296,7 @@
 				68A7A4CD0D3D44ACBCE444A3 /* Ionicons.ttf in Resources */,
 				AA475276F88841F18ACF6D41 /* MaterialCommunityIcons.ttf in Resources */,
 				113BDF07C3A14FF78883AED7 /* MaterialIcons.ttf in Resources */,
+				E9EDF76D1E59A6AA00D6B7B2 /* Images-2.xcassets in Resources */,
 				459145C53AF54BD1A357A737 /* Octicons.ttf in Resources */,
 				52BDB3C75D3142FD971862D0 /* SimpleLineIcons.ttf in Resources */,
 				89DCD3A5545D44E5BA937013 /* Zocial.ttf in Resources */,
@@ -1294,6 +1305,7 @@
 				B5860D31A3374BC08AA88FD7 /* Montserrat-ExtraBold.otf in Resources */,
 				E0C853DDBED04F9B8F6A6D7A /* Montserrat-Hairline.otf in Resources */,
 				9DEC057FA576428B998C4138 /* Montserrat-Light.otf in Resources */,
+				E9EDF7931E59A6E200D6B7B2 /* Images-3.xcassets in Resources */,
 				FE824F2EB2744156AD0D44DF /* Montserrat-Regular.otf in Resources */,
 				2FC98EA3E03D46AABEC17AB6 /* Montserrat-SemiBold.otf in Resources */,
 				13413D5397994DF19F85AE43 /* Montserrat-UltraLight.otf in Resources */,
@@ -1438,6 +1450,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = sameto/sameto.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1467,6 +1480,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = sameto/sameto.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CURRENT_PROJECT_VERSION = 1;
