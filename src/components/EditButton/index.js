@@ -6,6 +6,7 @@ import { COLORS } from '../../constants';
 const EditButton = ({ onPress }) => (
   <TouchableOpacity
     onPress={onPress}
+    style={{ paddingBottom: 5, paddingLeft: 10, paddingRight: 6 }}
   >
     <Icon
       name="dots-three-horizontal"
