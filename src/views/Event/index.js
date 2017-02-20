@@ -33,7 +33,8 @@ import {
 } from '../../redux/modules/detail';
 import styles from './styles';
 
-const background = require('../../assets/gamescom.jpg');
+const eventFallback = require('../../assets/Fallback_Event.png');
+const activityFallback = require('../../assets/Fallback_Activity.png');
 
 
 @connect(
@@ -128,7 +129,7 @@ export default class Event extends Component {
     const getHeader = () => (
       <EventHeader
         event={event}
-        background={background}
+        background={type === 'event' ? eventFallback : activityFallback}
         onToggle={() => toggleParticipateEvent(event)}
         participates={memberIds.includes(getUserId())}
       />
@@ -137,7 +138,7 @@ export default class Event extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.top}>
-          {getHeader()}
+          {getHeader(event.type)}
           <View style={styles.details}>
             <View style={styles.buttons}>
               <TouchableHighlight

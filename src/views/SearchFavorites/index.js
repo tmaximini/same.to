@@ -58,7 +58,7 @@ class SearchFavorites extends Component {
   }
 
   render() {
-    const { query, locationString, interests, radius } = this.state;
+    const { locationString, interests, radius } = this.state;
     const {
       geocodeLocation,
       favoritesSearchLocation,
@@ -72,9 +72,9 @@ class SearchFavorites extends Component {
       >
         <View style={styles.wrapper}>
           <Input
-            value={query}
-            placeholder={I18n.t('name')}
-            onChangeText={text => this.setState({ query: text })}
+            value={interests}
+            placeholder={I18n.t('interests')}
+            onChangeText={text => this.setState({ interests: text })}
           />
           <GeoInput
             placeholder={I18n.t('location')}
@@ -97,11 +97,6 @@ class SearchFavorites extends Component {
               animateTransitions
             />
           </View>
-          <Input
-            value={interests}
-            placeholder={I18n.t('interests')}
-            onChangeText={text => this.setState({ interests: text })}
-          />
         </View>
       </Form>
     );

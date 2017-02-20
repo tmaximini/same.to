@@ -23,7 +23,9 @@ export default StyleSheet.create({
   },
   image: {
     ...MIXINS.image,
-    borderRadius: (itemWidth - 10) * 0.5
+    borderRadius: (itemWidth - 10) * 0.5,
+    width: null,
+    height: null,
   },
   inactive: {
     borderRadius: (itemWidth - 10) * 0.5,
@@ -33,6 +35,7 @@ export default StyleSheet.create({
     alignSelf: 'stretch',
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: COLORS.GREY_OPAQ,
   },
   checked: {
     borderRadius: (itemWidth - 10) * 0.5,

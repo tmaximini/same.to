@@ -10,7 +10,8 @@ import TagList from '../../TagList';
 import { canEdit } from '../../../utils';
 import styles from './styles';
 
-const background = require('../../../assets/sunflowers.jpg');
+const eventFallback = require('../../../assets/Fallback_Event.png');
+const activityFallback = require('../../../assets/Fallback_Activity.png');
 
 const EventListItem = ({
   event,
@@ -89,7 +90,7 @@ const EventListItem = ({
       underlayColor="transparent"
     >
       <Image
-        source={background}
+        source={event.type === 'event' ? eventFallback : activityFallback}
         style={styles.bgImage}
       >
         <View style={styles.wrapper}>

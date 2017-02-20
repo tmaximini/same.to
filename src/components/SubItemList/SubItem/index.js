@@ -9,7 +9,9 @@ import Date from '../../Date';
 import TagList from '../../TagList';
 import styles from './styles';
 
-const background = require('../../../assets/sunflowers.jpg');
+const tripFallback = require('../../../assets/Fallback_Trip.png');
+const accoFallback = require('../../../assets/Fallback_Accomodity.png');
+const activityFallback = require('../../../assets/Fallback_Activity.png');
 
 const SubItem = ({
   itemType,
@@ -111,11 +113,22 @@ const SubItem = ({
     return `${I18n.t('from')} ${from} ${I18n.t('to')} ${to}`;
   };
 
+  const getImage = () => {
+    switch (itemType) {
+      case 'trip':
+        return tripFallback;
+      case 'accommodation':
+        return accoFallback;
+      default:
+        return activityFallback;
+    }
+  };
+
   return (
     <View style={styles.container}>
       <Image
         style={styles.bgImage}
-        source={background}
+        source={getImage()}
       >
         <TouchableHighlight
           style={styles.touch}

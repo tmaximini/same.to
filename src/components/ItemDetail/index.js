@@ -9,7 +9,9 @@ import EventHeader from '../EventHeader';
 import Button from '../Button';
 import styles from './styles';
 
-const plansee = require('../../assets/plansee.jpg');
+const tripFallback = require('../../assets/Fallback_Trip.png');
+const accoFallback = require('../../assets/Fallback_Accomodity.png');
+const activityFallback = require('../../assets/Fallback_Activity.png');
 
 const { width } = Dimensions.get('window');
 
@@ -40,6 +42,18 @@ const getTitle = (itemType, item) => {
   }
 };
 
+const getImage = (itemType) => {
+  switch (itemType) {
+    case 'trip':
+      return tripFallback;
+    case 'accommodation':
+      return accoFallback;
+    default:
+      return activityFallback;
+  }
+};
+
+
 const ItemDetail = ({ itemType, participates, onToggle, item, resetChat, profile, ...rest }) => (
   <View style={styles.container}>
     <View style={styles.top}>
@@ -51,7 +65,7 @@ const ItemDetail = ({ itemType, participates, onToggle, item, resetChat, profile
         })}
         participates={participates}
         renderTitle={() => getTitle(itemType, item)}
-        background={plansee}
+        background={getImage(itemType)}
       />
       <View style={styles.details}>
         <View style={styles.buttons}>
