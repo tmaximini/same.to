@@ -64,7 +64,7 @@ export default class EditCreateAccommodation extends Component {
       accommodation,
     } = this.props;
 
-    const { overnightStays } = accommodation;
+    const { overnightStays, startAt, name } = accommodation;
 
     const today = formatDate(new Date());
 
@@ -72,6 +72,7 @@ export default class EditCreateAccommodation extends Component {
       <Form
         buttonText={accommodation.id ? I18n.t('save') : I18n.t('create')}
         onSubmit={() => this.saveItem(accommodation)}
+        buttonDisabled={!startAt || !name}
       >
         <CheckboxList
           label={I18n.t('accommodations')}

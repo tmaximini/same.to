@@ -59,10 +59,23 @@ export default class EditCreateTrip extends Component {
 
     const today = formatDate(new Date());
 
+    const {
+      pickupLocation, destinationLocation
+    } = trip;
+
+    const isValid = () => (
+      trip.startAt &&
+      pickupLocation &&
+      destinationLocation &&
+      pickupLocation.locality &&
+      destinationLocation.locality
+    );
+
     return (
       <Form
         buttonText={trip.id ? I18n.t('save') : I18n.t('create')}
         onSubmit={() => this.saveItem(trip)}
+        buttonDisabled={!isValid()}
       >
         <CheckboxList
           label={I18n.t('i_would_travel')}

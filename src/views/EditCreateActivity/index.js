@@ -61,6 +61,7 @@ export default class EditCreateActivity extends Component {
       <Form
         buttonText={activity.id ? I18n.t('save') : I18n.t('create')}
         onSubmit={() => this.saveItem(activity)}
+        buttonDisabled={!activity.startAt || !activity.name}
       >
         <CheckboxList
           label={I18n.t('activities')}

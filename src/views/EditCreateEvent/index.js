@@ -54,6 +54,7 @@ export default class EditCreatevent extends Component {
       name,
       startAt,
       endAt,
+      location,
     } = event;
 
     const today = formatDate(new Date());
@@ -62,6 +63,7 @@ export default class EditCreatevent extends Component {
       <Form
         buttonText={event.id ? I18n.t('save') : I18n.t('create')}
         onSubmit={() => this.saveItem(event)}
+        buttonDisabled={!startAt || !name || !location.locality}
       >
         <Input
           placeholder="Event name"
