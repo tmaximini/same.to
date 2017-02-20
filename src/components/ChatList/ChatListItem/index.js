@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import I18n from 'react-native-i18n';
-import { View, Text, TouchableHighlight, Image } from 'react-native';
+import { View, Text, TouchableHighlight } from 'react-native';
+import CachedImage from 'react-native-cached-image';
 import { Actions } from 'react-native-router-flux';
 import { Badge } from 'nachos-ui';
 import format from 'date-fns/format';
@@ -106,7 +107,7 @@ const ChatListItem = ({
             <View
               style={styles.avatar}
             >
-              <Image
+              <CachedImage
                 source={getChatImage()}
                 style={styles.image}
                 resizeMode="cover"

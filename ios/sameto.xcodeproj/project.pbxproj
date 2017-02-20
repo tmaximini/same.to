@@ -84,6 +84,7 @@
 		FD285CFC9D69486F95E27C27 /* Montserrat-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2E791D811FB94B31966B58DA /* Montserrat-Bold.otf */; };
 		FE824F2EB2744156AD0D44DF /* Montserrat-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7F58FFEF47C34FD8A349A240 /* Montserrat-Regular.otf */; };
 		F40F1EA318F2432686F7CEF5 /* libRCTBEEPickerManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CBC11F5FD1864D77AA1E6DD7 /* libRCTBEEPickerManager.a */; };
+		956A29E4C97F4365A2DEE68C /* libRNFS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F8AF120B301F40309B48BEA3 /* libRNFS.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -444,6 +445,8 @@
 		FDD47C790C044D438E480C57 /* Courier New.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Courier New.ttf"; path = "../node_modules/native-base/Fonts/Courier New.ttf"; sourceTree = "<group>"; };
 		AFF6D2F06827413D9335BCA2 /* RCTBEEPickerManager.xcodeproj */ = {isa = PBXFileReference; name = "RCTBEEPickerManager.xcodeproj"; path = "../node_modules/react-native-picker/ios/RCTBEEPickerManager.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		CBC11F5FD1864D77AA1E6DD7 /* libRCTBEEPickerManager.a */ = {isa = PBXFileReference; name = "libRCTBEEPickerManager.a"; path = "libRCTBEEPickerManager.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		3E93BBF2CA614D9C93697E07 /* RNFS.xcodeproj */ = {isa = PBXFileReference; name = "RNFS.xcodeproj"; path = "../node_modules/react-native-fs/RNFS.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		F8AF120B301F40309B48BEA3 /* libRNFS.a */ = {isa = PBXFileReference; name = "libRNFS.a"; path = "libRNFS.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -491,6 +494,7 @@
 				BAEA450126024B2191CB7191 /* libRNFetchBlob.a in Frameworks */,
 				CFF04C637DFB496E9E9B62E9 /* libRNUploader.a in Frameworks */,
 				F40F1EA318F2432686F7CEF5 /* libRCTBEEPickerManager.a in Frameworks */,
+				956A29E4C97F4365A2DEE68C /* libRNFS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -699,6 +703,7 @@
 				C23A890542D74FA0B290DE59 /* RNFetchBlob.xcodeproj */,
 				A50A6468A1304112A9601FF0 /* RNUploader.xcodeproj */,
 				AFF6D2F06827413D9335BCA2 /* RCTBEEPickerManager.xcodeproj */,
+				3E93BBF2CA614D9C93697E07 /* RNFS.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1419,6 +1424,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/sameto.app/sameto";
@@ -1436,6 +1442,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",

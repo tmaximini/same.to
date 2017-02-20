@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text } from 'react-native';
+import CachedImage from 'react-native-cached-image';
 import styles from './styles';
 
 const fallback = require('../../assets/hj.jpg');
@@ -10,7 +11,7 @@ const Profile = ({ profile }) => {
   return (
     <View style={styles.container}>
       <View style={styles.wrapper}>
-        <Image
+        <CachedImage
           style={styles.avatar}
           resizeMode="cover"
           source={avatar}

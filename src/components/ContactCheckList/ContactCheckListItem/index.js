@@ -2,9 +2,9 @@ import React, { PropTypes } from 'react';
 import {
   View,
   Text,
-  Image,
   TouchableHighlight,
 } from 'react-native';
+import CachedImage from 'react-native-cached-image';
 import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/Ionicons';
 import FAIcon from 'react-native-vector-icons/FontAwesome';
@@ -89,7 +89,7 @@ const ContactListItem = ({
               underlayColor="transparent"
             >
               <View style={styles.imageWrapper}>
-                <Image
+                <CachedImage
                   source={getAvatar()}
                   style={styles.image}
                   resizeMode="cover"
