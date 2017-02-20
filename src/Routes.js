@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Navigator, Text, StyleSheet, TouchableHighlight } from 'react-native';
+import { View, Navigator, Text, StyleSheet, TouchableHighlight, Platform } from 'react-native';
 import { Scene, Router, Actions } from 'react-native-router-flux';
 import I18n from 'react-native-i18n';
 import { connect } from 'react-redux';
@@ -11,7 +11,6 @@ import Participants from './views/Participants';
 import Favorites from './views/Favorites';
 import Login from './views/Login';
 import Register from './views/Register';
-import LostPassword from './views/LostPassword';
 import EditCreateProfile from './views/EditCreateProfile';
 import EditCreateTrip from './views/EditCreateTrip';
 import EditCreateActivity from './views/EditCreateActivity';
@@ -34,6 +33,10 @@ import { Onboarding1, Onboarding2, Onboarding3 } from './views/Onboarding';
 import { COLORS } from './constants';
 
 const RouterWithRedux = connect()(Router);
+
+const TOP_PADDING = Platform.OS === 'ios'
+  ? Navigator.NavigationBar.Styles.General.TotalNavHeight
+  : Navigator.NavigationBar.Styles.General.TotalNavHeight - 2;
 
 const navBarPadding = {
   paddingTop: Navigator.NavigationBar.Styles.General.TotalNavHeight

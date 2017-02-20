@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -75,8 +74,6 @@
 		E98C675E1E48C40D00DEDF65 /* HockeySDK.embeddedframework in Resources */ = {isa = PBXBuildFile; fileRef = E98C675D1E48C40D00DEDF65 /* HockeySDK.embeddedframework */; };
 		E98C67601E48C41400DEDF65 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E98C675F1E48C41400DEDF65 /* HockeySDK.framework */; };
 		E9EDF76D1E59A6AA00D6B7B2 /* Images-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9EDF76C1E59A6AA00D6B7B2 /* Images-2.xcassets */; };
-		E9EDF7931E59A6E200D6B7B2 /* Images-3.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9EDF7921E59A6E200D6B7B2 /* Images-3.xcassets */; };
-		E9EDF7951E59A74700D6B7B2 /* Images-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9EDF7941E59A74700D6B7B2 /* Images-2.xcassets */; };
 		E9EF736A1E3E1ECF0065641B /* AccountKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9EF73641E3E1ECF0065641B /* AccountKit.framework */; };
 		E9EF736B1E3E1ECF0065641B /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9EF73651E3E1ECF0065641B /* Bolts.framework */; };
 		E9EF736C1E3E1ECF0065641B /* FBNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9EF73661E3E1ECF0065641B /* FBNotifications.framework */; };
@@ -86,6 +83,7 @@
 		EB6B5A9B61BC45EC91B4995C /* libcxxreact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCEB0164DDA4CE6BCDE06C5 /* libcxxreact.a */; };
 		FD285CFC9D69486F95E27C27 /* Montserrat-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2E791D811FB94B31966B58DA /* Montserrat-Bold.otf */; };
 		FE824F2EB2744156AD0D44DF /* Montserrat-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7F58FFEF47C34FD8A349A240 /* Montserrat-Regular.otf */; };
+		F40F1EA318F2432686F7CEF5 /* libRCTBEEPickerManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CBC11F5FD1864D77AA1E6DD7 /* libRCTBEEPickerManager.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -432,11 +430,8 @@
 		E98C675B1E48C37200DEDF65 /* HockeySDK.embeddedframework */ = {isa = PBXFileReference; lastKnownFileType = folder; name = HockeySDK.embeddedframework; path = "HockeySDK-iOS/HockeySDK.embeddedframework"; sourceTree = "<group>"; };
 		E98C675D1E48C40D00DEDF65 /* HockeySDK.embeddedframework */ = {isa = PBXFileReference; lastKnownFileType = folder; name = HockeySDK.embeddedframework; path = "HockeySDK-iOS/HockeySDK.embeddedframework"; sourceTree = "<group>"; };
 		E98C675F1E48C41400DEDF65 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HockeySDK.framework; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDK.framework"; sourceTree = "<group>"; };
-		E98F7C741E3E40BC001C9697 /* sameto.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = sameto.entitlements; path = sameto/sameto.entitlements; sourceTree = "<group>"; };
 		E994FA3D1E3798C60094BF06 /* RNBlur.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNBlur.xcodeproj; path = "../node_modules/react-native-blur/ios/RNBlur.xcodeproj"; sourceTree = "<group>"; };
 		E9EDF76C1E59A6AA00D6B7B2 /* Images-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = "Images-2.xcassets"; path = "sameto/Images-2.xcassets"; sourceTree = "<group>"; };
-		E9EDF7921E59A6E200D6B7B2 /* Images-3.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = "Images-3.xcassets"; path = "sameto/Images-3.xcassets"; sourceTree = "<group>"; };
-		E9EDF7941E59A74700D6B7B2 /* Images-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = "Images-2.xcassets"; path = "sameto/Images-2.xcassets"; sourceTree = "<group>"; };
 		E9EF73641E3E1ECF0065641B /* AccountKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AccountKit.framework; path = ../../../../Documents/FacebookSDK/AccountKit.framework; sourceTree = "<group>"; };
 		E9EF73651E3E1ECF0065641B /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = ../../../../Documents/FacebookSDK/Bolts.framework; sourceTree = "<group>"; };
 		E9EF73661E3E1ECF0065641B /* FBNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBNotifications.framework; path = ../../../../Documents/FacebookSDK/FBNotifications.framework; sourceTree = "<group>"; };
@@ -447,6 +442,8 @@
 		F7C6FFC3B71A4EB09A1290F2 /* libReact.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libReact.a; sourceTree = "<group>"; };
 		FC09809D63E5489899991274 /* libjschelpers.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libjschelpers.a; sourceTree = "<group>"; };
 		FDD47C790C044D438E480C57 /* Courier New.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Courier New.ttf"; path = "../node_modules/native-base/Fonts/Courier New.ttf"; sourceTree = "<group>"; };
+		AFF6D2F06827413D9335BCA2 /* RCTBEEPickerManager.xcodeproj */ = {isa = PBXFileReference; name = "RCTBEEPickerManager.xcodeproj"; path = "../node_modules/react-native-picker/ios/RCTBEEPickerManager.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		CBC11F5FD1864D77AA1E6DD7 /* libRCTBEEPickerManager.a */ = {isa = PBXFileReference; name = "libRCTBEEPickerManager.a"; path = "libRCTBEEPickerManager.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -493,6 +490,7 @@
 				793868F427A742D6BD903B6D /* libRNSearchBar.a in Frameworks */,
 				BAEA450126024B2191CB7191 /* libRNFetchBlob.a in Frameworks */,
 				CFF04C637DFB496E9E9B62E9 /* libRNUploader.a in Frameworks */,
+				F40F1EA318F2432686F7CEF5 /* libRCTBEEPickerManager.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -579,7 +577,6 @@
 		13B07FAE1A68108700A75B9A /* sameto */ = {
 			isa = PBXGroup;
 			children = (
-				E98F7C741E3E40BC001C9697 /* sameto.entitlements */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -588,8 +585,6 @@
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				E9EDF76C1E59A6AA00D6B7B2 /* Images-2.xcassets */,
-				E9EDF7921E59A6E200D6B7B2 /* Images-3.xcassets */,
-				E9EDF7941E59A74700D6B7B2 /* Images-2.xcassets */,
 			);
 			name = sameto;
 			sourceTree = "<group>";
@@ -703,6 +698,7 @@
 				8D54E7D7F2014188BE0A70B4 /* RNSearchBar.xcodeproj */,
 				C23A890542D74FA0B290DE59 /* RNFetchBlob.xcodeproj */,
 				A50A6468A1304112A9601FF0 /* RNUploader.xcodeproj */,
+				AFF6D2F06827413D9335BCA2 /* RCTBEEPickerManager.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -880,14 +876,25 @@
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = JLSQJ985KZ;
+						ProvisioningStyle = Manual;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = JLSQJ985KZ;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
+							com.apple.InterAppAudio = {
+								enabled = 0;
+							};
 							com.apple.Keychain = {
 								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 0;
+							};
+							com.apple.Wallet = {
+								enabled = 0;
 							};
 						};
 					};
@@ -1271,7 +1278,6 @@
 				E94EA1DF1E534DF800F655AB /* Montserrat-Hairline.otf in Resources */,
 				E94EA1E01E534DF800F655AB /* Montserrat-Light.otf in Resources */,
 				E94EA1E11E534DF800F655AB /* Montserrat-Regular.otf in Resources */,
-				E9EDF7951E59A74700D6B7B2 /* Images-2.xcassets in Resources */,
 				E94EA1E21E534DF800F655AB /* Montserrat-SemiBold.otf in Resources */,
 				E94EA1E31E534DF800F655AB /* Montserrat-UltraLight.otf in Resources */,
 				13B07FBF1A68108700A75B9A /* AppIcon.appiconset in Resources */,
@@ -1305,7 +1311,6 @@
 				B5860D31A3374BC08AA88FD7 /* Montserrat-ExtraBold.otf in Resources */,
 				E0C853DDBED04F9B8F6A6D7A /* Montserrat-Hairline.otf in Resources */,
 				9DEC057FA576428B998C4138 /* Montserrat-Light.otf in Resources */,
-				E9EDF7931E59A6E200D6B7B2 /* Images-3.xcassets in Resources */,
 				FE824F2EB2744156AD0D44DF /* Montserrat-Regular.otf in Resources */,
 				2FC98EA3E03D46AABEC17AB6 /* Montserrat-SemiBold.otf in Resources */,
 				13413D5397994DF19F85AE43 /* Montserrat-UltraLight.otf in Resources */,
@@ -1389,6 +1394,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = JLSQJ985KZ;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1398,6 +1405,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1422,11 +1430,13 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = JLSQJ985KZ;
 				INFOPLIST_FILE = sametoTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1451,7 +1461,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_ENTITLEMENTS = sameto/sameto.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
@@ -1481,7 +1491,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_ENTITLEMENTS = sameto/sameto.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JLSQJ985KZ;

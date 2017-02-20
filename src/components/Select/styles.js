@@ -29,5 +29,11 @@ export default StyleSheet.create({
     top: 10,
     color: COLORS.CYAN,
     backgroundColor: COLORS.DARK_GREY,
+  },
+  selected: {
+    padding: 12,
+    color: COLORS.WHITE,
+    fontSize: 14,
+    flex: 1,
   }
 });
