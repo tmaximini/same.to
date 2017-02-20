@@ -14,7 +14,10 @@ import { actions as contactActions } from '../../redux/modules/contacts';
 import styles from './styles';
 
 @connect(
-  state => state.contacts,
+  state => ({
+    ...state.contacts,
+    ...state.editCreateProfile
+  }),
   contactActions,
 )
 export default class Contacts extends Component {
