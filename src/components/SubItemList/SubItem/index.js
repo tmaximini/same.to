@@ -133,6 +133,8 @@ const SubItem = ({
         <TouchableHighlight
           style={styles.touch}
           onPress={() => handler(itemType, item)}
+          activeOpacity={0.6}
+          underlayColor="transparent"
         >
           <View style={styles.wrapper}>
             <View style={styles.top}>
