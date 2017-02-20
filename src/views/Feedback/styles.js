@@ -5,4 +5,9 @@ export default StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-start'
   },
+  centering: {
+    alignItems: 'center',
+    padding: 24,
+    justifyContent: 'flex-start',
+  }
 });

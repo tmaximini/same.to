@@ -18,6 +18,7 @@ import {
   actions as accommodationActions
 } from '../../redux/modules/editCreateAccommodation';
 import { updateAuthHeader, updateUserId } from '../../services/api';
+import { COLORS } from '../../constants';
 import styles from './styles';
 
 @connect(
@@ -74,6 +75,7 @@ export default class Splash extends Component {
         <ActivityIndicator
           style={styles.centering}
           animating
+          color={COLORS.CYAN}
           size="large"
         />
       </View>
