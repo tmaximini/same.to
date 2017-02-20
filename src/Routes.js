@@ -29,6 +29,7 @@ import Splash from './views/Splash';
 import Settings from './views/Settings';
 import Feedback from './views/Feedback';
 import Impressum from './views/Impressum';
+import Privacy from './views/Privacy';
 import { Onboarding1, Onboarding2, Onboarding3 } from './views/Onboarding';
 import { COLORS } from './constants';
 
@@ -39,11 +40,11 @@ const TOP_PADDING = Platform.OS === 'ios'
   : Navigator.NavigationBar.Styles.General.TotalNavHeight - 2;
 
 const navBarPadding = {
-  paddingTop: Navigator.NavigationBar.Styles.General.TotalNavHeight
+  paddingTop: TOP_PADDING
 };
 
 const navTabpadding = {
-  paddingTop: Navigator.NavigationBar.Styles.General.TotalNavHeight,
+  paddingTop: TOP_PADDING,
   paddingBottom: 50, // default height of tabbar
 };
 
@@ -320,6 +321,12 @@ const Routes = () => (
       key="impressum"
       component={Impressum}
       title={I18n.t('impressum')}
+      sceneStyle={navBarPadding}
+    />
+    <Scene
+      key="privacy"
+      component={Privacy}
+      title={I18n.t('privacy')}
       sceneStyle={navBarPadding}
     />
   </RouterWithRedux>

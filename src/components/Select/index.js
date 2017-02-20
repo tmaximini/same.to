@@ -51,8 +51,6 @@ export default class Select extends Component {
   }
 
 
-  // Picker.hide();
-
   render() {
     const { items, value, icon } = this.props;
     const selected = items.filter(item => item.value === value);

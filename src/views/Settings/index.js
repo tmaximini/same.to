@@ -55,6 +55,10 @@ export default class Settings extends Component {
         title: I18n.t('impressum'),
         action: () => Actions.impressum(),
       },
+      {
+        title: I18n.t('privacy'),
+        action: () => Actions.privacy(),
+      },
     ];
 
     return (

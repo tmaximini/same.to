@@ -3,12 +3,12 @@ import I18n from 'react-native-i18n';
 import { ScrollView, Text } from 'react-native';
 import styles from './styles';
 
-const Impressum = () => (
+const Privacy = () => (
   <ScrollView style={styles.container}>
     <Text style={styles.impressumText}>
-      {I18n.t('impressumText')}
+      {I18n.t('privacyText')}
     </Text>
   </ScrollView>
 );
 
-export default Impressum;
+export default Privacy;
