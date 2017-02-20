@@ -74,99 +74,106 @@ const ContactListItem = ({
   );
 
   return (
-    <View style={styles.container}>
-      <View style={styles.top}>
-        <View style={styles.left}>
-          <TouchableHighlight
-            style={styles.avatar}
-            onPress={handler}
-            underlayColor="transparent"
-          >
-            <View style={styles.imageWrapper}>
-              <Image
-                source={getAvatar()}
-                style={styles.image}
-                resizeMode="cover"
-              />
-              {isActive && (
-                <View style={styles.checked}>
-                  <FAIcon
-                    name="check"
-                    size={18}
-                    style={{ color: '#fff' }}
-                  />
-                </View>
-              )}
-            </View>
-          </TouchableHighlight>
-
-          <View style={styles.personDetails}>
+    <TouchableHighlight
+      style={styles.container}
+      onPress={handler}
+      underlayColor="transparent"
+      activeOpacity={0.6}
+    >
+      <View style={styles.container}>
+        <View style={styles.top}>
+          <View style={styles.left}>
             <TouchableHighlight
-              style={styles.name}
+              style={styles.avatar}
               onPress={handler}
               underlayColor="transparent"
             >
-              <Text style={styles.nameText}>{getName()}</Text>
+              <View style={styles.imageWrapper}>
+                <Image
+                  source={getAvatar()}
+                  style={styles.image}
+                  resizeMode="cover"
+                />
+                {isActive && (
+                  <View style={styles.checked}>
+                    <FAIcon
+                      name="check"
+                      size={18}
+                      style={{ color: '#fff' }}
+                    />
+                  </View>
+                )}
+              </View>
             </TouchableHighlight>
-            <View style={styles.location}>
-              <Text style={styles.locationText}>{getLocation()}</Text>
-            </View>
-          </View>
-        </View>
-        <View style={styles.right}>
-          {!isMe() && !noIcons && (
-            <View style={styles.actions}>
+
+            <View style={styles.personDetails}>
               <TouchableHighlight
-                style={styles.iconButton}
-                onPress={() => (isFavorite ? removeFavorite(contact) : addFavorite(contact))}
-                activeOpacity={0.6}
+                style={styles.name}
+                onPress={handler}
                 underlayColor="transparent"
               >
-                <Icon
-                  name={isFavorite ? 'ios-star' : 'ios-star-outline'}
-                  style={styles.icon}
-                  size={23}
-                />
+                <Text style={styles.nameText}>{getName()}</Text>
               </TouchableHighlight>
-              <TouchableHighlight
-                style={styles.iconButton}
-                onPress={() => (isContact ? removeContact(contact) : addContact(contact))}
-                activeOpacity={0.6}
-                underlayColor="transparent"
-              >
-                <Icon
-                  name="ios-person-add"
-                  name={isContact ? 'ios-person' : 'ios-person-add-outline'}
-                  style={styles.icon}
-                  size={23}
-                />
-              </TouchableHighlight>
-            </View>
-          )}
-        </View>
-      </View>
-      <View style={styles.bottom}>
-        <View style={styles.left}>
-          <View style={styles.workAndInterest}>
-            <Text style={styles.workText}>{getOccupaction()}</Text>
-            <Text style={styles.interests}>{getInterests()}</Text>
-          </View>
-        </View>
-        <View style={styles.right}>
-          {!noIcons && contact.isMatch && (
-            <View style={styles.actions}>
-              <View style={styles.iconButton}>
-                <Icon
-                  name="ios-checkmark"
-                  size={22}
-                  style={{ color: 'white' }}
-                />
+              <View style={styles.location}>
+                <Text style={styles.locationText}>{getLocation()}</Text>
               </View>
             </View>
-          )}
+          </View>
+          <View style={styles.right}>
+            {!isMe() && !noIcons && (
+              <View style={styles.actions}>
+                <TouchableHighlight
+                  style={styles.iconButton}
+                  onPress={() => (isFavorite ? removeFavorite(contact) : addFavorite(contact))}
+                  activeOpacity={0.6}
+                  underlayColor="transparent"
+                >
+                  <Icon
+                    name={isFavorite ? 'ios-star' : 'ios-star-outline'}
+                    style={styles.icon}
+                    size={23}
+                  />
+                </TouchableHighlight>
+                <TouchableHighlight
+                  style={styles.iconButton}
+                  onPress={() => (isContact ? removeContact(contact) : addContact(contact))}
+                  activeOpacity={0.6}
+                  underlayColor="transparent"
+                >
+                  <Icon
+                    name="ios-person-add"
+                    name={isContact ? 'ios-person' : 'ios-person-add-outline'}
+                    style={styles.icon}
+                    size={23}
+                  />
+                </TouchableHighlight>
+              </View>
+            )}
+          </View>
+        </View>
+        <View style={styles.bottom}>
+          <View style={styles.left}>
+            <View style={styles.workAndInterest}>
+              <Text style={styles.workText}>{getOccupaction()}</Text>
+              <Text style={styles.interests}>{getInterests()}</Text>
+            </View>
+          </View>
+          <View style={styles.right}>
+            {!noIcons && contact.isMatch && (
+              <View style={styles.actions}>
+                <View style={styles.iconButton}>
+                  <Icon
+                    name="ios-checkmark"
+                    size={22}
+                    style={{ color: 'white' }}
+                  />
+                </View>
+              </View>
+            )}
+          </View>
         </View>
       </View>
-    </View>
+    </TouchableHighlight>
   );
 };
 
