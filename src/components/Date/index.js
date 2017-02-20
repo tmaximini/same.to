@@ -12,7 +12,7 @@ const makeDateString = date => moment(date).calendar(null, {
   lastDay: isDe ? '[Gestern]' : '[Yesterday]',
   sameDay: isDe ? '[Heute]' : '[Today]',
   nextDay: isDe ? '[Morgen]' : '[Tomorrow]',
-  lastWeek: isDe ? '[letzen] dddd' : '[last] dddd',
+  lastWeek: isDe ? '[letzten] dddd' : '[last] dddd',
   nextWeek: 'dddd',
   sameElse: 'L'
 });
