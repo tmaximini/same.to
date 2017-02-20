@@ -7,7 +7,7 @@ import { purgeOfflineStorage } from '../configureStore';
 // Initial State
 const initialState = {
   loggedIn: false,
-  email: 'peter.limbach@example.org',
+  email: null,
   password: null,
   username: null,
   isLoading: false,
@@ -33,9 +33,6 @@ export const FACEBOOK_LOGIN_ERROR = 'auth/FACEBOOK_LOGIN_ERROR';
 export const LOGOUT = 'auth/LOGOUT';
 export const UPDATE = 'auth/UPDATE';
 export const AUTHORIZATION_REQUIRED = 'auth/AUTHORIZATION_REQUIRED';
-// storage keys
-// export const TOKEN = '@@SAME/TOKEN';
-// export const USERID = '@@SAME/USERID';
 
 
 // Action Creators
