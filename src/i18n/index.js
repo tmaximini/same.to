@@ -98,7 +98,7 @@ const translations = {
     participants: 'participants',
     housing_details: 'housing details',
     edit: 'Edit',
-    fine_like_minded: 'find like-minded people',
+    find_like_minded: 'find like-minded people',
     search_favorites: 'Search favorites',
     search_events: 'Search events',
     circuit: 'circuit',
@@ -146,6 +146,10 @@ const translations = {
       zero: '0 nights',
     },
     leave_chat: 'Leave chat',
+    chat_subject: 'Chat subject',
+    subject: 'subject',
+    create_chat_members: 'create chat with the following participants',
+    type_a_message: 'Type a message...',
   },
 
   de: {
@@ -249,7 +253,7 @@ const translations = {
     participants: 'Teilnehmer',
     housing_details: 'Unterkunftdetails',
     edit: 'Bearbeiten',
-    fine_like_minded: 'Finde Gleichgesinnte',
+    find_like_minded: 'Finde Gleichgesinnte',
     search_favorites: 'Favoriten suchen',
     search_events: 'Events suchen',
     circuit: 'Umkreis',
@@ -296,6 +300,10 @@ const translations = {
       zero: '0 Nächte',
     },
     leave_chat: 'Chat verlassen',
+    chat_subject: 'Thema des Chats',
+    subject: 'Thema',
+    create_chat_members: 'Chat mit folgenden Teilnehmern erstellen',
+    type_a_message: 'Gib eine Nachricht ein...'
   }
 };
 

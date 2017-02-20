@@ -70,3 +70,4 @@ export const canAdd = model => {
   const userId = getUserId();
   return userId && (isOrganizer(model) || isMember(model));
 };
+

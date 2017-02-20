@@ -17,6 +17,9 @@ export default class Feedback extends Component {
       <Form
         onSubmit={() => {}}
         buttonText={I18n.t('send_feedback')}
+        buttonProps={{
+          noResize: true
+        }}
       >
         <View style={styles.container}>
           <Input

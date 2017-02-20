@@ -181,6 +181,7 @@ export default class Chat extends Component {
           messages={this.state.messages}
           onSend={this.onSend}
           renderBubble={this.renderBubble}
+          placeholder={I18n.t('type_a_message')}
           user={{
             _id: getUserId(),
           }}

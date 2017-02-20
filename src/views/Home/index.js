@@ -19,7 +19,6 @@ import {
 import {
   resetActivity as resetActivityAction,
   setActivity as setActivityAction,
-  deleteActivity as deleteActivityAction,
 } from '../../redux/modules/editCreateActivity';
 import styles from './styles';
 
@@ -54,7 +53,7 @@ export default class Home extends Component {
     title: PropTypes.string,
     loggedIn: PropTypes.bool.isRequired,
     isRefreshing: PropTypes.bool.isRequired,
-    events: PropTypes.arrayOf(PropTypes.object)
+    events: PropTypes.arrayOf(PropTypes.object),
   };
 
   componentDidMount() {
