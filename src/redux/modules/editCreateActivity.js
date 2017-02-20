@@ -7,7 +7,7 @@ const makeDefaultActivity = () => ({
   location: {},
   type: 'activity',
   categories: [],
-  isPublic: false,
+  isPublic: true,
 });
 
 // Initial State

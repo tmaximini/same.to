@@ -64,11 +64,11 @@ export default class EditCreateActivity extends Component {
         <View style={styles.wrapper}>
           <View style={styles.labelWrapper}>
             <Text style={styles.label}>
-              Thema des Chats
+               {I18n.t('chat_subject')}
             </Text>
           </View>
           <Input
-            placeholder="Subject"
+            placeholder={I18n.t('subject')}
             onChangeText={text => updateChat('subject', text)}
             value={currentChat.subject}
           />
@@ -76,7 +76,7 @@ export default class EditCreateActivity extends Component {
             <View>
               <View style={styles.labelWrapper}>
                 <Text style={styles.label}>
-                  Chat mit folgenden Teilnehmern erstellen
+                  {I18n.t('create_chat_members')}
                 </Text>
               </View>
               <ContactCheckList

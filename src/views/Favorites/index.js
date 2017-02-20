@@ -37,13 +37,14 @@ export default class Favorites extends Component {
 
     return (
       <Form
-        buttonText={I18n.t('search_favorites')}
+        buttonText={I18n.t('find_like_minded')}
         onSubmit={Actions.searchFavorites}
         buttonProps={{ noResize: true }}
       >
         <View style={styles.container}>
           {favorites && favorites.length ? (
             <ContactList
+              noIcons
               contacts={favorites}
               refresh={fetchFavorites}
               isRefreshing={isRefreshing}

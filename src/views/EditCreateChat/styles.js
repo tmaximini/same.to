@@ -10,6 +10,7 @@ export default StyleSheet.create({
     paddingVertical: PADDINGS.STANDARD
   },
   label: {
-    ...MIXINS.topInfo
+    ...MIXINS.topInfo,
+    paddingBottom: 2,
   }
 });

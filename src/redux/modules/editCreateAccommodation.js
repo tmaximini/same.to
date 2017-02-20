@@ -6,7 +6,7 @@ const makeDefaultAccommodation = () => ({
   endAt: formatDate(new Date()),
   location: {},
   categories: [],
-  isPublic: false,
+  isPublic: true,
   overnightStays: 1,
 });
 
