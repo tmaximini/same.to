@@ -83,14 +83,12 @@ export const actions = {
 const updateEvents = (lastState, subitem, collection) => {
   const newEvents = [...lastState.events];
   const eventIndex = _.findIndex(newEvents, { id: subitem.eventId });
-  const index = _.findIndex(newEvents[collection], { id: subitem.id });
+  const index = _.findIndex(newEvents[eventIndex][collection], { id: subitem.id });
   if (index === -1) {
     newEvents[eventIndex][collection].push(subitem);
   } else {
     newEvents[eventIndex][collection][index] = subitem;
   }
-
-  console.log('newEvents[eventIndex]', newEvents[eventIndex]);
 
   return {
     ...lastState,
