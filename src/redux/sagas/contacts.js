@@ -183,7 +183,7 @@ export function* searchFavoritesAsync(action) {
   }
 }
 
-function* addRemoveRemote({ action, params, successAction, errorAction }) {
+function* addRemoveRemote({ action, params, successAction, errorAction, successParams }) {
   try {
     const response = yield call(action, params);
     if (response.error) {
@@ -198,7 +198,7 @@ function* addRemoveRemote({ action, params, successAction, errorAction }) {
       // success
       yield put({
         type: successAction,
-        payload: {
+        payload: successParams || {
           contact: response
         }
       });
@@ -237,6 +237,7 @@ export function* removeFavoriteAsync(action) {
   yield addRemoveRemote({
     action: removeFavorite,
     params: contact.id,
+    successParams: { id: contact.id },
     successAction: REMOVE_FAVORITE_SUCCESS,
     errorAction: REMOVE_FAVORITE_ERROR,
   });
@@ -247,6 +248,7 @@ export function* removeContactAsync(action) {
   yield addRemoveRemote({
     action: removeContact,
     params: contact.id,
+    successParams: { id: contact.id },
     successAction: REMOVE_CONTACT_SUCCESS,
     errorAction: REMOVE_CONTACT_ERROR,
   });

@@ -8,7 +8,7 @@ import Search from '../../components/Search';
 // import styles from './styles';
 
 @connect(
-  null,
+  state => state.editCreateProfile,
   contactActions,
 )
 class Participants extends Component {
@@ -16,6 +16,7 @@ class Participants extends Component {
   static propTypes = {
     members: PropTypes.array.isRequired,
     header: PropTypes.element,
+    profile: PropTypes.object.isRequired,
   }
 
   constructor(props) {
@@ -34,7 +35,6 @@ class Participants extends Component {
   }
 
   filterResults(query) {
-    console.log('query', query);
     const { members } = this.props;
     const q = query.toLowerCase();
     this.setState({
@@ -47,7 +47,7 @@ class Participants extends Component {
   }
 
   render() {
-    const { header, ...rest } = this.props;
+    const { header, profile, ...rest } = this.props;
     const { members } = this.state;
 
     return (
@@ -61,6 +61,7 @@ class Participants extends Component {
         <ContactList
           contacts={members}
           style={{ padding: 12 }}
+          profile={profile}
           {...rest}
         />
       </View>

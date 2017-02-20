@@ -40,7 +40,7 @@ const getTitle = (itemType, item) => {
   }
 };
 
-const ItemDetail = ({ itemType, participates, onToggle, item, resetChat, ...rest }) => (
+const ItemDetail = ({ itemType, participates, onToggle, item, resetChat, profile, ...rest }) => (
   <View style={styles.container}>
     <View style={styles.top}>
       <EventHeader
@@ -80,8 +80,9 @@ const ItemDetail = ({ itemType, participates, onToggle, item, resetChat, ...rest
     </View>
     <View style={styles.bottom}>
       <ContactList
-        contacts={item.members}
         {...rest}
+        profile={profile}
+        contacts={item.members}
       />
     </View>
     <View style={styles.actionButtons}>
@@ -115,6 +116,7 @@ ItemDetail.propTypes = {
   participates: PropTypes.bool.isRequired,
   onToggle: PropTypes.func.isRequired,
   resetChat: PropTypes.func.isRequired,
+  profile: PropTypes.object.isRequired,
 };
 
 export default ItemDetail;

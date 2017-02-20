@@ -13,53 +13,65 @@ import styles from './styles';
 
 const fallback = require('../../../assets/hj.jpg');
 
-const isMe = c => c.id === getUserId();
-
-const isContact = c => false; // TODO
-const isFavorite = c => false; // TODO
-
-const getName = c => (
-  `${c.firstName} ${c.lastName}`
-);
-const getLocation = c => (
-  c.location ? c.location.locality : 'Unknown'
-);
-const getOccupaction = c => {
-  if (c.occupation && c.company) {
-    return `${c.occupation} bei ${c.company}`;
-  } else if (c.occupation) {
-    return c.occupation;
-  } else if (c.company) {
-    return c.company;
-  }
-  return null;
-};
-
-const getInterests = c => (
-  (c.interests && c.interests.length > 0)
-    ? c.interests.join(', ')
-    : ''
-);
-const getAvatar = c => (
-  c && c.image && c.image.thumbs ? { uri: c.image.thumbs['320x320'] } : fallback
-);
-
-const ContactListItem = ({ contact, addFavorite, addContact, onToggle, isActive }) => {
+const ContactListItem = ({
+  contact,
+  addFavorite,
+  addContact,
+  removeFavorite,
+  removeContact,
+  onToggle,
+  isActive,
+  noIcons,
+  isContact,
+  isFavorite,
+}) => {
   const editFunc = () => Actions.editCreateProfile({
     profile: contact,
     title: 'Edit Profile'
   });
+
+  const isMe = () => contact.id === getUserId();
+
+  const getName = () => (
+    `${contact.firstName} ${contact.lastName}`
+  );
+
   const handler = () => {
     if (onToggle) {
       return onToggle(contact.id);
     }
     return Actions.profile({
       profile: contact,
-      title: getName(contact),
-      onRight: isMe(contact) ? editFunc : undefined,
-      rightTitle: isMe(contact) ? 'edit' : undefined,
+      title: getName(),
+      onRight: isMe() ? editFunc : undefined,
+      rightTitle: isMe() ? 'edit' : undefined,
     });
   };
+
+  // helpers
+  const getLocation = () => (
+    contact.location ? contact.location.locality : 'Unknown'
+  );
+  const getOccupaction = () => {
+    if (contact.occupation && contact.company) {
+      return `${contact.occupation} bei ${contact.company}`;
+    } else if (contact.occupation) {
+      return contact.occupation;
+    } else if (contact.company) {
+      return contact.company;
+    }
+    return null;
+  };
+
+  const getInterests = () => (
+    (contact.interests && contact.interests.length > 0)
+      ? contact.interests.join(', ')
+      : ''
+  );
+
+  const getAvatar = () => (
+    contact && contact.image && contact.image.thumbs ? { uri: contact.image.thumbs['320x320'] } : fallback
+  );
 
   return (
     <View style={styles.container}>
@@ -72,7 +84,7 @@ const ContactListItem = ({ contact, addFavorite, addContact, onToggle, isActive 
           >
             <View style={styles.imageWrapper}>
               <Image
-                source={getAvatar(contact)}
+                source={getAvatar()}
                 style={styles.image}
                 resizeMode="cover"
               />
@@ -94,36 +106,37 @@ const ContactListItem = ({ contact, addFavorite, addContact, onToggle, isActive 
               onPress={handler}
               underlayColor="transparent"
             >
-              <Text style={styles.nameText}>{getName(contact)}</Text>
+              <Text style={styles.nameText}>{getName()}</Text>
             </TouchableHighlight>
             <View style={styles.location}>
-              <Text style={styles.locationText}>{getLocation(contact)}</Text>
+              <Text style={styles.locationText}>{getLocation()}</Text>
             </View>
           </View>
         </View>
         <View style={styles.right}>
-          {!isMe(contact) && (
+          {!isMe() && !noIcons && (
             <View style={styles.actions}>
               <TouchableHighlight
                 style={styles.iconButton}
-                onPress={() => addFavorite(contact)}
+                onPress={() => (isFavorite ? removeFavorite(contact) : addFavorite(contact))}
                 activeOpacity={0.6}
                 underlayColor="transparent"
               >
                 <Icon
-                  name="ios-star"
+                  name={isFavorite ? 'ios-star' : 'ios-star-outline'}
                   style={styles.icon}
                   size={23}
                 />
               </TouchableHighlight>
               <TouchableHighlight
                 style={styles.iconButton}
-                onPress={() => addContact(contact)}
+                onPress={() => (isContact ? removeContact(contact) : addContact(contact))}
                 activeOpacity={0.6}
                 underlayColor="transparent"
               >
                 <Icon
-                  name={isContact(contact) ? 'ios-person-add' : 'ios-person-add'}
+                  name="ios-person-add"
+                  name={isContact ? 'ios-person' : 'ios-person-add-outline'}
                   style={styles.icon}
                   size={23}
                 />
@@ -135,25 +148,27 @@ const ContactListItem = ({ contact, addFavorite, addContact, onToggle, isActive 
       <View style={styles.bottom}>
         <View style={styles.left}>
           <View style={styles.workAndInterest}>
-            <Text style={styles.workText}>{getOccupaction(contact)}</Text>
-            <Text style={styles.interests}>{getInterests(contact)}</Text>
+            <Text style={styles.workText}>{getOccupaction()}</Text>
+            <Text style={styles.interests}>{getInterests()}</Text>
           </View>
         </View>
         <View style={styles.right}>
-          <View style={styles.actions}>
-            <View style={styles.iconButton}>
-              <Icon
-                name="ios-checkmark"
-                size={22}
-                style={{ color: 'white' }}
-              />
+          {!noIcons && contact.isMatch && (
+            <View style={styles.actions}>
+              <View style={styles.iconButton}>
+                <Icon
+                  name="ios-checkmark"
+                  size={22}
+                  style={{ color: 'white' }}
+                />
+              </View>
             </View>
-          </View>
+          )}
         </View>
       </View>
     </View>
   );
-}
+};
 
 ContactListItem.propTypes = {
   contact: PropTypes.object.isRequired,
@@ -163,6 +178,9 @@ ContactListItem.propTypes = {
   removeContact: PropTypes.func,
   onToggle: PropTypes.func,
   isActive: PropTypes.bool,
+  noIcons: PropTypes.bool,
+  isContact: PropTypes.bool,
+  isFavorite: PropTypes.bool,
 };
 
 export default ContactListItem;

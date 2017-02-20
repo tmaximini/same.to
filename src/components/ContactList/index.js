@@ -14,6 +14,8 @@ export default class ContactList extends Component {
     setCurrentContact: PropTypes.func,
     isRefreshing: PropTypes.bool,
     style: PropTypes.object,
+    noIcons: PropTypes.bool,
+    profile: PropTypes.object,
   }
 
   constructor(props) {
@@ -27,9 +29,14 @@ export default class ContactList extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.contacts) {
+    if (nextProps.contacts || nextProps.profile) {
+      const contacts = nextProps.contacts.map(c => ({
+        ...c,
+        contactsLength: nextProps.profile.contactIds.length,
+        favoritesLength: nextProps.profile.favoriteIds.length,
+      }));
       this.setState({
-        dataSource: this.state.dataSource.cloneWithRows(nextProps.contacts)
+        dataSource: this.state.dataSource.cloneWithRows(contacts),
       });
     }
   }
@@ -39,7 +46,7 @@ export default class ContactList extends Component {
   }
 
   render() {
-    const { setCurrentContact, refresh, style, ...rest } = this.props;
+    const { setCurrentContact, refresh, style, profile, ...rest } = this.props;
 
     return (
       <ListView
@@ -51,6 +58,8 @@ export default class ContactList extends Component {
           <ContactListItem
             contact={contact}
             setCurrentContact={setCurrentContact}
+            isContact={profile.contactIds.includes(contact.id)}
+            isFavorite={profile.favoriteIds.includes(contact.id)}
             {...rest}
           />
         )}
@@ -74,4 +83,5 @@ export default class ContactList extends Component {
 ContactList.defaultProps = {
   contacts: [],
   style: {},
+  noIcons: false,
 };

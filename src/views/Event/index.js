@@ -39,6 +39,7 @@ const background = require('../../assets/gamescom.jpg');
 @connect(
   state => ({
     event: state.events.currentEvent,
+    profile: state.editCreateProfile.profile,
   }),
   {
     setTrip: setTripAction,
@@ -76,6 +77,7 @@ export default class Event extends Component {
     resetAccommodation: PropTypes.func.isRequired,
     toggleParticipateEvent: PropTypes.func.isRequired,
     showActionSheetWithOptions: PropTypes.func.isRequired,
+    profile: PropTypes.object.isRequired,
   }
 
   constructor(props) {

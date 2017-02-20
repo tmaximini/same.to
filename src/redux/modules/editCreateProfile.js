@@ -4,6 +4,14 @@ import {
   LOGOUT,
 } from './auth';
 
+import {
+  ADD_FAVORITE_SUCCESS,
+  ADD_CONTACT_SUCCESS,
+  REMOVE_FAVORITE_SUCCESS,
+  REMOVE_CONTACT_SUCCESS,
+} from './contacts';
+import { toggleArrayItem } from '../../utils';
+
 // Initial State
 const makeDefaultProfile = () => ({
   username: null,
@@ -23,6 +31,8 @@ const initialState = {
   profile: makeDefaultProfile(),
   locationString: null,
   errors: null,
+  favoriteIds: [],
+  contactIds: [],
 };
 
 
@@ -166,6 +176,46 @@ const actionsMap = {
   [LOGOUT]: state => ({
     ...state,
     profile: makeDefaultProfile(),
+  }),
+  [ADD_FAVORITE_SUCCESS]: (state, action) => ({
+    ...state,
+    profile: {
+      ...state.profile,
+      favoriteIds: toggleArrayItem(
+        state.profile.favoriteIds,
+        action.payload.contact.id
+      )
+    },
+  }),
+  [ADD_CONTACT_SUCCESS]: (state, action) => ({
+    ...state,
+    profile: {
+      ...state.profile,
+      contactIds: toggleArrayItem(
+        state.profile.contactIds,
+        action.payload.contact.id
+      )
+    },
+  }),
+  [REMOVE_FAVORITE_SUCCESS]: (state, action) => ({
+    ...state,
+    profile: {
+      ...state.profile,
+      favoriteIds: toggleArrayItem(
+        state.profile.favoriteIds,
+        action.payload.id
+      )
+    },
+  }),
+  [REMOVE_CONTACT_SUCCESS]: (state, action) => ({
+    ...state,
+    profile: {
+      ...state.profile,
+      contactIds: toggleArrayItem(
+        state.profile.contactIds,
+        action.payload.id
+      )
+    },
   }),
 };
 

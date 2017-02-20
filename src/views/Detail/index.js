@@ -15,7 +15,10 @@ import { getUserId } from '../../services/api';
 import styles from './styles';
 
 @connect(
-  state => state.detail,
+  state => ({
+    ...state.detail,
+    ...state.editCreateProfile,
+  }),
   {
     ...detailActions,
     ...contactActions,
@@ -28,21 +31,23 @@ export default class Detail extends Component {
     item: PropTypes.object.isRequired,
     toggleParticipate: PropTypes.func.isRequired,
     resetChat: PropTypes.func.isRequired,
+    profile: PropTypes.object,
   };
 
   render() {
     const userId = getUserId();
-    const { item, toggleParticipate, resetChat, ...rest } = this.props;
+    const { item, toggleParticipate, resetChat, profile, ...rest } = this.props;
 
     return (
       <View style={styles.container}>
         <ItemDetail
+          {...rest}
           item={item}
           participates={item.memberIds.includes(userId)}
           contactActions={contactActions}
           onToggle={toggleParticipate}
           resetChat={resetChat}
-          {...rest}
+          profile={profile}
         />
       </View>
     );
