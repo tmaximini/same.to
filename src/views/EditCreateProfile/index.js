@@ -6,7 +6,7 @@ import {
   Image,
   TouchableOpacity,
   Text,
-  NativeModules,
+  // NativeModules,
 } from 'react-native';
 import { connect } from 'react-redux';
 import ImagePicker from 'react-native-image-picker';
@@ -16,11 +16,11 @@ import GenderSelect from '../../components/GenderSelect';
 import Input from '../../components/Input';
 import GeoInput from '../../components/GeoInput';
 import { actions as profileActions } from '../../redux/modules/editCreateProfile';
-// import { uploadImage } from '../../services/profiles';
-import { API_BASE, getAuthToken } from '../../services/api';
+import { uploadImage } from '../../services/profiles';
+// import { API_BASE, getAuthToken } from '../../services/api';
 import styles from './styles';
 
-const RNUploader = NativeModules.RNUploader;
+// const RNUploader = NativeModules.RNUploader;
 
 @connect(
   state => state.editCreateProfile,
@@ -31,6 +31,7 @@ export default class EditCreateProfile extends Component {
   static propTypes = {
     update: PropTypes.func.isRequired,
     updateRemoteProfile: PropTypes.func.isRequired,
+    fetchProfile: PropTypes.func.isRequired,
     setProfile: PropTypes.func.isRequired,
     geocodeLocation: PropTypes.func.isRequired,
     locationString: PropTypes.string,
@@ -101,39 +102,8 @@ export default class EditCreateProfile extends Component {
           source = { uri: response.uri.replace('file://', '') };
         }
 
-        // { uri: imgObj.origURL, name: imgObj.fileName }
-        // uploadImage(response);
-        const files = [
-          {
-            name: 'file',
-            filename: response.fileName,
-            filepath: response.uri || response.origURL || response.path,
-            filetype: 'image/jpeg',
-          },
-        ];
-
-        console.log('files', files);
-
-        const opts = {
-          url: `${API_BASE}members/me/upload`,
-          files,
-          method: 'POST',
-          headers: {
-            Accept: 'application/json',
-            Authorization: getAuthToken()
-          },  // optional
-        };
-
-        RNUploader.upload(opts, (err, response) => {
-          if (err) {
-            console.log(err);
-            return;
-          }
-          const status = response.status;
-          const responseString = response.data;
-          console.log('upload complete with status ' + status, responseString);
-        });
-
+        // pass imgObj and callback
+        uploadImage(response, this.props.fetchProfile);
 
         this.setState({
           avatarSource: source

@@ -11,7 +11,7 @@ import FAIcon from 'react-native-vector-icons/FontAwesome';
 import { getUserId } from '../../../services/api';
 import styles from './styles';
 
-const fallback = require('../../../assets/hj.jpg');
+const fallback = require('../../../assets/avatar.png');
 
 const ContactListItem = ({
   contact,

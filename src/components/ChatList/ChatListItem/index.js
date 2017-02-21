@@ -12,7 +12,7 @@ import { COLORS } from '../../../constants';
 import styles from './styles';
 
 // const background = require('../../../assets/sunflowers.jpg');
-const face = require('../../../assets/hj.jpg');
+const face = require('../../../assets/avatar.png');
 
 const ChatListItem = ({
   chat,
@@ -20,7 +20,6 @@ const ChatListItem = ({
   showActionSheetWithOptions,
   leaveChat,
 }) => {
-
   const me = getUserId();
 
   const showAndHandleActionSheet = () => {

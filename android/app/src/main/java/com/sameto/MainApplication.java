@@ -48,13 +48,13 @@ public class MainApplication extends Application implements ReactApplication {
             new PickerViewPackage(),
             new RNFetchBlobPackage(),
             new RNDeviceInfo(),
-            new ImagePickerPackage(),
             new BlurViewPackage(),
             new VectorIconsPackage(),
             new ReactNativeI18n(),
             new RNGeocoderPackage(),
             new FBSDKPackage(mCallbackManager),
             new BlurViewPackage()
+            new ImagePickerPackage(),
       );
     }
   };

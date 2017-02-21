@@ -53,7 +53,8 @@ export default class Feedback extends Component {
               numberOfLines={10}
               onChangeText={text => this.setState({ feedback: text })}
               multiline
-              style={{ height: 300 }}
+              returnKeyType="none"
+              style={{ height: 200 }}
             />
           )}
         </View>

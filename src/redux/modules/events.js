@@ -116,8 +116,9 @@ const removeSubItem = (lastState, subitem, collection) => {
 // Action Handlers
 const actionsMap = {
     // don't rehydrate search results
-  [REHYDRATE]: state => ({
+  [REHYDRATE]: (state, action) => ({
     ...state,
+    ...action.payload.events,
     searchResults: [],
   }),
   [FETCH_EVENTS_START]: state => ({ ...state, isFetching: true }),

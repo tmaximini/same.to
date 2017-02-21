@@ -3,6 +3,7 @@ import I18n from 'react-native-i18n';
 import {
   View,
   Text,
+  NetInfo,
 } from 'react-native';
 import { connect } from 'react-redux';
 import Search from '../../components/Search';
@@ -31,12 +32,37 @@ export default class Contacts extends Component {
     isSearching: PropTypes.bool,
   };
 
-  state = {
-    searchMode: false
-  };
+  constructor() {
+    super();
+    this.state = {
+      searchMode: false
+    };
+    this.onConnectivityChange = this.onConnectivityChange.bind(this);
+  }
 
   componentDidMount() {
-    this.props.fetchContacts();
+    NetInfo.isConnected.fetch().then(isConnected => {
+      if (isConnected) {
+        this.props.fetchContacts();
+      }
+    });
+    NetInfo.isConnected.addEventListener(
+      'change',
+      this.onConnectivityChange
+    );
+  }
+
+  componentWillUnmount() {
+    NetInfo.isConnected.removeEventListener(
+      'change',
+      this.onConnectivityChange
+    );
+  }
+
+  onConnectivityChange(connected) {
+    if (connected) {
+      this.props.fetchContacts();
+    }
   }
 
   render() {
@@ -69,6 +95,7 @@ export default class Contacts extends Component {
             title: 'Invite friend'
           })}
           buttonProps={{ noResize: true }}
+          scrollEnabled={false}
         >
           {members && members.length > 0 ? (
             <ContactList

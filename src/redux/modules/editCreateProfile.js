@@ -31,8 +31,6 @@ const initialState = {
   profile: makeDefaultProfile(),
   locationString: null,
   errors: null,
-  favoriteIds: [],
-  contactIds: [],
 };
 
 

@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { View } from 'react-native';
+import { View, NetInfo } from 'react-native';
 import { connect } from 'react-redux';
 import I18n from 'react-native-i18n';
 import _ from 'lodash';
@@ -41,17 +41,38 @@ class Chats extends Component {
       chats
     };
     this.filterResults = this.filterResults.bind(this);
+    this.onConnectivityChange = this.onConnectivityChange.bind(this);
   }
 
-  componentWillMount() {
-    this.props.fetchChats();
+  componentDidMount() {
+    NetInfo.isConnected.fetch().then(isConnected => {
+      if (isConnected) {
+        this.props.fetchChats();
+      }
+    });
+    NetInfo.isConnected.addEventListener(
+      'change',
+      this.onConnectivityChange
+    );
   }
-
 
   componentWillReceiveProps(nextProps) {
     this.setState({
       chats: nextProps.chats
     });
+  }
+
+  componentWillUnmount() {
+    NetInfo.isConnected.removeEventListener(
+      'change',
+      this.onConnectivityChange
+    );
+  }
+
+  onConnectivityChange(connected) {
+    if (connected) {
+      this.props.fetchChats();
+    }
   }
 
   filterResults(query) {
@@ -87,6 +108,7 @@ class Chats extends Component {
               proposedMembers: contacts,
             });
           }}
+          scrollEnabled={false}
           style={{ paddingHorizontal: 0 }}
           buttonProps={{
             style: {

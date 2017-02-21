@@ -3,6 +3,7 @@ import I18n from 'react-native-i18n';
 import {
   View,
   Text,
+  NetInfo,
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
@@ -13,8 +14,8 @@ import styles from './styles';
 
 @connect(
   state => ({
+    profile: state.editCreateProfile.profile,
     ...state.contacts,
-    ...state.editCreateProfile
   }),
   contactActions,
 )
@@ -24,10 +25,37 @@ export default class Favorites extends Component {
     favorites: PropTypes.arrayOf(PropTypes.object),
     fetchFavorites: PropTypes.func.isRequired,
     isRefreshing: PropTypes.bool,
+    profile: PropTypes.object,
   };
 
+  constructor() {
+    super();
+    this.onConnectivityChange = this.onConnectivityChange.bind(this);
+  }
+
   componentDidMount() {
-    this.props.fetchFavorites();
+    NetInfo.isConnected.fetch().then(isConnected => {
+      if (isConnected) {
+        this.props.fetchFavorites();
+      }
+    });
+    NetInfo.isConnected.addEventListener(
+      'change',
+      this.onConnectivityChange
+    );
+  }
+
+  componentWillUnmount() {
+    NetInfo.isConnected.removeEventListener(
+      'change',
+      this.onConnectivityChange
+    );
+  }
+
+  onConnectivityChange(connected) {
+    if (connected) {
+      this.props.fetchFavorites();
+    }
   }
 
   render() {
@@ -35,7 +63,7 @@ export default class Favorites extends Component {
       favorites,
       fetchFavorites,
       isRefreshing,
-      ...rest
+      profile,
     } = this.props;
 
     return (
@@ -43,6 +71,7 @@ export default class Favorites extends Component {
         buttonText={I18n.t('find_like_minded')}
         onSubmit={Actions.searchFavorites}
         buttonProps={{ noResize: true }}
+        scrollEnabled={false}
       >
         <View style={styles.container}>
           {favorites && favorites.length ? (
@@ -52,7 +81,7 @@ export default class Favorites extends Component {
               refresh={fetchFavorites}
               isRefreshing={isRefreshing}
               contactActions={contactActions}
-              {...rest}
+              profile={profile}
             />
           ) : (
             <View style={styles.noItems}>

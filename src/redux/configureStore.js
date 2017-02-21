@@ -9,7 +9,7 @@ import reducer from './modules';
 
 import rootSaga from './sagas';
 
-let PERSISTOR = null;
+let purgeFunc = null;
 
 let composeEnhancers = compose;
 if (__DEV__) {
@@ -53,10 +53,10 @@ export default function configureStore(initialState) {
   sagaMiddleware.run(rootSaga);
   const persistor = persistStore(store, {
     storage: AsyncStorage,
-    whitelist: ['auth', 'events', 'profile', 'contacts'] // only sync those to offline storage
+    whitelist: ['auth', 'events', 'profile', 'contacts', 'chats', 'editCreateProfile'] // only sync those to offline storage
   });
   // remember persistor object
-  PERSISTOR = persistor;
+  purgeFunc = persistor.purge.bind(persistor);
   // persistor.purge(); // uncomment to drop offline data
 
   return store;
@@ -64,9 +64,9 @@ export default function configureStore(initialState) {
 
 // probably call this on logout so next user won't see any unrelated offline content
 export const purgeOfflineStorage = () => {
-  if (PERSISTOR && typeof PERSISTOR.purge === 'function') {
-    PERSISTOR.purge();
+  if (purgeFunc && typeof purgeFunc === 'function') {
+    purgeFunc();
   } else {
-    console.warn('could not purge offline storage', PERSISTOR);
+    console.warn('could not purge offline storage');
   }
 };

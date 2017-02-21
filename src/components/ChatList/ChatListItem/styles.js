@@ -53,7 +53,7 @@ export default StyleSheet.create({
     fontSize: 13,
     fontWeight: 'bold',
     paddingTop: 3,
-    paddingRight: 5,
+    paddingRight: 15,
     fontFamily: 'Montserrat',
   },
   actions: {

@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import {
   View,
+  NetInfo,
 } from 'react-native';
 import { connect } from 'react-redux';
 import { connectActionSheet } from '@exponent/react-native-action-sheet';
@@ -56,8 +57,34 @@ export default class Home extends Component {
     events: PropTypes.arrayOf(PropTypes.object),
   };
 
+  constructor() {
+    super();
+    this.onConnectivityChange = this.onConnectivityChange.bind(this);
+  }
+
   componentDidMount() {
-    this.props.fetchEvents();
+    NetInfo.isConnected.fetch().then(isConnected => {
+      if (isConnected) {
+        this.props.fetchEvents();
+      }
+    });
+    NetInfo.isConnected.addEventListener(
+      'change',
+      this.onConnectivityChange
+    );
+  }
+
+  componentWillUnmount() {
+    NetInfo.isConnected.removeEventListener(
+      'change',
+      this.onConnectivityChange
+    );
+  }
+
+  onConnectivityChange(connected) {
+    if (connected) {
+      this.props.fetchEvents();
+    }
   }
 
   render() {

@@ -31,7 +31,8 @@ export default StyleSheet.create({
     backgroundColor: COLORS.DARK_GREY,
   },
   selected: {
-    padding: 12,
+    paddingTop: 12,
+    paddingLeft: 12,
     color: COLORS.WHITE,
     fontSize: 14,
     flex: 1,

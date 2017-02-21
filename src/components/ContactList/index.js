@@ -20,23 +20,33 @@ export default class ContactList extends Component {
 
   constructor(props) {
     super(props);
-    const { contacts } = props;
-    const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
+    const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => (
+        r1.contactsLength !== r2.contactsLength ||
+        r1.favoritesLength !== r2.favoritesLength
+      )
+    });
+
     this.onRefresh = this.onRefresh.bind(this);
+    const mappedContacts = props.contacts.map(c => ({
+      ...c,
+      contactsLength: props.profile.contactIds.length,
+      favoritesLength: props.profile.favoriteIds.length,
+    }));
     this.state = {
-      dataSource: ds.cloneWithRows(contacts),
+      dataSource: ds.cloneWithRows(mappedContacts),
     };
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.contacts || nextProps.profile) {
-      const contacts = nextProps.contacts.map(c => ({
+      console.log('nextProps', nextProps.profile);
+      const mappedContacts = nextProps.contacts.map(c => ({
         ...c,
         contactsLength: nextProps.profile.contactIds.length,
         favoritesLength: nextProps.profile.favoriteIds.length,
       }));
       this.setState({
-        dataSource: this.state.dataSource.cloneWithRows(contacts),
+        dataSource: this.state.dataSource.cloneWithRows(mappedContacts),
       });
     }
   }

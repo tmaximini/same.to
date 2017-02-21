@@ -10,21 +10,22 @@ export const updateProfile = data => put(
   { ...data }
 );
 
-// export const uploadImage1 = imgObj => {
-//   return RNFetchBlob.fetch('POST', `${API_BASE}members/me/upload`, {
-//     Authorization: getAuthToken(),
-//     'Content-Type': 'multipart/form-data; boundary=6ff46e0b6b5148d984f148b6542e5a5d',
-//   }, [{
-//     name: 'avatar',
-//     filename: imgObj.fileName,
-//     type: 'image/jpeg',
-//     data: RNFetchBlob.wrap(imgObj.origURL),
-//   }]).then((resp) => {
-//     console.info('upload success', resp);
-//   }).catch((err) => {
-//     console.error('upload error', err);
-//   });
-// };
+export const uploadImage = (imgObj, callback) => {
+  return RNFetchBlob.fetch('POST', `${API_BASE}members/me/upload`, {
+    Authorization: getAuthToken(),
+    'Content-Type': 'multipart/form-data; boundary=6ff46e0b6b5148d984f148b6542e5a5d',
+  }, [{
+    name: 'file',
+    filename: imgObj.fileName,
+    type: 'image/jpeg',
+    data: imgObj.data,
+  }]).then((resp) => {
+    console.info('upload success', resp);
+    callback();
+  }).catch((err) => {
+    console.error('upload error', err);
+  });
+};
 
 
 // export const uploadImage2 = imgObj => {
@@ -41,22 +42,22 @@ export const updateProfile = data => put(
 // };
 
 
-export const uploadImage = imgObj => {
-  const formData = new FormData();
-  formData.append('image', { uri: imgObj.origURL, name: imgObj.fileName });
-  // formData.append('description', String(data.description));
+// export const uploadImage = imgObj => {
+//   const formData = new FormData();
+//   formData.append('image', { uri: imgObj.origURL, name: imgObj.fileName });
+//   // formData.append('description', String(data.description));
 
-  const options = {
-    headers: {
-      'Content-Type': 'multipart/form-data; boundary=--gc0p4Jq0M2Yt08jU534c0p--',
-      Authorization: getAuthToken(),
-    },
-    body: formData,
-    method: 'POST',
-  };
-  return fetch(`${API_BASE}members/me/upload`, options)
-    .then((response) => {
-      console.log('response', response);
-    })
-    .catch(err => console.info({ err }));
-};
+//   const options = {
+//     headers: {
+//       'Content-Type': 'multipart/form-data; boundary=--gc0p4Jq0M2Yt08jU534c0p--',
+//       Authorization: getAuthToken(),
+//     },
+//     body: formData,
+//     method: 'POST',
+//   };
+//   return fetch(`${API_BASE}members/me/upload`, options)
+//     .then((response) => {
+//       console.log('response', response);
+//     })
+//     .catch(err => console.info({ err }));
+// };
