@@ -72,11 +72,6 @@ class SearchFavorites extends Component {
         buttonDisabled={!this.isValid()}
       >
         <View style={styles.wrapper}>
-          <Input
-            value={interests}
-            placeholder={I18n.t('interests')}
-            onChangeText={text => this.setState({ interests: text })}
-          />
           <GeoInput
             focus={this.state.geoFocus}
             onFocus={() => this.setState({ geoFocus: true })}
@@ -87,6 +82,11 @@ class SearchFavorites extends Component {
             onChangeText={text => this.setState({ locationString: text })}
             onAdressSelect={geocodeLocation}
             zIndex={99}
+          />
+          <Input
+            value={interests}
+            placeholder={I18n.t('interests')}
+            onChangeText={text => this.setState({ interests: text })}
           />
           <Text style={styles.radius}>{I18n.t('radius')}: + {radius} km</Text>
           <View style={styles.sliderWrap}>
