@@ -77,7 +77,6 @@ class Chats extends Component {
 
   filterResults(query) {
     const q = query.toLowerCase();
-    console.log('filtering', q);
     this.setState({
       chats: _.filter(this.props.chats, item =>
         (item.subject && item.subject.toLowerCase().includes(q))

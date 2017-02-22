@@ -38,6 +38,8 @@ export default class Detail extends Component {
     const userId = getUserId();
     const { item, toggleParticipate, resetChat, profile, ...rest } = this.props;
 
+    console.log('profile', profile);
+
     return (
       <View style={styles.container}>
         <ItemDetail

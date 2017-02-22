@@ -6,7 +6,7 @@ import styles from './styles';
 const Privacy = () => (
   <ScrollView style={styles.container}>
     <Text style={styles.impressumText}>
-      {I18n.t('impressumText')}
+      {I18n.t('privacyText')}
     </Text>
   </ScrollView>
 );

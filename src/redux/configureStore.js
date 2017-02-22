@@ -67,6 +67,6 @@ export const purgeOfflineStorage = () => {
   if (purgeFunc && typeof purgeFunc === 'function') {
     purgeFunc();
   } else {
-    console.warn('could not purge offline storage');
+    console.warn('could not purge offline storage', typeof purgeFunc, purgeFunc);
   }
 };

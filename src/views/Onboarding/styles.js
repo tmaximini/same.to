@@ -14,7 +14,7 @@ export default StyleSheet.create({
     alignSelf: 'stretch',
     justifyContent: 'center',
     marginTop: PADDINGS.DOUBLE,
-    marginBottom: PADDINGS.DOUBLE * 2,
+    marginBottom: PADDINGS.DOUBLE,
   },
   image: {
     width: 150,
