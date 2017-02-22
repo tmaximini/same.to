@@ -198,9 +198,7 @@ function* addRemoveRemote({ action, params, successAction, errorAction, successP
       // success
       yield put({
         type: successAction,
-        payload: successParams || {
-          contact: response
-        }
+        payload: successParams,
       });
     }
   } catch (error) {
@@ -217,6 +215,7 @@ export function* addFavoriteAsync(action) {
   yield addRemoveRemote({
     action: addFavorite,
     params: contact,
+    successParams: { contact },
     successAction: ADD_FAVORITE_SUCCESS,
     errorAction: ADD_FAVORITE_ERROR,
   });
@@ -227,6 +226,7 @@ export function* addContactAsync(action) {
   yield addRemoveRemote({
     action: addContact,
     params: contact,
+    successParams: { contact },
     successAction: ADD_CONTACT_SUCCESS,
     errorAction: ADD_CONTACT_ERROR,
   });
