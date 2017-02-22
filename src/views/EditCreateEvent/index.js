@@ -31,6 +31,9 @@ export default class EditCreatevent extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      geoFocus: false,
+    };
     this.saveItem = this.saveItem.bind(this);
   }
 
@@ -71,6 +74,9 @@ export default class EditCreatevent extends Component {
           value={name}
         />
         <GeoInput
+          focus={this.state.geoFocus}
+          onFocus={() => this.setState({ geoFocus: true })}
+          onBlur={() => this.setState({ geoFocus: false })}
           placeholder="Where?"
           enablePoweredByContainer={false}
           value={locationString}

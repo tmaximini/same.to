@@ -34,6 +34,10 @@ export default class EditCreateTrip extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      geoFocusFrom: false,
+      geoFocusTo: false,
+    };
     this.saveItem = this.saveItem.bind(this);
   }
 
@@ -91,6 +95,9 @@ export default class EditCreateTrip extends Component {
           grow={false}
         />
         <GeoInput
+          focus={this.state.geoFocusFrom}
+          onFocus={() => this.setState({ geoFocusFrom: true })}
+          onBlur={() => this.setState({ geoFocusFrom: false })}
           placeholder={I18n.t('from')}
           enablePoweredByContainer={false}
           value={pickupString}
@@ -99,6 +106,9 @@ export default class EditCreateTrip extends Component {
           zIndex={2}
         />
         <GeoInput
+          focus={this.state.geoFocusTo}
+          onFocus={() => this.setState({ geoFocusTo: true })}
+          onBlur={() => this.setState({ geoFocusTo: false })}
           placeholder={I18n.t('to')}
           enablePoweredByContainer={false}
           value={destinationString}

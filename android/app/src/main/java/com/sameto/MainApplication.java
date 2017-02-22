@@ -45,7 +45,6 @@ public class MainApplication extends Application implements ReactApplication {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
             new RNFSPackage(),
-            new PickerViewPackage(),
             new RNFetchBlobPackage(),
             new RNDeviceInfo(),
             new BlurViewPackage(),
@@ -53,8 +52,8 @@ public class MainApplication extends Application implements ReactApplication {
             new ReactNativeI18n(),
             new RNGeocoderPackage(),
             new FBSDKPackage(mCallbackManager),
-            new BlurViewPackage()
             new ImagePickerPackage(),
+            new PickerViewPackage()
       );
     }
   };

@@ -32,6 +32,7 @@ class SearchFavorites extends Component {
     this.isValid = this.isValid.bind(this);
     this.state = {
       radius: 10,
+      geoFocus: false,
     };
   }
 
@@ -77,6 +78,9 @@ class SearchFavorites extends Component {
             onChangeText={text => this.setState({ interests: text })}
           />
           <GeoInput
+            focus={this.state.geoFocus}
+            onFocus={() => this.setState({ geoFocus: true })}
+            onBlur={() => this.setState({ geoFocus: false })}
             placeholder={I18n.t('location')}
             enablePoweredByContainer={false}
             value={locationString || favoritesSearchLocation.formattedAddress}

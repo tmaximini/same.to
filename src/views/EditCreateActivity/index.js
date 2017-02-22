@@ -34,6 +34,9 @@ export default class EditCreateActivity extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      geoFocus: false,
+    };
     this.saveItem = this.saveItem.bind(this);
   }
 
@@ -83,6 +86,9 @@ export default class EditCreateActivity extends Component {
           grow={false}
         />
         <GeoInput
+          focus={this.state.geoFocus}
+          onFocus={() => this.setState({ geoFocus: true })}
+          onBlur={() => this.setState({ geoFocus: false })}
           placeholder={I18n.t('location')}
           enablePoweredByContainer={false}
           value={locationString}

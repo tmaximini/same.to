@@ -52,7 +52,8 @@ export default class EditCreateProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      avatarSource: null
+      avatarSource: null,
+      geoFocus: false,
     };
     this.handleImageUpload = this.handleImageUpload.bind(this);
     this.isValid = this.isValid.bind(this);
@@ -187,6 +188,9 @@ export default class EditCreateProfile extends Component {
             onChangeText={(text) => update('company', text)}
           />
           <GeoInput
+            focus={this.state.geoFocus}
+            onFocus={() => this.setState({ geoFocus: true })}
+            onBlur={() => this.setState({ geoFocus: false })}
             placeholder={I18n.t('city')}
             enablePoweredByContainer={false}
             value={locationString || locality}
