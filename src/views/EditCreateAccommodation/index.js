@@ -37,6 +37,7 @@ export default class EditCreateAccommodation extends Component {
   constructor(props) {
     super(props);
     this.saveItem = this.saveItem.bind(this);
+    this.isValid = this.isValid.bind(this);
   }
 
   saveItem(item) {
@@ -45,6 +46,14 @@ export default class EditCreateAccommodation extends Component {
     } else {
       this.props.createAccommodation(item, this.props.eventId);
     }
+  }
+
+  isValid() {
+    const { accommodation } = this.props;
+    // required fields
+    const { startAt, location } = accommodation;
+
+    return startAt && location && location.locality;
   }
 
   makeOverstays = () => {
@@ -64,7 +73,7 @@ export default class EditCreateAccommodation extends Component {
       accommodation,
     } = this.props;
 
-    const { overnightStays, startAt, name } = accommodation;
+    const { overnightStays } = accommodation;
 
     const today = formatDate(new Date());
 
@@ -72,7 +81,7 @@ export default class EditCreateAccommodation extends Component {
       <Form
         buttonText={accommodation.id ? I18n.t('save') : I18n.t('create')}
         onSubmit={() => this.saveItem(accommodation)}
-        buttonDisabled={!startAt || !name}
+        buttonDisabled={!this.isValid()}
       >
         <CheckboxList
           label={I18n.t('accommodations')}

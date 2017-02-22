@@ -61,8 +61,10 @@ export default class EditCreateProfile extends Component {
 
   isValid() {
     const { profile } = this.props;
-    const { firstName, lastName, location } = profile;
-    return firstName && lastName && location;
+    // required fields
+    const { firstName, lastName, location, interests } = profile;
+
+    return firstName && lastName && location && interests.length;
   }
 
   handleImageUpload() {

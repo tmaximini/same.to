@@ -37,6 +37,7 @@ export default class EditCreateActivity extends Component {
     this.state = {
       geoFocus: false,
     };
+    this.isValid = this.isValid.bind(this);
     this.saveItem = this.saveItem.bind(this);
   }
 
@@ -47,6 +48,15 @@ export default class EditCreateActivity extends Component {
       this.props.createActivity(item, this.props.eventId);
     }
   }
+
+  isValid() {
+    const { activity } = this.props;
+    // required fields
+    const { startAt, location } = activity;
+
+    return startAt && location && location.locality;
+  }
+
 
   render() {
     const {
@@ -64,7 +74,7 @@ export default class EditCreateActivity extends Component {
       <Form
         buttonText={activity.id ? I18n.t('save') : I18n.t('create')}
         onSubmit={() => this.saveItem(activity)}
-        buttonDisabled={!activity.startAt || !activity.name}
+        buttonDisabled={!this.isValid()}
       >
         <CheckboxList
           label={I18n.t('activities')}
