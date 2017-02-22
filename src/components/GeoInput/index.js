@@ -4,6 +4,8 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { COLORS } from '../../constants';
 
+const isIOS = Platform.OS === 'ios';
+
 const styles = {
   container: {
     flexGrow: 1,
@@ -67,11 +69,11 @@ const GeoInput = ({
   const containerStyles = {
     zIndex: zIndex || 1,
     marginBottom: 12,
-    flexGrow: (grow || focus ? 1 : 0)
+    flexGrow: (grow || (focus && !isIOS) ? 1 : 0)
   };
 
   const getStyles = () => {
-    if (Platform.OS === 'ios') {
+    if (isIOS) {
       return styles;
     }
     const focusStyles = Object.assign({},
@@ -108,12 +110,13 @@ const GeoInput = ({
         getDefaultValue={() => rest.value}
         textInputProps={{
           onFocus,
+          autoCorrect: false
         }}
         // available options: https://developers.google.com/places/web-service/autocomplete
         query={{
           key: GOOGLE_MAPS_API_KEY,
           language: 'de', // language of the results
-          // types: '(cities)', // default: 'geocode'
+          types: '(regions)', // default: 'geocode'
         }}
         styles={getStyles()}
 
@@ -130,7 +133,6 @@ const GeoInput = ({
         //   rankby: 'distance',
         //   types: 'food',
         // }}
-
       />
     </View>
   );
