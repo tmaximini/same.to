@@ -183,7 +183,9 @@ export function* searchFavoritesAsync(action) {
   }
 }
 
-function* addRemoveRemote({ action, params, successAction, errorAction, successParams }) {
+function* addRemoveRemote({
+  action, params, successAction, extraAction, errorAction, successParams
+}) {
   try {
     const response = yield call(action, params);
     if (response.error) {
@@ -200,6 +202,11 @@ function* addRemoveRemote({ action, params, successAction, errorAction, successP
         type: successAction,
         payload: successParams,
       });
+      if (extraAction) {
+        yield put({
+          type: extraAction
+        });
+      }
     }
   } catch (error) {
     console.log({ error });
@@ -217,6 +224,7 @@ export function* addFavoriteAsync(action) {
     params: contact,
     successParams: { contact },
     successAction: ADD_FAVORITE_SUCCESS,
+    extraAction: FETCH_FAVORITES_START,
     errorAction: ADD_FAVORITE_ERROR,
   });
 }
@@ -228,6 +236,7 @@ export function* addContactAsync(action) {
     params: contact,
     successParams: { contact },
     successAction: ADD_CONTACT_SUCCESS,
+    extraAction: FETCH_CONTACTS_START,
     errorAction: ADD_CONTACT_ERROR,
   });
 }
@@ -239,6 +248,7 @@ export function* removeFavoriteAsync(action) {
     params: contact.id,
     successParams: { id: contact.id },
     successAction: REMOVE_FAVORITE_SUCCESS,
+    extraAction: FETCH_FAVORITES_START,
     errorAction: REMOVE_FAVORITE_ERROR,
   });
 }
@@ -250,6 +260,7 @@ export function* removeContactAsync(action) {
     params: contact.id,
     successParams: { id: contact.id },
     successAction: REMOVE_CONTACT_SUCCESS,
+    extraAction: FETCH_CONTACTS_START,
     errorAction: REMOVE_CONTACT_ERROR,
   });
 }
