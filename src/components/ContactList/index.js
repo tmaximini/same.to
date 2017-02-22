@@ -4,7 +4,7 @@ import { ListView, RefreshControl } from 'react-native';
 import ContactListItem from '../ContactCheckList/ContactCheckListItem';
 import styles from './styles';
 import { COLORS } from '../../constants';
-// import { border } from '../../utils';
+import { getUserId } from '../../services/api';
 
 export default class ContactList extends Component {
 
@@ -64,7 +64,7 @@ export default class ContactList extends Component {
         automaticallyAdjustContentInsets={false}
         style={[styles.container, style]}
         dataSource={this.state.dataSource}
-        renderRow={contact => (
+        renderRow={contact => (contact.id !== getUserId()) && (
           <ContactListItem
             contact={contact}
             setCurrentContact={setCurrentContact}
