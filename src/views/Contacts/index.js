@@ -8,7 +8,7 @@ import {
 import { connect } from 'react-redux';
 import Search from '../../components/Search';
 import ContactList from '../../components/ContactList';
-import Form from '../../layouts/form';
+import Button from '../../components/Button';
 import { share } from '../../utils';
 
 import { actions as contactActions } from '../../redux/modules/contacts';
@@ -87,15 +87,8 @@ export default class Contacts extends Component {
             searchContacts(text);
           }}
         />
-        <Form
-          buttonText={I18n.t('invite_friends')}
-          onSubmit={share({
-            message: 'Join me on same.to',
-            url: 'sameto://invite/url/to/be/defined',
-            title: 'Invite friend'
-          })}
-          buttonProps={{ noResize: true }}
-          scrollEnabled={false}
+        <View
+          style={styles.wrapper}
         >
           {members && members.length > 0 ? (
             <ContactList
@@ -118,7 +111,17 @@ export default class Contacts extends Component {
               )}
             </View>
           )}
-        </Form>
+        </View>
+        <Button
+          text={I18n.t('invite_friends')}
+          onPress={share({
+            message: 'Join me on same.to',
+            url: 'sameto://invite/url/to/be/defined',
+            title: 'Invite friend'
+          })}
+          style={{ marginHorizontal: 12 }}
+          noResize
+        />
       </View>
     );
   }

@@ -8,7 +8,7 @@ import {
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import ContactList from '../../components/ContactList';
-import Form from '../../layouts/form';
+import Button from '../../components/Button';
 import { actions as contactActions } from '../../redux/modules/contacts';
 import styles from './styles';
 
@@ -67,13 +67,10 @@ export default class Favorites extends Component {
     } = this.props;
 
     return (
-      <Form
-        buttonText={I18n.t('find_like_minded')}
-        onSubmit={Actions.searchFavorites}
-        buttonProps={{ noResize: true }}
-        scrollEnabled={false}
+      <View
+        style={styles.container}
       >
-        <View style={styles.container}>
+        <View style={styles.wrapper}>
           {favorites && favorites.length ? (
             <ContactList
               noIcons
@@ -91,7 +88,12 @@ export default class Favorites extends Component {
             </View>
           )}
         </View>
-      </Form>
+        <Button
+          onPress={Actions.searchFavorites}
+          text={I18n.t('find_like_minded')}
+          noResize
+        />
+      </View>
     );
   }
 }

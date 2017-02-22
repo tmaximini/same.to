@@ -9,7 +9,7 @@ import {
   actions as chatActions
 } from '../../redux/modules/chats';
 import ChatList from '../../components/ChatList';
-import Form from '../../layouts/form';
+import Button from '../../components/Button';
 import Search from '../../components/Search';
 import styles from './styles';
 
@@ -100,22 +100,7 @@ class Chats extends Component {
           onSearch={text => this.filterResults(text)}
           onChange={text => this.filterResults(text)}
         />
-        <Form
-          buttonText={I18n.t('create_chat')}
-          onSubmit={() => {
-            Actions.editCreateChat({
-              proposedSubject: '',
-              proposedMembers: contacts,
-            });
-          }}
-          scrollEnabled={false}
-          style={{ paddingHorizontal: 0 }}
-          buttonProps={{
-            style: {
-              marginHorizontal: 12
-            }
-          }}
-        >
+        <View style={styles.wrapper}>
           <ChatList
             {...this.props}
             chats={chats}
@@ -123,7 +108,18 @@ class Chats extends Component {
             isRefreshing={isRefreshing}
             refresh={fetchChats}
           />
-        </Form>
+        </View>
+        <Button
+          text={I18n.t('create_chat')}
+          onPress={() => {
+            Actions.editCreateChat({
+              proposedSubject: '',
+              proposedMembers: contacts,
+            });
+          }}
+          style={{ marginHorizontal: 12 }}
+          noResize
+        />
       </View>
     );
   }

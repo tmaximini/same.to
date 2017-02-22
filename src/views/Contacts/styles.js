@@ -6,6 +6,11 @@ export default StyleSheet.create({
     flex: 1,
     backgroundColor: COLORS.BG_GREY,
   },
+  wrapper: {
+    flex: 1,
+    paddingTop: PADDINGS.STANDARD,
+    paddingHorizontal: PADDINGS.STANDARD,
+  },
   noItems: {
     padding: PADDINGS.STANDARD,
     flex: 1,

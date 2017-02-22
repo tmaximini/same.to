@@ -5,6 +5,11 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: COLORS.BG_GREY,
+    paddingTop: PADDINGS.STANDARD,
+    paddingHorizontal: PADDINGS.STANDARD,
+  },
+  wrapper: {
+    flex: 1,
   },
   noItems: {
     padding: PADDINGS.STANDARD,
