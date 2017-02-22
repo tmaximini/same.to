@@ -40,6 +40,7 @@ export default class Splash extends Component {
 
   static propTypes = {
     loggedIn: PropTypes.bool.isRequired,
+    rehydrateFinished: PropTypes.bool,
     getActivityTypes: PropTypes.func.isRequired,
     fetchContacts: PropTypes.func.isRequired,
     getTripTypes: PropTypes.func.isRequired,
@@ -82,7 +83,8 @@ export default class Splash extends Component {
 
   onConnectivityChange(connected) {
     console.log('connected change', connected);
-    if (connected) {
+    const { rehydrateFinished, loggedIn } = this.props;
+    if (connected && rehydrateFinished && loggedIn) {
       const {
         getTripTypes,
         getAccommodationTypes,

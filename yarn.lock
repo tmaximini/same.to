@@ -3450,7 +3450,7 @@ load-json-file@^1.0.0:
     pinkie-promise "^2.0.0"
     strip-bom "^2.0.0"
 
-lodash-es@^4.16.0, lodash-es@^4.2.0, lodash-es@^4.2.1:
+lodash-es@^4.17.4, lodash-es@^4.2.0, lodash-es@^4.2.1:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.4.tgz#dcc1d7552e150a0640073ba9cb31d70f032950e7"
 
@@ -4937,13 +4937,13 @@ redux-logger@^2.7.4:
   dependencies:
     deep-diff "0.3.4"
 
-redux-persist@^4.0.1:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/redux-persist/-/redux-persist-4.1.0.tgz#53cd3e6af958192d2858a61b0873c0a77e544f57"
+redux-persist@^4.4.2:
+  version "4.4.2"
+  resolved "https://registry.yarnpkg.com/redux-persist/-/redux-persist-4.4.2.tgz#0e874284f3d155215d1f33f48fadfc850526618e"
   dependencies:
     json-stringify-safe "^5.0.1"
-    lodash "^4.11.1"
-    lodash-es "^4.16.0"
+    lodash "^4.17.4"
+    lodash-es "^4.17.4"
 
 redux-saga@^0.14.0:
   version "0.14.3"
