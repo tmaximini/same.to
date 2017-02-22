@@ -10,6 +10,7 @@ export default StyleSheet.create({
     borderWidth: 1,
     borderColor: COLORS.DARK_GREY,
     marginBottom: PADDINGS.STANDARD,
+    marginHorizontal: PADDINGS.STANDARD,
     height: 100,
     borderRadius: 5,
     overflow: 'hidden',

@@ -6,9 +6,9 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     height: 140,
-    marginBottom: PADDINGS.STANDARD,
+    paddingHorizontal: PADDINGS.STANDARD,
+    paddingBottom: PADDINGS.STANDARD,
     backgroundColor: COLORS.BG_GREY,
-    borderRadius: 5,
   },
   imgWrap: {
     flex: 1,

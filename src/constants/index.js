@@ -28,7 +28,7 @@ export const PADDINGS = {
 export const MIXINS = {
   container: {
     flex: 1,
-    padding: PADDINGS.STANDARD,
+    paddingVertical: PADDINGS.STANDARD,
     backgroundColor: COLORS.BG_GREY,
   },
   floatLeft: {
