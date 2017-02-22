@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import { View } from 'react-native';
 import I18n from 'react-native-i18n';
-import SearchBar from 'react-native-material-design-searchbar';
+import SearchBar from './material-searchbar';
 import { COLORS } from '../../constants';
 
 export default class Search extends Component {

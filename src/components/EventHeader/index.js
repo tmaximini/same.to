@@ -13,7 +13,7 @@ const EventHeader = ({ event, renderTitle, onToggle, participates, background })
     source={background}
   >
     <View style={styles.header}>
-      <View style={{ flex: 2, alignItems: 'flex-start' }}>
+      <View style={{ flex: 1.5, alignItems: 'flex-start' }}>
         {event.categories && (
           <TagList
             tags={event.categories}

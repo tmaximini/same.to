@@ -19,6 +19,7 @@ export default StyleSheet.create({
   },
   title: {
     ...MIXINS.title,
+    paddingBottom: 10,
   },
   topRight: {
     position: 'absolute',

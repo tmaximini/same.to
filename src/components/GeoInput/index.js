@@ -103,11 +103,11 @@ const GeoInput = ({
         // renderDescription={(row) => row.terms[0].value} // display street only
         onPress={(data, details = null) => { // 'details' is provided when fetchDetails = true
           onAdressSelect(data.description);
+          onBlur();
         }}
         getDefaultValue={() => rest.value}
         textInputProps={{
           onFocus,
-          onBlur,
         }}
         // available options: https://developers.google.com/places/web-service/autocomplete
         query={{

@@ -109,6 +109,7 @@ const ChatListItem = ({
               <CachedImage
                 source={getChatImage()}
                 style={styles.image}
+                borderRadius={25}
                 resizeMode="cover"
               />
             </View>

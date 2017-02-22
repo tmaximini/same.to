@@ -92,6 +92,7 @@ const EventListItem = ({
       <Image
         source={event.type === 'event' ? eventFallback : activityFallback}
         style={styles.bgImage}
+        borderRadius={5}
       >
         <View style={styles.wrapper}>
           <View style={styles.top}>

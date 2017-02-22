@@ -1,8 +1,65 @@
 import React, { PropTypes } from 'react';
 import I18n from 'react-native-i18n';
-import { View, Text, TouchableOpacity, Image } from 'react-native';
+import { View, Text, TouchableOpacity, Image, StyleSheet, Dimensions } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import styles from './styles';
+import { COLORS, MIXINS, PADDINGS } from '../../../constants';
+
+const { width } = Dimensions.get('window');
+const itemWidth = (width * (1 / 4)) - PADDINGS.DOUBLE;
+const borderRadius = (itemWidth - 10) * 0.5;
+
+const styles = StyleSheet.create({
+  container: {
+    width: itemWidth,
+    marginRight: 15,
+    marginTop: 5,
+    marginBottom: PADDINGS.STANDARD,
+  },
+  circle: {
+    borderRadius: itemWidth * 0.5,
+    height: itemWidth - 10,
+    width: itemWidth - 10,
+    marginHorizontal: 5,
+    marginBottom: 3,
+    overflow: 'hidden',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  image: {
+    ...MIXINS.image,
+    borderRadius,
+    width: null,
+    height: null,
+  },
+  inactive: {
+    borderRadius,
+    borderColor: COLORS.CYAN,
+    flexGrow: 1,
+    borderWidth: 1,
+    alignSelf: 'stretch',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: COLORS.GREY_OPAQ,
+  },
+  checked: {
+    borderRadius,
+    backgroundColor: COLORS.CYAN_OPAQ,
+    flexGrow: 1,
+    alignSelf: 'stretch',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  icon: {
+    color: COLORS.WHITE,
+    backgroundColor: 'transparent',
+  },
+  itemText: {
+    color: COLORS.WHITE,
+    fontSize: 8,
+    textAlign: 'center',
+    fontFamily: 'Montserrat',
+  }
+});
 
 const appartment = require('../../../assets/Acc_Appartement.png');
 const camping = require('../../../assets/Acc_Camping.png');
@@ -67,6 +124,7 @@ const CheckboxItem = ({ item, onChange, active }) => (
       <Image
         style={styles.image}
         source={getImage(item)}
+        borderRadius={borderRadius}
       >
         <View style={styles.inactive}>
           {active && <View

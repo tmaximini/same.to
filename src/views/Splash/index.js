@@ -26,7 +26,10 @@ import { COLORS } from '../../constants';
 import styles from './styles';
 
 @connect(
-  state => state.auth,
+  state => ({
+    ...state.auth,
+    ...state.editCreateProfile,
+  }),
   {
     fetchProfile: profileActions.fetchProfile,
     getTripTypes: tripActions.getTypes,
@@ -49,6 +52,7 @@ export default class Splash extends Component {
     fetchProfile: PropTypes.func.isRequired,
     userId: PropTypes.string,
     token: PropTypes.string,
+    profile: PropTypes.object,
   };
 
   constructor() {
@@ -83,7 +87,7 @@ export default class Splash extends Component {
 
   onConnectivityChange(connected) {
     console.log('connected change', connected);
-    const { rehydrateFinished, loggedIn } = this.props;
+    const { rehydrateFinished, loggedIn, profile } = this.props;
     if (connected && rehydrateFinished && loggedIn) {
       const {
         getTripTypes,
@@ -104,16 +108,20 @@ export default class Splash extends Component {
   handleRouting = (props) => {
     if (props.rehydrateFinished) {
       if (props.loggedIn) {
-        const { userId, token } = props;
+        const { userId, token, profile } = props;
         updateUserId(userId);
         updateAuthHeader(token);
-        Actions.tabbar({ key: 'tabbar', type: 'reset' });
-        Actions.home({ type: 'replace' });
-        NetInfo.isConnected.fetch().then(isConnected => {
-          if (isConnected) {
-            this.props.fetchProfile();
-          }
-        });
+        if (profile && !profile.signupCompleted) {
+          Actions.editCreateProfile({ type: 'replace' });
+        } else {
+          Actions.tabbar({ key: 'tabbar', type: 'reset' });
+          Actions.home({ type: 'replace' });
+          NetInfo.isConnected.fetch().then(isConnected => {
+            if (isConnected) {
+              this.props.fetchProfile();
+            }
+          });
+        }
       } else {
         Actions.login({ type: 'replace' });
       }

@@ -129,6 +129,7 @@ const SubItem = ({
       <Image
         style={styles.bgImage}
         source={getImage()}
+        borderRadius={5}
       >
         <TouchableHighlight
           style={styles.touch}

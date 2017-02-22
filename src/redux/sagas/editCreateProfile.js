@@ -131,6 +131,10 @@ export function* fetchProfileAsync() {
           profile: response
         }
       });
+      if (!response.signupCompleted) {
+        yield call(delay, 100);
+        yield call(Actions.editCreateProfile, { type: 'reset' });
+      }
     }
   } catch (error) {
     console.log({ error });
