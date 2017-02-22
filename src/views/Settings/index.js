@@ -3,7 +3,6 @@ import I18n from 'react-native-i18n';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import { View, TouchableHighlight, Image, Text } from 'react-native';
-import { purgeOfflineStorage } from '../../redux/configureStore';
 import { updateAuthHeader, updateUserId } from '../../services/api';
 import { share } from '../../utils';
 import {
@@ -35,7 +34,6 @@ export default class Settings extends Component {
           this.props.logout();
           updateUserId(null);
           updateAuthHeader(null);
-          purgeOfflineStorage();
           Actions.login({ type: 'reset' });
         }
       },

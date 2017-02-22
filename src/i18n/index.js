@@ -183,6 +183,8 @@ Our web pages and their contents are subject to German copyright law. Unless exp
 Quelle: Impressum Vorlagen online erstellen - http://www.muster-vorlagen.net
     `,
     privacyText: `
+Data Privacy Policy
+
 Our website may be used without entering personal information. Different rules may apply to certain services on our site, however, and are explained separately below. We collect personal information from you (e.g. name, address, email address, telephone number, etc.) in accordance with the provisions of German data protection statutes. Information is considered personal if it can be associated exclusively to a specific natural person. The legal framework for data protection may be found in the German Federal Data Protection Act (BDSG) and the Telemedia Act (TMG). The provisions below serve to provide information as to the manner, extent and purpose for collecting, using and processing personal information by the provider.
 
 Digital Wings Ventures UG (haftungsbeschränkt)
@@ -194,6 +196,7 @@ info@same.to
 Please be aware that data transfer via the internet is subject to security risks and, therefore, complete protection against third-party access to transferred data cannot be ensured.
 
 Cookies
+
 Our website makes use of so-called cookies in order to recognize repeat use of our website by the same user/internet connection subscriber. Cookies are small text files that your internet browser downloads and stores on your computer. They are used to improve our website and services. In most cases these are so-called "session cookies" that are deleted once you leave our website.
 To an extent, however, these cookies also pass along information used to automatically recognize you. Recognition occurs through an IP address saved to the cookies. The information thereby obtained is used to improve our services and to expedite your access to the website.
 You can prevent cookies from being installed by adjusting the settings on your browser software accordingly. You should be aware, however, that by doing so you may not be able to make full use of all the functions of our website.
@@ -412,6 +415,7 @@ Website Impressum erstellt durch impressum-generator.de von der Kanzlei Hasselba
 
     privacyText: `
 Datenschutzerklärung
+
 Die Nutzung unserer Seite ist ohne eine Angabe von personenbezogenen Daten möglich. Für die Nutzung einzelner Services unserer Seite können sich hierfür abweichende Regelungen ergeben, die in diesem Falle nachstehend gesondert erläutert werden. Ihre personenbezogenen Daten (z.B. Name, Anschrift, E-Mail, Telefonnummer, u.ä.) werden von uns nur gemäß den Bestimmungen des deutschen Datenschutzrechts verarbeitet. Daten sind dann personenbezogen, wenn sie eindeutig einer bestimmten natürlichen Person zugeordnet werden können. Die rechtlichen Grundlagen des Datenschutzes finden Sie im Bundesdatenschutzgesetz (BDSG) und dem Telemediengesetz (TMG). Nachstehende Regelungen informieren Sie insoweit über die Art, den Umfang und Zweck der Erhebung, die Nutzung und die Verarbeitung von personenbezogenen Daten durch den Anbieter
 
 
@@ -424,6 +428,7 @@ info@same.to
 Wir weisen darauf hin, dass die internetbasierte Datenübertragung Sicherheitslücken aufweist, ein lückenloser Schutz vor Zugriffen durch Dritte somit unmöglich ist.
 
 Cookies
+
 Wir verwenden auf unserer Seite sog. Cookies zum Wiedererkennen mehrfacher Nutzung unseres Angebots, durch denselben Nutzer/Internetanschlussinhaber. Cookies sind kleine Textdateien, die Ihr Internet-Browser auf Ihrem Rechner ablegt und speichert. Sie dienen dazu, unseren Internetauftritt und unsere Angebote zu optimieren. Es handelt sich dabei zumeist um sog. "Session-Cookies", die nach dem Ende Ihres Besuches wieder gelöscht werden.
 Teilweise geben diese Cookies jedoch Informationen ab, um Sie automatisch wieder zu erkennen. Diese Wiedererkennung erfolgt aufgrund der in den Cookies gespeicherten IP-Adresse. Die so erlangten Informationen dienen dazu, unsere Angebote zu optimieren und Ihnen einen leichteren Zugang auf unsere Seite zu ermöglichen.
 Sie können die Installation der Cookies durch eine entsprechende Einstellung Ihres Browsers verhindern; wir weisen Sie jedoch darauf hin, dass Sie in diesem Fall gegebenenfalls nicht sämtliche Funktionen unserer Website vollumfänglich nutzen können.

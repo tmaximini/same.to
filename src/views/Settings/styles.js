@@ -18,7 +18,8 @@ export default StyleSheet.create({
     padding: PADDINGS.STANDARD,
   },
   settings: {
-    flex: 1,
+    flex: 2,
+    flexGrow: 1,
     alignSelf: 'stretch',
   },
   setting: {
@@ -32,7 +33,8 @@ export default StyleSheet.create({
     fontFamily: 'Montserrat',
   },
   logoWrapper: {
-    flex: 1,
+    flexShrink: 1,
+    flexGrow: 0,
     width: width - PADDINGS.DOUBLE,
     justifyContent: 'center',
     alignItems: 'center',
