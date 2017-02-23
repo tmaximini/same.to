@@ -92,7 +92,6 @@ export default class Contacts extends Component {
         >
           {members && members.length > 0 ? (
             <ContactList
-              noIcons
               contacts={members}
               refresh={fetchContacts}
               isRefreshing={isRefreshing}

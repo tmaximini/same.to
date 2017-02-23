@@ -73,7 +73,6 @@ export default class Favorites extends Component {
         <View style={styles.wrapper}>
           {favorites && favorites.length ? (
             <ContactList
-              noIcons
               contacts={favorites}
               refresh={fetchFavorites}
               isRefreshing={isRefreshing}
