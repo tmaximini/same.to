@@ -39,7 +39,6 @@ export default class ContactList extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.contacts || nextProps.profile) {
-      console.log('nextProps', nextProps.profile);
       const mappedContacts = nextProps.contacts.map(c => ({
         ...c,
         contactsLength: nextProps.profile.contactIds.length,

@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import { COLORS } from '../../constants';
+import { COLORS, PADDINGS } from '../../constants';
 
 export default StyleSheet.create({
   container: {
@@ -47,4 +47,16 @@ export default StyleSheet.create({
     color: COLORS.WHITE,
     fontSize: 13,
   },
+  actions: {
+    marginTop: PADDINGS.STANDARD,
+    alignItems: 'flex-end',
+    justifyContent: 'space-around',
+    flexDirection: 'row',
+  },
+  iconButton: {
+    paddingHorizontal: 10,
+  },
+  icon: {
+    color: COLORS.CYAN
+  }
 });

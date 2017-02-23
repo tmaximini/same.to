@@ -187,6 +187,11 @@ export default class EditCreateProfile extends Component {
             value={company}
             onChangeText={(text) => update('company', text)}
           />
+          <Input
+            placeholder={I18n.t('interests')}
+            value={interests ? interests.join(', ') : null}
+            onChangeText={(text) => update('interests', text.split(', '))}
+          />
           <GeoInput
             focus={this.state.geoFocus}
             onFocus={() => this.setState({ geoFocus: true })}
@@ -196,11 +201,6 @@ export default class EditCreateProfile extends Component {
             value={locationString || locality}
             onChangeText={text => update('locationString', text)}
             onAdressSelect={geocodeLocation}
-          />
-          <Input
-            placeholder={I18n.t('interests')}
-            value={interests ? interests.join(', ') : null}
-            onChangeText={(text) => update('interests', text.split(', '))}
           />
           <GenderSelect
             onChange={(val) => update('gender', val)}
