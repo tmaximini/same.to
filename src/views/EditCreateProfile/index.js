@@ -64,7 +64,7 @@ export default class EditCreateProfile extends Component {
     // required fields
     const { firstName, lastName, location, interests } = profile;
 
-    return firstName && lastName && location && interests.length;
+    return firstName && lastName && location && interests && interests.length;
   }
 
   handleImageUpload() {
