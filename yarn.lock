@@ -4499,6 +4499,10 @@ react-deep-force-update@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/react-deep-force-update/-/react-deep-force-update-1.0.1.tgz#f911b5be1d2a6fe387507dd6e9a767aa2924b4c7"
 
+react-native-blur@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-blur/-/react-native-blur-2.0.0.tgz#284b3abfb42c2d90924aa15f494ccb88d6055342"
+
 react-native-cached-image@^1.2.4:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/react-native-cached-image/-/react-native-cached-image-1.2.4.tgz#7df2f7711d713fcd080093d6e1779803df871e16"

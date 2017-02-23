@@ -4,6 +4,7 @@ import android.app.Application;
 import android.util.Log;
 
 import com.facebook.react.ReactApplication;
+import com.cmcewen.blurview.BlurViewPackage;
 import com.rnfs.RNFSPackage;
 import com.beefe.picker.PickerViewPackage;
 import com.RNFetchBlob.RNFetchBlobPackage;
@@ -42,6 +43,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new BlurViewPackage(),
             new RNFSPackage(),
             new RNFetchBlobPackage(),
             new RNDeviceInfo(),

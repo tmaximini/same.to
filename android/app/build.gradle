@@ -127,8 +127,21 @@ android {
     }
 }
 
+repositories {
+    maven { url 'https://github.com/500px/500px-android-blur/raw/master/releases/' }
+}
+
+buildscript {
+    repositories {
+        maven { url 'https://github.com/500px/500px-android-blur/raw/master/releases/' }
+    }
+    dependencies {
+        classpath 'com.fivehundredpx:blurringview:1.0.0'
+    }
+}
 
 dependencies {
+    compile project(':react-native-blur')
     compile project(':react-native-fs')
     compile project(':react-native-picker')
     compile project(':react-native-fetch-blob')
