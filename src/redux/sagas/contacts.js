@@ -41,6 +41,8 @@ import {
 } from '../../services/contacts';
 
 
+const DUMMY = [{"firstName":"thomas","lastName":"mxm","gender":"male","location":{"position":{"lat":52.3720683,"lng":9.7356861},"formattedAddress":"Hannover, Deutschland","feature":null,"streetNumber":null,"streetName":null,"postalCode":null,"locality":"Hannover","country":"Deutschland","countryCode":"DE","adminArea":"Niedersachsen","subAdminArea":"Region Hannover","subLocality":null,"id":null},"interests":[],"occupation":null,"company":null,"signupCompleted":true,"username":null,"id":"58ab71fb2e21c5d33280dcaf","deviceId":"D61D68F1-5BBE-457F-B4D7-0C927209DA35","avatar":null,"uploadedImage":null,"token":"ICdmDLfKyPGu5EdddY1nGfUlgtqP0491gpDtVRO6wkhFGGyAI52YuHC6zocwMvWS","ttl":1209600,"image":{"url":"https://same.wearekiai.de/contents/58ab724f2e21c5d33280dcb0.JPG","thumbs":{"100x100":"https://same.wearekiai.de/contents/58ab724f2e21c5d33280dcb0.JPG?dim=100x100","320x320":"https://same.wearekiai.de/contents/58ab724f2e21c5d33280dcb0.JPG?dim=320x320","720x720":"https://same.wearekiai.de/contents/58ab724f2e21c5d33280dcb0.JPG?dim=720x720"}},"isContact":false,"isFavorite":true},{"firstName":"Christian","lastName":"Neubauer","gender":"male","location":{"position":{"lat":50.3566962,"lng":7.5996166},"formattedAddress":"Koblenz, Deutschland","feature":null,"streetNumber":null,"streetName":null,"postalCode":null,"locality":"Koblenz","country":"Deutschland","countryCode":"DE","adminArea":"Rheinland-Pfalz","subAdminArea":"Koblenz","subLocality":null,"id":null},"interests":["Startups","Online Marketing","Streetfood","Snowboarden","Reisen","Basketball",""],"occupation":"CEO & Founder","company":"SAME","signupCompleted":true,"username":null,"id":"58a89455fec4af3816626cbd","deviceId":"7FF1C244-2DAD-4A4B-B637-A3FFD46FC805","image":{"url":"https://same.wearekiai.de/contents/58a8b602b00a4be63af61e64.JPG","thumbs":{"100x100":"https://same.wearekiai.de/contents/58a8b602b00a4be63af61e64.JPG?dim=100x100","320x320":"https://same.wearekiai.de/contents/58a8b602b00a4be63af61e64.JPG?dim=320x320","720x720":"https://same.wearekiai.de/contents/58a8b602b00a4be63af61e64.JPG?dim=720x720"}},"isContact":true,"isFavorite":true},{"firstName":"Thomas","lastName":"Mxmni","gender":"male","location":{"position":{"lat":52.5234051,"lng":13.4113999},"formattedAddress":"Berlin, Deutschland","feature":null,"streetNumber":null,"streetName":null,"postalCode":null,"locality":"Berlin","country":"Deutschland","countryCode":"DE","adminArea":"Berlin","subAdminArea":"Berlin","subLocality":null,"id":null},"signupCompleted":true,"username":"facebook-token.866412756834059","id":"58a57ba520a836e92c9f776a","image":{"url":"https://graph.facebook.com/v2.6/866412756834059/picture?type=square&width=720","thumbs":{"100x100":"https://graph.facebook.com/v2.6/866412756834059/picture?type=square&width=100","320x320":"https://graph.facebook.com/v2.6/866412756834059/picture?type=square&width=320","720x720":"https://graph.facebook.com/v2.6/866412756834059/picture?type=square&width=720"}},"isContact":true,"isFavorite":true}];
+
 /**
  * takes care of fetching contacts
  */
@@ -170,7 +172,7 @@ export function* searchFavoritesAsync(action) {
       yield put({
         type: SEARCH_FAVORITES_SUCCESS,
         payload: {
-          result: response
+          result: DUMMY
         }
       });
     }

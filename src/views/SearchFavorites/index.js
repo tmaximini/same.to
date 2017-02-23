@@ -1,11 +1,13 @@
 import React, { Component, PropTypes } from 'react';
 import I18n from 'react-native-i18n';
-import { View, Text, Slider } from 'react-native';
+import { View, Text, Slider, ActivityIndicator } from 'react-native';
 // import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 // import Slider from 'react-native-slider';
 import Form from '../../layouts/form';
 import Input from '../../components/Input';
+import ContactList from '../../components/ContactList';
+import HR from '../../components/HR';
 import GeoInput from '../../components/GeoInput';
 import {
   actions as contactActions
@@ -14,7 +16,10 @@ import { COLORS } from '../../constants';
 import styles from './styles';
 
 @connect(
-  state => state.contacts,
+  state => ({
+    ...state.contacts,
+    profile: state.editCreateProfile.profile,
+  }),
   contactActions
 )
 class SearchFavorites extends Component {
@@ -24,6 +29,8 @@ class SearchFavorites extends Component {
     searchFavorites: PropTypes.func.isRequired,
     geocodeLocation: PropTypes.func.isRequired,
     favoritesSearchLocation: PropTypes.object,
+    profile: PropTypes.object.isRequired,
+    isSearching: PropTypes.bool,
   }
 
   constructor(props) {
@@ -52,6 +59,7 @@ class SearchFavorites extends Component {
     const { formattedAddress, position } = favoritesSearchLocation;
     searchFavorites({
       ...this.state,
+      query: this.state.interests,
       location: formattedAddress,
       lat: position ? position.lat : null,
       lng: position ? position.lng : null,
@@ -63,6 +71,9 @@ class SearchFavorites extends Component {
     const {
       geocodeLocation,
       favoritesSearchLocation,
+      favoritesSearchResults,
+      profile,
+      isSearching,
     } = this.props;
 
     return (
@@ -70,8 +81,14 @@ class SearchFavorites extends Component {
         onSubmit={this.handleSearch}
         buttonText={I18n.t('search')}
         buttonDisabled={!this.isValid()}
+        scrollEnabled={false}
       >
         <View style={styles.wrapper}>
+          <Input
+            value={interests}
+            placeholder={I18n.t('interests')}
+            onChangeText={text => this.setState({ interests: text })}
+          />
           <GeoInput
             focus={this.state.geoFocus}
             onFocus={() => this.setState({ geoFocus: true })}
@@ -82,11 +99,6 @@ class SearchFavorites extends Component {
             onChangeText={text => this.setState({ locationString: text })}
             onAdressSelect={geocodeLocation}
             zIndex={99}
-          />
-          <Input
-            value={interests}
-            placeholder={I18n.t('interests')}
-            onChangeText={text => this.setState({ interests: text })}
           />
           <Text style={styles.radius}>{I18n.t('radius')}: + {radius} km</Text>
           <View style={styles.sliderWrap}>
@@ -101,6 +113,16 @@ class SearchFavorites extends Component {
               animateTransitions
             />
           </View>
+          {isSearching && <ActivityIndicator color={COLORS.CYAN} animated />}
+          {favoritesSearchResults && favoritesSearchResults.length > 0 && (
+            <View style={styles.searchResults}>
+              <HR />
+              <ContactList
+                contacts={favoritesSearchResults}
+                profile={profile}
+              />
+            </View>
+          )}
         </View>
       </Form>
     );

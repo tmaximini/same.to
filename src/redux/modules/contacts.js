@@ -1,4 +1,5 @@
 // import { CREATE_CONTACT_SUCCESS } from './editCreateContact';
+import { REHYDRATE } from 'redux-persist/constants';
 
 // Initial State
 const initialState = {
@@ -134,6 +135,12 @@ export const actions = {
 
 // Action Handlers
 const actionsMap = {
+  [REHYDRATE]: (state, action) => ({
+    ...state,
+    ...action.payload.contacts,
+    favoritesSearchResults: [],
+    contactSearchResults: [],
+  }),
   [FETCH_CONTACTS_START]: state => ({ ...state, isFetching: true }),
   [FETCH_FAVORITES_START]: state => ({ ...state, isFetching: true }),
   [FETCH_CONTACTS_SUCCESS]: (state, action) => {
@@ -159,10 +166,12 @@ const actionsMap = {
 
   [SEARCH_CONTACTS_START]: state => ({
     ...state,
+    contactSearchResults: [],
     isSearching: true,
   }),
   [SEARCH_FAVORITES_START]: state => ({
     ...state,
+    favoritesSearchResults: [],
     isSearching: true,
   }),
   [SEARCH_CONTACTS_SUCCESS]: (state, action) => ({
