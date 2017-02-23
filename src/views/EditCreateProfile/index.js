@@ -84,8 +84,6 @@ export default class EditCreateProfile extends Component {
     * The second arg is the callback which sends object: response (more info below in README)
     */
     ImagePicker.showImagePicker(options, (response) => {
-      console.log('Response = ', response);
-
       if (response.didCancel) {
         console.log('User cancelled image picker');
       } else if (response.error) {

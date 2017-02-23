@@ -62,7 +62,6 @@ export default class Splash extends Component {
 
   componentDidMount() {
     NetInfo.isConnected.fetch().then(isConnected => {
-      console.log('isConnected', isConnected);
       if (isConnected) {
         this.onConnectivityChange(isConnected);
       }
@@ -86,8 +85,7 @@ export default class Splash extends Component {
   }
 
   onConnectivityChange(connected) {
-    console.log('connected change', connected);
-    const { rehydrateFinished, loggedIn, profile } = this.props;
+    const { rehydrateFinished, loggedIn } = this.props;
     if (connected && rehydrateFinished && loggedIn) {
       const {
         getTripTypes,

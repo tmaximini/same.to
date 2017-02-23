@@ -42,7 +42,6 @@ export default class Select extends Component {
         Picker.hide();
       },
       onPickerSelect: data => {
-        console.log('data', items, data);
         const selection = items.filter(item => item.label === data[0]);
         onChange(selection[0].value);
       }
