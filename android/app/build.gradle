@@ -127,18 +127,6 @@ android {
     }
 }
 
-repositories {
-    maven { url 'https://github.com/500px/500px-android-blur/raw/master/releases/' }
-}
-
-buildscript {
-    repositories {
-        maven { url 'https://github.com/500px/500px-android-blur/raw/master/releases/' }
-    }
-    dependencies {
-        classpath 'com.fivehundredpx:blurringview:1.0.0'
-    }
-}
 
 dependencies {
     compile project(':react-native-fs')
@@ -146,7 +134,6 @@ dependencies {
     compile project(':react-native-fetch-blob')
     compile project(':react-native-device-info')
     compile project(':react-native-image-picker')
-    compile project(':react-native-blur')
     compile project(':react-native-fbsdk')
     compile project(':react-native-i18n')
     compile project(':react-native-geocoder')

@@ -9,12 +9,10 @@ import com.beefe.picker.PickerViewPackage;
 import com.RNFetchBlob.RNFetchBlobPackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import com.imagepicker.ImagePickerPackage;
-import com.cmcewen.blurview.BlurViewPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.i18n.reactnativei18n.ReactNativeI18n;
 import com.devfd.RNGeocoder.RNGeocoderPackage;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
-import com.cmcewen.blurview.BlurViewPackage;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -47,7 +45,6 @@ public class MainApplication extends Application implements ReactApplication {
             new RNFSPackage(),
             new RNFetchBlobPackage(),
             new RNDeviceInfo(),
-            new BlurViewPackage(),
             new VectorIconsPackage(),
             new ReactNativeI18n(),
             new RNGeocoderPackage(),

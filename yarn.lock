@@ -4499,10 +4499,6 @@ react-deep-force-update@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/react-deep-force-update/-/react-deep-force-update-1.0.1.tgz#f911b5be1d2a6fe387507dd6e9a767aa2924b4c7"
 
-react-native-blur@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/react-native-blur/-/react-native-blur-2.0.0.tgz#284b3abfb42c2d90924aa15f494ccb88d6055342"
-
 react-native-cached-image@^1.2.4:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/react-native-cached-image/-/react-native-cached-image-1.2.4.tgz#7df2f7711d713fcd080093d6e1779803df871e16"
@@ -4541,6 +4537,10 @@ react-native-debugger-open@0.3.0:
 react-native-device-info@^0.9.9:
   version "0.9.9"
   resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-0.9.9.tgz#42490719b8be2b8ffe689f3c74d56884ca05c0d7"
+
+react-native-dismiss-keyboard@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-dismiss-keyboard/-/react-native-dismiss-keyboard-1.0.0.tgz#32886242b3f2317e121f3aeb9b0a585e2b879b49"
 
 react-native-easy-grid@0.1.8:
   version "0.1.8"
