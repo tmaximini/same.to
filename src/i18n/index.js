@@ -123,6 +123,11 @@ const translations = {
     edit_trip: 'Edit trip',
     edit_accommodation: 'Edit housing',
     overnight_stays: 'overnight stays',
+    overnight_stays_count: {
+      one: '1 overnight stay',
+      other: '{{count}} overnight stays',
+      zero: '0 overnight stays',
+    },
     all_participants: 'All attendees',
     save: 'Save',
     no_search_result: 'No results for this search.',
@@ -342,6 +347,11 @@ is collected and stored solely for use by our website. When signing up for our w
     edit_trip: 'Trip editieren',
     edit_accommodation: 'Unterkunft editieren',
     overnight_stays: 'Übernachtungen',
+    overnight_stays_count: {
+      one: '1 Übernachtung',
+      other: '{{count}} Übernachtungen',
+      zero: '0 Übernachtungen',
+    },
     all_participants: 'Alle Teilnehmer',
     save: 'Speichern',
     no_search_result: 'Keine Ergebnisse zu dieser Suche.',

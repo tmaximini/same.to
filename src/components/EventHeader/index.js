@@ -39,7 +39,7 @@ const EventHeader = ({ event, renderTitle, onToggle, participates, background })
           />
           {event.overnightStays && (
             <Text style={styles.overnightStays}>
-              {event.overnightStays} {I18n.t('overnight_stays')}
+              {event.overnightStays} {I18n.t('overnight_stays_count', { count: event.overnightStays })}
             </Text>
           )}
         </View>
