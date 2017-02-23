@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, ActivityIndicator } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import dismissKeyboard from 'react-native-dismiss-keyboard';
 import I18n from 'react-native-i18n';
 import Form from '../../layouts/form';
 import Input from '../../components/Input';
@@ -23,6 +24,7 @@ export default class Feedback extends Component {
   onSubmit() {
     // TODO: handle feedback sending to server
     this.setState({ feedback: '', sending: true });
+    dismissKeyboard();
     setTimeout(() => {
       Actions.pop({ refresh: {} });
     }, 400);
@@ -50,11 +52,11 @@ export default class Feedback extends Component {
             <Input
               placeholder={I18n.t('feedback_better')}
               value={this.state.feedback}
-              numberOfLines={10}
               onChangeText={text => this.setState({ feedback: text })}
+              returnKeyType="default"
               multiline
-              returnKeyType="none"
-              style={{ height: 200 }}
+              onSubmitEditing={this.onSubmit}
+              style={{ height: 200, justifyContent: 'flex-start' }}
             />
           )}
         </View>

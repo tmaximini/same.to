@@ -15,6 +15,7 @@ import {
   LoginManager,
   AccessToken
 } from 'react-native-fbsdk';
+import dismissKeyboard from 'react-native-dismiss-keyboard';
 import Form from '../../layouts/form';
 import Input from '../../components/Input';
 import { actions as authActions } from '../../redux/modules/auth';
@@ -56,6 +57,7 @@ export default class Login extends Component {
     const { login, update, email, password } = this.props;
     if (email && password) {
       login({ email, password });
+      dismissKeyboard();
       setTimeout(() => this.props.update('isLoading', false), 2500);
     } else {
       update('error', 'E-Mail and Password required');
