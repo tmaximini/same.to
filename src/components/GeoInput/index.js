@@ -1,10 +1,8 @@
 import React, { PropTypes } from 'react';
-import { View, Platform } from 'react-native';
+import { View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { COLORS } from '../../constants';
-
-const isIOS = Platform.OS === 'ios';
 
 const styles = {
   container: {
@@ -26,7 +24,8 @@ const styles = {
     backgroundColor: COLORS.DARK_GREY,
     borderTopWidth: 0,
     borderBottomWidth: 0,
-    borderRadius: 5,
+    borderTopLeftRadius: 5,
+    borderTopRightRadius: 5,
     height: 40,
   },
   textInput: {
@@ -39,9 +38,6 @@ const styles = {
     fontFamily: 'Montserrat',
   },
   listView: {
-    zIndex: 200,
-    position: 'absolute',
-    top: 30,
     backgroundColor: COLORS.DARK_GREY,
   },
   icon: {
@@ -72,21 +68,14 @@ const GeoInput = ({
     flexGrow: (grow ? 1 : 0)
   };
 
-  const getStyles = () => {
-    if (isIOS) {
-      return styles;
+  const getStyles = () => ({
+    ...styles,
+    textInputContainer: {
+      ...styles.textInputContainer,
+      borderBottomLeftRadius: focus ? 0 : 5,
+      borderBottomRightRadius: focus ? 0 : 5,
     }
-    const focusStyles = Object.assign({},
-      styles,
-      { textInputContainer: {
-        ...styles.textInputContainer,
-        height: 200,
-      }
-    });
-    return focus
-      ? focusStyles
-      : styles;
-  };
+  });
 
   return (
     <View style={containerStyles}>
@@ -100,7 +89,7 @@ const GeoInput = ({
         placeholder={placeholder || 'Search'}
         minLength={2} // minimum length of text to search
         autoFocus={false}
-        listViewDisplayed="true" // true/false/undefined
+        //listViewDisplayed  true/false/undefined
         // fetchDetails
         // renderDescription={(row) => row.terms[0].value} // display street only
         onPress={(data, details = null) => { // 'details' is provided when fetchDetails = true
@@ -109,9 +98,11 @@ const GeoInput = ({
         }}
         getDefaultValue={() => rest.value}
         textInputProps={{
-          onFocus,
           autoCorrect: false,
           underlineColorAndroid: COLORS.DARK_GREY,
+          keyboardShouldPersistTaps: 'never',
+          onFocus,
+          onBlur,
         }}
         // available options: https://developers.google.com/places/web-service/autocomplete
         query={{
@@ -145,6 +136,8 @@ GeoInput.propTypes = {
   zIndex: PropTypes.number,
   grow: PropTypes.bool,
   focus: PropTypes.bool,
+  onFocus: PropTypes.func,
+  onBlur: PropTypes.func,
 };
 
 export default GeoInput;
