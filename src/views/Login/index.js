@@ -102,7 +102,9 @@ export default class Login extends Component {
 
 
     return (
-      <Form>
+      <Form
+        keyboardShouldPersistTaps="always"
+      >
       {isLoading ? (
         <View style={styles.loadingWrapper}>
           <ActivityIndicator

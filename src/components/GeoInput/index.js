@@ -69,7 +69,7 @@ const GeoInput = ({
   const containerStyles = {
     zIndex: zIndex || 1,
     marginBottom: 12,
-    flexGrow: (grow || (focus && !isIOS) ? 1 : 0)
+    flexGrow: (grow ? 1 : 0)
   };
 
   const getStyles = () => {
@@ -110,7 +110,8 @@ const GeoInput = ({
         getDefaultValue={() => rest.value}
         textInputProps={{
           onFocus,
-          autoCorrect: false
+          autoCorrect: false,
+          underlineColorAndroid: COLORS.DARK_GREY,
         }}
         // available options: https://developers.google.com/places/web-service/autocomplete
         query={{

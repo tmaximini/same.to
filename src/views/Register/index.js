@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
+import dismissKeyboard from 'react-native-dismiss-keyboard';
 import { actions as authActions } from '../../redux/modules/auth';
 import Input from '../../components/Input';
 import Form from '../../layouts/form';
@@ -46,6 +47,7 @@ export default class Login extends Component {
   onRegister() {
     const { register, update, email, password, deviceId } = this.props;
     if (email && password) {
+      dismissKeyboard();
       register({ email, password, deviceId });
     } else {
       update('error', 'Username, E-Mail and Password required');
@@ -64,7 +66,9 @@ export default class Login extends Component {
     } = this.props;
 
     return (
-      <Form>
+      <Form
+        keyboardShouldPersistTaps="always"
+      >
         {isLoading ? (
           <ActivityIndicator
             animating
@@ -109,6 +113,7 @@ export default class Login extends Component {
               noBackground
               onPress={() => {
                 resetErrors();
+                dismissKeyboard();
                 Actions.pop();
               }}
             />
