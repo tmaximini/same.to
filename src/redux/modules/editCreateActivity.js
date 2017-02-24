@@ -14,7 +14,7 @@ const makeDefaultActivity = () => ({
 const initialState = {
   activity: makeDefaultActivity(),
   errors: {},
-  activityTypes: ['party', 'gaming', 'shopping', 'concert', 'cinema', 'dinner', 'sport', 'gameing'],
+  activityTypes: [],
   locationString: null,
 };
 
