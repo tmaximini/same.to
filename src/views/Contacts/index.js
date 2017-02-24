@@ -5,6 +5,7 @@ import {
   Text,
   NetInfo,
 } from 'react-native';
+import _ from 'lodash';
 import { connect } from 'react-redux';
 import Search from '../../components/Search';
 import ContactList from '../../components/ContactList';
@@ -25,19 +26,21 @@ export default class Contacts extends Component {
 
   static propTypes = {
     contacts: PropTypes.arrayOf(PropTypes.object),
-    contactSearchResults: PropTypes.arrayOf(PropTypes.object),
     fetchContacts: PropTypes.func.isRequired,
-    searchContacts: PropTypes.func.isRequired,
     isRefreshing: PropTypes.bool,
     isSearching: PropTypes.bool,
   };
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    const { contacts } = props;
     this.state = {
-      searchMode: false
+      searchMode: false,
+      contactSearchResults: [],
+      contacts
     };
     this.onConnectivityChange = this.onConnectivityChange.bind(this);
+    this.filterResults = this.filterResults.bind(this);
   }
 
   componentDidMount() {
@@ -50,6 +53,12 @@ export default class Contacts extends Component {
       'change',
       this.onConnectivityChange
     );
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      contacts: nextProps.contacts,
+    });
   }
 
   componentWillUnmount() {
@@ -65,37 +74,46 @@ export default class Contacts extends Component {
     }
   }
 
+  filterResults(query) {
+    const { contacts } = this.props;
+    const q = query.toLowerCase();
+    this.setState({
+      searchMode: true,
+      contacts: _.filter(contacts, item =>
+        (item.firstName && item.firstName.toLowerCase().includes(q)) ||
+        (item.lastName && item.lastName.toLowerCase().includes(q))
+      )
+    });
+  }
+
   render() {
     const {
-      contacts,
-      contactSearchResults,
       fetchContacts,
       isRefreshing,
-      searchContacts,
       isSearching,
       ...rest,
     } = this.props;
-    const { searchMode } = this.state;
-    const members = searchMode ? contactSearchResults : contacts;
+    const { searchMode, contacts } = this.state;
 
     return (
       <View style={styles.container}>
         <Search
-          onCancel={() => this.setState({ searchMode: false })}
-          onSearch={text => {
-            this.setState({ searchMode: true });
-            searchContacts(text);
-          }}
+          onCancel={() => this.setState({
+            searchMode: false,
+            contacts: this.props.contacts,
+          })}
+          onSearch={text => this.filterResults(text)}
+          onChange={text => this.filterResults(text)}
         />
         <View
           style={styles.wrapper}
         >
-          {members && members.length > 0 ? (
+          {contacts && contacts.length > 0 ? (
             <ContactList
-              contacts={members}
+              {...rest}
+              contacts={this.state.contacts}
               refresh={fetchContacts}
               isRefreshing={isRefreshing}
-              {...rest}
             />
           ) : (
             <View style={styles.noItems}>
