@@ -69,7 +69,7 @@ export default class EditCreatevent extends Component {
         buttonDisabled={!startAt || !name || !location.locality}
       >
         <Input
-          placeholder="Event name"
+          placeholder={I18n.t('name')}
           onChangeText={text => updateEvent('name', text)}
           value={name}
         />
@@ -77,7 +77,7 @@ export default class EditCreatevent extends Component {
           focus={this.state.geoFocus}
           onFocus={() => this.setState({ geoFocus: true })}
           onBlur={() => this.setState({ geoFocus: false })}
-          placeholder="Where?"
+          placeholder={I18n.t('location')}
           enablePoweredByContainer={false}
           value={locationString}
           onChangeText={(text) => updateEvent('locationString', text)}
@@ -86,13 +86,13 @@ export default class EditCreatevent extends Component {
         />
         <InputGroup>
           <Datepicker
-            placeholder="Start Date"
+            placeholder={I18n.t('start')}
             minDate={today}
             date={startAt}
             onChange={(date) => updateEvent('startAt', date)}
           />
           <Datepicker
-            placeholder="End Date"
+            placeholder={I18n.t('end')}
             date={endAt}
             minDate={startAt || today}
             onChange={(date) => updateEvent('endAt', date)}
@@ -100,7 +100,7 @@ export default class EditCreatevent extends Component {
         </InputGroup>
         <HR />
         <OnOffSwitch
-          name="Make this event public"
+          name={I18n.t('make_event_public')}
           value={event.isPublic}
           onChange={(val) => updateEvent('isPublic', val)}
           style={{ marginBottom: 12 }}
