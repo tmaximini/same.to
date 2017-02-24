@@ -58,6 +58,7 @@ export default class Splash extends Component {
   constructor() {
     super();
     this.onConnectivityChange = this.onConnectivityChange.bind(this);
+    this.fetchAppData = this.fetchAppData.bind(this);
   }
 
   componentDidMount() {
@@ -87,21 +88,24 @@ export default class Splash extends Component {
   onConnectivityChange(connected) {
     const { rehydrateFinished, loggedIn } = this.props;
     if (connected && rehydrateFinished && loggedIn) {
-      const {
-        getTripTypes,
-        getAccommodationTypes,
-        getActivityTypes,
-        fetchFavorites,
-        fetchContacts,
-      } = this.props;
-      getTripTypes();
-      getAccommodationTypes();
-      getActivityTypes();
-      fetchFavorites();
-      fetchContacts();
+      this.fetchAppData();
     }
   }
 
+  fetchAppData() {
+    const {
+      getTripTypes,
+      getAccommodationTypes,
+      getActivityTypes,
+      fetchFavorites,
+      fetchContacts,
+    } = this.props;
+    getTripTypes();
+    getAccommodationTypes();
+    getActivityTypes();
+    fetchFavorites();
+    fetchContacts();
+  }
 
   handleRouting = (props) => {
     if (props.rehydrateFinished) {
@@ -116,7 +120,7 @@ export default class Splash extends Component {
           Actions.home({ type: 'replace' });
           NetInfo.isConnected.fetch().then(isConnected => {
             if (isConnected) {
-              this.props.fetchProfile();
+              this.fetchAppData();
             }
           });
         }
