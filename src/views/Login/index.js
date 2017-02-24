@@ -130,7 +130,7 @@ export default class Login extends Component {
             text={I18n.t('login_facebook')}
             noResize
           />
-          <Text style={styles.or}>or</Text>
+          <Text style={styles.or}>{I18n.t('or')}</Text>
           {error && <Text style={styles.error}>{error}</Text>}
           <Input
             placeholder={I18n.t('email')}

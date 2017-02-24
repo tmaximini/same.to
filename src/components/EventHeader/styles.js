@@ -37,6 +37,7 @@ export default StyleSheet.create({
   },
   overnightStays: {
     ...MIXINS.topInfo,
-    textAlign: 'left'
+    textAlign: 'left',
+    paddingTop: 2,
   }
 });

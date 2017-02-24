@@ -36,7 +36,7 @@ const getTitle = (itemType, item) => {
     default:
       return (
         <Text numberOfLines={1} style={styles.title}>
-          {item.name}
+          {item.name || I18n.t(itemType)}
         </Text>
       );
   }
@@ -77,7 +77,7 @@ const ItemDetail = ({ itemType, participates, onToggle, item, resetChat, profile
               title: `${item.name} - ${itemType}`
             })}
           >
-            <Text style={styles.boxText}>Share</Text>
+            <Text style={styles.boxText}>{I18n.t('share')}</Text>
           </TouchableHighlight>
           <TouchableHighlight
             style={[styles.box, styles.lastBox]}
@@ -87,7 +87,7 @@ const ItemDetail = ({ itemType, participates, onToggle, item, resetChat, profile
               title: `${item.name} - ${itemType}`
             })}
           >
-            <Text style={styles.boxText}>Invite</Text>
+            <Text style={styles.boxText}>{I18n.t('invite')}</Text>
           </TouchableHighlight>
         </View>
       </View>
@@ -106,7 +106,6 @@ const ItemDetail = ({ itemType, participates, onToggle, item, resetChat, profile
         onPress={() => {
           resetChat();
           Actions.editCreateChat({
-            proposedSubject: item.name,
             proposedMembers: item.members,
           });
         }}

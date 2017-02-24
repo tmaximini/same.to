@@ -15,7 +15,7 @@ export const borderRadius = size => ({
   borderRadius: size
 });
 
-export const formatDate = dateString => moment(dateString).format('YYYY-MM-DD');
+export const formatDate = dateString => moment(dateString).format('DD.MM.YYYY');
 
 export const getDateFromString = (string, delimiter = '-') => {
   if (!string) return null;

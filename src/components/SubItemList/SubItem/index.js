@@ -104,7 +104,7 @@ const SubItem = ({
     }
   };
 
-  const title = item.name ? item.name : itemType;
+  const title = item.name ? item.name : I18n.t(itemType);
 
   const getSubTitle = it => {
     const from = it.pickupLocation ? it.pickupLocation.locality : I18n.t('unknown');
