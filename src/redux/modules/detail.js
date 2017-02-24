@@ -62,7 +62,9 @@ export const actions = {
 const updateItem = (item, id, valuesToUpdate) => {
   const newItem = Object.assign({}, item);
   const index = _.findIndex(newItem.members, { id });
-  newItem.members[index] = { ...newItem.members[index], ...valuesToUpdate };
+  if (index !== -1) {
+    newItem.members[index] = { ...newItem.members[index], ...valuesToUpdate };
+  }
 
   return newItem;
 };
