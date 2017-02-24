@@ -171,13 +171,11 @@ const actionsMap = {
     error: 'Login Failed',
     isLoading: false,
   }),
-  [LOGOUT]: state => {
+  [LOGOUT]: () => {
     purgeOfflineStorage();
 
     return {
-      ...state,
-      loggedIn: false,
-      isLoading: false
+      ...initialState
     };
   },
   [UPDATE]: (state, action) => ({ ...state, [action.payload.key]: action.payload.value }),
