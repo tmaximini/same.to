@@ -112,7 +112,6 @@ class Chats extends Component {
           text={I18n.t('create_chat')}
           onPress={() => {
             Actions.editCreateChat({
-              proposedSubject: '',
               proposedMembers: contacts,
             });
           }}

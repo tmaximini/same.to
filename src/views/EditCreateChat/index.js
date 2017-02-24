@@ -23,20 +23,12 @@ export default class EditCreateActivity extends Component {
     createChat: PropTypes.func.isRequired,
     updateRemoteChat: PropTypes.func.isRequired,
     toggleChatMember: PropTypes.func.isRequired,
-    proposedSubject: PropTypes.string,
     proposedMembers: PropTypes.array,
   }
 
   constructor(props) {
     super(props);
     this.saveItem = this.saveItem.bind(this);
-  }
-
-  componentDidMount() {
-    const { updateChat, proposedSubject } = this.props;
-    if (proposedSubject) {
-      updateChat('subject', proposedSubject);
-    }
   }
 
   saveItem() {
@@ -80,6 +72,7 @@ export default class EditCreateActivity extends Component {
                 </Text>
               </View>
               <ContactCheckList
+                noIcons
                 members={proposedMembers}
                 onToggle={toggleChatMember}
                 activeMemberIds={currentChat.memberIds}

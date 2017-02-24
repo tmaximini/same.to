@@ -87,10 +87,10 @@ export default class SearchBar extends React.Component {
   }
 
   _onBlur() {
-    this.setState({ isOnFocus: false });
-    if (this.props.onBlur) {
-      this.props.onBlur();
-    }
+    // this.setState({ isOnFocus: false });
+    // if (this.props.onBlur) {
+    //   this.props.onBlur();
+    // }
     this._dismissKeyboard();
   }
 
@@ -137,7 +137,12 @@ export default class SearchBar extends React.Component {
           }
         >
           {this.state.isOnFocus ?
-            <TouchableOpacity onPress={this._dismissKeyboard}>
+            <TouchableOpacity onPress={() => {
+              this._dismissKeyboard();
+              this._onClose();
+              this.props.onBlur();
+              this.setState({ isOnFocus: false });
+            }}>
               <Icon
                 name={iconBackName} size={height * 0.5}
                 color={iconColor}

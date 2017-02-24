@@ -62,8 +62,7 @@ export default class Favorites extends Component {
     const {
       favorites,
       fetchFavorites,
-      isRefreshing,
-      profile,
+      ...rest
     } = this.props;
 
     return (
@@ -75,9 +74,7 @@ export default class Favorites extends Component {
             <ContactList
               contacts={favorites}
               refresh={fetchFavorites}
-              isRefreshing={isRefreshing}
-              contactActions={contactActions}
-              profile={profile}
+              {...rest}
             />
           ) : (
             <View style={styles.noItems}>
