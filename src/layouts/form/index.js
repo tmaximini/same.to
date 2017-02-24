@@ -52,7 +52,10 @@ Form.propTypes = {
   buttonProps: PropTypes.object,
   scrollEnabled: PropTypes.bool,
   scrollContainerStyle: PropTypes.object,
-  keyboardShouldPersistTaps: PropTypes.bool,
+  keyboardShouldPersistTaps: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.string,
+  ]),
 };
 
 Form.defaultProps = {

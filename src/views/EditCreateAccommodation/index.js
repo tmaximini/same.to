@@ -51,9 +51,9 @@ export default class EditCreateAccommodation extends Component {
   isValid() {
     const { accommodation } = this.props;
     // required fields
-    const { startAt, location } = accommodation;
+    const { startAt } = accommodation;
 
-    return startAt && location && location.locality;
+    return startAt;
   }
 
   makeOverstays = () => {
