@@ -1,4 +1,5 @@
 // import { CREATE_CONTACT_SUCCESS } from './editCreateContact';
+import _ from 'lodash';
 import { REHYDRATE } from 'redux-persist/constants';
 
 // Initial State
@@ -133,6 +134,18 @@ export const actions = {
 
 
 
+const updateListItem = (list, id, valuesToUpdate) => {
+  const newList = [...list];
+  const index = _.findIndex(newList, { id });
+  if (index !== -1) {
+    newList[index] = { ...newList[index], ...valuesToUpdate };
+  }
+
+  return newList;
+};
+
+
+
 // Action Handlers
 const actionsMap = {
   [REHYDRATE]: (state, action) => ({
@@ -188,6 +201,42 @@ const actionsMap = {
     ...state,
     favoritesSearchLocation: action.payload,
   }),
+  [ADD_CONTACT_SUCCESS]: (state, action) => {
+    const { contact } = action.payload;
+    const newList = updateListItem(state.favorites, contact.id, { isContact: true });
+
+    return {
+      ...state,
+      favorites: newList,
+    };
+  },
+  [ADD_FAVORITE_SUCCESS]: (state, action) => {
+    const { contact } = action.payload;
+    const newList = updateListItem(state.contacts, contact.id, { isFavorite: true });
+
+    return {
+      ...state,
+      contacts: newList,
+    };
+  },
+  [REMOVE_CONTACT_SUCCESS]: (state, action) => {
+    const { id } = action.payload;
+    const newList = updateListItem(state.favorites, id, { isContact: false });
+
+    return {
+      ...state,
+      favorites: newList,
+    };
+  },
+  [REMOVE_FAVORITE_SUCCESS]: (state, action) => {
+    const { id } = action.payload;
+    const newList = updateListItem(state.contacts, id, { isFavorite: false });
+
+    return {
+      ...state,
+      contacts: newList,
+    };
+  },
 };
 
 

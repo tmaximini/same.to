@@ -20,34 +20,10 @@ export default class ContactList extends Component {
 
   constructor(props) {
     super(props);
-    const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => (
-        r1.contactsLength !== r2.contactsLength ||
-        r1.favoritesLength !== r2.favoritesLength
-      )
+    this.dataSource = new ListView.DataSource({
+      rowHasChanged: (r1, r2) => r1 !== r2
     });
-
     this.onRefresh = this.onRefresh.bind(this);
-    const mappedContacts = props.contacts.map(c => ({
-      ...c,
-      contactsLength: props.profile.contactIds.length,
-      favoritesLength: props.profile.favoriteIds.length,
-    }));
-    this.state = {
-      dataSource: ds.cloneWithRows(mappedContacts),
-    };
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.contacts || nextProps.profile) {
-      const mappedContacts = nextProps.contacts.map(c => ({
-        ...c,
-        contactsLength: nextProps.profile.contactIds.length,
-        favoritesLength: nextProps.profile.favoriteIds.length,
-      }));
-      this.setState({
-        dataSource: this.state.dataSource.cloneWithRows(mappedContacts),
-      });
-    }
   }
 
   onRefresh() {
@@ -55,21 +31,21 @@ export default class ContactList extends Component {
   }
 
   render() {
-    const { setCurrentContact, refresh, style, profile, ...rest } = this.props;
+    const { setCurrentContact, refresh, style, ...rest } = this.props;
+
+    const dataSource = this.dataSource.cloneWithRows(this.props.contacts);
 
     return (
       <ListView
         enableEmptySections
         automaticallyAdjustContentInsets={false}
         style={[styles.container, style]}
-        dataSource={this.state.dataSource}
+        dataSource={dataSource}
         renderRow={contact => (contact.id !== getUserId()) && (
           <ContactListItem
+            {...rest}
             contact={contact}
             setCurrentContact={setCurrentContact}
-            isContact={profile.contactIds.includes(contact.id)}
-            isFavorite={profile.favoriteIds.includes(contact.id)}
-            {...rest}
           />
         )}
         refreshControl={

@@ -54,7 +54,7 @@ const getImage = (itemType) => {
 };
 
 
-const ItemDetail = ({ itemType, participates, onToggle, item, resetChat, profile, ...rest }) => (
+const ItemDetail = ({ itemType, participates, onToggle, item, resetChat, ...rest }) => (
   <View style={styles.container}>
     <View style={styles.top}>
       <EventHeader
@@ -95,7 +95,6 @@ const ItemDetail = ({ itemType, participates, onToggle, item, resetChat, profile
     <View style={styles.bottom}>
       <ContactList
         {...rest}
-        profile={profile}
         contacts={item.members}
       />
     </View>
@@ -129,7 +128,6 @@ ItemDetail.propTypes = {
   participates: PropTypes.bool.isRequired,
   onToggle: PropTypes.func.isRequired,
   resetChat: PropTypes.func.isRequired,
-  profile: PropTypes.object.isRequired,
 };
 
 export default ItemDetail;

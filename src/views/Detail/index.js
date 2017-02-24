@@ -26,7 +26,6 @@ import styles from './styles';
   }
 )
 export default class Detail extends Component {
-
   static propTypes = {
     item: PropTypes.object.isRequired,
     toggleParticipate: PropTypes.func.isRequired,

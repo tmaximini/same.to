@@ -22,8 +22,6 @@ const ContactListItem = ({
   onToggle,
   isActive,
   noIcons,
-  isContact,
-  isFavorite,
 }) => {
   const editFunc = () => Actions.editCreateProfile({
     profile: contact,
@@ -124,25 +122,25 @@ const ContactListItem = ({
               <View style={styles.actions}>
                 <TouchableHighlight
                   style={styles.iconButton}
-                  onPress={() => (isFavorite ? removeFavorite(contact) : addFavorite(contact))}
+                  onPress={() => (contact.isFavorite ? removeFavorite(contact) : addFavorite(contact))}
                   activeOpacity={0.6}
                   underlayColor="transparent"
                 >
                   <Icon
-                    name={isFavorite ? 'ios-star' : 'ios-star-outline'}
+                    name={contact.isFavorite ? 'ios-star' : 'ios-star-outline'}
                     style={styles.icon}
                     size={23}
                   />
                 </TouchableHighlight>
                 <TouchableHighlight
                   style={styles.iconButton}
-                  onPress={() => (isContact ? removeContact(contact) : addContact(contact))}
+                  onPress={() => (contact.isContact ? removeContact(contact) : addContact(contact))}
                   activeOpacity={0.6}
                   underlayColor="transparent"
                 >
                   <Icon
                     name="ios-person-add"
-                    name={isContact ? 'ios-person' : 'ios-person-add-outline'}
+                    name={contact.isContact ? 'ios-person' : 'ios-person-add-outline'}
                     style={styles.icon}
                     size={23}
                   />
