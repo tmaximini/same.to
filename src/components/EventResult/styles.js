@@ -13,6 +13,7 @@ export default StyleSheet.create({
   headline: {
     ...MIXINS.title,
     backgroundColor: 'transparent',
+    paddingRight: 20,
   },
   bgImage: {
     flex: 1,
@@ -32,4 +33,12 @@ export default StyleSheet.create({
     backgroundColor: COLORS.GREY_OPAQ,
     padding: PADDINGS.STANDARD,
   },
+  bookmark: {
+    position: 'absolute',
+    right: 12,
+    top: 27,
+  },
+  icon: {
+    color: COLORS.CYAN,
+  }
 });
