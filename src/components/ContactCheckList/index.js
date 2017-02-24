@@ -4,7 +4,7 @@ import ContactCheckListItem from './ContactCheckListItem';
 import { getUserId } from '../../services/api';
 import styles from './styles';
 
-const ContactCheckList = ({ members, onToggle, activeMemberIds }) => (
+const ContactCheckList = ({ members, onToggle, activeMemberIds, ...rest }) => (
   <View style={styles.container}>
     {members.map(member => (member.id !== getUserId()) && (
       <ContactCheckListItem
@@ -12,6 +12,7 @@ const ContactCheckList = ({ members, onToggle, activeMemberIds }) => (
         contact={member}
         onToggle={onToggle}
         isActive={activeMemberIds.includes(member.id)}
+        {...rest}
       />
     ))}
   </View>
