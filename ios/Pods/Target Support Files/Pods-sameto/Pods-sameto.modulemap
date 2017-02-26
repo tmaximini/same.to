@@ -1,0 +1,6 @@
+framework module Pods_sameto {
+  umbrella header "Pods-sameto-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -141,6 +141,7 @@ buildscript {
 }
 
 dependencies {
+    compile project(':react-native-fcm')
     compile project(':react-native-blur')
     compile project(':react-native-fs')
     compile project(':react-native-picker')

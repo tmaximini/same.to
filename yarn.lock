@@ -4567,6 +4567,10 @@ react-native-fbsdk@^0.5.0:
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/react-native-fbsdk/-/react-native-fbsdk-0.5.0.tgz#3ccd67d189755df11d366b8de9acb91ea2300e6e"
 
+react-native-fcm@^6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-fcm/-/react-native-fcm-6.1.0.tgz#aa05831a10c33bf61f4d5657f5e48289900a19ff"
+
 react-native-fetch-blob@^0.10.2:
   version "0.10.2"
   resolved "https://registry.yarnpkg.com/react-native-fetch-blob/-/react-native-fetch-blob-0.10.2.tgz#f3d25eec265af6f21f84d0bd0992c46425259f80"
