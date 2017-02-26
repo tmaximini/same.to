@@ -208,10 +208,8 @@ function* addRemoveRemote({
         type: successAction,
         payload: successParams,
       });
-      console.log('_.isArray(extraActions), extraActions.length', _.isArray(extraActions), extraActions.length)
       if (_.isArray(extraActions) && extraActions.length > 0) {
         for (let i = 0; i < extraActions.length; i++) {
-          console.info('extraActions[i]', extraActions[i])
           yield put({
             type: extraActions[i]
           });
