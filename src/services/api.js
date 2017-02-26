@@ -89,7 +89,7 @@ export const del = url => fetch(`${API_BASE}${url}`,
     method: 'DELETE',
     headers: getHeaders(),
   })
-  .then(response => response)
+  .then(response => (response && typeof response.json === 'function' ? response.json() : response))
   .catch(error => {
     console.info({ error });
   });
