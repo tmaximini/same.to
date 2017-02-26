@@ -56,6 +56,7 @@ export default function (WrappedComponent) {
     }
 
     componentWillUnmount() {
+      console.log('unmounting fcm');
       // stop listening for events
       this.notificationListener.remove();
       this.refreshTokenListener.remove();

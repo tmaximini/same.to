@@ -1,5 +1,6 @@
 let AUTH_TOKEN = '';
 let USER_ID = '';
+let FCM_TOKEN = '';
 
 export const API_BASE = 'https://same.wearekiai.de/api/';
 // export const API_BASE = 'http://0.0.0.0:3000/api/';
@@ -14,8 +15,13 @@ export const updateUserId = id => {
   USER_ID = id;
 };
 
+export const updateFcmToken = token => {
+  FCM_TOKEN = token;
+};
+
 export const getUserId = () => USER_ID;
 export const getAuthToken = () => AUTH_TOKEN;
+export const getFcmToken = () => FCM_TOKEN;
 
 const getHeaders = () => ({
   Accept: 'application/json',
