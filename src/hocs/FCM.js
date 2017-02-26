@@ -11,6 +11,11 @@ import { updateFcmToken } from '../services/api';
 export default function (WrappedComponent) {
   return class extends Component {
 
+    constructor() {
+      super();
+      this.showLocalNotification = this.showLocalNotification.bind(this);
+    }
+
     componentDidMount() {
       FCM.requestPermissions(); // for iOS
       FCM.getFCMToken().then(token => {
@@ -46,12 +51,24 @@ export default function (WrappedComponent) {
             default:
               break;
           }
+          this.showLocalNotification(notif);
         }
       });
       this.refreshTokenListener = FCM.on(FCMEvent.RefreshToken, (token) => {
         console.log('refresh token', token);
         // fcm token may not be available on first load, catch it here
         updateFcmToken(token);
+      });
+    }
+
+    showLocalNotification(notif) {
+      FCM.presentLocalNotification({
+        title: notif.title,
+        body: notif.body,
+        priority: 'high',
+        click_action: notif.click_action,
+        show_in_foreground: true,
+        local: true
       });
     }
 
