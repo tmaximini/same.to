@@ -109,7 +109,7 @@ export const actions = {
 const ensureDatesAreValid = event => {
   const newEvent = { ...event };
   const { startAt, endAt } = event;
-  if (isBefore(getDateFromString(endAt), getDateFromString(startAt))) {
+  if (isBefore(endAt, startAt)) {
     newEvent.endAt = newEvent.startAt;
   }
 
@@ -119,7 +119,7 @@ const ensureDatesAreValid = event => {
 
 // Action Handlers
 const actionsMap = {
-  [CREATE_EVENT_SUCCESS]: (state, action) => ({
+  [CREATE_EVENT_SUCCESS]: (state) => ({
     ...state,
     locationString: null,
     event: makeDefaultEvent(),

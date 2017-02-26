@@ -1,9 +1,9 @@
-import { formatDate, toggleArrayItem } from '../../utils';
+import { toggleArrayItem } from '../../utils';
 
 
 const makeDefaultAccommodation = () => ({
-  startAt: formatDate(new Date()),
-  endAt: formatDate(new Date()),
+  startAt: new Date(),
+  endAt: new Date(),
   location: {},
   categories: [],
   isPublic: true,

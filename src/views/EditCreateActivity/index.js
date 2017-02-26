@@ -1,9 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import I18n from 'react-native-i18n';
 import { connect } from 'react-redux';
-import { formatDate } from '../../utils';
 import Form from '../../layouts/form';
-import InputGroup from '../../components/InputGroup';
 import Input from '../../components/Input';
 import GeoInput from '../../components/GeoInput';
 import Datepicker from '../../components/Datepicker';
@@ -68,7 +66,7 @@ export default class EditCreateActivity extends Component {
       activity,
     } = this.props;
 
-    const today = formatDate(new Date());
+    const today = new Date();
 
     return (
       <Form

@@ -8,9 +8,7 @@ import GeoInput from '../../components/GeoInput';
 import Datepicker from '../../components/Datepicker';
 import OnOffSwitch from '../../components/OnOffSwitch';
 import HR from '../../components/HR';
-
 import { actions as editCreateEventActions } from '../../redux/modules/editCreateEvent';
-import { formatDate } from '../../utils';
 
 
 @connect(
@@ -60,7 +58,7 @@ export default class EditCreatevent extends Component {
       location,
     } = event;
 
-    const today = formatDate(new Date());
+    const today = new Date();
 
     return (
       <Form

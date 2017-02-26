@@ -3,6 +3,7 @@ import I18n from 'react-native-i18n';
 import { View } from 'react-native';
 import DPicker from 'react-native-datepicker';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { getDateFromString, formatDate } from '../../utils';
 import { COLORS, PADDINGS } from '../../constants';
 
 export const DatePicker = ({ date, placeholder, minDate, maxDate, onChange, grow = true }) => (
@@ -21,7 +22,7 @@ export const DatePicker = ({ date, placeholder, minDate, maxDate, onChange, grow
     />
     <DPicker
       style={{ flex: 1, marginBottom: 0 }}
-      date={date}
+      date={date ? formatDate(date) : null}
       mode="date"
       showIcon={false}
       placeholder={placeholder || 'select date'}
@@ -30,7 +31,7 @@ export const DatePicker = ({ date, placeholder, minDate, maxDate, onChange, grow
       maxDate={maxDate}
       confirmBtnText={I18n.t('confirm')}
       cancelBtnText={I18n.t('cancel')}
-      onDateChange={(nextDate) => onChange(nextDate)}
+      onDateChange={(nextDate) => onChange(getDateFromString(nextDate))}
       customStyles={{
         dateIcon: {
           position: 'absolute',
@@ -69,10 +70,10 @@ export const DatePicker = ({ date, placeholder, minDate, maxDate, onChange, grow
 );
 
 DatePicker.propTypes = {
-  date: PropTypes.string,
+  date: React.PropTypes.instanceOf(Date),
   placeholder: PropTypes.string,
-  minDate: PropTypes.string,
-  maxDate: PropTypes.string,
+  minDate: React.PropTypes.instanceOf(Date),
+  maxDate: React.PropTypes.instanceOf(Date),
   onChange: PropTypes.func.isRequired,
   grow: PropTypes.bool,
 };

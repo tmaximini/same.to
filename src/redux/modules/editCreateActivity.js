@@ -1,8 +1,8 @@
-import { formatDate, toggleArrayItem } from '../../utils';
+import { toggleArrayItem } from '../../utils';
 
 
 const makeDefaultActivity = () => ({
-  startAt: formatDate(new Date()),
+  startAt: new Date(),
   name: '',
   location: {},
   type: 'activity',

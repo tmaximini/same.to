@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import I18n from 'react-native-i18n';
 import { connect } from 'react-redux';
-import { formatDate } from '../../utils';
 import Form from '../../layouts/form';
 import OnOffSwitch from '../../components/OnOffSwitch';
 import HR from '../../components/HR';
@@ -61,7 +60,7 @@ export default class EditCreateTrip extends Component {
       trip,
     } = this.props;
 
-    const today = formatDate(new Date());
+    const today = new Date();
 
     const {
       pickupLocation, destinationLocation
