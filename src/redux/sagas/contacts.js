@@ -1,5 +1,6 @@
 import { takeLatest, call, put } from 'redux-saga/effects';
 import { Actions } from 'react-native-router-flux';
+import _ from 'lodash';
 import geocodeAsync from './geocode';
 import {
   FETCH_CONTACTS_START,
@@ -29,6 +30,9 @@ import {
   GEOCODE_LOCATION_START,
 } from '../modules/contacts';
 import { AUTHORIZATION_REQUIRED } from '../modules/auth';
+import {
+  FETCH_EVENTS_START,
+} from '../modules/events';
 import {
   fetchContacts,
   fetchFavorites,
@@ -186,7 +190,7 @@ export function* searchFavoritesAsync(action) {
 }
 
 function* addRemoveRemote({
-  action, params, successAction, extraAction, errorAction, successParams
+  action, params, successAction, extraActions, errorAction, successParams
 }) {
   try {
     const response = yield call(action, params);
@@ -204,10 +208,14 @@ function* addRemoveRemote({
         type: successAction,
         payload: successParams,
       });
-      if (extraAction) {
-        yield put({
-          type: extraAction
-        });
+      console.log('_.isArray(extraActions), extraActions.length', _.isArray(extraActions), extraActions.length)
+      if (_.isArray(extraActions) && extraActions.length > 0) {
+        for (let i = 0; i < extraActions.length; i++) {
+          console.info('extraActions[i]', extraActions[i])
+          yield put({
+            type: extraActions[i]
+          });
+        }
       }
     }
   } catch (error) {
@@ -226,7 +234,7 @@ export function* addFavoriteAsync(action) {
     params: contact,
     successParams: { contact },
     successAction: ADD_FAVORITE_SUCCESS,
-    extraAction: FETCH_FAVORITES_START,
+    extraActions: [FETCH_FAVORITES_START, FETCH_EVENTS_START],
     errorAction: ADD_FAVORITE_ERROR,
   });
 }
@@ -238,7 +246,7 @@ export function* addContactAsync(action) {
     params: contact,
     successParams: { contact },
     successAction: ADD_CONTACT_SUCCESS,
-    extraAction: FETCH_CONTACTS_START,
+    extraActions: [FETCH_FAVORITES_START, FETCH_EVENTS_START],
     errorAction: ADD_CONTACT_ERROR,
   });
 }
@@ -250,7 +258,7 @@ export function* removeFavoriteAsync(action) {
     params: contact.id,
     successParams: { id: contact.id },
     successAction: REMOVE_FAVORITE_SUCCESS,
-    extraAction: FETCH_FAVORITES_START,
+    extraActions: [FETCH_FAVORITES_START, FETCH_EVENTS_START],
     errorAction: REMOVE_FAVORITE_ERROR,
   });
 }
@@ -262,7 +270,7 @@ export function* removeContactAsync(action) {
     params: contact.id,
     successParams: { id: contact.id },
     successAction: REMOVE_CONTACT_SUCCESS,
-    extraAction: FETCH_CONTACTS_START,
+    extraActions: [FETCH_FAVORITES_START, FETCH_EVENTS_START],
     errorAction: REMOVE_CONTACT_ERROR,
   });
 }
