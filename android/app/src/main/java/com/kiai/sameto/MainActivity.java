@@ -1,4 +1,4 @@
-package com.sameto;
+package com.kiai.sameto;
 
 import com.facebook.react.ReactActivity;
 import android.content.Intent;

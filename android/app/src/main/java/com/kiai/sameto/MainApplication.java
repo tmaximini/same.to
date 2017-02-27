@@ -1,11 +1,10 @@
-package com.sameto;
+package com.kiai.sameto;
 
 import android.app.Application;
 import android.util.Log;
 
 import com.facebook.react.ReactApplication;
 import com.evollu.react.fcm.FIRMessagingPackage;
-import com.cmcewen.blurview.BlurViewPackage;
 import com.rnfs.RNFSPackage;
 import com.beefe.picker.PickerViewPackage;
 import com.RNFetchBlob.RNFetchBlobPackage;
@@ -45,7 +44,6 @@ public class MainApplication extends Application implements ReactApplication {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
             new FIRMessagingPackage(),
-            new BlurViewPackage(),
             new RNFSPackage(),
             new RNFetchBlobPackage(),
             new RNDeviceInfo(),

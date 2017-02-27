@@ -87,7 +87,7 @@ android {
     buildToolsVersion "23.0.1"
 
     defaultConfig {
-        applicationId "com.sameto"
+        applicationId "com.kiai.sameto"
         minSdkVersion 16
         targetSdkVersion 22
         versionCode 1
@@ -127,22 +127,20 @@ android {
     }
 }
 
-repositories {
-    maven { url 'https://github.com/500px/500px-android-blur/raw/master/releases/' }
-}
 
 buildscript {
     repositories {
+        mavenCentral()
+        jcenter()
         maven { url 'https://github.com/500px/500px-android-blur/raw/master/releases/' }
     }
     dependencies {
-        classpath 'com.fivehundredpx:blurringview:1.0.0'
+        classpath 'com.google.gms:google-services:3.0.0'
     }
 }
 
 dependencies {
     compile project(':react-native-fcm')
-    compile project(':react-native-blur')
     compile project(':react-native-fs')
     compile project(':react-native-picker')
     compile project(':react-native-fetch-blob')
@@ -164,3 +162,5 @@ task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.compile
     into 'libs'
 }
+
+apply plugin: 'com.google.gms.google-services'
