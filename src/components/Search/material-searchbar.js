@@ -73,7 +73,7 @@ export default class SearchBar extends React.Component {
 
   _onClose() {
     this._textInput.setNativeProps({ text: '' });
-    this.props.onSearchChange({ nativeEvent: { text : ''}});
+    this.props.onSearchChange('');
     if (this.props.onClose) {
       this.props.onClose();
     }
