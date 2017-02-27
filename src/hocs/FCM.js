@@ -94,10 +94,11 @@ export default function (WrappedComponent) {
     // })
 
     showLocalNotification(notif) {
-      console.log('local notif', notif);
+      const msg = notif.fcm || notif.notification;
       FCM.presentLocalNotification({
-        title: notif.fcm.title,
-        body: notif.fcm.body,
+        ...notif,
+        title: msg.title,
+        body: msg.body,
         sound: 'default',
         badge: 1,
         number: 1,

@@ -76,6 +76,7 @@
 		E94EA1E11E534DF800F655AB /* Montserrat-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E95B6D1F1E534BF20035B5A5 /* Montserrat-Regular.otf */; };
 		E94EA1E21E534DF800F655AB /* Montserrat-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E95B6D201E534BF20035B5A5 /* Montserrat-SemiBold.otf */; };
 		E94EA1E31E534DF800F655AB /* Montserrat-UltraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = E95B6D211E534BF20035B5A5 /* Montserrat-UltraLight.otf */; };
+		E97A331B1E6425C600E63B71 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E97A331A1E6425C600E63B71 /* GameKit.framework */; };
 		E98C675E1E48C40D00DEDF65 /* HockeySDK.embeddedframework in Resources */ = {isa = PBXBuildFile; fileRef = E98C675D1E48C40D00DEDF65 /* HockeySDK.embeddedframework */; };
 		E98C67601E48C41400DEDF65 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E98C675F1E48C41400DEDF65 /* HockeySDK.framework */; };
 		E9EDF76D1E59A6AA00D6B7B2 /* Images-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9EDF76C1E59A6AA00D6B7B2 /* Images-2.xcassets */; };
@@ -454,7 +455,6 @@
 		E0328E6D32D84F3BB4DFA177 /* libRNImagePicker.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNImagePicker.a; sourceTree = "<group>"; };
 		E33E500F42F74616AEFB65D7 /* Montserrat-SemiBold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-SemiBold.otf"; path = "../src/assets/fonts/Montserrat-SemiBold.otf"; sourceTree = "<group>"; };
 		E94E56DD1E63584C0055C4DC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "sameto/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		E952C96E1E631F870074C11C /* sameto.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = sameto.entitlements; path = sameto/sameto.entitlements; sourceTree = "<group>"; };
 		E95B6D1A1E534BF20035B5A5 /* Montserrat-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Black.otf"; sourceTree = "<group>"; };
 		E95B6D1B1E534BF20035B5A5 /* Montserrat-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.otf"; sourceTree = "<group>"; };
 		E95B6D1C1E534BF20035B5A5 /* Montserrat-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBold.otf"; sourceTree = "<group>"; };
@@ -463,6 +463,8 @@
 		E95B6D1F1E534BF20035B5A5 /* Montserrat-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.otf"; sourceTree = "<group>"; };
 		E95B6D201E534BF20035B5A5 /* Montserrat-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.otf"; sourceTree = "<group>"; };
 		E95B6D211E534BF20035B5A5 /* Montserrat-UltraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-UltraLight.otf"; sourceTree = "<group>"; };
+		E97A33151E6422C700E63B71 /* sameto.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = sameto.entitlements; path = sameto/sameto.entitlements; sourceTree = "<group>"; };
+		E97A331A1E6425C600E63B71 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		E98C675B1E48C37200DEDF65 /* HockeySDK.embeddedframework */ = {isa = PBXFileReference; lastKnownFileType = folder; name = HockeySDK.embeddedframework; path = "HockeySDK-iOS/HockeySDK.embeddedframework"; sourceTree = "<group>"; };
 		E98C675D1E48C40D00DEDF65 /* HockeySDK.embeddedframework */ = {isa = PBXFileReference; lastKnownFileType = folder; name = HockeySDK.embeddedframework; path = "HockeySDK-iOS/HockeySDK.embeddedframework"; sourceTree = "<group>"; };
 		E98C675F1E48C41400DEDF65 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HockeySDK.framework; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDK.framework"; sourceTree = "<group>"; };
@@ -524,6 +526,7 @@
 				62100918FCF149F5B0A5D2A7 /* libRCTFBSDK.a in Frameworks */,
 				AC04EF1344744ED084498634 /* libRNImagePicker.a in Frameworks */,
 				E98C67601E48C41400DEDF65 /* HockeySDK.framework in Frameworks */,
+				E97A331B1E6425C600E63B71 /* GameKit.framework in Frameworks */,
 				09FE2530CDC5401EAB546928 /* libRNDeviceInfo.a in Frameworks */,
 				793868F427A742D6BD903B6D /* libRNSearchBar.a in Frameworks */,
 				BAEA450126024B2191CB7191 /* libRNFetchBlob.a in Frameworks */,
@@ -618,8 +621,8 @@
 		13B07FAE1A68108700A75B9A /* sameto */ = {
 			isa = PBXGroup;
 			children = (
+				E97A33151E6422C700E63B71 /* sameto.entitlements */,
 				E94E56DD1E63584C0055C4DC /* GoogleService-Info.plist */,
-				E952C96E1E631F870074C11C /* sameto.entitlements */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -843,6 +846,7 @@
 		E98C675A1E48C37200DEDF65 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E97A331A1E6425C600E63B71 /* GameKit.framework */,
 				E98C675B1E48C37200DEDF65 /* HockeySDK.embeddedframework */,
 				48172F1089B93DA7EE942A7B /* Pods_sameto.framework */,
 				F0BB412F9FAB9A23CAB484F4 /* Pods_sametoTests.framework */,
@@ -975,6 +979,12 @@
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
+							com.apple.GameCenter = {
+								enabled = 1;
+							};
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
 							com.apple.InterAppAudio = {
 								enabled = 0;
 							};
@@ -982,7 +992,10 @@
 								enabled = 1;
 							};
 							com.apple.Push = {
-								enabled = 0;
+								enabled = 1;
+							};
+							com.apple.SafariKeychain = {
+								enabled = 1;
 							};
 							com.apple.Wallet = {
 								enabled = 0;
@@ -1671,7 +1684,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = sameto/sameto.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Thomas Maximini (JLSQJ985KZ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Thomas Maximini (JLSQJ985KZ)";
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = JLSQJ985KZ;
@@ -1703,7 +1717,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kiai.sameto;
 				PRODUCT_NAME = sameto;
-				PROVISIONING_PROFILE = "e93c5b90-77a3-4eba-9f7e-1da10c871b59";
+				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "XC iOS Ad Hoc: *";
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1717,7 +1731,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = sameto/sameto.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Thomas Maximini (JLSQJ985KZ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Thomas Maximini (JLSQJ985KZ)";
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JLSQJ985KZ;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1748,7 +1763,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kiai.sameto;
 				PRODUCT_NAME = sameto;
-				PROVISIONING_PROFILE = "e93c5b90-77a3-4eba-9f7e-1da10c871b59";
+				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "XC iOS Ad Hoc: *";
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1772,9 +1787,11 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_ENTITLEMENTS = sameto/sameto.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Thomas Maximini (A6L2Y4Q3Q8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Thomas Maximini (A6L2Y4Q3Q8)";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = JLSQJ985KZ;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1814,9 +1831,11 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_ENTITLEMENTS = sameto/sameto.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Thomas Maximini (JLSQJ985KZ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Thomas Maximini (JLSQJ985KZ)";
 				COPY_PHASE_STRIP = YES;
+				DEVELOPMENT_TEAM = JLSQJ985KZ;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
