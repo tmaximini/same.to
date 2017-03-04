@@ -31,6 +31,8 @@ import {
 import {
   setDetail as setDetailAction,
 } from '../../redux/modules/detail';
+import { createEventInvite } from '../../services/invites';
+
 import styles from './styles';
 
 const eventFallback = require('../../assets/Fallback_Event.png');
@@ -85,7 +87,21 @@ export default class Event extends Component {
     super(props);
     this.editAccommodation = this.editAccommodation.bind(this);
     this.editTrip = this.editTrip.bind(this);
+    this.state = {
+      inviteUrl: null
+    };
   }
+
+
+  componentDidMount() {
+    createEventInvite(this.props.event.id)
+      .then(res => {
+        this.setState({
+          inviteUrl: res.inviteUrl
+        });
+      });
+  }
+
 
   editAccommodation() {
     Actions.editAccommodation({ event: this.props.event });
@@ -121,6 +137,8 @@ export default class Event extends Component {
       id,
     } = event;
 
+    const { inviteUrl } = this.state;
+
     const hasSubItems = accommodations.length || trips.length || activities.length;
     const isEvent = type === 'event';
 
@@ -145,7 +163,7 @@ export default class Event extends Component {
                 style={styles.box}
                 onPress={share({
                   message: 'check out this event',
-                  url: `sameto://events/${id}`,
+                  url: inviteUrl,
                   title: `Same.to: ${name}`
                 })}
               >
@@ -155,8 +173,8 @@ export default class Event extends Component {
                 style={getMiddleBoxStyles()}
                 onPress={share({
                   message: `Join me with ${name}`,
-                  url: `sameto://events/${id}`,
-                  title: `Same.to: ${name}`
+                  url: inviteUrl,
+                  title: `Invite to ${name}`
                 })}
               >
                 <Text style={styles.boxText}>{I18n.t('invite')}</Text>
