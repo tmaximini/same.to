@@ -88,6 +88,9 @@ const ChatListItem = ({
       : null
   );
 
+  // nr of unread messages
+  const unread = Number(chat.unread);
+
   return (
     <TouchableHighlight
       style={styles.container}
@@ -128,10 +131,10 @@ const ChatListItem = ({
           <View style={styles.right}>
             <View style={styles.actions}>
               <Text style={styles.dateTime}>{time}</Text>
-              {lastMessage && (
+              {unread > 0 && (
                 <Badge
                   color={COLORS.CYAN}
-                  value={chat.messages.length}
+                  value={unread}
                 />
               )}
             </View>
