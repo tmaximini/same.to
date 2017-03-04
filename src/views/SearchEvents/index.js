@@ -47,7 +47,7 @@ class SearchEvents extends Component {
       <Form
         onSubmit={Actions.editCreateEvent}
         buttonText={I18n.t('create_event')}
-        buttonProps={{ noBackground: true }}
+        buttonProps={{ noBackground: true, noResize: true }}
         extraText={I18n.t('event_not_found')}
       >
         <View style={styles.wrapper}>
@@ -59,6 +59,7 @@ class SearchEvents extends Component {
           <Button
             onPress={() => searchEvents(query)}
             text={I18n.t('search')}
+            noResize
           />
           <View style={styles.results}>
             {searchResults && searchResults.length > 0 ? (
