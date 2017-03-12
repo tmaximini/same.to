@@ -1,4 +1,4 @@
-import { get, post } from './api';
+import { post } from './api';
 
 export const createEventInvite = eventId => post(
   `events/${eventId}/invite`,
