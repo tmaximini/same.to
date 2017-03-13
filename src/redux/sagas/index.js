@@ -13,6 +13,8 @@ import {
   watchFetchEvents,
   watchParticipateEvent,
   watchSearchEvents,
+  watchBookmarkEvents,
+  watchUnbookmarkEvents,
 } from './events';
 import {
   watchFetchContacts,
@@ -82,6 +84,8 @@ export default function* root() {
     watchRegister(),
     watchFetchEvents(),
     watchSearchEvents(),
+    watchBookmarkEvents(),
+    watchUnbookmarkEvents(),
     watchParticipateEvent(),
     watchFetchContacts(),
     watchFetchFavorites(),

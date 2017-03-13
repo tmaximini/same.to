@@ -10,6 +10,12 @@ import {
   SEARCH_EVENTS_START,
   SEARCH_EVENTS_SUCCESS,
   SEARCH_EVENTS_ERROR,
+  BOOKMARK_EVENT_START,
+  BOOKMARK_EVENT_SUCCESS,
+  BOOKMARK_EVENT_ERROR,
+  UNBOOKMARK_EVENT_START,
+  UNBOOKMARK_EVENT_SUCCESS,
+  UNBOOKMARK_EVENT_ERROR,
 } from '../modules/events';
 import {
   AUTHORIZATION_REQUIRED,
@@ -17,6 +23,8 @@ import {
 import {
   fetchEvents,
   searchEvents,
+  bookmarkEvent,
+  unbookmarkEvent,
 } from '../../services/events';
 import {
   joinEvent,
@@ -132,6 +140,72 @@ export function* searchEventsAsync(action) {
   }
 }
 
+export function* bookmarkEventsAsync(action) {
+  const { event } = action.payload;
+  try {
+    const response = yield call(bookmarkEvent, event);
+    if (response.error) {
+      // in case of error
+      yield put({
+        type: BOOKMARK_EVENT_ERROR,
+        payload: {
+          error: response.error
+        }
+      });
+    } else {
+      // success
+      yield put({
+        type: BOOKMARK_EVENT_SUCCESS,
+        payload: {
+          event: response
+        }
+      });
+      yield put({
+        type: FETCH_EVENTS_START,
+      });
+    }
+  } catch (error) {
+    console.log({ error });
+    yield put({
+      type: BOOKMARK_EVENT_ERROR,
+      error
+    });
+  }
+}
+
+export function* unbookmarkEventsAsync(action) {
+  const { event } = action.payload;
+  try {
+    const response = yield call(unbookmarkEvent, event);
+    if (response.error) {
+      // in case of error
+      yield put({
+        type: UNBOOKMARK_EVENT_ERROR,
+        payload: {
+          error: response.error
+        }
+      });
+    } else {
+      // success
+      yield put({
+        type: UNBOOKMARK_EVENT_SUCCESS,
+        payload: {
+          event: response
+        }
+      });
+      yield put({
+        type: FETCH_EVENTS_START,
+      });
+    }
+  } catch (error) {
+    console.log({ error });
+    yield put({
+      type: UNBOOKMARK_EVENT_ERROR,
+      error
+    });
+  }
+}
+
 export function* watchFetchEvents() {
   yield takeLatest(FETCH_EVENTS_START, fetchEventsAsync);
 }
@@ -142,4 +216,12 @@ export function* watchParticipateEvent() {
 
 export function* watchSearchEvents() {
   yield takeLatest(SEARCH_EVENTS_START, searchEventsAsync);
+}
+
+export function* watchBookmarkEvents() {
+  yield takeLatest(BOOKMARK_EVENT_START, bookmarkEventsAsync);
+}
+
+export function* watchUnbookmarkEvents() {
+  yield takeLatest(UNBOOKMARK_EVENT_START, unbookmarkEventsAsync);
 }

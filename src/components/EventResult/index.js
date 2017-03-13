@@ -6,7 +6,7 @@ import styles from './styles';
 
 const eventFallback = require('../../assets/Fallback_Event.png');
 
-const EventResult = ({ event, setEvent }) => (
+const EventResult = ({ event, setEvent, bookmarkEvent, unbookmarkEvent }) => (
   <TouchableHighlight
     style={styles.container}
     underlayColor="transparent"
@@ -30,11 +30,13 @@ const EventResult = ({ event, setEvent }) => (
         </Text>
 
         <TouchableHighlight
+          underlayColor="transparent"
+          activeOpacity={0.6}
           style={styles.bookmark}
-          onPress={() => alert('bookmarked')}
+          onPress={() => event.isBookmark ? unbookmarkEvent(event) : bookmarkEvent(event)}
         >
           <Icon
-            name="ios-bookmark"
+            name={event.isBookmark ? 'ios-bookmark' : 'ios-bookmark-outline'}
             size={22}
             style={styles.icon}
           />
@@ -47,6 +49,8 @@ const EventResult = ({ event, setEvent }) => (
 EventResult.propTypes = {
   event: PropTypes.object.isRequired,
   setEvent: PropTypes.func.isRequired,
+  bookmarkEvent: PropTypes.func.isRequired,
+  unbookmarkEvent: PropTypes.func.isRequired,
 };
 
 export default EventResult;

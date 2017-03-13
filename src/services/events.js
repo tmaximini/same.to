@@ -12,3 +12,7 @@ export const updateEvent = data => put(
 export const deleteEvent = data => del(`events/${data.id}`);
 
 export const searchEvents = query => get('events/search', { query });
+
+export const bookmarkEvent = event => post(`events/${event.id}/bookmark`);
+
+export const unbookmarkEvent = event => del(`events/${event.id}/bookmark`);

@@ -22,6 +22,8 @@ class SearchEvents extends Component {
     searchResults: PropTypes.array,
     searchEvents: PropTypes.func.isRequired,
     setCurrentEvent: PropTypes.func.isRequired,
+    bookmarkEvent: PropTypes.func.isRequired,
+    unbookmarkEvent: PropTypes.func.isRequired,
   }
 
   constructor(props) {
@@ -41,6 +43,8 @@ class SearchEvents extends Component {
       searchEvents,
       searchResults,
       setCurrentEvent,
+      bookmarkEvent,
+      unbookmarkEvent,
     } = this.props;
 
     return (
@@ -68,6 +72,8 @@ class SearchEvents extends Component {
                   key={result.id}
                   event={result}
                   setEvent={setCurrentEvent}
+                  bookmarkEvent={bookmarkEvent}
+                  unbookmarkEvent={unbookmarkEvent}
                 />
               ))
             ) : null}

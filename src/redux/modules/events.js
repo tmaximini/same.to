@@ -43,6 +43,12 @@ export const TOGGLE_PARTICIPATE_EVENT_ERROR = 'events/TOGGLE_PARTICIPATE_EVENT_E
 export const SEARCH_EVENTS_START = 'events/SEARCH_EVENTS_START';
 export const SEARCH_EVENTS_SUCCESS = 'events/SEARCH_EVENTS_SUCCESS';
 export const SEARCH_EVENTS_ERROR = 'events/SEARCH_EVENTS_ERROR';
+export const BOOKMARK_EVENT_START = 'events/BOOKMARK_EVENT_START';
+export const BOOKMARK_EVENT_SUCCESS = 'events/BOOKMARK_EVENT_SUCCESS';
+export const BOOKMARK_EVENT_ERROR = 'events/BOOKMARK_EVENT_ERROR';
+export const UNBOOKMARK_EVENT_START = 'events/UNBOOKMARK_EVENT_START';
+export const UNBOOKMARK_EVENT_SUCCESS = 'events/UNBOOKMARK_EVENT_SUCCESS';
+export const UNBOOKMARK_EVENT_ERROR = 'events/UNBOOKMARK_EVENT_ERROR';
 
 
 
@@ -72,12 +78,28 @@ export const searchEvents = query => ({
   }
 });
 
+export const bookmarkEvent = event => ({
+  type: BOOKMARK_EVENT_START,
+  payload: {
+    event
+  }
+});
+
+export const unbookmarkEvent = event => ({
+  type: UNBOOKMARK_EVENT_START,
+  payload: {
+    event
+  }
+});
+
 // export all actions
 export const actions = {
   fetchEvents,
   setCurrentEvent,
   toggleParticipateEvent,
   searchEvents,
+  bookmarkEvent,
+  unbookmarkEvent,
 };
 
 const updateEvents = (lastState, subitem, collection) => {
@@ -110,6 +132,16 @@ const removeSubItem = (lastState, subitem, collection) => {
     currentEvent: newEvents[eventIndex],
     events: newEvents
   };
+};
+
+const updateSearchResults = (oldResults, event) => {
+  const newResults = [...oldResults];
+  const eventIndex = _.findIndex(newResults, { id: event.id });
+  if (eventIndex > -1) {
+    newResults[eventIndex] = event;
+  }
+
+  return newResults;
 };
 
 
@@ -230,6 +262,22 @@ const actionsMap = {
       return removeSubItem(state, activity, 'activities');
     }
     return state;
+  },
+  [BOOKMARK_EVENT_SUCCESS]: (state, action) => {
+    const { event } = action.payload;
+
+    return {
+      ...state,
+      searchResults: updateSearchResults(state.searchResults, event),
+    };
+  },
+  [UNBOOKMARK_EVENT_SUCCESS]: (state, action) => {
+    const { event } = action.payload;
+
+    return {
+      ...state,
+      searchResults: updateSearchResults(state.searchResults, event),
+    };
   },
 };
 
