@@ -4,6 +4,7 @@ import { Scene, Router, Actions } from 'react-native-router-flux';
 import I18n from 'react-native-i18n';
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import IonIcon from 'react-native-vector-icons/Ionicons';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Home from './views/Home';
 import Contacts from './views/Contacts';
@@ -19,6 +20,7 @@ import EditCreateChat from './views/EditCreateChat';
 import EventDetail from './views/Event';
 import SearchEvents from './views/SearchEvents';
 import SearchFavorites from './views/SearchFavorites';
+import SearchContacts from './views/SearchContacts';
 import EditCreatevent from './views/EditCreateEvent';
 import Detail from './views/Detail';
 import Profile from './views/Profile';
@@ -117,6 +119,17 @@ const makeSearchButton = () => (
   </TouchableHighlight>
 );
 
+const makeContactButton = () => (
+  <TouchableHighlight
+    onPress={Actions.searchContacts}
+    style={{ justifyContent: 'center', alignItems: 'center', paddingVertical: 5, paddingHorizontal: 5 }}
+    underlayColor="transparent"
+    activeOpacity={0.6}
+  >
+    <IonIcon name="ios-person-add" size={24} color={COLORS.CYAN} />
+  </TouchableHighlight>
+);
+
 
 const Routes = () => (
   <RouterWithRedux
@@ -159,6 +172,7 @@ const Routes = () => (
         title={I18n.t('contacts')}
         icon={makeTabIcon('user-circle-o', 20)}
         sceneStyle={navTabpadding}
+        renderRightButton={makeContactButton}
       />
       <Scene
         key="chats"
@@ -224,6 +238,13 @@ const Routes = () => (
       component={SearchFavorites}
       sceneStyle={navBarPadding}
       title={I18n.t('search_favorites')}
+      rightButtonTextStyle={cyanText}
+    />
+    <Scene
+      key="searchContacts"
+      component={SearchContacts}
+      sceneStyle={navBarPadding}
+      title={I18n.t('search_contacts')}
       rightButtonTextStyle={cyanText}
     />
     <Scene

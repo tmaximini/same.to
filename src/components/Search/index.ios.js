@@ -9,6 +9,7 @@ export default class Search extends Component {
     onCancel: PropTypes.func,
     onSearch: PropTypes.func,
     onChange: PropTypes.func,
+    placeholder: PropTypes.string,
   };
 
   constructor(props) {
@@ -19,7 +20,7 @@ export default class Search extends Component {
   }
 
   render() {
-    const { onSearch, onCancel, onChange } = this.props;
+    const { onSearch, onCancel, onChange, placeholder } = this.props;
 
     return (
       <SearchBar
@@ -28,7 +29,7 @@ export default class Search extends Component {
         tintColor={COLORS.DARK_GREY}
         barTintColor={COLORS.WHITE}
         textFieldBackgroundColor={COLORS.DARK_GREY}
-        placeholder={I18n.t('search')}
+        placeholder={placeholder || I18n.t('search')}
         onChangeText={onChange}
         showsCancelButton={this.state.focus}
         onFocus={() => this.setState({ focus: true })}

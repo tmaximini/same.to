@@ -97,14 +97,15 @@ export default class Contacts extends Component {
 
     return (
       <View style={styles.container}>
-        <Search
+        {contacts.length > 0 && <Search
           onCancel={() => this.setState({
             searchMode: false,
             contacts: this.props.contacts,
           })}
+          placeholder={I18n.t('filter_contacts')}
           onSearch={text => this.filterResults(text)}
           onChange={text => this.filterResults(text)}
-        />
+        />}
         <View
           style={styles.wrapper}
         >
