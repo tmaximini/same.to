@@ -78,16 +78,15 @@ export default class Splash extends Component {
     this.handleRouting(nextProps);
   }
 
-  componentWillUnmount() {
-    NetInfo.isConnected.removeEventListener(
-      'change',
-      this.onConnectivityChange
-    );
-  }
+  // componentWillUnmount() {
+  //   NetInfo.isConnected.removeEventListener(
+  //     'change',
+  //     this.onConnectivityChange
+  //   );
+  // }
 
   onConnectivityChange(connected) {
-    const { rehydrateFinished, loggedIn } = this.props;
-    if (connected && rehydrateFinished && loggedIn) {
+    if (connected) {
       this.fetchAppData();
     }
   }
@@ -103,8 +102,10 @@ export default class Splash extends Component {
     getTripTypes();
     getAccommodationTypes();
     getActivityTypes();
-    fetchFavorites();
-    fetchContacts();
+    if (this.props.loggedIn) {
+      fetchFavorites();
+      fetchContacts();
+    }
   }
 
   handleRouting = (props) => {
