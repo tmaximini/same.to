@@ -164,6 +164,7 @@ const translations = {
     create_chat_members: 'create chat with the following participants',
     type_a_message: 'Type a message...',
     privacy: 'Data privacy policy',
+    archive: 'Archive',
     impressumText: `
 Information in accordance with section 5 TMG
 
@@ -392,6 +393,7 @@ is collected and stored solely for use by our website. When signing up for our w
     create_chat_members: 'Chat mit folgenden Teilnehmern erstellen',
     type_a_message: 'Gib eine Nachricht ein...',
     privacy: 'Datenschutzerklärung',
+    archive: 'Archiv',
     impressumText: `
 Angaben gemäß § 5 TMG
 

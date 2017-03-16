@@ -2,6 +2,8 @@ import { get, post, put, del } from './api';
 
 export const fetchEvents = () => get('events');
 
+export const fetchPastEvents = () => get('events/past');
+
 export const createEvent = data => post('events', { ...data });
 
 export const updateEvent = data => put(

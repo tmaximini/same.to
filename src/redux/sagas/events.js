@@ -4,6 +4,9 @@ import {
   FETCH_EVENTS_START,
   FETCH_EVENTS_SUCCESS,
   FETCH_EVENTS_ERROR,
+  FETCH_PAST_EVENTS_START,
+  FETCH_PAST_EVENTS_SUCCESS,
+  FETCH_PAST_EVENTS_ERROR,
   TOGGLE_PARTICIPATE_EVENT_START,
   TOGGLE_PARTICIPATE_EVENT_SUCCESS,
   TOGGLE_PARTICIPATE_EVENT_ERROR,
@@ -22,6 +25,7 @@ import {
 } from '../modules/auth';
 import {
   fetchEvents,
+  fetchPastEvents,
   searchEvents,
   bookmarkEvent,
   unbookmarkEvent,
@@ -69,6 +73,38 @@ export function* fetchEventsAsync(action) {
     console.log({ error });
     yield put({
       type: FETCH_EVENTS_ERROR,
+      error
+    });
+  }
+}
+
+export function* fetchPastEventsAsync(action) {
+  const { payload } = action;
+  try {
+    const response = yield call(fetchPastEvents, { ...payload });
+
+    if (response.error) {
+      // in case of error
+      yield put({
+        type: FETCH_PAST_EVENTS_ERROR,
+        payload: {
+          events: [],
+          error: response.error
+        }
+      });
+    } else {
+      // success
+      yield put({
+        type: FETCH_PAST_EVENTS_SUCCESS,
+        payload: {
+          events: response
+        }
+      });
+    }
+  } catch (error) {
+    console.log({ error });
+    yield put({
+      type: FETCH_PAST_EVENTS_ERROR,
       error
     });
   }
@@ -208,6 +244,10 @@ export function* unbookmarkEventsAsync(action) {
 
 export function* watchFetchEvents() {
   yield takeLatest(FETCH_EVENTS_START, fetchEventsAsync);
+}
+
+export function* watchFetchPastEvents() {
+  yield takeLatest(FETCH_PAST_EVENTS_START, fetchPastEventsAsync);
 }
 
 export function* watchParticipateEvent() {

@@ -56,13 +56,12 @@ class SearchFavorites extends Component {
       searchFavorites,
       favoritesSearchLocation,
     } = this.props;
-    const { formattedAddress, position } = favoritesSearchLocation;
+    const { position } = favoritesSearchLocation;
     searchFavorites({
       ...this.state,
       query: this.state.interests,
-      location: formattedAddress,
-      lat: position ? position.lat : null,
-      lng: position ? position.lng : null,
+      location: position ? { lat: position.lat, lng: position.lng } : null,
+      radius: this.state.radius,
     });
   }
 

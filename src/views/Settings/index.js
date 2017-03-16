@@ -29,6 +29,12 @@ export default class Settings extends Component {
         }
       },
       {
+        title: I18n.t('archive'),
+        action: () => {
+          Actions.archive();
+        }
+      },
+      {
         title: I18n.t('logout'),
         action: () => {
           this.props.logout();

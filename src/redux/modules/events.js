@@ -25,6 +25,7 @@ import {
 const initialState = {
   isFetching: false,
   events: [],
+  pastEvents: [],
   searchString: null,
   searchResults: [],
   currentEvent: {},
@@ -36,6 +37,9 @@ const initialState = {
 export const FETCH_EVENTS_START = 'events/FETCH_EVENTS_START';
 export const FETCH_EVENTS_SUCCESS = 'events/FETCH_EVENTS_SUCCESS';
 export const FETCH_EVENTS_ERROR = 'events/FETCH_EVENTS_ERROR';
+export const FETCH_PAST_EVENTS_START = 'events/FETCH_PAST_EVENTS_START';
+export const FETCH_PAST_EVENTS_SUCCESS = 'events/FETCH_PAST_EVENTS_SUCCESS';
+export const FETCH_PAST_EVENTS_ERROR = 'events/FETCH_PAST_EVENTS_ERROR';
 export const SET_CURRENT_EVENT = 'events/UPDATE_EVENT';
 export const TOGGLE_PARTICIPATE_EVENT_START = 'events/TOGGLE_PARTICIPATE_EVENT_START';
 export const TOGGLE_PARTICIPATE_EVENT_SUCCESS = 'events/TOGGLE_PARTICIPATE_EVENT_SUCCESS';
@@ -55,6 +59,10 @@ export const UNBOOKMARK_EVENT_ERROR = 'events/UNBOOKMARK_EVENT_ERROR';
 // Action Creators
 export const fetchEvents = () => ({
   type: FETCH_EVENTS_START
+});
+
+export const fetchPastEvents = () => ({
+  type: FETCH_PAST_EVENTS_START
 });
 
 export const toggleParticipateEvent = event => ({
@@ -95,6 +103,7 @@ export const unbookmarkEvent = event => ({
 // export all actions
 export const actions = {
   fetchEvents,
+  fetchPastEvents,
   setCurrentEvent,
   toggleParticipateEvent,
   searchEvents,
@@ -163,7 +172,18 @@ const actionsMap = {
       isFetching: false,
     };
   },
+  [FETCH_PAST_EVENTS_START]: state => ({ ...state, isFetching: true }),
+  [FETCH_PAST_EVENTS_SUCCESS]: (state, action) => {
+    const { events } = action.payload;
+
+    return {
+      ...state,
+      pastEvents: events,
+      isFetching: false,
+    };
+  },
   [FETCH_EVENTS_ERROR]: state => ({ ...state, isFetching: false }),
+  [FETCH_PAST_EVENTS_ERROR]: state => ({ ...state, isFetching: false }),
   [SET_CURRENT_EVENT]: (state, action) => ({
     ...state,
     currentEvent: action.payload.event,

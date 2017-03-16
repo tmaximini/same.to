@@ -81,6 +81,7 @@ export default class Event extends Component {
     toggleParticipateEvent: PropTypes.func.isRequired,
     showActionSheetWithOptions: PropTypes.func.isRequired,
     profile: PropTypes.object.isRequired,
+    isArchive: PropTypes.bool,
   }
 
   constructor(props) {
@@ -123,6 +124,7 @@ export default class Event extends Component {
       event,
       toggleParticipateEvent,
       showActionSheetWithOptions,
+      isArchive,
     } = this.props;
     const {
       name,
@@ -150,6 +152,7 @@ export default class Event extends Component {
         background={type === 'event' ? eventFallback : activityFallback}
         onToggle={() => toggleParticipateEvent(event)}
         participates={memberIds.includes(getUserId())}
+        disabled={isArchive}
       />
     );
 
@@ -211,7 +214,7 @@ export default class Event extends Component {
             </View>
           )}
 
-          {isEvent && <PlusButton
+          {isEvent && !isArchive && <PlusButton
             itemSize={45}
             radius={80}
             startDegree={225}

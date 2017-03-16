@@ -1,5 +1,3 @@
-// import { fork } from 'redux-saga/effects';
-// SAGAs
 // 1. define worker sagas
 // 2. define watcher sagas
 // 3. define root saga as single point of entry to start all sagas at once
@@ -11,6 +9,7 @@ import {
 } from './auth';
 import {
   watchFetchEvents,
+  watchFetchPastEvents,
   watchParticipateEvent,
   watchSearchEvents,
   watchBookmarkEvents,
@@ -83,6 +82,7 @@ export default function* root() {
     watchFBLogin(),
     watchRegister(),
     watchFetchEvents(),
+    watchFetchPastEvents(),
     watchSearchEvents(),
     watchBookmarkEvents(),
     watchUnbookmarkEvents(),
