@@ -10,6 +10,11 @@ export default class EventList extends Component {
     events: PropTypes.arrayOf(PropTypes.object),
     refresh: PropTypes.func.isRequired,
     isRefreshing: PropTypes.bool.isRequired,
+    archive: PropTypes.bool,
+  }
+
+  static defaultProps = {
+    archive: false,
   }
 
   constructor(props) {
@@ -46,6 +51,7 @@ export default class EventList extends Component {
         pageSize={5}
         renderRow={event => <EventListItem
           event={event}
+          isArchive={this.props.archive}
           {...this.props}
         />}
         refreshControl={

@@ -28,6 +28,7 @@ import TabBar from './components/TabBar';
 import Chats from './views/Chats';
 import Chat from './views/Chat';
 import Splash from './views/Splash';
+import Archive from './views/Archive';
 import Settings from './views/Settings';
 import Feedback from './views/Feedback';
 import Impressum from './views/Impressum';
@@ -348,6 +349,12 @@ const Routes = () => (
       key="privacy"
       component={Privacy}
       title={I18n.t('privacy')}
+      sceneStyle={navBarPadding}
+    />
+    <Scene
+      key="archive"
+      component={Archive}
+      title={I18n.t('archive')}
       sceneStyle={navBarPadding}
     />
   </RouterWithRedux>

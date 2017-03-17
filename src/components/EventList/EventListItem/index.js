@@ -13,6 +13,8 @@ import styles from './styles';
 const eventFallback = require('../../../assets/Fallback_Event.png');
 const activityFallback = require('../../../assets/Fallback_Activity.png');
 
+const noop = () => {};
+
 const EventListItem = ({
   event,
   setCurrentEvent,
@@ -21,20 +23,21 @@ const EventListItem = ({
   setActivity,
   deleteEvent,
   showActionSheetWithOptions,
+  isArchive,
 }) => {
   const { name, startAt, location } = event;
 
   // functions to be called on Acionsheed edit button
-  const editEvent = () => {
+  const editEvent = isArchive ? noop : () => {
     setEvent(event);
     Actions.editCreateEvent({ event, title: I18n.t('edit_event') });
   };
-  const editActivity = () => {
+  const editActivity = isArchive ? noop : () => {
     setActivity(event);
     Actions.editCreateActivity({ activity: event, title: I18n.t('edit_activity') });
   };
 
-  const showAndHandleActionSheet = () => {
+  const showAndHandleActionSheet = isArchive ? noop : () => {
     const options = [I18n.t('edit'), I18n.t('delete'), I18n.t('cancel')];
     const destructiveButtonIndex = 1;
     const cancelButtonIndex = 2;
@@ -71,13 +74,15 @@ const EventListItem = ({
     if (event.type === 'event') {
       setCurrentEvent(event);
       Actions.event({
-        renderRightButton: canEdit(event) ? renderRightButton : undefined,
+        renderRightButton: !isArchive && canEdit(event) ? renderRightButton : undefined,
+        isArchive,
       });
     } else {
       setDetail({ itemType: 'activity', item: event });
       Actions.activity({
         title: event.name,
-        renderRightButton: canEdit(event) ? renderRightButton : undefined,
+        renderRightButton: !isArchive && canEdit(event) ? renderRightButton : undefined,
+        isArchive,
       });
     }
   };
@@ -147,6 +152,7 @@ EventListItem.propTypes = {
   setDetail: PropTypes.func.isRequired,
   showActionSheetWithOptions: PropTypes.func.isRequired,
   deleteEvent: PropTypes.func.isRequired,
+  isArchive: PropTypes.bool.isRequired,
 };
 
 export default EventListItem;
