@@ -6,6 +6,7 @@ import I18n from 'react-native-i18n';
 import Form from '../../layouts/form';
 import Input from '../../components/Input';
 import { COLORS } from '../../constants';
+import { sendFeedback } from '../../services/settings';
 import styles from './styles';
 
 
@@ -22,9 +23,11 @@ export default class Feedback extends Component {
 
 
   onSubmit() {
-    // TODO: handle feedback sending to server
+    const { feedback } = this.state;
+    sendFeedback(feedback);
     this.setState({ feedback: '', sending: true });
     dismissKeyboard();
+    // simulate some sending timeout
     setTimeout(() => {
       Actions.pop({ refresh: {} });
     }, 400);
@@ -54,7 +57,6 @@ export default class Feedback extends Component {
               value={this.state.feedback}
               onChangeText={text => this.setState({ feedback: text })}
               returnKeyType="default"
-              multiline
               onSubmitEditing={this.onSubmit}
               style={{ height: 200, justifyContent: 'flex-start' }}
             />
