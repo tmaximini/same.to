@@ -53,6 +53,19 @@ const getImage = (itemType) => {
   }
 };
 
+const getButtonText = type => {
+  switch (type) {
+    case 'trip':
+      return I18n.t('all_trips');
+    case 'accommodation':
+      return I18n.t('all_accommodations');
+    case 'activity':
+      return I18n.t('all_activities');
+    default:
+      return I18n.t('all_participants');
+  }
+};
+
 
 const ItemDetail = ({ itemType, participates, onToggle, item, resetChat, ...rest }) => (
   <View style={styles.container}>
@@ -112,7 +125,7 @@ const ItemDetail = ({ itemType, participates, onToggle, item, resetChat, ...rest
         smallText
       />
       <Button
-        text={I18n.t('all_participants')}
+        text={getButtonText(itemType)}
         onPress={() => Actions.participants({ members: item.members })}
         style={{ width: (width / 2) - 15 }}
         smallText
