@@ -35,9 +35,6 @@ import { createEventInvite } from '../../services/invites';
 
 import styles from './styles';
 
-const eventFallback = require('../../assets/Fallback_Event.png');
-const activityFallback = require('../../assets/Fallback_Activity.png');
-
 
 @connect(
   state => ({
@@ -149,7 +146,6 @@ export default class Event extends Component {
     const getHeader = () => (
       <EventHeader
         event={event}
-        background={type === 'event' ? eventFallback : activityFallback}
         onToggle={() => toggleParticipateEvent(event)}
         participates={memberIds.includes(getUserId())}
         disabled={isArchive}

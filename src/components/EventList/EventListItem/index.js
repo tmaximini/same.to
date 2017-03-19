@@ -13,6 +13,14 @@ import styles from './styles';
 const eventFallback = require('../../../assets/Fallback_Event.png');
 const activityFallback = require('../../../assets/Fallback_Activity.png');
 
+const getEventImage = event => {
+  if (event && event.image && event.image.thumbs && event.image.thumbs['720x540']) {
+    return { uri: event.image.thumbs['720x540'] };
+  }
+  // otherwise use fallbacks
+  return event.type === 'event' ? eventFallback : activityFallback;
+};
+
 const noop = () => {};
 
 const EventListItem = ({
@@ -95,7 +103,7 @@ const EventListItem = ({
       underlayColor="transparent"
     >
       <Image
-        source={event.type === 'event' ? eventFallback : activityFallback}
+        source={getEventImage(event)}
         style={styles.bgImage}
         borderRadius={5}
       >

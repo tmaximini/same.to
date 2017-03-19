@@ -7,10 +7,21 @@ import Date from '../../components/Date';
 import OnOffSwitch from '../../components/OnOffSwitch';
 import styles from './styles';
 
-const EventHeader = ({ event, renderTitle, onToggle, participates, background }) => (
+const eventFallback = require('../../assets/Fallback_Event.png');
+const activityFallback = require('../../assets/Fallback_Activity.png');
+
+const getEventImage = event => {
+  if (event && event.image && event.image.thumbs && event.image.thumbs['720x540']) {
+    return { uri: event.image.thumbs['720x540'] };
+  }
+  // otherwise use fallbacks
+  return event.type === 'event' ? eventFallback : activityFallback;
+};
+
+const EventHeader = ({ event, renderTitle, onToggle, participates }) => (
   <Image
     style={styles.bgImage}
-    source={background}
+    source={getEventImage(event)}
   >
     <View style={styles.header}>
       <View style={{ flex: 1.5, alignItems: 'flex-start' }}>
