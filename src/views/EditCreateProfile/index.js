@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import ImagePicker from 'react-native-image-picker';
+import CountryPicker, { getAllCountries } from 'react-native-country-picker-modal';
 import Form from '../../layouts/form';
 import InputGroup from '../../components/InputGroup';
 import GenderSelect from '../../components/GenderSelect';
@@ -54,6 +55,7 @@ export default class EditCreateProfile extends Component {
     this.state = {
       avatarSource: null,
       geoFocus: false,
+      cca2: 'DE',
     };
     this.handleImageUpload = this.handleImageUpload.bind(this);
     this.isValid = this.isValid.bind(this);
@@ -201,6 +203,15 @@ export default class EditCreateProfile extends Component {
             value={locationString || locality}
             onChangeText={text => update('locationString', text)}
             onAdressSelect={geocodeLocation}
+          />
+          <CountryPicker
+            onChange={(value) => {
+              this.setState({ cca2: value.cca2, callingCode: value.callingCode });
+            }}
+            cca2={this.state.cca2}
+            translation="deu"
+            closeable
+            filterable
           />
           <GenderSelect
             onChange={(val) => update('gender', val)}
