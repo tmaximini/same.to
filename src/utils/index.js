@@ -15,17 +15,14 @@ export const borderRadius = size => ({
   borderRadius: size
 });
 
-export const formatDate = dateString => {
-  console.log('formatDate', dateString);
-
-  return moment(dateString).format('DD.MM.YYYY');
-};
+export const formatDate = dateString => moment(dateString).format('DD.MM.YYYY');
 
 export const getDateFromString = (string, delimiter = '.') => {
   if (!string) return null;
   const splitted = string.split(delimiter);
 
-  return new Date(splitted[2], splitted[1], splitted[0]);
+  // js dates, where months are zero indexed :/
+  return new Date(splitted[2], parseInt(splitted[1], 10) - 1, splitted[0]);
 };
 
 export const toggleArrayItem = (array, item) => {
