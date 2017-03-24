@@ -171,9 +171,8 @@ const actionsMap = {
       ...action.payload,
     }
   }),
-  [LOGOUT]: state => ({
-    ...state,
-    profile: makeDefaultProfile(),
+  [LOGOUT]: () => ({
+    ...initialState,
   }),
   [ADD_FAVORITE_SUCCESS]: (state, action) => ({
     ...state,
