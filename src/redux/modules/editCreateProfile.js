@@ -25,6 +25,7 @@ const makeDefaultProfile = () => ({
   interests: [],
   uploadedImage: null,
   location: {},
+  citizenship: null,
 });
 
 const initialState = {

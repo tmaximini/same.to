@@ -55,7 +55,6 @@ export default class EditCreateProfile extends Component {
     this.state = {
       avatarSource: null,
       geoFocus: false,
-      cca2: 'DE',
     };
     this.handleImageUpload = this.handleImageUpload.bind(this);
     this.isValid = this.isValid.bind(this);
@@ -136,6 +135,7 @@ export default class EditCreateProfile extends Component {
       location,
       image,
       signupCompleted,
+      citizenship,
     } = profile;
 
     let fbImageUri;
@@ -206,9 +206,9 @@ export default class EditCreateProfile extends Component {
           />
           <CountryPicker
             onChange={(value) => {
-              this.setState({ cca2: value.cca2, callingCode: value.callingCode });
+              update('citizenship', value.cca2);
             }}
-            cca2={this.state.cca2}
+            cca2={citizenship || 'DE'}
             translation="deu"
             closeable
             filterable
