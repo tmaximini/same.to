@@ -44,11 +44,11 @@ class SearchFavorites extends Component {
   }
 
   isValid() {
-    const { query, interests } = this.state;
+    const { interests } = this.state;
     const { favoritesSearchLocation } = this.props;
-    return (query && query.length > 2)
-      || (interests && interests.length > 3)
-      || favoritesSearchLocation.formattedAddress;
+
+    return (interests && interests.length > 2)
+      && favoritesSearchLocation.formattedAddress;
   }
 
   handleSearch() {

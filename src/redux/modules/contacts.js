@@ -151,6 +151,7 @@ const actionsMap = {
   [REHYDRATE]: (state, action) => ({
     ...state,
     ...action.payload.contacts,
+    isSearching: false,
     favoritesSearchResults: [],
     contactSearchResults: [],
   }),
@@ -190,6 +191,16 @@ const actionsMap = {
   [SEARCH_CONTACTS_SUCCESS]: (state, action) => ({
     ...state,
     contactSearchResults: action.payload.result,
+    isSearching: false,
+  }),
+  [SEARCH_FAVORITES_ERROR]: (state, action) => ({
+    ...state,
+    favoritesSearchResults: [],
+    isSearching: false,
+  }),
+  [SEARCH_CONTACTS_ERROR]: (state, action) => ({
+    ...state,
+    contactSearchResults: [],
     isSearching: false,
   }),
   [SEARCH_FAVORITES_SUCCESS]: (state, action) => ({
