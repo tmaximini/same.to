@@ -1,5 +1,7 @@
 import React, { PropTypes } from 'react';
 import {
+  Text,
+  Keyboard,
   TextInput,
   StyleSheet,
   View,
@@ -7,21 +9,37 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import dismissKeyboard from 'react-native/Libraries/Utilities/dismissKeyboard';
+import { COLORS } from '../../constants';
 
 const styles = StyleSheet.create({
+  wholeSearchBar: {
+      flexDirection: 'row',
+      alignItems: 'center',
+  },
+  searchBox:{
+    flex: 1,
+    backgroundColor: COLORS.DARK_GREY,
+  },
   searchBar: {
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: 'transparent',
-    borderColor: '#b6b6b6',
+    borderColor: 'cyan',
     borderStyle: 'solid',
     borderWidth: 1,
+    borderRadius: 5,
   },
   searchBarInput: {
     flex: 1,
     fontWeight: 'normal',
     color: '#fff',
-    backgroundColor: 'transparent',
+    backgroundColor: COLORS.DARK_GREY,
+    borderRadius: 5,
+  },
+  cancelText: {
+    fontSize: 18,
+    marginLeft: 10,
+    color: COLORS.WHITE,
   },
 });
 
@@ -66,14 +84,33 @@ export default class SearchBar extends React.Component {
     this.state = {
       isOnFocus: false,
     };
+    this.state = {
+      currentText: '',
+    };
     this._onFocus = this._onFocus.bind(this);
     this._onBlur = this._onBlur.bind(this);
     this._onClose = this._onClose.bind(this);
+    this._keyboardDidHide = this._keyboardDidHide.bind(this);
+  }
+
+  componentWillMount () {
+    this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this._keyboardDidShow);
+    this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this._keyboardDidHide);
+  }
+
+  componentWillUnmount () {
+    this.keyboardDidShowListener.remove();
+    this.keyboardDidHideListener.remove();
   }
 
   _onClose() {
     this._textInput.setNativeProps({ text: '' });
     this.props.onSearchChange('');
+
+    if(!this.state.isOnFocus){
+      this.setState({ isOnFocus: false });
+    }
+
     if (this.props.onClose) {
       this.props.onClose();
     }
@@ -98,6 +135,25 @@ export default class SearchBar extends React.Component {
     dismissKeyboard()
   }
 
+  unFocus(){
+    this.setState({ isOnFocus: false });
+  }
+
+  changeText(text){
+    this.setState({ currentText: text });
+  }
+
+  _keyboardDidShow () {
+    // console.log('Keyboard Shown');
+  }
+
+  _keyboardDidHide () {
+    // console.log('Keyboard hidden');
+    if(this.state.currentText.length == 0){
+      this.setState({ isOnFocus: false });
+    }
+  }
+
   render() {
     const {
       height,
@@ -120,73 +176,85 @@ export default class SearchBar extends React.Component {
     iconSize = typeof iconSize !== 'undefined' ? iconSize : height * 0.5
 
     return (
-      <View
-        onStartShouldSetResponder={this._dismissKeyboard}
-        style={{padding: padding }}
-      >
+      <View style={styles.wholeSearchBar}>
         <View
-          style={
-            [
-              styles.searchBar,
-              {
-                height: height + 10,
-                paddingLeft: height * 0.25,
-              },
-              inputStyle
-            ]
-          }
-        >
-          {this.state.isOnFocus ?
+          onStartShouldSetResponder={this._dismissKeyboard}
+          style={[
+            styles.searchBox,
+            {padding: padding }]}>
+          <View
+            style={
+              [
+                styles.searchBar,
+                {
+                  height: height + 10,
+                  paddingLeft: height * 0.25,
+                },
+                inputStyle
+              ]
+            }
+          >
+            {this.state.isOnFocus ?
+
+                <Icon
+                  name={iconSearchName} size={height * 0.5}
+                  color={iconColor}
+                />
+            :
+              <Icon
+                name={iconSearchName} size={height * 0.5}
+                color={iconColor}
+              />
+            }
+            <TextInput
+              autoCorrect={autoCorrect === true}
+              ref={(c) => (this._textInput = c)}
+              returnKeyType={returnKeyType}
+              onFocus={this._onFocus}
+              onBlur={this._onBlur}
+              onChangeText={onSearchChange}
+              onEndEditing={this.props.onEndEditing}
+              onSubmitEditing={this.props.onSubmitEditing}
+              placeholder={placeholder}
+              placeholderTextColor={placeholderColor}
+              underlineColorAndroid="transparent"
+              style={
+                [styles.searchBarInput,
+                  {
+                    paddingLeft: height * 0.3,
+                    fontSize: height * 0.5,
+                  },
+                  textStyle
+                ]
+              }
+            />
+            { (this.state.isOnFocus) ?
+              <TouchableOpacity onPress={this._onClose}>
+                <Icon
+                  style={{paddingRight: height * 0.5 }}
+                  name={iconCloseName} size={iconSize}
+                  color={iconColor}
+                />
+              </TouchableOpacity>
+            : null
+            }
+          </View>
+        </View>
+
+        {
+          (this.state.isOnFocus) ?
             <TouchableOpacity onPress={() => {
               this._dismissKeyboard();
               this._onClose();
               this.props.onBlur();
               this.setState({ isOnFocus: false });
             }}>
-              <Icon
-                name={iconBackName} size={height * 0.5}
-                color={iconColor}
-              />
+              <Text style={styles.cancelText}>Cancel</Text>
             </TouchableOpacity>
           :
-            <Icon
-              name={iconSearchName} size={height * 0.5}
-              color={iconColor}
-            />
-          }
-          <TextInput
-            autoCorrect={autoCorrect === true}
-            ref={(c) => (this._textInput = c)}
-            returnKeyType={returnKeyType}
-            onFocus={this._onFocus}
-            onBlur={this._onBlur}
-            onChangeText={onSearchChange}
-            onEndEditing={this.props.onEndEditing}
-            onSubmitEditing={this.props.onSubmitEditing}
-            placeholder={placeholder}
-            placeholderTextColor={placeholderColor}
-            underlineColorAndroid="transparent"
-            style={
-              [styles.searchBarInput,
-                {
-                  paddingLeft: height * 0.5,
-                  fontSize: height * 0.4,
-                },
-                textStyle
-              ]
-            }
-          />
-          {this.state.isOnFocus ?
-            <TouchableOpacity onPress={this._onClose}>
-              <Icon
-                style={{paddingRight: height * 0.5 }}
-                name={iconCloseName} size={iconSize}
-                color={iconColor}
-              />
-            </TouchableOpacity>
-          : null
-          }
-        </View>
+            null
+        }
+
       </View>
     );
   }
