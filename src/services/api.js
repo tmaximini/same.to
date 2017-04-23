@@ -2,9 +2,10 @@ let AUTH_TOKEN = '';
 let USER_ID = '';
 let FCM_TOKEN = '';
 
-export const API_BASE = 'https://same.wearekiai.de/api/';
-// export const API_BASE = 'http://0.0.0.0:3000/api/';
-
+// @change: new api endpoint for staging env
+export const API_BASE = 'https://api.staging.same.to/api/';
+// @TODO: use production api for release builds
+//export const API_BASE = 'https://api.same.to/api/';
 
 // setter
 export const updateAuthHeader = token => {

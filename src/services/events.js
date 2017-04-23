@@ -1,6 +1,7 @@
 import { get, post, put, del } from './api';
 
-export const fetchEvents = () => get('events');
+//@change: use new api endpoint for events home
+export const fetchEvents = () => get('events/home');
 
 export const fetchPastEvents = () => get('events/past');
 
