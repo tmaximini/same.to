@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -21,7 +22,6 @@
 		139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
 		139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139FDEF41B06529B00C62182 /* libRCTWebSocket.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
-		13B07FBF1A68108700A75B9A /* AppIcon.appiconset in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* AppIcon.appiconset */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
@@ -48,7 +48,6 @@
 		8B83B38A3196434F9D89EDB5 /* Skia.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2719FEEE1F064E848F256915 /* Skia.ttf */; };
 		921E4605CB887E3A2506FBF8 /* Pods_sameto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48172F1089B93DA7EE942A7B /* Pods_sameto.framework */; };
 		9268D0538A6F4220AD6960E6 /* Roboto_medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B3785EDACF694089B8A69228 /* Roboto_medium.ttf */; };
-		956A29E4C97F4365A2DEE68C /* libRNFS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F8AF120B301F40309B48BEA3 /* libRNFS.a */; };
 		960A2F801F754EB0B3E3395A /* Arial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A23540BBD214F99A2C10998 /* Arial.ttf */; };
 		9AFEBA6555494E368D88C784 /* libRNFIRMessaging.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA5E14F1F754D2B9701BBCB /* libRNFIRMessaging.a */; };
 		9DEC057FA576428B998C4138 /* Montserrat-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = EE56CFB3805D496E91B291AC /* Montserrat-Light.otf */; };
@@ -390,7 +389,6 @@
 		13B07F961A680F5B00A75B9A /* sameto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sameto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = sameto/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = sameto/AppDelegate.m; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* AppIcon.appiconset */ = {isa = PBXFileReference; lastKnownFileType = folder; name = AppIcon.appiconset; path = /Users/thomas/Downloads/App_Icon_Same/ios/AppIcon.appiconset; sourceTree = "<absolute>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = sameto/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = sameto/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
@@ -477,7 +475,6 @@
 		EE56CFB3805D496E91B291AC /* Montserrat-Light.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Light.otf"; path = "../src/assets/fonts/Montserrat-Light.otf"; sourceTree = "<group>"; };
 		F0BB412F9FAB9A23CAB484F4 /* Pods_sametoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_sametoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7C6FFC3B71A4EB09A1290F2 /* libReact.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libReact.a; sourceTree = "<group>"; };
-		F8AF120B301F40309B48BEA3 /* libRNFS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNFS.a; sourceTree = "<group>"; };
 		FAA5E14F1F754D2B9701BBCB /* libRNFIRMessaging.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNFIRMessaging.a; sourceTree = "<group>"; };
 		FC09809D63E5489899991274 /* libjschelpers.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libjschelpers.a; sourceTree = "<group>"; };
 		FDD47C790C044D438E480C57 /* Courier New.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Courier New.ttf"; path = "../node_modules/native-base/Fonts/Courier New.ttf"; sourceTree = "<group>"; };
@@ -531,7 +528,6 @@
 				BAEA450126024B2191CB7191 /* libRNFetchBlob.a in Frameworks */,
 				CFF04C637DFB496E9E9B62E9 /* libRNUploader.a in Frameworks */,
 				F40F1EA318F2432686F7CEF5 /* libRCTBEEPickerManager.a in Frameworks */,
-				956A29E4C97F4365A2DEE68C /* libRNFS.a in Frameworks */,
 				921E4605CB887E3A2506FBF8 /* Pods_sameto.framework in Frameworks */,
 				9AFEBA6555494E368D88C784 /* libRNFIRMessaging.a in Frameworks */,
 			);
@@ -625,7 +621,6 @@
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
-				13B07FB51A68108700A75B9A /* AppIcon.appiconset */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				E9EDF76C1E59A6AA00D6B7B2 /* Images-2.xcassets */,
@@ -1416,7 +1411,6 @@
 				E94EA1E11E534DF800F655AB /* Montserrat-Regular.otf in Resources */,
 				E94EA1E21E534DF800F655AB /* Montserrat-SemiBold.otf in Resources */,
 				E94EA1E31E534DF800F655AB /* Montserrat-UltraLight.otf in Resources */,
-				13B07FBF1A68108700A75B9A /* AppIcon.appiconset in Resources */,
 				D00E226B484A44E99C397025 /* Andale Mono.ttf in Resources */,
 				BD0DB4A734CA4D9EA424E711 /* Arial Black.ttf in Resources */,
 				960A2F801F754EB0B3E3395A /* Arial.ttf in Resources */,
@@ -1708,6 +1702,7 @@
 					"$(SRCROOT)/../node_modules/react-native-fcm/ios",
 				);
 				INFOPLIST_FILE = sameto/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1754,6 +1749,7 @@
 					"$(SRCROOT)/../node_modules/react-native-fcm/ios",
 				);
 				INFOPLIST_FILE = sameto/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
