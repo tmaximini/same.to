@@ -21,7 +21,7 @@ const getEventImage = event => {
   return event.type === 'event' ? eventFallback : activityFallback;
 };
 
-const noop = () => {};
+const noop = () => { };
 
 const EventListItem = ({
   event,
@@ -54,21 +54,21 @@ const EventListItem = ({
       cancelButtonIndex,
       destructiveButtonIndex,
     },
-    (buttonIndex) => {
-      // Do something here depending on the button index selected
-      if (buttonIndex === 0) {
-        // edit
-        if (event.type === 'event') {
-          return editEvent();
+      (buttonIndex) => {
+        // Do something here depending on the button index selected
+        if (buttonIndex === 0) {
+          // edit
+          if (event.type === 'event') {
+            return editEvent();
+          }
+          return editActivity();
         }
-        return editActivity();
-      }
-      if (buttonIndex === 1) {
-        // delete
-        return deleteEvent(event);
-      }
-      return null;
-    });
+        if (buttonIndex === 1) {
+          // delete
+          return deleteEvent(event);
+        }
+        return null;
+      });
   };
 
   const renderRightButton = () => (

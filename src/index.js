@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppRegistry } from 'react-native';
+import { AppRegistry, View } from 'react-native';
 import { Provider } from 'react-redux';
 import { ActionSheetProvider } from '@exponent/react-native-action-sheet';
 import DeviceInfo from 'react-native-device-info';
@@ -12,6 +12,9 @@ import configureStore from './redux/configureStore';
 import Routes from './Routes';
 
 
+import ListDemo from './demos/tempList'
+
+
 // i18n setup
 const locale = DeviceInfo.getDeviceLocale();
 I18n.fallbacks = true;
@@ -22,10 +25,12 @@ I18n.locale = locale;
 
 const store = configureStore();
 
+{/*<Routes />*/}
+
 const sameto = () => (
   <ActionSheetProvider>
     <Provider store={store}>
-      <Routes />
+      <ListDemo />
     </Provider>
   </ActionSheetProvider>
 );

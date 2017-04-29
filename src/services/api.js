@@ -44,6 +44,8 @@ export const get = (url, params = {}) => {
     newUrl = `${url}?${qs}`;
   }
 
+  console.log(`${API_BASE}${newUrl}`);
+
   return fetch(`${API_BASE}${newUrl}`, {
     method: 'GET',
     headers: getHeaders(),

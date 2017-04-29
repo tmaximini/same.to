@@ -33,6 +33,9 @@ export default class Contacts extends Component {
 
   constructor(props) {
     super(props);
+
+    console.log(props)
+
     const { contacts } = props;
     this.state = {
       searchMode: false,
@@ -117,18 +120,18 @@ export default class Contacts extends Component {
               isRefreshing={isRefreshing}
             />
           ) : (
-            <View style={styles.noItems}>
-              {searchMode ? (
-                <Text style={styles.noItemsText}>
-                  {isSearching ? I18n.t('searching') : I18n.t('no_search_result')}
-                </Text>
-              ) : (
-                <Text style={styles.noItemsText}>
-                  {I18n.t('no_contacts_yet')}
-                </Text>
-              )}
-            </View>
-          )}
+              <View style={styles.noItems}>
+                {searchMode ? (
+                  <Text style={styles.noItemsText}>
+                    {isSearching ? I18n.t('searching') : I18n.t('no_search_result')}
+                  </Text>
+                ) : (
+                    <Text style={styles.noItemsText}>
+                      {I18n.t('no_contacts_yet')}
+                    </Text>
+                  )}
+              </View>
+            )}
         </View>
         <Button
           text={I18n.t('invite_friends')}

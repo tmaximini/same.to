@@ -2,7 +2,7 @@
 
 import { Platform, AsyncStorage } from 'react-native';
 import { createStore, applyMiddleware, compose } from 'redux';
-// import logger from 'redux-logger';
+import createLogger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
 import { persistStore, autoRehydrate } from 'redux-persist';
 import reducer from './modules';
@@ -27,8 +27,11 @@ if (__DEV__) {
 }
 
 const sagaMiddleware = createSagaMiddleware();
+const logger = createLogger();
+
 const middlewares = [
   sagaMiddleware,
+  logger
 ];
 const enhancer = composeEnhancers(
   applyMiddleware(...middlewares),

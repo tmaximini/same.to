@@ -23,15 +23,25 @@ export default class ContactList extends Component {
     this.dataSource = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2
     });
-    this.onRefresh = this.onRefresh.bind(this);
+    // this.onRefresh = this.onRefresh.bind(this);
   }
 
-  onRefresh() {
-    this.props.refresh();
+  // onRefresh = () => {
+  //   this.props.refresh();
+  // }
+
+  renderContactListItem = contact => {
+    const { setCurrentContact, ...rest } = this.props;
+
+    return (<ContactListItem
+      {...rest}
+      contact={contact}
+      setCurrentContact={setCurrentContact}
+    />);
   }
 
-  render() {
-    const { setCurrentContact, refresh, style, ...rest } = this.props;
+  render = () => {
+    const { refresh, style, } = this.props;
 
     const dataSource = this.dataSource.cloneWithRows(this.props.contacts);
 
@@ -41,18 +51,12 @@ export default class ContactList extends Component {
         automaticallyAdjustContentInsets={false}
         style={[styles.container, style]}
         dataSource={dataSource}
-        renderRow={contact => (contact.id !== getUserId()) && (
-          <ContactListItem
-            {...rest}
-            contact={contact}
-            setCurrentContact={setCurrentContact}
-          />
-        )}
+        renderRow={this.renderContactListItem}
         refreshControl={
           refresh ? (
             <RefreshControl
               refreshing={this.props.isRefreshing}
-              onRefresh={this.onRefresh}
+              onRefresh={this.props.refresh}
               tintColor={COLORS.CYAN}
               title="Refreshing..."
               titleColor={COLORS.WHITE}
