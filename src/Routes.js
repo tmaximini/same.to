@@ -1,5 +1,12 @@
 import React from 'react';
-import { View, Navigator, Text, StyleSheet, TouchableHighlight, Platform } from 'react-native';
+import {
+  View,
+  Navigator,
+  Text,
+  StyleSheet,
+  TouchableHighlight,
+  Platform
+} from 'react-native';
 import { Scene, Router, Actions } from 'react-native-router-flux';
 import I18n from 'react-native-i18n';
 import { connect } from 'react-redux';
@@ -48,35 +55,36 @@ const navBarPadding = {
 
 const navTabpadding = {
   paddingTop: TOP_PADDING,
-  paddingBottom: 50, // default height of tabbar
+  paddingBottom: 50 // default height of tabbar
 };
 
 const cyanText = {
   color: COLORS.CYAN,
-  fontFamily: 'Montserrat',
+  fontFamily: 'Montserrat'
 };
 
-const makeTabIcon = (icon, size = 22, material = false) => ({ selected, title }) => (
+const makeTabIcon = (icon, size = 22, material = false) => ({
+  selected,
+  title
+}) => (
   <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-    {material ? (
-      <MaterialIcon
+    {material
+      ? <MaterialIcon
         name={icon}
         size={size}
         style={{ color: selected ? COLORS.CYAN : COLORS.WHITE }}
       />
-    ) : (
-      <Icon
+      : <Icon
         name={icon}
         size={size}
         style={{ color: selected ? COLORS.CYAN : COLORS.WHITE }}
-      />
-    )}
+      />}
     <Text
       style={{
         color: selected ? COLORS.CYAN : COLORS.WHITE,
         fontSize: 10,
-        paddingTop: (22 - size) > 0 ? ((22 - size) + 1) : 0,
-        fontFamily: 'Montserrat',
+        paddingTop: 22 - size > 0 ? 22 - size + 1 : 0,
+        fontFamily: 'Montserrat'
       }}
     >
       {title}
@@ -85,34 +93,39 @@ const makeTabIcon = (icon, size = 22, material = false) => ({ selected, title })
 );
 
 const getSceneStyle = () => ({
-  backgroundColor: 'transparent',
+  backgroundColor: 'transparent'
 });
 
 const styles = StyleSheet.create({
   navBar: {
     backgroundColor: COLORS.DARK_GREY,
-    borderBottomWidth: 0,
+    borderBottomWidth: 0
   },
   navBarLight: {
     backgroundColor: COLORS.BG_GREY,
-    borderBottomWidth: 0,
+    borderBottomWidth: 0
   },
   navBarTitle: {
     color: COLORS.WHITE,
-    fontFamily: 'Montserrat',
+    fontFamily: 'Montserrat'
   },
   barButtonTextStyle: {
     color: COLORS.CYAN
   },
   barButtonIconStyle: {
     tintColor: COLORS.CYAN
-  },
+  }
 });
 
 const makeSearchButton = () => (
   <TouchableHighlight
     onPress={Actions.searchEvents}
-    style={{ justifyContent: 'center', alignItems: 'center', paddingVertical: 5, paddingHorizontal: 5 }}
+    style={{
+      justifyContent: 'center',
+      alignItems: 'center',
+      paddingVertical: 5,
+      paddingHorizontal: 5
+    }}
     underlayColor="transparent"
     activeOpacity={0.6}
   >
@@ -123,14 +136,18 @@ const makeSearchButton = () => (
 const makeContactButton = () => (
   <TouchableHighlight
     onPress={Actions.searchContacts}
-    style={{ justifyContent: 'center', alignItems: 'center', paddingVertical: 5, paddingHorizontal: 5 }}
+    style={{
+      justifyContent: 'center',
+      alignItems: 'center',
+      paddingVertical: 5,
+      paddingHorizontal: 5
+    }}
     underlayColor="transparent"
     activeOpacity={0.6}
   >
     <IonIcon name="ios-person-add" size={24} color={COLORS.CYAN} />
   </TouchableHighlight>
 );
-
 
 const Routes = () => (
   <RouterWithRedux
@@ -147,11 +164,7 @@ const Routes = () => (
       hideNavBar
       initial
     />
-    <Scene
-      key="tabbar"
-      tabs
-      component={TabBar}
-    >
+    <Scene key="tabbar" tabs component={TabBar}>
       <Scene
         key="home"
         component={Home}

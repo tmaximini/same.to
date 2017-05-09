@@ -1,15 +1,12 @@
 import { get, post, put, del } from './api';
 
-export const fetchEvents = () => get('events');
+export const fetchEvents = () => get('events/home');
 
 export const fetchPastEvents = () => get('events/past');
 
 export const createEvent = data => post('events', { ...data });
 
-export const updateEvent = data => put(
-  `events/${data.id}`,
-  { ...data }
-);
+export const updateEvent = data => put(`events/${data.id}`, { ...data });
 
 export const deleteEvent = data => del(`events/${data.id}`);
 

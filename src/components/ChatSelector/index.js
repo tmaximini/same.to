@@ -1,15 +1,8 @@
-import React, { Component, PropTypes } from 'react';
-import {
-  ListView,
-  Dimensions,
-  View,
-  StyleSheet,
-  Text,
-  TouchableOpacity
-} from 'react-native';
+import React, { Component } from 'react';
+import { ListView, Dimensions, View, StyleSheet, Text } from 'react-native';
 import I18n from 'react-native-i18n';
+import ChatSelectorRow from './ChatSelectorRow';
 
-import ChatSelectorRow from './ChatSelector';
 const { width } = Dimensions.get('window');
 
 const imgProfile = require('./Profilbild.png');
@@ -53,6 +46,7 @@ const styles = StyleSheet.create({
     flex: 1,
     marginLeft: 90,
     marginRight: 20,
+    marginBottom: 20,
     height: StyleSheet.hairlineWidth,
     backgroundColor: '#111111cc'
   },
@@ -67,9 +61,18 @@ export default class ListChatFriends extends Component {
   constructor(props) {
     super(props);
 
+    console.log('props.members', props.members);
+
     this.state = {
-      source: demoObj,
-      dataSource: ds.cloneWithRows(demoObj)
+      source: props.members,
+      dataSource: ds.cloneWithRows(props.members)
+    };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.state = {
+      source: nextProps.members,
+      dataSource: ds.cloneWithRows(nextProps.members)
     };
   }
 
@@ -87,54 +90,56 @@ export default class ListChatFriends extends Component {
   };
 
   _onItemSelected = rowId => {
+    const { onToggle } = this.props;
     let s = [...this.state.source];
     let i = parseInt(rowId, 10);
 
     let item = { ...s[i] };
     item.isSelected = !item.isSelected;
     s[i] = item;
+    onToggle(item.id);
 
     let dataSource = this.state.dataSource.cloneWithRows(s);
     this.setState({ source: s, dataSource });
   };
 
-  _onStarChat = () => {
-    let users = this.state.source.filter(i => i.isSelected);
-  };
-
   renderContactListItem = (data, col, row) => {
+    const { onToggle, activeMemberIds } = this.props;
+    console.log(
+      'data',
+      data,
+      activeMemberIds,
+      activeMemberIds.includes(data.id)
+    );
+
     return (
       <ChatSelectorRow
-        name={data.name}
-        uriProfile={data.uriProfile}
-        location={data.location}
-        isSelected={data.isSelected}
+        name={data.fullName}
+        id={data.id}
+        uriProfile={imgProfile}
+        location={data.location.formattedAddress || 'not set'}
+        isSelected={activeMemberIds.includes(data.id)}
         onProfile={this._onProfileClicked}
-        onSelected={this._onItemSelected}
+        onSelected={onToggle}
         rowId={row}
       />
     );
   };
 
-  render = () => {
+  render() {
     const { dataSource } = this.state;
     return (
-      <View style={{ flex: 1, marginTop: 20 }}>
-        <ListView
-          enableEmptySections
-          automaticallyAdjustContentInsets={false}
-          style={{ flex: 1, marginTop: 20 }}
-          dataSource={dataSource}
-          renderSectionHeader={this.renderSectionHeader}
-          renderSeparator={(sectionId, rowId) => (
-            <View key={rowId} style={styles.separator} />
-          )}
-          renderRow={this.renderContactListItem}
-        />
-        <TouchableOpacity style={styles.btnStart} onPress={this._onStarChat}>
-          <Text style={{ color: 'white', fontSize: 18 }}>Erstellen</Text>
-        </TouchableOpacity>
-      </View>
+      <ListView
+        enableEmptySections
+        automaticallyAdjustContentInsets
+        style={{ flex: 1, marginTop: 20 }}
+        dataSource={dataSource}
+        renderSectionHeader={this.renderSectionHeader}
+        renderSeparator={(sectionId, rowId) => (
+          <View key={rowId} style={styles.separator} />
+        )}
+        renderRow={this.renderContactListItem}
+      />
     );
-  };
+  }
 }

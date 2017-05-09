@@ -5,7 +5,7 @@ import ListContacts from './ListContacts';
 
 const TempList = props => {
     return (
-        <ListContacts />
+        <ListFriendsChat />
     );
 };
 

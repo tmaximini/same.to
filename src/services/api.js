@@ -2,9 +2,8 @@ let AUTH_TOKEN = '';
 let USER_ID = '';
 let FCM_TOKEN = '';
 
-export const API_BASE = 'https://same.wearekiai.de/api/';
+export const API_BASE = 'https://api.staging.same.to/api/';
 // export const API_BASE = 'http://0.0.0.0:3000/api/';
-
 
 // setter
 export const updateAuthHeader = token => {
@@ -31,9 +30,7 @@ const getHeaders = () => ({
 
 const getQueryString = params => {
   const esc = encodeURIComponent;
-  return Object.keys(params)
-    .map(k => `${esc(k)}=${esc(params[k])}`)
-    .join('&');
+  return Object.keys(params).map(k => `${esc(k)}=${esc(params[k])}`).join('&');
 };
 
 export const get = (url, params = {}) => {
@@ -43,55 +40,59 @@ export const get = (url, params = {}) => {
     newUrl = `${url}?${qs}`;
   }
 
-  console.log(`${API_BASE}${newUrl}`);
+  // console.log(`${API_BASE}${newUrl}`);
 
   return fetch(`${API_BASE}${newUrl}`, {
     method: 'GET',
-    headers: getHeaders(),
-  })
-    .then(response => response.json());
+    headers: getHeaders()
+  }).then(response => response.json());
 };
 
-export const post = (url, params = {}) => fetch(`${API_BASE}${url}`,
-  {
+export const post = (url, params = {}) =>
+  fetch(`${API_BASE}${url}`, {
     method: 'POST',
     headers: getHeaders(),
     body: JSON.stringify({
       ...params
     })
   })
-  .then(response => response.json())
-  .catch(error => {
-    console.info({ error });
-    // remove auth header on 401
-    if (error.statusCode === 401) {
-      updateAuthHeader(null);
-    }
-  });
+    .then(response => response.json())
+    .catch(error => {
+      console.info({ error });
+      // remove auth header on 401
+      if (error.statusCode === 401) {
+        updateAuthHeader(null);
+      }
+    });
 
-export const put = (url, params = {}) => fetch(`${API_BASE}${url}`,
-  {
+export const put = (url, params = {}) =>
+  fetch(`${API_BASE}${url}`, {
     method: 'PUT',
     headers: getHeaders(),
     body: JSON.stringify({
       ...params
     })
   })
-  .then(response => response.json())
-  .catch(error => {
-    console.info({ error });
-    // remove auth header on 401
-    if (error.statusCode === 401) {
-      updateAuthHeader(null);
-    }
-  });
+    .then(response => response.json())
+    .catch(error => {
+      console.info({ error });
+      // remove auth header on 401
+      if (error.statusCode === 401) {
+        updateAuthHeader(null);
+      }
+    });
 
-export const del = url => fetch(`${API_BASE}${url}`,
-  {
+export const del = url =>
+  fetch(`${API_BASE}${url}`, {
     method: 'DELETE',
-    headers: getHeaders(),
+    headers: getHeaders()
   })
-  .then(response => (response && typeof response.json === 'function' ? response.json() : response))
-  .catch(error => {
-    console.info({ error });
-  });
+    .then(
+      response =>
+        (response && typeof response.json === 'function'
+          ? response.json()
+          : response)
+    )
+    .catch(error => {
+      console.info({ error });
+    });
