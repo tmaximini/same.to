@@ -21,7 +21,7 @@ const SubItem = ({
   showActionSheetWithOptions,
   deleteTrip,
   deleteAccommodation,
-  deleteActivity,
+  deleteActivity
 }) => {
   // will be called by pressing right navbar button
   const editFunc = () => {
@@ -29,15 +29,15 @@ const SubItem = ({
     switch (itemType) {
       case 'trip':
         return Actions.editCreateTrip({
-          title: I18n.t('edit_trip'),
+          title: I18n.t('edit_trip')
         });
       case 'accommodation':
         return Actions.editCreateAccommodation({
-          title: I18n.t('edit_accommodation'),
+          title: I18n.t('edit_accommodation')
         });
       default:
         return Actions.editCreateActivity({
-          title: I18n.t('edit_activity'),
+          title: I18n.t('edit_activity')
         });
     }
   };
@@ -57,40 +57,40 @@ const SubItem = ({
     const options = [I18n.t('edit'), I18n.t('delete'), I18n.t('cancel')];
     const destructiveButtonIndex = 1;
     const cancelButtonIndex = 2;
-    showActionSheetWithOptions({
-      options,
-      cancelButtonIndex,
-      destructiveButtonIndex,
-    },
-    (buttonIndex) => {
-      // Do something here depending on the button index selected
-      if (buttonIndex === 0) {
-        // edit
-        editFunc();
+    showActionSheetWithOptions(
+      {
+        options,
+        cancelButtonIndex,
+        destructiveButtonIndex
+      },
+      buttonIndex => {
+        // Do something here depending on the button index selected
+        if (buttonIndex === 0) {
+          // edit
+          editFunc();
+        }
+        if (buttonIndex === 1) {
+          // delete
+          deleteFunc();
+        }
       }
-      if (buttonIndex === 1) {
-        // delete
-        deleteFunc();
-      }
-    });
+    );
   };
 
   const renderRightButton = () => (
-    <EditButton
-      onPress={showAndHandleActionSheet}
-    />
+    <EditButton onPress={showAndHandleActionSheet} />
   );
 
   const handler = (type, model) => {
     // set redux active item
     setDetail({
       itemType: type,
-      item: model,
+      item: model
     });
 
     // params are same for all routes
     const params = {
-      renderRightButton: canEdit(model) ? renderRightButton : undefined,
+      renderRightButton: canEdit(model) ? renderRightButton : undefined
     };
 
     // handle route depending on item type
@@ -107,13 +107,22 @@ const SubItem = ({
   const title = item.name ? item.name : I18n.t(itemType);
 
   const getSubTitle = it => {
-    const from = it.pickupLocation ? it.pickupLocation.locality : I18n.t('unknown');
-    const to = it.destinationLocation ? it.destinationLocation.locality : I18n.t('unknown');
+    const from = it.pickupLocation
+      ? it.pickupLocation.locality
+      : I18n.t('unknown');
+    const to = it.destinationLocation
+      ? it.destinationLocation.locality
+      : I18n.t('unknown');
 
     return `${I18n.t('from')} ${from} ${I18n.t('to')} ${to}`;
   };
 
   const getImage = () => {
+    if (
+      item && item.image && item.image.thumbs && item.image.thumbs['750x500']
+    ) {
+      return { uri: item.image.thumbs['750x500'] };
+    }
     switch (itemType) {
       case 'trip':
         return tripFallback;
@@ -126,11 +135,7 @@ const SubItem = ({
 
   return (
     <View style={styles.container}>
-      <Image
-        style={styles.bgImage}
-        source={getImage()}
-        borderRadius={5}
-      >
+      <Image style={styles.bgImage} source={getImage(item)} borderRadius={5}>
         <TouchableHighlight
           style={styles.touch}
           onPress={() => handler(itemType, item)}
@@ -141,8 +146,9 @@ const SubItem = ({
             <View style={styles.top}>
               <Text numberOfLines={1} style={styles.title}>{title}</Text>
               {itemType === 'trip' &&
-                <Text numberOfLines={1} style={styles.subTitle}>{getSubTitle(item)}</Text>
-              }
+                <Text numberOfLines={1} style={styles.subTitle}>
+                  {getSubTitle(item)}
+                </Text>}
             </View>
             <View style={styles.middle}>
               <Icon
@@ -150,15 +156,10 @@ const SubItem = ({
                 name="ios-arrow-forward"
                 style={styles.titleCaret}
               />
-              <Date
-                date={item.startAt || item.startDate}
-              />
+              <Date date={item.startAt || item.startDate} />
             </View>
             <View style={styles.bottom}>
-              <TagList
-                align="flex-end"
-                tags={item.categories}
-              />
+              <TagList align="flex-end" tags={item.categories} />
             </View>
           </View>
         </TouchableHighlight>
@@ -175,10 +176,7 @@ SubItem.propTypes = {
   showActionSheetWithOptions: PropTypes.func.isRequired,
   deleteTrip: PropTypes.func.isRequired,
   deleteAccommodation: PropTypes.func.isRequired,
-  deleteActivity: PropTypes.func.isRequired,
+  deleteActivity: PropTypes.func.isRequired
 };
 
 export default SubItem;
-
-
-

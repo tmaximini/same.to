@@ -14,14 +14,16 @@ const eventFallback = require('../../../assets/Fallback_Event.png');
 const activityFallback = require('../../../assets/Fallback_Activity.png');
 
 const getEventImage = event => {
-  if (event && event.image && event.image.thumbs && event.image.thumbs['720x540']) {
-    return { uri: event.image.thumbs['720x540'] };
+  if (
+    event && event.image && event.image.thumbs && event.image.thumbs['960x640']
+  ) {
+    return { uri: event.image.thumbs['960x640'] };
   }
   // otherwise use fallbacks
   return event.type === 'event' ? eventFallback : activityFallback;
 };
 
-const noop = () => { };
+const noop = () => {};
 
 const EventListItem = ({
   event,
@@ -31,50 +33,59 @@ const EventListItem = ({
   setActivity,
   deleteEvent,
   showActionSheetWithOptions,
-  isArchive,
+  isArchive
 }) => {
   const { name, startAt, location } = event;
 
   // functions to be called on Acionsheed edit button
-  const editEvent = isArchive ? noop : () => {
-    setEvent(event);
-    Actions.editCreateEvent({ event, title: I18n.t('edit_event') });
-  };
-  const editActivity = isArchive ? noop : () => {
-    setActivity(event);
-    Actions.editCreateActivity({ activity: event, title: I18n.t('edit_activity') });
-  };
-
-  const showAndHandleActionSheet = isArchive ? noop : () => {
-    const options = [I18n.t('edit'), I18n.t('delete'), I18n.t('cancel')];
-    const destructiveButtonIndex = 1;
-    const cancelButtonIndex = 2;
-    showActionSheetWithOptions({
-      options,
-      cancelButtonIndex,
-      destructiveButtonIndex,
-    },
-      (buttonIndex) => {
-        // Do something here depending on the button index selected
-        if (buttonIndex === 0) {
-          // edit
-          if (event.type === 'event') {
-            return editEvent();
-          }
-          return editActivity();
-        }
-        if (buttonIndex === 1) {
-          // delete
-          return deleteEvent(event);
-        }
-        return null;
+  const editEvent = isArchive
+    ? noop
+    : () => {
+      setEvent(event);
+      Actions.editCreateEvent({ event, title: I18n.t('edit_event') });
+    };
+  const editActivity = isArchive
+    ? noop
+    : () => {
+      setActivity(event);
+      Actions.editCreateActivity({
+        activity: event,
+        title: I18n.t('edit_activity')
       });
-  };
+    };
+
+  const showAndHandleActionSheet = isArchive
+    ? noop
+    : () => {
+      const options = [I18n.t('edit'), I18n.t('delete'), I18n.t('cancel')];
+      const destructiveButtonIndex = 1;
+      const cancelButtonIndex = 2;
+      showActionSheetWithOptions(
+        {
+          options,
+          cancelButtonIndex,
+          destructiveButtonIndex
+        },
+          buttonIndex => {
+            // Do something here depending on the button index selected
+            if (buttonIndex === 0) {
+              // edit
+              if (event.type === 'event') {
+                return editEvent();
+              }
+              return editActivity();
+            }
+            if (buttonIndex === 1) {
+              // delete
+              return deleteEvent(event);
+            }
+            return null;
+          }
+        );
+    };
 
   const renderRightButton = () => (
-    <EditButton
-      onPress={showAndHandleActionSheet}
-    />
+    <EditButton onPress={showAndHandleActionSheet} />
   );
 
   // set current event in reducer
@@ -82,15 +93,19 @@ const EventListItem = ({
     if (event.type === 'event') {
       setCurrentEvent(event);
       Actions.event({
-        renderRightButton: !isArchive && canEdit(event) ? renderRightButton : undefined,
-        isArchive,
+        renderRightButton: !isArchive && canEdit(event)
+          ? renderRightButton
+          : undefined,
+        isArchive
       });
     } else {
       setDetail({ itemType: 'activity', item: event });
       Actions.activity({
         title: event.name,
-        renderRightButton: !isArchive && canEdit(event) ? renderRightButton : undefined,
-        isArchive,
+        renderRightButton: !isArchive && canEdit(event)
+          ? renderRightButton
+          : undefined,
+        isArchive
       });
     }
   };
@@ -109,19 +124,11 @@ const EventListItem = ({
       >
         <View style={styles.wrapper}>
           <View style={styles.top}>
-            {event.categories && (
-              <TagList
-                align="flex-start"
-                tags={event.categories}
-              />
-            )}
+            {event.categories &&
+              <TagList align="flex-start" tags={event.categories} />}
           </View>
-          <View
-            style={styles.middle}
-          >
-            <View
-              style={styles.main}
-            >
+          <View style={styles.middle}>
+            <View style={styles.main}>
               <View style={styles.headline}>
                 <Text style={styles.title}>
                   {name}
@@ -135,16 +142,8 @@ const EventListItem = ({
             </View>
           </View>
           <View style={styles.bottom}>
-            {location && (
-              <Location
-                location={location}
-              />
-            )}
-            {startAt && (
-              <Date
-                date={startAt}
-              />
-            )}
+            {location && <Location location={location} />}
+            {startAt && <Date date={startAt} />}
           </View>
         </View>
       </Image>
@@ -160,7 +159,7 @@ EventListItem.propTypes = {
   setDetail: PropTypes.func.isRequired,
   showActionSheetWithOptions: PropTypes.func.isRequired,
   deleteEvent: PropTypes.func.isRequired,
-  isArchive: PropTypes.bool.isRequired,
+  isArchive: PropTypes.bool.isRequired
 };
 
 export default EventListItem;

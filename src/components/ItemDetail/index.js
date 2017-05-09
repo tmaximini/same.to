@@ -42,7 +42,7 @@ const getTitle = (itemType, item) => {
   }
 };
 
-const getImage = (itemType) => {
+const getImage = (itemType, item) => {
   switch (itemType) {
     case 'trip':
       return tripFallback;
@@ -66,19 +66,26 @@ const getButtonText = type => {
   }
 };
 
-
-const ItemDetail = ({ itemType, participates, onToggle, item, resetChat, ...rest }) => (
+const ItemDetail = ({
+  itemType,
+  participates,
+  onToggle,
+  item,
+  resetChat,
+  ...rest
+}) => (
   <View style={styles.container}>
     <View style={styles.top}>
       <EventHeader
         event={item}
-        onToggle={() => onToggle({
-          item,
-          itemType
-        })}
+        onToggle={() =>
+          onToggle({
+            item,
+            itemType
+          })}
         participates={participates}
         renderTitle={() => getTitle(itemType, item)}
-        background={getImage(itemType)}
+        background={getImage(itemType, item)}
       />
       <View style={styles.details}>
         <View style={styles.buttons}>
@@ -106,10 +113,7 @@ const ItemDetail = ({ itemType, participates, onToggle, item, resetChat, ...rest
       </View>
     </View>
     <View style={styles.bottom}>
-      <ContactList
-        {...rest}
-        contacts={item.members}
-      />
+      <ContactList {...rest} contacts={item.members} />
     </View>
     <View style={styles.actionButtons}>
       <Button
@@ -118,16 +122,16 @@ const ItemDetail = ({ itemType, participates, onToggle, item, resetChat, ...rest
         onPress={() => {
           resetChat();
           Actions.editCreateChat({
-            proposedMembers: item.members,
+            proposedMembers: item.members
           });
         }}
-        style={{ width: (width / 2) - 15 }}
+        style={{ width: width / 2 - 15 }}
         smallText
       />
       <Button
         text={getButtonText(itemType)}
         onPress={() => Actions.participants({ members: item.members })}
-        style={{ width: (width / 2) - 15 }}
+        style={{ width: width / 2 - 15 }}
         smallText
         disabled={item.memberIds.length === 0}
       />
@@ -140,7 +144,7 @@ ItemDetail.propTypes = {
   item: PropTypes.object.isRequired,
   participates: PropTypes.bool.isRequired,
   onToggle: PropTypes.func.isRequired,
-  resetChat: PropTypes.func.isRequired,
+  resetChat: PropTypes.func.isRequired
 };
 
 export default ItemDetail;
