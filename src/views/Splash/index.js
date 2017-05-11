@@ -1,26 +1,18 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
+import { View, ActivityIndicator, NetInfo } from 'react-native';
 import {
-  View,
-  ActivityIndicator,
-  NetInfo,
-} from 'react-native';
-import {
-  actions as profileActions,
+  actions as profileActions
 } from '../../redux/modules/editCreateProfile';
+import { actions as tripActions } from '../../redux/modules/editCreateTrip';
 import {
-  actions as tripActions,
-} from '../../redux/modules/editCreateTrip';
-import {
-  actions as activityActions,
+  actions as activityActions
 } from '../../redux/modules/editCreateActivity';
 import {
-  actions as accommodationActions,
+  actions as accommodationActions
 } from '../../redux/modules/editCreateAccommodation';
-import {
-  actions as contactActions,
-} from '../../redux/modules/contacts';
+import { actions as contactActions } from '../../redux/modules/contacts';
 import { updateAuthHeader, updateUserId } from '../../services/api';
 import { COLORS } from '../../constants';
 import styles from './styles';
@@ -28,7 +20,7 @@ import styles from './styles';
 @connect(
   state => ({
     ...state.auth,
-    ...state.editCreateProfile,
+    ...state.editCreateProfile
   }),
   {
     fetchProfile: profileActions.fetchProfile,
@@ -36,11 +28,10 @@ import styles from './styles';
     getAccommodationTypes: accommodationActions.getTypes,
     getActivityTypes: activityActions.getTypes,
     fetchContacts: contactActions.fetchContacts,
-    fetchFavorites: contactActions.fetchFavorites,
+    fetchFavorites: contactActions.fetchFavorites
   }
 )
 export default class Splash extends Component {
-
   static propTypes = {
     loggedIn: PropTypes.bool.isRequired,
     rehydrateFinished: PropTypes.bool,
@@ -52,7 +43,7 @@ export default class Splash extends Component {
     fetchProfile: PropTypes.func.isRequired,
     userId: PropTypes.string,
     token: PropTypes.string,
-    profile: PropTypes.object,
+    profile: PropTypes.object
   };
 
   constructor() {
@@ -67,10 +58,7 @@ export default class Splash extends Component {
         this.onConnectivityChange(isConnected);
       }
     });
-    NetInfo.isConnected.addEventListener(
-      'change',
-      this.onConnectivityChange
-    );
+    NetInfo.isConnected.addEventListener('change', this.onConnectivityChange);
     this.handleRouting(this.props);
   }
 
@@ -94,10 +82,11 @@ export default class Splash extends Component {
   fetchAppData() {
     const {
       getTripTypes,
+      fetchProfile,
       getAccommodationTypes,
       getActivityTypes,
       fetchFavorites,
-      fetchContacts,
+      fetchContacts
     } = this.props;
     getTripTypes();
     getAccommodationTypes();
@@ -105,10 +94,11 @@ export default class Splash extends Component {
     if (this.props.loggedIn) {
       fetchFavorites();
       fetchContacts();
+      fetchProfile();
     }
   }
 
-  handleRouting = (props) => {
+  handleRouting = props => {
     if (props.rehydrateFinished) {
       if (props.loggedIn) {
         const { userId, token, profile } = props;
@@ -129,7 +119,7 @@ export default class Splash extends Component {
         Actions.login({ type: 'replace' });
       }
     }
-  }
+  };
 
   render() {
     return (
@@ -143,5 +133,4 @@ export default class Splash extends Component {
       </View>
     );
   }
-
 }

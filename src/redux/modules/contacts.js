@@ -12,9 +12,8 @@ const initialState = {
   favoritesSearchResults: [],
   favoritesSearchLocation: {},
   error: null,
-  isSearching: false,
+  isSearching: false
 };
-
 
 // Constants (Actions)
 export const FETCH_CONTACTS_START = 'contacts/FETCH_CONTACTS_START';
@@ -35,6 +34,12 @@ export const SEARCH_FAVORITES_ERROR = 'contacts/SEARCH_FAVORITES_ERROR';
 export const ADD_CONTACT_START = 'contacts/ADD_CONTACT_START';
 export const ADD_CONTACT_SUCCESS = 'contacts/ADD_CONTACT_SUCCESS';
 export const ADD_CONTACT_ERROR = 'contacts/ADD_CONTACT_ERROR';
+export const ACCEPT_START = 'contacts/ACCEPT_START';
+export const ACCEPT_SUCCESS = 'contacts/ACCEPT_SUCCESS';
+export const ACCEPT_ERROR = 'contacts/ACCEPT_ERROR';
+export const DECLINE_START = 'contacts/DECLINE_START';
+export const DECLINE_SUCCESS = 'contacts/DECLINE_SUCCESS';
+export const DECLINE_ERROR = 'contacts/DECLINE_ERROR';
 export const REMOVE_CONTACT_START = 'contacts/REMOVE_CONTACT_START';
 export const REMOVE_CONTACT_SUCCESS = 'contacts/REMOVE_CONTACT_SUCCESS';
 export const REMOVE_CONTACT_ERROR = 'contacts/REMOVE_CONTACT_ERROR';
@@ -46,17 +51,28 @@ export const GEOCODE_LOCATION_SUCCESS = 'contacts/GEOCODE_LOCATION_SUCCESS';
 export const GEOCODE_LOCATION_ERROR = 'contacts/GEOCODE_LOCATION_ERROR';
 export const UPDATE_CONTACT = 'contacts/UPDATE_CONTACT';
 
-
-
 // Action Creators
 export const fetchContacts = () => ({
   type: FETCH_CONTACTS_START
 });
 
+export const acceptContact = member => ({
+  type: ACCEPT_START,
+  payload: {
+    member
+  }
+});
+
+export const declineContact = member => ({
+  type: DECLINE_START,
+  payload: {
+    member
+  }
+});
+
 export const fetchFavorites = () => ({
   type: FETCH_FAVORITES_START
 });
-
 
 export const addFavorite = contact => ({
   type: ADD_FAVORITE_START,
@@ -113,10 +129,9 @@ export const geocodeLocation = location => ({
   payload: {
     location,
     successAction: GEOCODE_LOCATION_SUCCESS,
-    errorAction: GEOCODE_LOCATION_ERROR,
+    errorAction: GEOCODE_LOCATION_ERROR
   }
 });
-
 
 // export all actions
 export const actions = {
@@ -125,14 +140,14 @@ export const actions = {
   update,
   addFavorite,
   addContact,
+  acceptContact,
+  declineContact,
   removeFavorite,
   removeContact,
   searchContacts,
   searchFavorites,
-  geocodeLocation,
+  geocodeLocation
 };
-
-
 
 const updateListItem = (list, id, valuesToUpdate) => {
   const newList = [...list];
@@ -144,8 +159,6 @@ const updateListItem = (list, id, valuesToUpdate) => {
   return newList;
 };
 
-
-
 // Action Handlers
 const actionsMap = {
   [REHYDRATE]: (state, action) => ({
@@ -153,7 +166,7 @@ const actionsMap = {
     ...action.payload.contacts,
     isSearching: false,
     favoritesSearchResults: [],
-    contactSearchResults: [],
+    contactSearchResults: []
   }),
   [FETCH_CONTACTS_START]: state => ({ ...state, isFetching: true }),
   [FETCH_FAVORITES_START]: state => ({ ...state, isFetching: true }),
@@ -163,7 +176,7 @@ const actionsMap = {
     return {
       ...state,
       contacts,
-      isFetching: false,
+      isFetching: false
     };
   },
   [FETCH_FAVORITES_SUCCESS]: (state, action) => {
@@ -172,7 +185,7 @@ const actionsMap = {
     return {
       ...state,
       favorites,
-      isFetching: false,
+      isFetching: false
     };
   },
   [FETCH_CONTACTS_ERROR]: state => ({ ...state, isFetching: false }),
@@ -181,53 +194,57 @@ const actionsMap = {
   [SEARCH_CONTACTS_START]: state => ({
     ...state,
     contactSearchResults: [],
-    isSearching: true,
+    isSearching: true
   }),
   [SEARCH_FAVORITES_START]: state => ({
     ...state,
     favoritesSearchResults: [],
-    isSearching: true,
+    isSearching: true
   }),
   [SEARCH_CONTACTS_SUCCESS]: (state, action) => ({
     ...state,
     contactSearchResults: action.payload.result,
-    isSearching: false,
+    isSearching: false
   }),
   [SEARCH_FAVORITES_ERROR]: (state, action) => ({
     ...state,
     favoritesSearchResults: [],
-    isSearching: false,
+    isSearching: false
   }),
   [SEARCH_CONTACTS_ERROR]: (state, action) => ({
     ...state,
     contactSearchResults: [],
-    isSearching: false,
+    isSearching: false
   }),
   [SEARCH_FAVORITES_SUCCESS]: (state, action) => ({
     ...state,
     favoritesSearchResults: action.payload.result,
-    isSearching: false,
+    isSearching: false
   }),
   [GEOCODE_LOCATION_SUCCESS]: (state, action) => ({
     ...state,
-    favoritesSearchLocation: action.payload,
+    favoritesSearchLocation: action.payload
   }),
   [ADD_CONTACT_SUCCESS]: (state, action) => {
     const { contact } = action.payload;
-    const newList = updateListItem(state.favorites, contact.id, { isContact: true });
+    const newList = updateListItem(state.favorites, contact.id, {
+      isContact: true
+    });
 
     return {
       ...state,
-      favorites: newList,
+      favorites: newList
     };
   },
   [ADD_FAVORITE_SUCCESS]: (state, action) => {
     const { contact } = action.payload;
-    const newList = updateListItem(state.contacts, contact.id, { isFavorite: true });
+    const newList = updateListItem(state.contacts, contact.id, {
+      isFavorite: true
+    });
 
     return {
       ...state,
-      contacts: newList,
+      contacts: newList
     };
   },
   [REMOVE_CONTACT_SUCCESS]: (state, action) => {
@@ -236,7 +253,7 @@ const actionsMap = {
 
     return {
       ...state,
-      favorites: newList,
+      favorites: newList
     };
   },
   [REMOVE_FAVORITE_SUCCESS]: (state, action) => {
@@ -245,11 +262,10 @@ const actionsMap = {
 
     return {
       ...state,
-      contacts: newList,
+      contacts: newList
     };
-  },
+  }
 };
-
 
 // Reducer
 export default (state = initialState, action) => {

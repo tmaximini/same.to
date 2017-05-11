@@ -9,27 +9,24 @@ import Input from '../../components/Input';
 import ContactList from '../../components/ContactList';
 import HR from '../../components/HR';
 import GeoInput from '../../components/GeoInput';
-import {
-  actions as contactActions
-} from '../../redux/modules/contacts';
+import { actions as contactActions } from '../../redux/modules/contacts';
 import { COLORS } from '../../constants';
 import styles from './styles';
 
 @connect(
   state => ({
     ...state.contacts,
-    profile: state.editCreateProfile.profile,
+    profile: state.editCreateProfile.profile
   }),
-  contactActions,
+  contactActions
 )
 class SearchContacts extends Component {
-
   static propTypes = {
-    contactsSearchResults: PropTypes.array,
+    contactSearchResults: PropTypes.array,
     searchContacts: PropTypes.func.isRequired,
     profile: PropTypes.object.isRequired,
-    isSearching: PropTypes.bool,
-  }
+    isSearching: PropTypes.bool
+  };
 
   constructor(props) {
     super(props);
@@ -52,14 +49,11 @@ class SearchContacts extends Component {
     return this.props.searchContacts(query);
   }
 
-
   render() {
     const { query } = this.state;
-    const {
-      contactsSearchResults,
-      profile,
-      isSearching,
-    } = this.props;
+    const { contactSearchResults, profile, isSearching, ...rest } = this.props;
+
+    console.log(contactSearchResults);
 
     return (
       <Form
@@ -75,15 +69,18 @@ class SearchContacts extends Component {
             onChangeText={text => this.setState({ query: text })}
           />
           {isSearching && <ActivityIndicator color={COLORS.CYAN} animated />}
-          {contactsSearchResults && contactsSearchResults.length > 0 && (
+          {contactSearchResults &&
+            contactSearchResults.length > 0 &&
             <View style={styles.searchResults}>
               <HR />
               <ContactList
-                contacts={contactsSearchResults}
+                {...rest}
+                contacts={contactSearchResults.filter(
+                  item => item.id !== profile.id
+                )}
                 profile={profile}
               />
-            </View>
-          )}
+            </View>}
         </View>
       </Form>
     );

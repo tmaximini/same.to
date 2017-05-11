@@ -1,14 +1,11 @@
 import DeviceInfo from 'react-native-device-info';
-import {
-  REGISTER_SUCCESS,
-  LOGOUT,
-} from './auth';
+import { REGISTER_SUCCESS, LOGOUT } from './auth';
 
 import {
   ADD_FAVORITE_SUCCESS,
   ADD_CONTACT_SUCCESS,
   REMOVE_FAVORITE_SUCCESS,
-  REMOVE_CONTACT_SUCCESS,
+  REMOVE_CONTACT_SUCCESS
 } from './contacts';
 import { toggleArrayItem } from '../../utils';
 
@@ -26,14 +23,15 @@ const makeDefaultProfile = () => ({
   uploadedImage: null,
   location: {},
   citizenship: null,
+  contacts: [],
+  contactRequests: []
 });
 
 const initialState = {
   profile: makeDefaultProfile(),
   locationString: null,
-  errors: null,
+  errors: null
 };
-
 
 // Constants
 export const CREATE_PROFILE_START = 'profile/CREATE_PROFILE_START';
@@ -52,13 +50,12 @@ export const GEOCODE_PROFILE_START = 'profile/GEOCODE_PROFILE_START';
 export const GEOCODE_PROFILE_SUCCESS = 'profile/GEOCODE_PROFILE_SUCCESS';
 export const GEOCODE_PROFILE_ERROR = 'profile/GEOCODE_PROFILE_ERROR';
 
-
 // Action Creators
 export const update = (key, value) => ({
   type: UPDATE_PROFILE,
   payload: {
     key,
-    value,
+    value
   }
 });
 
@@ -70,7 +67,7 @@ export const updateRemoteProfile = profile => ({
   type: UPDATE_PROFILE_START,
   payload: {
     ...profile,
-    deviceId: DeviceInfo.getUniqueID(),
+    deviceId: DeviceInfo.getUniqueID()
   }
 });
 
@@ -86,11 +83,9 @@ export const geocodeLocation = location => ({
   payload: {
     location,
     successAction: GEOCODE_PROFILE_SUCCESS,
-    errorAction: GEOCODE_PROFILE_ERROR,
+    errorAction: GEOCODE_PROFILE_ERROR
   }
 });
-
-
 
 // export all actions
 export const actions = {
@@ -98,15 +93,14 @@ export const actions = {
   setProfile,
   geocodeLocation,
   updateRemoteProfile,
-  fetchProfile,
+  fetchProfile
 };
-
 
 // Action Handlers
 const actionsMap = {
   [CREATE_PROFILE_SUCCESS]: state => ({
     ...state,
-    profile: makeDefaultProfile(),
+    profile: makeDefaultProfile()
   }),
   [UPDATE_PROFILE_SUCCESS]: (state, action) => {
     const { profile } = action.payload;
@@ -114,12 +108,14 @@ const actionsMap = {
     return {
       ...state,
       profile,
-      locationString: profile.location ? profile.location.formattedAddress : state.locationString,
+      locationString: profile.location
+        ? profile.location.formattedAddress
+        : state.locationString
     };
   },
   [RESET_PROFILE]: state => ({
     ...state,
-    profile: makeDefaultProfile(),
+    profile: makeDefaultProfile()
   }),
   [SET_PROFILE]: (state, action) => {
     const { model } = action.payload;
@@ -127,7 +123,7 @@ const actionsMap = {
     return {
       ...state,
       profile: model,
-      locationString: model.location ? model.location.formattedAddress : '',
+      locationString: model.location ? model.location.formattedAddress : ''
     };
   },
   [UPDATE_PROFILE]: (state, action) => {
@@ -139,19 +135,19 @@ const actionsMap = {
 
     return {
       ...state,
-      profile,
+      profile
     };
   },
   [GEOCODE_PROFILE_SUCCESS]: (state, action) => ({
     ...state,
     profile: {
       ...state.profile,
-      location: action.payload,
-    },
+      location: action.payload
+    }
   }),
   [FETCH_PROFILE_SUCCESS]: (state, action) => ({
     ...state,
-    profile: action.payload.profile,
+    profile: action.payload.profile
   }),
   [GEOCODE_PROFILE_ERROR]: (state, action) => {
     const { locationString, error } = action.payload;
@@ -161,7 +157,7 @@ const actionsMap = {
       locationString,
       errors: {
         ...state.errors,
-        profile: error,
+        profile: error
       }
     };
   },
@@ -169,11 +165,11 @@ const actionsMap = {
     ...state,
     profile: {
       ...state.profile,
-      ...action.payload,
+      ...action.payload
     }
   }),
   [LOGOUT]: () => ({
-    ...initialState,
+    ...initialState
   }),
   [ADD_FAVORITE_SUCCESS]: (state, action) => ({
     ...state,
@@ -183,7 +179,7 @@ const actionsMap = {
         state.profile.favoriteIds,
         action.payload.contact.id
       )
-    },
+    }
   }),
   [ADD_CONTACT_SUCCESS]: (state, action) => ({
     ...state,
@@ -193,28 +189,22 @@ const actionsMap = {
         state.profile.contactIds,
         action.payload.contact.id
       )
-    },
+    }
   }),
   [REMOVE_FAVORITE_SUCCESS]: (state, action) => ({
     ...state,
     profile: {
       ...state.profile,
-      favoriteIds: toggleArrayItem(
-        state.profile.favoriteIds,
-        action.payload.id
-      )
-    },
+      favoriteIds: toggleArrayItem(state.profile.favoriteIds, action.payload.id)
+    }
   }),
   [REMOVE_CONTACT_SUCCESS]: (state, action) => ({
     ...state,
     profile: {
       ...state.profile,
-      contactIds: toggleArrayItem(
-        state.profile.contactIds,
-        action.payload.id
-      )
-    },
-  }),
+      contactIds: toggleArrayItem(state.profile.contactIds, action.payload.id)
+    }
+  })
 };
 
 // Reducer

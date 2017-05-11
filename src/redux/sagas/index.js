@@ -2,18 +2,14 @@
 // 2. define watcher sagas
 // 3. define root saga as single point of entry to start all sagas at once
 
-import {
-  watchLogin,
-  watchFBLogin,
-  watchRegister,
-} from './auth';
+import { watchLogin, watchFBLogin, watchRegister } from './auth';
 import {
   watchFetchEvents,
   watchFetchPastEvents,
   watchParticipateEvent,
   watchSearchEvents,
   watchBookmarkEvents,
-  watchUnbookmarkEvents,
+  watchUnbookmarkEvents
 } from './events';
 import {
   watchFetchContacts,
@@ -25,52 +21,52 @@ import {
   watchSearchContacts,
   watchSearchFavorites,
   watchGeocodeSearchFavorites,
+  watchAcceptContact,
+  watchDeclineContact
 } from './contacts';
 import {
   watchCreateEvent,
   watchUpdateEvent,
   watchGeocodeEvent,
-  watchDeleteEvent,
+  watchDeleteEvent
 } from './editCreateEvent';
 import {
   watchCreateTrip,
   watchUpdateTrip,
   watchGeocodeTrip,
   watchGeocodeTripDestination,
-  watchDeleteTrip,
+  watchDeleteTrip
 } from './editCreateTrip';
 import {
   watchCreateAccommodation,
   watchUpdateAccommodation,
   watchGeocodeAccommodation,
-  watchDeleteAccommodation,
+  watchDeleteAccommodation
 } from './editCreateAccommodation';
 import {
   watchCreateActivity,
   watchUpdateActivity,
   watchGeocodeActivity,
-  watchDeleteActivity,
+  watchDeleteActivity
 } from './editCreateActivity';
 import {
   watchCreateProfile,
   watchUpdateProfile,
   watchGeocodeProfile,
-  watchFetchProfile,
+  watchFetchProfile
 } from './editCreateProfile';
-import {
-  watchToggleParticipate,
-} from './detail';
+import { watchToggleParticipate } from './detail';
 import {
   watchFetchChats,
   watchCreateChat,
   watchUpdateChat,
   watchDeleteChat,
-  watchLeaveChat,
+  watchLeaveChat
 } from './chats';
 import {
   watchFetchAccommodationTypes,
   watchFetchTripTypes,
-  watchFetchActivityTypes,
+  watchFetchActivityTypes
 } from './types';
 
 /*
@@ -90,6 +86,8 @@ export default function* root() {
     watchFetchContacts(),
     watchFetchFavorites(),
     watchAddContact(),
+    watchAcceptContact(),
+    watchDeclineContact(),
     watchRemoveContact(),
     watchAddFavorite(),
     watchRemoveFavorite(),
@@ -125,6 +123,6 @@ export default function* root() {
     watchDeleteAccommodation(),
     watchDeleteTrip(),
     watchDeleteChat(),
-    watchLeaveChat(),
+    watchLeaveChat()
   ];
 }

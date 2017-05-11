@@ -9,6 +9,7 @@ import _ from 'lodash';
 import { connect } from 'react-redux';
 import Search from '../../components/Search';
 import ContactList from '../../components/ContactList';
+import ListContacts from '../../demos/ListContacts';
 import Button from '../../components/Button';
 import { share } from '../../utils';
 
@@ -25,8 +26,10 @@ import styles from './styles';
 export default class Contacts extends Component {
 
   static propTypes = {
-    contacts: PropTypes.arrayOf(PropTypes.object),
+    profile: PropTypes.object.isRequired,
     fetchContacts: PropTypes.func.isRequired,
+    acceptContact: PropTypes.func.isRequired,
+    declineContact: PropTypes.func.isRequired,
     isRefreshing: PropTypes.bool,
     isSearching: PropTypes.bool,
   };
@@ -34,13 +37,15 @@ export default class Contacts extends Component {
   constructor(props) {
     super(props);
 
-    console.log(props)
+    console.log(props);
 
-    const { contacts } = props;
+    const { profile, contactSearchResults } = props;
+    const { contacts, contactRequests } = profile;
     this.state = {
       searchMode: false,
       contactSearchResults: [],
-      contacts
+      contacts,
+      contactRequests,
     };
     this.onConnectivityChange = this.onConnectivityChange.bind(this);
     this.filterResults = this.filterResults.bind(this);
@@ -94,9 +99,13 @@ export default class Contacts extends Component {
       fetchContacts,
       isRefreshing,
       isSearching,
+      acceptContact,
+      declineContact,
       ...rest,
     } = this.props;
-    const { searchMode, contacts } = this.state;
+    const { searchMode, contacts, contactRequests } = this.state;
+
+    console.log({ contactRequests });
 
     return (
       <View style={styles.container}>
@@ -112,26 +121,29 @@ export default class Contacts extends Component {
         <View
           style={styles.wrapper}
         >
-          {contacts && contacts.length > 0 ? (
-            <ContactList
+          {(contacts && contacts.length > 0) || (contactRequests && contactRequests.length > 0) ? (
+            <ListContacts
               {...rest}
-              contacts={this.state.contacts}
+              contacts={contacts}
+              contactRequests={contactRequests}
               refresh={fetchContacts}
               isRefreshing={isRefreshing}
+              acceptContact={acceptContact}
+              declineContact={declineContact}
             />
           ) : (
-              <View style={styles.noItems}>
-                {searchMode ? (
+            <View style={styles.noItems}>
+              {searchMode ? (
+                <Text style={styles.noItemsText}>
+                  {isSearching ? I18n.t('searching') : I18n.t('no_search_result')}
+                </Text>
+              ) : (
                   <Text style={styles.noItemsText}>
-                    {isSearching ? I18n.t('searching') : I18n.t('no_search_result')}
+                    {I18n.t('no_contacts_yet')}
                   </Text>
-                ) : (
-                    <Text style={styles.noItemsText}>
-                      {I18n.t('no_contacts_yet')}
-                    </Text>
-                  )}
-              </View>
-            )}
+                )}
+            </View>
+          )}
         </View>
         <Button
           text={I18n.t('invite_friends')}
