@@ -304,7 +304,11 @@ export function* addFavoriteAsync(action) {
     params: contact,
     successParams: { contact },
     successAction: ADD_FAVORITE_SUCCESS,
-    extraActions: [FETCH_FAVORITES_START, FETCH_EVENTS_START],
+    extraActions: [
+      FETCH_FAVORITES_START,
+      FETCH_EVENTS_START,
+      FETCH_PROFILE_START
+    ],
     errorAction: ADD_FAVORITE_ERROR
   });
 }
@@ -316,7 +320,11 @@ export function* addContactAsync(action) {
     params: contact,
     successParams: { contact },
     successAction: ADD_CONTACT_SUCCESS,
-    extraActions: [FETCH_FAVORITES_START, FETCH_EVENTS_START],
+    extraActions: [
+      FETCH_FAVORITES_START,
+      FETCH_EVENTS_START,
+      FETCH_PROFILE_START
+    ],
     errorAction: ADD_CONTACT_ERROR
   });
 }
@@ -328,7 +336,11 @@ export function* removeFavoriteAsync(action) {
     params: contact.id,
     successParams: { id: contact.id },
     successAction: REMOVE_FAVORITE_SUCCESS,
-    extraActions: [FETCH_FAVORITES_START, FETCH_EVENTS_START],
+    extraActions: [
+      FETCH_FAVORITES_START,
+      FETCH_EVENTS_START,
+      FETCH_PROFILE_START
+    ],
     errorAction: REMOVE_FAVORITE_ERROR
   });
 }
@@ -340,7 +352,11 @@ export function* removeContactAsync(action) {
     params: contact.id,
     successParams: { id: contact.id },
     successAction: REMOVE_CONTACT_SUCCESS,
-    extraActions: [FETCH_FAVORITES_START, FETCH_EVENTS_START],
+    extraActions: [
+      FETCH_FAVORITES_START,
+      FETCH_EVENTS_START,
+      FETCH_PROFILE_START
+    ],
     errorAction: REMOVE_CONTACT_ERROR
   });
 }

@@ -105,12 +105,6 @@ export default class ListChatFriends extends Component {
 
   renderContactListItem = (data, col, row) => {
     const { onToggle, activeMemberIds } = this.props;
-    console.log(
-      'data',
-      data,
-      activeMemberIds,
-      activeMemberIds.includes(data.id)
-    );
 
     return (
       <ChatSelectorRow

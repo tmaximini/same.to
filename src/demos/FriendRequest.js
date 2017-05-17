@@ -7,6 +7,7 @@ import {
   Image,
   TouchableOpacity
 } from 'react-native';
+import CachedImage from 'react-native-cached-image';
 
 const { width } = Dimensions.get('window');
 
@@ -22,8 +23,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row'
   },
   imgProfile: {
-    height: 55,
-    width: 80
+    height: 52,
+    width: 52
   },
   middleContainer: {
     height: 60,
@@ -47,7 +48,7 @@ const styles = StyleSheet.create({
 
 class FriendRequestRow extends Component {
   static propTypes = {
-    image: PropTypes.string,
+    image: PropTypes.object,
     fullName: PropTypes.string.isRequired,
     onAccepted: PropTypes.func.isRequired,
     onRejected: PropTypes.func.isRequired,
@@ -66,11 +67,13 @@ class FriendRequestRow extends Component {
       rowId,
       onPressed
     } = this.props;
+
     return (
       <View style={styles.container}>
         <TouchableOpacity onPress={() => onPressed(rowId)}>
-          <Image
+          <CachedImage
             style={styles.imgProfile}
+            borderRadius={26}
             source={image || imgProfile}
             resizeMode={Image.resizeMode.contain}
           />

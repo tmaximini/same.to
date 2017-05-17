@@ -56,6 +56,9 @@ export default class ListChatFriends extends Component {
 
   renderContactListItem = (data, col, row) => {
     const { acceptContact, declineContact } = this.props;
+
+    console.log('image', data);
+
     if (col === 'userRequest') {
       return (
         <FriendRequestRow

@@ -1,9 +1,5 @@
 import React, { PropTypes } from 'react';
-import {
-  View,
-  Text,
-  TouchableHighlight,
-} from 'react-native';
+import { View, Text, TouchableHighlight } from 'react-native';
 import CachedImage from 'react-native-cached-image';
 import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -22,17 +18,17 @@ const ContactListItem = ({
   onToggle,
   isActive,
   noIcons,
+  profile
 }) => {
-  const editFunc = () => Actions.editCreateProfile({
-    profile: contact,
-    title: 'Edit Profile'
-  });
+  const editFunc = () =>
+    Actions.editCreateProfile({
+      profile: contact,
+      title: 'Edit Profile'
+    });
 
   const isMe = () => contact.id === getUserId();
 
-  const getName = () => (
-    `${contact.firstName} ${contact.lastName}`
-  );
+  const getName = () => `${contact.firstName} ${contact.lastName}`;
 
   const handler = () => {
     if (onToggle) {
@@ -42,14 +38,13 @@ const ContactListItem = ({
       profile: contact,
       title: getName(),
       onRight: isMe() ? editFunc : undefined,
-      rightTitle: isMe() ? 'edit' : undefined,
+      rightTitle: isMe() ? 'edit' : undefined
     });
   };
 
   // helpers
-  const getLocation = () => (
-    contact.location ? contact.location.locality : 'Unknown'
-  );
+  const getLocation = () =>
+    (contact.location ? contact.location.locality : 'Unknown');
   const getOccupaction = () => {
     if (contact.occupation && contact.company) {
       return `${contact.occupation} bei ${contact.company}`;
@@ -61,15 +56,20 @@ const ContactListItem = ({
     return null;
   };
 
-  const getInterests = () => (
-    (contact.interests && contact.interests.length > 0)
+  const getInterests = () =>
+    (contact.interests && contact.interests.length > 0
       ? contact.interests.join(', ')
-      : ''
-  );
+      : '');
 
-  const getAvatar = () => (
-    contact && contact.image && contact.image.thumbs ? { uri: contact.image.thumbs['320x320'] } : fallback
-  );
+  const getAvatar = () =>
+    (contact && contact.image && contact.image.thumbs
+      ? { uri: contact.image.thumbs['320x320'] }
+      : fallback);
+
+  const isFavorite = c =>
+    c.isFavorite || (profile && profile.favoriteIds.includes(c.id));
+  const isContact = c =>
+    c.isContact || (profile && profile.contactIds.includes(c.id));
 
   return (
     <TouchableHighlight
@@ -92,15 +92,10 @@ const ContactListItem = ({
                   style={styles.image}
                   resizeMode="cover"
                 />
-                {isActive && (
+                {isActive &&
                   <View style={styles.checked}>
-                    <FAIcon
-                      name="check"
-                      size={18}
-                      style={{ color: '#fff' }}
-                    />
-                  </View>
-                )}
+                    <FAIcon name="check" size={18} style={{ color: '#fff' }} />
+                  </View>}
               </View>
             </TouchableHighlight>
 
@@ -118,35 +113,45 @@ const ContactListItem = ({
             </View>
           </View>
           <View style={styles.right}>
-            {!isMe() && !noIcons && (
+            {!isMe() &&
+              !noIcons &&
               <View style={styles.actions}>
                 <TouchableHighlight
                   style={styles.iconButton}
-                  onPress={() => (contact.isFavorite ? removeFavorite(contact) : addFavorite(contact))}
+                  onPress={() =>
+                    (isFavorite(contact)
+                      ? removeFavorite(contact)
+                      : addFavorite(contact))}
                   activeOpacity={0.6}
                   underlayColor="transparent"
                 >
                   <Icon
-                    name={contact.isFavorite ? 'ios-star' : 'ios-star-outline'}
+                    name={isFavorite(contact) ? 'ios-star' : 'ios-star-outline'}
                     style={styles.icon}
                     size={23}
                   />
                 </TouchableHighlight>
                 <TouchableHighlight
                   style={styles.iconButton}
-                  onPress={() => (contact.isContact ? removeContact(contact) : addContact(contact))}
+                  onPress={() =>
+                    (isContact(contact)
+                      ? removeContact(contact)
+                      : addContact(contact))}
                   activeOpacity={0.6}
                   underlayColor="transparent"
                 >
                   <Icon
                     name="ios-person-add"
-                    name={contact.isContact ? 'ios-person' : 'ios-person-add-outline'}
+                    name={
+                      isContact(contact)
+                        ? 'ios-person'
+                        : 'ios-person-add-outline'
+                    }
                     style={styles.icon}
                     size={23}
                   />
                 </TouchableHighlight>
-              </View>
-            )}
+              </View>}
           </View>
         </View>
         <View style={styles.bottom}>
@@ -157,7 +162,8 @@ const ContactListItem = ({
             </View>
           </View>
           <View style={styles.right}>
-            {!noIcons && contact.isMatch && (
+            {!noIcons &&
+              contact.isMatch &&
               <View style={styles.actions}>
                 <View style={styles.iconButton}>
                   <Icon
@@ -166,8 +172,7 @@ const ContactListItem = ({
                     style={{ color: 'white' }}
                   />
                 </View>
-              </View>
-            )}
+              </View>}
           </View>
         </View>
       </View>
@@ -186,6 +191,7 @@ ContactListItem.propTypes = {
   noIcons: PropTypes.bool,
   isContact: PropTypes.bool,
   isFavorite: PropTypes.bool,
+  profile: PropTypes.object
 };
 
 export default ContactListItem;
