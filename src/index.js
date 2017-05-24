@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppRegistry, View } from 'react-native';
+import { AppRegistry } from 'react-native';
 import { Provider } from 'react-redux';
 import { ActionSheetProvider } from '@exponent/react-native-action-sheet';
 import DeviceInfo from 'react-native-device-info';
@@ -11,7 +11,6 @@ import translations from './i18n';
 import configureStore from './redux/configureStore';
 import Routes from './Routes';
 
-import ListDemo from './demos/tempList';
 
 // i18n setup
 const locale = DeviceInfo.getDeviceLocale();
